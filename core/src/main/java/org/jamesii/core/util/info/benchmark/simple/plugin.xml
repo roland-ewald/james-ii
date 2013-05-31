@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="very simple benchmark" version="1.0" /> 
+  <factory classname="org.jamesii.core.util.info.benchmark.simple.SimpleBenchmarkFactory">
+  <description>Simple (basic) benchmarking approach shipping with the framework. Only tests pure arithmetical throughput.</description>
+  </factory> 
+</plugin>

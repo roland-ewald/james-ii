@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides different remote communications schemas.
+
+<p>
+Remote communication is an important issue for efficient parallel and distributed simulation runs.
+In principal remote communication can be established using a variety of different basic concepts,
+e.g., a direct, bi - directional pattern directly coupling two objects which have references to each
+other but residing in different JVMs or a centralized pattern which makes some things easier to realize,
+but which might imply a bottleneck.
+</p>
+
+<p>
+Which pattern is used should be open, however, all patterns have to support a minimal set
+of functionality:
+<ul>
+	<li>
+	Communication: Remote communication should be possible - thus method calls have to be forwarded
+	in a reliable manner.
+	</li>
+	<li>
+	Types of objects: The patterns have to work for models as well as for simulation algorithms.
+	However, the functionality required for models might be heavily restricted, depending on which
+	model methods should be executable from remote.
+	</li>
+	<li>Object migration: During load balancing there might be the need to move objects to another 
+	host: and thus we might need to update references to these objects, or to provide other concepts
+	to overcome the issue of relocated object.</li>
+</ul>
+</p>
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

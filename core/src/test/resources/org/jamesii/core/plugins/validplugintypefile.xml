@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugintype
+	xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+	<id name="plugintype" version="1.0" />
+	<abstractfactory>abstractFactory</abstractfactory>
+	<basefactory>baseFactory</basefactory>
+	<parameter name="param1" type="java.lang.String" defaultValue="default">
+		<description>param1description</description>	
+	</parameter>	
+	<parameter name="param2" type="java.lang.Integer" required="true" plugintype="pt">
+		<description>param2description</description>	
+	</parameter>	
+	<description>description</description>
+</plugintype>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="concurrent computation task stop policy" version="1.0"/>
+  <factory classname="org.jamesii.core.experiments.tasks.stoppolicy.concurrent.ConcurrentComputationTaskStopPolicyFactory">
+  <description>Concurrent stopping: policy used is computed in parallel to the computation task. The computation task might run for too long, but computation is not interleaved by the computation of run end condition.</description>
+  </factory>
+</plugin>

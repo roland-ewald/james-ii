@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides numerical integration stuff. 
+
+<h2>Continuous and hybrid simulation</h2>
+
+Continuous simulation is used commonly in many scientific and industrial applications.
+Hybrid simulations combine continuous and discrete models, so that features of both 
+modeling paradigms can be used.
+The base for continuous models are differential equations, the algorithms to solve these
+are called "integration" algorithms.
+Many different simulation algorithms have been developed so far, among those the 
+well-known Euler and Runge-Kutta algorithms.
+The list of integration algorithms developed so far is already pretty long, and 
+consequently integration algorithms can be added to the framework via an extension point.
+
+Herein the basic for all this is realized. 
+Basic interfaces to describe equations as well as interfaces for numerical integration
+algorithms are contained. 
+
+<h2>Related Documentation</h2>
+
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li>The JAMES II manual (check <a href="http://www.jamesii.org">www.jamesii.org</a>)</li>
+</ul>  	
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.plugins
+@see james.core.model
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugintype
+	xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+	<id name="model parameter setup (manually) plugins" version="1.0" />
+	<abstractfactory>org.jamesii.gui.model.parametersetup.plugintype.AbstractModelParameterSetupWindowFactory</abstractfactory>
+	<basefactory>org.jamesii.gui.model.parametersetup.plugintype.ModelParameterSetupWindowFactory</basefactory>
+	<description>Windows which can be used for setting up the parameters of a model for a simulation run.</description>
+</plugintype>

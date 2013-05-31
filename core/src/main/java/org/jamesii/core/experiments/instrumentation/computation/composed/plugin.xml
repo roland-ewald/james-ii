@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="sim_instr_composed" version="1.0" />
+	<factory
+		classname="org.jamesii.core.experiments.instrumentation.computation.composed.ComputationInstrumenterListFactory">
+		<parameter name="InstrumenterFactoryList" type="java.util.List"
+			defaultValue="null">
+			<description>List of computation instrumenter factories to be used.
+			</description>
+		</parameter>
+	</factory>
+</plugin>

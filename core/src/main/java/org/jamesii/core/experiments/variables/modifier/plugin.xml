@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="variable modifiers" version="1.0" />   
+  <factory classname="org.jamesii.core.experiments.variables.modifier.IncrementModifierDoubleFactory"></factory> 
+  <factory classname="org.jamesii.core.experiments.variables.modifier.IncrementModifierIntegerFactory"></factory>
+  <factory classname="org.jamesii.core.experiments.variables.modifier.SequenceModifierFactory"></factory>
+  <factory classname="org.jamesii.core.experiments.variables.modifier.MathExpressionModifierIntegerFactory"></factory>
+  <factory classname="org.jamesii.core.experiments.variables.modifier.MathExpressionModifierDoubleFactory"></factory>
+  <factory classname="org.jamesii.core.experiments.variables.modifier.DoubleVectorElementModifierFactory"></factory>
+</plugin>

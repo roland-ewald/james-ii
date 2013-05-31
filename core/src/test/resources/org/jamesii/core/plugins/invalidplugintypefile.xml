@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugintype>
+	<id name="plugintype" version="1.0" />
+	<abstractfactory>abstractFactory</abstractfactory>
+	<basefactory>baseFactory</basefactory>
+	<parameter name="param1" type="java.lang.String">
+		<description>param1description</description>	
+	</parameter>	
+	<parameter name="param2" type="java.lang.Integer">
+		<description>param2description</description>	
+	</parameter>	
+	<description>description</description>
+</plugintype>

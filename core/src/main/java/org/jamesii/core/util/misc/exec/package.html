@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides means to execute external applications. 
+
+<p>
+Sometimes you might need to execute an external application. 
+This can be done by using the class java.lang.ProcessBuilder, however you might need to execute the external
+application in an extra thread in the current virtual machine, so that the execution cannot block your own
+application.
+That's what the class {@link james.core.util.misc.exec.ApplicationExecutionThread} has been designed for.
+In addition the output streams of an application might be of interest, 
+or there might just be the need to empty these,
+so that the application can be executed without problems: the class {@link james.core.util.misc.exec.StreamReader} 
+can do this for you. It is used by {@link james.core.util.misc.exec.ApplicationExecutionThread} by default.
+</p>
+Our recommendation is that you use the {@link james.core.util.misc.exec.ApplicationExecutionThread} instead
+of the ProcessBuilder wherever possible.
+
+<h2>Related Documentation</h2>
+
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li>The JAMES II manual (check <a href="http://www.jamesii.org">www.jamesii.org</a>)</li>
+</ul>  	
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.plugins
+
+</body>
+</html>

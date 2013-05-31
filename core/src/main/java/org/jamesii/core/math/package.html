@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Math package for the simulation framework.
+
+<h2>General description</h2>
+
+The math packages provide various mathematical functions more
+or less frequently required for modeling and simulation. They have been
+implemented and ship with the core to reduce the need of integrating
+external packages, and thus to reduce dependencies of projects based on
+the framework. Some of them are even required in the core, and the core has
+by convention, no dependencies to any external stuff.
+<br>
+However, if you prefer to use an external math package for your M&S application
+this is possible as well - then you can ignore this package.
+<br>
+Basically this package and its subpackages contain math stuff from as different domains as
+<ul>
+  <li>parse trees</li>
+  <li>random numbers / random distributions</li>
+  <li>statistics</li>
+  <li>complex numbers</li>
+  <li>integration algorithms</li>
+  <li>interpolation</li>
+  <li>matrix handling</li>
+</ul>
+The random numbers for example are used throughout the framework and they are the only part which
+should not completely exchanged: a sophisticated handling of random number generation is mandatory
+for credible simulation results. If you are in need of different random number generators / different
+implementations of generators provided by the framework you should add these by using the corresponding
+plug-in type of the framework.
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+The pseudo random number generators package.
+
+<h2>General description</h2>
+
+In modelling and simulation you often need random numbers distributed according 
+to different distributions. Pseudo random number generators typically produce 
+equally distributed series of numbers which can be modified, so that different
+distributions can be produced.<br/>
+This package contains the extension point for pseudo random number generators
+as well as a set of implementations of different generators.<br/>
+Each number generator can be annotated by using the RNGInfo class with essential 
+information like the length of the period of the generator.
+
+<p>
+Principally any number of pseudo random number generators can be added to the 
+framework. However, due to the fact that checking the quality of random number
+generators is a very complex process, and that many models and simulation 
+algorithms heavily depend on "good" random numbers such generators should be 
+developed with great care.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation,
+please see:
+<ul>
+	<li><i>Pierre L'Ecuyer</i> <b>Random numbers for simulation</b> Commun. ACM, ACM, 1990, 33, 85-97</li>
+	<li><i>Press, W. H.; Teukolsky, S. A.; Vetterling, W. T. & Flannery, B. P.</i> <b>Numerical recipes</b> Cambridge University Press, 2007</li>
+	<li><i>Roland Ewald; Johannes Rössel; Jan Himmelspach</i>Mason, S.; Hill, R.; Moench, L. & Rose, O. (ed.) <b>A plug-in - based architecture for random number generation in simulation systems</b> Proceedings of the Winter Simulation Conference, IEEE Computer Society, 2008, 836-844</li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.math.random
+@see james.core.math.random.distributions
+
+</body>
+</html>

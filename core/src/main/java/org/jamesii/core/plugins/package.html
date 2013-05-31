@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the plug-in management.
+
+<p>
+The framework is open to any extension. Thereby the list of extensions (aka plug-ins) for 
+existing extension points as well as the number of extension points can be extended.
+For each extension point/extension you need an XML based description file which describes 
+the extension. These files are used to install the extensions into the frameworks registry.
+The definition of these files can be found in the XML schema files in this package.
+The framework can search for plug-ins on the hard-disc (e.g., on each startup), or it can
+read the list of available plug-ins from a cache / repository. In the latter case new 
+plug-ins needs to get installed manually.
+</p>
+
+<p>
+Plug-in selection is one of the major issues arising out of the plug-in based systems.
+On the one side you want typically to be able to select plug-ins manually, e.g., for 
+validation or benchmarking purposes. On the other side there might be many users who
+just want to use the system, without the need to worry about the most efficient 
+algorithm to compute the trajectories of their model.
+For each extension point an abstract factory has to exist which takes care of the 
+(semi-automatic) selection of plug-ins. Either a concrete plug-in is selected (by
+its name), or the filters available for the factory are used to reduce the number of
+plug-ins usable in principal (thus, e.g., eliminating plug-ins for the computation of
+continuous models if a discrete one has to be computed). This filtered list then gets
+sorted according to explicit sorting criteria or by a knowledge based filter.
+This overall process is known as the algorithm selection problem.
+</p>
+
+<p>
+For each extension point you have to provide
+<ol>
+<li>an abstract factory class which returns an instance of a descendant of the base factory class</li>
+<li>a base factory class which is the super type of all factories for the concrete plug-ins</li>
+<li>a plug-in type XML file which describes the extension point</li>
+<li>often: an interface which defines which functionality has to be provided by plug-ins of this extension point</li> 
+</ol>
+</p>
+
+<p>
+For each extension (plug-in) you have to provide
+<ol>
+<li>a factory class which returns an instance of the plug-in</li>
+<li>a class containing the functionality of the plug-in (i.e., the algorithm, data structure)</li>
+<li>a plug-in XML file which describes the extension</li> 
+</ol>
+</p>
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  	<li><i>Himmelspach, J. & Uhrmacher, A. M.</i><b>Plug'n simulate</b> Proceedings of the Spring Simulation Multiconference, IEEE Computer Society, 2007, 137-143</li>
+	<li><i>Ewald, R.; Himmelspach, J. & Uhrmacher, A. M.</i><b>An Algorithm Selection Approach for Simulation Systems</b> Proceedings of the PADS, IEEE Computer Society, 2008, 91-98
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

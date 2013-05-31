@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="simulation resource allocator" version="1.0" />   
+  <factory classname="org.jamesii.core.distributed.allocation.ConstantResourceAllocatorFactory">
+    <parameter name="numberOfResources" type="java.lang.Integer" defaultValue="1">
+      <description>Number of resources to be used for a single simulation run execution.</description>
+    </parameter> 
+    <description>Simple simulation resource allocator that allocates a fixed number of resources for each run.</description>
+  </factory> 
+</plugin>

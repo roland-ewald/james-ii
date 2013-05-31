@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for "task runners". 
+
+<p>
+"Task runners" are used in the framework to execute 
+"tasks" / "jobs" / "simulation configurations" / "parameter configurations" scheduled by an instance of 
+{@link james.core.experiments.BaseExperiment}. For the latter it is of no
+interest how a runner executes the jobs. This allows to have quite different
+runners which can execute the jobs in a sequential manner on a single local host,
+in a coarse- or fine-grained manner on a single multi-core/multi-CPU local host, or
+by making use of the distributed simulation facilities of the framework.<br/>
+
+If you are "just using" the framework you'll typically not get in touch with the runners
+at all - you'll remain on the level of the experiment, where you select how to execute the
+simulation runs - everything else is done by the framework on its own.<br/>
+
+If you identify the need to create your own runner this can be "easily" done as well:
+simulation runners are an extension point as well, and thus any additional task runner
+can be added as a plug-in. There you have to create a class implementing the {link ISimulationRunner}
+interface, and to setup the plug-in according to the plug-in type for simulation runners.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li><i>Leye, S.; Himmelspach, J.; Jeschke, M.; Ewald, R. & Uhrmacher</i>, A. M. Roberts, D.; Saddik, A. E. & Ferscha, A. (ed.) <b>A grid-inspired mechanism for coarse-grained experiment execution</b> Proceedings of the 12th IEEE International Symposium on Distributed Simulation and Real-Time Applications, IEEE Computer Society, 2008, 7-16</li>	
+</ul>
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.experiments.taskrunner.plugintype
+@see james.core.experiments.taskrunner.parallel
+@see james.core.experiments.taskrunner.sequential
+@see james.core.processor
+@see james.core.simulation
+@see james.core.simulation.distribution
+@see james.core.experiments
+
+</body>
+</html>

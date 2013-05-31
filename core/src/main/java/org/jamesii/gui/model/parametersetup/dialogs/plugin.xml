@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="model_parameter_dialogs" version="1.0" /> 
+  <factory classname="org.jamesii.gui.model.parametersetup.dialogs.ModelParameterFileWriterParamDialogFactory">
+  	<description>Provides Model parameter saving URIs</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.model.parametersetup.dialogs.OpenModelParameterFromFileSystemFactory">
+  	<description>Loads Model parameter file's URIs</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.model.parametersetup.dialogs.BrowseForModelParametersFromFileSystemFactory">
+  	<description>Browses for Model parameter file's URIs</description>
+  </factory> 
+</plugin>

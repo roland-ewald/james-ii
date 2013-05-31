@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin>
+  <id name="testplugin" version="1.0" /> 
+  <factory classname="testClass1">
+  	<parameter name="param1class1" type="java.lang.Integer" required="true" plugintype="plugintypetestClass1">
+  		<description>param1testClass1</description>
+  	</parameter>
+  	<description>testClass1description</description>
+  </factory> 
+  <factory classname="testClass2">
+  	<description>testClass2description</description>
+  </factory> 
+  <factory classname="testClass3">
+  	<description>testClass3description</description>
+  </factory> 
+  <factory classname="testClass4">
+	<parameter name="param1class4" type="java.lang.String" defaultValue="defaulttestClass4" required="false">
+		<description>param1testClass4</description>
+	</parameter>
+  </factory> 
+  <depends version="2.0" name="depends1"/>
+</plugin>

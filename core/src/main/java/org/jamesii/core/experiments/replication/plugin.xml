@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="rep_criteria" version="1.0" />
+  
+  <factory classname="org.jamesii.core.experiments.replication.MaximizingReplicationCriterionFactory">
+  <parameter  name="repCriterionFactories" type="java.util.List" plugintype="org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory">
+      <description>Contains the parameterized replication criterion factories to be used.</description>
+    </parameter>
+  </factory>
+   
+  <factory classname="org.jamesii.core.experiments.replication.RepNumberCriterionFactory">
+    <parameter  name="numOfReps" type="java.lang.Integer" defaultValue="1">
+      <description>The exact number of replications that shall be conducted.</description>
+    </parameter>
+  </factory>
+  
+  <factory classname="org.jamesii.core.experiments.replication.ConfidenceIntervalCriterionFactory">
+    <parameter  name="confidenceLevel" type="java.lang.Double" defaultValue="0.95">
+    </parameter>
+    <parameter  name="relativeHalfWidthThreshold" type="java.lang.Double" defaultValue="0.01">
+    </parameter>
+    <parameter  name="maxReplications" type="java.lang.Integer" defaultValue="1000">
+    </parameter>
+    <parameter  name="minReplications" type="java.lang.Integer" defaultValue="100">
+    </parameter>
+    <parameter  name="furtherReplications" type="java.lang.Integer" defaultValue="10">
+    </parameter>
+    <parameter  name="dataID" type="java.lang.Long" defaultValue="0">
+    </parameter>
+    <parameter  name="attributeID" type="java.lang.String" defaultValue="state_vector">
+    </parameter>
+  </factory>
+   
+</plugin>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides "simulation stop policies".
+
+<h2>Package use</h2>
+
+If a simulation is started it typically runs until no more progress can be made (e.g., in a discrete event
+based simulation until no more upcoming events are available) or until a stop condition holds.
+A simple stop condition typically used in M&S is the simulation stop time, thus the simulation run shall
+proceed until a pre-defined simulation time value has been reached. Although this simple stop condition is 
+used frequently it might not be sufficient for all cases. For example, you might be interested in a 
+simulation run which runs until the trajectory has reached a certain quality criteria, and you don't know
+the simulation time in advance where this is true. Or you might be interested in running the simulation
+for a fixed amount of wall clock time to see how many single computation steps you had been able to do.
+Or you have a different idea what should determine you simulation end.
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

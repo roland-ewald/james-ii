@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="init phase skip random generator wrapper" version="1.0" />
+	<factory
+		classname="org.jamesii.core.math.random.generators.special.initphase.InitPhaseSkipGeneratorFactory"
+		name="Init phase skip">
+		<parameter name="PRNG"
+			type="org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory"
+			plugintype="org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory">
+			<description>The pseudo-random number generator to wrap.
+			</description>
+		</parameter>
+	</factory>
+</plugin>

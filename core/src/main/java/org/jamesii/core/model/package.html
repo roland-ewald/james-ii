@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for the integration of any modeling language / of any modeling formalism. 
+
+
+<p>
+The framework is not restricted to any modeling domain nor to any paradigm.
+Consequently the basic interface for all models (whether they are executable or symbolic) is very
+general and does not make any restrictions to the type of models to be integrated.
+</p>
+
+<p>
+Executable models are those which can be directly executed by a simulation algorithm. It is good
+practice to create dedicated interfaces for all classes the simulation algorithm shall work on:
+this leaves open the opportunity to exchange the implementation of the executable model classes
+without implying the need to adapt the simulation accordingly.
+<br/>
+Usually executable models are fully parameterized and instantiated, thus ready to be used for a 
+simulation run.
+</p>
+<p>
+Symbolic model are the models to be used during the modeling process, and for reading / writing models.
+They do not need to be executable. However, due to simplicity during development, the "executable model" 
+classes might be reusable as the internal data structure of a symbolic model - if the developer keeps in 
+mind that than the executable model classes must be able to hold semi-complete models. 
+</p>
+
+<h2>Adding model formalisms/languages</h2>
+Model formalisms are added as plug-in types as well. To add a new formalism you have to
+<ul>
+<li>Define the interfaces the simulator works on later</li>
+<li>Implement these in executable model classes (the simulator will work on later</li>
+<li>Implement a symbolic model, if required (thus if editing of the model via the framework shall be possible)</li>
+<li>Add a formalism description class (to tell a user something about the name, characteristics, a.s.o. of the formalism</li>
+<li>Create remote interfaces, if the model shall be usable in a distributed simulation</li>
+<li>Add a model reader / writer if you have got your own modeling language, otherwise modelers have to code their models in Java directly</li>
+<li>And last but not least: add the needed plug-in descriptions</li>
+</ul>
+
+<h2>Distributed models</h2>
+Any model implementation should be independent from being distributed or not. This allows to 
+execute models without any overhead on a single machine. However, it makes distributing a model
+a more complex job. The general pattern looks like
+<table>
+<tr>
+<td>original model part</td><td>original model remote accessible obj.</td><td>- NETWORK -</td><td>remote accessible proxy</td><td>local proxy for the remote model</td>
+</tr>
+</table> 
+This means more work during the implementation phase, but allows to completely ignore remote communication 
+issues while modelling.
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href="">##### REFER TO NON-SPEC DOCUMENTATION HERE #####</a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.model.symbolic
+@see james.core.model.formalism
+@see james.core.model.plugintype
+@see james.core.model.rmi
+
+</body>
+</html>

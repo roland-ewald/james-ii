@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides application wide logging.
+
+<p>
+Experiments might take a long time, and users might not want to wait in front of their machine to get all messages 
+directly. In a remote setup a forwarding mechanism for these messages is mandatory as well.
+This package provides a centralized application wide logger which can be used from anywhere in the System.
+Most often the logger is used through the <code>report</code> methods of {@link james.SimSystem}, respectively
+the corresponding convenience methods defined in Entity.
+<br>
+Nevertheless you can use the {@link james.core.util.logging.ApplicationLogger} directly as well. This class is
+realized as a singleton, thus all "easy" access methods are static.
+<br>
+Reporting log messages to any target can be done by using the {@link james.core.util.logging.ILogListener} interface.
+The remote sub package allows the forwarding of log messages to remote machines. 
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li></li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.SimSystem
+@see james.core.base.Entity
+@see james.core.util.logging.remote
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- $Id: plugintype.xsd 3055 2006-06-20 13:11:47Z jh194 $ -->
+	<!--  If the name spaces are changed then the class SchemaResolver has to be adapted! -->
+<xsd:schema 
+    xmlns="http://www.jamesii.org/plugintype"
+	targetNamespace="http://www.jamesii.org/plugintype"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified" 
+>
+    <xsd:include schemaLocation="parameter.xsd"/>
+    
+    <!-- A PluginType Definition -->
+	<xsd:complexType name="PluginType">
+		<xsd:sequence>
+			<xsd:element name="id" type="Id"/>
+
+			<!-- Class name of abstract factory -->
+			<xsd:element name="abstractfactory" type="JavaClass" maxOccurs="1" minOccurs="1"/>
+
+			<!--
+				Base class name of factories to be returned by the abstract factory
+			-->
+			<xsd:element name="basefactory" type="JavaClass" maxOccurs="1" minOccurs="1"/>
+
+			<xsd:element name="parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+			<!--
+				Description of plugin type 
+			-->
+			<xsd:element name="description" type="xsd:string"
+				minOccurs="0" />
+				
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+
+    <xsd:element name="plugintype" type="PluginType"></xsd:element>
+</xsd:schema>

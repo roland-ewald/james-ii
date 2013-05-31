@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides event queue / calendar queue / event set / priority queue data structure plug-ins and extension point therefore.
+
+<p>
+For discrete event based simulation algorithms the usage of an event queuing mechanism is most often mandatory.
+It is the data structure usually used most often - for each step an event has to be dequeued, and afterwards usually at 
+least one event is enqueued again.
+Thus there are in the mean at least two operations on this data structure.
+Thereby these data structures may contain thousands, or even millions of entries.
+This makes the usage of optimized data structures mandatory if one is interested in an efficient simulation.
+Due to efficiency reasons event queues are <b>not synchronized</b> by default. 
+If you need a synchronized event queue you should consider writing a wrapper, however, you should really try to avoid this.
+<br/>
+Many implementations of event queues only provide a very simple interface comprising two methods:
+<ul>
+	<li>enqueue</li> - add an element to the queue
+	<li>dequeue</li> - fetch the element with the smallest time stamp
+</ul> 
+In the framework we use an extended interface definition, basically the interface is extended by two additional methods:
+<ul>
+	<li>dequeueAll</li> - fetch all elements with the smallest time stamp (and not just one of those)
+	<li>requeue</li> - update the time stamp of an event already in the queue
+</ul>
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li><i>Vaucher, J. G. & Duval, P. A</i><b>Comparison of simulation event list algorithms</b> Commun. ACM, ACM Press, 1975, 18, 223-230</li>
+	<li><i>Himmelspach, J. & Uhrmacher, A. M.</i><b>The event queue problem and PDEVS</b> Proceedings of the DEVS Integrated M&S Symposium, SCS, 2007, 257-264</li>
+	<li><i>Himmelspach, J.</i><b>Konzeption, Realisierung und Verwendung eines allgemeinen Modellierungs-, Simulations und Experimentiersystems - Entwicklung und Evaluation effizienter Simulationsalgorithmen</b> Sierke Verlag, 2007</li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

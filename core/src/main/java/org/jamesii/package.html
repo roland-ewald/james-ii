@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+The simulation framework JAMES II. 
+
+<h2>General description</h2>
+
+JAMES II is a general and open modeling and simulation framework based on the "Plug'n simulate" 
+concept.<br>
+In principal every modeling formalism / every language can be integrated into the framework. 
+The same holds true for every possible execution mechanism / algorithm.
+<p align="center">The framework is distributed under the JAMESLIC (see below)</p> 
+
+<p>
+Thus the framework can be used for
+<ul>
+	<li>discrete
+	<ul>
+		<li>stepwise</li>
+		<li>event</li>
+	</ul>
+	</li>
+	<li>continuous
+	</li>
+	<li>hybrid
+	</li>
+</ul>
+modelling and simulation.<br/>
+Thereby neither the number of modelling paradigms supported nor the number of simulation algorithm per 
+paradigm is limited.<br/>
+The framework does not provide integrated support for multi - paradigm modelling 
+(aka multi - formalism modelling), i.e., the combination of a set of model parts (components, building blocks)
+based on different paradigms to a new model. However, from the point of view of the framework, such a multi
+modelling paradigm does not differ from a pure one: it can be added as new "modelling plug-in", shipping with
+specialized synchonization simulation algorithms. Whether these depend on further "pure" plug-ins or not
+is up to the developer.
+</p>
+
+<p>
+The framework has been designed to support
+<ul>
+	<li>sequential</li>
+	<li>parallel
+		<ul>
+			<li>coarse-grained</li>
+			<li>fine-grained</li>
+		</ul>
+	</li>
+</ul>
+execution of simulations.
+</p>
+
+<p>
+The benefits of using the framework are manifold, among these:
+<ul>
+	<li>Reuse of central infrastructure, e.g., experiment definition and execution, data collection, model optimization, coarse grained execution, of data structures, etc ... and thus save a lot of development and testing time</li>
+	<li>Reducing the amount of overall work to be done
+	<ul>
+		<li>select one of the available modelling paradigms and immediately start to model (without the need to create your own tool first)</li>
+		<li>add a new modelling paradigm, but rely on the experiment stuff, the distributed management, and so on</li>
+	</ul>
+	</li>
+	<li>Make your results available and comparable, especially any benchmark results. Compare your algorithms to algorithms provided by others.</li>
+	<li>Reuse of functionality, thus turning the framework into a "library".
+</ul>
+</p>
+
+<p align="center">
+Check <a href="http://www.jamesii.org">www.jamesii.org</a> for news around the framework.
+</p>
+
+<h2>About the core</h2>
+The core of the framework comprises the plug-in management, the service management, experiment control,
+basic instrumentation and data collection, random number generation, as well as many commonly 
+used extension points most often together with some plug-ins for these (to have a out of the box system).<br/>
+In addition a flexible GUI is shipped with the core. This GUI can be, but has not to be used to create
+your own view on the framework. Reusing the GUI has the advantage that a lot of basic logic / dialogs / 
+a.s.o. can be reused. However, if you already have your own GUI you can still integrate the framework
+in a seamless manner.  
+
+
+<h2>How to start</h2>
+
+Maybe it is always a good start to execute the framework with the default GUI, and to play around with the menus -
+just to get an impression what's that all about, what's in there, and what's required from you according to your
+wishes.
+
+<h3>As a modeller</h3>
+
+<h4>A plug-in for the formalism / language you wanna use exists</h4>
+
+Start modelling and then start using the default GUI for checking your model. Finally, if required, you can either adapt the GUI or create your own specialized one before you release the model.
+
+<h4>A plug-in does not exist</h4>
+
+You have to create interfaces and classes for your executable and symbolic model representation, as well as at least one simulation algorithm.
+However, you can resue anything provided by the framework on doing so, and you "only" have to program against existing interfaces of the framework.
+Once you'are done you can start modelling.
+
+<h3>As a m&amp;s tool developer</h3>
+
+You can use the framework as library, you can make the framework the base /core of your tool, but hide everything, or you can create your application by extending the framework.
+The latter should be the way with the least effort for your side.
+
+<h2>Remarks</h2>
+The framework is being under development at a research group in a university. Consequently the main purpose of
+the framework has been knowledge gathering. Already up to now quite a lot of different people with differing
+programming experience have contributed to the system. Thus the quality of parts of the code might differ.
+That's one of the reasons for the growing tests package - we at least try to make sure that some basic 
+functionality should be fine (should be - because you never can show that there are no bugs by using tests).
+In addition these tests might increase the confidence in the code.  
+Nevertheless some parts of the framework may not be as you like them to be. 
+Other parts of the framework might not be as
+a descriptions depicts, or any publication says: sadly, even though seldomly and always done with great care, 
+parts of the framework have been intensively refactored, and sometimes functionality got lost on doing so.
+Currently we think that there will not be so much refactoring any more, and thus it should be save to start
+using the code. 
+These are some of the reasons the framework is labeled as "alpha" version. 
+It is still being under development and things might be changed in the future.
+
+<h2>Terms</h2>
+Modeling and simulation is a domain in which many terms are used quite differently.
+In this software we decided to stick with older definitions of terms:
+
+<ul>
+<li><b>Simulation</b><br/>A simulation is an experiment on a model. Thus during the execution of a simulation the model is computed using different parameters. There might the need of replications per parameter combination.</li>
+<li><b>Model</b><br/>A model of a system describes the system with a certain purpose.</li>
+<li><b>Replication</b><br/>A replication is a computation of a model using the same model parameters as for all other replications of the same parameter configuration besides the initialization of random number generators (in the model or of the computation algorithm.)</li>
+<li><b>Parameter configuration</b><br/>A parameter configuration is a set of parameters for a model instance - it might be a single configuration you are interested in or a configuration computed by an optimization algorithm and so on ...</li>
+<li><b>Computation algorithm</b><br/>A computation algorithm can be anything from an algorithm to compute a trajectory of a model to model checking.</li>
+<li><b>Executable model</b><br/>An executable model is an execution efficient representation of a model. Usually it is created from a description, e.g., a modeling language.</li>
+<li><b>Symbolic model</b><br/>A symbolic model is an (incomplete) model. This representation is used for editing and for model conversions / transformations / compilations.</li>
+<li><b>Experiment</b><br/>The term "experiment" is used to describe the controlled computation of a number of parameter combinations on a model. Thereby this is not restricted to "simulating" - such an experiment can be used for model checking computations as well.</li>
+</ul>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul> 
+	<li>The JAMES II manual (check <a href="http://www.jamesii.org">www.jamesii.org</a>)</li>
+  	<li><i>Himmelspach, J.</i><b>Konzeption, Realisierung und Verwendung eines allgemeinen Modellierungs-, Simulations und Experimentiersystems - Entwicklung und Evaluation effizienter Simulationsalgorithmen</b> Sierke Verlag, 2007</li>
+</ul>
+
+In addition, if you are new to modelling and simulation, it might be a good idea to start with reading some basic literature, e.g.,
+<ul>
+	<li><i>Zeigler, B. P.; Praehofer, H. &amp; Kim, T. G.</i> <b>Theory of Modeling and Simulation</b> Academic Press, 2000,</li>
+	<li><i>Law, A. &amp; Kelton, D. W.</i> <b>Simulation Modeling and Analysis</b> Mc GrawHill, 2000,</li>
+	<li><i>Cellier, F. E. </i><b>Continuous System Modeling</b> Springer-Verlag New York, Inc., 1991, and</li>
+	<li><i>Cellier, F. E.; Kofman, E. </i><b>Continuous System Simulation</b> Springer-Verlag New York, Inc., 2006.</li>
+</ul>
+
+However this list is not exhaustive, but it might be a good idea to get an impression on modelling and simulation first 
+(at least before you start developing your own application on top of the framework).
+
+<h2>JAMESLIC</h2>
+<p>
+Präambel <br>
+
+Diese Lizenz regelt die Benutzung der beigefügten Software JAMES II sowie deren Bearbeitungen und Erweiterungen. Mit der Nutzung der Software akzeptieren Sie diese Lizenz. 
+ <br>
+Diese Lizenz ermöglicht die kostenfreie und kostenpflichtige Nutzung an der Software „JAMES II“. Jede natürliche oder juristische Person darf die Software als Basis für beliebige (freie und kommerzielle) Anwendungen verwenden. Diese Anwendungen können dabei Systeme auf der Basis von JAMES II sein („reine“ Modellierungs- und Simulationssysteme), oder Systeme welche JAMES II nur verwenden. 
+
+ <br>
+
+1. 	Definitionen  <br>
+- „Verbreitung“ ist die öffentliche Weitergabe körperlicher und unkörperlicher Vervielfältigungsstücke des Lizenzgegenstandes, also insbesondere die Weitergabe auf Datenträgern oder in Verbindung mit Hardware und/oder das Bereithalten zum Download.  <br>
+- „Bearbeitung“ ist jede Erweiterung, Kürzung und Veränderung des Lizenzgegenstandes, insbesondere Weiterentwicklungen und Kombinationen. <br>
+
+- „Dokumentation“ beschreibt den Aufbau und/oder die Struktur der Programmierung und/oder die Funktionalitäten des Programms. <br>
+
+- „Lizenzgeber“ ist die Universität Rostock. <br>
+	
+ <br>
+
+
+2. 	Lizenzgegenstand <br>
+	
+Lizenzgegenstand ist die beigefügte Software JAMES II.  <br>
+
+
+
+
+3. 	Rechte des Lizenznehmers <br>
+
+Der Lizenznehmer darf den Lizenzgegenstand in nichtkompilierter oder kompilierter Form kostenlos und/oder kostenpflichtig verbreiten und vervielfältigen und/oder verbreiten und vervielfältigen lassen. <br>
+
+Der Lizenznehmer darf den Lizenzgegenstand bearbeiten und kombinieren und die entsprechend bearbeitete bzw. kombinierte Version kostenlos und/oder kostenpflichtig verbreiten und vervielfältigen.  <br>
+
+Die Rechte werden dem Lizenznehmer unentgeltlich eingeräumt. <br>
+
+
+ <br>
+
+4.	Pflichten des Lizenznehmers <br>
+	
+Der Lizenznehmer hat bei der Verbreitung und Vervielfältigung des Lizenzgegenstandes, sei es in unbearbeiteter und/oder bearbeiteter Form, folgende Pflichten einzuhalten:
+
+• Verbreitete und vervielfältigte Versionen müssen diese Lizenz enthalten. Insbesondere muss der vollständige Text dieser Lizenz enthalten sein und es muss auf die Haftungs- und Gewährleistungsbeschränkung in deutlich wahrnehmbarer Weise hingewiesen werden. Bei der nichtkompilierten Version sind die Hinweise und der Text im Quelltext aufzunehmen, bei der kompilierten Version sind die Hinweise und der Text in der Dokumentation und/oder anderen Materialien, die mit den Versionen verbreitet und vervielfältigt werden, aufzunehmen. <br>
+• Es darf keine Werbung und keine Kennzeichnung des Lizenzgegenstandes mit den Namen der Rechteinhaber und/oder der Universität bzw. dem Lehrstuhl ohne deren ausdrückliche Genehmigung erfolgen.  <br>
+
+Der Lizenznehmer hat bei der Verbreitung und Vervielfältigung des Lizenzgegenstandes in bearbeiteter Form, zusätzlich folgende Pflichten einzuhalten: <br>
+
+• Die bearbeitete Version des Lizenzgegenstandes ist bei einer Verbreitung und Vervielfältigung in kompilierter oder nichtkompilierter Form durch den Lizenznehmer – mit Ausnahme von Klausel 5 – unter diese Lizenz zu stellen. Dritte können die bearbeitete Version ausschließlich unter dieser Lizenz nutzen, es sei denn, der Lizenznehmer und/oder Dritte  schließen einen eigenständigen Lizenzvertrag mit dem Lizenzgeber oder der Lizenznehmer macht von seinem Recht aus Klausel 5 Gebrauch. <br>
+• Kostenfreie Bearbeitungen müssen der Allgemeinheit zugänglich gemacht werden. <br>
+• Kostenfreie und kostenpflichtige Bearbeitungen müssen dokumentiert und kommentiert werden. Die Dokumentation und Kommentierung ist der Öffentlichkeit in deutlich wahrnehmbarer Weise zur Verfügung zu stellen.  <br>
+• Bei einer kostenpflichtigen Bearbeitung muss explizit der zugrundeliegende Lizenzgegenstand genannt sowie der Hinweis: „Dieses Produkt enthält Software, die von der Universität Rostock und deren Mitarbeitern entwickelt wurde“ aufgenommen werden.  <br>
+ <br>
+
+Der Lizenznehmer darf die Nutzung des Lizenzgegenstandes nicht von Pflichten oder Bedingungen abhängig machen, die nicht in dieser Lizenz vorgesehen sind. <br>
+
+
+ <br>
+
+5. 	GPL - Kompatibilität <br>
+
+Für den Fall, dass der modifizierte oder unmodifizierte Lizenzgegenstand in GPL-Code enthalten ist oder umgekehrt der modifizierte Lizenzgegenstand GPL-Code enthält, kann der Lizenznehmer den verbundenen Code unter der GPLv3 Lizenz lizenzieren (d.h. verbreiten, vervielfältigen und bearbeiten). Die in dieser Lizenz enthaltenen Pflichten bleiben bestehen, soweit Sie nicht den Anforderungen der GPLv3 und jüngeren GPL- Lizenzen widersprechen.  <br>
+	
+ <br>
+
+
+6.	Gewährleistung <br>
+
+Die Gewährleistung der Universität Rostock ist auf Fälle arglistig verschwiegener Mängeln und grober Fahrlässigkeit beschränkt. <br>
+
+ <br>
+
+7.	Haftung <br>
+
+Die Universität Rostock haftet im Zusammenhang mit der Einräumung der Lizenz gegenüber dem Lizenznehmer nur für Fälle von Vorsatz oder grober Fahrlässigkeit.   <br>
+
+ <br>
+
+
+8.	Beendigung des Lizenzvertrages <br>
+
+Verletzt der Lizenznehmer seine aus diesem Vertrag folgenden Pflichten fallen die in dieser Lizenz eingeräumten Rechte automatisch an den Lizenzgeber zurück. Rechte Dritter, die den Lizenzgegenstand oder Rechte an dem Lizenzgegenstand von dem Lizenznehmer erworben haben, bleiben hiervon unberührt. <br>
+ <br>
+
+9.	Sprache und Gerichtsstand <br>
+Für den Fall, dass diese Lizenz in andere Sprachen übersetzt wird, ist bei Streitigkeiten die deutsche Version maßgeblich.
+Gerichtsstand für alle Streitigkeiten aus dieser Lizenz ist Rostock, sofern der Lizenznehmer Kaufmann, eine juristische Person des öffentlichen Rechts oder ein öffentlich-rechtliches Sondervermögen ist.  <br>
+Deutsches Recht ist anwendbar.  <br>
+Sollte nach Internationalem Verfahrensrecht die Zuständigkeit eines deutschen Gerichts möglich sein, so vereinbaren die Parteien die Zuständigkeit der deutschen Gerichtsbarkeit und innerhalb Deutschlands die Zuständigkeit des Amtsgerichtes bzw. Landgerichtes Rostock.
+
+</p>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

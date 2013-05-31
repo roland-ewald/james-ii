@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides a centralized remote communication schema.
+
+<p>
+The framework does not make any restrictions on how remote communication is established.
+Nevertheless the framework provides different schemas to do so.
+One of the usable schemas is a per host centralized approach.
+All accesses on remote objects are tunneled through a single entity.
+Although this might be a bottle neck (whereby this strongly depends on how the class is created),
+this schema eases migration of objects for load-balancing: only one object per involved host
+has to be updated. This is, e.g., different if the direct remote communication schema is used.  
+</p>
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

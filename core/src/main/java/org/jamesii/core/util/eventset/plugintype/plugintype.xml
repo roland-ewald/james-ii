@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="eventqueues plugins" version="1.0" icon="EventQueuePlugInType.png" /> 
+  <abstractfactory>org.jamesii.core.util.eventset.plugintype.AbstractEventQueueFactory</abstractfactory> 
+  <basefactory>org.jamesii.core.util.eventset.plugintype.EventQueueFactory</basefactory> 
+  <description>The support of diverse event queues is an essential need for efficient discrete event simulation systems. An event queue manages the list of upcoming events in an (hopefully) efficient manner. For more details you should check the descriptions of the event queue implementations. The system allows to integrate any number of event queue / event list implementations. All implementations should be installed for this extension point to make them usable throughout the system.</description>
+  </plugintype>

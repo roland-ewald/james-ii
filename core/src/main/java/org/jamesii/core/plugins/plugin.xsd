@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- $Id$ -->
+	<!--
+		If the name spaces are changed then the class SchemaResolver has to be
+		adapted!
+	-->
+<xsd:schema xmlns="http://www.jamesii.org/plugin"
+	targetNamespace="http://www.jamesii.org/plugin" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="parameter.xsd" />
+
+	<!-- a factory definition -->
+	<xsd:complexType name="Factory">
+		<!-- special, per factory parameters -->
+		<xsd:sequence>
+			<xsd:element name="parameter" maxOccurs="unbounded" type="Parameter"
+				minOccurs="0" />
+			<xsd:element name="description" maxOccurs="1" type="xsd:string"
+				minOccurs="0" />
+		</xsd:sequence>
+
+		<!-- Class names of factories -->
+		<xsd:attribute name="classname" type="JavaClass" use="required" />
+		
+		<!-- URI of the icon -->
+		<xsd:attribute name="icon" type="xsd:string" use="optional" />
+		
+		<!-- friendly name -->
+		<xsd:attribute name="name" type="xsd:string" use="optional" />
+
+	</xsd:complexType>
+
+	<!-- A plug-in Definition -->
+	<xsd:complexType name="Plugin">
+		<xsd:sequence>
+			<xsd:element name="id" type="Id" />
+
+			<!-- factories -->
+			<xsd:element maxOccurs="unbounded" name="factory"
+				type="Factory" />
+
+			<!-- Dependencies  -->
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="depends" type="Id" />
+
+			<!-- License URI -->
+			<xsd:element name="license" type="License" minOccurs="0"
+				maxOccurs="1"/>
+				
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="plugin" type="Plugin" />
+
+</xsd:schema>

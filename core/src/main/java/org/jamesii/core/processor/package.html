@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for the integration of simulation algorithms as plug-ins. 
+
+<p>
+Simulation algorithm, simulation protocol, simulator, processors, interpreter, ... 
+there are many names which describe the same: an algorithm which can compute
+the trajectory of a model. And that's what this package provides the base for - 
+the possibility to integrate something which can do exactly this - to compute a 
+trajectory a given model.<br>
+Thereby, principally, no restrictions are made. I.e., there might be algorithms to
+compute trajectories of single formalism models, there might be algorithms to compute
+multi-paradigm/-formalism models, for discrete, continuous, or hybrid models, for
+discrete stepwise, discrete event oriented models, and there might be any number of
+implementations of one principal algorithm (e.g., there might be n implementations
+of the basic euler method), and so on.
+This can only be achieved by abstracting anything away, and thus ending up with the
+most simple interface for such an algorithm, here called {@link james.core.processor.IProcessor}.
+</p>
+In addition this package contains many additional interfaces and basic (sometimes 
+abstract) implementations of more advanced concepts. There are classes which provide
+the means for basic message passing between algorithms, special interfaces for 
+special types of simulation protocols (e.g., hierarchical), and last but not least
+one of the most important interfaces if a simulation algorithm shall be usable by
+the framework: the {@link james.core.processor.IRunnable} interface has to be implemented by all the 
+algorithms which are able to compute the trajectory of a model on their own - which
+might not be true for sub-processors, e.g., in a hierarchical protocol. The 
+{@link james.core.processor.RunnableProcessor} provides a default implementation of this interface by
+delegating all calls to a helper class class 
+{@link james.core.processor.execontrol.ExecutionControl}. Thus, if
+you can't inherit from the RunnableProcessor you still can reuse the execution control
+class, and thus keep the implementation effort pretty low. 
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><i>Himmelspach, J. & Uhrmacher, A. M.</i> <b>A Component-based Simulation Layer for James</b> PADS '04: Proceedings of the eighteenth workshop on Parallel and distributed simulation, IEEE Computer Society Press, 2004, 115-122</li>
+  <li><i>Himmelspach, J. & Uhrmacher, A. M.</i> Bruzzone, A. G.; Guasch, A.; Piera, M. A. & Rozenblit, J. (ed.) <b> Sequential processing of PDEVS models</b> Proceedings of the 3rd EMSS, Piera, LogiSim, 2006, 239-244</li>
+  <li><i>Himmelspach, J. & Uhrmacher, A. M.</i><b>Plug'n simulate</b> Proceedings of the Spring Simulation Multiconference, IEEE Computer Society, 2007, 137-143</li>
+  <li><i>Himmelspach, J.</i><b>Konzeption, Realisierung und Verwendung eines allgemeinen Modellierungs-, Simulations und Experimentiersystems - Entwicklung und Evaluation effizienter Simulationsalgorithmen</b> Sierke Verlag, 2007</li>
+  <li><i>Himmelspach, J.; Ewald, R.; Leye, S. & Uhrmacher, A. M.</i> <b>Parallel and distributed simulation of Parallel DEVS models</b> Proceedings of the DEVS Integrated M&S Symposium, SCS, 2007, 249-256</li>
+  <li><i>Matthias Jeschke and Roland Ewald </i> <b>Large-Scale Design Space Exploration of SSA</b>In: Computational Methods in Systems Biology, International Conference, CMSB 2008, Rostock, Germany, October 12-15, 2008, Proceedings, vol. 5307, pp. 211-230, Berlin / Heidelberg, Springer. Lecture Notes in Computer Science.</li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

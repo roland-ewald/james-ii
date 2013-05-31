@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides support for benchmarks. 
+
+<p>
+Any experimental algorithmics should be based on standardized benchmarks - otherwise the results achieved
+cannot be compared cross computing hardware. Due to the influence of characteristics of different 
+hardware experimental results without accompanying benchmark results should not be published at all.<br/>
+Only benchmark results available for all computing hardware involved allows to justify about the performance
+of algorithms and potential speedups. Therefore this M&S framework provides an extra extension point for
+the integration of automated benchmark computation. The framework itself is shipping with a simple
+benchmark (see <b>simple</b> subpackage). However, depending on the hardware used and the algorithms to be
+examined you will most likely be in need of more sophisticated benchmarking solutions. Check the available
+plug-ins which are of interest for you, and if none matches just add your own one.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li>The JAMES II manual (check <a href="http://www.jamesii.org">www.jamesii.org</a>)</li>
+</ul>  	
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.plugins
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugintype
+	xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+	<id name="chart_plot_plugins" version="1.0" />
+	<abstractfactory>org.jamesii.gui.visualization.chart.plot.plugintype.AbstractPlotFactory</abstractfactory>
+	<basefactory>org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory</basefactory>
+	<description>Chart Plot Plugins</description>
+</plugintype>

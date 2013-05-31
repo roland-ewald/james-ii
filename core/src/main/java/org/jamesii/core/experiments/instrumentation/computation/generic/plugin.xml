@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="generic_comp_instr" version="1.0" />
+	<factory
+		classname="org.jamesii.core.experiments.instrumentation.computation.generic.GenericComputationInstrumenterFactory">
+		<parameter name="observerToUse" type="org.jamesii.core.observe.IObserver"
+			defaultValue="null">
+			<description>The observer to attach to the execution.
+			</description>
+		</parameter>
+		<parameter name="observationTarget"
+			type="org.jamesii.core.experiments.instrumentation.computation.generic.GenericInstrumentationTarget"
+			defaultValue="org.jamesii.core.experiments.instrumentation.computation.generic.GenericInstrumentationTarget.PROCESSOR_STATE">
+			<description>The observation target.
+			</description>
+		</parameter>
+	</factory>
+</plugin>

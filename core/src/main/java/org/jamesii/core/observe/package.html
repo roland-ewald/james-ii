@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for observation issues. 
+
+
+<p>
+Observation is a key feature for modeling and simulation. It is essential to be able to record 
+simulation trajectories, and often it is mandatory to instantly update visualizations.
+In addition several advanced techniques (as load-balancing) require information to be collected
+from a running simulation as well.
+</p>
+
+<p>
+Basically observation in this framework is based on the observer pattern. But in addition we
+make use of the mediator concept to be able to integrate any caching or filtering mechanism after
+an observer has been activated.<br>
+Observers are attached to observable entities by the process of instrumentation, by so called Instrumenters.
+</p>
+
+<p>
+There are several special types of observers which are recognized by some methods in the framework,
+and if found treated in a special manner, e.g., if a {@link james.core.observe.IStoringObserver} is found the framework
+will automatically set the data sink to be used (if one has been specified).
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href="">##### REFER TO NON-SPEC DOCUMENTATION HERE #####</a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.model
+@see james.core.processor
+@see james.core.experiments.instrumentation
+
+</body>
+</html>

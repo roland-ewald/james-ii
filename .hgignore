@@ -1,0 +1,15 @@
+glob:target
+glob:*.class
+glob:*.orig
+glob:.settings
+glob:.classpath
+glob:.checkstyle
+glob:.project
+glob:.regdata
+glob:mainconfig.xml
+glob:nbactions.xml
+glob:nb-configuration.xml
+glob:.synth-plugins*
+glob:.factorypath
+glob:.lck
+glob:.log

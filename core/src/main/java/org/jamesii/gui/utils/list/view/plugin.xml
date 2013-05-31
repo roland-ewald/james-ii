@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="item views" version="1.0" /> 
+  
+  <factory classname="org.jamesii.gui.utils.list.view.DetailedItemViewFactory" name="Details"></factory> 
+  <factory classname="org.jamesii.gui.utils.list.view.LargeItemViewFactory" name="Large items"></factory>     
+  <factory classname="org.jamesii.gui.utils.list.view.SmallItemViewFactory" name="Small items"></factory> 
+  <factory classname="org.jamesii.gui.utils.list.view.ListItemViewFactory" name="List"></factory>
+  <factory classname="org.jamesii.gui.utils.list.view.TilesItemViewFactory" name="Tiles"></factory>
+  <factory classname="org.jamesii.gui.utils.list.view.ContentItemViewFactory" name="Content"></factory>
+</plugin>

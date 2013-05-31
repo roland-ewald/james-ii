@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+The "special rng" package.
+
+<h2>General description</h2>
+
+Often in M&S random number generators are used as they are. I.e., a random number generator
+provided by the system used is embedded into the simultion run execution and that's it.
+However, there are some constraints which one might want to take into account, e.g., that
+you should not exploit a random numbers period, that you might want to skip the first N
+numbers produced, and so on.<br>
+Therefore we created "special" random number generators which are in fact just wrappers 
+around the "normal" random number generators available. I.e., you can wrap any of the 
+random number generators available by a "chain" of the special random number generators
+or by your own "special" rng. Btw - the "special" rngs are just handled by the framework
+as if they are "normal" rngs.
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

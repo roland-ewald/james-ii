@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="basic_aggregators" version="1.0" /> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.AvgAggregatorFactory">
+  	<description>Average Aggregation</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.MinAggregatorFactory">
+  	<description>Minimum Aggregation</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.MaxAggregatorFactory">
+  	<description>Maximum Aggregation</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.MedianAggregatorFactory">
+  	<description>Median Aggregation</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.VarianceAggregatorFactory">
+  	<description>Variance Aggregation</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.model.aggregator.DeviationAggregatorFactory">
+  	<description>Deviation Aggregation</description>
+  </factory> 
+</plugin>

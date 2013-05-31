@@ -1,0 +1,17 @@
+package org.jamesii.core.services.management;
+
+/**
+ * The Enum InfoType. Used for indicating the type of change which leads to an
+ * activation of any potentially attached observers.
+ * 
+ * @author Jan Himmelspach
+ */
+public enum InfoType {
+
+  /** The register. */
+  REGISTER,
+
+  /** The unregister. */
+  UNREGISTER
+
+}

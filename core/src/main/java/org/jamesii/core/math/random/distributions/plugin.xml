@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="distributions" version="1.0" />
+	<factory
+		classname="org.jamesii.core.math.random.distributions.BimodalDistributionFactory">
+		<parameter name="muFirst" type="java.lang.Double" defaultValue="0.95238">
+			<description>Stretch factor of the first interval.</description>
+		</parameter>
+		<parameter name="muSecond" type="java.lang.Double" defaultValue="0.95238">
+			<description>Stretch factor of the second interval.</description>
+		</parameter>
+	    <parameter name="percentageSecond" type="java.lang.Double" defaultValue="0.1">
+			<description>The number of numbers which shall be in the second interval.</description>
+		</parameter>
+		<parameter name="startOfSecond" type="java.lang.Double" defaultValue="9.5238">
+			<description>Start of the second interval.</description>
+		</parameter>		
+		<description>Bimodal</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.CamelDistributionFactory">
+		<parameter name="humps" type="java.lang.Integer" defaultValue="2">
+			<description>The number of humps.</description>
+		</parameter>
+		<parameter name="humpHitPercentage" type="java.lang.Double" defaultValue=".2">
+			<description>The height of the humps (the number of elements in the humps).</description>
+		</parameter>
+		<parameter name="humpDomain" type="java.lang.Double" defaultValue=".5">
+			<description>The width of the humps.</description>
+		</parameter>
+		<description>Camel</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.CauchyDistributionFactory">
+		<parameter name="s" type="java.lang.Double" defaultValue="1">
+			<description>s</description>
+		</parameter>
+		<parameter name="t" type="java.lang.Double" defaultValue="0">
+			<description>t</description>
+		</parameter>
+		<description>Cauchy</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.NormalDistributionFactory">
+		<parameter name="mean" type="java.lang.Double" defaultValue="0">
+			<description>Mean value.</description>
+		</parameter>
+		<parameter name="deviation" type="java.lang.Double" defaultValue="1.0">
+			<description>Deviation value.</description>
+		</parameter>
+		<description>Normal, Polar method</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.NormalDistributionBoxMullerFactory">
+		<parameter name="mean" type="java.lang.Double" defaultValue="0">
+			<description>Mean value.</description>
+		</parameter>
+		<parameter name="deviation" type="java.lang.Double" defaultValue="1.0">
+			<description>Deviation value.</description>
+		</parameter>
+		<description>Normal, Box-Muller method</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.ExponentialDistributionFactory">
+		<parameter name="mu" type="java.lang.Double" defaultValue="1.">
+			<description>Scale value.</description>
+		</parameter>
+		<description>Exponential</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.LaPlaceDistributionFactory">
+		<parameter name="sigma" type="java.lang.Double" defaultValue="1">
+			<description>sigma (1/lambda)</description>
+		</parameter>
+		<parameter name="mu" type="java.lang.Double" defaultValue="0">
+			<description>mu</description>
+		</parameter>
+		<description>Laplace</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.UniformDistributionFactory">
+		<parameter name="lowerborder" type="java.lang.Double" defaultValue="0">
+			<description>Lower border.</description>
+		</parameter>
+		<parameter name="upperborder" type="java.lang.Double" defaultValue="1">
+			<description>Upper border.</description>
+		</parameter>
+		<description>Uniform</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.TriangularDistributionFactory">
+		<parameter name="width" type="java.lang.Double" defaultValue="1.5">
+			<description>Width of the distribution.</description>
+		</parameter>
+		<description>Triangular</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.NegativeTriangularDistributionFactory">
+		<parameter name="width" type="java.lang.Double" defaultValue="1.5">
+			<description>Width of the distribution.</description>
+		</parameter>
+		<description>Negative triangular</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.PoissonDistributionFactory">
+		<parameter name="lambda" type="java.lang.Double" defaultValue="0">
+			<description>Mean of distribution.</description>
+		</parameter>		
+		<description>Poisson</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.PoissonDistributionKnuthFactory">
+		<parameter name="lambda" type="java.lang.Double" defaultValue="0">
+			<description>Mean of distribution.</description>
+		</parameter>		
+		<description>PoissonKnuth</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.BetaDistributionFactory">
+		<parameter name="alpha" type="java.lang.Integer" defaultValue="1">
+			<description>Shape 1 value.</description>
+		</parameter>		
+		<parameter name="beta" type="java.lang.Integer" defaultValue="1">
+			<description>Shape 2 value.</description>
+		</parameter>
+		<description>Beta</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.GammaDistributionFactory">
+		<parameter name="alpha" type="java.lang.Integer" defaultValue="1">
+			<description>Shape 1 value.</description>
+		</parameter>		
+		<description>Gamma</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.ChiSquareDistributionFactory">
+		<parameter name="degreeOfFreedom" type="java.lang.Integer" defaultValue="3">
+			<description>Degree of Freedom.</description>
+		</parameter>
+		<description>Chi square</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.StudentsDistributionFactory">
+		<parameter name="degreeOfFreedom" type="java.lang.Integer" defaultValue="3">
+			<description>Degree of Freedom.</description>
+		</parameter>
+		<description>Student's t</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.ErlangDistributionFactory">
+		<parameter name="lambda" type="java.lang.Double" defaultValue="1.0">
+			<description>Lambda.</description>
+		</parameter>
+		<parameter name="degreeOfFreedom" type="java.lang.Integer" defaultValue="3">
+			<description>Degree of Freedom.</description>
+		</parameter>
+		<description>Erlang</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.WeibullDistributionFactory">
+		<parameter name="alpha" type="java.lang.Double" defaultValue="1.0">
+			<description>Alpha.</description>
+		</parameter>
+		<parameter name="beta" type="java.lang.Double" defaultValue="1.0">
+			<description>Beta.</description>
+		</parameter>
+	<description>Weibull</description>
+	</factory>
+	<factory
+		classname="org.jamesii.core.math.random.distributions.FDistributionFactory">
+		<parameter name="d1" type="java.lang.Integer" defaultValue="20">
+			<description>Degree of Freedom One.</description>
+		</parameter>
+		<parameter name="d2" type="java.lang.Integer" defaultValue="20">
+			<description>Degree Of Freedom Two.</description>
+		</parameter>
+	<description>F Distribution</description>
+	</factory>
+		<factory
+		classname="org.jamesii.core.math.random.distributions.InverseGaussianDistributionFactory">
+		<parameter name="mean" type="java.lang.Double" defaultValue="1.0">
+			<description>Mean value.</description>
+		</parameter>
+		<parameter name="lambda" type="java.lang.Double" defaultValue="1.0">
+			<description>Shape parameter.</description>
+		</parameter>
+		<description>Inverse Gaussian</description>
+	</factory>
+</plugin>

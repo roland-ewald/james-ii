@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugintype
+	xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+	<id name="Default value converter plugins" version="1.0" />
+	<abstractfactory>org.jamesii.gui.utils.parameters.factories.converter.plugintype.AbstractValueConverterFactory</abstractfactory>
+	<basefactory>org.jamesii.gui.utils.parameters.factories.converter.plugintype.ValueConverterFactory</basefactory>
+	<description>Default Value Converter plugins. Used to convert String encoded values back to java objects.</description>
+</plugintype>

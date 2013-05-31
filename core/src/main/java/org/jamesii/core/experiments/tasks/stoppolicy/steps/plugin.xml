@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="step counting computation task stop policies" version="1.0"/>
+  <factory classname="org.jamesii.core.experiments.tasks.stoppolicy.steps.StepCountStopFactory">
+  <parameter name="TASKEND" type="java.lang.Long" required="true" defaultValue="1000"/>
+  <description>Computation Step Stop: Lets computation tasks continue for a certain number of steps.</description>
+  </factory>
+</plugin>

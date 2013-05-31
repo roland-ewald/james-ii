@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the direct (1:1) proxy - ref remote communication schema.
+
+<p>
+The framework does not make any restrictions on how remote communication is established.
+Nevertheless the framework provides different schemas to do so.
+The first schema is the proxy - ref schema which allows to decouple model implementations 
+and remote communication issues. 
+In addition this schema allows to use different remote communication methods as "backbone".
+So it is possible to create instances of this schema based on Java RMI (shipping with the 
+framework) or any other remote communication methodology (e.g., MPI, JavaMPI). 
+</p>
+
+<p>
+Basically you have to implement a proxy class per model/simulation algorithm interface 
+if you want to use this schema. These proxy classes are then to be integrated instead
+of the remote sitting instances which they will represent on the local site.
+These proxy classes have to contain a reference to the remote class, and they just act
+as forwarder of method calls to the remote instances.
+The ref instances on the remote site contain a link to the actual remote instance, the 
+proxy linking them is representing. Any message call forwarded by a proxy to the ref will
+be forwarded by the ref to the local instance.
+Consequently proxy and ref have to deal with all remote communication issues, but the 
+model/simulation algorithm classes do not have to be aware of the location of the objects
+they are referring to.
+</p>
+
+<p>
+This schema is a heavy burden if load - balancing shall be used.
+If objects are moved around all corresponding proxy - ref connections have to be updated.
+This might be a very expensive process.
+Btw. this has nothing to do with "agent mobility" as this is, from the point of view of the
+framework, a modelled mobility, but not a native mobility in regards to remote locations of
+model parts.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

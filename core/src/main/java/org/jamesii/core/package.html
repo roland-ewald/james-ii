@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the core of the simulation framework. 
+
+<p>
+The core of the framework mainly contains general extension points for common modelling 
+and simulation jobs, e.g., random number generation, modelling paradigm, simulation algorithms.
+The management of extension points and of extensions is done by the {@link james.core.Registry} 
+class. Whenever you need functionality you should query the registry to get an appropriate one.
+This can be done with one of the methods of the registry. The passed parameter block may contain
+further information used by the AbstractFactory of the plug-in type to find the best solution
+to the problem at hand.
+The Registry is not realized as singleton, but commonly it will be used as a singleton 
+throughout the instance of the m&s framework. You can access the current version by the 
+{@link james.SimSystem#getRegistry()} method. 
+</p>
+
+<h2>Related Documentation</h2>
+
+For an overview of the plug-in types, and the plug-ins installed in the registry we recommend to execute
+the framework and to browse the list of available functionality there.
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li>The JAMES II manual (check <a href="http://www.jamesii.org">www.jamesii.org</a>)</li>
+  	<li><i>Himmelspach, J.</i><b>Konzeption, Realisierung und Verwendung eines allgemeinen Modellierungs-, Simulations und Experimentiersystems - Entwicklung und Evaluation effizienter Simulationsalgorithmen</b> Sierke Verlag, 2007</li>
+  	<li><i>Himmelspach, J. & Uhrmacher, A. M.</i><b>Plug'n simulate</b> Proceedings of the Spring Simulation Multiconference, IEEE Computer Society, 2007, 137-143</li>
+</ul>  	
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.plugins
+
+</body>
+</html>

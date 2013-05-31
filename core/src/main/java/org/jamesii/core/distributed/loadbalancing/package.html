@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for equally distributed, and thus as efficient as possible, simulation runs: the load - balancing or re-partitioning. 
+
+<p>
+With the framework a single simulation run can be executed in a distributed manner. The key issue therefore is to
+find a good initial partitioning, i.e., a mapping between parts of the model and the available computing infrastructure.
+However, the model characteristics which determined the initial partitioning might change drastically during the 
+computation of a simulation run. Load-balancing (aka dynamic re - partitioning) tries to detect such changes and
+to resolve any unbalances arising out of this.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li><i>Roland Ewald</i><b>Simulation of load balancing algorithms for discrete event simulations.</b> diploma theses, University of Rostock, 2006</li>
+	<li><i>Ewald R, Himmelspach J & Uhrmacher AM, Chen D & Theodoropoulos GK </i> </b>A Simulation Approach to Facilitate Parallel and Distributed Discrete-Event Simulator Development.</b> DS-RT '06: Proceedings of the Tenth IEEE International Symposium on Distributed Simulation and Real-Time Applications (DS-RT'06), pp. 209--218, IEEE Computer Society, Washington, DC, USA., 2006</li>
+</ul>
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.experiments.simrunner.parallel
+@see james.core.simulation
+@see james.core.simulation.distributed
+@see james.core.simulation.partitioner
+@see james.core.experiments
+
+</body>
+</html>

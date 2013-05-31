@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="random distribution plugins" version="1.0" /> 
+  <abstractfactory>org.jamesii.core.math.random.distributions.plugintype.AbstractDistributionFactory</abstractfactory> 
+  <basefactory>org.jamesii.core.math.random.distributions.plugintype.DistributionFactory</basefactory>
+  <parameter name="seed" type="java.lang.Long">
+     <description>The seed to be used for the initialization of the random distribution used internally. If not given the system's default seed generation mechanism will be used instead.</description>
+  </parameter> 
+  <description>Support of diverse random distributions.</description>
+</plugintype>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="experimentworkflow_parameterexploration" version="1.0" /> 
+  <factory classname="org.jamesii.gui.workflow.experiment.parameterexploration.ParameterExplorationSetupFactory">
+  	<description>Experiment Setup Editor for Parameter Exploration</description>
+  </factory> 
+</plugin>

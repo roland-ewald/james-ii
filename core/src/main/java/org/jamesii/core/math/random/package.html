@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+The random number package.
+
+<h2>General description</h2>
+
+Many modelling formalisms and simulation algorithms depend on stochasticity, 
+and thus on pseudo random number generation.
+This packages contains the basic interfaces for random number in the modelling 
+and simulation framework. In modelling and simulation the full control over
+"random" processes is mandatory: the repeatability of experiments has to be
+guaranteed.
+<br/>
+The sub package <tt>generators</tt> contains the extension point for pseudo random 
+number generators.
+<br/>
+The sub package <tt>seedgenerators</tt> contains the extension point for seed 
+generators for initializing pseudo random number generators.
+<br/>
+The sub package <tt>distributions</tt> contains implementations of distributions
+which are fed by one of the random number generators.
+The random number generators typically produce equally distributed random numbers,
+however we often need random number distributed according to a certain distribution,
+e.g., exponentially distributed numbers.
+<br/>
+The <tt>RandomSampler</br> class finally provides methods for sampling random sets.
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation,
+please see:
+<ul>
+	<li><i>Roland Ewald; Johannes Rössel; Jan Himmelspach</i>Mason, S.; Hill, R.; Moench, L. & Rose, O. (ed.)<b>A plug-in - based architecture for random number generation in simulation systems</b>Proceedings of the Winter Simulation Conference, IEEE Computer Society, 2008, 836-844</li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

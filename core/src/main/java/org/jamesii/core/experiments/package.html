@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the experiment management: definition, substantial parts, and experiment execution.
+
+<p>
+In the framework "Experiment" and "Simulation" are considered to be synonyms. A more precise 
+definition in that sense can be found in Cellier's book on continuous system modelling.
+An experiment comprises an initial configuration of model parameters and rules how to modify
+these to generate the parameter space to be explored. 
+In this context a single computation (aka simulation run) means that the model is executed with
+one set of parameters (in the stochastic case by executing any number of replications of this configuration). 
+This allows to define an extensive experiment which can be run without
+the need of any further interaction. In addition this allows to reuse the basic experiment
+schema for "production runs", for model validation, optimization, and for benchmark experiments.<br/>
+
+The central class is the class <tt>BaseExperiment</tt> which holds the parameters (variables) to
+be modified, and to be used to initialize the model.<br/>
+However, the need my arise to define a set of experiments, i.e., to create a suite of experiments,
+e.g., for a benchmark suite. This is provided by the class <tt>ExperimentSuite</tt>.
+</p> 
+
+<p>
+The general workflow of an experiment is that the BaseExperiment produces "TaskConfigurations", 
+i.e., combinations of model and the parameters to be used to create the computation
+(thereby several configurations can be produced in parallel, if the production rules allow this).
+These configurations are handed over to the "task runner" to be used. The type of this
+runner can vary, which allows to support a variety of execution strategies. The model is instantiated
+as late as possible, so that any potential network traffic is as low as possible.
+</p>
+
+<p>
+Another important part of an experiment definition is the definition of instrumentation.
+Here "instrumentation" is used to describe the process of selecting entities to be observed.
+These observations form the trajectory generated during the computation, our computation results which are the 
+results of all our investments. Many modelling and simulation frameworks rely solely on a "full
+instrumentation" here - i.e., everything is observed and stored. This has the advantage that
+you will not miss anything, but has the disadvantage that quite a lot of data has to be stored,
+especially if thousands of runs have to be executed. And, last but not least, storing data 
+may consume a lot of time. That's the reason why we have realized a flexible instrumentation
+for the framework. So called instrumenters can be used to select the model /computation algorithm 
+properties to be observed (however, as a fallback, a "full instrumenter" can be used as well - which
+will help to instrument everything). 
+</p>
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+ <li><i>Jan Himmelspach; Roland Ewald; Adelinde M. Uhrmacher</i>Mason, S.; Hill, R.; Moench, L. & Rose, O. (ed.) <b>A flexible and scalable experimentation layer for JAMES II</b> Proceedings of the Winter simulation conference, IEEE Computer Society, 2008, 827-835 <a href="http://dx.doi.org/10.1109/WSC.2008.4736146">http://dx.doi.org/10.1109/WSC.2008.4736146</a></li>
+ <li><i>Roland Ewald, Jan Himmelspach, Matthias Jeschke, Stefan Leye and Adelinde M. Uhrmacher</i> <b>Flexible Experimentation in the Modeling and Simulation Framework JAMES II - Implications for Computational Systems Biology</b> Briefings in Bioinformatics no. 3, vol. 11, (2010), 290-300. <a href="http://dx.doi.org/10.1093/bib/bbp067">http://dx.doi.org/10.1093/bib/bbp067</a>.
+</ul>
+
+An alternative experiment execution mechanism, partially based on classes of this packages, is provided by the WORMS project. Please see:
+<ul>
+ <li><i>Stefan Rybacki, Jan Himmelspach and Adelinde M. Uhrmacher</i> <b>Using workflows to control the experiment execution in M&S Software</b>. ICST, 2012, 93-102. <a href="http://dx.doi.org/10.4108/icst.simutools.2012.247757">http://dx.doi.org/10.4108/icst.simutools.2012.247757</a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.experiments.variables
+@see james.core.experiments.optimization
+@see james.core.experiments.replication
+@see james.core.experiments.instrumentation
+@see james.core.experiments.taskrunner
+@see james.core.experiments.tasks
+@see james.core.distributed
+
+
+</body>
+</html>

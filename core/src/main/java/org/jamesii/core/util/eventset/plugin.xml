@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="eventqueues" version="1.0" icon="BasicEventQueues.png"/> 
+  
+  <factory classname="org.jamesii.core.util.eventset.TwoListWithBucketsSimpleThresholdFactory"> 
+    <parameter name="threshold" type="java.lang.Integer">
+      <description>This two list queue consists of two parts. The first part is a list with a pre specified number of buckets (slots); the second is a simple not sorted map - the size (slots) of the first part is determinded by this parameter. The default size is 8.</description>
+    </parameter>
+  </factory>
+  
+  <factory classname="org.jamesii.core.util.eventset.BucketsThresholdEventQueueFactory">
+    <parameter name="threshold" type="java.lang.Integer">
+      <description>The buckets threshold queue consists of two parts - the size (slots) of the first part is determined by this parameter. The default size is 8.</description>
+    </parameter>   
+  </factory> 
+  
+  <factory classname="org.jamesii.core.util.eventset.SimpleBucketsEventQueueFactory"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.SimpleReBucketsEventQueueFactory"></factory>     
+  <factory classname="org.jamesii.core.util.eventset.SimpleEventQueueFactory"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.HeapEventQueueFactory" icon="org/jamesii/core/util/eventset/HeapQueue.png"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.UnsortedListEventQueueFactory"></factory>
+  <factory classname="org.jamesii.core.util.eventset.SortedListEventQueueFactory"></factory>
+  <factory classname="org.jamesii.core.util.eventset.PriorityQueueEventQueueFactory" icon="org/jamesii/core/util/eventset/PriorityQueue.png"></factory>
+  <factory classname="org.jamesii.core.util.eventset.TreeSetEventQueueFactory"></factory>
+  <factory classname="org.jamesii.core.util.eventset.LinkedListEventQueueFactory"></factory>
+  <factory classname="org.jamesii.core.util.eventset.LinkedList2EventQueueFactory"></factory>
+</plugin>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="computation task default stop policies" version="1.0"/>
+  <factory classname="org.jamesii.core.experiments.tasks.stoppolicy.EmptyStopConditionStopPolicyFactory">
+  <description>No stopping: The computation will not be terminated by a condition. Should not be used in a composite condition as it ALWAYS returns false.</description>
+  </factory>
+</plugin>

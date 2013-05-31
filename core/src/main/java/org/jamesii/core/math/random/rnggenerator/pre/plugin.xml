@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="random number generator generator (based on a pre defined list of seeds)" version="1.0" />  
+  <factory classname="org.jamesii.core.math.random.rnggenerator.pre.PreDefinedSeedsRandGeneratorFactory">
+    <parameter name="Seeds" type="java.util.List">
+      <description>The list of seeds to be used.</description>
+    </parameter>
+    <parameter name="Hook" type="org.jamesii.core.util.Hook">
+      <description>The hook to be executed if we run out of seeds.</description>
+    </parameter>
+  </factory>
+</plugin>

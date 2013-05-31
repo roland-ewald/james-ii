@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- $Id$ -->
+<xsd:schema  
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	>
+
+	<!-- Unique identifier for an entity. -->
+	<xsd:complexType name="Id">
+
+		<!-- basically a name -->
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+
+		<!--
+			An entity may have multiple versions. Thus, we have to specify to
+			which version we refer.
+		-->
+		<xsd:attribute name="version" type="xsd:string" use="required" />
+		
+		<xsd:attribute name="icon" type="xsd:string" use="optional" />
+
+	</xsd:complexType>
+
+
+	<!-- A fully qualified Java class -->
+	<xsd:simpleType name="JavaClass">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[a-zA-Z][0-9a-zA-Z._]*[\[\]]*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- A license Definition -->
+	<xsd:complexType name="License">
+		<xsd:attribute name="uri" type="xsd:anyURI" use="required" />
+	</xsd:complexType>
+
+</xsd:schema>
+
+
+
+

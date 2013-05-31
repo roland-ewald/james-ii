@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="observer_data_plotter" version="1.0" /> 
+  <factory classname="org.jamesii.gui.visualization.chart.plotter.ObserverDataPlotterFactory">
+  	<description>Creates a plotter for observer data.</description>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.plotter.ObserverDataPlotterIncrementalFactory">
+  	<parameter name="default plot" type="java.lang.String" plugintype="org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory" defaultValue="org.jamesii.gui.visualization.chart.plot.LinePlotFactory"></parameter>
+  </factory> 
+</plugin>

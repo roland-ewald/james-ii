@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jamesii</groupId>
+	<artifactId>parent</artifactId>
+	<packaging>pom</packaging>
+	<name>James II</name>
+	<version>0.9.3-SNAPSHOT</version>
+	<url>http://www.jamesii.org</url>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- Internal (please keep in alphabetical order by groupId.artifactId) -->
+			<dependency>
+				<groupId>org.jamesii</groupId>
+				<artifactId>core</artifactId>
+				<version>0.9.3-SNAPSHOT</version>
+			</dependency>
+
+			<!-- External (please keep in alphabetical order by groupId.artifactId) -->
+
+		</dependencies>
+	</dependencyManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<source.version>1.7</source.version>
+		<maven.test.failure.ignore>false</maven.test.failure.ignore>
+		<maven.test.error.ignore>false</maven.test.error.ignore>
+
+		<!-- Maven plugin versions -->
+		<maven.compiler.v>3.0</maven.compiler.v>
+		<maven.processor.v>2.0.5</maven.processor.v>
+		<maven.resources.v>2.5</maven.resources.v>
+		<maven.surefire.v>2.14.1</maven.surefire.v>
+		<maven.release.v>2.2</maven.release.v>
+		<maven.source.v>2.1.2</maven.source.v>
+		<maven.jar.v>2.3.2</maven.jar.v>
+		<maven.assembly.v>2.2.1</maven.assembly.v>
+	</properties>
+
+	<!-- Add new modules here (please keep in alphabetical order) -->
+	<modules>
+		<module>core</module>
+	</modules>
+
+	<!-- Add global dependencies here -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Build information -->
+	<build>
+
+		<!-- Plugin files are resources, but are still stored in the java source directory. -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/plugin.xml</include>
+					<include>**/plugintype.xml</include>
+					<include>**/*.xsd</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<!-- Compile -->
+ 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.v}</version>
+				<configuration>
+					<source>${source.version}</source>
+					<target>${source.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- Test -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.v}</version>
+				<configuration>
+					<!-- Wait no more than 30 minutes: -->
+					<forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
+					<workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
+					<runOrder>random</runOrder>
+					<forkMode>always</forkMode>
+					<useManifestOnlyJar>false</useManifestOnlyJar>
+					<argLine>-XX:-UseSplitVerifier</argLine>
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*FailingTest.java</exclude>
+						<exclude>**/*LongRunningTest*.java</exclude>
+					</excludes>
+					<systemProperties>
+						<property> <!-- Use fixed seed to make tests reproducible -->
+							<name>org.jamesii.test.seed</name>
+							<value>1234</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
+
+			<!-- Bundle extra resources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.v}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- Bundle source files -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.v}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+							<goal>test-jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Bundle tests classes (in extra JAR file) -->
+			<plugin>	
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.v}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Manage release process -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven.release.v}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="default_variable_editors" version="1.0" /> 
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.FallbackEditorFactory"></factory> 
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.StringEditorFactory"></factory>
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.DoubleEditorFactory"></factory>
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.IntegerEditorFactory"></factory>
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.LongEditorFactory"></factory>
+  <factory classname="org.jamesii.gui.utils.parameters.editor.extensions.BooleanEditorFactory"></factory>
+</plugin>

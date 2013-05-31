@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides variable modification mechanisms.
+
+<p>
+Besides the replication of simulation runs out of diverse reasons it is often of interest to be able to
+execute a large number of different simulation runs with different model parameters. These parameter
+combinations could be defined by using sets / lists or whatever, or you could try to specify them using
+"rules". This package provides the means to define how to modify the parameters of the model for the
+next simulation run.
+<br>
+An example therefore is the {@link james.core.experiments.variables.modifier.IncrementModifierInteger} 
+which can be setup to increment an Integer based variable from a given start value, using a given step
+size up to a given end value.
+Another example is the {@link james.core.experiments.variables.modifier.SequenceModifier} which gets
+the next variable state from a list of states (one after the other). 
+</p> 
+
+
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+ <li><i></li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.experiments
+@see james.core.experiments.variables
+
+</body>
+</html>

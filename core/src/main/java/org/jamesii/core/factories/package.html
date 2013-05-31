@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for factory based plug-in instance creation. 
+
+<p>
+The plug-in based concept is based on the abstract factory ({@link james.core.factories.AbstractFactory}) 
+and the factory ({@link james.core.factories.Factory}) patterns. To be more concrete:
+An abstract factory takes care of selecting an appropriate factory for a given task per plug-in type.
+This selection process is based on a set of criteria which are used to filter / and or sort the remaining
+factories.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  	<li><i>Himmelspach, J. & Uhrmacher, A. M.</i><b>Plug'n simulate</b> Proceedings of the Spring Simulation Multiconference, IEEE Computer Society, 2007, 137-143</li>
+	<li><i>Ewald, R.; Himmelspach, J. & Uhrmacher, A. M.</i><b>An Algorithm Selection Approach for Simulation Systems</b> Proceedings of the PADS, IEEE Computer Society, 2008, 91-98
+</ul>
+
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.plugins
+@see james.core.Registry
+
+</body>
+</html>

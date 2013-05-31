@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for services in the m&s framework. 
+
+<p>
+In the context of distributed modeling and simulation many jobs can be identified which
+can be made available on a service base. This package provides the basics for a service
+view on these "services" in the context of this m%s framework.
+Anything can be realized as a service, however, there is functionality where the service
+notion does not match as perfect as for others. So for example an event queue 
+implementation is performance critical part of a simulation algorithm and there should
+not be any chance to place it on a remote host. However, there is on the other side a
+lot of functionality which can be provided as a service, the most dominant one being the
+service of executing simulation runs.
+The {@link james.core.services.ServiceRegistry} can be used to manage a set of services as well as their 
+usage. This management is based on the design contract that services get only registered
+at <b>one</b> service registry. 
+</p>
+
+<p>
+Besides the basics of service definition and management this package provides the means to mark methods
+of a service as being of interest to a user. This can be done by using the {@link james.core.services.TriggerableByName}
+interface. In the default GUI of the framework these methods can then be executed by any user.
+</p>
+
+
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.simulation.distributed
+@see james.core.simulation.distributed.simulationserver
+@see james.core.simulation.distributed.masterserver
+
+</body>
+</html>

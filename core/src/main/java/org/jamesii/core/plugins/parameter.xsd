@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- $Id$ -->
+<xsd:schema  
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" 
+	>
+ 
+	<xsd:include schemaLocation="base.xsd" />
+
+	<!-- A parameter. -->
+	<xsd:complexType name="Parameter">
+		<xsd:sequence>
+			<xsd:element name="description" maxOccurs="1" type="xsd:string"
+				minOccurs="0" />
+		</xsd:sequence>
+
+		<!-- basically a name -->
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+
+		<!-- is this a required parameter? default is no -->
+		<xsd:attribute name="required" type="xsd:boolean"
+			default="false" />
+
+		<!-- the type of the parameter -->
+		<xsd:attribute name="type" type="JavaClass" use="required" />
+
+		<!-- a default value -->
+		<xsd:attribute name="defaultValue" type="xsd:string"/>
+
+		<!-- fully qualified class name of base factory -->
+		<!--
+			(the parameter is a string with the FQCN of the concrete factory, but
+			the corresponding parameter block may contain parameters for the
+			concrete factory)
+		-->
+		<xsd:attribute name="plugintype" type="xsd:string"/>
+	</xsd:complexType>
+
+	<!-- A list of parameters -->
+	<xsd:complexType name="Parameters">
+		<!-- the parameters -->
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="parameter" type="Parameter" />
+		</xsd:sequence>
+
+		<!-- this parameter list belongs to -->
+		<!-- <xsd:attribute name="id" type="xsd:string" use="required"/> -->
+
+
+	</xsd:complexType>
+</xsd:schema>

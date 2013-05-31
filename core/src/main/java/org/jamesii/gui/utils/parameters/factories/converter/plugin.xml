@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="basic_value_converters" version="1.0" /> 
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.DoubleConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.LongConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.IntegerConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.StringConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.BooleanConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.ColorConverterFactory"/>
+  <factory classname="org.jamesii.gui.utils.parameters.factories.converter.DirectoryConverterFactory"/>
+</plugin>

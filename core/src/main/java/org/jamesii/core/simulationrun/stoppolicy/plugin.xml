@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="simulation run end default policies" version="1.0"/>
+  <factory classname="org.jamesii.core.simulationrun.stoppolicy.SimTimeStopFactory">
+  <parameter name="SIMEND" type="java.lang.Double" required="true" defaultValue="Infinity"/>
+  <description>Simulation Time Stop: Lets simulation run continue until a certain simulation stop time is reached.</description>
+  </factory>
+  <factory classname="org.jamesii.core.simulationrun.stoppolicy.WallClockTimeStopFactory">
+  <description>Computation Wall Clock Stop: Lets the simulation run until a certain amount of wall-clock time has passed (measured in milliseconds).</description>
+  </factory>
+  <factory classname="org.jamesii.core.simulationrun.stoppolicy.ConjunctiveSimRunStopPolicyFactory">
+  <description>AND combining: Combines stopping policies, lets the computation stop if all of them say so.</description>
+  </factory>
+  <factory classname="org.jamesii.core.simulationrun.stoppolicy.DisjunctiveSimRunStopPolicyFactory">
+  <description>OR combining: Combines stopping policies, lets the computation stop if any of them says so.</description>
+  </factory>
+  <factory classname="org.jamesii.core.experiments.tasks.stoppolicy.EmptyStopConditionStopPolicyFactory">
+  <description>No stopping: The computation will not be terminated by a condition. Should not be used in a composite condition as it ALWAYS returns false.</description>
+  </factory>
+</plugin>

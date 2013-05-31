@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides data collection basics for a support of resilience. 
+
+<p>
+With the framework a single simulation run can be executed in a distributed manner, and multiple runs can be executed in parallel.
+Whenever this happens we are faced with the problem that single computing instances might fail, and that we need to be
+able to recover from this. In this package the basic definition of a data base interface for resilience is given. This
+can be used from all resilience tools to store snaphots and to recreate simulation runs from these.
+</p>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+	<li><i>Thomas Nösinger</i><b>Ausfallsicherheit in JAMES II</b> Studienarbeit, University of Rostock, 2007</li>	
+</ul>
+<!-- Put @see and @since tags down here. -->
+
+@see james.core.experiments.simrunner.parallel
+@see james.core.simulation
+@see james.core.simulation.distributed
+@see james.core.experiments
+
+</body>
+</html>

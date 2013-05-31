@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="standard_plotters" version="1.0" /> 
+  <factory classname="org.jamesii.gui.visualization.chart.plot.LinePlotFactory">
+  	<parameter name="color" type="java.awt.Color" defaultValue="red"/>
+  	<parameter name="stroke" type="java.awt.Stroke"/>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.plot.SkylinePlotFactory">
+  	<parameter name="color" type="java.awt.Color" defaultValue="red"/>
+  	<parameter name="stroke" type="java.awt.Stroke"/>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.plot.CirclePlotFactory">
+  	<parameter name="color" type="java.awt.Color" defaultValue="red"/>
+  	<parameter name="stroke" type="java.awt.Stroke"/>
+  	<parameter name="radius" type="java.lang.Double" defaultValue="2"/>
+  </factory> 
+  <factory classname="org.jamesii.gui.visualization.chart.plot.ColoredAntiAliasedPlotFactory">
+  	<parameter name="plot" type="java.lang.String" plugintype="org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory" defaultValue="org.jamesii.gui.visualization.chart.plot.LinePlotFactory"></parameter>
+  </factory> 
+</plugin>
