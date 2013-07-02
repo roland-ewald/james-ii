@@ -192,9 +192,9 @@ public class DiscPlugInFinder implements IPlugInFinder {
                   "Found a plug-in " + files[i].getAbsolutePath());
 
             } catch (RuntimeException e) {
-              Entity.report(Level.SEVERE, "Was not able to read file "
-                  + files[i] + " \nOriginal exception was: " + e.toString()
-                  + " --- \n");
+              SimSystem.report(Level.SEVERE, "Was not able to read file "
+              + files[i] + " \nOriginal exception was: " + e.toString()
+              + " --- \n");
               SimSystem.report(e);
             }
 

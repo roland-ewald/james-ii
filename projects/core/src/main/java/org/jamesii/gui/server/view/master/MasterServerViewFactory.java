@@ -8,6 +8,7 @@ package org.jamesii.gui.server.view.master;
 
 import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.masterserver.IMasterServer;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -43,7 +44,7 @@ public class MasterServerViewFactory extends ServiceViewFactory {
       return new MasterServerView(server, contr);
     }
 
-    Entity.report(Level.WARNING, "No master server given to create view!");
+    SimSystem.report(Level.WARNING, "No master server given to create view!");
     return null;
   }
 

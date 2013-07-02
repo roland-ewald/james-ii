@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
@@ -152,9 +153,9 @@ public class ServiceRegistry extends Entity {
       info.setLocalID(id);
       serviceInfos.put(service, info);
       // let's log the registering
-      report("A service has been registered: " + service.getName()
-          + " of type " + service.getServiceType() + " a "
-          + service.getServiceName());
+      SimSystem.report(Level.INFO, "A service has been registered: " + service.getName()
+      + " of type " + service.getServiceType() + " a "
+      + service.getServiceName());
       changed(info);
     } catch (RemoteException e) {
       SimSystem.report(e);
@@ -179,9 +180,9 @@ public class ServiceRegistry extends Entity {
       }
       ServiceInfo info = serviceInfos.remove(service);
       // let's log the unregistering
-      report("A service has been unregistered: " + service.getName()
-          + " of type " + service.getServiceType() + " a "
-          + service.getServiceName());
+      SimSystem.report(Level.INFO, "A service has been unregistered: " + service.getName()
+      + " of type " + service.getServiceType() + " a "
+      + service.getServiceName());
       changed(info);
     } catch (RemoteException e) {
       SimSystem.report(e);

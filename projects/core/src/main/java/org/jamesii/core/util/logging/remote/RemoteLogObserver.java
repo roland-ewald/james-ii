@@ -11,6 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
@@ -65,8 +66,7 @@ public class RemoteLogObserver extends UnicastRemoteObject implements
     if (hint instanceof LogRecord) {
       logView.publish((LogRecord) hint);
     } else {
-      Entity.report(Level.WARNING,
-          "Warning! Update of remote logger called, without log!");
+      SimSystem.report(Level.WARNING, "Warning! Update of remote logger called, without log!");
     }
   }
 

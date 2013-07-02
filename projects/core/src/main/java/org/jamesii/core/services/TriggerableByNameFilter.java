@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.util.collection.ArrayMap;
 
@@ -44,8 +45,8 @@ public class TriggerableByNameFilter {
           results.put(method.getName(),
               createParameterInformation(params, anno.parameterDescription()));
         } else {
-          Entity.report(Level.WARNING, "Method: " + method.getName()
-              + " of class: " + cl + " can not be triggered by name!");
+          SimSystem.report(Level.WARNING, "Method: " + method.getName()
+          + " of class: " + cl + " can not be triggered by name!");
         }
       }
     }
@@ -67,7 +68,7 @@ public class TriggerableByNameFilter {
           && param.isInstance(String.class) && param.isInstance(Boolean.class)
           && param.isInstance(Character.class)) {
         result = false;
-        Entity.report(Level.WARNING, "Parameter is not primitive!");
+        SimSystem.report(Level.WARNING, "Parameter is not primitive!");
       }
     }
     return result;

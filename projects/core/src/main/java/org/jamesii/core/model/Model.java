@@ -149,7 +149,7 @@ public abstract class Model extends NamedEntity implements IModel {
       Field toGet = getClass().getField(paramName);
       return toGet.get(this);
     } catch (Exception e) {
-      Entity.report(e);
+      SimSystem.report(e);
     }
     return null;
   }
@@ -188,7 +188,7 @@ public abstract class Model extends NamedEntity implements IModel {
       Field toSet = getClass().getField(paramName);
       toSet.set(this, paramValue);
     } catch (Exception e) {
-      Entity.report(e);
+      SimSystem.report(e);
     }
   }
 

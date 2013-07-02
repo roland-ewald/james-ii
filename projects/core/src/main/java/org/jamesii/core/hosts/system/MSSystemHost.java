@@ -13,6 +13,7 @@ import java.rmi.server.RMIClientSocketFactory;
 import java.rmi.server.RMIServerSocketFactory;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.Registry;
@@ -121,7 +122,7 @@ public abstract class MSSystemHost extends Host implements IMSSystemHost,
    *          - further information
    */
   public void report(String s, Object info) {
-    Entity.report(s);
+    SimSystem.report(Level.INFO, s);
   }
 
   /**

@@ -126,9 +126,8 @@ public class SimulationServer extends SimulationHost implements
 
     if (args.length < 2) {
       name = "SimServer" + Long.toString(System.currentTimeMillis());
-      Entity.report(Level.WARNING,
-          "Execution would proceed with unnamed host, auto named the host as "
-              + name);
+      SimSystem.report(Level.WARNING, "Execution would proceed with unnamed host, auto named the host as "
+      + name);
     } else {
       name = args[1];
     }
@@ -203,9 +202,8 @@ public class SimulationServer extends SimulationHost implements
       // let's assume that if we are here this means that there is already a
       // remote registry running at the given port which can be used by us as
       // well
-      Entity.report(Level.WARNING, e1.getMessage());
-      Entity.report(Level.WARNING,
-          "Will continue and try to reuse the address ...");
+      SimSystem.report(Level.WARNING, e1.getMessage());
+      SimSystem.report(Level.WARNING, "Will continue and try to reuse the address ...");
     } catch (RemoteException e) {
       // ok, if we are here we no now that something is wrong
       SimSystem.report(e);
@@ -222,7 +220,7 @@ public class SimulationServer extends SimulationHost implements
     try {
       SimSystem.report(Level.INFO,
           DirectLauncher.getSimulationFrameworkHeader(null));
-      Entity.report(" --- Simulation (client) server --- ");
+      SimSystem.report(Level.INFO, " --- Simulation (client) server --- ");
       SimulationServer ser = new SimulationServer(args);
 
       Host.publish(ser, MasterServer.DEFAULT_PORT);
@@ -411,8 +409,8 @@ public class SimulationServer extends SimulationHost implements
       simulation.stopProcessor();
       removeSimulation(simulation);
     } else {
-      Entity.report("Attempted to stop Simulation '" + uid
-          + "'. Simulation not found on Server.");
+      SimSystem.report(Level.INFO, "Attempted to stop Simulation '" + uid
+      + "'. Simulation not found on Server.");
       throw new UnknownComputationTaskException("Simulation with UID: " + uid
           + " not located on this server");
     }
@@ -451,8 +449,8 @@ public class SimulationServer extends SimulationHost implements
       // clear the resource
       getTaskManager().removeComputationTask(computation);
     } else {
-      Entity.report("Attempted to start Simulation '" + uid.toString()
-          + "'. Simulation not found on Server.");
+      SimSystem.report(Level.INFO, "Attempted to start Simulation '" + uid.toString()
+      + "'. Simulation not found on Server.");
       throw new UnknownComputationTaskException("Simulation: " + uid.toString()
           + " not located on this server");
 
@@ -731,8 +729,8 @@ public class SimulationServer extends SimulationHost implements
 
       return (D) result;
     }
-    Entity.report("Attempted to stop Simulation '" + simulationID
-        + "'. Simulation not found on Server.");
+    SimSystem.report(Level.INFO, "Attempted to stop Simulation '" + simulationID
+    + "'. Simulation not found on Server.");
     throw new UnknownComputationTaskException("Simulation with UID: "
         + simulationID + " not located on this server");
   }

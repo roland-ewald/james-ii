@@ -32,45 +32,6 @@ public class Entity implements IEntity, Serializable {
   static final long serialVersionUID = 4777595551925059508L;
 
   /**
-   * Report the passed throwable. All "report" methods here are convenience
-   * methods for reporting information to the console, the log and wherever
-   * else. "Reporting" means that the message to be reported to the user is only
-   * reported where the users wants it to be, i.e., a reported message may be
-   * printed to the console or it maybe added to the log. <br>
-   * 
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * @param e
-   *          the throwable to be reported to the user
-   */
-  @Deprecated
-  public static void report(Throwable e) {
-    SimSystem.report(e);
-  }
-
-  /**
-   * Print the passed string. All "report" methods here are convenience methods
-   * for reporting information to the console, the log and wherever else.
-   * "Reporting" means that the message to be reported to the user is only
-   * reported where the users wants it to be, i.e., a reported message may be
-   * printed to the console or it maybe added to the log. <br>
-   * Here the string is used as message and id. The log level is set to
-   * {@link Level#INFO}. The string is ready to be printed (no more placeholders
-   * in there). <br>
-   * 
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * @param s
-   *          - text to be printed.
-   */
-  @Deprecated
-  public static void report(String s) {
-    report(s, s);
-  }
-
-  /**
    * Prints the message to the given string buffer if possible, and the reports
    * it via {@link Entity#report(String)}.
    * 
@@ -84,7 +45,7 @@ public class Entity implements IEntity, Serializable {
     if (out != null) {
       out.append(message);
     }
-    report(message);
+    SimSystem.report(Level.INFO, message);
   }
 
   /**
@@ -104,113 +65,7 @@ public class Entity implements IEntity, Serializable {
     if (out != null) {
       out.append(message);
     }
-    report(level, message);
-  }
-
-  /**
-   * Print the passed string. All "report" methods here are convenience methods
-   * for reporting information to the console, the log and wherever else.
-   * "Reporting" means that the message to be reported to the user is only
-   * reported where the users wants it to be, i.e., a reported message may be
-   * printed to the console or it maybe added to the log. <br>
-   * Here the string is used as message and id. The string is ready to be
-   * printed (no more placeholders in there). <br>
-   * 
-   * @see java.util.logging.Level
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * @param s
-   *          - text to be printed.
-   * @param level
-   *          the log level to be used
-   */
-  @Deprecated
-  public static void report(Level level, String s) {
-    report(level, s, s, null);
-  }
-
-  /**
-   * Print the string s if none equivalent language dependent string with the id
-   * id is found. All "report" methods here are convenience methods for
-   * reporting information to the console, the log and wherever else.
-   * "Reporting" means that the message to be reported to the user is only
-   * reported where the users wants it to be, i.e., a reported message may be
-   * printed to the console or it maybe added to the log. <br>
-   * The log level is set to {@link Level#INFO}. The string is ready to be
-   * printed (no more placeholders in there). <br>
-   * 
-   * @see java.util.logging.Level
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * @param id
-   *          the id
-   * @param s
-   *          the s
-   */
-  @Deprecated
-  public static void report(String id, String s) {
-    report(id, s, null);
-  }
-
-  /**
-   * Print the string s by using the params. If there is a language dependent
-   * version of s use this one instead ...
-   * 
-   * All "report" methods here are convenience methods for reporting information
-   * to the console, the log and wherever else. "Reporting" means that the
-   * message to be reported to the user is only reported where the users wants
-   * it to be, i.e., a reported message may be printed to the console or it
-   * maybe added to the log. <br>
-   * The log level is set to {@link Level#INFO}. <br>
-   * 
-   * @see String#format(String, Object...)
-   * @see java.util.logging.Level
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * 
-   * @param id
-   *          the id of a potential translation
-   * @param s
-   *          the text to be printed
-   * @param params
-   *          the parameters to be used in the place holders in the message
-   */
-  @Deprecated
-  public static void report(String id, String s, Object[] params) {
-    report(Level.INFO, id, s, params);
-  }
-
-  /**
-   * Print the string s by using the params. If there is a language dependent
-   * version of s use this one instead ...
-   * 
-   * All "report" methods here are convenience methods for reporting information
-   * to the console, the log and wherever else. "Reporting" means that the
-   * message to be reported to the user is only reported where the users wants
-   * it to be, i.e., a reported message may be printed to the console or it
-   * maybe added to the log. <br>
-   * 
-   * @see String#format(String, Object...)
-   * @see java.util.logging.Level
-   * @see org.jamesii.SimSystem#report(Throwable)
-   * @see org.jamesii.SimSystem#report(Level, String, String, Object[])
-   * 
-   * @param id
-   *          the id of a potential translation
-   * @param s
-   *          the text to be printed
-   * @param params
-   *          the parameters to be used in the place holders in the message
-   * @param level
-   *          the log level, only used for feeding the ApplicationLogger to be
-   *          used
-   */
-  @Deprecated
-  public static void report(Level level, String id, String s, Object[] params) {
-    SimSystem.report(level, id, s, params);
+    SimSystem.report(level, message);
   }
 
   /** The mediator. */

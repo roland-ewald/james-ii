@@ -10,6 +10,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.data.IURIHandling;
 import org.jamesii.core.factories.AbstractFactory;
 import org.jamesii.core.factories.FactoryCriterion;
@@ -90,7 +91,7 @@ public class AbstractModelParameterReaderFactory extends
           // Exceptions here can be, e.g., abstract method errors if
           // there are
           // incomplete classes
-          report(e);
+          SimSystem.report(e);
         }
       }
 

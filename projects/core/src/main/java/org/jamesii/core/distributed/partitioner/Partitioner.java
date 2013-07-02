@@ -228,12 +228,12 @@ public class Partitioner {
         setup.pFactory.create(model, modelGraph, infrastructureGraph);
 
     // Status report:
-    Entity.report("Partitioner uses: ");
-    Entity.report("\tInfrastructure analysis:"
-        + infrastructureAnalyzer.getClass());
-    Entity.report("\tModel analysis:" + modelAnalyzer.getClass());
-    Entity.report("\tPartitioning algorithm:"
-        + partitioningAlgorithm.getClass());
+    SimSystem.report(Level.INFO, "Partitioner uses: ");
+    SimSystem.report(Level.INFO, "\tInfrastructure analysis:"
+    + infrastructureAnalyzer.getClass());
+    SimSystem.report(Level.INFO, "\tModel analysis:" + modelAnalyzer.getClass());
+    SimSystem.report(Level.INFO, "\tPartitioning algorithm:"
+    + partitioningAlgorithm.getClass());
 
     partitioningAlgorithm.initializePartitioning(infrastructureGraph,
         modelGraph);

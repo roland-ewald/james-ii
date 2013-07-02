@@ -213,8 +213,8 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
    * Prints out the number of the current execution.
    */
   public void reportConfigExecution() {
-    Entity.report("@@@@@@@@@@@@@@@@ executing configuration #"
-        + ++configCounter + " @@@@@@@@@@@@@@@@");
+    SimSystem.report(Level.INFO, "@@@@@@@@@@@@@@@@ executing configuration #"
+    + ++configCounter + " @@@@@@@@@@@@@@@@");
   }
 
   @Override

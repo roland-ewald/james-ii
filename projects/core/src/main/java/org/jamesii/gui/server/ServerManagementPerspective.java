@@ -10,6 +10,7 @@ import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.swing.JOptionPane;
 
@@ -166,8 +167,8 @@ public class ServerManagementPerspective extends AbstractPerspective {
                 new SimulationServerVMThread("-server=" + serverAddress, name);
             scvmt.start();
 
-            Entity.report("Created a simulation server in an extra VM +("
-                + name + ")");
+            SimSystem.report(Level.INFO, "Created a simulation server in an extra VM +("
+            + name + ")");
 
           } else {
 
@@ -176,8 +177,8 @@ public class ServerManagementPerspective extends AbstractPerspective {
                 new SimulationClientThread("-server=" + serverAddress, name);
             sct.start();
 
-            Entity.report("Created a simulation server in a separate thread +("
-                + name + ")");
+            SimSystem.report(Level.INFO, "Created a simulation server in a separate thread +("
+            + name + ")");
 
           }
 
@@ -211,11 +212,10 @@ public class ServerManagementPerspective extends AbstractPerspective {
         view.setupObservers();
         getWindowManager().addWindow(view);
         view.setupObservers();
-        Entity
-            .report("Created a master server in a separate thread +(rmi://localhost:"
-                + MasterServer.DEFAULT_PORT
-                + "/"
-                + MasterServer.DEFAULT_BINDING_NAME + ")");
+        SimSystem.report(Level.INFO, "Created a master server in a separate thread +(rmi://localhost:"
+        + MasterServer.DEFAULT_PORT
+        + "/"
+        + MasterServer.DEFAULT_BINDING_NAME + ")");
         getWindowManager().addWindow(view);
       } catch (Exception e) {
         SimSystem.report(e);

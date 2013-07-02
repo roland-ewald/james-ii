@@ -9,6 +9,7 @@ package org.jamesii.core.experiments.optimization;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.RunInformation;
@@ -185,8 +186,8 @@ public class ParallelOptimizer extends Optimizer {
     while ((!meetPreConstraints(configurationInfos.getConfiguration()))
         || alreadyRunning(configurationInfos)) {
       if (!alreadyRunning(configurationInfos)) {
-        report(configurationInfos.getConfiguration().toString()
-            + " is out of pre constraints");
+        SimSystem.report(Level.INFO, configurationInfos.getConfiguration().toString()
+        + " is out of pre constraints");
         // Due to no responses set response to null, time to 0, and objective to
         // infinity
         configurationInfos.addRun(null,
@@ -211,8 +212,8 @@ public class ParallelOptimizer extends Optimizer {
     while (getDb().containsConfiguration(configurationInfos.getConfiguration())
         && useCache) {
 
-      report(configurationInfos.getConfiguration().toString()
-          + " found in storage. Use storage.");
+      SimSystem.report(Level.INFO, configurationInfos.getConfiguration().toString()
+      + " found in storage. Use storage.");
 
       // get objectives
       configurationInfos =
@@ -256,7 +257,7 @@ public class ParallelOptimizer extends Optimizer {
 
     // CancelCriteria
     if (meetCancelCriteria(getState())) {
-      report("Optimization meets a cancel criteria.");
+      SimSystem.report(Level.INFO, "Optimization meets a cancel criteria.");
       throw new NoNextVariableException();
     }
 
@@ -375,8 +376,8 @@ public class ParallelOptimizer extends Optimizer {
 
     // Test if the result violates a post-constraint:
     if (!(meetPostConstraints(currentConfigInfos.getLastConfigurationInfo()))) {
-      report(currentConfigInfos.getConfiguration().toString()
-          + " violates post constraints!");
+      SimSystem.report(Level.INFO, currentConfigInfos.getConfiguration().toString()
+      + " violates post constraints!");
       getState().postConstraintsViolated();
       postConstraintViolated();
     } else {

@@ -739,9 +739,7 @@ public class Registry extends InformationObject {
     try {
       instAF = af.newInstance();
     } catch (Exception e) {
-      report(
-          Level.SEVERE,
-          "An internal error occured. The system was not able to create the required instance of an abstract factory. Thus it cannot select an approbiate factory for and thus we cannot create the required datastructure/algorithm.");
+      SimSystem.report(Level.SEVERE, "An internal error occured. The system was not able to create the required instance of an abstract factory. Thus it cannot select an approbiate factory for and thus we cannot create the required datastructure/algorithm.");
       throw new FactoryInstantiationException(
           "Error! Was not able to create the required abstract factory " + af,
           e);
@@ -910,7 +908,7 @@ public class Registry extends InformationObject {
     // as well
     String envPlugInDirectory = System.getenv("JAMES_PLUGINPATH");
     if (envPlugInDirectory != null) {
-      report("Searching for plug-ins in dirs defined in the environment variable: JAMES_PLUGINPATH");
+      SimSystem.report(Level.INFO, "Searching for plug-ins in dirs defined in the environment variable: JAMES_PLUGINPATH");
 
       List<String> paths =
           org.jamesii.core.util.misc.Files.getListOfPaths(envPlugInDirectory);
@@ -920,7 +918,7 @@ public class Registry extends InformationObject {
     }
 
     for (String p : ps) {
-      report("Searching for plug-ins in: " + p);
+      SimSystem.report(Level.INFO, "Searching for plug-ins in: " + p);
       cr.parseDirectory(p);
     }
 
@@ -945,17 +943,17 @@ public class Registry extends InformationObject {
    */
   public void initPlugins() {
 
-    report(Language.getMessage("Registry:initSimSystem",
-        "Initializing %s ... ", new String[] { SimSystem.SIMSYSTEM }));
+    SimSystem.report(Level.INFO, Language.getMessage("Registry:initSimSystem",
+    "Initializing %s ... ", new String[] { SimSystem.SIMSYSTEM }));
 
     // FIXME find out why java.class.path only returns jamesII.jar
     // when
     // running from jamesII.jar
-    report(Language.getMessage(
-        "Registry:pathInfo",
-        "... which has been started from %s" + "\n... using the classpath %s",
-        new String[] { System.getProperty("user.dir"),
-            System.getProperty("java.class.path") }));
+    SimSystem.report(Level.INFO, Language.getMessage(
+    "Registry:pathInfo",
+    "... which has been started from %s" + "\n... using the classpath %s",
+    new String[] { System.getProperty("user.dir"),
+        System.getProperty("java.class.path") }));
 
     // TODO (general) load language file
     // loadLanguage("simsystem_"+language+".po");
@@ -1042,10 +1040,10 @@ public class Registry extends InformationObject {
     foundPlugins = pluginFinder.getFoundPlugins();
     foundPluginTypes = pluginFinder.getFoundPluginTypes();
 
-    report("Found plug-in types: " + foundPluginTypes.size());
-    report("Found and loaded plug-ins: " + foundPlugins.size());
+    SimSystem.report(Level.INFO, "Found plug-in types: " + foundPluginTypes.size());
+    SimSystem.report(Level.INFO, "Found and loaded plug-ins: " + foundPlugins.size());
 
-    report("Loading classes in found plug-in types and plug-ins ... ");
+    SimSystem.report(Level.INFO, "Loading classes in found plug-in types and plug-ins ... ");
 
     // load the classes of the abstract factories
     loadPluginTypesClasses();
@@ -1061,8 +1059,8 @@ public class Registry extends InformationObject {
       typecount++;
       count += e.getValue().size();
     }
-    report("Installed factory types : " + typecount);
-    report("Installed factories : " + count);
+    SimSystem.report(Level.INFO, "Installed factory types : " + typecount);
+    SimSystem.report(Level.INFO, "Installed factories : " + count);
 
     // further checks like whether default values for plugin type
     // parameters fit as well as if plugin type parameters have valid
@@ -1429,13 +1427,11 @@ public class Registry extends InformationObject {
           (Class<Factory<?>>) baseFacClass);
       abstractFactoriesInv.put((Class<Factory<?>>) baseFacClass,
           (Class<? extends AbstractFactory<?>>) abstractFacClass);
-      report("Registry:LoadedPluginType", "Installed plug-in type : %s",
-          new Object[] { ptd.getId().getName() + " - "
-              + ptd.getId().getVersion() });
+      SimSystem.report(Level.INFO, "Registry:LoadedPluginType", "Installed plug-in type : %s", new Object[] { ptd.getId().getName() + " - "
+      + ptd.getId().getVersion() });
     } catch (Exception e) {
-      report(Level.SEVERE,
-          "Failed on loading a plug-in type (" + ptd.getAbstractFactory()
-              + "), skipping plug-in");
+      SimSystem.report(Level.SEVERE, "Failed on loading a plug-in type (" + ptd.getAbstractFactory()
+      + "), skipping plug-in");
       SimSystem.report(e);
     }
   }
@@ -1460,7 +1456,7 @@ public class Registry extends InformationObject {
     for (IPluginData pd : foundPlugins) {
       // System.out.println(cj++);
       // get a list of class fac
-      report("Loading the plug-in " + pd.getId().getName() + " ... ");
+      SimSystem.report(Level.INFO, "Loading the plug-in " + pd.getId().getName() + " ... ");
 
       // Test whether a plug-in with the same name has already been
       // loaded
@@ -1546,15 +1542,15 @@ public class Registry extends InformationObject {
         // load class and instantiate factory
         try {
           if (fac.getClassname() == null) {
-            report(Level.WARNING, "There is no factory class name for " + fac);
+            SimSystem.report(Level.WARNING, "There is no factory class name for " + fac);
             continue;
           }
 
           Class<?> c = loadClass(fac.getClassname());
 
           if (c == null) {
-            report(Level.WARNING, "Was not able to load factory class of "
-                + fac.getClassname());
+            SimSystem.report(Level.WARNING, "Was not able to load factory class of "
+            + fac.getClassname());
             continue;
           }
 
@@ -1564,7 +1560,7 @@ public class Registry extends InformationObject {
                     .get(getAbstractFactory((Class<? extends Factory<?>>) c));
 
             if (pdat == null) {
-              report(Level.WARNING, "Cannot look up plug-in data for " + c);
+              SimSystem.report(Level.WARNING, "Cannot look up plug-in data for " + c);
               continue;
             }
 
