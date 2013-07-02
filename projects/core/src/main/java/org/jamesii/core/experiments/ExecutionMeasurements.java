@@ -8,6 +8,7 @@ package org.jamesii.core.experiments;
 
 import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.taskrunner.ComputationTaskHandler;
 import org.jamesii.core.util.StopWatch;
@@ -62,12 +63,15 @@ public class ExecutionMeasurements extends Entity {
   public void startModelCreation() {
     resetAndStartWatch();
     updateCurrentMemory();
+    String message = getIdentification() + "Memory (Total / Free / Used): "
+        + displayMemInKB(info.getTotalMemory()) + " / "
+        + displayMemInKB(info.getFreeMemory()) + " / "
+        + displayMemInKB(info.getUsedMemory());
 
-    Entity.report(Level.FINEST,
-        getIdentification() + "Memory (Total / Free / Used): "
-            + displayMemInKB(info.getTotalMemory()) + " / "
-            + displayMemInKB(info.getFreeMemory()) + " / "
-            + displayMemInKB(info.getUsedMemory()), out);
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.FINEST, message);
   }
 
   /**
@@ -76,19 +80,24 @@ public class ExecutionMeasurements extends Entity {
   public void stopModelCreation() {
     watch.stop();
     info.setModelCreationTime(watch.elapsedMilliseconds());
-    report(
-        Level.FINEST,
-        getIdentification() + "Seconds needed for creating the model: "
-            + info.getModelCreationTime(), out);
+    String message = getIdentification() + "Seconds needed for creating the model: "
+        + info.getModelCreationTime();
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.FINEST, message);
     long oldUsedMem = info.getUsedMemory();
     updateCurrentMemory();
     info.setModelMemory(info.getUsedMemory() - oldUsedMem);
-    Entity.report(Level.FINEST,
-        getIdentification() + "Memory (Total / Free / Used / Used by Model): "
-            + displayMemInKB(info.getTotalMemory()) + " / "
-            + displayMemInKB(info.getFreeMemory()) + " / "
-            + displayMemInKB(info.getUsedMemory()) + " / "
-            + displayMemInKB(info.getModelMemory()), out);
+    String message1 = getIdentification() + "Memory (Total / Free / Used / Used by Model): "
+        + displayMemInKB(info.getTotalMemory()) + " / "
+        + displayMemInKB(info.getFreeMemory()) + " / "
+        + displayMemInKB(info.getUsedMemory()) + " / "
+        + displayMemInKB(info.getModelMemory());
+    if (out != null) {
+      out.append(message1);
+    }
+    SimSystem.report(Level.FINEST, message1);
   }
 
   /**
@@ -104,20 +113,26 @@ public class ExecutionMeasurements extends Entity {
   public void stopComputationTaskCreation() {
     watch.stop();
     info.setComputationTaskCreationTime(watch.elapsedMilliseconds());
-    report(Level.FINEST,
-        getIdentification() + "Seconds needed for creating the simulation: "
-            + info.getComputationTaskCreationTime(), out);
+    String message = getIdentification() + "Seconds needed for creating the simulation: "
+        + info.getComputationTaskCreationTime();
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.FINEST, message);
 
     long oldUsedMem = info.getUsedMemory();
     updateCurrentMemory();
     info.setComputationTaskMemory(info.getUsedMemory() - oldUsedMem);
-    Entity.report(Level.FINEST,
-        getIdentification()
-            + "Memory (Total / Free / Used / Used by Simulation): "
-            + displayMemInKB(info.getTotalMemory()) + " / "
-            + displayMemInKB(info.getFreeMemory()) + " / "
-            + displayMemInKB(info.getUsedMemory()) + " / "
-            + displayMemInKB(info.getComputationTaskMemory()), out);
+    String message1 = getIdentification()
+        + "Memory (Total / Free / Used / Used by Simulation): "
+        + displayMemInKB(info.getTotalMemory()) + " / "
+        + displayMemInKB(info.getFreeMemory()) + " / "
+        + displayMemInKB(info.getUsedMemory()) + " / "
+        + displayMemInKB(info.getComputationTaskMemory());
+    if (out != null) {
+      out.append(message1);
+    }
+    SimSystem.report(Level.FINEST, message1);
   }
 
   /**
@@ -133,15 +148,20 @@ public class ExecutionMeasurements extends Entity {
   public void stopObserverConfiguration() {
     watch.stop();
     info.setObserverConfigurationTime(watch.elapsedMilliseconds());
-    report(Level.FINEST,
-        getIdentification() + "Seconds needed for configuring the observers: "
-            + info.getObserverConfigurationTime(), out);
-    report(
-        Level.FINEST,
-        getIdentification()
-            + "Memory after model + simulation + observer creation (Total / Free): "
-            + displayMemInKB(Runtime.getRuntime().totalMemory()) + " / "
-            + displayMemInKB(Runtime.getRuntime().freeMemory()), out);
+    String message = getIdentification() + "Seconds needed for configuring the observers: "
+        + info.getObserverConfigurationTime();
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.FINEST, message);
+    String message1 = getIdentification()
+        + "Memory after model + simulation + observer creation (Total / Free): "
+        + displayMemInKB(Runtime.getRuntime().totalMemory()) + " / "
+        + displayMemInKB(Runtime.getRuntime().freeMemory());
+    if (out != null) {
+      out.append(message1);
+    }
+    SimSystem.report(Level.FINEST, message1);
   }
 
   /**
@@ -157,9 +177,12 @@ public class ExecutionMeasurements extends Entity {
   public void stopComputationTask() {
     watch.stop();
     info.setComputationTaskRunTime(watch.elapsedMilliseconds());
-    report(Level.INFO,
-        getIdentification() + "Seconds needed for running the simulation: "
-            + info.getComputationTaskRunTime(), out);
+    String message = getIdentification() + "Seconds needed for running the simulation: "
+        + info.getComputationTaskRunTime();
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.INFO, message);
   }
 
   /**

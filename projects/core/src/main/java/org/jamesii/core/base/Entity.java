@@ -31,43 +31,6 @@ public class Entity implements IEntity, Serializable {
   /** The Constant serialVersionUID. */
   static final long serialVersionUID = 4777595551925059508L;
 
-  /**
-   * Prints the message to the given string buffer if possible, and the reports
-   * it via {@link Entity#report(String)}.
-   * 
-   * @param message
-   *          the message to be reported
-   * @param out
-   *          the output buffer
-   */
-  @Deprecated
-  public static void report(String message, StringBuffer out) {
-    if (out != null) {
-      out.append(message);
-    }
-    SimSystem.report(Level.INFO, message);
-  }
-
-  /**
-   * Prints the message to the given string buffer if possible, and the reports
-   * it via {@link Entity#report(String)}.
-   * 
-   * @param level
-   *          the log level which shall be used to report the information
-   * 
-   * @param message
-   *          the message to be reported
-   * @param out
-   *          the output buffer
-   */
-  @Deprecated
-  public static void report(Level level, String message, StringBuffer out) {
-    if (out != null) {
-      out.append(message);
-    }
-    SimSystem.report(level, message);
-  }
-
   /** The mediator. */
   private IMediator mediator = null;
 
