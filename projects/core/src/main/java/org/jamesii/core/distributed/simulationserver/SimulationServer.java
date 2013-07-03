@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.data.model.read.plugintype.AbstractModelReaderFactory;
 import org.jamesii.core.data.model.read.plugintype.ModelReaderFactory;
@@ -126,25 +125,17 @@ public class SimulationServer extends SimulationHost implements
 
     if (args.length < 2) {
       name = "SimServer" + Long.toString(System.currentTimeMillis());
-      SimSystem.report(Level.WARNING, "Execution would proceed with unnamed host, auto named the host as "
-      + name);
+      SimSystem.report(Level.WARNING,
+          "Execution would proceed with unnamed host, auto named the host as "
+              + name);
     } else {
       name = args[1];
     }
-
-    // if (args.length >= 3 && args[2].compareTo("true") == 0) {
-    // ownVM = true;
-    // System.out.println("Simulation Client is running as a seperate VM");
-    //
-    // }
 
     masterServerAddress = getServerAddress(args[0]);
     SimSystem.report(Level.INFO, "Registering at master server: "
         + masterServerAddress);
     register(masterServerAddress);
-
-    // System.out.println("Searching plugins!");
-    // plist = SimSystem.getRegistry().getPlugins();
   }
 
   /**
@@ -203,7 +194,8 @@ public class SimulationServer extends SimulationHost implements
       // remote registry running at the given port which can be used by us as
       // well
       SimSystem.report(Level.WARNING, e1.getMessage());
-      SimSystem.report(Level.WARNING, "Will continue and try to reuse the address ...");
+      SimSystem.report(Level.WARNING,
+          "Will continue and try to reuse the address ...");
     } catch (RemoteException e) {
       // ok, if we are here we no now that something is wrong
       SimSystem.report(e);
@@ -300,7 +292,7 @@ public class SimulationServer extends SimulationHost implements
 
     IInitializedComputationTask initTask =
         ComputationTaskHandler.initComputationTask(config, modelReader, result,
-            null, simResources.size() == 1 ? null : simResources);
+            simResources.size() == 1 ? null : simResources);
 
     // FIXME (the cast should not be here, i.e., the server needs to maintain a
     // list of tasks and not of simruns!)
@@ -319,8 +311,8 @@ public class SimulationServer extends SimulationHost implements
     try {
       SimSystem.report(Level.INFO, "Used server: " + serverAdress);
 
-      SimSystem.report(Level.INFO,
-          "Simulation client "+getName()+" tries to connect to the server");
+      SimSystem.report(Level.INFO, "Simulation client " + getName()
+          + " tries to connect to the server");
 
       server = (IMasterServer) Naming.lookup(serverAdress);
       SimSystem.report(Level.INFO, "Connected!");
@@ -337,8 +329,8 @@ public class SimulationServer extends SimulationHost implements
     }
     // make myself known to the server
 
-    SimSystem.report(Level.INFO,
-        "Simulation client "+getName()+" tries to register at the server!");
+    SimSystem.report(Level.INFO, "Simulation client " + getName()
+        + " tries to register at the server!");
 
     boolean registered = false;
     int tries = 0;
@@ -372,19 +364,8 @@ public class SimulationServer extends SimulationHost implements
 
     }
 
-    // if (newName.compareTo(name) != 0) {
-    // System.out
-    // .println("Servers name already registered at the server. This server ("
-    // + name + ") is renamed to " + newName);
-    // addEvent("There is already a server with this name registered. Changing
-    // name to "
-    // + newName);
-    // ssw.title = newName;
-    // }
-    // name = newName;
-    SimSystem.report(Level.INFO,
-        "Simulation client "+getName()+" is registered at the server!");
-    // addEvent("Registration successfull");
+    SimSystem.report(Level.INFO, "Simulation client " + getName()
+        + " is registered at the server!");
 
   }
 
@@ -410,7 +391,7 @@ public class SimulationServer extends SimulationHost implements
       removeSimulation(simulation);
     } else {
       SimSystem.report(Level.INFO, "Attempted to stop Simulation '" + uid
-      + "'. Simulation not found on Server.");
+          + "'. Simulation not found on Server.");
       throw new UnknownComputationTaskException("Simulation with UID: " + uid
           + " not located on this server");
     }
@@ -449,8 +430,9 @@ public class SimulationServer extends SimulationHost implements
       // clear the resource
       getTaskManager().removeComputationTask(computation);
     } else {
-      SimSystem.report(Level.INFO, "Attempted to start Simulation '" + uid.toString()
-      + "'. Simulation not found on Server.");
+      SimSystem.report(Level.INFO,
+          "Attempted to start Simulation '" + uid.toString()
+              + "'. Simulation not found on Server.");
       throw new UnknownComputationTaskException("Simulation: " + uid.toString()
           + " not located on this server");
 
@@ -569,48 +551,6 @@ public class SimulationServer extends SimulationHost implements
   @Override
   public boolean migrateProcessor(String modelFullName,
       ISimulationHost targetHost) {
-
-    // System.out.println("******** Migration start: model '" + modelFullName
-    // + "' to " + targetHost);
-
-    // Iterator<Simulation> simIt = this.simulations.iterator();
-
-    // Simulation hostSim = null;
-
-    // Looking for simulation part to be migrated
-
-    // TODO(LB): this has to be generalized
-    // while (simIt.hasNext()) {
-    // Simulation sim = simIt.next();
-    // // System.out.println("!!!!!!!!!!"
-    // // + ((BasicDEVSModel) sim.getProcessorInfo().getLocal().getModel())
-    // // .getFullName());
-    // if (((BasicDEVSModel) sim.getProcessorInfo().getLocal().getModel())
-    // .getFullName().equals(modelFullName)) {
-    // hostSim = sim;
-    // break;
-    // }
-    // }
-
-    //
-    // System.out.println("hostSim=" + hostSim);
-    // System.out.println("processor="
-    // + hostSim.getProcessorInfo().getLocal().getClassName());
-
-    // Migrate simulation part
-    // try {
-    // System.out.println("******** Migration start: Calling remote host...");
-    // targetHost.receiveSimulationPart(hostSim, hostSim.getProcessorInfo()
-    // .getLocal());
-    // } catch (RemoteException ex) {
-    // SimSystem.report(ex);
-    // return false;
-    // }
-    //
-    // // Deregister simulation part
-    // simManager.removeSimulation(hostSim);
-    // hostSim = null;
-
     return true;
   }
 
@@ -635,55 +575,9 @@ public class SimulationServer extends SimulationHost implements
   public boolean receiveSimulationPart(SimulationRun simulation,
       IProcessor processor) throws RemoteException {
 
-    // System.out.println("******** Migration ACK");
-
     // Add simulation to simulation parts
     simulation.setProcessorInfo(new ProcessorInformation(processor));
     getTaskManager().addComputationTask(simulation, null);
-
-    // TODO(LB): this has to be generalised
-    // ParallelDistributedProcessor pdp = (ParallelDistributedProcessor)
-    // simulation
-    // .getProcessorInfo().getLocal();
-    //
-    // System.out.println("********Model:" + pdp.getModel().getName());
-    //
-    // RMIProcessorFactory rpf = new RMIProcessorFactory();
-    //
-    // String fullName = ((BasicDEVSModel) processor.getModel()).getFullName();
-    //
-    // // Update references
-    // // TODO(re027): Generalization
-    // IProcessorRef myRef = rpf.getRemote(pdp);
-    // IProcessor myProxy = rpf.getProxy(myRef);
-    //
-    // // Update parent
-    // ((IParallelDistributedProcessor)
-    // pdp.getParent()).updateReference(fullName,
-    // (IBasicDEVSProcessor) myProxy);
-    //
-    // // Update children if necessary, start thread
-    // if (pdp instanceof Coordinator) {
-    // Iterator<Entry<IModel, IBasicDEVSProcessor>> subProcIt = ((Coordinator)
-    // pdp).subProcessors
-    // .entrySet().iterator();
-    // while (subProcIt.hasNext()) {
-    // Entry<IModel, IBasicDEVSProcessor> subProcEntry = subProcIt.next();
-    // System.out.println("DB:" + subProcEntry.getValue().getModel());
-    // subProcEntry.getValue().setParent((IBasicDEVSProcessor) myProxy);
-    // // System.out.println("CHILD_UPDATED:"
-    // // + subProcEntry.getValue().getModel().getName());
-    // }
-    // ((Coordinator) pdp).startOwnThread();
-    // } else
-    // pdp.startThread();
-    // // Update threadMXBean if simulator
-    // if (pdp instanceof Simulator) {
-    // ((Simulator) pdp).refreshThreadMXBean();
-    // }
-    // System.out.println("******** Migration ACK model");
-    // System.out.println("********" + simulation);
-    // System.out.println("********" + pdp.getModel().getName());
 
     return true;
   }
@@ -729,8 +623,8 @@ public class SimulationServer extends SimulationHost implements
 
       return (D) result;
     }
-    SimSystem.report(Level.INFO, "Attempted to stop Simulation '" + simulationID
-    + "'. Simulation not found on Server.");
+    SimSystem.report(Level.INFO, "Attempted to stop Simulation '"
+        + simulationID + "'. Simulation not found on Server.");
     throw new UnknownComputationTaskException("Simulation with UID: "
         + simulationID + " not located on this server");
   }
