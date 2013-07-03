@@ -11,11 +11,8 @@ import java.io.InputStream;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 
 /**
- * The Class StreamReader.
- * 
  * Read a given input stream and if print is true, print everything read to
  * System.out, otherwise just forget the characters read.
  * 

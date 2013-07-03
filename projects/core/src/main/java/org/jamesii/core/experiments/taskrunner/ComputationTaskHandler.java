@@ -61,8 +61,6 @@ public final class ComputationTaskHandler {
    *          the model reader
    * @param info
    *          the result
-   * @param out
-   *          the StringBuffer to write output to
    * @param resources
    *          the available resources
    * 
@@ -73,10 +71,10 @@ public final class ComputationTaskHandler {
    */
   public static IInitializedComputationTask initComputationTask(
       IComputationTaskConfiguration computationTaskConfiguration,
-      IModelReader modelReader, RunInformation info, StringBuffer out,
+      IModelReader modelReader, RunInformation info,
       List<ISimulationServer> resources) {
     return computationTaskConfiguration.getSetup().initComputationTask(
-        computationTaskConfiguration, modelReader, info, out, resources);
+        computationTaskConfiguration, modelReader, info, resources);
   }
 
   /**
@@ -89,8 +87,6 @@ public final class ComputationTaskHandler {
    *          the computation task configuration
    * @param interactiveConsole
    *          the interactive console
-   * @param out
-   *          the out
    * @param taskRunner
    *          the task runner which handles the task
    * 
@@ -118,7 +114,7 @@ public final class ComputationTaskHandler {
 
     IComputationTask currentComputationTask = task.getComputationTask();
     ExecutionMeasurements execMeasures =
-        new ExecutionMeasurements(task.getRunInfo(), out);
+        new ExecutionMeasurements(task.getRunInfo());
 
     // Execute the computation task
     execMeasures.startComputationTask();
@@ -234,7 +230,7 @@ public final class ComputationTaskHandler {
     RunInformation runInfo = new RunInformation(runConfig);
     IInitializedComputationTask result = null;
     try {
-      result = initComputationTask(runConfig, modelReader, runInfo, null, null);
+      result = initComputationTask(runConfig, modelReader, runInfo, null);
     } catch (Exception ex) {
       SimSystem.report(Level.SEVERE,
           "Error during initialization of computation task.", ex);

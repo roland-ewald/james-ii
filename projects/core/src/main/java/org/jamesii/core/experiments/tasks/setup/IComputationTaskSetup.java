@@ -17,11 +17,10 @@ import org.jamesii.core.experiments.RunInformation;
 import org.jamesii.core.experiments.tasks.IInitializedComputationTask;
 
 /**
- * The Interface IComputationTaskSetup. Has to be implemented by choices to
- * compute a solution for a problem. The problem's parameterization will be
- * given by the experimentation layer of the software which expects any classes
- * implementing this interface to instantiate the means to work on the problem
- * as it has been specified.
+ * Implemented by choices to compute a solution for a problem. The problem's
+ * parameterization will be given by the experimentation layer, which expects
+ * any classes implementing this interface to instantiate everything it needs to
+ * work on the problem as it has been specified.
  * 
  * @author Jan Himmelspach
  */
@@ -40,9 +39,10 @@ public interface IComputationTaskSetup extends Serializable {
       RunInformation runInfo);
 
   /**
-   * Creates an InitializedSimulation object, using a SimulationConfiguration
-   * and a ModelReader. Information about the initialisation process are stored
-   * in RunInformation and StringBuffer.
+   * Creates an {@link IInitializedComputationTask} using a
+   * {@link IComputationTaskConfiguration} and an {@link IModelReader}.
+   * Information about the initialisation process are stored in
+   * {@link RunInformation}.
    * 
    * @param compTaskConfig
    *          the computation task configuration
@@ -52,8 +52,6 @@ public interface IComputationTaskSetup extends Serializable {
    *          the run information "result" - this one has to be updated by this
    *          method (insert times needed for the different phases of
    *          instantiation)
-   * @param out
-   *          the StringBuffer to write output to
    * @param resources
    *          the available resources
    * 
@@ -65,6 +63,6 @@ public interface IComputationTaskSetup extends Serializable {
    */
   IInitializedComputationTask initComputationTask(
       IComputationTaskConfiguration compTaskConfig, IModelReader modelReader,
-      RunInformation info, StringBuffer out, List<ISimulationServer> resources);
+      RunInformation info, List<ISimulationServer> resources);
 
 }

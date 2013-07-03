@@ -50,7 +50,8 @@ public class SimulationRunSetup implements IComputationTaskSetup {
    * local machines, using execution identifiers (= experiment ID + simulation
    * ID) as key.
    */
-  private static Map<String, IDataStorage<?>> localDataStorages = new HashMap<>();
+  private static Map<String, IDataStorage<?>> localDataStorages =
+      new HashMap<>();
 
   /**
    * Returns a string describing the details of the current run.
@@ -68,13 +69,13 @@ public class SimulationRunSetup implements IComputationTaskSetup {
   @Override
   public IInitializedComputationTask initComputationTask(
       IComputationTaskConfiguration computationTaskConfig,
-      IModelReader modelReader, RunInformation info, StringBuffer out,
+      IModelReader modelReader, RunInformation info,
       List<ISimulationServer> resources) {
 
     // Please do not execute the garbage collector herein - this will kill any
     // parallel performance as this method might be executed in parallel
 
-    ExecutionMeasurements execMeasures = new ExecutionMeasurements(info, out);
+    ExecutionMeasurements execMeasures = new ExecutionMeasurements(info);
 
     // Instantiate model and simulation
     ISimulationRun simulation = null;
@@ -90,15 +91,12 @@ public class SimulationRunSetup implements IComputationTaskSetup {
           execMeasures, simulation);
     } catch (Throwable t) {
       return handleError((SimulationRunConfiguration) computationTaskConfig, t,
-          out, info);
+          info);
     }
-    String message = "Simulation run with expID:" + info.getExpID()
-        + " and simID:" + info.getComputationTaskID() + " initialised at "
-        + new SimpleDateFormat().format(new Date());
-
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        "Simulation run with expID:" + info.getExpID() + " and simID:"
+            + info.getComputationTaskID() + " initialised at "
+            + new SimpleDateFormat().format(new Date());
     SimSystem.report(Level.INFO, message);
 
     return new InitializedComputationTask(simulation, info);
@@ -201,15 +199,13 @@ public class SimulationRunSetup implements IComputationTaskSetup {
    *          the simulation run configuration that failed
    * @param cause
    *          the cause of the error
-   * @param out
-   *          the output (for error messages)
    * @param info
    *          the runtime information
    * @return an error instance of {@link InitializedComputationTask}
    */
   protected static InitializedComputationTask handleError(
       SimulationRunConfiguration simRunConfig, Throwable cause,
-      StringBuffer out, RunInformation info) {
+      RunInformation info) {
     String message =
         "Model creation failed! \nThis happened while trying to instantiate the model for the simulation run "
             + getRunDescription(simRunConfig)
@@ -217,9 +213,6 @@ public class SimulationRunSetup implements IComputationTaskSetup {
             + cause.getMessage()
             + "\nNOTE: The execution will automatically continue with the next run!!!";
     SimSystem.report(cause);
-    if (out != null) {
-      out.append(message);
-    }
     SimSystem.report(Level.INFO, message);
     info.storeFailure(message, cause);
     return new InitializedComputationTask(null, info);

@@ -36,7 +36,7 @@ public class TestComputationTaskHandler extends TestCase {
             .newComputationTaskConfiguration(new ComputationTaskIDObject());
     initSim =
         ComputationTaskHandler.initComputationTask(srConfig, null,
-            new RunInformation(srConfig), new StringBuffer(), null);
+            new RunInformation(srConfig), null);
     assertNotNull(initSim);
   }
 
@@ -51,7 +51,7 @@ public class TestComputationTaskHandler extends TestCase {
             .newComputationTaskConfiguration(new ComputationTaskIDObject());
     initSim =
         ComputationTaskHandler.initComputationTask(srConfig, null,
-            new RunInformation(srConfig), new StringBuffer(), null);
+            new RunInformation(srConfig), null);
     assertNotNull(initSim);
 
     RunInformation runInfo =

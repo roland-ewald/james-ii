@@ -15,8 +15,7 @@ import org.jamesii.core.util.StopWatch;
 
 /**
  * This class is used by the {@link ComputationTaskHandler} to take time and
- * memory measurements that are reported to the user and also stored in the
- * {@link RunInformation}.
+ * memory measurements that are stored in the {@link RunInformation}.
  * 
  * @author Roland Ewald
  * 
@@ -32,20 +31,14 @@ public class ExecutionMeasurements extends Entity {
   /** The watch to take the time. */
   private final StopWatch watch = new StopWatch();
 
-  /** The output buffer to report to. */
-  private final StringBuffer out;
-
   /**
    * Instantiates a new object for execution measurements.
    * 
    * @param runInfo
    *          the run info
-   * @param output
-   *          the output string buffer
    */
-  public ExecutionMeasurements(RunInformation runInfo, StringBuffer output) {
+  public ExecutionMeasurements(RunInformation runInfo) {
     info = runInfo;
-    out = output;
   }
 
   /**
@@ -63,14 +56,11 @@ public class ExecutionMeasurements extends Entity {
   public void startModelCreation() {
     resetAndStartWatch();
     updateCurrentMemory();
-    String message = getIdentification() + "Memory (Total / Free / Used): "
-        + displayMemInKB(info.getTotalMemory()) + " / "
-        + displayMemInKB(info.getFreeMemory()) + " / "
-        + displayMemInKB(info.getUsedMemory());
-
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        getIdentification() + "Memory (Total / Free / Used): "
+            + displayMemInKB(info.getTotalMemory()) + " / "
+            + displayMemInKB(info.getFreeMemory()) + " / "
+            + displayMemInKB(info.getUsedMemory());
     SimSystem.report(Level.FINEST, message);
   }
 
@@ -80,23 +70,19 @@ public class ExecutionMeasurements extends Entity {
   public void stopModelCreation() {
     watch.stop();
     info.setModelCreationTime(watch.elapsedMilliseconds());
-    String message = getIdentification() + "Seconds needed for creating the model: "
-        + info.getModelCreationTime();
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        getIdentification() + "Seconds needed for creating the model: "
+            + info.getModelCreationTime();
     SimSystem.report(Level.FINEST, message);
     long oldUsedMem = info.getUsedMemory();
     updateCurrentMemory();
     info.setModelMemory(info.getUsedMemory() - oldUsedMem);
-    String message1 = getIdentification() + "Memory (Total / Free / Used / Used by Model): "
-        + displayMemInKB(info.getTotalMemory()) + " / "
-        + displayMemInKB(info.getFreeMemory()) + " / "
-        + displayMemInKB(info.getUsedMemory()) + " / "
-        + displayMemInKB(info.getModelMemory());
-    if (out != null) {
-      out.append(message1);
-    }
+    String message1 =
+        getIdentification() + "Memory (Total / Free / Used / Used by Model): "
+            + displayMemInKB(info.getTotalMemory()) + " / "
+            + displayMemInKB(info.getFreeMemory()) + " / "
+            + displayMemInKB(info.getUsedMemory()) + " / "
+            + displayMemInKB(info.getModelMemory());
     SimSystem.report(Level.FINEST, message1);
   }
 
@@ -113,25 +99,21 @@ public class ExecutionMeasurements extends Entity {
   public void stopComputationTaskCreation() {
     watch.stop();
     info.setComputationTaskCreationTime(watch.elapsedMilliseconds());
-    String message = getIdentification() + "Seconds needed for creating the simulation: "
-        + info.getComputationTaskCreationTime();
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        getIdentification() + "Seconds needed for creating the simulation: "
+            + info.getComputationTaskCreationTime();
     SimSystem.report(Level.FINEST, message);
 
     long oldUsedMem = info.getUsedMemory();
     updateCurrentMemory();
     info.setComputationTaskMemory(info.getUsedMemory() - oldUsedMem);
-    String message1 = getIdentification()
-        + "Memory (Total / Free / Used / Used by Simulation): "
-        + displayMemInKB(info.getTotalMemory()) + " / "
-        + displayMemInKB(info.getFreeMemory()) + " / "
-        + displayMemInKB(info.getUsedMemory()) + " / "
-        + displayMemInKB(info.getComputationTaskMemory());
-    if (out != null) {
-      out.append(message1);
-    }
+    String message1 =
+        getIdentification()
+            + "Memory (Total / Free / Used / Used by Simulation): "
+            + displayMemInKB(info.getTotalMemory()) + " / "
+            + displayMemInKB(info.getFreeMemory()) + " / "
+            + displayMemInKB(info.getUsedMemory()) + " / "
+            + displayMemInKB(info.getComputationTaskMemory());
     SimSystem.report(Level.FINEST, message1);
   }
 
@@ -148,19 +130,15 @@ public class ExecutionMeasurements extends Entity {
   public void stopObserverConfiguration() {
     watch.stop();
     info.setObserverConfigurationTime(watch.elapsedMilliseconds());
-    String message = getIdentification() + "Seconds needed for configuring the observers: "
-        + info.getObserverConfigurationTime();
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        getIdentification() + "Seconds needed for configuring the observers: "
+            + info.getObserverConfigurationTime();
     SimSystem.report(Level.FINEST, message);
-    String message1 = getIdentification()
-        + "Memory after model + simulation + observer creation (Total / Free): "
-        + displayMemInKB(Runtime.getRuntime().totalMemory()) + " / "
-        + displayMemInKB(Runtime.getRuntime().freeMemory());
-    if (out != null) {
-      out.append(message1);
-    }
+    String message1 =
+        getIdentification()
+            + "Memory after model + simulation + observer creation (Total / Free): "
+            + displayMemInKB(Runtime.getRuntime().totalMemory()) + " / "
+            + displayMemInKB(Runtime.getRuntime().freeMemory());
     SimSystem.report(Level.FINEST, message1);
   }
 
@@ -177,11 +155,9 @@ public class ExecutionMeasurements extends Entity {
   public void stopComputationTask() {
     watch.stop();
     info.setComputationTaskRunTime(watch.elapsedMilliseconds());
-    String message = getIdentification() + "Seconds needed for running the simulation: "
-        + info.getComputationTaskRunTime();
-    if (out != null) {
-      out.append(message);
-    }
+    String message =
+        getIdentification() + "Seconds needed for running the simulation: "
+            + info.getComputationTaskRunTime();
     SimSystem.report(Level.INFO, message);
   }
 
