@@ -181,9 +181,8 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
       try {
         facs = fc.filter(facs, parameter);
       } catch (Exception e) {
-        Entity.report(Level.WARNING,
-            "Problem on filtering, filter " + fc + " is not applied : "
-                + e.getClass().getName() + " - " + e.getMessage());
+        SimSystem.report(Level.WARNING, "Problem on filtering, filter " + fc + " is not applied : "
+        + e.getClass().getName() + " - " + e.getMessage());
       }
 
       // as soon as no factory is left we raise an exception

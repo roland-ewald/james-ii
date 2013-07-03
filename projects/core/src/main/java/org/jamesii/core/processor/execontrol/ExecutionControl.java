@@ -324,10 +324,7 @@ public class ExecutionControl implements Serializable {
     this.setStoppingPolicy(end);
 
     if ((getOwner() instanceof IPaceProcessor) && (pauseT != 0)) {
-      Entity
-          .report(
-              Level.WARNING,
-              "This processor is running in paced mode, using an artifical slow down is prohibited because it will harm the simualtion semantics! Will continue without the extra delay.");
+      SimSystem.report(Level.WARNING, "This processor is running in paced mode, using an artifical slow down is prohibited because it will harm the simualtion semantics! Will continue without the extra delay.");
       this.pauseTime = 0;
     } else {
       this.pauseTime = pauseT;

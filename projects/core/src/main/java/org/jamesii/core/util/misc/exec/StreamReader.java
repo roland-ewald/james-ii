@@ -8,7 +8,9 @@ package org.jamesii.core.util.misc.exec;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 
 /**
@@ -80,7 +82,7 @@ public class StreamReader extends Thread {
       // be silent
     }
     if ((sb != null) && (sb.length() >= 0)) {
-      Entity.report(ident + ": " + sb.toString());
+      SimSystem.report(Level.INFO, ident + ": " + sb.toString());
     }
 
     // remove all characters in the buffer, so that, if this thread remains in

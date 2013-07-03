@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -81,7 +82,7 @@ public class MasterServerView extends ServerView {
 
           service = (IService) Naming.lookup(address);
         } catch (Exception e) {
-          Entity.report("Error on connecting to " + address);
+          SimSystem.report(Level.INFO, "Error on connecting to " + address);
           SimSystem.report(e);
         }
         ParameterBlock viewParams = new ParameterBlock();
@@ -111,7 +112,7 @@ public class MasterServerView extends ServerView {
 
           service = (IService) Naming.lookup(address);
         } catch (Exception e) {
-          Entity.report("Error on connecting to " + address);
+          SimSystem.report(Level.INFO, "Error on connecting to " + address);
           SimSystem.report(e);
         }
 
@@ -152,7 +153,7 @@ public class MasterServerView extends ServerView {
 
           service = (IService) Naming.lookup(address);
         } catch (Exception e) {
-          Entity.report("Error on connecting to " + address);
+          SimSystem.report(Level.INFO, "Error on connecting to " + address);
           SimSystem.report(e);
         }
 

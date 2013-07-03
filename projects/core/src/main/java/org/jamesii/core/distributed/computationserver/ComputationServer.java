@@ -64,9 +64,8 @@ public class ComputationServer extends MSSystemHost implements
     }
     if (name == null) {
       name = "CompServer" + Long.toString(System.currentTimeMillis());
-      Entity.report(Level.WARNING,
-          "WARNING: Execution would proceed with unnamed host, auto named the host as "
-              + name);
+      SimSystem.report(Level.WARNING, "WARNING: Execution would proceed with unnamed host, auto named the host as "
+      + name);
     }
     if (masterServerAddress == null) {
       masterServerAddress =
@@ -119,7 +118,7 @@ public class ComputationServer extends MSSystemHost implements
     try {
       SimSystem.report(Level.INFO,
           DirectLauncher.getSimulationFrameworkHeader(null));
-      Entity.report(" --- Computation (client) server --- ");
+      SimSystem.report(Level.INFO, " --- Computation (client) server --- ");
       ComputationServer ser = new ComputationServer(args);
 
       Host.publish(ser, MasterServer.DEFAULT_PORT);

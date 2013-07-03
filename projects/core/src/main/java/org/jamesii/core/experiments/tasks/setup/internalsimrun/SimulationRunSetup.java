@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
@@ -92,10 +93,14 @@ public class SimulationRunSetup implements IComputationTaskSetup {
       return handleError((SimulationRunConfiguration) computationTaskConfig, t,
           out, info);
     }
-
-    Entity.report("Simulation run with expID:" + info.getExpID()
+    String message = "Simulation run with expID:" + info.getExpID()
         + " and simID:" + info.getComputationTaskID() + " initialised at "
-        + new SimpleDateFormat().format(new Date()), out);
+        + new SimpleDateFormat().format(new Date());
+
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.INFO, message);
 
     return new InitializedComputationTask(simulation, info);
   }
@@ -213,7 +218,10 @@ public class SimulationRunSetup implements IComputationTaskSetup {
             + cause.getMessage()
             + "\nNOTE: The execution will automatically continue with the next run!!!";
     SimSystem.report(cause);
-    Entity.report(message, out);
+    if (out != null) {
+      out.append(message);
+    }
+    SimSystem.report(Level.INFO, message);
     info.storeFailure(message, cause);
     return new InitializedComputationTask(null, info);
   }

@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -64,15 +65,12 @@ public class ParameterFilterCriteria<F extends Factory & IParameterFilterFactory
           filteredFactories.add(factory);
         }
       } catch (Exception e) {
-        Entity
-            .report(
-                Level.WARNING,
-                "A factory caused a problem on determining whether it supports a set of parameters or not: "
-                    + factory.getClass()
-                    + ". The problem was of type "
-                    + e.getClass().getName()
-                    + " with message "
-                    + e.getMessage());
+        SimSystem.report(Level.WARNING, "A factory caused a problem on determining whether it supports a set of parameters or not: "
+        + factory.getClass()
+        + ". The problem was of type "
+        + e.getClass().getName()
+        + " with message "
+        + e.getMessage());
       }
     }
 

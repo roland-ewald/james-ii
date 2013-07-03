@@ -100,7 +100,7 @@ public class BasicWorkflow extends AbstractWizardController {
 
     // SimSystem.getTempDirectory()
 
-    Entity.report("Starting the experiment from the workflow");
+    SimSystem.report(Level.INFO, "Starting the experiment from the workflow");
 
     // read model from
     // ISymbolicModel<?> model = (ISymbolicModel<?>) wizard.getValue("model");

@@ -211,8 +211,7 @@ public class MasterServer extends MSSystemHost implements IMasterServer,
         + ")");
 
     if ((resources == null) || (resources.isEmpty())) {
-      Entity.report(Level.SEVERE,
-          "No free host found! Cannot create the simulation!");
+      SimSystem.report(Level.SEVERE, "No free host found! Cannot create the simulation!");
       return null;
     }
 
@@ -684,11 +683,11 @@ public class MasterServer extends MSSystemHost implements IMasterServer,
       builder.append("\n");
       SimSystem.report(Level.INFO, builder.toString());
       MasterServer server = new MasterServer(name);
-      Entity.report("Master server (" + server.getName()
-          + ") has been started on host "
-          + java.net.InetAddress.getLocalHost().getHostName() + " ip: "
-          + java.net.InetAddress.getLocalHost().getHostAddress()
-          + ", listening at port " + DEFAULT_PORT + ".");
+      SimSystem.report(Level.INFO, "Master server (" + server.getName()
+      + ") has been started on host "
+      + java.net.InetAddress.getLocalHost().getHostName() + " ip: "
+      + java.net.InetAddress.getLocalHost().getHostAddress()
+      + ", listening at port " + DEFAULT_PORT + ".");
 
       // MasterServerWindow msw = new MasterServerWindow(server);
       // msw.setupGUI();

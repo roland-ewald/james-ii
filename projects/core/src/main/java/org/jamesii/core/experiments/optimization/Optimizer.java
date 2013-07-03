@@ -13,7 +13,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.RunInformation;
 import org.jamesii.core.experiments.TaskConfiguration;
@@ -235,8 +237,8 @@ public class Optimizer extends Entity implements IExperimentSteerer {
 
     // Configuration violates at least one constraint
     while (!meetPreConstraints(currentConfigurationRuns.getConfiguration())) {
-      report(currentConfigurationRuns.getConfiguration().toString()
-          + " is out of pre constraints");
+      SimSystem.report(Level.INFO, currentConfigurationRuns.getConfiguration().toString()
+      + " is out of pre constraints");
       // Due to no responses set response to null, time to 0, and objective to
       // infinity
       currentConfigurationRuns.addRun(null,
@@ -256,8 +258,8 @@ public class Optimizer extends Entity implements IExperimentSteerer {
         && useCache) {
       // TODO: Just now this is a *naive* implementation: what happens if number
       // of replications is not sufficient?
-      report(currentConfigurationRuns.getConfiguration().toString()
-          + " found in storage. Using storage.");
+      SimSystem.report(Level.INFO, currentConfigurationRuns.getConfiguration().toString()
+      + " found in storage. Using storage.");
       // get objectives
       currentConfigurationRuns =
           getDb().getConfigurationInfos(
@@ -388,7 +390,7 @@ public class Optimizer extends Entity implements IExperimentSteerer {
 
     // CancelCriteria
     if (meetCancelCriteria(state)) {
-      report("Optimization meets a cancel criteria.");
+      SimSystem.report(Level.INFO, "Optimization meets a cancel criteria.");
       throw new NoNextVariableException();
     }
 
@@ -437,8 +439,8 @@ public class Optimizer extends Entity implements IExperimentSteerer {
     // Test if the result violates a post-constraint:
     if (!(meetPostConstraints(currentConfigurationRuns
         .getLastConfigurationInfo()))) {
-      report(currentConfigurationRuns.getConfiguration().toString()
-          + " violates post constraints!");
+      SimSystem.report(Level.INFO, currentConfigurationRuns.getConfiguration().toString()
+      + " violates post constraints!");
       if (currentConfigurationRuns.isStorageUse()) {
         state.postConstraintsViolated();
       }
@@ -524,7 +526,7 @@ public class Optimizer extends Entity implements IExperimentSteerer {
         assignment.put(var.getName(), var);
       }
     } catch (NoNextVariableException ex) {
-      report(state.toString());
+      SimSystem.report(Level.INFO, state.toString());
       return null;
     }
     return assignment;

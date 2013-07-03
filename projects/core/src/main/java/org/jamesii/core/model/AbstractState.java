@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.model;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 
 /**
@@ -25,7 +26,7 @@ public abstract class AbstractState extends Entity implements Cloneable {
     try {
       o = super.clone();
     } catch (CloneNotSupportedException cnse) {
-      Entity.report(cnse);
+      SimSystem.report(cnse);
     }
     return o;
   }

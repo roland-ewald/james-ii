@@ -2,6 +2,7 @@ package org.jamesii.gui.server.view.simulation;
 
 import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -39,7 +40,7 @@ public class SimulationServerViewFactory extends ServiceViewFactory {
       return new SimulationServerView(server, contr);
     }
 
-    Entity.report(Level.WARNING, "No simulation server given to create view!");
+    SimSystem.report(Level.WARNING, "No simulation server given to create view!");
     return null;
   }
 

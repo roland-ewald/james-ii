@@ -259,7 +259,7 @@ public final class ComputationTaskHandler {
       IComputationTaskConfiguration runConfig, ITaskRunner taskRunner) {
     IInitializedComputationTask result = null;
     try {
-      Entity.report("Creating a simulation on a master server");
+      SimSystem.report(Level.INFO, "Creating a simulation on a master server");
       result =
           runConfig.getMasterServer().executeSimulationConfiguration(runConfig,
               new RemoteComputationTaskRunnerRef(taskRunner));

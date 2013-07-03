@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.model.variables;
 
+import java.util.logging.Level;
+
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.NamedEntity;
 
@@ -94,8 +96,8 @@ public class BaseVariable<T> extends NamedEntity implements IVariable<T> {
    * Sets the random value.
    */
   public void setRandomValue() {
-    report("WARNING, setRandomValue was called for a Variable, that is neither defined as Quantative nor Qualatative BaseVariable.");
-    report("This should not be, all Optimization Variables have to be of one of these two types, if random values are necessary.");
-    report("Variable was " + getName());
+    SimSystem.report(Level.INFO, "WARNING, setRandomValue was called for a Variable, that is neither defined as Quantative nor Qualatative BaseVariable.");
+    SimSystem.report(Level.INFO, "This should not be, all Optimization Variables have to be of one of these two types, if random values are necessary.");
+    SimSystem.report(Level.INFO, "Variable was " + getName());
   }
 }

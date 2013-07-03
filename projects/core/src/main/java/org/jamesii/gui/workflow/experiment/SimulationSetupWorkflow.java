@@ -7,7 +7,9 @@
 package org.jamesii.gui.workflow.experiment;
 
 import java.net.URI;
+import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.experiments.BaseExperiment;
@@ -84,7 +86,7 @@ public class SimulationSetupWorkflow extends AbstractWizardController {
     }
 
     // SimSystem.getTempDirectory()
-    Entity.report("Starting the experiment from the workflow");
+    SimSystem.report(Level.INFO, "Starting the experiment from the workflow");
 
     // read model from
     // ISymbolicModel<?> model = (ISymbolicModel<?>)

@@ -9,6 +9,7 @@ package org.jamesii.gui.server;
 import java.rmi.Naming;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.swing.JOptionPane;
 
@@ -89,7 +90,7 @@ public class ServiceAction extends AbstractAction {
         }
         service.callMethodByName(getId(), params);
       } catch (Exception e) {
-        Entity.report("Error on connecting to " + address);
+        SimSystem.report(Level.INFO, "Error on connecting to " + address);
         SimSystem.report(e);
       }
     }
