@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.ISQLDataBase;
 import org.jamesii.core.data.IURIHandling;
 import org.jamesii.core.data.model.IModelReader;
@@ -51,7 +50,7 @@ public class SimulationRunSetup implements IComputationTaskSetup {
    * local machines, using execution identifiers (= experiment ID + simulation
    * ID) as key.
    */
-  private static Map<String, IDataStorage> localDataStorages = new HashMap<>();
+  private static Map<String, IDataStorage<?>> localDataStorages = new HashMap<>();
 
   /**
    * Returns a string describing the details of the current run.
@@ -181,7 +180,7 @@ public class SimulationRunSetup implements IComputationTaskSetup {
     execMeasures.startObserverConfiguration();
 
     // Initialise data storage
-    IDataStorage ds = simRunConfig.createDataStorage();
+    IDataStorage<?> ds = simRunConfig.createDataStorage();
     if (ds != null) {
       localDataStorages.put(info.getExecutionIDs(), ds);
     }
@@ -290,7 +289,7 @@ public class SimulationRunSetup implements IComputationTaskSetup {
       return;
     }
     try {
-      IDataStorage ds = localDataStorages.remove(execIDs);
+      IDataStorage<?> ds = localDataStorages.remove(execIDs);
       if (ds != null) {
         ds.flushBuffers();
         if (ds instanceof ISQLDataBase) {
