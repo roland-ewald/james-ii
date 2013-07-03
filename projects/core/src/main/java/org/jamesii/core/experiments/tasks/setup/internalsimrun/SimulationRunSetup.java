@@ -202,7 +202,7 @@ public class SimulationRunSetup implements IComputationTaskSetup {
    * @param cause
    *          the cause of the error
    * @param out
-   *          the output stream for error messages
+   *          the output (for error messages)
    * @param info
    *          the runtime information
    * @return an error instance of {@link InitializedComputationTask}

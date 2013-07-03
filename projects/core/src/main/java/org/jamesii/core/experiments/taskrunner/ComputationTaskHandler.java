@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
 import org.jamesii.core.experiments.ExecutionMeasurements;
@@ -49,9 +48,12 @@ public final class ComputationTaskHandler {
   }
 
   /**
-   * Creates an IInitializedComputationTask object, using a
-   * SimulationConfiguration and a ModelReader. Information about the
-   * initialisation process are stored in RunInformation and StringBuffer.
+   * Creates an IInitializedComputationTask object, using an
+   * {@link IComputationTaskConfiguration} and a {@link IModelReader}.
+   * Information about the initialisation process are stored in
+   * {@link RunInformation}, additional output in a StringBuffer.
+   * 
+   * @see IComputationTaskSetup
    * 
    * @param computationTaskConfiguration
    *          the computation task configuration
@@ -60,7 +62,7 @@ public final class ComputationTaskHandler {
    * @param info
    *          the result
    * @param out
-   *          the out
+   *          the StringBuffer to write output to
    * @param resources
    *          the available resources
    * 
@@ -73,7 +75,6 @@ public final class ComputationTaskHandler {
       IComputationTaskConfiguration computationTaskConfiguration,
       IModelReader modelReader, RunInformation info, StringBuffer out,
       List<ISimulationServer> resources) {
-
     return computationTaskConfiguration.getSetup().initComputationTask(
         computationTaskConfiguration, modelReader, info, out, resources);
   }

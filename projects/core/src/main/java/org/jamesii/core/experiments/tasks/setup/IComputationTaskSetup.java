@@ -53,7 +53,7 @@ public interface IComputationTaskSetup extends Serializable {
    *          method (insert times needed for the different phases of
    *          instantiation)
    * @param out
-   *          the out StringBuffer to be used - useful to redirect outputs
+   *          the StringBuffer to write output to
    * @param resources
    *          the available resources
    * 
