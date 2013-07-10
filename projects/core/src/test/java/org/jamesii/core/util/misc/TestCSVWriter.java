@@ -30,22 +30,22 @@ public class TestCSVWriter extends TestCase {
     File f = getTestFile();
     CSVWriter.writeResult(nonPrimitiveMatrix, f.getAbsolutePath());
     List<String[]> content = new CSVReader().read(f.getAbsolutePath(), false);
-    assertEquals(content.size(), nonPrimitiveMatrix.length);
-    assertEquals(content.get(0).length, nonPrimitiveMatrix[0].length);
-    assertEquals(content.get(1).length, nonPrimitiveMatrix[1].length);
-    assertEquals(content.get(1)[1], nonPrimitiveMatrix[1][1].toString());
-    assertEquals(content.get(0)[1], nonPrimitiveMatrix[0][1].toString());
+    assertEquals(nonPrimitiveMatrix.length, content.size());
+    assertEquals(nonPrimitiveMatrix[0].length, content.get(0).length);
+    assertEquals(nonPrimitiveMatrix[1].length, content.get(1).length);
+    assertEquals(nonPrimitiveMatrix[1][1].toString(), content.get(1)[1]);
+    assertEquals(nonPrimitiveMatrix[0][1].toString(), content.get(0)[1]);
   }
 
   public void testWritePrimitiveMatrix() throws IOException {
     File f = getTestFile();
     CSVWriter.writeResult(simpleMatrix, f.getAbsolutePath());
     List<String[]> content = new CSVReader().read(f.getAbsolutePath(), false);
-    assertEquals(content.size(), simpleMatrix.length);
-    assertEquals(content.get(0).length, simpleMatrix[0].length);
-    assertEquals(content.get(1).length, simpleMatrix[1].length);
-    assertEquals(content.get(1)[1], Double.toString(simpleMatrix[1][1]));
-    assertEquals(content.get(0)[1], Double.toString(simpleMatrix[0][1]));
+    assertEquals(simpleMatrix.length, content.size());
+    assertEquals(simpleMatrix[0].length, content.get(0).length);
+    assertEquals(simpleMatrix[1].length, content.get(1).length);
+    assertEquals(Double.toString(simpleMatrix[1][1]), content.get(1)[1]);
+    assertEquals(Double.toString(simpleMatrix[0][1]), content.get(0)[1]);
   }
 
   private File getTestFile() throws IOException {
