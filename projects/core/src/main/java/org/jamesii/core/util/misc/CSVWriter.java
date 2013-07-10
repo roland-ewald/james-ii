@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Utility to write CSV files.
+ * Utility to write CSV files. To avoid code duplication, 2D arrays of
+ * primitives are converted to objects (e.g. <code>double[][]</code> to
+ * <code>Double[][]</code>), so writing large data sets of primitives could
+ * suffer a slowdown.
  * 
  * @see CSVReader
  * 
@@ -46,7 +49,7 @@ public final class CSVWriter {
       throws IOException {
     writeResult(result, fileName, DEFAULT_DELIMITER);
   }
-  
+
   /**
    * Write result.
    * 
@@ -84,7 +87,7 @@ public final class CSVWriter {
       String fileName) throws IOException {
     writeResult(result, fileName, DEFAULT_DELIMITER, true);
   }
-  
+
   /**
    * Write result. In case the first row is shorter than some other (in terms of
    * data elements separated by {@link CSVWriter#DEFAULT_DELIMITER}, not
@@ -121,7 +124,7 @@ public final class CSVWriter {
       throws IOException {
     writeResult(result, fileName, DEFAULT_DELIMITER);
   }
-  
+
   /**
    * Write result.
    * 
@@ -157,7 +160,7 @@ public final class CSVWriter {
       char delimiter) throws IOException {
     writeResult(result, fileName, delimiter, false);
   }
-  
+
   /**
    * Write result.
    * 
@@ -200,7 +203,12 @@ public final class CSVWriter {
       fw.append(toCSV(result, delimiter, addDelimsToFirstRow));
     }
   }
-  
+
+  public static void writeResult(double[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) {
+//    fw.append(toCSV(row, delimiter, addDelimsToFirstRow)); //TODO
+  }
+
   /**
    * Write result.
    * 
@@ -245,7 +253,7 @@ public final class CSVWriter {
       fw.append(toCSV(result, delimiter));
     }
   }
-  
+
   /**
    * Write result.
    * 
@@ -260,8 +268,8 @@ public final class CSVWriter {
    * @throws IOException
    *           Signals that an I/O exception has occurred.
    */
-  public static <X> void appendResult(X[] result, String fileName, char delimiter)
-      throws IOException {
+  public static <X> void appendResult(X[] result, String fileName,
+      char delimiter) throws IOException {
     try (FileWriter fw = new FileWriter(fileName, true)) {
       fw.append(toCSV(result, delimiter));
     }
@@ -393,6 +401,64 @@ public final class CSVWriter {
       matrixString.append('\n');
     }
     return matrixString;
+  }
+
+  private interface MatrixWrapper<X> {
+    int length();
+
+    int length(int row);
+
+    X content(int row, int col);
+  }
+
+  private class ObjectMatrix<X> implements MatrixWrapper<X> {
+
+    private final X[][] matrix;
+
+    ObjectMatrix(X[][] matrix) {
+      this.matrix = matrix;
+    }
+
+    @Override
+    public int length() {
+      return matrix.length;
+    }
+
+    @Override
+    public int length(int row) {
+      return matrix[row].length;
+    }
+
+    @Override
+    public X content(int row, int col) {
+      return matrix[row][col];
+    }
+
+  }
+
+  private class DoublePrimitiveMatrix implements MatrixWrapper<Double> {
+
+    private final double[][] matrix;
+
+    DoublePrimitiveMatrix(double[][] matrix) {
+      this.matrix = matrix;
+    }
+
+    @Override
+    public int length() {
+      return matrix.length;
+    }
+
+    @Override
+    public int length(int row) {
+      return matrix[row].length;
+    }
+
+    @Override
+    public Double content(int row, int col) {
+      return matrix[row][col];
+    }
+
   }
 
 }
