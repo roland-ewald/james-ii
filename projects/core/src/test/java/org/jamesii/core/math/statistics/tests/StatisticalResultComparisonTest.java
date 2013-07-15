@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import org.jamesii.SimSystem;
 import org.jamesii.StochasticChattyTestCase;
 import org.jamesii.core.experiments.BaseExperiment;
+import org.jamesii.core.experiments.taskrunner.parallel.ParallelComputationTaskRunner;
 import org.jamesii.core.experiments.taskrunner.parallel.ParallelComputationTaskRunnerFactory;
 import org.jamesii.core.experiments.taskrunner.plugintype.TaskRunnerFactory;
 import org.jamesii.core.experiments.util.TaskRuntimeInformationListener;
@@ -32,7 +33,6 @@ import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.parameters.ParameterizedFactory;
-import org.jamesii.core.processor.plugintype.ProcessorFactory;
 import org.jamesii.core.util.misc.Pair;
 import org.jamesii.core.util.misc.Strings;
 
@@ -76,6 +76,12 @@ public abstract class StatisticalResultComparisonTest extends
 
   /** The number of replications to be executed (per model and setup). */
   private int replications = 1000;
+
+  /**
+   * The maximum number of threads to use. See
+   * {@link ParallelComputationTaskRunner} for more details.
+   */
+  private int threads = -2;
 
   /** The simulation setups to be tested. */
   private List<ParameterBlock> setups = getProcessorSetups();
@@ -608,7 +614,8 @@ public abstract class StatisticalResultComparisonTest extends
 
     // Configure parallel execution
     exp.setTaskRunnerFactory(new ParameterizedFactory<TaskRunnerFactory>(
-        new ParallelComputationTaskRunnerFactory(), new ParameterBlock()));
+        new ParallelComputationTaskRunnerFactory(), new ParameterBlock()
+            .addSubBl(ParallelComputationTaskRunnerFactory.NUM_CORES, threads)));
 
     // Add listener
     TaskRuntimeInformationListener taskRTIListener =
@@ -634,6 +641,27 @@ public abstract class StatisticalResultComparisonTest extends
    */
   public void setReplications(int replications) {
     this.replications = replications;
+  }
+
+  /**
+   * Sets the number of maximum threads.
+   */
+  public void setThreads(int threads) {
+    this.threads = threads;
+  }
+
+  /**
+   * Sets the p value of the wilcoxon test.
+   */
+  public void setPValue(int pValue) {
+    this.pValue = pValue;
+  }
+
+  /**
+   * Sets the p value of the results of all wilcoxon tests.
+   */
+  public void setOutcomePValue(int outcomePValue) {
+    this.outcomePValue = outcomePValue;
   }
 
   /**
