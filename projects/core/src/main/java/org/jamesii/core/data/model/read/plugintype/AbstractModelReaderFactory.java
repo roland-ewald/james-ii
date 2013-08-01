@@ -33,6 +33,9 @@ public class AbstractModelReaderFactory extends
   /** String identifier for passing mime type to be used **/
   public static final String MIME_TYPE = "mimeType";
 
+  /** String identifier for passing the model URI. */
+  public static final String URI = IURIHandling.URI;
+
   /**
    * The Class URICriteria. This criteria filters model reader/writer factories
    * according an URI which has to be passed in a parameter classed "URI". In
