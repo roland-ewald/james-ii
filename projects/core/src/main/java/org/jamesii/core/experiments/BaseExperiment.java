@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.NamedEntity;
 import org.jamesii.core.cmdparameters.Parameters;
-import org.jamesii.core.data.IURIHandling;
+import org.jamesii.core.data.model.read.plugintype.AbstractModelReaderFactory;
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;
@@ -1064,7 +1064,8 @@ public class BaseExperiment extends NamedEntity {
   private TaskConfiguration initComputationTaskConfiguration(
       Map<String, Object> modelParameters, ParameterBlock execConfigParamBlock) {
     ParameterBlock scpb =
-        (new ParameterBlock()).addSubBl(IURIHandling.URI, new ParameterBlock(
+        (new ParameterBlock()).addSubBl(AbstractModelReaderFactory.URI,
+            new ParameterBlock(
             modelLocation));
     TaskConfiguration taskConfig =
         new TaskConfiguration(++taskCfgCounter, scpb, modelParameters,

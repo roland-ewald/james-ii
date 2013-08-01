@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jamesii.core.data.IURIHandling;
+import org.jamesii.core.data.model.read.plugintype.AbstractModelReaderFactory;
 import org.jamesii.core.data.model.read.plugintype.IMIMEType;
 import org.jamesii.core.factories.AbstractFactory;
 import org.jamesii.core.factories.FactoryCriterion;
@@ -29,12 +29,14 @@ public class AbstractModelWriterFactory extends
   private static final long serialVersionUID = -3235573277930663367L;
 
   /** The model itself. */
-  public static final String MODEL = "model";
+  public static final String MODEL = AbstractModelReaderFactory.MODEL;
 
   /**
    * String identifier for passing the mime type to be used.
    */
-  public static final String MIME_TYPE = "mimeType";
+  public static final String MIME_TYPE = AbstractModelReaderFactory.MIME_TYPE;
+
+  public static final String URI = AbstractModelReaderFactory.URI;
 
   /**
    * The Class URICriteria. This criteria filters model reader/writer factories
@@ -49,7 +51,7 @@ public class AbstractModelWriterFactory extends
 
       List<ModelWriterFactory> filteredFactories = new ArrayList<>();
 
-      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, IURIHandling.URI);
+      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, URI);
       boolean hasModel = ParameterBlocks.hasSubBlock(parameter, MODEL);
       boolean hasMimeType = ParameterBlocks.hasSubBlock(parameter, MIME_TYPE);
 
@@ -57,7 +59,7 @@ public class AbstractModelWriterFactory extends
 
         ModelWriterFactory factory = factories.get(i);
         if ((hasURI && factory.supportsURI((URI) ParameterBlocks
-            .getSubBlockValue(parameter, IURIHandling.URI)))) {
+            .getSubBlockValue(parameter, URI)))) {
           filteredFactories.add(factories.get(i));
           continue;
         }

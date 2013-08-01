@@ -50,7 +50,7 @@ public class AbstractModelReaderFactory extends
 
       List<ModelReaderFactory> filteredFactories = new ArrayList<>();
 
-      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, IURIHandling.URI);
+      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, URI);
       boolean hasModel = ParameterBlocks.hasSubBlock(parameter, MODEL);
       boolean hasMimeType = ParameterBlocks.hasSubBlock(parameter, MIME_TYPE);
 
@@ -59,9 +59,7 @@ public class AbstractModelReaderFactory extends
         ModelReaderFactory factory = factories.get(i);
 
         if (hasURI) {
-          URI uri =
-              (URI) ParameterBlocks.getSubBlockValue(parameter,
-                  IURIHandling.URI);
+          URI uri = (URI) ParameterBlocks.getSubBlockValue(parameter, URI);
           if ((uri == null)) {
             continue;
           }

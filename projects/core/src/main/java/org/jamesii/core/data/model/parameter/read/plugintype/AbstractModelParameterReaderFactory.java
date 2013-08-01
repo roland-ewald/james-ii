@@ -33,6 +33,9 @@ public class AbstractModelParameterReaderFactory extends
   /** The parameter themself. */
   public static final String PARAMETER = "parameter";
 
+  /** The model URI */
+  public static final String URI = IURIHandling.URI;
+
   /**
    * Identification string which should be used in model readers to identify the
    * block which contain such a basic initialization.<br/>
@@ -57,7 +60,7 @@ public class AbstractModelParameterReaderFactory extends
 
       List<ModelParameterReaderFactory> filteredFactories = new ArrayList<>();
 
-      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, IURIHandling.URI);
+      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, URI);
       boolean hasModel = ParameterBlocks.hasSubBlock(parameter, MODEL);
 
       for (int i = 0; i < factories.size(); i++) {
@@ -66,7 +69,7 @@ public class AbstractModelParameterReaderFactory extends
 
           ModelParameterReaderFactory factory = factories.get(i);
           if ((hasURI && factory.supportsURI((URI) ParameterBlocks
-              .getSubBlockValue(parameter, IURIHandling.URI)))) {
+              .getSubBlockValue(parameter, URI)))) {
             filteredFactories.add(factories.get(i));
             continue;
           }
