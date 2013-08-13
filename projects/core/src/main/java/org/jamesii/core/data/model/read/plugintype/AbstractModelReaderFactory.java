@@ -33,6 +33,9 @@ public class AbstractModelReaderFactory extends
   /** String identifier for passing mime type to be used **/
   public static final String MIME_TYPE = "mimeType";
 
+  /** String identifier for passing the model URI. */
+  public static final String URI = IURIHandling.URI;
+
   /**
    * The Class URICriteria. This criteria filters model reader/writer factories
    * according an URI which has to be passed in a parameter classed "URI". In
@@ -47,7 +50,7 @@ public class AbstractModelReaderFactory extends
 
       List<ModelReaderFactory> filteredFactories = new ArrayList<>();
 
-      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, IURIHandling.URI);
+      boolean hasURI = ParameterBlocks.hasSubBlock(parameter, URI);
       boolean hasModel = ParameterBlocks.hasSubBlock(parameter, MODEL);
       boolean hasMimeType = ParameterBlocks.hasSubBlock(parameter, MIME_TYPE);
 
@@ -56,9 +59,7 @@ public class AbstractModelReaderFactory extends
         ModelReaderFactory factory = factories.get(i);
 
         if (hasURI) {
-          URI uri =
-              (URI) ParameterBlocks.getSubBlockValue(parameter,
-                  IURIHandling.URI);
+          URI uri = (URI) ParameterBlocks.getSubBlockValue(parameter, URI);
           if ((uri == null)) {
             continue;
           }

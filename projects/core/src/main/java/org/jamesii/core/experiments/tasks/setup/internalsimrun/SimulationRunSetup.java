@@ -16,8 +16,8 @@ import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.data.ISQLDataBase;
-import org.jamesii.core.data.IURIHandling;
 import org.jamesii.core.data.model.IModelReader;
+import org.jamesii.core.data.model.read.plugintype.AbstractModelReaderFactory;
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
 import org.jamesii.core.experiments.ExecutionMeasurements;
@@ -123,7 +123,8 @@ public class SimulationRunSetup implements IComputationTaskSetup {
     execMeasures.startModelCreation();
     model =
         modelReader.read((URI) simRunConfig.getAbsModelReaderFactoryParams()
-            .getSubBlockValue(IURIHandling.URI), simRunConfig.getParameters());
+            .getSubBlockValue(AbstractModelReaderFactory.URI), simRunConfig
+            .getParameters());
     execMeasures.stopModelCreation();
     return model;
   }
