@@ -97,7 +97,8 @@
 					<forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
 					<workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
 					<runOrder>random</runOrder>
-					<forkMode>always</forkMode>
+					<forkCount>1</forkCount>
+					<reuseForks>false</reuseForks>
 					<useManifestOnlyJar>false</useManifestOnlyJar>
 					<argLine>-XX:-UseSplitVerifier</argLine>
 					<includes>
