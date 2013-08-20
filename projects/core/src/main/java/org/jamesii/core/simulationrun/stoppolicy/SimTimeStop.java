@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.simulationrun.stoppolicy;
 
+import java.io.Serializable;
+
 import org.jamesii.core.experiments.tasks.stoppolicy.AbstractComputationTaskStopPolicy;
 import org.jamesii.core.simulationrun.ISimulationRun;
 
@@ -21,7 +23,7 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  */
 public class SimTimeStop<TimeBase extends Comparable<TimeBase>> extends
     AbstractComputationTaskStopPolicy<ISimulationRun> implements
-    ISimulationRunStopPolicySimTime<TimeBase> {
+    ISimulationRunStopPolicySimTime<TimeBase>, Serializable {
 
   /** The end time. Default is null. */
   private TimeBase endTime = null;
