@@ -41,8 +41,7 @@ public abstract class ProcessorTest<P extends IProcessor<Double>, M extends IMod
    */
   protected void runProcessor(P processor) {
     ISimulationRun simRun = setSimulationRun(processor);
-    ((IRunnable) processor).run(new SimTimeStop(simRun,
-        Double.POSITIVE_INFINITY));
+    ((IRunnable) processor).run(new SimTimeStop(Double.POSITIVE_INFINITY));
   }
 
   /**

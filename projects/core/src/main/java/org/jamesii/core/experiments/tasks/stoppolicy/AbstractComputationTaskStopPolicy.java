@@ -21,35 +21,6 @@ import org.jamesii.core.experiments.tasks.IComputationTask;
  *          policy can work on.
  */
 public abstract class AbstractComputationTaskStopPolicy<T extends IComputationTask>
-    implements IComputationTaskStopPolicy {
-
-  /** The computation task. */
-  private T task;
-
-  /**
-   * Instantiates a new abstract computation task stop policy.
-   * 
-   * @param task
-   *          the computation task the stop policy is working on
-   */
-  public AbstractComputationTaskStopPolicy(T task) {
-    super();
-    this.setTask(task);
-  }
-
-  /**
-   * @return the task
-   */
-  protected T getTask() {
-    return task;
-  }
-
-  /**
-   * @param task
-   *          the task to set
-   */
-  private void setTask(T task) {
-    this.task = task;
-  }
+    implements IComputationTaskStopPolicy<T> {
 
 }

@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy.concurrent;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.util.Semaphore;
 
@@ -37,6 +38,8 @@ public class ConcurrentComputationTaskStopPolicy extends Thread implements
   /** The criteria which shall be executed in a thread. */
   private IComputationTaskStopPolicy threadedPolicy;
 
+  private IComputationTask task;
+
   /**
    * Create an instance of the concurrent computation task stop policy. The
    * passed stop policy will be executed in concurrency.
@@ -50,8 +53,11 @@ public class ConcurrentComputationTaskStopPolicy extends Thread implements
   }
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(IComputationTask t) {
     // policy needs to be queried again
+    synchronized (task) {
+      task = t;
+    }
     sem.v();
     return end;
   }
@@ -60,7 +66,11 @@ public class ConcurrentComputationTaskStopPolicy extends Thread implements
   public void run() {
     while (!end) {
       sem.p();
-      end = threadedPolicy.hasReachedEnd();
+      IComputationTask t;
+      synchronized (task) {
+        t = task;
+      }
+      end = threadedPolicy.hasReachedEnd(t);
     }
   }
 

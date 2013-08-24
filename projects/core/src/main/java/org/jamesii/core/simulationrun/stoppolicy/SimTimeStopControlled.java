@@ -22,7 +22,7 @@ import org.jamesii.core.util.ITime;
  */
 public class SimTimeStopControlled<TimeBase extends Comparable<TimeBase>> extends
     AbstractComputationTaskStopPolicy<ISimulationRun> implements
-    ISimulationRunStopPolicySimTime<TimeBase> {
+    ISimulationRunStopPolicySimTime<TimeBase, ISimulationRun> {
 
   /** The stop time. Default is null */
   private TimeBase stopTime = null;
@@ -39,13 +39,13 @@ public class SimTimeStopControlled<TimeBase extends Comparable<TimeBase>> extend
    *          the stop time
    */
   public SimTimeStopControlled(ITime<TimeBase> timeSource, TimeBase stopTime) {
-    super(null);
+    super();
     this.timeSource = timeSource;
     this.stopTime = stopTime;
   }
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(ISimulationRun r) {
     return stopTime.compareTo(timeSource.getTime()) <= 0;
   }
 
