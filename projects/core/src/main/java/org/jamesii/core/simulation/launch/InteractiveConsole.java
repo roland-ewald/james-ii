@@ -636,7 +636,7 @@ public class InteractiveConsole {
     @Override
     public void run() {
       ((IRunnable) simulation.getProcessorInfo().getLocal())
-          .run(new SimTimeStop(simulation, runto));
+          .run(new SimTimeStop(runto));
     }
   }
 

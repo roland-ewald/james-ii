@@ -32,14 +32,11 @@ public class WallClockTimeStop extends
 
   /**
    * The Constructor.
-   * 
-   * @param run
-   *          the simulation run which shall be "observed"
    * @param stopTimeDelta
    *          the stop time delta (wall clock time, in milliseconds)
    */
-  public WallClockTimeStop(ISimulationRun run, Long stopTimeDelta) {
-    super(run);
+  public WallClockTimeStop(Long stopTimeDelta) {
+    super();
     this.stopTimeDelta = stopTimeDelta;
   }
 
@@ -61,8 +58,8 @@ public class WallClockTimeStop extends
   /**
    * Inits the object. This method will only be called once.
    */
-  private void init() {
-    wcEndTime = this.getTask().getWCStartTime() + stopTimeDelta;
+  private void init(ISimulationRun r) {
+    wcEndTime = r.getWCStartTime() + stopTimeDelta;
     if (wcEndTime < 0) {
       throw new IllegalArgumentException("current time " + stopTimeDelta
           + " resulted in a negative value, probably due to an overflow?");
@@ -70,9 +67,9 @@ public class WallClockTimeStop extends
   }
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(ISimulationRun r) {
     if (wcEndTime == -1l) {
-      init();
+      init(r);
     }
     return Calendar.getInstance().getTimeInMillis() >= wcEndTime;
   }

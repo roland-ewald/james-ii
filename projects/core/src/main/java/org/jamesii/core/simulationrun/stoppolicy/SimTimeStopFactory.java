@@ -33,7 +33,7 @@ public class SimTimeStopFactory extends ComputationTaskStopPolicyFactory {
     if (endTime == null) {
       endTime = Double.POSITIVE_INFINITY;
     }
-    return new SimTimeStop(run, endTime.doubleValue());
+    return new SimTimeStop(endTime.doubleValue());
   }
 
 }

@@ -120,7 +120,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    * arbitrary condition is met (e.g., based on the simulation trajectory, ...).
    */
   private transient IComputationTaskStopPolicy simRunStopPolicy =
-      new SimTimeStop<Double>(this, Double.POSITIVE_INFINITY);
+      new SimTimeStop<Double>(Double.POSITIVE_INFINITY);
 
   /** The stop watch. */
   private transient StopWatch stopWatch = new StopWatch();

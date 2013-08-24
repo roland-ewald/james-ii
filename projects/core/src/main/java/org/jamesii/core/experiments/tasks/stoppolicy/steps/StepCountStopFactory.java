@@ -35,7 +35,7 @@ public class StepCountStopFactory extends ComputationTaskStopPolicyFactory {
     if (stepCount == null) {
       stepCount = 1l;
     }
-    return new StepCountStop(task, stepCount);
+    return new StepCountStop(stepCount);
   }
 
 }

@@ -23,22 +23,23 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  */
 public class SimTimeStop<TimeBase extends Comparable<TimeBase>> extends
     AbstractComputationTaskStopPolicy<ISimulationRun> implements
-    ISimulationRunStopPolicySimTime<TimeBase>, Serializable {
+    ISimulationRunStopPolicySimTime<TimeBase, ISimulationRun>, Serializable {
+
+  /**
+   * Serialization ID
+   */
+  private static final long serialVersionUID = 1L;
 
   /** The end time. Default is null. */
   private TimeBase endTime = null;
 
   /**
    * Instantiates a new simulation time end.
-   * 
-   * @param run
-   *          the simulation run which shall be "observed"
-   * 
    * @param endTime
    *          the end time
    */
-  public SimTimeStop(ISimulationRun run, TimeBase endTime) {
-    super(run);
+  public SimTimeStop(TimeBase endTime) {
+    super();
     this.endTime = endTime;
   }
 
@@ -59,8 +60,8 @@ public class SimTimeStop<TimeBase extends Comparable<TimeBase>> extends
 
   @SuppressWarnings("unchecked")
   @Override
-  public boolean hasReachedEnd() {
-    TimeBase currentTime = (TimeBase) getTask().getTime();
+  public boolean hasReachedEnd(ISimulationRun r) {
+    TimeBase currentTime = (TimeBase) r.getTime();
     if (currentTime == null) {
       return true;
     }

@@ -24,15 +24,13 @@ public class EmptyStopCondition extends
 
   /**
    * Create an instance of an empty stop condition.
-   * 
-   * @param run
    */
-  public EmptyStopCondition(IComputationTask run) {
-    super(run);
+  public EmptyStopCondition() {
+    super();
   }
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(IComputationTask t) {
     return false;
   }
 

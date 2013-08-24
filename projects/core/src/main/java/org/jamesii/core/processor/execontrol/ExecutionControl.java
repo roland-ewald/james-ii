@@ -260,7 +260,7 @@ public class ExecutionControl implements Serializable {
    */
   public void run() {
     prepareRun();
-    run(new EmptyStopCondition(getOwner().getComputationTask()));
+    run(new EmptyStopCondition());
   }
 
   /**

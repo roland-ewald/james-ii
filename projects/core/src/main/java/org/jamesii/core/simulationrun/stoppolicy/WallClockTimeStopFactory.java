@@ -32,7 +32,7 @@ public class WallClockTimeStopFactory extends ComputationTaskStopPolicyFactory {
     if (endTimeDelta == null) {
       endTimeDelta = 1l;
     }
-    return new WallClockTimeStop(run, endTimeDelta.longValue());
+    return new WallClockTimeStop(endTimeDelta.longValue());
   }
 
 }
