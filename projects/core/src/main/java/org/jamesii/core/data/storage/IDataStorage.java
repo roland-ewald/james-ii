@@ -99,7 +99,7 @@ public interface IDataStorage<InternalID extends Serializable> {
    * @param expID
    *          the internal id used in the database to identify the experiment
    */
-  public void experimentDone(IUniqueID expID);
+  void experimentDone(IUniqueID expID);
 
   /**
    * Get the number of experiments which have been executed using this data
@@ -189,7 +189,7 @@ public interface IDataStorage<InternalID extends Serializable> {
    * 
    * @param configurationID
    */
-  public void configurationDone(IUniqueID configurationID);
+  void configurationDone(IUniqueID configurationID);
 
   /**
    * Get the number of configurations computed in the experiment passed. Per
@@ -279,7 +279,7 @@ public interface IDataStorage<InternalID extends Serializable> {
    * 
    * @param taskID
    */
-  public void computationTaskDone(IUniqueID taskID);
+  void computationTaskDone(IUniqueID taskID);
 
   /**
    * Return the number of simulation runs which have been executed within the

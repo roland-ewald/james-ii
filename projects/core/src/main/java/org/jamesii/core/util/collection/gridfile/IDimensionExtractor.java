@@ -20,18 +20,18 @@ public interface IDimensionExtractor<T> {
    * @param dimension
    * @return value of the dimension
    */
-  public double getData(T element, int dimension);
+  double getData(T element, int dimension);
 
   /**
    * Return the array of all data from all dimensions.
    */
-  public double[] getAllData(T element);
+  double[] getAllData(T element);
 
   /**
    * Return the number of dimensions this dimension extractor supports for the
    * given object.
    */
-  public int getNumberOfDimensions(T element);
+  int getNumberOfDimensions(T element);
 
   /**
    * Get as much dimension information as possible from the given parameter
@@ -42,6 +42,6 @@ public interface IDimensionExtractor<T> {
    * the list of integers which is returned. These dimensions could be ignored
    * during the next partial match execution.
    */
-  public Pair<double[], List<Integer>> getData(ParameterBlock params);
+  Pair<double[], List<Integer>> getData(ParameterBlock params);
 
 }
