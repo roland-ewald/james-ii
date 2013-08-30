@@ -178,8 +178,9 @@ public final class FileLog implements ILogListener, ILowMemoryListener {
 
   @Override
   public void publish(LogRecord record) {
-    if (closed)
+    if (closed) {
       return;
+    }
     try {
       if (!delayedwrite) {
         write(record);
