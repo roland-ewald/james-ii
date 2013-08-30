@@ -85,7 +85,7 @@ public final class SelectionWindow<T extends Factory> extends JDialog {
    * parameter block in the {@link FactoryComboBox}'s model to be updated each
    * time a parameter value changes.
    */
-  transient private IPropertyChangedListener parameterPanelPropertyChangedListener =
+  private transient IPropertyChangedListener parameterPanelPropertyChangedListener =
       new IPropertyChangedListener() {
         @Override
         public void propertyChanged(Object propertyParent, String propertyName,

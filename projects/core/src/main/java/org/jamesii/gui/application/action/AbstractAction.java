@@ -208,7 +208,7 @@ public abstract class AbstractAction implements IAction {
   }
 
   @Override
-  final public boolean equals(Object obj) {
+  public final boolean equals(Object obj) {
     if (obj instanceof IAction) {
       return ((IAction) obj).getId().equals(getId())
           && ((IAction) obj).getWindow() == getWindow();
@@ -217,7 +217,7 @@ public abstract class AbstractAction implements IAction {
   }
 
   @Override
-  final public int hashCode() {
+   public final int hashCode() {
     return id.hashCode() * 31
         + (getWindow() == null ? 0 : getWindow().hashCode());
   }
@@ -288,7 +288,7 @@ public abstract class AbstractAction implements IAction {
    * @param newValue
    *          the new property value
    */
-  protected synchronized final void firePropertyChange(String valueName,
+  protected final synchronized void firePropertyChange(String valueName,
       Object oldValue, Object newValue) {
     changeSupport.firePropertyChange(valueName, oldValue, newValue);
   }
