@@ -22,23 +22,11 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
-import org.jamesii.core.plugins.DomPluginData;
-import org.jamesii.core.plugins.DomPluginTypeData;
 import org.jamesii.core.plugins.IPluginData;
 import org.jamesii.core.plugins.IPluginTypeData;
 import org.jamesii.core.plugins.PluginLoadException;
-import org.jamesii.core.plugins.SchemaResolver;
-import org.jamesii.core.util.misc.Files;
-import org.w3c.dom.Document;
-import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 /**
  * The disc plug-in finder is the most simple, but a brute force, way to enable

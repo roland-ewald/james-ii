@@ -8,7 +8,6 @@ package org.jamesii.core.math.random.generators.plugintype;
 
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.random.generators.IRandom;
-import org.jamesii.core.math.random.rnggenerator.IRNGGenerator;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 

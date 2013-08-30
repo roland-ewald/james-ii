@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.tasks.stoppolicy.EmptyStopCondition;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.model.IModel;

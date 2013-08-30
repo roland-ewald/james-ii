@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**

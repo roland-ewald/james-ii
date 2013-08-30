@@ -7,7 +7,6 @@
 package org.jamesii.core.base;
 
 import java.io.Serializable;
-import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.observe.IMediator;
