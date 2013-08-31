@@ -384,7 +384,7 @@ class TaskExecutor {
     /**
      * @return the attached task
      */
-    public ITask getTask();
+    ITask getTask();
   }
 
   /**

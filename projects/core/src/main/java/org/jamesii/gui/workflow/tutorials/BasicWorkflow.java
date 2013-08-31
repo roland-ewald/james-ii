@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.AbstractComputationInstrumenterFactory;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;

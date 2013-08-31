@@ -17,7 +17,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTree;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
@@ -44,7 +43,7 @@ public class ExperimentView extends DefaultTreeView {
 
   /**
    * A tree model wrapping the tree structure of experiment variables of an
-   * experiment for use in a {@link JTree}.
+   * experiment for use in a {@link javax.swing.JTree}.
    * 
    * @author Jan Himmelspach
    */

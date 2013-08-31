@@ -15,8 +15,9 @@ import org.jamesii.gui.syntaxeditor.ILexerToken;
 import org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter.Style;
 
 /**
- * Lexer used by the {@link DefaultHighlighter} for the style
- * {@link Style#DEFAULT}.
+ * Lexer used by the
+ * {@link org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter.DefaultHighlighter}
+ * for the style {@link Style#DEFAULT}.
  * 
  * @author Stefan Rybacki
  * 

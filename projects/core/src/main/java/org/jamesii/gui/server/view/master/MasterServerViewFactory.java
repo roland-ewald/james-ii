@@ -9,7 +9,6 @@ package org.jamesii.gui.server.view.master;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.masterserver.IMasterServer;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.Contribution;

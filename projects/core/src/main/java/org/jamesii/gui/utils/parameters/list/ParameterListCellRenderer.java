@@ -10,16 +10,14 @@ import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
-import org.jamesii.core.parameters.ParameterBlock;
 
 /**
- * A {@link ListCellRenderer} that displays factories and a summary of the
- * parameters set for them in an associated {@link ParameterBlock}. This
- * renderer assumes that a {@link ConfigurationListModel} is used for the list.
- * As a convenience the {@link ParametrizedList} class can be used which uses
- * both the correct model and this renderer.
+ * A {@link javax.swing.ListCellRenderer} that displays factories and a summary
+ * of the parameters set for them in an associated
+ * {@link org.jamesii.core.parameters.ParameterBlock}. This renderer assumes
+ * that a {@link ConfigurationListModel} is used for the list. As a convenience
+ * the {@link ParametrizedList} class can be used which uses both the correct
+ * model and this renderer.
  * 
  * @author Johannes Rössel
  */

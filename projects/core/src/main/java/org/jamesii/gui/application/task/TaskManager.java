@@ -13,7 +13,6 @@ import java.util.concurrent.Semaphore;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.util.ICallBack;
-import org.jamesii.gui.application.IProgressListener;
 import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.utils.ProgressAdapter;
 
@@ -35,9 +34,10 @@ import org.jamesii.gui.utils.ProgressAdapter;
  * To follow the tasks execution, that means to follow when it was added,
  * started, finished and when the progress changes attach a
  * {@link ITaskManagerListener} to the task manager. This has the advantage over
- * using an {@link IProgressListener} directly on the task because it does not
- * rely on the correct implementation of the progress notification by the task
- * in order to provide the added, started and finished events.
+ * using an {@link org.jamesii.gui.application.IProgressListener} directly on
+ * the task because it does not rely on the correct implementation of the
+ * progress notification by the task in order to provide the added, started and
+ * finished events.
  * 
  * @author Stefan Rybacki
  */
@@ -150,7 +150,8 @@ public final class TaskManager extends ProgressAdapter {
   }
 
   /**
-   * Helper method that forwards the {@link IProgressListener#finished(Object)}
+   * Helper method that forwards the
+   * {@link org.jamesii.gui.application.IProgressListener#finished(Object)}
    * events
    * 
    * @param task
@@ -165,7 +166,8 @@ public final class TaskManager extends ProgressAdapter {
   }
 
   /**
-   * Helper method that forwards the {@link IProgressListener#started(Object)}
+   * Helper method that forwards the
+   * {@link org.jamesii.gui.application.IProgressListener#started(Object)}
    * events
    * 
    * @param task
@@ -182,7 +184,8 @@ public final class TaskManager extends ProgressAdapter {
 
   /**
    * Helper method that forwards the
-   * {@link IProgressListener#taskInfo(Object, String)} events.
+   * {@link org.jamesii.gui.application.IProgressListener#taskInfo(Object, String)}
+   * events.
    * 
    * @param task
    *          The task the information is provided for.
@@ -199,7 +202,8 @@ public final class TaskManager extends ProgressAdapter {
 
   /**
    * Helper method that forwards the
-   * {@link IProgressListener#progress(Object, float)} events
+   * {@link org.jamesii.gui.application.IProgressListener#progress(Object, float)}
+   * events
    * 
    * @param task
    *          The task the progress is provided for.

@@ -6,14 +6,12 @@
  */
 package org.jamesii.gui.application.resource;
 
-import javax.swing.Icon;
-
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.plugintype.ResourceProviderFactory;
 
 /**
  * Resource factory providing access to {@link IconResourceProvider} which is
- * able to load an image file into an {@link Icon}.
+ * able to load an image file into an {@link javax.swing.Icon}.
  * 
  * @author Stefan Rybacki
  */

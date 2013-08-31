@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.Icon;
-import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -46,7 +45,7 @@ public class SimulationServerView extends ServerView {
 
   /**
    * A tree model providing the plugins as tree like structure for use in a
-   * {@link JTree}.
+   * {@link javax.swing.JTree}.
    * 
    * @author Jan Himmelspach
    */

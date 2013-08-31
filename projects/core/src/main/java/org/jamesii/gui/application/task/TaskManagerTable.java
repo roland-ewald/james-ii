@@ -10,7 +10,6 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -67,9 +66,9 @@ public class TaskManagerTable extends JTable {
   }
 
   /**
-   * Private helper class that provides a {@link TableColumnModel} for the
-   * {@link TaskManagerTable}, where it basically is only responsible for
-   * setting fixed column widths.
+   * Private helper class that provides a
+   * {@link javax.swing.table.TableColumnModel} for the {@link TaskManagerTable}
+   * , where it basically is only responsible for setting fixed column widths.
    * 
    * @author Stefan Rybacki
    */

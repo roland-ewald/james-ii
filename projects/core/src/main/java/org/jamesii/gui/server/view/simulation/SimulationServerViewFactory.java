@@ -3,7 +3,6 @@ package org.jamesii.gui.server.view.simulation;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.Contribution;

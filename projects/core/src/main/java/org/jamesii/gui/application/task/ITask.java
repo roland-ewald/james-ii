@@ -7,12 +7,12 @@
 package org.jamesii.gui.application.task;
 
 import org.jamesii.gui.application.IProgressListener;
-import org.jamesii.gui.application.ProgressDialog;
 
 /**
  * This class is supposed to be used for long running task that should run while
- * the UI should still be responsive. Use {@link ProgressDialog#runTask(ITask)}
- * to run this task and have a progress window shown. Or better yet use
+ * the UI should still be responsive. Use
+ * {@link org.jamesii.gui.application.ProgressDialog#runTask(ITask)} to run this
+ * task and have a progress window shown. Or better yet use
  * {@link TaskManager#addTask(ITask)} to have an automatic management system.
  * <p>
  * <b><font color="red">This interface is likely to change in future

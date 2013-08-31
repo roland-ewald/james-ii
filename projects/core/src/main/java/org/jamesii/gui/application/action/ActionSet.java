@@ -7,10 +7,8 @@
 package org.jamesii.gui.application.action;
 
 import javax.swing.Icon;
-import javax.swing.KeyStroke;
 
 import org.jamesii.gui.application.IWindow;
-import org.jamesii.gui.base.URLTreeNodeURL;
 
 /**
  * Empty action that can be used to represent non empty nodes in the action
@@ -30,10 +28,10 @@ public final class ActionSet extends AbstractAction {
    * @param label
    *          the action's label
    * @param path
-   *          the path in {@link URLTreeNodeURL} format
+   *          the path in {@link org.jamesii.gui.base.URLTreeNodeURL} format
    * @param keyStroke
    *          the key stroke for this action (in a format
-   *          {@link KeyStroke#getKeyStroke(String) understands})
+   *          {@link javax.swing.KeyStroke#getKeyStroke(String) understands})
    * @param mnemonic
    *          the action's mnemonic
    * @param icon
@@ -54,10 +52,10 @@ public final class ActionSet extends AbstractAction {
    * @param label
    *          the action's label
    * @param path
-   *          the paths in {@link URLTreeNodeURL} format
+   *          the paths in {@link org.jamesii.gui.base.URLTreeNodeURL} format
    * @param keyStroke
    *          the key stroke for this action (in a format
-   *          {@link KeyStroke#getKeyStroke(String) understands})
+   *          {@link javax.swing.KeyStroke#getKeyStroke(String) understands})
    * @param mnemonic
    *          the action's mnemonic
    * @param icon
@@ -78,7 +76,7 @@ public final class ActionSet extends AbstractAction {
    * @param label
    *          the action's label
    * @param path
-   *          the path in {@link URLTreeNodeURL} format
+   *          the path in {@link org.jamesii.gui.base.URLTreeNodeURL} format
    * @param window
    *          the window the action belongs to
    */
@@ -94,7 +92,7 @@ public final class ActionSet extends AbstractAction {
    * @param label
    *          the action's label
    * @param path
-   *          the paths in {@link URLTreeNodeURL} format
+   *          the paths in {@link org.jamesii.gui.base.URLTreeNodeURL} format
    * @param window
    *          the window the action belongs to
    */

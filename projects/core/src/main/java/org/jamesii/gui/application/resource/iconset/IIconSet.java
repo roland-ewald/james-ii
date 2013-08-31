@@ -10,8 +10,6 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 
-import org.jamesii.gui.application.resource.ApplicationResourceManager;
-
 /**
  * Interface for an icon set that is used throughout the James application for
  * menu, toolbar and other icons. An implementing class can replace the current
@@ -30,8 +28,8 @@ public interface IIconSet {
    * Returns a an icon for a given id.
    * <p>
    * The implementing class should make use of
-   * {@link ApplicationResourceManager#getResource(String, Class)} to enable
-   * automatic caching and so on.
+   * {@link org.jamesii.gui.application.resource.ApplicationResourceManager#getResource(String, Class)}
+   * to enable automatic caching and so on.
    * 
    * @param id
    *          the icons id
@@ -43,8 +41,8 @@ public interface IIconSet {
    * Returns an image for a given id.
    * <p>
    * The implementing class should make use of
-   * {@link ApplicationResourceManager#getResource(String, Class)} to enable
-   * automatic caching and so on.
+   * {@link org.jamesii.gui.application.resource.ApplicationResourceManager#getResource(String, Class)}
+   * to enable automatic caching and so on.
    * 
    * @param id
    *          the icons id
