@@ -775,11 +775,9 @@ public class TaskConfiguration implements Serializable,
 
   @Override
   public int compareTo(TaskConfiguration config) {
-    String myRepresentation =
-        String.valueOf(parameters) + String.valueOf(modelReaderParams);
+    String myRepresentation = String.valueOf(parameters) + modelReaderParams;
     String otherRepresentation =
-        String.valueOf(config.getParameters())
-            + String.valueOf(config.getModelReaderParams());
+        String.valueOf(config.getParameters()) + config.getModelReaderParams();
     return myRepresentation.compareTo(otherRepresentation);
   }
 
