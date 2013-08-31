@@ -10,7 +10,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -20,7 +19,6 @@ import java.awt.image.BufferedImage;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
@@ -467,7 +465,7 @@ public final class BasicUtilities {
    * @param height
    *          the height
    * @return the buffered image
-   * @see GraphicsConfiguration
+   * @see java.awt.GraphicsConfiguration
    */
   public static BufferedImage createCompatibleImage(int width, int height) {
     return GraphicsEnvironment.getLocalGraphicsEnvironment()
@@ -485,7 +483,7 @@ public final class BasicUtilities {
    * @param transparency
    *          the transparency
    * @return the buffered image
-   * @see GraphicsConfiguration#createCompatibleImage(int, int, int)
+   * @see java.awt.GraphicsConfiguration#createCompatibleImage(int, int, int)
    */
   public static BufferedImage createCompatibleImage(int width, int height,
       int transparency) {
@@ -666,9 +664,9 @@ public final class BasicUtilities {
 
   /**
    * Helper method that should be used in a finally block when closing
-   * {@link Closeable} objects such as {@link InputStream}, {@link OutputStream}
-   * and so on. It checks for <code>null</code> and catches execeptions that
-   * might be thrown when closing silently.
+   * {@link Closeable} objects such as {@link InputStream},
+   * {@link java.io.OutputStream} and so on. It checks for <code>null</code> and
+   * catches execeptions that might be thrown when closing silently.
    * 
    * @param closeable
    *          the object to close

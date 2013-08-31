@@ -13,24 +13,24 @@ import org.jamesii.SimSystem;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.plugins.IFactoryInfo;
 import org.jamesii.core.plugins.IParameter;
-import org.jamesii.gui.utils.factories.ConfigureFactoryPanel;
-import org.jamesii.gui.utils.objecteditor.ObjectEditorComponent;
-import org.jamesii.gui.utils.objecteditor.property.provider.IPropertyProvider;
 import org.jamesii.gui.utils.parameters.factories.converter.IStringConverter;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.AbstractValueConverterFactory;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.ValueConverterFactory;
-import org.jamesii.gui.utils.parameters.factories.implementationprovider.PluginTypeImplementationProvider;
-import org.jamesii.gui.utils.parameters.factories.propertyprovider.FactoryParameterPropertyProvider;
-import org.jamesii.gui.utils.parameters.factories.propertyprovider.PluginTypeParameterPropertyProvider;
 
 /**
  * This is the main class that can be used to accumulate parameters for any
- * given factory by using the {@link ObjectEditorComponent}. This is achieved by
- * combining an instance of this class with {@link IPropertyProvider}s
- * {@link FactoryParameterPropertyProvider} and
- * {@link PluginTypeParameterPropertyProvider}. Also an implementation provider
- * is given {@link PluginTypeImplementationProvider}. To make usage easy try to
- * use {@link FactoryParameterPanel} or {@link ConfigureFactoryPanel} where
+ * given factory by using the
+ * {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent}. This is
+ * achieved by combining an instance of this class with
+ * {@link org.jamesii.gui.utils.objecteditor.property.provider.IPropertyProvider}
+ * s
+ * {@link org.jamesii.gui.utils.parameters.factories.propertyprovider.FactoryParameterPropertyProvider}
+ * and
+ * {@link org.jamesii.gui.utils.parameters.factories.propertyprovider.PluginTypeParameterPropertyProvider}
+ * . Also an implementation provider is given
+ * {@link org.jamesii.gui.utils.parameters.factories.implementationprovider.PluginTypeImplementationProvider}
+ * . To make usage easy try to use {@link FactoryParameterPanel} or
+ * {@link org.jamesii.gui.utils.factories.ConfigureFactoryPanel} where
  * internally this class is used.
  * 
  * @author Stefan Rybacki

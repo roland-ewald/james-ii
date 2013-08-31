@@ -8,7 +8,6 @@ package org.jamesii.core.distributed.partitioner;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
 
 import org.jamesii.core.util.graph.ISimpleGraph;

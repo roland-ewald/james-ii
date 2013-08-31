@@ -6,17 +6,16 @@
  */
 package org.jamesii.gui.syntaxeditor;
 
-import javax.swing.event.DocumentListener;
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
 /**
  * Helper class for {@link DocumentReader} in combination with
- * {@link AbstractDocument}s where one can set {@link DocumentFilter}s which are
- * notified about changes to a document before they happened in contrast to
- * {@link DocumentListener}s that are notified after the change happened.
+ * {@link javax.swing.text.AbstractDocument}s where one can set
+ * {@link DocumentFilter}s which are notified about changes to a document before
+ * they happened in contrast to {@link javax.swing.event.DocumentListener}s that
+ * are notified after the change happened.
  * 
  * @author Stefan Rybacki
  * 

@@ -13,17 +13,16 @@ import java.awt.event.WindowEvent;
 import javax.swing.WindowConstants;
 
 import org.jamesii.gui.application.ApplicationDialog;
-import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.IWindow;
 import org.jamesii.gui.application.IWindowChangeListener;
 import org.jamesii.gui.application.IWindowListener;
-import org.jamesii.gui.application.IWindowManager;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.action.IAction;
 
 /**
  * Class internally used to contain a given {@link IWindow} in a separate
- * dialog. This is used for the {@link Contribution} {@link Contribution#DIALOG}
+ * dialog. This is used for the {@link org.jamesii.gui.application.Contribution}
+ * {@link org.jamesii.gui.application.Contribution#DIALOG}
  * 
  * @author Stefan Rybacki
  */
@@ -37,7 +36,7 @@ final class DialogIWindow extends ApplicationDialog implements IWindowListener,
 
   /**
    * Creates a new dialog for the given {@link IWindow} using the given
-   * {@link IWindowManager} and the relative action url.
+   * {@link org.jamesii.gui.application.IWindowManager} and the relative action url.
    * 
    * @param window
    *          the {@link IWindow} to contain
@@ -119,7 +118,8 @@ final class DialogIWindow extends ApplicationDialog implements IWindowListener,
     setModal(false);
 
     setVisible(true);
-    setLocationRelativeTo(WindowManagerManager.getWindowManager().getMainWindow());
+    setLocationRelativeTo(WindowManagerManager.getWindowManager()
+        .getMainWindow());
   }
 
   /**

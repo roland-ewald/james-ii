@@ -17,28 +17,25 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.Scrollable;
 
-import org.jamesii.core.factories.Factory;
-import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.IconManager;
 import org.jamesii.gui.application.resource.iconset.IconIdentifier;
-import org.jamesii.gui.utils.objecteditor.implementationprovider.DoubleImplementationProvider;
 import org.jamesii.gui.utils.objecteditor.implementationprovider.IImplementationProvider;
 import org.jamesii.gui.utils.objecteditor.property.IPropertyFilter;
 import org.jamesii.gui.utils.objecteditor.property.editor.IPropertyEditor;
 import org.jamesii.gui.utils.objecteditor.property.provider.IPropertyProvider;
-import org.jamesii.gui.utils.parameters.factories.FactoryParameters;
 
 /**
  * This is the base class when using a tree based property editor for any kind
- * of objects. Those objects can go from simple beans to {@link ParameterBlock}s
- * used to parameterize a factory. The editor provides easy access to arbitrary
- * properties of a given object and its properties and subproperties. It also
- * provides the option to provide custom editors for special properties and/or
- * special values. It also provides the option to provide custom implementations
- * for specific properties which are shown in a dropdown for selection. The
- * entire property determination process is transparent in a way that it is
- * possible to provide arbitrary properties for an object, property or
- * subproperty using {@link IPropertyProvider} implementations.
+ * of objects. Those objects can go from simple beans to
+ * {@link org.jamesii.core.parameters.ParameterBlock}s used to parameterize a
+ * factory. The editor provides easy access to arbitrary properties of a given
+ * object and its properties and subproperties. It also provides the option to
+ * provide custom editors for special properties and/or special values. It also
+ * provides the option to provide custom implementations for specific properties
+ * which are shown in a dropdown for selection. The entire property
+ * determination process is transparent in a way that it is possible to provide
+ * arbitrary properties for an object, property or subproperty using
+ * {@link IPropertyProvider} implementations.
  * <p/>
  * To use this component you can just pass an object which's properties you want
  * to edit. If no special {@link IPropertyProvider} is provided only write and
@@ -68,15 +65,16 @@ import org.jamesii.gui.utils.parameters.factories.FactoryParameters;
  * </pre>
  * </code> The example creates an editor component for a given object. Assuming
  * the object has a {@link Double} property a
- * {@link DoubleImplementationProvider} is provided to be able to set the
- * property to {@link Double#POSITIVE_INFINITY} or
- * {@link Double#NEGATIVE_INFINITY}.
+ * {@link org.jamesii.gui.utils.objecteditor.implementationprovider.DoubleImplementationProvider}
+ * is provided to be able to set the property to
+ * {@link Double#POSITIVE_INFINITY} or {@link Double#NEGATIVE_INFINITY}.
  * <p/>
- * E.g., {@link FactoryParameters} makes heavy use of this component with custom
- * {@link IPropertyProvider}s as well as {@link IImplementationProvider} for
- * plugin types. There this component is used to fill a {@link ParameterBlock}
- * for a specified {@link Factory}, including plugin type assignment and sub
- * {@link ParameterBlock}s for sub plugin type parameters.
+ * E.g., {@link org.jamesii.gui.utils.parameters.factories.FactoryParameters}
+ * makes heavy use of this component with custom {@link IPropertyProvider}s as
+ * well as {@link IImplementationProvider} for plugin types. There this
+ * component is used to fill a {@link ParameterBlock} for a specified
+ * {@link org.jamesii.core.factories.Factory}, including plugin type assignment
+ * and sub {@link ParameterBlock}s for sub plugin type parameters.
  * 
  * @author Stefan Rybacki
  */

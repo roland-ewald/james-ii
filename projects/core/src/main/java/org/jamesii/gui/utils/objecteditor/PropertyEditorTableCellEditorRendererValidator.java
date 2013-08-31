@@ -6,14 +6,14 @@
  */
 package org.jamesii.gui.utils.objecteditor;
 
-import org.jamesii.gui.utils.objecteditor.property.editor.IPropertyEditor;
 import org.jamesii.gui.validation.AbstractValidator;
-import org.jamesii.gui.validation.IValidator;
 
 /**
- * Internally used class that implements {@link IValidator} to provide error
- * icon display on top of {@link IPropertyEditor}s in
- * {@link ObjectEditorComponent}.
+ * Internally used class that implements
+ * {@link org.jamesii.gui.validation.IValidator} to provide error icon display
+ * on top of
+ * {@link org.jamesii.gui.utils.objecteditor.property.editor.IPropertyEditor}s
+ * in {@link ObjectEditorComponent}.
  * 
  * @author Stefan Rybacki
  */
