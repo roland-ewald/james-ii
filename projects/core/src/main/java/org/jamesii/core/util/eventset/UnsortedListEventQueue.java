@@ -223,8 +223,7 @@ public class UnsortedListEventQueue<E, T extends Comparable<T>> extends
     }
 
     if (index != -1) {
-      T result = getData().get(index).getTime();
-      return result;
+      return getData().get(index).getTime();
     }
 
     return null;

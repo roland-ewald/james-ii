@@ -530,8 +530,7 @@ public final class Databases {
       if (DEBUG_SQL) {
         SimSystem.report(Level.FINEST, sql);
       }
-      ResultSet resultSet = s.executeQuery(sql);
-      return resultSet;
+      return s.executeQuery(sql);
     }
   }
 

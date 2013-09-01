@@ -321,8 +321,7 @@ public class ParallelOptimizer extends Optimizer {
     }
 
     if (position < runningConfigurations.size()) {
-      ConfigurationInfos result = runningConfigurations.remove(position);
-      return result;
+      return runningConfigurations.remove(position);
     }
     return null;
   }

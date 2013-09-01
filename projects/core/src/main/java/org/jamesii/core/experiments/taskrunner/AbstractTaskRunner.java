@@ -348,8 +348,7 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
         storage = getDataStorage(config);
       }
 
-      ComputationTaskIDObject result = new ComputationTaskIDObject(storage);
-      return result;
+      return new ComputationTaskIDObject(storage);
     }
     return new ComputationTaskIDObject();
   }

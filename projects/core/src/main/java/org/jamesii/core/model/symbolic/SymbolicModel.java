@@ -104,8 +104,7 @@ public class SymbolicModel<D> extends NamedEntity implements ISymbolicModel<D> {
           + targetFormat + " exists!", nothingFound);
     }
     pb.setValue(this);
-    IConverter converter = cF.create(pb);
-    return converter;
+    return cF.create(pb);
   }
 
   @Override
