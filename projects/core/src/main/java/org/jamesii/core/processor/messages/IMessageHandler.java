@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.processor.messages;
 
-import org.jamesii.core.processor.IThreadedProcessor;
 import org.jamesii.core.util.Hook;
 
 /**
@@ -17,7 +16,7 @@ import org.jamesii.core.util.Hook;
  * by using a special queue (e.g., the {@link MessageQueue}).
  * 
  * Most often this interface will be used together with the
- * {@link IThreadedProcessor} interface.
+ * {@link org.jamesii.core.processor.IThreadedProcessor} interface.
  * 
  * Message hooks can be used to add functionality not foreseen at the moment of
  * creation of the simulation algorithm or just to observer the message

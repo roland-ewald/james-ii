@@ -7,7 +7,6 @@
 package org.jamesii.core.data.experimentsuite.filesystem.read;
 
 import org.jamesii.core.data.experiment.ExperimentInfo;
-import org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter;
 import org.jamesii.core.data.experiment.read.plugintype.AbstractExperimentReaderFactory;
 import org.jamesii.core.data.experimentsuite.IExperimentSuiteReader;
 import org.jamesii.core.data.experimentsuite.filesystem.ExperimentSuiteFileReaderWriter;
@@ -16,9 +15,12 @@ import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
 /**
- * Factory for {@link ExperimentFileReaderWriter}. Returns instances of readers
- * and writers of experiments from and to the file system
- * {@link ExperimentFileReaderWriter}.
+ * Factory for
+ * {@link org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter}
+ * . Returns instances of readers and writers of experiments from and to the
+ * file system
+ * {@link org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter}
+ * .
  * 
  * @author Roland Ewald
  */

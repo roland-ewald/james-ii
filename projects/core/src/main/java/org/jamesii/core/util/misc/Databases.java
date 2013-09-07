@@ -7,7 +7,6 @@
 package org.jamesii.core.util.misc;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.Connection;
@@ -738,7 +737,7 @@ public final class Databases {
    * @param dbEntityType
    *          the type of the entities to be created
    * 
-   * @throws FileNotFoundException
+   * @throws java.io.FileNotFoundException
    *           the file not found exception
    * @throws IOException
    *           Signals that an I/O exception has occurred.

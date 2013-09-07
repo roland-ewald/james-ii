@@ -6,12 +6,12 @@
  */
 package org.jamesii.core.math.random.generators.securerandom;
 
-import java.security.SecureRandom;
-
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory;
 
-/** Constructs instances of the {@link SecureRandom} class wrapper. */
+/**
+ * Constructs instances of the {@link java.security.SecureRandom} class wrapper.
+ */
 public class SecureRandomGeneratorFactory extends RandomGeneratorFactory {
 
   /** Serial version ID. */

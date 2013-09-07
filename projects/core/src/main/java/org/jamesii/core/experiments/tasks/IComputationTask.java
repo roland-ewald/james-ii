@@ -10,7 +10,6 @@ import org.jamesii.core.experiments.IComputationTaskConfiguration;
 import org.jamesii.core.factories.IContext;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.observe.IObservable;
-import org.jamesii.core.processor.IRunnable;
 import org.jamesii.core.processor.ProcessorInformation;
 import org.jamesii.core.util.id.IUniqueIdentifier;
 
@@ -40,10 +39,10 @@ public interface IComputationTask extends IUniqueIdentifier, IObservable,
    * task is runnable.
    * 
    * For the system all those algorithms are runnable/executable which implement
-   * the {@link IRunnable} interface.
+   * the {@link org.jamesii.core.processor.IRunnable} interface.
    * 
-   * @return true if the processor implements {@link IRunnable}, otherwise
-   *         false.
+   * @return true if the processor implements
+   *         {@link org.jamesii.core.processor.IRunnable}, otherwise false.
    */
   boolean isProcessorRunnable();
 

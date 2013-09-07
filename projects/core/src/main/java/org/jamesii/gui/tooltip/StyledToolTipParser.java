@@ -15,15 +15,15 @@ import java.util.Deque;
 import java.util.List;
 
 import org.jamesii.gui.syntaxeditor.ILexerToken;
-import org.jamesii.gui.syntaxeditor.SyntaxEditor;
 import org.jamesii.gui.tooltip.StyledToolTipSyntaxToken.Type;
 
 /**
  * Parser that extends the actual lexer {@link StyledToolTipLexer} for styled
  * tooltips. Additionally to the syntax tokens provided by the lexer it provides
- * additional problem tokens for problem highlighting in a {@link SyntaxEditor}.
- * Problem tokens can indicate badly nested tags, missing start and end tags,
- * obsolete tags and wrong values for color and font size.<br/>
+ * additional problem tokens for problem highlighting in a
+ * {@link org.jamesii.gui.syntaxeditor.SyntaxEditor}. Problem tokens can
+ * indicate badly nested tags, missing start and end tags, obsolete tags and
+ * wrong values for color and font size.<br/>
  * It also provides render tokens that are used by the actual
  * {@link StyledToolTip} for displaying purposes.
  * 

@@ -6,8 +6,6 @@
  */
 package org.jamesii.core.math.random.generators.lcg;
 
-import java.util.Random;
-
 import org.jamesii.core.math.random.generators.AbstractRandom;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.RNGInfo;
@@ -15,9 +13,9 @@ import org.jamesii.core.math.random.generators.RNGInfo.UsableBits;
 
 /**
  * A general Linear Congruential Generator, adaptable for arbitrary parameters.
- * By default this class behaves the same as the Java {@link Random} class. The
- * formula used to compute the next pseudo-random number of an LCG is as
- * follows:
+ * By default this class behaves the same as the Java {@link java.util.Random}
+ * class. The formula used to compute the next pseudo-random number of an LCG is
+ * as follows:
  * <p>
  * <i>x</i><sub><i>n</i> + 1</sub> = <i>a</i> ⋅ <i>x</i><sub><i>n</i></sub> + <i
  * >b</i>   (mod <i>c</i>)

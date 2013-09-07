@@ -7,13 +7,12 @@
 package org.jamesii.core.experiments.optimization.parameter.cancellation;
 
 import org.jamesii.core.experiments.optimization.OptimizationStatistics;
-import org.jamesii.core.experiments.optimization.Optimizer;
 
 /**
  * Interface for all optimisation stopping criteria. These are intended to stop
  * an optimisation algorithm prematurely, e.g. if the number of evaluated
  * parameter configurations or consumed run time is exceeded. Called by the base
- * {@link Optimizer} class.
+ * {@link org.jamesii.core.experiments.optimization.Optimizer} class.
  * 
  * @author Arvid Schwecke
  * @author Roland Ewald

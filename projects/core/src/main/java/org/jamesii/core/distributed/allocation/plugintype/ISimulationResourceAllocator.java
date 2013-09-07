@@ -8,12 +8,12 @@ package org.jamesii.core.distributed.allocation.plugintype;
 
 import java.util.List;
 
-import org.jamesii.core.distributed.masterserver.IMasterServer;
 import org.jamesii.core.distributed.simulationserver.ISimulationHost;
 import org.jamesii.core.experiments.SimulationRunConfiguration;
 
 /**
- * Implementations of this interface can be called by {@link IMasterServer}
+ * Implementations of this interface can be called by
+ * {@link org.jamesii.core.distributed.masterserver.IMasterServer}
  * implementations to decide upon the number of simulation hosts
  * 
  * @author Simon Bartels

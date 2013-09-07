@@ -13,13 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Internally used class to provide a {@link JTable} with information tokens
- * including mechanisms to determine related {@link ITokenAction}s trough the
- * use of {@link IInfoProvider#getActionsForToken(ILexerToken)}.
+ * Internally used class to provide a {@link javax.swing.JTable} with
+ * information tokens including mechanisms to determine related
+ * {@link ITokenAction}s trough the use of
+ * {@link IInfoProvider#getActionsForToken(ILexerToken)}.
  * 
  * @author Stefan Rybacki
  */

@@ -12,10 +12,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.jamesii.core.factories.AbstractFactory;
-
 /**
- * Simple annotation for sub-classes of {@link AbstractFactory}.
+ * Simple annotation for sub-classes of
+ * {@link org.jamesii.core.factories.AbstractFactory}.
  * 
  * @author Roland Ewald
  * 

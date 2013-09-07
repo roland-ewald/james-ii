@@ -10,7 +10,6 @@ import java.net.URI;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;

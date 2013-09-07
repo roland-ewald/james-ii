@@ -6,16 +6,18 @@
  */
 package org.jamesii.core.data.experimentsuite.filesystem.write;
 
-import org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter;
 import org.jamesii.core.data.experimentsuite.IExperimentSuiteWriter;
 import org.jamesii.core.data.experimentsuite.filesystem.ExperimentSuiteFileReaderWriter;
 import org.jamesii.core.data.experimentsuite.write.plugintype.ExperimentSuiteFileWriterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
- * Factory for {@link ExperimentFileReaderWriter}. Returns instances of readers
- * and writers of experiments from and to the file system
- * {@link ExperimentFileReaderWriter}.
+ * Factory for
+ * {@link org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter}
+ * . Returns instances of readers and writers of experiments from and to the
+ * file system
+ * {@link org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter}
+ * .
  * 
  * @author Roland Ewald
  */

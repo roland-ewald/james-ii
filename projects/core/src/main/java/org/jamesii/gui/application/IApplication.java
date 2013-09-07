@@ -7,7 +7,6 @@
 package org.jamesii.gui.application;
 
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Point;
 
@@ -61,10 +60,10 @@ public interface IApplication {
    * Implement this to provide the starting state of the main window.
    * 
    * @return the state of the window
-   * @see Frame#MAXIMIZED_BOTH
-   * @see Frame#MAXIMIZED_HORIZ
-   * @see Frame#MAXIMIZED_VERT
-   * @see Frame#ICONIFIED
+   * @see java.awt.Frame#MAXIMIZED_BOTH
+   * @see java.awt.Frame#MAXIMIZED_HORIZ
+   * @see java.awt.Frame#MAXIMIZED_VERT
+   * @see java.awt.Frame#ICONIFIED
    */
   int getMainWindowState();
 

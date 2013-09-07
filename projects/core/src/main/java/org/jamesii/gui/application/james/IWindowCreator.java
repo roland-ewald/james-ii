@@ -12,11 +12,10 @@ import javax.swing.JComponent;
 
 import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.IWindow;
-import org.jamesii.gui.application.IWindowManager;
 
 /**
- * Interface used by {@link WindowManager} to provide exchangable ways to create
- * and represent {@link IWindow}s.
+ * Interface used by {@link org.jamesii.gui.application.WindowManager} to
+ * provide exchangable ways to create and represent {@link IWindow}s.
  * 
  * @author Stefan Rybacki
  * 
@@ -73,7 +72,8 @@ public interface IWindowCreator {
 
   /**
    * Returns the actual {@link Contribution} the specified window is currently
-   * in. This might differ from {@link IWindowManager#getContribution(IWindow)}
+   * in. This might differ from
+   * {@link org.jamesii.gui.application.IWindowManager#getContribution(IWindow)}
    * and {@link IWindow#getContribution()}
    * 
    * @param window

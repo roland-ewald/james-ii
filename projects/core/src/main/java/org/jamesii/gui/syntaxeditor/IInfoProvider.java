@@ -7,7 +7,6 @@
 package org.jamesii.gui.syntaxeditor;
 
 import java.io.Reader;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,8 +25,8 @@ public interface IInfoProvider {
    * Gets the information tokens.
    * <p/>
    * Must be sorted ascending by {@link ILexerToken#getStart()}. Use
-   * {@link Collections#sort(List)} to sort if you use {@link DefaultLexerToken}
-   * descendants.
+   * {@link java.util.Collections#sort(List)} to sort if you use
+   * {@link DefaultLexerToken} descendants.
    * 
    * @param index
    *          the token's index

@@ -7,7 +7,6 @@
 package org.jamesii.core.data.runtime.rowset;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -2613,8 +2612,8 @@ public class FileRowSet extends BaseRowSet implements RowSet {
    *           if no file name was set by either {@link #setFileName(String)} or
    *           {@link #setDataSourceName(String)}.
    * @throws SQLException
-   *           wrapping a {@link FileNotFoundException} if the file could not be
-   *           opened.
+   *           wrapping a {@link java.io.FileNotFoundException} if the file
+   *           could not be opened.
    * @throws SQLException
    *           wrapping a {@link IOException} if an error occurs during
    *           memory-mapping the file.

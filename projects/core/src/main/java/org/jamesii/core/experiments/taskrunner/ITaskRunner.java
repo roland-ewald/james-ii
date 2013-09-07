@@ -9,7 +9,6 @@ package org.jamesii.core.experiments.taskrunner;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.ComputationTaskRuntimeInformation;
 import org.jamesii.core.experiments.IExperimentExecutionController;
 import org.jamesii.core.experiments.TaskConfiguration;
@@ -35,7 +34,8 @@ public interface ITaskRunner extends Runnable {
 
   /**
    * Cancels all jobs for a given experiment. Will be called when
-   * {@link BaseExperiment#stop(boolean)} is invoked.
+   * {@link org.jamesii.core.experiments.BaseExperiment#stop(boolean)} is
+   * invoked.
    * 
    * @param executionController
    *          the experiment execution controller associated with the experiment
@@ -92,7 +92,7 @@ public interface ITaskRunner extends Runnable {
    * This lets the task runner start a certain task configuration. The
    * configuration has to be submitted via scheduleConfigurations before. The
    * method may only be called after a notification on the succeeded
-   * initialisation (see {@link BaseExperiment} ).
+   * initialisation (see {@link org.jamesii.core.experiments.BaseExperiment} ).
    * 
    * @param taskRuntimeInformation
    *          information necessary to manage the execution of a task
@@ -100,7 +100,8 @@ public interface ITaskRunner extends Runnable {
   void runTask(ComputationTaskRuntimeInformation taskRuntimeInformation);
 
   /**
-   * Schedules computation tasks for a certain {@link BaseExperiment}.
+   * Schedules computation tasks for a certain
+   * {@link org.jamesii.core.experiments.BaseExperiment}.
    * 
    * @param taskConfigurations
    *          the task configurations

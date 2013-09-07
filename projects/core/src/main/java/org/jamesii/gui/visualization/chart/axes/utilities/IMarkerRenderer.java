@@ -9,12 +9,11 @@ package org.jamesii.gui.visualization.chart.axes.utilities;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import org.jamesii.gui.visualization.chart.plot.IPlot;
-
 /**
  * Simple marker renderer interface that provides custom representations of
- * markers in a chart plot ({@link IPlot}). So it might be possible to have e.g.
- * square or circle markers.
+ * markers in a chart plot (
+ * {@link org.jamesii.gui.visualization.chart.plot.IPlot}). So it might be
+ * possible to have e.g. square or circle markers.
  * <p>
  * <b><font color="red">NOTE: This class is very likely to change in future
  * releases so use with care.</font></b>

@@ -37,7 +37,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.TabbedPaneUI;
@@ -844,9 +843,10 @@ class WindowPaneUI extends BasicTabbedPaneUI implements MouseListener,
    * Calculates the border of a tab and returns it as a {@link Polygon}.
    * 
    * @param tabPlacement
-   *          the tab placement ({@link SwingConstants#TOP} ,
-   *          {@link SwingConstants#BOTTOM}, {@link SwingConstants#LEFT},
-   *          {@link SwingConstants#RIGHT})
+   *          the tab placement ({@link javax.swing.SwingConstants#TOP} ,
+   *          {@link javax.swing.SwingConstants#BOTTOM},
+   *          {@link javax.swing.SwingConstants#LEFT},
+   *          {@link javax.swing.SwingConstants#RIGHT})
    * @param x
    *          the x coordinate of the upper left corner of the tab
    * @param y

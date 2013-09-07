@@ -7,7 +7,6 @@
 package org.jamesii.gui.utils.parameters.list;
 
 import javax.swing.JList;
-import javax.swing.ListModel;
 
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -25,10 +24,10 @@ public class ParametrizedList extends JList {
 
   /**
    * Initialises a new instance of the {@link ParametrizedList} class using the
-   * given {@link ListModel}.
+   * given {@link javax.swing.ListModel}.
    * 
    * @param model
-   *          The {@link ListModel} to use.
+   *          The {@link javax.swing.ListModel} to use.
    */
   public ParametrizedList(ConfigurationListModel model) {
     this.setCellRenderer(new ParameterListCellRenderer());

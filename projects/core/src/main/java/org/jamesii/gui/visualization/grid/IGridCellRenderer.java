@@ -7,7 +7,6 @@
 package org.jamesii.gui.visualization.grid;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.Shape;
 
 /**
@@ -36,7 +35,7 @@ public interface IGridCellRenderer {
    *          The height of the drawing region.
    * @param shape
    *          the shape at position (x,y) representing the grid (e.g., a
-   *          {@link Rectangle}
+   *          {@link java.awt.Rectangle}
    * @param cellX
    *          The X coordinate of the cell in the model.
    * @param cellY

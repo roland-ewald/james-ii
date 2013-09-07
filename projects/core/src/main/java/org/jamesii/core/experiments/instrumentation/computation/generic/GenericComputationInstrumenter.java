@@ -15,16 +15,16 @@ import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.observe.IObservable;
 import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.observe.Mediator;
-import org.jamesii.core.processor.IProcessor;
 
 /**
  * A generic computation instrumenter. This may be helpful for testing or
  * debugging purposes where a simple observer needs to be attached and the
  * overhead of specifying a custom instrumenter etc. is unnecessary.
  * 
- * The observer is attached to the {@link IProcessor} of a computation task. It
- * may be registered at multiple processors. After each new registration, this
- * instrumenter calls {@link IObserver#update(IObservable, Object)} with a
+ * The observer is attached to the {@link org.jamesii.core.processor.IProcessor}
+ * of a computation task. It may be registered at multiple processors. After
+ * each new registration, this instrumenter calls
+ * {@link IObserver#update(IObservable, Object)} with a
  * {@link ProcessorObservationHint} that contains the reference to the
  * instrumenter. This should allow the observer to deal with parallel
  * simulations etc. on its own, if this is necessary.

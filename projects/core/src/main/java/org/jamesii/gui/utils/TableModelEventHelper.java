@@ -1,7 +1,6 @@
 package org.jamesii.gui.utils;
 
 import javax.swing.event.TableModelEvent;
-import javax.swing.table.AbstractTableModel;
 
 /** Helper class for handling {@link TableModelEvent}s. */
 public final class TableModelEventHelper {
@@ -27,9 +26,9 @@ public final class TableModelEventHelper {
      * The type of even couldn't be determined. The
      * {@link #getEventType(TableModelEvent)} method tries to detect all events
      * that can be raised individually by calling the various <code>fire</code>
-     * methods in {@link AbstractTableModel}, but there still can be value
-     * combinations within a {@link TableModelEvent} which may be nonsense or
-     * unrecognisable.
+     * methods in {@link javax.swing.table.AbstractTableModel}, but there still
+     * can be value combinations within a {@link TableModelEvent} which may be
+     * nonsense or unrecognisable.
      */
     NOT_SURE
   }

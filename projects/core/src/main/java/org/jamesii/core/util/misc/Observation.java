@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.jamesii.core.experiments.optimization.parameter.IResponseObserver;
-import org.jamesii.core.experiments.optimization.parameter.instrumenter.IResponseObserverInstrumenter;
 import org.jamesii.core.model.variables.BaseVariable;
 import org.jamesii.core.observe.IObservable;
 
@@ -69,7 +68,8 @@ public final class Observation {
 
   /**
    * Compile responses from {@link IResponseObserver}, eases implementation of
-   * {@link IResponseObserverInstrumenter}.
+   * {@link org.jamesii.core.experiments.optimization.parameter.instrumenter.IResponseObserverInstrumenter}
+   * .
    * 
    * @param observers
    *          the response observers

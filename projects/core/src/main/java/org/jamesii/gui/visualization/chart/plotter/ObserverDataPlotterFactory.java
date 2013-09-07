@@ -6,7 +6,6 @@
  */
 package org.jamesii.gui.visualization.chart.plotter;
 
-import org.jamesii.core.experiments.ComputationTaskRuntimeInformation;
 import org.jamesii.core.observe.listener.IObserverListener;
 import org.jamesii.core.observe.listener.plugintype.AbstractObserverListenerFactory;
 import org.jamesii.core.observe.listener.plugintype.ObserverListenerFactory;

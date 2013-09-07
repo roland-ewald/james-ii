@@ -14,11 +14,10 @@ import java.beans.PersistenceDelegate;
 import org.jamesii.core.serialization.XMLEncoderFactory;
 import org.jamesii.core.util.logging.ApplicationLogger;
 import org.jamesii.gui.application.Contribution;
-import org.jamesii.gui.application.IWindow;
 
 /**
- * View implementing {@link IWindow} that provides access to the log records
- * logged by the {@link ApplicationLogger}.
+ * View implementing {@link org.jamesii.gui.application.IWindow} that provides
+ * access to the log records logged by the {@link ApplicationLogger}.
  * 
  * @author Stefan Rybacki
  */

@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.data.storage.plugintype;
 
-import org.jamesii.core.algoselect.SelectionInformation;
 import org.jamesii.core.factories.AbstractFactory;
 
 /**
@@ -24,7 +23,7 @@ public class AbstractDataStorageFactory extends
    * The parameter name for a directory manager.
    * 
    * TODO: to have this in a core class is currently required for the parameter
-   * black list in {@link SelectionInformation}.
+   * black list in {@link org.jamesii.core.algoselect.SelectionInformation}.
    */
   public static final String PARAM_MANAGER = "manager";
 

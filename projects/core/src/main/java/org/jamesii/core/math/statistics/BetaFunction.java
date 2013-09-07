@@ -13,9 +13,8 @@ import static java.lang.Math.floor;
 import static java.lang.Math.log;
 import static java.lang.Math.pow;
 import static java.lang.Math.signum;
-import static org.jamesii.core.math.statistics.univariate.GammaFunction.*;
-
-import org.jamesii.core.math.statistics.univariate.GammaFunction;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.gamma;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.logGamma;
 
 /**
  * Class for calculating the Beta function and related functions, such as the
@@ -53,7 +52,8 @@ public final class BetaFunction {
    * <i>b</i>).
    * <p>
    * For large arguments the logarithm of the function is evaluated using
-   * {@link GammaFunction#logGamma(double)}, then exponentiated.
+   * {@link org.jamesii.core.math.statistics.univariate.GammaFunction#logGamma(double)}
+   * , then exponentiated.
    * 
    * @param a
    *          First argument.
