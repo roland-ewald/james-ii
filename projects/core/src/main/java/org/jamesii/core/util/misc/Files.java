@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -393,6 +394,23 @@ public final class Files {
         XMLEncoderFactory.createXMLEncoder(new BufferedOutputStream(
             new FileOutputStream(file)))) {
       xmlEncoder.writeObject(object);
+    }
+  }
+
+  /**
+   * Append string to file.
+   * 
+   * @param fileName
+   *          the file name
+   * @param addition
+   *          the addition to the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void appendToFile(String fileName, String addition)
+      throws IOException {
+    try (FileWriter fw = new FileWriter(fileName, true)) {
+      fw.append(addition);
     }
   }
 
