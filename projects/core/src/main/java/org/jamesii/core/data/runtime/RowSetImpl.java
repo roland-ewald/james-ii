@@ -236,7 +236,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public void execute() throws SQLException {
-    CSVReader reader = new CSVReader();
+    RowSetCSVReader reader = new RowSetCSVReader();
     reader.readData(this);
   }
 
