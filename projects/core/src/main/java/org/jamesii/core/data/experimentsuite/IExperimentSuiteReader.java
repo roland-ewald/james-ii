@@ -10,14 +10,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
-import org.jamesii.core.data.experiment.IExperimentReader;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.ExperimentSuite;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
  * Interface for readers of experiment suites. Similar to
- * {@link IExperimentReader}.
+ * {@link org.jamesii.core.data.experiment.IExperimentReader}.
  * 
  * @author Roland Ewald
  * 

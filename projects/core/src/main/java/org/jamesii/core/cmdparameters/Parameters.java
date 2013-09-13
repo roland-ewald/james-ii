@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import org.jamesii.SimSystem;
 import org.jamesii.core.distributed.allocation.plugintype.SimulationResourceAllocatorFactory;
 import org.jamesii.core.distributed.masterserver.IMasterServer;
-import org.jamesii.core.distributed.masterserver.MasterServer;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.misc.ParameterUtils;
 
@@ -249,8 +248,9 @@ public class Parameters extends AbstractParameters {
   }
 
   /**
-   * Sets the master server directly. Useful when the {@link MasterServer} is in
-   * the same JVM.
+   * Sets the master server directly. Useful when the
+   * {@link org.jamesii.core.distributed.masterserver.MasterServer} is in the
+   * same JVM.
    * 
    * @param masterServer
    *          the master server

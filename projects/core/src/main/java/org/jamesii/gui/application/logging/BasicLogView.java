@@ -18,12 +18,9 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
-import org.jamesii.core.util.logging.ApplicationLogger;
 import org.jamesii.core.util.logging.ILogListener;
 import org.jamesii.gui.application.Contribution;
-import org.jamesii.gui.application.IWindow;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.action.AbstractAction;
 import org.jamesii.gui.application.action.IAction;
@@ -34,9 +31,11 @@ import org.jamesii.gui.application.resource.iconset.IconIdentifier;
 import org.jamesii.gui.utils.treetable.GroupingTreeTableModel;
 
 /**
- * View implementing {@link IWindow} that provides access to log records logged
- * by an {@link ApplicationLogger}. There is a specialized version of this class
- * for the local ApplicationLogger {@link LogView}.
+ * View implementing {@link org.jamesii.gui.application.IWindow} that provides
+ * access to log records logged by an
+ * {@link org.jamesii.core.util.logging.ApplicationLogger}. There is a
+ * specialized version of this class for the local ApplicationLogger
+ * {@link LogView}.
  * 
  * @author Stefan Rybacki
  */
@@ -53,7 +52,7 @@ public class BasicLogView extends DefaultTreeTableView implements ILogListener {
       IconManager.getIcon(IconIdentifier.WIZARD_SMALL), null);
 
   /**
-   * Custom {@link TableColumnModel} for the log table
+   * Custom {@link javax.swing.table.TableColumnModel} for the log table
    * 
    * @author Stefan Rybacki
    */

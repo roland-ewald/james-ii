@@ -24,7 +24,6 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 import javax.swing.JViewport;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -661,7 +660,7 @@ public final class SyntaxEditor extends JComponent implements DocumentListener,
   }
 
   /**
-   * @see JTextPane#addCaretListener(CaretListener)
+   * @see javax.swing.JTextPane#addCaretListener(CaretListener)
    * @param listener
    *          the listener to add
    */
@@ -670,7 +669,7 @@ public final class SyntaxEditor extends JComponent implements DocumentListener,
   }
 
   /**
-   * @see JTextPane#removeCaretListener(CaretListener)
+   * @see javax.swing.JTextPane#removeCaretListener(CaretListener)
    * @param listener
    */
   public void removeCaretListener(CaretListener listener) {

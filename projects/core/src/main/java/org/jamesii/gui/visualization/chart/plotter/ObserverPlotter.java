@@ -29,17 +29,16 @@ import org.jamesii.gui.visualization.chart.BasicChart;
 import org.jamesii.gui.visualization.chart.coordinatesystem.CoordinateSystemXY;
 import org.jamesii.gui.visualization.chart.model.BasicXYChartModel;
 import org.jamesii.gui.visualization.chart.model.DefaultXYSeries;
-import org.jamesii.gui.visualization.chart.model.IChartModel;
 
 /**
  * Incorporated observer plotter that uses the new chart component but still
  * supporting the old {@link IPlotableObserver} interface as data source for the
  * chart. This is achieved by wrapping the data of {@link IPlotableObserver} in
- * an {@link IChartModel}. Unfortunately it is that the
- * {@link IPlotableObserver} interface always provides the entire data so the
- * data in the chart model must be updated completely as it is not clear which
- * data actually changed or was added or removed. This might lead into a slow
- * diagram.
+ * an {@link org.jamesii.gui.visualization.chart.model.IChartModel}.
+ * Unfortunately it is that the {@link IPlotableObserver} interface always
+ * provides the entire data so the data in the chart model must be updated
+ * completely as it is not clear which data actually changed or was added or
+ * removed. This might lead into a slow diagram.
  * 
  * @author Stefan Rybacki
  */

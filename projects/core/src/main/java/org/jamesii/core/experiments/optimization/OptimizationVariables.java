@@ -7,12 +7,12 @@
 package org.jamesii.core.experiments.optimization;
 
 import org.jamesii.core.experiments.steering.SteeredExperimentVariables;
-import org.jamesii.core.experiments.variables.ExperimentVariables;
 
 /**
  * Contains one optimiser, given by {@link OptimizerVariable}, and the factors.
- * On {@link ExperimentVariables#nextThisLevel(ExperimentVariables)}, a new
- * configuration is retrieved from the optimiser.
+ * On
+ * {@link org.jamesii.core.experiments.variables.ExperimentVariables#nextThisLevel(org.jamesii.core.experiments.variables.ExperimentVariables)}
+ * , a new configuration is retrieved from the optimiser.
  * 
  * @author Arvid Schwecke
  * @author Roland Ewald

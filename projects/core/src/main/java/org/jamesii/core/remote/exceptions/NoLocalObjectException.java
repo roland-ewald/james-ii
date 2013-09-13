@@ -6,13 +6,13 @@
  */
 package org.jamesii.core.remote.exceptions;
 
-import org.jamesii.core.remote.IMigrationController;
 import org.jamesii.core.remote.MigrationException;
 import org.jamesii.core.remote.hostcentral.IObjectId;
 
 /**
- * This exception is thrown by a {@link IMigrationController} when someone
- * triggers the migration of an object that's not local.
+ * This exception is thrown by a
+ * {@link org.jamesii.core.remote.IMigrationController} when someone triggers
+ * the migration of an object that's not local.
  * 
  * @author Simon Bartels
  * 

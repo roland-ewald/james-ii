@@ -13,11 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.JTable;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.tree.TreeModel;
 
 /**
  * Wrapper around {@link ITreeTableModel} that handles collapsing and expanding
@@ -45,7 +43,7 @@ class TreeTableViewModel extends AbstractTableModel implements
   /** Cache of depth information for every visible node */
   private Map<Object, Integer> depths;
 
-  /** List of visible nodes, as presented to the {@link JTable}. */
+  /** List of visible nodes, as presented to the {@link javax.swing.JTable}. */
   private List<Object> items;
 
   /** Set of currently expanded nodes. */
@@ -231,7 +229,8 @@ class TreeTableViewModel extends AbstractTableModel implements
    * leaf in the tree or not. Leaves are defined as nodes which cannot have
    * children. However, a non-leaf node might have no children but may get
    * children later. This semantics is mainly continued from the underlying
-   * {@link ITreeTableModel} and, through that, {@link TreeModel}.
+   * {@link ITreeTableModel} and, through that,
+   * {@link javax.swing.tree.TreeModel}.
    * 
    * @param node
    *          the node

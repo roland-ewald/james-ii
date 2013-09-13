@@ -6,11 +6,11 @@
  */
 package org.jamesii.core.experiments;
 
-import org.jamesii.core.experiments.taskrunner.ITaskRunner;
 
 /**
- * This exception is thrown when a {@link ITaskRunner} encounters an error when
- * executing {@link TaskConfiguration} entities.
+ * This exception is thrown when a
+ * {@link org.jamesii.core.experiments.taskrunner.ITaskRunner} encounters an
+ * error when executing {@link TaskConfiguration} entities.
  * 
  * @author Jan Himmelspach
  * 

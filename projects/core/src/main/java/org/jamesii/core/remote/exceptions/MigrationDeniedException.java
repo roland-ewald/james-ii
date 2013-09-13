@@ -6,13 +6,13 @@
  */
 package org.jamesii.core.remote.exceptions;
 
-import org.jamesii.core.remote.IMigrationController;
 import org.jamesii.core.remote.MigrationException;
 
 /**
  * 
- * This exception is thrown by {@link IMigrationController} when another
- * controller denies receiving objects.
+ * This exception is thrown by
+ * {@link org.jamesii.core.remote.IMigrationController} when another controller
+ * denies receiving objects.
  * 
  * @author Simon Bartels
  * 

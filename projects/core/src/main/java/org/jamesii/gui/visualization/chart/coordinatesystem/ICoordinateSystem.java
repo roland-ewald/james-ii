@@ -14,11 +14,11 @@ import java.awt.geom.Point2D;
 import org.jamesii.gui.visualization.chart.axes.IAxis;
 import org.jamesii.gui.visualization.chart.model.IChartModel;
 import org.jamesii.gui.visualization.chart.model.ISeries;
-import org.jamesii.gui.visualization.chart.plot.IPlot;
 
 /**
  * Interface that describes a coordinate system that is used in the chart
- * component. Where it will be combined with {@link IPlot} which uses the
+ * component. Where it will be combined with
+ * {@link org.jamesii.gui.visualization.chart.plot.IPlot} which uses the
  * coordinate system to determine item positions.
  * <p>
  * <b><font color="red">NOTE: This class is very likely to change in future

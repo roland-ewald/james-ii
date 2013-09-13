@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.plugins.install;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 

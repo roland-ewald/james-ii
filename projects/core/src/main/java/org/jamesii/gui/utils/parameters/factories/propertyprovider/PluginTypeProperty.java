@@ -7,12 +7,11 @@
 package org.jamesii.gui.utils.parameters.factories.propertyprovider;
 
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.gui.utils.parameters.factories.FactoryParameters;
 import org.jamesii.gui.utils.parameters.factories.PluginTypeParameters;
 
 /**
  * Internally used class that represents a plugin type parameter in
- * {@link FactoryParameters}.
+ * {@link org.jamesii.gui.utils.parameters.factories.FactoryParameters}.
  * 
  * @author Stefan Rybacki
  */

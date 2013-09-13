@@ -4,8 +4,6 @@ import java.rmi.RemoteException;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.distributed.simulationserver.SimulationManagementObserver;
-import org.jamesii.core.distributed.simulationserver.SimulationServer;
 import org.jamesii.core.hosts.system.IMSSystemHost;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
@@ -13,8 +11,9 @@ import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.services.observer.ServiceObserverProxy;
 
 /**
- * Class to register a {@link SimulationManagementObserver} at a
- * {@link SimulationServer}.
+ * Class to register a
+ * {@link rg.jamesii.core.distributed.simulationserver.SimulationManagementObserver}
+ * at a {@link rg.jamesii.core.distributed.simulationserver.SimulationServer}.
  * 
  * @author Stefan Leye
  * 

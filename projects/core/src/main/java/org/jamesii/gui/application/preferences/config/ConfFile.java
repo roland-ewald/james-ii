@@ -9,7 +9,6 @@ package org.jamesii.gui.application.preferences.config;
 import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -223,7 +222,7 @@ public abstract class ConfFile {
    * disk Uses the former filename .
    * 
    * @return boolean success - true, if operation was successfull
-   * @throws IOException
+   * @throws java.io.IOException
    * @throws FileNotFoundException
    * 
    * @throws Exception
@@ -252,7 +251,7 @@ public abstract class ConfFile {
   /**
    * 
    * @param fName
-   * @throws IOException
+   * @throws java.io.IOException
    * @throws FileNotFoundException
    * @throws Exception
    */

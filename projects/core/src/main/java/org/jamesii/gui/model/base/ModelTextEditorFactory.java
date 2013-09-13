@@ -20,7 +20,6 @@ import org.jamesii.gui.model.windows.plugintype.ModelWindow;
 import org.jamesii.gui.model.windows.plugintype.ModelWindowFactory;
 import org.jamesii.gui.syntaxeditor.highlighting.HighlightingManager;
 import org.jamesii.gui.syntaxeditor.highlighting.IHighlighter;
-import org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory;
 
 /**
  * Factory for providing a syntax highlighting text editor for supported models.
@@ -28,7 +27,7 @@ import org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory;
  * reader and writer.
  * 
  * @author Stefan Rybacki
- * @see HighlightingFactory
+ * @see org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory
  * @see IHighlighter
  */
 public class ModelTextEditorFactory extends ModelWindowFactory {

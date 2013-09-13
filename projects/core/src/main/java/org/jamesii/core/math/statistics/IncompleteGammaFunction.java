@@ -10,16 +10,15 @@ import static java.lang.Double.POSITIVE_INFINITY;
 import static java.lang.Math.abs;
 import static java.lang.Math.exp;
 import static java.lang.Math.log;
-import static org.jamesii.core.math.statistics.univariate.GammaFunction.*;
-
-import org.jamesii.core.math.statistics.univariate.GammaFunction;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.logGamma;
 
 /**
  * Class for calculating the incomplete Gamma function. Currently, only the
  * regularized incomplete Gamma functions <i>P</i>(<i>a</i>, <i>x</i>) and
  * <i>Q</i>(<i>a</i>, <i>x</i>) are implemented.
  * <p>
- * For the complete Gamma function use the {@link GammaFunction} class.
+ * For the complete Gamma function use the
+ * {@link org.jamesii.core.math.statistics.univariate.GammaFunction} class.
  * <p>
  * These methods were adapted from the <a
  * href="http://www.netlib.org/cephes/">Cephes Mathematical Library</a> by <a

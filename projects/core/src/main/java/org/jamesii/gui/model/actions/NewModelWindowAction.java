@@ -7,7 +7,6 @@
 package org.jamesii.gui.model.actions;
 
 import org.jamesii.gui.application.action.AbstractAction;
-import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.model.ModelPerspective;
 import org.jamesii.gui.model.windows.plugintype.ModelWindow;
 
@@ -27,7 +26,8 @@ public class NewModelWindowAction extends AbstractAction {
    * Instantiates a new new model window action.
    * 
    * @param id
-   *          the id to use as id in {@link IAction}
+   *          the id to use as id in
+   *          {@link org.jamesii.gui.application.action.IAction}
    * @param thisWindow
    *          the model window this action is assigned to
    */

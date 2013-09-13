@@ -20,12 +20,11 @@ import org.jamesii.gui.utils.objecteditor.property.provider.DefaultPropertyProvi
 import org.jamesii.gui.utils.objecteditor.property.provider.IPropertyProvider;
 import org.jamesii.gui.utils.objecteditor.property.provider.ListPropertyProvider;
 import org.jamesii.gui.utils.treetable.AbstractTreeTableModel;
-import org.jamesii.gui.utils.treetable.ITreeTableModel;
 
 /**
  * This class is for internal use only. It represents the
- * {@link ITreeTableModel} which is used by the {@link ObjectEditorComponent} to
- * provide access to properties.
+ * {@link org.jamesii.gui.utils.treetable.ITreeTableModel} which is used by the
+ * {@link ObjectEditorComponent} to provide access to properties.
  * 
  * @author Stefan Rybacki
  */

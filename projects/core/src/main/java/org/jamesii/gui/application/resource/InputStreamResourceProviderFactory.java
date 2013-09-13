@@ -6,14 +6,12 @@
  */
 package org.jamesii.gui.application.resource;
 
-import java.io.InputStream;
-
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.plugintype.ResourceProviderFactory;
 
 /**
  * Resource factory providing access to {@link InputStreamResourceProvider}
- * which is able to load a resource into an {@link InputStream}.
+ * which is able to load a resource into an {@link java.io.InputStream}.
  * 
  * @author Stefan Rybacki
  */

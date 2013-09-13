@@ -144,8 +144,7 @@ class PresetPerspective extends AbstractPerspective implements
 
   @Override
   public List<IPreferencesPage> getPreferencesPages() {
-    List<IPreferencesPage> pages = new ArrayList<>();
-    return pages;
+    return new ArrayList<IPreferencesPage>();
   }
 
   @Override

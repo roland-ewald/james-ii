@@ -1,10 +1,10 @@
 package org.jamesii.core.experiments;
 
-import org.jamesii.core.experiments.tasks.IComputationTask;
 
 /**
  * Similar to {@link IExperimentExecutionListener}, components that implement
- * this interface can register at an {@link IComputationTask}'s corresponding
+ * this interface can register at an
+ * {@link org.jamesii.core.experiments.tasks.IComputationTask}'s corresponding
  * {@link ComputationTaskRuntimeInformation} to be notified upon state changes
  * of the computation task. For example, if a simulation run changes its state
  * from running to paused or finished.

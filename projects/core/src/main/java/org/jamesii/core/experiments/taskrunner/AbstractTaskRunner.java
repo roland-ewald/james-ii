@@ -15,17 +15,14 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.data.storage.IDataStorage;
-import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.ComputationTaskRuntimeInformation;
 import org.jamesii.core.experiments.ExperimentException;
 import org.jamesii.core.experiments.IExperimentExecutionController;
 import org.jamesii.core.experiments.TaskConfiguration;
 import org.jamesii.core.experiments.tasks.ComputationTaskHook;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
-import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.IInitializedComputationTask;
 import org.jamesii.core.experiments.tasks.InvalidComputationTaskConfiguration;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -34,7 +31,8 @@ import org.jamesii.core.simulation.launch.InteractiveConsole;
 /**
  * Base class for all task runners. A {@link ITaskRunner} gets
  * {@link TaskConfiguration} instances and initialises/executes
- * {@link IInitializedComputationTask} / {@link IComputationTask} entities
+ * {@link IInitializedComputationTask} /
+ * {@link org.jamesii.core.experiments.tasks.IComputationTask} entities
  * according to them.
  * 
  * @author Roland Ewald
@@ -92,7 +90,8 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
   /**
    * Main function of the runner. Waits until jobs arrive in the job queue (
    * {@link #scheduleConfigurations(IExperimentExecutionController, java.util.List)}
-   * , which is called by method runExperiment of class {@link BaseExperiment}).
+   * , which is called by method runExperiment of class
+   * {@link org.jamesii.core.experiments.BaseExperiment}).
    */
   @Override
   public void run() {
@@ -214,7 +213,7 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
    */
   public void reportConfigExecution() {
     SimSystem.report(Level.INFO, "@@@@@@@@@@@@@@@@ executing configuration #"
-    + ++configCounter + " @@@@@@@@@@@@@@@@");
+        + ++configCounter + " @@@@@@@@@@@@@@@@");
   }
 
   @Override
@@ -349,8 +348,7 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
         storage = getDataStorage(config);
       }
 
-      ComputationTaskIDObject result = new ComputationTaskIDObject(storage);
-      return result;
+      return new ComputationTaskIDObject(storage);
     }
     return new ComputationTaskIDObject();
   }

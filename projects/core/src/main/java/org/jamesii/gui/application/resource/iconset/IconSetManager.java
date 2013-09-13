@@ -11,14 +11,12 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jamesii.gui.application.resource.BasicResources;
-
 /**
  * Singleton class that holds the current set icon set. Classes that need
  * standard icons defined through an {@link IIconSet} should use this class to
  * retrieve the currently set icon set.
  * 
- * @see BasicResources
+ * @see org.jamesii.gui.application.resource.BasicResources
  * @author Stefan Rybacki
  */
 public final class IconSetManager {

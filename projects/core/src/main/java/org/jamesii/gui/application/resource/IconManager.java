@@ -20,7 +20,6 @@ import java.util.logging.Level;
 import javax.swing.Icon;
 
 import org.jamesii.SimSystem;
-import org.jamesii.gui.application.resource.iconset.IIconSet;
 import org.jamesii.gui.application.resource.iconset.IconIdentifier;
 import org.jamesii.gui.application.resource.iconset.IconSetManager;
 import org.jamesii.gui.utils.ListenerSupport;
@@ -29,10 +28,12 @@ import org.jamesii.gui.utils.ListenerSupport;
 /**
  * Convenience class that provides static access to icon and image loading
  * utilizing the {@link ApplicationResourceManager}. It can also handle
- * locations that come from {@link IIconSet}s and are encoded with domain and
- * have an additional parameter called <b>iconset</b> which should be set to
- * <b>true</b> if the currently active {@link IIconSet} should be provided as
- * requesting class to the {@link ApplicationResourceManager}.
+ * locations that come from
+ * {@link org.jamesii.gui.application.resource.iconset.IIconSet}s and are
+ * encoded with domain and have an additional parameter called <b>iconset</b>
+ * which should be set to <b>true</b> if the currently active
+ * {@link org.jamesii.gui.application.resource.iconset.IIconSet} should be
+ * provided as requesting class to the {@link ApplicationResourceManager}.
  * 
  * @author Stefan Rybacki
  */
@@ -96,13 +97,15 @@ public final class IconManager {
   }
 
   /**
-   * Tries to load an icon using the currently active {@link IIconSet} that is
+   * Tries to load an icon using the currently active
+   * {@link org.jamesii.gui.application.resource.iconset.IIconSet} that is
    * identified by the given identifier.
    * <p>
    * Note: caching is automatically set to {@code true} when using this method
    * 
    * @param id
-   *          the identifier specifying an id within an {@link IIconSet}
+   *          the identifier specifying an id within an
+   *          {@link org.jamesii.gui.application.resource.iconset.IIconSet}
    * @return the icon if successfully loaded or {@code null} if not loaded
    */
   public static Icon getIcon(IconIdentifier id) {
@@ -110,13 +113,15 @@ public final class IconManager {
   }
 
   /**
-   * Tries to load an icon using the currently active {@link IIconSet} that is
+   * Tries to load an icon using the currently active
+   * {@link org.jamesii.gui.application.resource.iconset.IIconSet} that is
    * identified by the given identifier.
    * <p>
    * Note: caching is automatically set to {@code true} when using this method
    * 
    * @param id
-   *          the identifier specifying an id within an {@link IIconSet}
+   *          the identifier specifying an id within an
+   *          {@link org.jamesii.gui.application.resource.iconset.IIconSet}
    * @param altText
    *          the alternative text, if specified is rendered into the icon in
    *          case no {@link Icon} could be retrieved using the specified
@@ -252,13 +257,15 @@ public final class IconManager {
   }
 
   /**
-   * Tries to load an image using the currently active {@link IIconSet} that is
+   * Tries to load an image using the currently active
+   * {@link org.jamesii.gui.application.resource.iconset.IIconSet} that is
    * identified by the given identifier.
    * <p>
    * Note: caching is automatically set to {@code true} when using this method
    * 
    * @param id
-   *          the identifier specifying an id within an {@link IIconSet}
+   *          the identifier specifying an id within an
+   *          {@link org.jamesii.gui.application.resource.iconset.IIconSet}
    * @return the image if successfully loaded or {@code null} if not loaded
    */
   public static Image getImage(IconIdentifier id) {

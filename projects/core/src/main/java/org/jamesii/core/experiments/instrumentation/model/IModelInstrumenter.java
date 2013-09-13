@@ -9,7 +9,6 @@ package org.jamesii.core.experiments.instrumentation.model;
 import java.io.Serializable;
 
 import org.jamesii.core.experiments.IComputationTaskConfiguration;
-import org.jamesii.core.experiments.SimulationRunConfiguration;
 import org.jamesii.core.experiments.instrumentation.IInstrumenter;
 import org.jamesii.core.model.IModel;
 

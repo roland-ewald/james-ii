@@ -12,11 +12,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.jamesii.core.factories.Factory;
-
 /**
- * Annotation for the {@link Factory} of a component that is considered to be
- * broken at the moment.
+ * Annotation for the {@link org.jamesii.core.factories.Factory} of a component
+ * that is considered to be broken at the moment.
  * 
  * @author Roland Ewald
  */

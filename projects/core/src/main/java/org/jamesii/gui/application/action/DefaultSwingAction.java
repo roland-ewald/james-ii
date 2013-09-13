@@ -9,7 +9,6 @@ package org.jamesii.gui.application.action;
 import javax.swing.AbstractAction;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.util.logging.ApplicationLogger;
 import org.jamesii.gui.application.resource.ApplicationResourceManager;
 import org.jamesii.gui.application.resource.ResourceLoadingException;
 
@@ -39,7 +38,7 @@ public abstract class DefaultSwingAction extends AbstractAction {
   /**
    * Sets an action's property with a loaded resource. Uses the
    * {@link ApplicationResourceManager} to load the resource and logs errors to
-   * the {@link ApplicationLogger}.
+   * the {@link org.jamesii.core.util.logging.ApplicationLogger}.
    * 
    * @param value
    *          the action's property

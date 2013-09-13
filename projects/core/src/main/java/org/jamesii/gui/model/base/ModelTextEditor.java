@@ -30,9 +30,8 @@ import org.jamesii.gui.syntaxeditor.IInfoProvider;
 import org.jamesii.gui.syntaxeditor.JamesUndoManager;
 import org.jamesii.gui.syntaxeditor.SyntaxEditor;
 import org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter;
-import org.jamesii.gui.syntaxeditor.highlighting.IHighlighter;
 import org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter.Style;
-import org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory;
+import org.jamesii.gui.syntaxeditor.highlighting.IHighlighter;
 
 /**
  * A general text editor for symbolic models that takes advantage of provided
@@ -40,9 +39,12 @@ import org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory;
  * for coloring.<br/>
  * Instead of creating your own text editor with syntax highlighting for a given
  * symbolic model just provide a suitable {@link ISymbolicModel} implementation
- * for the model and an appropriate {@link HighlightingFactory} where the
- * {@link HighlightingFactory#supportsInput(Object)} should return true if the
- * supported {@link ISymbolicModel} is provided as input.
+ * for the model and an appropriate
+ * {@link org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory}
+ * where the
+ * {@link org.jamesii.gui.syntaxeditor.highlighting.plugintype.HighlightingFactory#supportsInput(Object)}
+ * should return true if the supported {@link ISymbolicModel} is provided as
+ * input.
  * 
  * @author Stefan Rybacki
  */

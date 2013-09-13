@@ -10,13 +10,13 @@ import org.jamesii.core.model.symbolic.convert.IDocument;
 import org.jamesii.core.model.symbolic.convert.SimpleDocument;
 import org.jamesii.gui.syntaxeditor.ILexer;
 import org.jamesii.gui.syntaxeditor.ILexerTokenStylizer;
-import org.jamesii.gui.syntaxeditor.SyntaxEditor;
 import org.jamesii.gui.syntaxeditor.highlighting.java.JavaLexer;
 import org.jamesii.gui.syntaxeditor.highlighting.java.JavaSyntaxTokenStylizer;
 
 /**
- * Basic highlighter usable to highlight arbitrary text in {@link SyntaxEditor}.
- * It uses the {@link DefaultLexer} that supports Java highlighting so far.
+ * Basic highlighter usable to highlight arbitrary text in
+ * {@link org.jamesii.gui.syntaxeditor.SyntaxEditor}. It uses the
+ * {@link DefaultLexer} that supports Java highlighting so far.
  * 
  * @author Stefan Rybacki
  */

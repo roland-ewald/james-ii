@@ -17,7 +17,6 @@ import org.jamesii.SimSystem;
 import org.jamesii.core.factories.AbstractFactory;
 import org.jamesii.core.factories.FactoryCriterion;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.security.auth.simpleauthmanager.SimpleAuthManagerFactory;
 
 /**
  * Abstract factory for the authentication and authorization manager plugin.
@@ -82,7 +81,8 @@ public class AbstractAuthManagerFactory extends
   /**
    * Criterion evaluating all factories regarding the quality of the underlying
    * security system. Basically this criterion just serves to dismiss the
-   * {@link SimpleAuthManagerFactory}.
+   * {@link org.jamesii.core.security.auth.simpleauthmanager.SimpleAuthManagerFactory}
+   * .
    * 
    * @author Simon Bartels
    * @author Jan Himmelspach

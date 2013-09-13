@@ -6,14 +6,12 @@
  */
 package org.jamesii.gui.application.resource;
 
-import java.awt.Image;
-
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.plugintype.ResourceProviderFactory;
 
 /**
  * Resource factory providing access to {@link ImageResourceProvider} which is
- * able to load an image file into an {@link Image}.
+ * able to load an image file into an {@link java.awt.Image}.
  * 
  * @author Stefan Rybacki
  */

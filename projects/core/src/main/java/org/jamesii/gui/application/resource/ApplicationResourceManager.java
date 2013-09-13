@@ -114,7 +114,7 @@ public final class ApplicationResourceManager {
    *           thrown when resource couldn't be loaded
    */
   @SuppressWarnings("unchecked")
-  public static synchronized final <T> T getResource(String resourceURL,
+  public static final synchronized <T> T getResource(String resourceURL,
       boolean cacheable, Class<?> requestingClass)
       throws ResourceLoadingException {
     // check cache first
@@ -186,7 +186,7 @@ public final class ApplicationResourceManager {
    * {@code null} values in the cache as well as the {@link #MAX_CACHE_ENTRIES}
    * constraint is fulfilled
    */
-  private synchronized static void cleanCache() {
+  private static synchronized void cleanCache() {
     Resource[] resources =
         cachedResources.values().toArray(new Resource[cachedResources.size()]);
     Arrays.sort(resources);

@@ -14,7 +14,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.factories.ConfigureFactoryPanel;

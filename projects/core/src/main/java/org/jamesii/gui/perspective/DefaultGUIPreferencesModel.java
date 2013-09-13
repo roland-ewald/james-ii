@@ -9,7 +9,6 @@ package org.jamesii.gui.perspective;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
@@ -47,7 +46,8 @@ final class DefaultGUIPreferencesModel extends AbstractPropertyChangeSupport
   }
 
   /**
-   * @return available {@link IIconSet}s wrapped in a {@link ComboBoxModel}
+   * @return available {@link IIconSet}s wrapped in a
+   *         {@link javax.swing.ComboBoxModel}
    */
   public IconSetComboBoxModel getIconSets() {
     return iconSetModel;
@@ -126,7 +126,8 @@ final class DefaultGUIPreferencesModel extends AbstractPropertyChangeSupport
   }
 
   /**
-   * @return available {@link IPerspective}s wrapped in a {@link ComboBoxModel}
+   * @return available {@link IPerspective}s wrapped in a
+   *         {@link javax.swing.ComboBoxModel}
    */
   public PerspectivesCheckBoxGroupModel getPerspectives() {
     return perspectivesModel;

@@ -8,12 +8,12 @@ package org.jamesii.gui.utils.objecteditor.property.editor;
 
 import javax.swing.JComponent;
 
-import org.jamesii.gui.utils.objecteditor.ObjectEditorComponent;
-
 /**
- * Interface for any property editor usable for {@link ObjectEditorComponent}.
- * This interface enables to provide internal, external or both editors for
- * editing property values in {@link ObjectEditorComponent}.
+ * Interface for any property editor usable for
+ * {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent}. This
+ * interface enables to provide internal, external or both editors for editing
+ * property values in
+ * {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent}.
  * 
  * @author Stefan Rybacki
  * @param <V>

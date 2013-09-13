@@ -2,11 +2,11 @@ package org.jamesii.core.distributed.loadbalancing;
 
 import org.jamesii.core.processor.IProcessor;
 import org.jamesii.core.processor.IRunnable;
-import org.jamesii.core.processor.plugintype.ProcessorFactory;
 
 /**
  * Interface for methods to set up {@link ILoadBalancer} instances. This needs
- * to be called in the {@link ProcessorFactory} of the given
+ * to be called in the
+ * {@link org.jamesii.core.processor.plugintype.ProcessorFactory} of the given
  * {@link ILBProcessor}.
  * 
  * @author Roland Ewald

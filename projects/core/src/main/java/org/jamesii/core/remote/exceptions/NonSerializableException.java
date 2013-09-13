@@ -8,12 +8,12 @@ package org.jamesii.core.remote.exceptions;
 
 import org.jamesii.core.remote.MigrationException;
 import org.jamesii.core.remote.hostcentral.IObjectId;
-import org.jamesii.core.remote.hostcentral.controller.MigrationController;
 
 /**
  * 
- * This exception is thrown by {@link MigrationController} when an object is not
- * serializable.
+ * This exception is thrown by
+ * {@link org.jamesii.core.remote.hostcentral.controller.MigrationController}
+ * when an object is not serializable.
  * 
  * @author Simon Bartels
  * 

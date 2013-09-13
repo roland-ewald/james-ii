@@ -17,7 +17,6 @@ import java.util.concurrent.ExecutionException;
 import javax.swing.SwingWorker;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 
 import org.jamesii.SimSystem;
@@ -25,8 +24,8 @@ import org.jamesii.gui.application.IProgressListener;
 import org.jamesii.gui.utils.ListenerSupport;
 
 /**
- * Internal class that implements {@link TreeModel} and provides the directory
- * structure of a given directory as tree.
+ * Internal class that implements {@link javax.swing.tree.TreeModel} and
+ * provides the directory structure of a given directory as tree.
  * 
  * @author Stefan Rybacki
  */

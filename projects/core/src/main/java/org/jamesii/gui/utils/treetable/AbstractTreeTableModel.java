@@ -1,7 +1,6 @@
 package org.jamesii.gui.utils.treetable;
 
 import javax.swing.event.TreeModelListener;
-import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
 import org.jamesii.gui.utils.AbstractTreeModel;
@@ -9,7 +8,7 @@ import org.jamesii.gui.utils.AbstractTreeModel;
 /**
  * Convenience class that implements the {@link ITreeTableModel} interface using
  * {@link AbstractTreeModel} to provide basic implementation for
- * {@link TreeModel} stuff.
+ * {@link javax.swing.tree.TreeModel} stuff.
  * 
  * @author Stefan Rybacki
  */

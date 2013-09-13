@@ -290,8 +290,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public Array getArray(int columnIndex) throws SQLException {
-    Array obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
   }
 
   @Override
@@ -302,8 +301,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public InputStream getAsciiStream(int columnIndex) throws SQLException {
-    InputStream obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
 
   }
 
@@ -345,8 +343,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public InputStream getBinaryStream(int columnIndex) throws SQLException {
-    InputStream obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
 
   }
 
@@ -359,8 +356,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public Blob getBlob(int columnIndex) throws SQLException {
-    Blob obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
   }
 
   @Override
@@ -408,8 +404,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public byte[] getBytes(int columnIndex) throws SQLException {
-    byte[] obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
 
   }
 
@@ -420,8 +415,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public Reader getCharacterStream(int columnIndex) throws SQLException {
-    Reader obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
   }
 
   @Override
@@ -432,8 +426,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public Clob getClob(int columnIndex) throws SQLException {
-    Clob obj = getColumnInCurrentRow(columnIndex);
-    return obj;
+    return getColumnInCurrentRow(columnIndex);
   }
 
   @Override
@@ -496,9 +489,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
 
   @Override
   public Date getDate(int columnIndex) throws SQLException {
-    Date obj = getColumnInCurrentRow(columnIndex);
-    return obj;
-
+    return getColumnInCurrentRow(columnIndex);
   }
 
   @Override

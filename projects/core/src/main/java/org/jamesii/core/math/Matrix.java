@@ -845,15 +845,14 @@ public class Matrix implements Serializable {
    * @return the matrix
    */
   public Matrix solve() {
-    Matrix m = new Matrix(data);
+    Matrix matrix = new Matrix(data);
     Matrix id = new Matrix(rows);
     id.flood(0.0);
     id.setDiagonal(1.0);
-    m.concat(id);
-    m.gaussJordan();
+    matrix.concat(id);
+    matrix.gaussJordan();
 
-    Matrix result = m.getSubMatrix(0, cols, rows - 1, cols + rows - 1);
-    return result;
+    return matrix.getSubMatrix(0, cols, rows - 1, cols + rows - 1);
   }
 
   /**
@@ -863,7 +862,7 @@ public class Matrix implements Serializable {
    * a10-b10&nbsp;a11-b11&nbsp;a12-b12<br>
    * a20-b20&nbsp;a21-b21&nbsp;a22-b22<br>
    * 
-   * @param m
+   * @param matrix
    *          matrix to be subtracted from this one
    * 
    * @exception MatrixException
@@ -871,18 +870,18 @@ public class Matrix implements Serializable {
    *              are not compatible! I. e. if do not have the same number of
    *              rows and columns.
    */
-  public void sub(Matrix m) {
+  public void sub(Matrix matrix) {
 
-    if ((rows != m.getRows()) || (cols != m.getColumns())) {
+    if ((rows != matrix.getRows()) || (cols != matrix.getColumns())) {
       throw new MatrixException(
           "Cannot subtract these two matrices \n Matrix A (" + rows + "x"
-              + cols + ") Matrix B (" + m.getRows() + "x" + m.getColumns()
-              + ")");
+              + cols + ") Matrix B (" + matrix.getRows() + "x"
+              + matrix.getColumns() + ")");
     }
 
     for (int i = 0; i < rows; i++) {
       for (int j = 0; j < cols; j++) {
-        data[i][j] = data[i][j] - m.getElement(i, j);
+        data[i][j] = data[i][j] - matrix.getElement(i, j);
       }
     }
   }

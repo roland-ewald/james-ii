@@ -18,7 +18,6 @@ import javax.swing.JTree;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.TreeCellRenderer;
 
 import org.jamesii.SimSystem;
 import org.jamesii.gui.application.Contribution;
@@ -40,7 +39,7 @@ public class DirectoryTreeView extends DefaultTreeView implements
     IProgressListener {
 
   /**
-   * {@link TreeCellRenderer} that renders the nodes of the
+   * {@link javax.swing.tree.TreeCellRenderer} that renders the nodes of the
    * {@link DirectoryTreeView} using the system icons of the shown {@link File}
    * item if available.
    * 

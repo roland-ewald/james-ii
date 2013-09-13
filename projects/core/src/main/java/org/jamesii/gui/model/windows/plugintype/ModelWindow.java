@@ -17,7 +17,6 @@ import org.jamesii.gui.application.AbstractWindow;
 import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.model.ISymbolicModelWindowManager;
-import org.jamesii.gui.model.SymbolicModelWindowManager;
 
 /**
  * All windows displaying a model (or a part thereof) must be descendants of
@@ -67,10 +66,10 @@ public abstract class ModelWindow<M extends ISymbolicModel<?>> extends
   }
 
   /**
-   * Will be called by {@link SymbolicModelWindowManager} to let the model
-   * initialize itself. This is important for all actions that require that the
-   * model is already properly registered at the
-   * {@link SymbolicModelWindowManager}.
+   * Will be called by {@link org.jamesii.gui.model.SymbolicModelWindowManager}
+   * to let the model initialize itself. This is important for all actions that
+   * require that the model is already properly registered at the
+   * {@link org.jamesii.gui.model.SymbolicModelWindowManager}.
    */
   public void initWindow() {
   }

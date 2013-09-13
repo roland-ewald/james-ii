@@ -12,7 +12,6 @@ import java.util.Map;
 
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
-import org.jamesii.core.model.InvalidModelException;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.id.IUniqueID;
 

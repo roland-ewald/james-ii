@@ -12,11 +12,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.jamesii.core.factories.Factory;
-
 /**
- * Annotation for the {@link Factory} of a component that is still under
- * development.
+ * Annotation for the {@link org.jamesii.core.factories.Factory} of a component
+ * that is still under development.
  * 
  * @author Roland Ewald
  * 

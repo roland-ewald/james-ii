@@ -7,13 +7,13 @@
 package org.jamesii.core.experiments.optimization.parameter.instrumenter;
 
 import org.jamesii.core.experiments.instrumentation.computation.IComputationInstrumenter;
-import org.jamesii.core.experiments.optimization.parameter.IResponseObserver;
-import org.jamesii.core.observe.IObserver;
 
 /**
  * Interface for simulation instrumenters used in the optimization context.
- * These have to return {@link IResponseObserver} objects instead of the usual
- * {@link IObserver} objects.
+ * These have to return
+ * {@link org.jamesii.core.experiments.optimization.parameter.IResponseObserver}
+ * objects instead of the usual {@link org.jamesii.core.observe.IObserver}
+ * objects.
  * 
  * @author Roland Ewald
  * 

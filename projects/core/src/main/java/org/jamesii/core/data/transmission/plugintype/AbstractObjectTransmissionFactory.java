@@ -6,12 +6,11 @@
  */
 package org.jamesii.core.data.transmission.plugintype;
 
-import org.jamesii.core.data.transmission.IObjectReceiver;
 import org.jamesii.core.factories.AbstractFactory;
 
 /**
- * Abstract object transmission factory. See {@link IObjectReceiver} for
- * details.
+ * Abstract object transmission factory. See
+ * {@link org.jamesii.core.data.transmission.IObjectReceiver} for details.
  * 
  * @author Simon Bartels
  * 

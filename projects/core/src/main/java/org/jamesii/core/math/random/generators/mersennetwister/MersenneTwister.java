@@ -6,13 +6,11 @@
  */
 package org.jamesii.core.math.random.generators.mersennetwister;
 
-import java.util.Random;
-
 import org.jamesii.core.math.random.generators.AbstractRandom;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.RNGInfo;
-import org.jamesii.core.math.random.generators.RNGPeriod;
 import org.jamesii.core.math.random.generators.RNGInfo.UsableBits;
+import org.jamesii.core.math.random.generators.RNGPeriod;
 
 /**
  * This class implements the Mersenne Twister pseudo-random number generator
@@ -72,7 +70,7 @@ public class MersenneTwister extends AbstractRandom implements IRandom {
 
   /**
    * Creates a MersenneTwister with a default random seed taken from
-   * {@link Random}.
+   * {@link java.util.Random}.
    */
   public MersenneTwister() {
     this(Math.round(Math.random() * Long.MAX_VALUE));

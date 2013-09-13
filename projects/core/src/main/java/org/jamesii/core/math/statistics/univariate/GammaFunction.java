@@ -19,14 +19,12 @@ import static java.lang.Math.log;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
-import org.jamesii.core.math.statistics.IncompleteGammaFunction;
-
 /**
  * Class for calculating the Gamma function and a related function, the logGamma
  * function.
  * <p>
- * For the incomplete Gamma functions use the {@link IncompleteGammaFunction}
- * class.
+ * For the incomplete Gamma functions use the
+ * {@link org.jamesii.core.math.statistics.IncompleteGammaFunction} class.
  * <p>
  * These methods were adapted from the <a
  * href="http://www.netlib.org/cephes/">Cephes Mathematical Library</a> by <a
@@ -34,7 +32,7 @@ import org.jamesii.core.math.statistics.IncompleteGammaFunction;
  * 
  * @author Johannes Rössel
  * 
- * @see org.jamesii.core.math.statistics.IncompleteGammaFunction
+ * @see org.jamesii.core.math.statistics.org.jamesii.core.math.statistics.IncompleteGammaFunction
  */
 public final class GammaFunction {
 

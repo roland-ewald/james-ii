@@ -14,12 +14,11 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 
 /**
  * This class is used to provide an easy way to support resizable GUI components
- * avoiding {@link JSplitPane}. In future release JSplitPane might be used
- * instead of this class.
+ * avoiding {@link javax.swing.JSplitPane}. In future release JSplitPane might
+ * be used instead of this class.
  * <p>
  * <b><font color="red">NOTE: the class is intended to be used internally only
  * and is very likely to change or to vanish in future releases</font></b>

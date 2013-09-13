@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
 import org.jamesii.gui.application.logging.BasicLogView;

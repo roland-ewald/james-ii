@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.distributed.partitioner.infrastructureanalyzer.AbstractInfrasctructureAnalyzer;
 import org.jamesii.core.distributed.partitioner.infrastructureanalyzer.plugintype.AbstractInfrastructureAnalyzerFactory;

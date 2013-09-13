@@ -6,11 +6,7 @@
  */
 package org.jamesii.core.distributed.partitioner.partitioning.multilevel.coarsening;
 
-import java.util.List;
-import java.util.Map;
-
 import org.jamesii.core.distributed.partitioner.partitioning.multilevel.abortcriterion.AbstractAbortCriterion;
-import org.jamesii.core.distributed.partitioner.partitioning.multilevel.refining.AbstractRefineAlgorithm;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.graph.ISimpleGraph;
