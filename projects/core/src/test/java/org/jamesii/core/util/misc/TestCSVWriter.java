@@ -39,7 +39,7 @@ public class TestCSVWriter extends TestCase {
 
   public void testWritePrimitiveMatrix() throws IOException {
     File f = getTestFile();
-    CSVWriter.writeResult(simpleMatrix, f.getAbsolutePath());
+    CSVWriter.writeResult(simpleMatrix, f.getAbsolutePath(), ',', true);
     List<String[]> content = new CSVReader().read(f.getAbsolutePath(), false);
     assertEquals(simpleMatrix.length, content.size());
     assertEquals(simpleMatrix[0].length, content.get(0).length);
