@@ -5,7 +5,7 @@
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
 	<name>James II</name>
-	<version>0.9.3-SNAPSHOT</version>
+	<version>0.9.3</version>
 	<url>http://www.jamesii.org</url>
 
 	<dependencyManagement>
@@ -15,7 +15,7 @@
 			<dependency>
 				<groupId>org.jamesii</groupId>
 				<artifactId>core</artifactId>
-				<version>0.9.3-SNAPSHOT</version>
+				<version>0.9.3</version>
 			</dependency>
 
 			<!-- External (please keep in alphabetical order by groupId.artifactId) -->
@@ -46,7 +46,8 @@
 	<!-- Source repository setup -->
 	<scm>
 		<connection>scm:hg:${james2.source.repo}</connection>
-	</scm>
+	  <tag>releases/james-ii-0.9.3</tag>
+  </scm>
 
 	<!-- Add new modules here (please keep in alphabetical order) -->
 	<modules>
