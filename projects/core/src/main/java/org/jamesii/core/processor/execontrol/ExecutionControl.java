@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.tasks.stoppolicy.EmptyStopCondition;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.model.IModel;
@@ -226,7 +225,7 @@ public class ExecutionControl implements Serializable {
    * @return true if the simulation has ended
    */
   public boolean notFinished(IComputationTaskStopPolicy stopPolicy) {
-    return !stopPolicy.hasReachedEnd();
+    return !stopPolicy.hasReachedEnd(owner.getComputationTask());
   }
 
   /**
