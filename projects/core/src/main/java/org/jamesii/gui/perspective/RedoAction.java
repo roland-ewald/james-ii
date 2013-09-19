@@ -17,11 +17,10 @@ import org.jamesii.gui.application.resource.IconManager;
 import org.jamesii.gui.application.resource.iconset.IconIdentifier;
 import org.jamesii.gui.syntaxeditor.IUndoRedoListener;
 import org.jamesii.gui.syntaxeditor.JamesUndoManager;
-import org.jamesii.gui.syntaxeditor.SyntaxEditor;
 
 /**
- * Simple redo action for a {@link SyntaxEditor} that calls when invoked its
- * {@link JamesUndoManager#redo()} method.
+ * Simple redo action for a {@link org.jamesii.gui.syntaxeditor.SyntaxEditor}
+ * that calls when invoked its {@link JamesUndoManager#redo()} method.
  * 
  * @author Stefan Rybacki
  */

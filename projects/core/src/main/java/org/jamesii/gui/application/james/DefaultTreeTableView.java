@@ -9,7 +9,6 @@ package org.jamesii.gui.application.james;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -149,9 +148,9 @@ public class DefaultTreeTableView extends AbstractWindow {
    * 
    * @param mode
    *          the mode to set
-   * @see ListSelectionModel#MULTIPLE_INTERVAL_SELECTION
-   * @see ListSelectionModel#SINGLE_INTERVAL_SELECTION
-   * @see ListSelectionModel#SINGLE_SELECTION
+   * @see javax.swing.ListSelectionModel#MULTIPLE_INTERVAL_SELECTION
+   * @see javax.swing.ListSelectionModel#SINGLE_INTERVAL_SELECTION
+   * @see javax.swing.ListSelectionModel#SINGLE_SELECTION
    */
   protected final void setSelectionMode(int mode) {
     table.setSelectionMode(mode);

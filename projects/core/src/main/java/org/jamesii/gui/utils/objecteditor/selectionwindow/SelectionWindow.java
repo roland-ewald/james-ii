@@ -21,7 +21,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import org.jamesii.SimSystem;
@@ -65,10 +64,10 @@ public final class SelectionWindow<T extends Factory> extends JDialog {
   private FactoryParameterPanel parameterPanel;
 
   /**
-   * The {@link JScrollPane} surrounding the {@link FactoryParameterPanel}.
-   * Since said Panel has to be reconstructed every time the selection changes
-   * we need a wrapper and since we also need a {@link JScrollPane} this comes
-   * in handy.
+   * The {@link javax.swing.JScrollPane} surrounding the
+   * {@link FactoryParameterPanel}. Since said Panel has to be reconstructed
+   * every time the selection changes we need a wrapper and since we also need a
+   * {@link javax.swing.JScrollPane} this comes in handy.
    */
   private JPanel parameterPanelWrapper;
 
@@ -85,7 +84,7 @@ public final class SelectionWindow<T extends Factory> extends JDialog {
    * parameter block in the {@link FactoryComboBox}'s model to be updated each
    * time a parameter value changes.
    */
-  transient private IPropertyChangedListener parameterPanelPropertyChangedListener =
+  private transient IPropertyChangedListener parameterPanelPropertyChangedListener =
       new IPropertyChangedListener() {
         @Override
         public void propertyChanged(Object propertyParent, String propertyName,

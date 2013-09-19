@@ -6,8 +6,6 @@
  */
 package org.jamesii.core.data.experiment.filesystem;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
@@ -24,8 +22,8 @@ import org.jamesii.core.util.misc.Files;
 /**
  * This is a simple experiment reader/writer for file I/O. It only uses the
  * identification URI given in {@link ExperimentInfo}. This reader/writer uses
- * the built-in system to decode/code Java Beans to XML (see {@link XMLEncoder},
- * {@link XMLDecoder}).
+ * the built-in system to decode/code Java Beans to XML (see
+ * {@link java.beans.XMLEncoder}, {@link java.beans.XMLDecoder}).
  * 
  * @author Roland Ewald
  */

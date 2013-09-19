@@ -9,12 +9,10 @@ package org.jamesii.core.data.source;
 import java.sql.ResultSet;
 import java.util.List;
 
-import org.jamesii.core.data.storage.IDataStorage;
-
 /**
  * The interface for data sources that need to be integrated, e.g. to import
  * real-world data and compare that to simulation outcomes. Should be used in
- * analogy to {@link IDataStorage}.
+ * analogy to {@link org.jamesii.core.data.storage.IDataStorage}.
  * 
  * @author Roland Ewald
  * 

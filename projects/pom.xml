@@ -28,17 +28,25 @@
 		<source.version>1.7</source.version>
 		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<maven.test.error.ignore>false</maven.test.error.ignore>
+		
+		<!-- The source repository URL. Needs to be adjustable (e.g., for deployment). -->
+		<james2.source.repo>https://bitbucket.org/jamesii/main</james2.source.repo>
 
 		<!-- Maven plugin versions -->
 		<maven.compiler.v>3.0</maven.compiler.v>
 		<maven.processor.v>2.0.5</maven.processor.v>
 		<maven.resources.v>2.5</maven.resources.v>
 		<maven.surefire.v>2.14.1</maven.surefire.v>
-		<maven.release.v>2.2</maven.release.v>
+		<maven.release.v>2.3.2</maven.release.v>
 		<maven.source.v>2.1.2</maven.source.v>
 		<maven.jar.v>2.3.2</maven.jar.v>
 		<maven.assembly.v>2.2.1</maven.assembly.v>
 	</properties>
+	
+	<!-- Source repository setup -->
+	<scm>
+		<connection>scm:hg:${james2.source.repo}</connection>
+	</scm>
 
 	<!-- Add new modules here (please keep in alphabetical order) -->
 	<modules>
@@ -163,6 +171,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>${maven.release.v}</version>
+			    <configuration>
+					<tagNameFormat>releases/james-ii-@{project.version}</tagNameFormat>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -9,13 +9,13 @@ package org.jamesii.core.services.observer;
 import java.rmi.RemoteException;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.distributed.masterserver.ServiceRegistryObserver;
 import org.jamesii.core.hosts.system.IRemoteObserver;
 import org.jamesii.core.observe.IObservable;
 import org.jamesii.core.observe.Observer;
 
 /**
- * Proxy for a remote {@link ServiceRegistryObserver}.
+ * Proxy for a remote
+ * {@link org.jamesii.core.distributed.masterserver.ServiceRegistryObserver}.
  * 
  * @author Stefan Leye
  */

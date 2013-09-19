@@ -6,15 +6,12 @@
  */
 package org.jamesii.gui.visualization.chart.model;
 
-import org.jamesii.gui.visualization.chart.BasicChart;
-import org.jamesii.gui.visualization.chart.axes.IAxis;
-import org.jamesii.gui.visualization.chart.coordinatesystem.ICoordinateSystem;
-import org.jamesii.gui.visualization.chart.plot.IPlot;
-
 /**
- * The interface providing data information to the {@link ICoordinateSystem} and
- * {@link IPlot} implementations for further use in custom charts or
- * {@link BasicChart}.
+ * The interface providing data information to the
+ * {@link org.jamesii.gui.visualization.chart.coordinatesystem.ICoordinateSystem}
+ * and {@link org.jamesii.gui.visualization.chart.plot.IPlot} implementations
+ * for further use in custom charts or
+ * {@link org.jamesii.gui.visualization.chart.BasicChart}.
  * <p>
  * <b><font color="red">NOTE: This class is very likely to change in future
  * releases so use with care.</font></b>
@@ -85,8 +82,9 @@ public interface IChartModel {
 
   /**
    * This method is used to group dimension of each series together. That means
-   * different series can be mapped onto the same {@link IAxis} if they are in
-   * the same group.
+   * different series can be mapped onto the same
+   * {@link org.jamesii.gui.visualization.chart.axes.IAxis} if they are in the
+   * same group.
    * <p>
    * Example:<br/>
    * There are 4 series with 2 dimensions each:

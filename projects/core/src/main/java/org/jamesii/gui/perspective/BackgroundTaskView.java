@@ -15,14 +15,13 @@ import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.application.resource.IconManager;
 import org.jamesii.gui.application.resource.iconset.IconIdentifier;
-import org.jamesii.gui.application.task.ITask;
-import org.jamesii.gui.application.task.TaskManager;
 import org.jamesii.gui.application.task.TaskManagerTable;
 
 /**
  * View in JAMES GUI that can only be open alone hence it is implemented using
  * the singleton pattern. This view is used to observe and manage the
- * {@link ITask}s currently running in the {@link TaskManager}.
+ * {@link org.jamesii.gui.application.task.ITask}s currently running in the
+ * {@link org.jamesii.gui.application.task.TaskManager}.
  * 
  * @author Stefan Rybacki
  * 

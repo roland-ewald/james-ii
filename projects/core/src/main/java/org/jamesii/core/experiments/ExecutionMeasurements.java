@@ -10,12 +10,13 @@ import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
-import org.jamesii.core.experiments.taskrunner.ComputationTaskHandler;
 import org.jamesii.core.util.StopWatch;
 
 /**
- * This class is used by the {@link ComputationTaskHandler} to take time and
- * memory measurements that are stored in the {@link RunInformation}.
+ * This class is used by the
+ * {@link org.jamesii.core.experiments.taskrunner.ComputationTaskHandler} to
+ * take time and memory measurements that are stored in the
+ * {@link RunInformation}.
  * 
  * @author Roland Ewald
  * 

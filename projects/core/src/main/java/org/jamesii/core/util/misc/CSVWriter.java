@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Utility to write CSV files.
+ * Utility to write CSV files. To avoid code duplication, 2D arrays of
+ * primitives are converted to objects (e.g. <code>double[][]</code> to
+ * <code>Double[][]</code>), so writing large data sets of primitives could
+ * suffer a slowdown.
  * 
  * @see CSVReader
  * 
@@ -46,30 +49,11 @@ public final class CSVWriter {
       throws IOException {
     writeResult(result, fileName, DEFAULT_DELIMITER);
   }
-  
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * 
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResult(X[][] result, String fileName)
-      throws IOException {
-    appendResult(result, fileName, DEFAULT_DELIMITER);
-  }
 
   /**
    * Write result. In case the first row is shorter than some other (in terms of
    * data elements separated by {@link CSVWriter#DEFAULT_DELIMITER}, not
    * character count!), it will be prolonged by adding a corresponding number of
-   * {@link CSVWriter#DEFAULT_DELIMITER} at the end.
    * 
    * @param <X>
    *          the generic type
@@ -79,64 +63,11 @@ public final class CSVWriter {
    *          the file name
    * @throws IOException
    *           Signals that an I/O exception has occurred.
+   *           {@link CSVWriter#DEFAULT_DELIMITER} at the end.
    */
   public static <X> void writeResultWithLongFirstRow(X[][] result,
       String fileName) throws IOException {
     writeResult(result, fileName, DEFAULT_DELIMITER, true);
-  }
-  
-  /**
-   * Write result. In case the first row is shorter than some other (in terms of
-   * data elements separated by {@link CSVWriter#DEFAULT_DELIMITER}, not
-   * character count!), it will be prolonged by adding a corresponding number of
-   * {@link CSVWriter#DEFAULT_DELIMITER} at the end.
-   * 
-   * @param <X>
-   *          the generic type
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResultWithLongFirstRow(X[][] result,
-      String fileName) throws IOException {
-    appendResult(result, fileName, DEFAULT_DELIMITER, true);
-  }
-
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void writeResult(X[] result, String fileName)
-      throws IOException {
-    writeResult(result, fileName, DEFAULT_DELIMITER);
-  }
-  
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResult(X[] result, String fileName)
-      throws IOException {
-    appendResult(result, fileName, DEFAULT_DELIMITER);
   }
 
   /**
@@ -156,25 +87,6 @@ public final class CSVWriter {
   public static <X> void writeResult(X[][] result, String fileName,
       char delimiter) throws IOException {
     writeResult(result, fileName, delimiter, false);
-  }
-  
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @param delimiter
-   *          the separator
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResult(X[][] result, String fileName,
-      char delimiter) throws IOException {
-    appendResult(result, fileName, delimiter, false);
   }
 
   /**
@@ -197,31 +109,8 @@ public final class CSVWriter {
   public static <X> void writeResult(X[][] result, String fileName,
       char delimiter, boolean addDelimsToFirstRow) throws IOException {
     try (FileWriter fw = new FileWriter(fileName)) {
-      fw.append(toCSV(result, delimiter, addDelimsToFirstRow));
-    }
-  }
-  
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @param delimiter
-   *          the separator
-   * @param addDelimsToFirstRow
-   *          the flag to adjust the first row (adding delimiters so that it is
-   *          as large as the longest row)
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResult(X[][] result, String fileName,
-      char delimiter, boolean addDelimsToFirstRow) throws IOException {
-    try (FileWriter fw = new FileWriter(fileName, true)) {
-      fw.append(toCSV(result, delimiter, addDelimsToFirstRow));
+      fw.append(toCSV(new ObjectMatrix<X>(result), delimiter,
+          addDelimsToFirstRow));
     }
   }
 
@@ -245,40 +134,20 @@ public final class CSVWriter {
       fw.append(toCSV(result, delimiter));
     }
   }
-  
-  /**
-   * Write result.
-   * 
-   * @param <X>
-   *          the type of the results
-   * @param result
-   *          the result
-   * @param fileName
-   *          the file name
-   * @param delimiter
-   *          the delimiter
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public static <X> void appendResult(X[] result, String fileName, char delimiter)
-      throws IOException {
-    try (FileWriter fw = new FileWriter(fileName, true)) {
-      fw.append(toCSV(result, delimiter));
-    }
-  }
 
   /**
    * Export to CSV.
    * 
+   * @param <X>
+   *          the generic type
    * @param matrix
    *          the matrix
    * @param delim
    *          the delimiter
-   * 
    * @return the string builder containing the data
    */
   public static <X> StringBuilder toCSV(X[][] matrix, char delim) {
-    return toCSV(matrix, delim, false);
+    return toCSV(new ObjectMatrix<X>(matrix), delim, false);
   }
 
   /**
@@ -296,17 +165,18 @@ public final class CSVWriter {
    *          appended to first row
    * @return the string builder containing the data
    */
-  public static <X> StringBuilder toCSV(X[][] matrix, char delim,
+  public static <X> StringBuilder toCSV(MatrixWrapper<X> matrix, char delim,
       boolean addDelimsToFirstRow) {
     if (matrix == null) {
       return new StringBuilder("null");
     }
     StringBuilder matrixString = new StringBuilder();
-    for (int i = 0; i < matrix.length; i++) {
-      for (int j = 0; j < matrix[i].length; j++) {
-        matrixString
-            .append(matrix[i][j] == null ? "" : matrix[i][j].toString());
-        if (j < matrix[i].length - 1) {
+    for (int i = 0; i < matrix.length(); i++) {
+      int rowLength = matrix.length(i);
+      for (int j = 0; j < rowLength; j++) {
+        X element = matrix.element(i, j);
+        matrixString.append(element == null ? "" : element.toString());
+        if (j < rowLength - 1) {
           matrixString.append(delim);
         }
       }
@@ -332,12 +202,13 @@ public final class CSVWriter {
    *          the delimiter to be used
    * @return the string
    */
-  private static <X> String createAdditionalDelimiters(X[][] matrix, char delim) {
+  private static <X> String createAdditionalDelimiters(MatrixWrapper<X> matrix,
+      char delim) {
     int maxRowLength = 0;
-    for (X[] row : matrix) {
-      maxRowLength = Math.max(maxRowLength, row.length);
+    for (int i = 0; i < matrix.length(); i++) {
+      maxRowLength = Math.max(maxRowLength, matrix.length(i));
     }
-    return Strings.copyChar(delim, maxRowLength - matrix[0].length);
+    return Strings.copyChar(delim, maxRowLength - matrix.length(0));
   }
 
   /**
@@ -393,6 +264,473 @@ public final class CSVWriter {
       matrixString.append('\n');
     }
     return matrixString;
+  }
+
+  // Special functions for primitive types:
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(double[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new DoublePrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(float[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new FloatPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(boolean[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new BooleanPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(char[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new CharPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(byte[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new BytePrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(short[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new ShortPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(int[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new IntPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+
+  /**
+   * Write result.
+   * 
+   * @param result
+   *          the result
+   * @param fileName
+   *          the file name
+   * @param delimiter
+   *          the delimiter
+   * @param addDelimsToFirstRow
+   *          the add delims to first row
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeResult(long[][] result, String fileName,
+      char delimiter, boolean addDelimsToFirstRow) throws IOException {
+    try (FileWriter fw = new FileWriter(fileName)) {
+      fw.append(toCSV(new LongPrimitiveMatrix(result), delimiter,
+          addDelimsToFirstRow));
+    }
+  }
+}
+
+/**
+ * Simple interface to abstract away the distinction between 2D arrays of
+ * primitives (e.g. double[][]) and 2D arrays of ordinary objects (e.g.
+ * Double[][], String[][]).
+ * 
+ * @param <X>
+ *          the type of the stored objects
+ */
+interface MatrixWrapper<X> {
+
+  /**
+   * Get number of rows.
+   * 
+   * @return number of rows.
+   */
+  int length();
+
+  /**
+   * Get length of row.
+   * 
+   * @param row
+   *          the row
+   * @return number of columns in row
+   */
+  int length(int row);
+
+  /**
+   * Get element.
+   * 
+   * @param row
+   *          the row number
+   * @param col
+   *          the column number
+   * @return the element
+   */
+  X element(int row, int col);
+}
+
+/**
+ * Wrapper for 'normal' 2D arrays consisting of objects.
+ */
+class ObjectMatrix<X> implements MatrixWrapper<X> {
+
+  private final X[][] matrix;
+
+  ObjectMatrix(X[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public X element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for double[][].
+ */
+class DoublePrimitiveMatrix implements MatrixWrapper<Double> {
+
+  private final double[][] matrix;
+
+  DoublePrimitiveMatrix(double[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Double element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for float[][].
+ */
+class FloatPrimitiveMatrix implements MatrixWrapper<Float> {
+
+  private final float[][] matrix;
+
+  FloatPrimitiveMatrix(float[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Float element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for boolean[][].
+ */
+class BooleanPrimitiveMatrix implements MatrixWrapper<Boolean> {
+
+  private final boolean[][] matrix;
+
+  BooleanPrimitiveMatrix(boolean[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Boolean element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for char[][].
+ */
+class CharPrimitiveMatrix implements MatrixWrapper<Character> {
+
+  private final char[][] matrix;
+
+  CharPrimitiveMatrix(char[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Character element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for byte[][].
+ */
+class BytePrimitiveMatrix implements MatrixWrapper<Byte> {
+
+  private final byte[][] matrix;
+
+  BytePrimitiveMatrix(byte[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Byte element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for short[][].
+ */
+class ShortPrimitiveMatrix implements MatrixWrapper<Short> {
+
+  private final short[][] matrix;
+
+  ShortPrimitiveMatrix(short[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Short element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for int[][].
+ */
+class IntPrimitiveMatrix implements MatrixWrapper<Integer> {
+
+  private final int[][] matrix;
+
+  IntPrimitiveMatrix(int[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Integer element(int row, int col) {
+    return matrix[row][col];
+  }
+
+}
+
+/**
+ * Wrapper for long[][].
+ */
+class LongPrimitiveMatrix implements MatrixWrapper<Long> {
+
+  private final long[][] matrix;
+
+  LongPrimitiveMatrix(long[][] matrix) {
+    this.matrix = matrix;
+  }
+
+  @Override
+  public int length() {
+    return matrix.length;
+  }
+
+  @Override
+  public int length(int row) {
+    return matrix[row].length;
+  }
+
+  @Override
+  public Long element(int row, int col) {
+    return matrix[row][col];
   }
 
 }

@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.jamesii.core.data.experiment.ExperimentInfo;
-import org.jamesii.core.data.storage.DataStorageException;
 
 /**
  * The Interface representing database servers.
@@ -25,7 +24,7 @@ public interface IDatabaseServer {
    * @param entries
    *          the entries
    * 
-   * @throws DataStorageException
+   * @throws org.jamesii.core.data.storage.DataStorageException
    *           the data storage exception
    */
   void updateBatchwise(Serializable entries);
@@ -38,7 +37,7 @@ public interface IDatabaseServer {
    * 
    * @return the serializable
    * 
-   * @throws DataStorageException
+   * @throws org.jamesii.core.data.storage.DataStorageException
    *           the data storage exception
    */
   Serializable enquire(SimulationResultDataQuery query);
@@ -55,7 +54,7 @@ public interface IDatabaseServer {
    *          null, because there won't be anything to store. However, it will
    *          be not forbidden.
    * 
-   * @throws DataStorageException
+   * @throws org.jamesii.core.data.storage.DataStorageException
    *           the data storage exception
    */
   void writeExperimentInformation(long expid, ExperimentInfo info);
@@ -89,7 +88,7 @@ public interface IDatabaseServer {
    * 
    * @return the long
    * 
-   * @throws DataStorageException
+   * @throws org.jamesii.core.data.storage.DataStorageException
    *           the data storage exception
    */
   long newSimulation();
@@ -99,7 +98,7 @@ public interface IDatabaseServer {
    * 
    * @return the long
    * 
-   * @throws DataStorageException
+   * @throws org.jamesii.core.data.storage.DataStorageException
    *           the data storage exception
    */
   long newExperiment();

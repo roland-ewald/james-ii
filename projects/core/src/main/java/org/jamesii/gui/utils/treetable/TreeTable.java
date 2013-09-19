@@ -39,7 +39,7 @@ public class TreeTable extends JTable {
   /**
    * A mouse listener for expanding/collapsing nodes by using double-clicking.
    */
-  transient private final MouseListener clickMouseListener =
+  private final transient MouseListener clickMouseListener =
       new MouseAdapter() {
         // @Override
         // public void mouseClicked(MouseEvent e) {

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.computationserver.IComputationServer;
 import org.jamesii.core.distributed.computationserver.IJob;
 import org.jamesii.core.distributed.partition.Partition;

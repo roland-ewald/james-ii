@@ -40,20 +40,20 @@ public class RunExpAction extends DefaultSwingAction {
   private final BaseExperiment exp;
 
   /** Reference to window manager. */
-  private transient final IWindowManager windowManager;
+  private final transient IWindowManager windowManager;
 
   /** Observation manager to use. */
-  private transient final ExperimentObservationManager expObsManager;
+  private final transient ExperimentObservationManager expObsManager;
 
   /**
    * Array of experiment execution listeners to be attached to the started
    * experiment.
    */
-  private transient final Set<IExperimentExecutionListener> expExecListeners =
+  private final transient Set<IExperimentExecutionListener> expExecListeners =
       new HashSet<>();
 
   /** The experiment editor for this experiment. */
-  private transient final ExperimentEditor experimentEditor;
+  private final transient ExperimentEditor experimentEditor;
 
   /** The runtime status of the experiment. */
   private ExpStatus expStatus = ExpStatus.DEFAULT;

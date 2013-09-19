@@ -9,12 +9,10 @@ package org.jamesii.gui.visualization.chart.utilities;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
-import org.jamesii.gui.visualization.chart.plot.IPlot;
-
 /**
  * This interface defines additional elements that can be plugged into any chart
- * {@link IPlot} to provide additional information such as a legend or a chart
- * title.
+ * {@link org.jamesii.gui.visualization.chart.plot.IPlot} to provide additional
+ * information such as a legend or a chart title.
  * <p>
  * <b><font color="red">NOTE: This class is very likely to change in future
  * releases so use with care.</font></b>

@@ -8,10 +8,8 @@ package org.jamesii.core.data;
 
 import java.net.URI;
 
-import org.jamesii.core.factories.Factory;
-
 /**
- * Interface to categorize {@link Factory}s.
+ * Interface to categorize {@link org.jamesii.core.factories.Factory}s.
  * 
  * @author Stefan Rybacki
  */

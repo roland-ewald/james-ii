@@ -15,11 +15,11 @@ import javax.swing.Icon;
 import org.jamesii.gui.syntaxeditor.ILexerToken;
 import org.jamesii.gui.syntaxeditor.ILexerTokenStylizer;
 import org.jamesii.gui.syntaxeditor.StrokePosition;
-import org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter.Style;
 
 /**
- * Stylizer for the {@link DefaultHighlighter} in style {@link Style#DEFAULT}.
- * Highlighting is off text will be displayed in {@link Color#DARK_GRAY}
+ * Stylizer for the {@link DefaultHighlighter} in style
+ * {@link org.jamesii.gui.syntaxeditor.highlighting.DefaultHighlighter.Style#DEFAULT}
+ * . Highlighting is off text will be displayed in {@link Color#DARK_GRAY}
  * 
  * @author Stefan Rybacki
  * 

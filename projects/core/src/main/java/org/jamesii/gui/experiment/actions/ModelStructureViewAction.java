@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.ComputationRuntimeState;
 import org.jamesii.core.experiments.ComputationTaskRuntimeInformation;
-import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.resource.IconManager;

@@ -15,13 +15,14 @@ import java.util.Set;
 import org.jamesii.core.remote.hostcentral.IObjectId;
 import org.jamesii.core.remote.hostcentral.controller.IObjectReferrer;
 import org.jamesii.core.remote.hostcentral.rmi.IRemoteCommunicationCenter;
-import org.jamesii.core.remote.hostcentral.rmi.RemoteCommunicationCenter;
 
 /**
  * 
  * The Interface IMigrationController. Is implemented by components that trigger
  * an automatic migration of model and simulation entities from one physical
- * host (represented by its {@link RemoteCommunicationCenter}) to another.
+ * host (represented by its
+ * {@link org.jamesii.core.remote.hostcentral.rmi.RemoteCommunicationCenter}) to
+ * another.
  * 
  * @author Simon Bartels
  * 

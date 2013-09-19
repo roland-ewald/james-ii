@@ -7,10 +7,9 @@
 package org.jamesii.gui.service.view.plugintype;
 
 import org.jamesii.core.factories.AbstractFilteringFactory;
-import org.jamesii.core.services.IService;
 
 /**
- * The {@link IService} factory for all service views.
+ * The {@link org.jamesii.core.services.IService} factory for all service views.
  * 
  * @author Stefan Leye
  */

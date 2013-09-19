@@ -1,3 +1,9 @@
+/*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ * 
+ * LICENCE: JAMESLIC
+ */
 package org.jamesii.core.experiments.variables.modifier;
 
 import java.util.List;
@@ -7,16 +13,15 @@ import org.jamesii.core.experiments.instrumentation.model.IModelInstrumenter;
 import org.jamesii.core.experiments.replication.IReplicationCriterion;
 import org.jamesii.core.experiments.variables.ExperimentVariables;
 import org.jamesii.core.experiments.variables.NoNextVariableException;
-import org.jamesii.core.math.random.RandomSampler;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
  * Iterates through list of points (double arrays), returns element from given
  * (fixed) dimension. Useful for setting up modifiers that parameterise a model
  * with parameter vectors from a point cloud, e.g., as created by
- * {@link RandomSampler}.
+ * {@link org.jamesii.core.math.random.RandomSampler}.
  * 
- * @see RandomSampler
+ * @see org.jamesii.core.math.random.RandomSampler
  * 
  * @author Roland Ewald
  * @author Stefan Leye

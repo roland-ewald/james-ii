@@ -10,7 +10,6 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.base.NamedEntity;
 
 /**

@@ -6,16 +6,16 @@
  */
 package org.jamesii.gui.application.resource;
 
-import java.io.InputStream;
 import java.util.Map;
 
 /**
  * Simple resource provider supporting the <b>inputstream</b> domain. The given
- * location is used to open an {@link InputStream} that is then returned. Since
- * the provider never knows when the {@link InputStream} is not needed anymore
- * it is in the users responsibility that it is closed properly after usage.<br/>
+ * location is used to open an {@link java.io.InputStream} that is then
+ * returned. Since the provider never knows when the {@link java.io.InputStream}
+ * is not needed anymore it is in the users responsibility that it is closed
+ * properly after usage.<br/>
  * Additionally this kind of resource should not be cached on the
- * {@link InputStream} level.
+ * {@link java.io.InputStream} level.
  * 
  * @author Stefan Rybacki
  * 

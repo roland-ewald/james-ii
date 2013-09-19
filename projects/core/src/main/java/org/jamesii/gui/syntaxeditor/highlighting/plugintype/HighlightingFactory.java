@@ -7,9 +7,7 @@
 package org.jamesii.gui.syntaxeditor.highlighting.plugintype;
 
 import org.jamesii.core.factories.Factory;
-import org.jamesii.core.model.symbolic.ISymbolicModel;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.gui.model.base.ModelTextEditor;
 import org.jamesii.gui.syntaxeditor.highlighting.IHighlighter;
 
 /**
@@ -44,10 +42,13 @@ public abstract class HighlightingFactory extends Factory<IHighlighter> {
    * given input object. The given input object can be anything from a file,
    * text or any other object.
    * <p/>
-   * If applied for usage in a {@link ModelTextEditor} the specified input is an
-   * {@link ISymbolicModel} for which the factory might can provide a
-   * {@link IHighlighter} that supports the textual representation (
-   * {@link ISymbolicModel#getAsDocument(Class)}) of the supplied model.
+   * If applied for usage in a
+   * {@link org.jamesii.gui.model.base.ModelTextEditor} the specified input is
+   * an {@link org.jamesii.core.model.symbolic.ISymbolicModel} for which the
+   * factory might can provide a {@link IHighlighter} that supports the textual
+   * representation (
+   * {@link org.jamesii.core.model.symbolic.ISymbolicModel#getAsDocument(Class)}
+   * ) of the supplied model.
    * 
    * @param input
    *          the input that might be supported by the factory

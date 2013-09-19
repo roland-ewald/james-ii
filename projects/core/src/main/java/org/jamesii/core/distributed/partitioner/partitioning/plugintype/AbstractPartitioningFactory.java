@@ -12,7 +12,6 @@ import java.util.List;
 import org.jamesii.core.distributed.partitioner.partitioning.multilevel.MultiLevelPartitioningFactory;
 import org.jamesii.core.factories.AbstractFilteringFactory;
 import org.jamesii.core.factories.FactoryCriterion;
-import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -60,7 +59,7 @@ public class AbstractPartitioningFactory extends
   private static final long serialVersionUID = 2331218783212641711L;
 
   /**
-   * The model to be partitioned, type: {@link IModel}.
+   * The model to be partitioned, type: {@link org.jamesii.core.model.IModel}.
    */
   public static final String MODEL = "model";
 

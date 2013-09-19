@@ -6,17 +6,17 @@
  */
 package org.jamesii.core.observe;
 
-import org.jamesii.core.base.Entity;
 
 /**
- * This delegate is intended for classes that do not inherit from {@link Entity}
- * for some reason (e.g. because they are not serializable) but still need to
- * implement {@link IObservable}.
+ * This delegate is intended for classes that do not inherit from
+ * {@link org.jamesii.core.base.Entity} for some reason (e.g. because they are
+ * not serializable) but still need to implement {@link IObservable}.
  * 
  * 
  * 
- * TODO: This implementation is taken from {@link Entity}, it could be merged
- * with it but letting {@link Entity} use delegation could lead to a slow-down.
+ * TODO: This implementation is taken from {@link org.jamesii.core.base.Entity},
+ * it could be merged with it but letting {@link org.jamesii.core.base.Entity}
+ * use delegation could lead to a slow-down.
  * 
  * @author Roland Ewald
  */

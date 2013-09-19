@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.data.experiment.write.plugintype;
 
-import org.jamesii.core.data.experiment.ExperimentInfo;
 import org.jamesii.core.factories.AbstractFilteringFactory;
 
 /**
@@ -23,7 +22,8 @@ public class AbstractExperimentWriterFactory extends
 
   /**
    * Parameter identifier for storing the experiment information of the
-   * experiment to be read or written . Type is {@link ExperimentInfo}.
+   * experiment to be read or written . Type is
+   * {@link org.jamesii.core.data.experiment.ExperimentInfo}.
    */
   public static final String EXPERIMENT_INFO = "experimentInfo";
 

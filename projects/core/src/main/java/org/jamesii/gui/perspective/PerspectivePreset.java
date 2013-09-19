@@ -27,7 +27,7 @@ public class PerspectivePreset implements Serializable {
   /**
    * list of class names of active presets
    */
-  private transient final List<String> perspectives = new ArrayList<>();
+  private final transient List<String> perspectives = new ArrayList<>();
 
   /**
    * name of preset

@@ -395,7 +395,7 @@ public class StyledToolTipUtils {
     }
 
     for (Field f : Color.class.getFields()) {
-      if (f.getName().toLowerCase().equals(prepValue)
+      if (f.getName().equalsIgnoreCase(prepValue)
           && f.getType() == Color.class) {
         try {
           c = (Color) f.get(Color.black);
@@ -409,7 +409,7 @@ public class StyledToolTipUtils {
     // input
     // value, so we check SystemColor
     for (Field f : SystemColor.class.getFields()) {
-      if (f.getName().toLowerCase().equals(prepValue)
+      if (f.getName().equalsIgnoreCase(prepValue)
           && f.getType() == SystemColor.class) {
         try {
           c = (SystemColor) f.get(SystemColor.activeCaption);

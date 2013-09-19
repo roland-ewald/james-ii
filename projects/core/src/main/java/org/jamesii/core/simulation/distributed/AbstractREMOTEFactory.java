@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.simulation.distributed;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -38,7 +37,8 @@ public abstract class AbstractREMOTEFactory<R extends RemoteFactory<?, L, ?>, L>
   private static final long serialVersionUID = -3537124771510740551L;
 
   /**
-   * Interfaces that are supported, type: {@link ArrayList} of {@link Class}.
+   * Interfaces that are supported, type: {@link java.util.ArrayList} of
+   * {@link Class}.
    */
   public static final String INTERFACES = "createdInterfaces";
 

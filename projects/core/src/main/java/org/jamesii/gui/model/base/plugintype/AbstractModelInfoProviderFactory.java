@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.jamesii.core.factories.AbstractFilteringFactory;
 import org.jamesii.core.factories.FactoryCriterion;
-import org.jamesii.core.model.symbolic.convert.IDocument;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -27,7 +26,8 @@ public class AbstractModelInfoProviderFactory extends
   private static final long serialVersionUID = -8626706310150199524L;
 
   /**
-   * The document that is used to display the model, type: {@link IDocument}.
+   * The document that is used to display the model, type:
+   * {@link org.jamesii.core.model.symbolic.convert.IDocument}.
    */
   public static final String DOCUMENT_CLASS = "document";
 

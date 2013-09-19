@@ -190,7 +190,7 @@ public class BasicChart extends JComponent implements IChartModelListener {
   /**
    * The coordinate system to use.
    */
-  private transient final ICoordinateSystem coordinateSystem;
+  private final transient ICoordinateSystem coordinateSystem;
 
   /**
    * The chart model to use.
@@ -200,7 +200,7 @@ public class BasicChart extends JComponent implements IChartModelListener {
   /**
    * Holds a set of hidden series
    */
-  private transient final Set<ISeries> hidden = new HashSet<ISeries>();
+  private final transient Set<ISeries> hidden = new HashSet<ISeries>();
 
   /**
    * The plotters for each series of the {@link IChartModel}.

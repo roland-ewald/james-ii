@@ -28,12 +28,12 @@ import org.jamesii.SimSystem;
  * @author Steffen Maas
  * @author Johannes Rössel
  */
-public class CSVReader implements RowSetReader {
+public class RowSetCSVReader implements RowSetReader {
 
   /** Backing field for the field delimiter. */
   private CSVParser parser;
 
-  public CSVReader() {
+  public RowSetCSVReader() {
     this.parser = new CSVParser();
   }
 

@@ -129,7 +129,7 @@ public class Animator extends TimerTask {
    * @param listener
    *          the listener to add
    */
-  synchronized public final void addAnimatorListener(IAnimatorListener listener) {
+  public final synchronized void addAnimatorListener(IAnimatorListener listener) {
     if (!listeners.contains(listener)) {
       listeners.add(listener);
     }
@@ -141,7 +141,7 @@ public class Animator extends TimerTask {
    * @param listener
    *          the listener to remove
    */
-  synchronized public final void removeAnimatorListener(
+  public final synchronized void removeAnimatorListener(
       IAnimatorListener listener) {
     listeners.remove(listener);
   }

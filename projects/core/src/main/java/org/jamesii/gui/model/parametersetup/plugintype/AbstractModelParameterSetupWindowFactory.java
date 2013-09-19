@@ -7,7 +7,6 @@
 package org.jamesii.gui.model.parametersetup.plugintype;
 
 import org.jamesii.core.factories.AbstractFilteringFactory;
-import org.jamesii.core.model.IModel;
 
 /**
  * Abstract factory for all model parameter setup window factories.
@@ -22,7 +21,7 @@ public class AbstractModelParameterSetupWindowFactory extends
   private static final long serialVersionUID = -7969967336663680262L;
 
   /**
-   * The model to be displayed, type: {@link IModel}.
+   * The model to be displayed, type: {@link org.jamesii.core.model.IModel}.
    */
   public static final String MODEL = "model";
 

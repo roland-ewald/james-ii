@@ -9,12 +9,12 @@ package org.jamesii.gui.utils.parameters.list;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
-import javax.swing.ListModel;
 
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
- * A {@link ListModel} that holds pairs of factory names and parameter blocks.
+ * A {@link javax.swing.ListModel} that holds pairs of factory names and
+ * parameter blocks.
  * 
  * 
  * @author Johannes Rössel

@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.data.report;
 
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**

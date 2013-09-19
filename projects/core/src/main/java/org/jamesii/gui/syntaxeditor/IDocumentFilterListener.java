@@ -6,15 +6,12 @@
  */
 package org.jamesii.gui.syntaxeditor;
 
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.Document;
-import javax.swing.text.DocumentFilter;
-
 /**
  * Listener interface used by the {@link DocumentReaderDocumentFilter} to
- * forward events of the {@link DocumentFilter} to the {@link DocumentReader}.
- * This is used to intercept changes to an {@link AbstractDocument} before they
- * happen to ensure consistency within the {@link DocumentReader}.
+ * forward events of the {@link javax.swing.text.DocumentFilter} to the
+ * {@link DocumentReader}. This is used to intercept changes to an
+ * {@link javax.swing.text.AbstractDocument} before they happen to ensure
+ * consistency within the {@link DocumentReader}.
  * 
  * @author Stefan Rybacki
  * 
@@ -22,8 +19,8 @@ import javax.swing.text.DocumentFilter;
 interface IDocumentFilterListener {
   /**
    * Called by {@link DocumentReaderDocumentFilter} whenever a string is to be
-   * inserted into the {@link Document} the {@link DocumentReaderDocumentFilter}
-   * is assigned to.
+   * inserted into the {@link javax.swing.text.Document} the
+   * {@link DocumentReaderDocumentFilter} is assigned to.
    * 
    * @param offset
    *          the offset where the given string is to be inserted

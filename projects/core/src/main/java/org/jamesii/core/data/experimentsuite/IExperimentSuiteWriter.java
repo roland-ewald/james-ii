@@ -8,14 +8,13 @@ package org.jamesii.core.data.experimentsuite;
 
 import java.io.IOException;
 
-import org.jamesii.core.data.experiment.IExperimentWriter;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.ExperimentSuite;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
  * Interface for writers of experiment suites. Similar to
- * {@link IExperimentWriter}.
+ * {@link org.jamesii.core.data.experiment.IExperimentWriter}.
  * 
  * @author Roland Ewald
  * 

@@ -15,7 +15,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTree;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
@@ -40,7 +39,7 @@ public class SystemInfoView extends DefaultTreeView {
 
   /**
    * A tree model providing the plugins as tree like structure for use in a
-   * {@link JTree}.
+   * {@link javax.swing.JTree}.
    * 
    * @author Stefan Rybacki
    */

@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jamesii.SimSystem;
-import org.jamesii.gui.utils.objecteditor.ObjectEditorComponent;
 import org.jamesii.gui.utils.objecteditor.property.IProperty;
 
 /**
  * The default implementation of a property provider, providing read and
  * writable bean properties of the specified object. This class is automatically
- * utilized by {@link ObjectEditorComponent} when there is no custom
- * {@link IPropertyProvider} for a class.
+ * utilized by {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent}
+ * when there is no custom {@link IPropertyProvider} for a class.
  * 
  * @author Stefan Rybacki
  */

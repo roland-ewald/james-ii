@@ -6,10 +6,8 @@
  */
 package org.jamesii.core.experiments.steering;
 
-import org.jamesii.core.base.IEntity;
 import org.jamesii.core.experiments.RunInformation;
 import org.jamesii.core.experiments.TaskConfiguration;
-import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -18,9 +16,9 @@ import org.jamesii.core.parameters.ParameterBlock;
  * changing experiment variables in a non-trivial way.
  * {@link IExperimentSteerer} components will be registered as observers of the
  * {@link org.jamesii.core.experiments.BaseExperiment}, hence they have to
- * implement the {@link IObserver} interface. They should in turn be observable
- * entities themselves, so they also have to implement the {@link IEntity}
- * interface.
+ * implement the {@link rg.jamesii.core.observe.IObserver} interface. They
+ * should in turn be observable entities themselves, so they also have to
+ * implement the {@link org.jamesii.core.base.IEntity} interface.
  * 
  * @author Roland Ewald
  */

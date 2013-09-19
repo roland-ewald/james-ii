@@ -9,7 +9,6 @@ package org.jamesii.gui.perspective;
 import java.util.List;
 
 import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.jamesii.gui.perspective.laf.LafManager;
@@ -31,7 +30,7 @@ public final class LookAndFeelComboBoxModel extends
 
   /**
    * Creates a new LookAndFeelComobBoxModel containing all through the
-   * {@link UIManager} available look and feels.
+   * {@link javax.swing.UIManager} available look and feels.
    */
   public LookAndFeelComboBoxModel() {
     super();

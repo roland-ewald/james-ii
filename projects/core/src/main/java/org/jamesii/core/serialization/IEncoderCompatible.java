@@ -6,11 +6,10 @@
  */
 package org.jamesii.core.serialization;
 
-import java.beans.Encoder;
 import java.io.Serializable;
 
 /**
- * {@link Encoder} compatible. <a
+ * {@link java.beans.Encoder} compatible. <a
  * href="http://java.sun.com/products/jfc/tsc/articles/persitence4/"
  * >http://java.sun.com/products/jfc/tsc/articles/persitence4/</a>
  * 

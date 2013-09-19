@@ -7,7 +7,6 @@
 package org.jamesii.core.remote.hostcentral.base;
 
 import org.jamesii.core.base.IEntity;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.observe.IMediator;
 import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.remote.RemoteCallForbiddenException;

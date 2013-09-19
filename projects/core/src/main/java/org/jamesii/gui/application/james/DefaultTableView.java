@@ -10,7 +10,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -153,9 +152,9 @@ public class DefaultTableView extends AbstractWindow {
    * 
    * @param mode
    *          the mode to set
-   * @see ListSelectionModel#MULTIPLE_INTERVAL_SELECTION
-   * @see ListSelectionModel#SINGLE_INTERVAL_SELECTION
-   * @see ListSelectionModel#SINGLE_SELECTION
+   * @see javax.swing.ListSelectionModel#MULTIPLE_INTERVAL_SELECTION
+   * @see javax.swing.ListSelectionModel#SINGLE_INTERVAL_SELECTION
+   * @see javax.swing.ListSelectionModel#SINGLE_SELECTION
    */
   protected final void setSelectionMode(int mode) {
     table.setSelectionMode(mode);

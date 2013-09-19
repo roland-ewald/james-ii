@@ -15,11 +15,11 @@ import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 
 import org.jamesii.gui.utils.DefaultCheckBoxGroupModel;
-import org.jamesii.gui.utils.ICheckBoxGroupModel;
 
 /**
- * Provides all available perspectives wrapped in a {@link ICheckBoxGroupModel}.
- * It also provides a selection model that should be used to have
+ * Provides all available perspectives wrapped in a
+ * {@link org.jamesii.gui.utils.ICheckBoxGroupModel}. It also provides a
+ * selection model that should be used to have
  * {@link #getSelectedPerspectives()} and {@link #setSelectedPerspectives(List)}
  * working properly.
  * 

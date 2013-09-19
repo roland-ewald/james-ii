@@ -10,13 +10,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 
 /**
- * This class implements the {@link TreeModel} interface and uses
- * {@link URLTreeNode}s to represent the tree's nodes. Nodes are added using
- * {@link URLTreeNodeURL}s respectively their string representations.
+ * This class implements the {@link javax.swing.tree.TreeModel} interface and
+ * uses {@link URLTreeNode}s to represent the tree's nodes. Nodes are added
+ * using {@link URLTreeNodeURL}s respectively their string representations.
  * 
  * @author Stefan Rybacki
  * @param <E>

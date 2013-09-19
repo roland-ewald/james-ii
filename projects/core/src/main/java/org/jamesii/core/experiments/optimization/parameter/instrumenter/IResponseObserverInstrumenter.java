@@ -13,12 +13,11 @@ import org.jamesii.core.experiments.instrumentation.IInstrumenter;
 import org.jamesii.core.experiments.optimization.parameter.IResponseObserver;
 import org.jamesii.core.model.variables.BaseVariable;
 import org.jamesii.core.observe.IObservable;
-import org.jamesii.core.observe.IObserver;
 
 /**
  * Interface for instrumenters used in the optimization context. These have to
  * return {@link IResponseObserver} objects instead of the usual
- * {@link IObserver} objects.
+ * {@link org.jamesii.core.observe.IObserver} objects.
  * 
  * @author Roland Ewald
  * 

@@ -41,7 +41,7 @@ public abstract class AbstractGrid2DModel implements IGrid2DModel {
    * @param y
    *          The Y coordinate of the changed cell.
    */
-  protected synchronized final void fireCellChanged(int x, int y) {
+  protected final synchronized void fireCellChanged(int x, int y) {
     for (IGridCellListener l : listeners.getListeners()) {
       l.cellChanged(x, y);
     }
@@ -53,14 +53,14 @@ public abstract class AbstractGrid2DModel implements IGrid2DModel {
    * @param r
    *          The {@code Rectangle} describing the cell range that changed.
    */
-  protected synchronized final void fireCellRangeChanged(Rectangle r) {
+  protected final synchronized void fireCellRangeChanged(Rectangle r) {
     for (IGridCellListener l : listeners.getListeners()) {
       l.cellRangeChanged(r);
     }
   }
 
   /** Raises {@code dataChanged} events for each registered listener. */
-  protected synchronized final void fireDataChanged() {
+  protected final synchronized void fireDataChanged() {
     for (IGridCellListener l : listeners.getListeners()) {
       l.dataChanged();
     }
@@ -69,7 +69,7 @@ public abstract class AbstractGrid2DModel implements IGrid2DModel {
   /**
    * Fire bounds changed.
    */
-  protected synchronized final void fireBoundsChanged() {
+  protected final synchronized void fireBoundsChanged() {
     for (IGridCellListener l : listeners.getListeners()) {
       l.boundsChanged(getBounds());
     }

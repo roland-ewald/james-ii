@@ -15,7 +15,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
-import javax.swing.table.TableModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
@@ -66,7 +65,7 @@ public class FilteredTreeModel<E> extends AbstractTreeModel {
 
   /**
    * Creates a new instance of a filterable tree model wrapping the specified
-   * {@link TableModel}.
+   * {@link javax.swing.table.TableModel}.
    * 
    * @param wrappedModel
    *          the model to filter
@@ -77,7 +76,7 @@ public class FilteredTreeModel<E> extends AbstractTreeModel {
 
   /**
    * Creates a new instance of a filterable tree model wrapping the specified
-   * {@link TableModel} using the given {@link IFilter}.
+   * {@link javax.swing.table.TableModel} using the given {@link IFilter}.
    * 
    * @param wrappedModel
    *          the model to filter

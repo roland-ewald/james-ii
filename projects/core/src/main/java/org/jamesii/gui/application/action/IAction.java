@@ -9,7 +9,6 @@ package org.jamesii.gui.application.action;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.Icon;
-import javax.swing.KeyStroke;
 
 import org.jamesii.gui.application.IWindow;
 
@@ -49,7 +48,7 @@ public interface IAction {
 
   /**
    * @return the action's key stroke as version that
-   *         {@link KeyStroke#getKeyStroke(String) understands}
+   *         {@link javax.swing.KeyStroke#getKeyStroke(String) understands}
    */
   String getKeyStroke();
 

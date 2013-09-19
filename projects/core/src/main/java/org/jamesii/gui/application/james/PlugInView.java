@@ -17,13 +17,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTree;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.Registry;
@@ -46,7 +44,7 @@ import org.jamesii.gui.utils.TextFilter;
 public class PlugInView extends DefaultTreeView {
   /**
    * A tree model providing the plug-ins as tree like structure for use in a
-   * {@link JTree}.
+   * {@link javax.swing.JTree}.
    * 
    * @author Stefan Rybacki
    */
@@ -65,7 +63,8 @@ public class PlugInView extends DefaultTreeView {
      * Creates a new instance.
      * 
      * @param plugins
-     *          a list of plugin data to be represented as {@link TreeModel}
+     *          a list of plugin data to be represented as
+     *          {@link javax.swing.tree.TreeModel}
      */
     public PlugInTreeModel(List<IPluginData> plugins) {
       super(

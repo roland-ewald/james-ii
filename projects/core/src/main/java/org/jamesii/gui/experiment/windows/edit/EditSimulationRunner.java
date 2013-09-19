@@ -10,14 +10,14 @@ import java.awt.BorderLayout;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.BaseExperiment;
-import org.jamesii.core.experiments.taskrunner.ITaskRunner;
 import org.jamesii.core.experiments.taskrunner.plugintype.AbstractTaskRunnerFactory;
 import org.jamesii.core.experiments.taskrunner.plugintype.TaskRunnerFactory;
 import org.jamesii.gui.utils.factories.ConfigureFactoryPanel;
 
 /**
- * Panel to configure the {@link ITaskRunner} to be used for the current
- * {@link BaseExperiment}.
+ * Panel to configure the
+ * {@link org.jamesii.core.experiments.taskrunner.ITaskRunner} to be used for
+ * the current {@link BaseExperiment}.
  * 
  * @author Roland Ewald
  */

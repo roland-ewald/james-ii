@@ -13,7 +13,6 @@ import java.util.List;
 
 import javax.swing.JFileChooser;
 
-import org.jamesii.gui.application.IWindowManager;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.utils.history.History;
 
@@ -97,7 +96,8 @@ public class FileChooser extends JFileChooser {
    * {@inheritDoc}
    * <p>
    * <b>if the specified parent is {@code null}
-   * {@link IWindowManager#getMainWindow()} is used as parent.
+   * {@link org.jamesii.gui.application.IWindowManager#getMainWindow()} is used
+   * as parent.
    */
   @Override
   public int showDialog(Component parent, String approveButtonText) {
@@ -117,7 +117,8 @@ public class FileChooser extends JFileChooser {
    * {@inheritDoc}
    * <p>
    * <b>if the specified parent is {@code null}
-   * {@link IWindowManager#getMainWindow()} is used as parent.
+   * {@link org.jamesii.gui.application.IWindowManager#getMainWindow()} is used
+   * as parent.
    */
   @Override
   public int showOpenDialog(Component parent) {
@@ -137,7 +138,8 @@ public class FileChooser extends JFileChooser {
    * {@inheritDoc}
    * <p>
    * <b>if the specified parent is {@code null}
-   * {@link IWindowManager#getMainWindow()} is used as parent.
+   * {@link org.jamesii.gui.application.IWindowManager#getMainWindow()} is used
+   * as parent.
    */
   @Override
   public int showSaveDialog(Component parent) throws HeadlessException {

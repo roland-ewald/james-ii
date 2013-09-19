@@ -40,17 +40,15 @@ public class TestSecureRandomSerialization extends TestRNGSerialization {
       // Serialise the RNG
       o.writeObject(rnd);
       // save the next number
-      int val = rnd.nextInt();
       // grab the output from the stream
       byte[] b = baos.toByteArray();
       // reconstruct the original state
       rnd =
           (IRandom) (new ObjectInputStream(new ByteArrayInputStream(b))
               .readObject());
-      // now the next value generated should not match the one generated
-      // directly
-      // after serialisation
-      assertFalse(val == rnd.nextInt());
+      // after serialization the same numbers *might* be produced, but this is
+      // implementation-specific (platform-dependent), so no additional check:
+      assertNotNull(rnd);
     } catch (IOException | ClassNotFoundException e) {
       fail();
     }

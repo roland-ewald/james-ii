@@ -8,12 +8,10 @@ package org.jamesii.gui.utils.objecteditor.implementationprovider;
 
 import java.util.Map;
 
-import org.jamesii.gui.utils.objecteditor.ObjectEditorComponent;
-
 /**
  * Interface for implementation provider implementations that can be used in
- * {@link ObjectEditorComponent} to provide predefined values for certain
- * properties.
+ * {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent} to provide
+ * predefined values for certain properties.
  * 
  * @author Stefan Rybacki
  * @param <V>

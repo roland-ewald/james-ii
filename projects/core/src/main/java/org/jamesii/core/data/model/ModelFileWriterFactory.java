@@ -9,12 +9,13 @@ package org.jamesii.core.data.model;
 import java.net.URI;
 
 import org.jamesii.core.data.IFileHandling;
-import org.jamesii.core.data.model.read.plugintype.ModelReaderFactory;
 import org.jamesii.core.data.model.write.plugintype.ModelWriterFactory;
 
 /**
- * Base factory for any {@link ModelReaderFactory} that works on files. Provides
- * several convenience methods to extract a file path from an {@link URI} etc.
+ * Base factory for any
+ * {@link org.jamesii.core.data.model.read.plugintype.ModelReaderFactory} that
+ * works on files. Provides several convenience methods to extract a file path
+ * from an {@link URI} etc.
  * 
  * @author Roland Ewald
  */

@@ -12,13 +12,13 @@ import java.util.List;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.Registry;
-import org.jamesii.core.model.formalism.Formalism;
 import org.jamesii.core.model.plugintype.AbstractModelFactory;
 import org.jamesii.core.model.plugintype.ModelFactory;
 import org.jamesii.gui.utils.AbstractComboBoxModel;
 
 /**
- * Simple list model that provides access to all installed {@link Formalism}s.
+ * Simple list model that provides access to all installed
+ * {@link org.jamesii.core.model.formalism.Formalism}s.
  * <p>
  * <b><font color="red">NOTE: the class is intended to be used internally only
  * and is very likely to change in future releases</font></b>

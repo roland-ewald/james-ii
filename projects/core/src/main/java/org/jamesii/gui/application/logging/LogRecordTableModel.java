@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.logging.LogRecord;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 /**
- * Custom {@link TableModel} for the log table
+ * Custom {@link javax.swing.table.TableModel} for the log table
  * 
  * @author Stefan Rybacki
  */

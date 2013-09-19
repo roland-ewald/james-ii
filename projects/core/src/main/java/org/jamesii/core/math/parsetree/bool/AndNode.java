@@ -9,14 +9,13 @@ package org.jamesii.core.math.parsetree.bool;
 import org.jamesii.core.math.parsetree.BinaryNode;
 import org.jamesii.core.math.parsetree.INode;
 import org.jamesii.core.math.parsetree.ValueNode;
-import org.jamesii.core.math.parsetree.variables.IEnvironment;
 
 /**
  * Node that represents a boolean "and" operation. Thus
- * {@link #calc(IEnvironment)} returns a ValueNode<Boolean> with a value of
- * <code>true</code> if the "and" operation on the two nodes returns
- * <code>true</code>, otherwise a ValueNode<Boolean> with a <code>false</code>
- * value is returned. <br>
+ * {@link #calc(org.jamesii.core.math.parsetree.variables.IEnvironment)} returns
+ * a ValueNode<Boolean> with a value of <code>true</code> if the "and" operation
+ * on the two nodes returns <code>true</code>, otherwise a ValueNode<Boolean>
+ * with a <code>false</code> value is returned. <br>
  * Child nodes can be of type <code>Boolean</code> or they can be of any
  * <code>Number</code> type. In this case a value > 0 is considered to be
  * equivalent to <code>true</code>, a value <= 0 is considered to be

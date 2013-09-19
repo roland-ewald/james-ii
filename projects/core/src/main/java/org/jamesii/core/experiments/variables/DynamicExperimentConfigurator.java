@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;
 import org.jamesii.core.experiments.instrumentation.model.plugintype.ModelInstrumenterFactory;
 import org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory;
@@ -21,7 +20,8 @@ import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterizedFactory;
 
 /**
- * This is a helper class for {@link BaseExperiment}, which manages all
+ * This is a helper class for
+ * {@link org.jamesii.core.experiments.BaseExperiment}, which manages all
  * additional configuration options that can be defined via instances of
  * {@link ExperimentVariables}. For example: additional model and computation
  * instrumenters, additional replication criteria, and so on.

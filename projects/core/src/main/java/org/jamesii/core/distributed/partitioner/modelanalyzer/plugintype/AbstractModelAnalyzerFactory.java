@@ -7,7 +7,6 @@
 package org.jamesii.core.distributed.partitioner.modelanalyzer.plugintype;
 
 import org.jamesii.core.factories.AbstractFilteringFactory;
-import org.jamesii.core.model.IModel;
 
 /**
  * 
@@ -25,7 +24,8 @@ public class AbstractModelAnalyzerFactory extends
   private static final long serialVersionUID = 4547784292294024083L;
 
   /**
-   * Identifier for the model to be analyzed, type is {@link IModel}.
+   * Identifier for the model to be analyzed, type is
+   * {@link org.jamesii.core.model.IModel}.
    */
   public static final String MODEL = "model";
 

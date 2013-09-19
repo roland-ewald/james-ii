@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.observe.IMediator;
 import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.remote.RemoteCallForbiddenException;

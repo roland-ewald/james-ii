@@ -10,11 +10,11 @@ import java.lang.reflect.Method;
 
 import org.jamesii.SimSystem;
 import org.jamesii.gui.utils.objecteditor.property.AbstractProperty;
-import org.jamesii.gui.utils.objecteditor.property.IProperty;
 
 /**
- * The default implementation of the {@link IProperty} interface used by
- * {@link DefaultPropertyProvider} to provide bean properties.
+ * The default implementation of the
+ * {@link org.jamesii.gui.utils.objecteditor.property.IProperty} interface used
+ * by {@link DefaultPropertyProvider} to provide bean properties.
  * 
  * @author Stefan Rybacki
  */

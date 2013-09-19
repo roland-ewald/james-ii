@@ -15,7 +15,6 @@ import java.rmi.registry.LocateRegistry;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.distributed.masterserver.IMasterServer;
 import org.jamesii.core.distributed.masterserver.MasterServer;
 import org.jamesii.core.hosts.Host;

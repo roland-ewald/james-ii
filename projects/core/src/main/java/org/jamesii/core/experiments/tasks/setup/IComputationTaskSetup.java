@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
-import org.jamesii.core.experiments.ExperimentException;
 import org.jamesii.core.experiments.IComputationTaskConfiguration;
 import org.jamesii.core.experiments.RunInformation;
 import org.jamesii.core.experiments.tasks.IInitializedComputationTask;
@@ -57,7 +56,7 @@ public interface IComputationTaskSetup extends Serializable {
    * 
    * @return initialised computation task
    * 
-   * @throws ExperimentException
+   * @throws org.jamesii.core.experiments.ExperimentException
    *           the experiment exception will be thrown if the instantiation of
    *           the run did fail
    */

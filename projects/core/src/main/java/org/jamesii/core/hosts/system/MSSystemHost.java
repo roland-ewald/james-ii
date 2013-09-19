@@ -17,7 +17,6 @@ import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.Registry;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.hosts.Host;
 import org.jamesii.core.plugins.IPluginData;
 import org.jamesii.core.services.TriggerableByNameFilter;

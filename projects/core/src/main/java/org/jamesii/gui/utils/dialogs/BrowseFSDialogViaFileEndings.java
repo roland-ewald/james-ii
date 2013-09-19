@@ -36,7 +36,6 @@ import javax.swing.JToolTip;
 import javax.swing.ListSelectionModel;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.data.IFileHandling;
 import org.jamesii.core.util.misc.Files;
 import org.jamesii.gui.application.ApplicationDialog;
 import org.jamesii.gui.application.preferences.Preferences;
@@ -53,7 +52,8 @@ import org.jamesii.gui.utils.history.HistoryTextField;
 /**
  * Super class for dialogs that scan the file system for eligible files via a
  * list of file endings. The derived version {@link BrowseFSDialogViaFactories}
- * also allows to scan over a list of {@link IFileHandling}.
+ * also allows to scan over a list of
+ * {@link org.jamesii.core.data.IFileHandling}.
  * 
  * @author Gabriel Blum
  * @author Valerius Weigandt

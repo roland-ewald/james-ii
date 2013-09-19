@@ -6,9 +6,6 @@
  */
 package org.jamesii.gui.syntaxeditor;
 
-import org.jamesii.gui.tooltip.StyledToolTipProblemToken;
-import org.jamesii.gui.tooltip.StyledToolTipSyntaxToken;
-
 /**
  * Helper class that can be used for subclassing for implementing custom ILexer
  * tokens that have already a predefined Type class. This class can simply used
@@ -21,8 +18,8 @@ import org.jamesii.gui.tooltip.StyledToolTipSyntaxToken;
  *          {@link Integer} or {@link Number} since tokens can be categorized
  *          with numbers)
  * 
- * @see StyledToolTipSyntaxToken
- * @see StyledToolTipProblemToken
+ * @see org.jamesii.gui.tooltip.StyledToolTipSyntaxToken
+ * @see org.jamesii.gui.tooltip.StyledToolTipProblemToken
  */
 public class DefaultLexerToken<Type> implements ILexerToken {
   /**

@@ -6,11 +6,10 @@
  */
 package org.jamesii.gui.utils.objecteditor.property;
 
-import org.jamesii.gui.utils.objecteditor.ObjectEditorComponent;
 
 /**
  * Interface for property filter implementations usable in
- * {@link ObjectEditorComponent}.
+ * {@link org.jamesii.gui.utils.objecteditor.ObjectEditorComponent}.
  * 
  * @author Stefan Rybacki
  */

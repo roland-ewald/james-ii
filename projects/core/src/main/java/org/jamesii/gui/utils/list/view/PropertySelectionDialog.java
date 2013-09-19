@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -111,7 +110,7 @@ public class PropertySelectionDialog extends ApplicationDialog implements
   }
 
   /**
-   * {@link JDialog#JDialog()}
+   * {@link javax.swing.JDialog#JDialog()}
    */
   public PropertySelectionDialog() {
     this(WindowManagerManager.getWindowManager() != null ? WindowManagerManager

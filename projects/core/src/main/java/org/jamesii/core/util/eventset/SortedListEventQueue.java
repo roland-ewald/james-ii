@@ -198,8 +198,7 @@ public class SortedListEventQueue<E, T extends Comparable<T>> extends
     }
 
     if (index != -1) {
-      T result = data.get(index).getTime();
-      return result;
+      return data.get(index).getTime();
     }
 
     return null;

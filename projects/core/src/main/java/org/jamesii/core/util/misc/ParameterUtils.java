@@ -1,7 +1,6 @@
 package org.jamesii.core.util.misc;
 
 import org.jamesii.core.distributed.allocation.ConstantResourceAllocatorFactory;
-import org.jamesii.core.factories.AbstractFactory;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
@@ -109,7 +108,8 @@ public final class ParameterUtils {
   }
 
   /**
-   * Retrieves parameter sub-block for a given {@link AbstractFactory}.
+   * Retrieves parameter sub-block for a given
+   * {@link org.jamesii.core.factories.AbstractFactory}.
    * 
    * @param block
    *          the parameter block

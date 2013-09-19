@@ -6,9 +6,6 @@
  */
 package org.jamesii.core.experiments.variables.modifier;
 
-import org.jamesii.core.serialization.IConstructorParameterProvider;
-import org.jamesii.core.serialization.SerialisationUtils;
-
 /**
  * Abstract class for increment modifier.
  * 

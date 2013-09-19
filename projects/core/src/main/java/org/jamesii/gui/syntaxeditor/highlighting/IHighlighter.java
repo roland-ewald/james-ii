@@ -10,11 +10,11 @@ import org.jamesii.core.model.symbolic.convert.IDocument;
 import org.jamesii.gui.syntaxeditor.ILexer;
 import org.jamesii.gui.syntaxeditor.ILexerToken;
 import org.jamesii.gui.syntaxeditor.ILexerTokenStylizer;
-import org.jamesii.gui.syntaxeditor.SyntaxEditor;
 
 /**
  * Interface that needs to be implemented by a class that wants to support
- * highlighting of a arbitrary syntax using the {@link SyntaxEditor}.
+ * highlighting of a arbitrary syntax using the
+ * {@link org.jamesii.gui.syntaxeditor.SyntaxEditor}.
  * 
  * @author Stefan Rybacki
  * 
