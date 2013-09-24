@@ -26,6 +26,7 @@ public abstract class ComputationTaskStopPolicyFactory extends
   private static final long serialVersionUID = -3039426107252686102L;
 
   /** The Constant COMPTASK. */
+  @Deprecated
   public static final String COMPTASK = "COMPUTATIONTASK";
 
   /**

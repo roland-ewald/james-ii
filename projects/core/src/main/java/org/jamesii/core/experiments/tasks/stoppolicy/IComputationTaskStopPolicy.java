@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
+
 /**
  * The Interface IComputationTaskStopPolicy. There are plenty of possibilities
  * which can be used to determine the proper end of a computation. Classical
@@ -32,9 +34,13 @@ package org.jamesii.core.experiments.tasks.stoppolicy;
  * <b>Please note:</b> A not efficient implementation of this interface can
  * significantly hamper an efficient execution of the computation task.
  * 
+ * @param <T>
+ *          the IComputationTask or descendant interface / class this stop
+ *          policy can work on.
+ * 
  * @author Jan Himmelspach
  */
-public interface IComputationTaskStopPolicy {
+public interface IComputationTaskStopPolicy<T extends IComputationTask> {
 
   /**
    * Checks whether the computation has reached the "end" or not. A computation
@@ -53,9 +59,13 @@ public interface IComputationTaskStopPolicy {
    * return false). Each call of this method might affect the run condition -
    * thus it should be called only once per simulation step.
    * 
+   * 
+   * @param task
+   *          the task to check for ending
+   * 
    * @return true, if the end condition is true, thus if the computation task
    *         shall be stopped
    */
-  boolean hasReachedEnd();
+  boolean hasReachedEnd(T task);
 
 }

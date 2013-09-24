@@ -27,7 +27,7 @@ public class EmptyStopConditionStopPolicyFactory extends
   public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
     IComputationTask task =
         ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
-    return new EmptyStopCondition(task);
+    return new EmptyStopCondition();
   }
 
 }

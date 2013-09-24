@@ -22,8 +22,9 @@ import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
  * @author Arne Bittig
  * 
  */
-public abstract class CompositeCompTaskStopPolicy extends
-    AbstractComputationTaskStopPolicy<IComputationTask> implements
+public abstract class CompositeCompTaskStopPolicy
+    extends
+    AbstractComputationTaskStopPolicy implements
     ISimulationRunStopPolicySimTime {
 
   /** The computation task stop policies. */
@@ -49,7 +50,7 @@ public abstract class CompositeCompTaskStopPolicy extends
    */
   public CompositeCompTaskStopPolicy(IComputationTask run,
       List<IComputationTaskStopPolicy> policies) {
-    super(run);
+    super();
     this.compTaskStopPolicies = policies;
   }
 
@@ -74,7 +75,7 @@ public abstract class CompositeCompTaskStopPolicy extends
   }
 
   @Override
-  public Comparable<?> getEstimatedEndTime() {
+  public Comparable getEstimatedEndTime() {
     for (IComputationTaskStopPolicy runStopPolicy : getStopPolicies()) {
       if (runStopPolicy instanceof ISimulationRunStopPolicySimTime) {
         return ((ISimulationRunStopPolicySimTime) runStopPolicy)

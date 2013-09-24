@@ -8,6 +8,7 @@ package org.jamesii.core.simulationrun.stoppolicy;
 
 import java.util.List;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.simulationrun.ISimulationRun;
 
@@ -49,14 +50,14 @@ public class DisjunctiveSimRunStopPolicy extends CompositeCompTaskStopPolicy {
   private IComputationTaskStopPolicy firstTrue = null;
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(IComputationTask t) {
 
     if (getStopPolicies().size() == 0) {
       return true;
     }
 
     for (IComputationTaskStopPolicy compTaskStopPolicy : getStopPolicies()) {
-      if (compTaskStopPolicy.hasReachedEnd()) {
+      if (compTaskStopPolicy.hasReachedEnd(t)) {
         firstTrue = compTaskStopPolicy;
         return true;
       }

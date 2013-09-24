@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.simulationrun.stoppolicy;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 
 /**
@@ -17,8 +18,8 @@ import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
  * 
  * @author Jan Himmelspach
  */
-public interface ISimulationRunStopPolicySimTime<TimeBase extends Comparable<TimeBase>>
-    extends IComputationTaskStopPolicy {
+public interface ISimulationRunStopPolicySimTime<TimeBase extends Comparable<TimeBase>, T extends IComputationTask>
+    extends IComputationTaskStopPolicy<T> {
 
   /**
    * Gets the estimated end time (simulation time). Depending on the

@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy.steps;
 
+import java.io.Serializable;
+
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.AbstractComputationTaskStopPolicy;
 
@@ -18,7 +20,7 @@ import org.jamesii.core.experiments.tasks.stoppolicy.AbstractComputationTaskStop
  * @author Jan Himmelspach
  */
 public class StepCountStop extends
-    AbstractComputationTaskStopPolicy<IComputationTask> {
+    AbstractComputationTaskStopPolicy<IComputationTask> implements Serializable {
 
   /** The stop counter. Default is 1. */
   private long stopCount = 1;
@@ -28,20 +30,17 @@ public class StepCountStop extends
 
   /**
    * The Constructor.
-   * 
-   * @param task
-   *          the computation task which shall be "observed"
    * @param stopCount
    *          the stop count
    */
-  public StepCountStop(IComputationTask task, long stopCount) {
-    super(task);
+  public StepCountStop(long stopCount) {
+    super();
     this.stopCount = stopCount;
     this.initialStopCount = stopCount;
   }
 
   @Override
-  public boolean hasReachedEnd() {
+  public boolean hasReachedEnd(IComputationTask t) {
     stopCount--;
     return (stopCount <= 0);
   }

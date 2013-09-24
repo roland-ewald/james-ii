@@ -225,7 +225,7 @@ public class ExecutionControl implements Serializable {
    * @return true if the simulation has ended
    */
   public boolean notFinished(IComputationTaskStopPolicy stopPolicy) {
-    return !stopPolicy.hasReachedEnd();
+    return !stopPolicy.hasReachedEnd(owner.getComputationTask());
   }
 
   /**
@@ -259,7 +259,7 @@ public class ExecutionControl implements Serializable {
    */
   public void run() {
     prepareRun();
-    run(new EmptyStopCondition(getOwner().getComputationTask()));
+    run(new EmptyStopCondition());
   }
 
   /**
