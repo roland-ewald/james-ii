@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.base.Entity;
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.experiments.BaseExperiment;
@@ -425,7 +424,7 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
       ComputationTaskRuntimeInformation compTaskRuntimeInformation, boolean run);
 
   /**
-   * Checks for a failure an notifies the error hook.
+   * Checks for a failure and notifies the error hook.
    * 
    * @param runner
    *          the actual runner

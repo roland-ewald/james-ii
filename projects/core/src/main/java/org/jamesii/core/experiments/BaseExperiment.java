@@ -63,23 +63,23 @@ import org.jamesii.core.util.misc.ParameterUtils;
  * A base experiment contains the definition how to modify which parameters to
  * be used for the computation / model. Basically the
  * {@link #getExperimentVariables() experimentVariables} serves as a "for" loop.
- * Thereby the items per level are progressed synchronous, and they constant
+ * Thereby the items per level are progressed synchronous, and they are constant
  * while the sub levels are modified according to the rules defined in there. <br/>
  * For a simple experiment you only need to pass a fixed set of parameters which
  * might even be empty, and an URI where the model can be found (
- * {@link #setModelLocation(URI)}). If you are interest in the trajectory of the
+ * {@link #setModelLocation(URI)}). If you are interested in the trajectory of the
  * simulation you have to add an instrumenter in addition. Everything else is a
- * can, but not a must. Thus you can specify a computation task start time (this
+ * can, but not a must. You can specify a computation task start time (this
  * value will be used instead of 0 as initial value for the "simulation time")
- * and the default factory to be used for determining the computation task end
+ * and a factory to be used for determining the computation task end
  * {@link #setComputationTaskStopPolicyFactory(ComputationTaskStopPolicyFactory)}
- * , to use a distributed setup or a sequential on (default), the number of
- * replications ( {@link #setRepeatRuns(Integer)},
+ * . You can specify to use a distributed setup or a sequential one (default),
+ * the number of replications ( {@link #setRepeatRuns(Integer)},
  * {@link #setReplicationCriterionFactory(ParameterizedFactory)}), and you can
  * specify the data sink to be used (
- * {@link #setDataStorageFactory(DataStorageFactory)}). May of these can be/or
+ * {@link #setDataStorageFactory(DataStorageFactory)}). Many of these can be/or
  * have to be parameterized, but this depends on the factory selected (e.g., you
- * typically need to give username etc. for a database used as data sink). <br/>
+ * typically need to give a user name etc. for a database used as data sink). <br/>
  * Check out the
  * {@link org.jamesii.core.experiments.variables.ExperimentVariables} class to
  * read more about how to define which variables. <br/>
