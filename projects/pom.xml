@@ -17,8 +17,18 @@
 				<artifactId>core</artifactId>
 				<version>0.9.4-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>org.jamesii</groupId>
+				<artifactId>resultreports</artifactId>
+				<version>0.9.4-SNAPSHOT</version>
+			</dependency>
 
 			<!-- External (please keep in alphabetical order by groupId.artifactId) -->
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.16</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -52,6 +62,7 @@
 	<!-- Add new modules here (please keep in alphabetical order) -->
 	<modules>
 		<module>core</module>
+		<module>resultreports</module>
 	</modules>
 
 	<!-- Add global dependencies here -->
