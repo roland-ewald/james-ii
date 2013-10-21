@@ -49,7 +49,7 @@
 		<maven.surefire.v>2.14.1</maven.surefire.v>
 		<maven.release.v>2.3.2</maven.release.v>
 		<maven.source.v>2.1.2</maven.source.v>
-		<maven.jar.v>2.3.2</maven.jar.v>
+		<maven.jar.v>2.4</maven.jar.v>
 		<maven.assembly.v>2.2.1</maven.assembly.v>
 	</properties>
 	
