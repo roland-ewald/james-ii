@@ -56,16 +56,22 @@ import org.jamesii.core.util.misc.Strings;
  */
 public class SimulationRun extends NamedEntity implements ISimulationRun {
   /** The serialization ID. */
-  static final long serialVersionUID = -8719111742927312577L;
+  static final long serialVersionUID = 3933945383206809682L;
 
   /** Identifier of parameter sub-block for the partitioning framework. */
   public static final String PARTITIONER_SUBBLOCK = "partitioner";
 
-  /** The hook for a simulation end. */
+  /** The hook for the simulation start. */
+  private ComputationTaskHook<?> startHook = null;
+
+  /** The hook for the simulation end. */
   private ComputationTaskHook<?> endHook = null;
 
   /** The simulation model's model. */
   private ModelInformation model = new ModelInformation();
+
+  /** The configuration of this simulation run. */
+  private final SimulationRunConfiguration config;
 
   /**
    * The information about the neighbours of models and processors in this
@@ -74,9 +80,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   private NeighbourInformation neighbourInformation = new NeighbourInformation(
       new HashMap<String, ModelInformation>(),
       new HashMap<String, ProcessorInformation>());
-
-  /** The configuration of this simulation run. */
-  private final SimulationRunConfiguration config;
 
   /** The partition. */
   private Partition partition = null;
@@ -89,24 +92,8 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   private ProcessorInformation processorInfo;
 
-  /** The start hook. */
-  private ComputationTaskHook<?> startHook = null;
-
-  /**
-   * The context this instance belongs to.
-   */
+  /** The context this instance belongs to. */
   private IContext context = null;
-
-  /**
-   * The list of child contexts-
-   */
-  private List<IContext> childContexts = null;
-
-  /**
-   * To be used instead of system.out for model output, by default (as fallback)
-   * System.out.
-   */
-  private transient PrintStream out = System.out;
 
   /** The wall clock start time in milliseconds. */
   private long wcStartTime;
@@ -125,67 +112,24 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   /** The stop watch. */
   private transient StopWatch stopWatch = new StopWatch();
 
-  /**
-   * The ID object.
-   */
+  /** The ID object. */
   private final ComputationTaskIDObject ID;
 
   /**
-   * Instantiates a new simulation run. Special constructor which should only be
-   * called by SimulationHost instances.
+   * Converts the given simulation time of a given run to wall clock time.
    * 
-   * @param part
-   *          the part
-   * @param name
-   *          the name
-   * @param id
-   *          the ID object
-   * @param neighbourInformation
-   *          the neighbourinformation
-   * @param simRunConfig
-   *          the sim config
-   */
-  public SimulationRun(Partition part, String name, ComputationTaskIDObject id,
-      NeighbourInformation neighbourInformation,
-      SimulationRunConfiguration simRunConfig) {
-    super(name);
-    config = simRunConfig;
-    initFromConfig();
-    ID = id;
-
-    setModel(model.getLocal());
-
-    /*
-     * this.neighbourModelInformation.putAll(neighbourModelInformation);
-     * this.neighbourProcessorInformation.putAll(neighbourProcessorInformation);
-     */
-
-    /* processor = */
-
-    //##################Added by nf028 to accept Extended neighbourInfromation
-    this.neighbourInformation = neighbourInformation;
-    //###################################
-    
-    SimulationRun simu =
-        part.createProcessor(
-            this,
-            simRunConfig.getExecParams().getSubBlock(
-                ProcessorFactory.class.getName()));
-
-    this.neighbourInformation.getModelInfos().putAll(
-        simu.getNeighbourModelInformation());
-    this.neighbourInformation.getProcessorInfos().putAll(
-        simu.getNeighbourProcessorInformation());
-  }
-
-  /**
-   * Gets the identification.
+   * @param run
+   *          the simulation run
+   * @param time
+   *          the current simulation time
+   * @param scale
+   *          the time scale
    * 
-   * @return the identification
+   * @return the estimated wall clock time
    */
-  private String getIdentification() {
-    return config.getExperimentID() + "." + config.getComputationTaskID()
-        + "\t";
+  public static double simulationRunTimeToWallClockTime(ISimulationRun run,
+      double time, double scale) {
+    return (run.getWCStartTime() + ((time - run.getStartTime()) * scale));
   }
 
   /**
@@ -204,11 +148,9 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       SimulationRunConfiguration simRunConfig, List<ISimulationServer> resources) {
     setModel(model);
     setName(name);
-    config = simRunConfig;
-    ID = simRunConfig.getComputationTaskID();
+    this.config = simRunConfig;
+    this.ID = simRunConfig.getComputationTaskID();
     initFromConfig();
-
-    // save the pointer to the registry
 
     // FIXME: Setup random number generation elsewhere. This is broken due to
     // being also called by SimulationRunSetup.
@@ -219,69 +161,169 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     // generator.setInitialSeed(config.getExecParams().getSubBlockValue(
     // IRNGGenerator.RNG_INIT_SEED, System.currentTimeMillis()));
 
-    // Partition the model
+    // partition the model
     Partitioner partitioner = new Partitioner();
     partition =
         partitioner.partitionize(model, resources, ParameterBlocks
             .getSBOrEmpty(config.getExecParams(), PARTITIONER_SUBBLOCK));
 
-    // Get the parameters regarding processor configuration
-    ParameterBlock apfp =
+    // get the parameters regarding processor configuration
+    ParameterBlock processorParams =
         ParameterBlocks.getSBOrEmpty(config.getExecParams(),
             ProcessorFactory.class.getName());
-    apfp.addSubBlock(AbstractProcessorFactory.PARTITION, partition);
-    ProcessorFactory pf =
-        SimSystem.getRegistry()
-            .getFactory(AbstractProcessorFactory.class, apfp);
+    processorParams.addSubBlock(AbstractProcessorFactory.PARTITION,
+        partition);
+    ProcessorFactory processorFactory =
+        SimSystem.getRegistry().getFactory(AbstractProcessorFactory.class,
+            processorParams);
     SimSystem.report(Level.CONFIG, getIdentification()
-        + "We are going to use the " + pf + " processor factory");
+        + "We are going to use the " + processorFactory + " processor factory");
 
     // set the factory
-    partition.setProcessorFactoryRecursively(pf);
+    partition.setProcessorFactoryRecursively(processorFactory);
 
-    /*
-     * else if (model instanceof IBasicDEVSModel) partition = new
-     * ExecutablePartition(model, new DEVSProcessorFactory(),
-     * partitioner.getModelGraph(), partitioner.getInfrastructureGraph(),
-     * part2);
-     */
-
-    // ((ExecutablePartition) partition).mergeSubPartitions();
-    // Each element of parts should be run by an own simulation, i.e.
+    // each element of parts should be run by an own simulation, i.e.
     // only one part (the top most) will be simulated here.
-    // System.out.println("Creating processor for model");
-    SimulationRun simu = partition.createProcessor(this, apfp);
+
+    // create processor for model
+    SimulationRun simu =
+        partition.createProcessor(this, processorParams);
 
     neighbourInformation.getModelInfos().putAll(
         simu.getNeighbourModelInformation());
     neighbourInformation.getProcessorInfos().putAll(
         simu.getNeighbourProcessorInformation());
     setProcessorInfo(simu.getProcessorInfo());
-
-    /* processor = */
-    // System.out.println("processor : " + processor.getClass().getName());
   }
 
   /**
-   * Initialization the from the given {@link SimulationRunConfiguration}.
+   * Instantiates a new simulation run. Special constructor which should only be
+   * called by {@link SimulationHost} instances.
+   * 
+   * @param part
+   *          the part
+   * @param name
+   *          the name
+   * @param id
+   *          the ID object
+   * @param neighbourInformation
+   *          the neighbourinformation
+   * @param simRunConfig
+   *          the sim config
+   */
+  public SimulationRun(Partition part, String name, ComputationTaskIDObject id,
+      NeighbourInformation neighbourInformation,
+      SimulationRunConfiguration simRunConfig) {
+    super(name);
+    this.config = simRunConfig;
+    this.ID = id;
+    initFromConfig();
+
+    setModel(model.getLocal());
+
+    // added by nf028 to accept extended neighbourInfromation
+    this.neighbourInformation = neighbourInformation;
+
+    SimulationRun simu =
+        part.createProcessor(
+            this,
+            simRunConfig.getExecParams().getSubBlock(
+                ProcessorFactory.class.getName()));
+
+    this.neighbourInformation.getModelInfos().putAll(
+        simu.getNeighbourModelInformation());
+    this.neighbourInformation.getProcessorInfos().putAll(
+        simu.getNeighbourProcessorInformation());
+  }
+
+  @Override
+  public ComputationTaskIDObject getUniqueIdentifier() {
+    return ID;
+  }
+
+  @Override
+  public long getSimpleId() {
+    return (Long) ID.getExternalID();
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public <D> D getProperty(String property) {
+    Object result = null;
+    if (property.compareTo("TIME") == 0) {
+      result = getTime();
+    }
+    if (property.compareTo("STARTTIME") == 0) {
+      result = getStartTime();
+    }
+    if (property.compareTo("ENDTIME") == 0) {
+      result = getStopPolicy();
+    }
+    if (property.compareTo("MODEL.CLASS") == 0) {
+      result = getModel().getClass();
+    }
+    if (property.compareTo("MODEL.NAME") == 0) {
+      result = getModel().getName();
+    }
+    if (property.compareTo("PROCESSOR.CLASS") == 0) {
+      result = getProcessorInfo().getLocal().getClass();
+    }
+    if (property.compareTo("PROCESSOR.STATE") == 0) {
+      result = getProcessorInfo().getLocal().getState();
+    }
+    if (property.compareTo("CONFIGURATION.NUMBER") == 0) {
+      result = Long.valueOf(getConfig().getNumber());
+    }
+    if (property.compareTo("CONFIGURATION.EXPERIMENTNUMBER") == 0) {
+      result = getConfig().getExperimentID();
+    }
+    if (property.compareTo("STARTTIME.WALLCLOCK") == 0) {
+      result = wcStartTime;
+    }
+    return (D) result;
+  }
+
+  /**
+   * Gets the identification.
+   * 
+   * @return the identification
+   */
+  private String getIdentification() {
+    return config.getExperimentID() + "." + config.getComputationTaskID()
+        + "\t";
+  }
+
+  /**
+   * Gets the config.
+   * 
+   * @return the config
+   */
+  @Override
+  public SimulationRunConfiguration getConfig() {
+    return config;
+  }
+
+  /**
+   * Initializes the simulation run from the given
+   * {@link SimulationRunConfiguration}.
    */
   private final void initFromConfig() {
     startTime = config.getSimStartTime();
 
-    ParameterBlock pb = config.getStopPolicyParameters();
-    if (pb == null) {
-      pb = new ParameterBlock();
+    ParameterBlock stopPolicyParams = config.getStopPolicyParameters();
+    if (stopPolicyParams == null) {
+      stopPolicyParams = new ParameterBlock();
     }
-    pb.addSubBlock(ComputationTaskStopPolicyFactory.COMPTASK, this);
+    stopPolicyParams.addSubBlock(ComputationTaskStopPolicyFactory.COMPTASK, this);
 
-    // It is necessary to consult the registry here (so that it, e.g., can
+    // it is necessary to consult the registry here (so that it, e.g., can
     // document which stop policy was chosen)
-    pb.setValue(config.getStopPolicyFactoryClass().getCanonicalName());
+    stopPolicyParams.setValue(config.getStopPolicyFactoryClass().getCanonicalName());
     ComputationTaskStopPolicyFactory stopPolicyFactory =
         SimSystem.getRegistry().getFactory(
-            AbstractComputationTaskStopPolicyFactory.class, pb);
+            AbstractComputationTaskStopPolicyFactory.class, stopPolicyParams);
 
-    // In case the selection of the intended factory fails, choose the one that
+    // in case the selection of the intended factory fails, choose the one that
     // was configured originally
     if (!stopPolicyFactory.getClass()
         .equals(config.getStopPolicyFactoryClass())) {
@@ -293,8 +335,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       }
     }
 
-    simRunStopPolicy = stopPolicyFactory.create(pb);
-
+    simRunStopPolicy = stopPolicyFactory.create(stopPolicyParams);
   }
 
   /**
@@ -322,6 +363,15 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   /**
+   * Gets the start hook.
+   * 
+   * @return the start hook
+   */
+  public ComputationTaskHook<?> getStartHook() {
+    return startHook;
+  }
+
+  /**
    * Gets the end hook.
    * 
    * @return the end hook
@@ -342,6 +392,11 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   public ModelInformation getModelInfo() {
     return model;
+  }
+
+  /** Get the information about the neighbours of models and processors */
+  public NeighbourInformation getNeighbourInformation() {
+    return neighbourInformation;
   }
 
   /**
@@ -387,12 +442,13 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   /**
-   * Gets the start hook.
+   * Gets the wall clock start time.
    * 
-   * @return the start hook
+   * @return the wC start time
    */
-  public ComputationTaskHook<?> getStartHook() {
-    return startHook;
+  @Override
+  public Long getWCStartTime() {
+    return wcStartTime;
   }
 
   /**
@@ -439,25 +495,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   /**
-   * Sets the start time.
-   * 
-   * @param startTime
-   *          the new start time
-   */
-  public void setStartTime(double startTime) {
-    this.startTime = startTime;
-  }
-
-  // /**
-  // * Sets the stop time.
-  // *
-  // * @param stopTime the new stop time
-  // */
-  // public void setStopTime(double stopTime) {
-  // this.stopTime = stopTime;
-  // }
-
-  /**
    * Gets the wall clock time.
    * 
    * @return the wall clock time
@@ -471,9 +508,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   public void initializeWallClockTime() {
     wcStartTime = Calendar.getInstance().getTimeInMillis();
-    // System.out.println("Actual systemtime at initialization:
-    // "+System.currentTimeMillis());
-    // System.out.println("WC Starttime: "+wcStartTime);
   }
 
   /**
@@ -496,9 +530,9 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       return ((IRunnable) proc).isRunning();
     }
 
-    // if the processor is not runnable it is triggered by calls /
-    // messages and we can assume that it is running ... (at least we have no
-    // hint that's that not the case)
+    // if the processor is not runnable it is triggered by calls/messages and we
+    // can assume that it is running ... (at least we have no hint that's that
+    // not the case)
     return true;
   }
 
@@ -514,18 +548,15 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
 
     IProcessor<?> proc = processorInfo.getLocal();
     if (proc instanceof IRunnable) {
-      // if the processor is runnable this can be detremined by directly
-      // asking
+      // if the processor is runnable this can be determined by directly asking
       // the interface
 
       b = ((IRunnable) proc).isPausing();
 
     } else {
-      // if the processor is not runnable it is triggered by calls /
-      // messages
-      // and we can assume that it is running ... (at least we have no
-      // hint
-      // that's that not the case)
+      // if the processor is not runnable it is triggered by calls/messages and
+      // we can assume that it is running ... (at least we have no hint that's
+      // that not the case)
       b = false;
     }
     return b;
@@ -567,16 +598,8 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   private void printMonitoringResults() {
     if (config.isMonitoringEnabled()) {
-      // long secs = 0;
-
       long[] ids = ManagementFactory.getThreadMXBean().getAllThreadIds();
       for (int i = 0; i < ids.length; i++) {
-
-        /*
-         * if (ManagementFactory.getThreadMXBean().getThreadInfo(ids[i])
-         * .getThreadName().startsWith("org.jamesii.core")) { secs +=
-         * ManagementFactory.getThreadMXBean().getThreadCpuTime(ids[i]); }
-         */
 
         SimSystem.report(Level.INFO, "Thread " + ids[i] + " has used "
             + ManagementFactory.getThreadMXBean().getThreadCpuTime(ids[i])
@@ -596,22 +619,39 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
         SimSystem.report(Level.INFO, " blocked time:"
             + ManagementFactory.getThreadMXBean().getThreadInfo(ids[i])
                 .getBlockedTime());
-        // ManagementFactory.getThreadMXBean().getThreadInfo(ids[i]).getThreadName
-        // ()
       }
-      // System.out.println("Secs: "+(double)(secs/1000000000));
     }
+  }
+
+  /**
+   * Sets the start time.
+   * 
+   * @param startTime
+   *          the new start time
+   */
+  public void setStartTime(double startTime) {
+    this.startTime = startTime;
+  }
+
+  /**
+   * Sets the start hook.
+   * 
+   * @param hook
+   *          the new start hook
+   */
+  public void setStartHook(ComputationTaskHook<?> hook) {
+    this.startHook = hook;
   }
 
   /**
    * Sets the end hook.
    * 
    * @param hook
-   *          the hook
+   *          the new end hook
    */
   @Override
   public void setEndHook(ComputationTaskHook<?> hook) {
-    endHook = hook;
+    this.endHook = hook;
   }
 
   /**
@@ -634,48 +674,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   @Override
   public void setProcessorInfo(ProcessorInformation processor) {
     processorInfo = processor;
-  }
-
-  /**
-   * Sets the start hook.
-   * 
-   * @param hook
-   *          the new start hook
-   */
-  public void setStartHook(ComputationTaskHook<?> hook) {
-    startHook = hook;
-  }
-
-  /**
-   * Simulation time to wall clock time.
-   * 
-   * @param time
-   *          the time
-   * @param scale
-   *          the scale
-   * 
-   * @return the double
-   */
-  public double simulationTimeToWallClockTime(double time, double scale) {
-    // System.out.println(wcStartTime);
-    return (wcStartTime + ((time - getStartTime()) * scale));
-  }
-
-  /**
-   * Simulation time to wall clock time.
-   * 
-   * @param run
-   *          the simulation run
-   * @param time
-   *          the time
-   * @param scale
-   *          the scale
-   * 
-   * @return the double
-   */
-  public static double simulationRunTimeToWallClockTime(ISimulationRun run,
-      double time, double scale) {
-    return (run.getWCStartTime() + ((time - run.getStartTime()) * scale));
   }
 
   /**
@@ -720,8 +718,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       stopWatch.start();
       initializeWallClockTime();
 
-      // System.out.println(this.getStopTime()+" class "+this.getStopTime().getClass());
-      // System.out.println(this.getStopTime().hasReachedEnd());
       ((IRunnable) processorInfo.getLocal()).run(getStopPolicy(), getDelay(),
           isStartPaused());
 
@@ -741,7 +737,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
             p.println(model.getLocal().getName() + ";"
                 + stopWatch.elapsedSeconds());
           }
-          // fs.close();
         } catch (Exception e) {
           SimSystem.report(e);
         }
@@ -753,19 +748,18 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     }
   }
 
-  /** Get the information about the neighbours of models and processors */
-  public NeighbourInformation getNeighbourInformation() {
-    return neighbourInformation;
-  }
-
   /**
-   * Gets the wall clock start time.
+   * Simulation time to wall clock time.
    * 
-   * @return the wC start time
+   * @param time
+   *          the time
+   * @param scale
+   *          the scale
+   * 
+   * @return the estimated wall clock time
    */
-  @Override
-  public Long getWCStartTime() {
-    return wcStartTime;
+  public double simulationTimeToWallClockTime(double time, double scale) {
+    return (wcStartTime + ((time - getStartTime()) * scale));
   }
 
   /**
@@ -775,14 +769,9 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    *          the scale ascertain the scaling factor how much faster the
    *          simulation time should run than the wall clock time.
    * 
-   * @return the double
+   * @return the estimated simulation time
    */
   public double wallClockTimeToSimulationTime(double scale) {
-    // scale * (twcnow - twcstart)
-    // System.out.println("Start time: "+getStartTime());
-    // System.out.println("WC Start time: "+wcStartTime);
-    // System.out.println("Actual time: "+System.currentTimeMillis());
-    // returns seconds
     return (getStartTime() + ((1 / scale) * (System.currentTimeMillis() - wcStartTime)));
   }
 
@@ -790,63 +779,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   public void freeRessources() {
     getProcessorInfo().getLocal().cleanUp();
     getModel().cleanUp();
-  }
-
-  @Override
-  public ComputationTaskIDObject getUniqueIdentifier() {
-    return ID;
-  }
-
-  @Override
-  public long getSimpleId() {
-    return (Long) ID.getExternalID();
-  }
-
-  /**
-   * Gets the config.
-   * 
-   * @return the config
-   */
-  @Override
-  public SimulationRunConfiguration getConfig() {
-    return config;
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public <D> D getProperty(String property) {
-    Object result = null;
-    if (property.compareTo("TIME") == 0) {
-      result = getTime();
-    }
-    if (property.compareTo("STARTTIME") == 0) {
-      result = getStartTime();
-    }
-    if (property.compareTo("ENDTIME") == 0) {
-      result = getStopPolicy();
-    }
-    if (property.compareTo("MODEL.CLASS") == 0) {
-      result = getModel().getClass();
-    }
-    if (property.compareTo("MODEL.NAME") == 0) {
-      result = getModel().getName();
-    }
-    if (property.compareTo("PROCESSOR.CLASS") == 0) {
-      result = getProcessorInfo().getLocal().getClass();
-    }
-    if (property.compareTo("PROCESSOR.STATE") == 0) {
-      result = getProcessorInfo().getLocal().getState();
-    }
-    if (property.compareTo("CONFIGURATION.NUMBER") == 0) {
-      result = Long.valueOf(getConfig().getNumber());
-    }
-    if (property.compareTo("CONFIGURATION.EXPERIMENTNUMBER") == 0) {
-      result = getConfig().getExperimentID();
-    }
-    if (property.compareTo("STARTTIME.WALLCLOCK") == 0) {
-      result = wcStartTime;
-    }
-    return (D) result;
   }
 
   @Override
@@ -862,7 +794,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   @Override
   public void registerContext(IContext context) {
     // TODO Auto-generated method stub
-
   }
 
   @Override
@@ -872,8 +803,8 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   @Override
-  public <O> O create(String pluginType, ParameterBlock block) {    
-    return Context.createInstance (pluginType, block, this);
+  public <O> O create(String pluginType, ParameterBlock block) {
+    return Context.createInstance(pluginType, block, this);
   }
-  
+
 }

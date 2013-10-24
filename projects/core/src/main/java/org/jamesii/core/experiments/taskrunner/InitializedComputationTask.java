@@ -43,7 +43,7 @@ public class InitializedComputationTask implements Serializable,
   public InitializedComputationTask(IComputationTask computationTask,
       RunInformation rInfo) {
     this.computationTask = computationTask;
-    runInfo = rInfo;
+    this.runInfo = rInfo;
   }
 
   @Override

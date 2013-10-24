@@ -117,8 +117,8 @@ public class DefaultExecutionController implements
         // the stop method adds a poison pill to the queue so that this run
         // method will terminate in case of a call to stop and an empty job
         // queue
-        jobs.take().process();
-
+        ControlJob job = jobs.take();
+        job.process();
       }
     } catch (InterruptedException ex) {
       SimSystem.report(ex);
