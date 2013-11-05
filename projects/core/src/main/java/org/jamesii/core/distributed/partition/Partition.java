@@ -152,7 +152,7 @@ public class Partition implements Serializable {
     IProcessor proc;
 
     proc = processorFactory.create(getModel(), simulation, this, parameter);
-
+    proc.setComputationTask(simulation);
     simulation.setProcessorInfo(new ProcessorInformation(proc));
 
     try {
