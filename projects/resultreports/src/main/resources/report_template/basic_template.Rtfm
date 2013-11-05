@@ -1,0 +1,182 @@
+<#-- Basic Result Report Template for R/Tex (Sweave)-->
+\documentclass{report}
+
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{breaklines=true, stringstyle=\ttfamily,basicstyle=\tiny,language=,}
+
+
+\title{James II Result Report: '${report.title}'}
+\date{${date}}
+
+
+<#--------------------------------------------------->
+<#macro scatterplot id file varOne="1" varTwo="2" caption="Add the attribute to define a caption." title="Title" xLabel="X-Label" yLabel="Y-Label" textwidth=1.0>
+\begin{Scode}{label=item-${id},fig=TRUE,echo=FALSE,pdf=TRUE,eps=FALSE,height=10,width=10,include=false,results=hide} 
+ source("plotting.R");
+ par(mfrow=c(1,1));
+ data <- t(readData("${file}"));
+ plot(data[,${varOne}],data[,${varTwo}], main="${title}", xlab="${xLabel}", ylab="${yLabel}");
+\end{Scode}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
+\caption{${caption} \label{item-${id}}}
+\end{figure}
+</#macro>
+
+
+<#--------------------------------------------------->
+<#macro boxplot id file caption="Add the attribute to define a caption." title="Title" xLabel="X-Label" yLabel="Y-Label" textwidth=1.0>
+\begin{Scode}{label=item-${id},fig=TRUE,echo=FALSE,pdf=TRUE,eps=FALSE,height=10,width=10,include=false,results=hide} 
+ source("plotting.R");
+ data <- t(readData("${file}"));
+ varNames <-readData("${file}-vars");
+ oldpars <- par();
+ #Vertical labels
+ par(mfrow=c(1,1),las=2);
+ #Adjust outer margins so that they fit the labels on the x-axis
+ par(oma=c(max(unlist(lapply((as.matrix(varNames)[1,]),nchar)), na.rm=TRUE)*0.3,0,0,0));
+ boxplot(data, main="${title}", xlab="${xLabel}", ylab="${yLabel}", names=as.vector(as.matrix(varNames)[,])[1:dim(data)[2]]);
+ par(oldpars);
+\end{Scode}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
+\caption{${caption} \label{item-${id}}}
+\end{figure}
+</#macro>
+
+
+<#--------------------------------------------------->
+<#macro histogram id file breaks="" caption="Add the attribute to define a caption." title="Title" xLabel="X-Label" yLabel="Y-Label" textwidth=1.0>
+\begin{Scode}{label=item-${id},fig=TRUE,echo=FALSE,pdf=TRUE,eps=FALSE,height=10,width=10,include=false,results=hide} 
+ source("plotting.R");
+ par(mfrow=c(1,1));
+ data <- readData("${file}");
+ hist(data[,1], breaks=${breaks}, main="${title}", xlab="${xLabel}", ylab="${yLabel}");
+\end{Scode}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
+\caption{${caption} \label{item-${id}}}
+\end{figure}
+</#macro>
+
+
+<#--------------------------------------------------->
+<#macro linechart id file breaks="" caption="Add the attribute to define a caption." title="Title" xLabel="X-Label" yLabel="Y-Label" textwidth=1.0>
+\begin{Scode}{label=item-${id},fig=TRUE,echo=FALSE,pdf=TRUE,eps=FALSE,height=10,width=10,include=false,results=hide} 
+ source("plotting.R");
+ par(mfrow=c(1,1));
+ data <- t(readData("${file}"));
+ varNames <-readData("${file}-vars");
+ xrange<- range(data[,1], na.rm=TRUE);
+ otherData <- data[,2:dim(data)[2]];
+ yrange<- range(0.8*min(otherData, na.rm=TRUE),1.2*max(otherData, na.rm=TRUE), na.rm=TRUE);
+ plot(xrange, yrange, type='n', main="${title}", xlab="", ylab="");
+ for(i in 1:(dim(data)[2]-1)) {
+	lines(data[,1], data[,i+1], type='b', lwd=2, col=palette()[i%%8]);
+ }
+ legend('topleft',as.vector(as.matrix(varNames)[,])[1:dim(data)[2]-1],col=palette(),title="Variables",inset=0.01,lwd=2)
+\end{Scode}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
+\caption{${caption} \label{item-${id}}}
+\end{figure}
+</#macro>
+
+
+<#--------------------------------------------------->
+<#macro stattest id fileOne fileTwo testid caption="Add the attribute to define a caption.">
+\begin{Scode}{label=item-${id},fig=TRUE,echo=FALSE,pdf=TRUE,eps=FALSE,height=10,width=10,include=false} <#-- ,results=hide --> 
+ source("plotting.R");
+ dataOne <- readData("${fileOne}");
+ dataTwo <- readData("${fileTwo}");
+ ks.test(dataOne$V1, dataTwo$V1)
+\end{Scode}
+
+</#macro>
+
+
+
+
+\begin{document}
+
+\maketitle
+
+<#if report.showTOC>
+\tableofcontents
+</#if>
+
+\chapter{General Information}
+
+${report.preamble}
+
+\section{System Information}
+
+\begin{lstlisting}
+${vm}
+\end{lstlisting}
+
+<#list elements as element>
+
+		<#-- Handling of structural elements -->
+		<#if element.sectionElement>
+				<#if element.type == "CHAPTER">
+				\chapter{${element.section.title}}	
+				<#elseif element.type == "SECTION">
+				\section{${element.section.title}}	
+				<#elseif element.type == "SUB_SECTION">
+				\subsection{${element.section.title}}	
+				<#elseif element.type == "SUB_SUB_SECTION">
+				\subsubsection{${element.section.title}}	
+				</#if>
+				\label{sec:${element.ID}}
+				
+				${element.section.description}
+		
+		<#-- Handling of data views -->
+		<#else>
+				<#if element.dataView.class.canonicalName == "james.resultreport.dataview.ScatterPlotDataView">				
+				<@scatterplot id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>				
+				
+				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.BoxPlotDataView">				
+				<@boxplot id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>				
+				
+				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.HistogramDataView">				
+				<@histogram id="${element.ID}" file="${element.ID}-data" breaks="${element.dataView.breakSpec}" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>
+				
+				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.LineChartDataView">
+				<@linechart id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>
+				
+				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.TableDataView">			
+				\begin{table}[h!]
+				\centering
+				\begin{tabular}{|<#list element.dataView.data[0] as x>c|</#list>}
+				\hline
+				<#list element.dataView.data as row>
+				  <#if row??>
+					<#list row as row_elem>
+					<#if row_index == 0>\textbf{${row_elem!}}<#else>${row_elem!}</#if> <#if row_elem_has_next>&</#if>
+					</#list>\\\hline
+				  </#if>
+				</#list>
+				\end{tabular}
+				\caption{${element.dataView.caption}}
+				\end{table}
+								
+				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.StatisticalTestDataView">
+				<@stattest id="${element.ID}" fileOne="${element.ID}-data-${element.dataView.firstSetName!}" fileTwo="${element.ID}-data-${element.dataView.secondSetName!}"  caption="${element.dataView.caption}" testid="${element.dataView.test.ID}"/>									
+				</#if>								
+		</#if>		  
+		
+</#list>
+
+\end{document}

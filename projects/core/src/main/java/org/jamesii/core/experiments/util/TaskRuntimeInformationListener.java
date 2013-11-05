@@ -62,7 +62,7 @@ public class TaskRuntimeInformationListener implements
   public List<IObserver<?>> getAllComputationTaskObservers() {
     List<IObserver<?>> observers = new ArrayList<>();
     for (ComputationTaskRuntimeInformation crti : runtimeInformations) {
-      observers.addAll(crti.getModelObservers());
+      observers.addAll(crti.getComputationTaskObservers());
     }
     return observers;
   }
