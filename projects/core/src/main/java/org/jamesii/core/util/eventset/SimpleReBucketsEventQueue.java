@@ -14,7 +14,7 @@ import java.util.Map;
 
 
 /**
- * The SimpleReBuckets event queue is a fast implementation of an event queue
+ * The SimpleReBucketsEventQueue event queue is a fast implementation of an event queue
  * for the sequential simulator. It uses two different hashmaps - one contains
  * the mapping event - tonie, the second one a mapping tonie - models. The
  * second hashmap is used for computing the min. This implementation is faster
@@ -69,7 +69,7 @@ import java.util.Map;
  * @param <E>
  *          the type of the events to be stored in the queue
  */
-public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
+public class SimpleReBucketsEventQueue<E> extends AbstractEventQueue<E, Double> {
 
   /** The Constant serialVersionUID. */
   static final long serialVersionUID = -8663634212054878911L;
@@ -83,7 +83,7 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
   /**
    * Instantiates a new simple re buckets.
    */
-  public SimpleReBuckets() {
+  public SimpleReBucketsEventQueue() {
     super();
   }
 

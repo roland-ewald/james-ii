@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The SimpleBuckets is an event queue implementation which uses a HashMap for
+ * The SimpleBucketsEventQueue is an event queue implementation which uses a HashMap for
  * storing per time buckets of events internally. This queue should be efficient
  * iff the number of different time stamps is rather low and requeue ops happen
  * only quite seldomly while the overall number of events is rather high and all
@@ -76,7 +76,7 @@ import java.util.Map;
  * @author Jan Himmelspach *
  * @param <E>
  */
-public class SimpleBuckets<E> extends AbstractEventQueue<E, Double> {
+public class SimpleBucketsEventQueue<E> extends AbstractEventQueue<E, Double> {
 
   /** The Constant serialVersionUID. */
   static final long serialVersionUID = 6815838204625838530L;
@@ -95,7 +95,7 @@ public class SimpleBuckets<E> extends AbstractEventQueue<E, Double> {
    * Default constructor.
    * 
    */
-  public SimpleBuckets() {
+  public SimpleBucketsEventQueue() {
     super();
   }
 
