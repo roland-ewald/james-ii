@@ -1378,6 +1378,34 @@ public abstract class EventQueueTest extends ChattyTestCase {
   }
 
   /**
+   * Test whether the number of elements returned by
+   * {@link IBasicEventQueue#size()} can actually be dequeued.
+   */
+  public final void testSize() {
+    IEventQueue<Object, Double> myQueue = internalCreate();
+    myQueue.enqueue(1, 1.0);
+    myQueue.enqueue(1, 2.0);
+    myQueue.enqueue(new Integer(1), 3.0);
+    myQueue.enqueue(2, 1.0);
+    myQueue.enqueue(new Integer(2), 2.0);
+    myQueue.enqueue(3, 2.5);
+    int sizeBefore = myQueue.size();
+    int numDequeued = 0;
+    while (!myQueue.isEmpty() && numDequeued <= 6) {
+      Entry<Object, Double> entry = myQueue.dequeue();
+      assertNotNull("Queue supposedly nonempty, but returned null entry: "
+          + myQueue + " (" + myQueue.getClass() + ")", entry);
+      numDequeued++;
+    }
+    assertTrue("Queue allowed more dequeue operations than elements were enqueued before: " + myQueue
+        + " (" + myQueue.getClass() + ")",numDequeued <= 6);
+    assertEquals(
+        "Queue reported size of " + sizeBefore + ", but allowed dequeue of "
+            + numDequeued + " elements before reporting empty: " + myQueue
+            + " (" + myQueue.getClass() + ")", numDequeued, sizeBefore);
+  }
+
+  /**
    * Up/down test using different event distributions. This test tests whether
    * the random event times are correctly retrieved (in ascending order). If
    * this test fails the test log should be checked as it contains the seed
@@ -1516,7 +1544,9 @@ public abstract class EventQueueTest extends ChattyTestCase {
     EqIdBehavior eqIdB = EqIdBehavior.and(eqIdBs);
 
     System.out.println("equality/identity-behavior of " + queue.getClass()
-        + " is " + eqIdB + ": " + rslt2 + "/" + rslt1);
+        + " was " + eqIdB + ": " + rslt2 + "/" + rslt1
+        + "\n(found with a simple test, a more complex one"
+        + " may still reveal inconsistencies)");
   }
 
   /**

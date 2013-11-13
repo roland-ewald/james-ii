@@ -393,9 +393,11 @@ public class TwoListWithBucketsSimpleThreshold<E> extends
       } // else: do nothing (auto insert into threshold)
 
     }
-    size++;
+
     // System.out.println(" EOI ");
-    farFuture.put(event, time);
+    if (farFuture.put(event, time) == null) {
+      size++; // only increase size if event was not yet there (fix by ab358)
+    }
   }
 
   @Override
