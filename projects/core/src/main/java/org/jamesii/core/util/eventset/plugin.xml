@@ -9,6 +9,7 @@
   </factory>
   
   <factory classname="org.jamesii.core.util.eventset.SimpleBucketsEventQueueFactory"></factory> 
+  <factory classname="eventqueues.buckets.SimpleReBucketsEventQueueFactory"></factory>   
   <factory classname="org.jamesii.core.util.eventset.SimpleEventQueueFactory"></factory> 
   <factory classname="org.jamesii.core.util.eventset.HeapEventQueueFactory" icon="org/jamesii/core/util/eventset/HeapQueue.png"></factory> 
   <factory classname="org.jamesii.core.util.eventset.UnsortedListEventQueueFactory"></factory>
