@@ -8,14 +8,7 @@
     </parameter>
   </factory>
   
-  <factory classname="org.jamesii.core.util.eventset.BucketsThresholdEventQueueFactory">
-    <parameter name="threshold" type="java.lang.Integer">
-      <description>The buckets threshold queue consists of two parts - the size (slots) of the first part is determined by this parameter. The default size is 8.</description>
-    </parameter>   
-  </factory> 
-  
   <factory classname="org.jamesii.core.util.eventset.SimpleBucketsEventQueueFactory"></factory> 
-  <factory classname="org.jamesii.core.util.eventset.SimpleReBucketsEventQueueFactory"></factory>     
   <factory classname="org.jamesii.core.util.eventset.SimpleEventQueueFactory"></factory> 
   <factory classname="org.jamesii.core.util.eventset.HeapEventQueueFactory" icon="org/jamesii/core/util/eventset/HeapQueue.png"></factory> 
   <factory classname="org.jamesii.core.util.eventset.UnsortedListEventQueueFactory"></factory>
