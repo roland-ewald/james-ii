@@ -1384,7 +1384,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
   public final void testSize() {
     IEventQueue<Object, Double> myQueue = internalCreate();
     myQueue.enqueue(1, 1.0);
-    myQueue.enqueue(1, 2.0);
+    myQueue.requeue(1, 2.0);
     myQueue.enqueue(new Integer(1), 3.0);
     myQueue.enqueue(2, 1.0);
     myQueue.enqueue(new Integer(2), 2.0);
@@ -1397,12 +1397,15 @@ public abstract class EventQueueTest extends ChattyTestCase {
           + myQueue + " (" + myQueue.getClass() + ")", entry);
       numDequeued++;
     }
-    assertTrue("Queue allowed more dequeue operations than elements were enqueued before: " + myQueue
-        + " (" + myQueue.getClass() + ")",numDequeued <= 6);
+    assertTrue(
+        "Queue allowed more dequeue operations than elements were enqueued before: "
+            + myQueue + " (" + myQueue.getClass() + "); alleged size now: "
+            + myQueue.size(), numDequeued <= 6);
     assertEquals(
         "Queue reported size of " + sizeBefore + ", but allowed dequeue of "
             + numDequeued + " elements before reporting empty: " + myQueue
-            + " (" + myQueue.getClass() + ")", numDequeued, sizeBefore);
+            + " (" + myQueue.getClass() + "); alleged size now: "
+            + +myQueue.size(), sizeBefore, numDequeued);
   }
 
   /**
@@ -1515,15 +1518,17 @@ public abstract class EventQueueTest extends ChattyTestCase {
     queue.enqueue(1, 2.0);
     List<EqIdBehavior> eqIdBs = new LinkedList<>();
     int sizeAfterTwoIdEnq = queue.size();
-    if (sizeAfterTwoIdEnq == 1)
+    if (sizeAfterTwoIdEnq == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     queue.requeue(new Integer(1), 1.0);
-    if (queue.size() - sizeAfterTwoIdEnq == 0)
+    if (queue.size() - sizeAfterTwoIdEnq == 0) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     queue.enqueue(2, 2.0);
 
     print();
@@ -1531,16 +1536,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
     List<Object> rslt2 = queue.dequeueAll(2.0);
     List<Object> rslt1 = queue.dequeueAll();
     assertTrue(rslt2.contains(2));
-    if (rslt2.size() == 1)
+    if (rslt2.size() == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
 
     assertTrue(rslt1.contains(1));
-    if (rslt1.size() == 1)
+    if (rslt1.size() == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     EqIdBehavior eqIdB = EqIdBehavior.and(eqIdBs);
 
     System.out.println("equality/identity-behavior of " + queue.getClass()
