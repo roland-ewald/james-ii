@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.util.eventset;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -822,17 +824,17 @@ public abstract class EventQueueTest extends ChattyTestCase {
     assertTrue("Number of entries in queue is " + myQueue.size()
         + ". That's not ok.", myQueue.size() == testEle * 3 + 10000);
 
-    
     for (int i = 0; i < 10000; i++) {
       try {
         assertTrue("dequeued " + i
             + " entries - there should still be something in the queue",
-            myQueue.dequeue() != null);  
+            myQueue.dequeue() != null);
       } catch (Exception e) {
-        System.out.println ("On removing the "+i+"th element ("+myQueue.size()+" remaining) an exception occured: ");
+        System.out.println("On removing the " + i + "th element ("
+            + myQueue.size() + " remaining) an exception occured: ");
         e.printStackTrace();
         fail();
-      }      
+      }
     }
     assertEquals(testEle * 3, myQueue.size());
 
@@ -1376,6 +1378,34 @@ public abstract class EventQueueTest extends ChattyTestCase {
   }
 
   /**
+   * Test whether the number of elements returned by
+   * {@link IBasicEventQueue#size()} can actually be dequeued.
+   */
+  public final void testSize() {
+    IEventQueue<Object, Double> myQueue = internalCreate();
+    myQueue.enqueue(1, 1.0);
+    myQueue.enqueue(1, 2.0);
+    myQueue.enqueue(new Integer(1), 3.0);
+    myQueue.enqueue(2, 1.0);
+    myQueue.enqueue(new Integer(2), 2.0);
+    myQueue.enqueue(3, 2.5);
+    int sizeBefore = myQueue.size();
+    int numDequeued = 0;
+    while (!myQueue.isEmpty() && numDequeued <= 6) {
+      Entry<Object, Double> entry = myQueue.dequeue();
+      assertNotNull("Queue supposedly nonempty, but returned null entry: "
+          + myQueue + " (" + myQueue.getClass() + ")", entry);
+      numDequeued++;
+    }
+    assertTrue("Queue allowed more dequeue operations than elements were enqueued before: " + myQueue
+        + " (" + myQueue.getClass() + ")",numDequeued <= 6);
+    assertEquals(
+        "Queue reported size of " + sizeBefore + ", but allowed dequeue of "
+            + numDequeued + " elements before reporting empty: " + myQueue
+            + " (" + myQueue.getClass() + ")", numDequeued, sizeBefore);
+  }
+
+  /**
    * Up/down test using different event distributions. This test tests whether
    * the random event times are correctly retrieved (in ascending order). If
    * this test fails the test log should be checked as it contains the seed
@@ -1430,6 +1460,93 @@ public abstract class EventQueueTest extends ChattyTestCase {
           Double.compare(val, t) >= 0);
       t = val;
     }
+  }
+
+  private enum EqIdBehavior {
+    EQUALITY, IDENTITY, INCONSISTENT;
+
+    /**
+     * Logical "and": If something has this behavior in one respect and that
+     * other behavior in another respect, the overall behavior is...
+     * 
+     * @param other
+     *          other behavior
+     * @return overvall behavior
+     */
+    public EqIdBehavior and(EqIdBehavior other) {
+      if (this.equals(other)) {
+        return this;
+      } else {
+        return INCONSISTENT;
+      }
+    }
+
+    /**
+     * Logical "and" of several different behaviors
+     * 
+     * @param b
+     *          behaviors
+     * @return overall behavior
+     */
+    public static EqIdBehavior and(Iterable<EqIdBehavior> b) {
+      boolean first = true;
+      EqIdBehavior res = null;
+      Iterator<EqIdBehavior> it = b.iterator();
+      while (it.hasNext()) {
+        if (first) {
+          res = it.next();
+          first = false;
+        } else {
+          res = res.and(it.next());
+        }
+      }
+      return res;
+    }
+  }
+
+  /**
+   * Test event queue behavior when confronted with events that are equal but
+   * not identical
+   */
+  public final void testEqualEvents() {
+    IEventQueue<Object, Double> queue = internalCreate();
+
+    queue.enqueue(new Integer(1), 1.0);
+    queue.enqueue(1, 2.0);
+    List<EqIdBehavior> eqIdBs = new LinkedList<>();
+    int sizeAfterTwoIdEnq = queue.size();
+    if (sizeAfterTwoIdEnq == 1)
+      eqIdBs.add(EqIdBehavior.EQUALITY);
+    else
+      eqIdBs.add(EqIdBehavior.IDENTITY);
+    queue.requeue(new Integer(1), 1.0);
+    if (queue.size() - sizeAfterTwoIdEnq == 0)
+      eqIdBs.add(EqIdBehavior.EQUALITY);
+    else
+      eqIdBs.add(EqIdBehavior.IDENTITY);
+    queue.enqueue(2, 2.0);
+
+    print();
+
+    List<Object> rslt2 = queue.dequeueAll(2.0);
+    List<Object> rslt1 = queue.dequeueAll();
+    assertTrue(rslt2.contains(2));
+    if (rslt2.size() == 1)
+      eqIdBs.add(EqIdBehavior.EQUALITY);
+    else
+      eqIdBs.add(EqIdBehavior.IDENTITY);
+
+    assertTrue(rslt1.contains(1));
+    if (rslt1.size() == 1)
+      eqIdBs.add(EqIdBehavior.EQUALITY);
+    else
+      eqIdBs.add(EqIdBehavior.IDENTITY);
+    EqIdBehavior eqIdB = EqIdBehavior.and(eqIdBs);
+
+    System.out.println("equality/identity-behavior of " + queue.getClass()
+        + " was " + eqIdB + ": " + rslt2 + "/" + rslt1
+        + "\n(found with a simple test, a more complex one"
+        + " may still reveal inconsistencies)");
   }
 
   /**
