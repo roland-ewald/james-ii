@@ -74,34 +74,39 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
   static final long serialVersionUID = -4699298828924476304L;
 
   /** The events. map of nextbucket - and time stamps */
-  private Map<E, Double> events = new HashMap<>();
+  private final Map<E, Double> events = new HashMap<>();
 
-  /** The maxevents. */
-  private double maxevents = 0;
+  /** The maxTimeNearFuture. */
+  private double maxTimeNearFuture = 0;
 
-  /** The minthresholdtime. */
-  private double minthresholdtime = Double.POSITIVE_INFINITY;
+  /** The minTimeFarFuture. */
+  private double minTimeFarFuture = Double.POSITIVE_INFINITY;
 
   /** Size of the threshold. */
   private int threshold = 10;
 
   /**
-   * The movebuckets. number of buckets to be moved from tholdbucket to
-   * nearFuture if nearFuture runs empty
+   * The number of buckets to be moved from far future to the near future if
+   * {@link #nearFuture} runs empty.
    */
-  private int movebuckets = threshold / 2;
+  private final int numBucketsToMove = threshold / 2;
 
-  /** The nextbucket. map of nextbucket (fixed size) */
-  private Map<Double, Map<E, Object>> nearFuture = new HashMap<>();
+  /**
+   * The map from event time to (maps of) event in the near future (has a fixed
+   * size).
+   */
+  private final Map<Double, Map<E, Object>> nearFuture = new HashMap<>();
 
-  /** The farFuture. map of non - next nextbucket (variable size) */
-  private Map<Double, Map<E, Object>> farFuture = new HashMap<>();
+  /**
+   * The map from event time to (maps of) events in the far future (has a
+   * variable size).
+   */
+  private final Map<Double, Map<E, Object>> farFuture = new HashMap<>();
 
   /**
    * Create a new bucket threshold queue using default values.
    */
   public BucketsThreshold() {
-    super();
   }
 
   /**
@@ -112,7 +117,6 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
    *          Number of entries of the first list.
    */
   public BucketsThreshold(Integer thresh) {
-    super();
     threshold = thresh;
   }
 
@@ -123,59 +127,44 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
       return null;
     }
 
-    Double d = getMin();
-
-    Map<E, Object> l = nearFuture.get(getMin());
-
+    Double time = getMin();
+    Map<E, Object> l = nearFuture.get(time);
     E e = l.keySet().iterator().next();
-
     dequeue(e);
-
-    return new Entry<>(e, d);
+    return new Entry<>(e, time);
   }
 
   @Override
   public Double dequeue(E event) {
 
-    boolean ev = true;
-
-    Double d = events.get(event);
-
+    Double time = events.get(event);
     events.remove(event);
 
-    Map<E, Object> list = nearFuture.get(d);
+    Map<E, Object> list = nearFuture.get(time);
+    boolean inNearFuture = (list != null);
 
-    if (list == null) {
-      ev = false;
-      list = farFuture.get(d);
+    if (!inNearFuture) {
+      list = farFuture.get(time);
     }
 
     if (list != null) {
       list.remove(event);
       if (list.size() == 0) {
-        if (ev) {
-          nearFuture.remove(d);
+
+        if (inNearFuture) {
+          nearFuture.remove(time);
         } else {
-          farFuture.remove(d);
+          farFuture.remove(time);
         }
 
         // if we have deleted the list which contained the max element we
         // have to search for another one ...
-        if (d.compareTo(maxevents) == 0) {
-          maxevents = findMax(nearFuture);
-
-          // System.out.println("Searched for new max element "+maxevents);
+        if (time.compareTo(maxTimeNearFuture) == 0) {
+          maxTimeNearFuture = findMax(nearFuture);
         }
-
       }
     }
-    /*
-     * if (minthresholdtime < maxevents) { System.out.print("ERR: nextbucket:
-     * "); printOrderedList (nextbucket); System.out.print("ERR: tholdbucket:
-     * "); printOrderedList (tholdbucket); throw new RuntimeException("REMOVE:
-     * oh no ...!!!!"); }
-     */
-    return d;
+    return time;
   }
 
   @Override
@@ -210,7 +199,6 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
    * @return null if this feature is not supported
    */
   public Map<E, Object> dequeueAllHashed(Double time) {
-    // System.out.println(nextbucket);
     Map<E, Object> result = (nearFuture.remove(time));
     if (result == null) {
       return new HashMap<>();
@@ -218,111 +206,45 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
     for (E e : result.keySet()) {
       events.remove(e);
     }
-    // System.out.println("result ("+time+"): "+result);
     return new HashMap<>(result);
   }
 
-  // insert:
-  // insert into nextbucket if
-  // -nextbucket.size < trashhold and neu < min trashhold
-  // -tonie in nextbucket or tonie < max tonie in nextbucket
-  // insert into trashhold if
-  // -nextbucket.size > trashhold *
-  // -tonie > min threshold *
-  // -tonie is Double.POSITIVE_INFINITY *
-
+  /**
+   * Adds a new event to the near future.
+   * 
+   * @param event
+   *          the event to be added
+   * @param time
+   *          the time
+   */
   private void addToNearFuture(E event, Double time) {
-    // +++ time < minthresholdtime && time <=> maxevents && nextbucket.size
-    // <=> threshold && maxevents < minthresholdtime
-
-    // now it's getting difficult
-
-    // System.out.print("Inserting into head thus "+time+" <
-    // "+minthresholdtime);
 
     // check whether the time is already in the nearFuture queue
     if (hasBucket(time, nearFuture)) {
       // already a bucket for that time stamp, thus simply add it
-      // System.out.print(" - inserted in existing head slot ");
       putInList(nearFuture, time, event);
     } else {
-
-      // only insert if there is a free slot in the nextbucket queue
+      // only insert if there is a free slot in the near future
       if (nearFuture.size() < threshold) {
-
-        // +++ time < minthresholdtime && time <=> maxevents &&
-        // nextbucket.size
-        // < threshold && maxevents < minthresholdtime
-
-        // System.out.print(" - few in head -> insert there ");
-
         putInList(nearFuture, time, event);
-
-        if (Double.compare(time, maxevents) > 0) {
-
-          // +++ time < minthresholdtime && time > maxevents &&
-          // nextbucket.size
-          // < threshold && maxevents < minthresholdtime
-
-          // System.out.print(" maxevents set to " + time);
-          maxevents = time;
+        if (Double.compare(time, maxTimeNearFuture) > 0) {
+          maxTimeNearFuture = time;
         }
-
       } else {
-
-        // +++ time < minthresholdtime && time <=> maxevents &&
-        // nextbucket.size
-        // => threshold && maxevents < minthresholdtime
-
-        // no slot, but minimum in threshold list is greater
-
-        // System.out.print(" - head full -> ");
-
-        // check whether max in nextbucket is less or not
-        Double max = maxevents;
-
-        // new is later as latest in nextbucket, insert into threshold
-        if (Double.compare(time, max) > 0) {
-
-          // +++ time < minthresholdtime && time > maxevents &&
-          // nextbucket.size
-          // => threshold && maxevents < minthresholdtime
-
-          // auto insert into threshold, but let's remember the new minimum
-          // value
-          // in the threshold
-          minthresholdtime = time;
-
-          // System.out.print(" insert in tholdbucket + ");
-
+        // new event is later as latest in near future, insert into far future
+        if (Double.compare(time, maxTimeNearFuture) > 0) {
+          // remember the new minimum value as threshold time
+          minTimeFarFuture = time;
           putInList(farFuture, time, event);
-
         } else {
-
-          // +++ time < minthresholdtime && time <= maxevents &&
-          // nextbucket.size
-          // => threshold && maxevents < minthresholdtime
-
-          // insert new into nextbucket, and move one bucket from nextbucket
-          // to
-          // tholdbucket
-
-          // move the bucket from the nextbucket list into the threshold
-          moveBucket(nearFuture, max, farFuture);
-
-          // moveBucket (tholdbucket, time, nextbucket);
-
-          minthresholdtime = max;
-
-          // System.out.print(" make slot free (move) and insert in head ");
-
+          // insert new into near future, but also move one bucket from near
+          // future to far future
+          moveBucket(nearFuture, maxTimeNearFuture, farFuture);
+          minTimeFarFuture = maxTimeNearFuture;
           putInList(nearFuture, time, event);
-          maxevents = findMax(nearFuture);
-
+          maxTimeNearFuture = findMax(nearFuture);
         }
-
       }
-
     }
   }
 
@@ -330,72 +252,43 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
   public void enqueue(E event, Double time) {
 
     if (time < 0) {
-      return; // invalid value, not to be used here
-      // System.out.println ("Adding "+time+" "+event.getFullName());
-      // System.out.println ("Var values:\n maxevents="+maxevents+"\n max
-      // nextbucket="+findMax(nextbucket)+"\n
-      // minthreshold="+minthresholdtime+"\n
-      // find min tholdbucket="+findMin(tholdbucket));
+      return; // invalid argument
     }
 
-    // only try to insert into nextbucket list if the time is not INFINITY
-    // thus, shorten the range to be stored into the nextbucket list
+    // only try to insert into a bucket list if the time is not INFINITY
+    // thus, shorten the range to be stored into the buckets
     if (time != Double.POSITIVE_INFINITY) {
 
-      // only insert into nextbucket if the new time is less than the minimum in
-      // the
-      // trashhold
-      if (Double.compare(time, minthresholdtime) < 0) {
-
+      // only insert into near future if the new time is less than the minimum
+      // threshold
+      if (Double.compare(time, minTimeFarFuture) < 0) {
         addToNearFuture(event, time);
-
-      } else {
-        // +++ time > minthresholdtime && time > maxevents && nextbucket.size
-        // <=>
-        // threshold
-
-        // System.out.print(" insert in tholdbucket ");
+      } else { // otherwise insert into far future
         putInList(farFuture, time, event);
       }
 
     }
-
-    /*
-     * System.out.print(""); System.out.println("Inserted (min treshold time
-     * "+minthresholdtime+")"); System.out.print("nextbucket: ");
-     * printOrderedList (nextbucket); System.out.print("tholdbucket: ");
-     * printOrderedList (tholdbucket);
-     * 
-     * if (findMin (tholdbucket) < findMax (nextbucket)) { throw new
-     * RuntimeException("INSERT: Constraint violated ...!!!!"); }
-     * 
-     * if (minthresholdtime < maxevents) throw new RuntimeException("INSERT: oh
-     * no ...!!!!");
-     */
-
     events.put(event, time);
   }
 
   /**
-   * Find the mins min values in the given list.
+   * Find a number of minimal values in the given bucket map.
    * 
-   * @param theList
-   *          the the list
+   * @param theBuckets
+   *          the buckets
    * @param mins
-   *          the mins
+   *          the number of minimal values
    * 
    * @return the double[]
    */
-  private Double[] findMins(int mins, Map<Double, Map<E, Object>> theList) {
+  private Double[] findMins(int mins, Map<Double, Map<E, Object>> theBuckets) {
     Double[] min = new Double[mins];
-
-    // System.out.println("finding mins");
 
     for (int i = 0; i < mins; i++) {
       min[i] = Double.POSITIVE_INFINITY;
     }
 
-    for (Double d : theList.keySet()) {
+    for (Double d : theBuckets.keySet()) {
       for (int i = 0; i < mins; i++) {
         if (d.compareTo(min[i]) < 0) {
           shift(min, i);
@@ -405,11 +298,8 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
         if (d.compareTo(min[i]) == 0) {
           break;
         }
-
       }
-
     }
-
     return min;
   }
 
@@ -418,38 +308,25 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
 
     Double mintime = null;
 
-    // if there are no more nextbucket we should try to get some from the
-    // tholdbucket
+    // if there are no more events in the near future we should try to get some
+    // from the far future
     if (nearFuture.size() == 0) {
 
-      /*
-       * Double min = findMin(tholdbucket); moveBucket (tholdbucket, min,
-       * nextbucket); minthresholdtime = findMin(tholdbucket);
-       */
-
-      // find mins from the tholdbucket
-      Double[] min = findMins(movebuckets + 1, farFuture);
+      // find mins from the far future
+      Double[] min = findMins(numBucketsToMove + 1, farFuture);
 
       for (int i = 0; i < min.length - 1; i++) {
         if (min[i] != Double.POSITIVE_INFINITY) {
           moveBucket(farFuture, min[i], nearFuture);
         }
       }
-      // System.out.println("Had to shift");
 
-      maxevents = min[min.length - 2];
-
-      minthresholdtime = min[min.length - 1];
-
+      maxTimeNearFuture = min[min.length - 2];
+      minTimeFarFuture = min[min.length - 1];
       mintime = min[0];
-
     } else {
-
       mintime = findMin(nearFuture);
     }
-
-    // System.out.println("nextbucket:"); printList (nextbucket);
-    // System.out.println("tholdbucket:"); printList (tholdbucket);
 
     // get out
     if (mintime == Double.POSITIVE_INFINITY) {
@@ -460,12 +337,6 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
 
     internalGetMin(mintime);
 
-    /*
-     * System.out.println("++++++ MIN ++++++"); System.out.println("got min:
-     * "+mintime+" ++++ "+this.handleCoupledModels); printList (nextbucket);
-     * System.out.println("--- MINBUCK ---"); printBucket (nextbucket, mintime);
-     * System.out.println("###### MIN ######");
-     */
     return mintime;
   }
 
@@ -572,8 +443,8 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
   public String toString() {
     StringBuilder builder = new StringBuilder();
 
-    builder.append("min in threshold: " + minthresholdtime + "\n");
-    builder.append("maxevents: " + maxevents + "\n");
+    builder.append("min in threshold: " + minTimeFarFuture + "\n");
+    builder.append("maxTimeNearFuture: " + maxTimeNearFuture + "\n");
     builder.append("nearFuture:\n " + mapToString(nearFuture) + "\n");
     builder.append("farFuture:\n " + mapToString(farFuture) + "\n");
 
@@ -586,8 +457,8 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
     }
     StringBuilder builder = new StringBuilder();
 
-    builder.append("min in threshold: " + minthresholdtime + "\n");
-    builder.append("maxevents: " + maxevents + "\n");
+    builder.append("min in threshold: " + minTimeFarFuture + "\n");
+    builder.append("maxTimeNearFuture: " + maxTimeNearFuture + "\n");
     builder.append("nearFuture:\n " + mapToStringSorted(nearFuture) + "\n");
     builder.append("farFuture:\n " + mapToStringSorted(farFuture) + "\n");
 

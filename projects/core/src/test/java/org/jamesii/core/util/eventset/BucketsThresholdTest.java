@@ -6,9 +6,6 @@
  */
 package org.jamesii.core.util.eventset;
 
-import org.jamesii.core.util.eventset.BucketsThreshold;
-import org.jamesii.core.util.eventset.IEventQueue;
-
 /**
  * The Class BucketsThresholdTest.
  * 
@@ -42,14 +39,7 @@ public class BucketsThresholdTest extends EventQueueTest {
 
   @Override
   public void testDequeue() {
-    // setDebug(true);
     super.testDequeue();
-
-    // long seed = 3405978569185666048l;
-    // addParameter("seedBreakBuckets", seed);
-    // setRandom(new JavaRandom(seed));
-    //
-    // super.testDequeue();
   }
 
   /**
