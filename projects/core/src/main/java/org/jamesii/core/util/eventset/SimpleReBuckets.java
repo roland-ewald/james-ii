@@ -74,10 +74,10 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
   static final long serialVersionUID = -8663634212054878911L;
 
   /** The bucket. */
-  private Map<Double, Map<E, Object>> bucket = new HashMap<>();
+  private final Map<Double, Map<E, Object>> bucket = new HashMap<>();
 
   /** The events. */
-  private Map<E, Double> events = new HashMap<>();
+  private final Map<E, Double> events = new HashMap<>();
 
   /**
    * Instantiates a new simple re buckets.
@@ -168,9 +168,8 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
   @Override
   public void enqueue(E event, Double time) {
     if (time < 0) {
-      return; // invalid value, not to be used here
+      return; // invalid value
     }
-    // System.out.println ("Adding "+time+" "+event);
     Map<E, Object> list = bucket.get(time);
     if (list == null) {
       list = new HashMap<>();
@@ -198,7 +197,6 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
       }
     }
 
-    // System.out.println("got min: "+min);
     return min;
   }
 

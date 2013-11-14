@@ -43,6 +43,12 @@ public interface IBasicEventQueue<E, T extends Comparable<T>> extends
   /**
    * Enqueue an event for the given time. Also known as insert and add.
    * 
+   * <p/>
+   * <b>IMPORTANT</b>: It is not permitted to enqueue an event if an identical event is already managed by the queue.
+   * Depending on the implementation identity may either refer to reference equality (==) or to
+   * object equality as checked via {@link Object#equals(Object)}. 
+   * To avoid this, use {@link IEventQueue#requeue(Object, Comparable)}. 
+   * 
    * @param event
    *          to be inserted into the queue
    * @param time
