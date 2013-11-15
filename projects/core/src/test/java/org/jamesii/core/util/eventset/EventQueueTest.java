@@ -51,7 +51,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
   private final long startTime = System.currentTimeMillis();
 
   /** The number of test elements. */
-  private int testEle = 100;
+  private int testElements = 100;
 
   private boolean debug = false;
 
@@ -106,7 +106,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
    * Test dequeue.
    */
   public void testDequeue() {
-    testEle = 10;
+    testElements = 10;
 
     IEventQueue<Object, Double> myQueue = internalCreate();
     setEventQueue(myQueue);
@@ -118,7 +118,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     int repeatCount = 2;
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
 
       Double r = testEntry.getTime() + 0.1 + getRandom().nextDouble();
       for (int j = 0; j < repeatCount; j++) {
@@ -130,18 +130,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // check whether all elements have been enqueued
     assertTrue(
         "Queue lost elements! contains:should contain = " + myQueue.size()
-            + ":" + testEle * 2, myQueue.size() == testEle * 2);
+            + ":" + testElements * 2, myQueue.size() == testElements * 2);
 
     myQueue.enqueue(testEntry.getEvent(), testEntry.getTime());
 
     // one more element
     assertTrue("Queue ignored an enqueue op ... ",
-        myQueue.size() == testEle * 2 + 1);
+        myQueue.size() == testElements * 2 + 1);
 
     Entry<Object, Double> compareTestEntry = myQueue.dequeue();
 
     // which should be gone again
-    assertTrue(myQueue.size() == testEle * 2);
+    assertTrue(myQueue.size() == testElements * 2);
 
     assertTrue("Got " + compareTestEntry.getTime() + " as min instead of "
         + testEntry.getTime(),
@@ -155,7 +155,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // check time stamp order
     Entry<Object, Double> theLastEntry = null;
     Entry<Object, Double> theEntry = new Entry<>(null, -1.);
-    for (int i = 0; i < testEle * 2; i++) {
+    for (int i = 0; i < testElements * 2; i++) {
       theLastEntry = theEntry;
       oldsize = size;
       theEntry = myQueue.dequeue();
@@ -173,11 +173,11 @@ public abstract class EventQueueTest extends ChattyTestCase {
     assertEquals(true, myQueue.isEmpty());
 
     // check whether reinsertion of element extracted last is fine
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), theLastEntry.getTime());
     }
-    assertTrue("Queue size is not fine ... ", myQueue.size() == testEle);
-    for (int i = 0; i < testEle; i++) {
+    assertTrue("Queue size is not fine ... ", myQueue.size() == testElements);
+    for (int i = 0; i < testElements; i++) {
       myQueue.dequeue();
     }
     assertTrue("Queue size is not fine ... ", myQueue.size() == 0);
@@ -189,26 +189,26 @@ public abstract class EventQueueTest extends ChattyTestCase {
     for (int z = 0; z < timeStamps.length; z++) {
       // *** NEW QUEUE CREATED !!!!! ***
       myQueue = internalCreate();
-      for (int i = 0; i < testEle; i++) {
+      for (int i = 0; i < testElements; i++) {
         myQueue.enqueue(new Object(), timeStamps[z]);
       }
       assertTrue(
           "Queue size is not fine (pass z:" + z + "). It is " + myQueue.size()
-              + " instead of " + (testEle), myQueue.size() == testEle);
+              + " instead of " + (testElements), myQueue.size() == testElements);
 
       for (int j = 1; j < 3; j++) {
-        for (int i = 0; i < testEle / 2; i++) {
+        for (int i = 0; i < testElements / 2; i++) {
           assertTrue(myQueue.dequeue() != null);
           assertTrue("Queue size is not fine (pass z:" + z + " j:" + j
               + "). It is " + myQueue.size() + " instead of "
-              + (testEle - i - 1), myQueue.size() == testEle - i - 1);
+              + (testElements - i - 1), myQueue.size() == testElements - i - 1);
         }
-        for (int i = 0; i < testEle / 2; i++) {
+        for (int i = 0; i < testElements / 2; i++) {
           myQueue.enqueue(new Object(), timeStamps[z]);
         }
         assertTrue("Queue size is not fine (pass z:" + z + " j:" + j
-            + "). It is " + myQueue.size() + " instead of " + testEle,
-            myQueue.size() == testEle);
+            + "). It is " + myQueue.size() + " instead of " + testElements,
+            myQueue.size() == testElements);
       }
     }
 
@@ -361,21 +361,21 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     // tests with more elements
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), 0.0);
     }
 
     List<Object> t = myQueue.dequeueAll();
 
     assertTrue("Queue is not empty but should be!", myQueue.isEmpty());
-    assertTrue(t.size() == testEle);
+    assertTrue(t.size() == testElements);
 
     // t = myQueue.dequeueAll();
     // assertTrue (t != null);
 
     int zeros = 0;
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       if (getRandom().nextDouble() > 0.5) {
         myQueue.enqueue(new Object(), 0.001 + getRandom().nextDouble());
       } else {
@@ -389,8 +389,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // System.out.println(t.size());
     assertTrue(t.size() == zeros);
     assertTrue("Extracted eles " + t.size() + " Queue still contains "
-        + myQueue.size() + " together it should be " + testEle, t.size()
-        + myQueue.size() == testEle);
+        + myQueue.size() + " together it should be " + testElements, t.size()
+        + myQueue.size() == testElements);
     // check whether the remaining elements in the queue are not 0
     while (!myQueue.isEmpty()) {
       Entry<Object, Double> e = myQueue.dequeue();
@@ -578,7 +578,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     assertNotNull(myQueue.dequeueAllHashed());
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), 0.0);
     }
 
@@ -586,14 +586,14 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     assertEquals("Not empty! Still contains some elements: " + myQueue.size(),
         true, myQueue.isEmpty());
-    assertEquals(true, t.size() == testEle);
+    assertEquals(true, t.size() == testElements);
 
     // t = myQueue.dequeueAll();
     // assertTrue (t != null);
 
     int zeros = 0;
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       if (getRandom().nextDouble() > 0.5) {
         myQueue.enqueue(new Object(), 0.001 + getRandom().nextDouble());
       } else {
@@ -607,8 +607,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // System.out.println(t.size());
     assertTrue(t.size() == zeros);
     assertTrue("Extracted eles " + t.size() + " Queue still contains "
-        + myQueue.size() + " together it should be " + testEle, t.size()
-        + myQueue.size() == testEle);
+        + myQueue.size() + " together it should be " + testElements, t.size()
+        + myQueue.size() == testElements);
     double tim = 0;
     // check whether the remaining elements in the queue are not 0
     while (!myQueue.isEmpty()) {
@@ -703,7 +703,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     int num = 5;
 
-    for (int i = 0; i < testEle / 2; i++) {
+    for (int i = 0; i < testElements / 2; i++) {
       myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
     }
 
@@ -711,20 +711,20 @@ public abstract class EventQueueTest extends ChattyTestCase {
       myQueue.enqueue(new Object(), 3.0);
     }
 
-    for (int i = testEle / 2; i < testEle; i++) {
+    for (int i = testElements / 2; i < testElements; i++) {
       myQueue.enqueue(new Object(), 2.0 + getRandom().nextDouble());
     }
 
-    assertEquals(testEle + num, myQueue.size());
+    assertEquals(testElements + num, myQueue.size());
 
     List<Object> list = myQueue.dequeueAll(3.0);
 
     assertEquals("Incorrect number of dequeued elements with time 3.0", num,
         list.size());
 
-    // number of elements after dequeueAll should be equal to testEle
-    assertEquals("Number of elements in the queue should be " + testEle
-        + " but is " + myQueue.size(), testEle, myQueue.size());
+    // number of elements after dequeueAll should be equal to testElements
+    assertEquals("Number of elements in the queue should be " + testElements
+        + " but is " + myQueue.size(), testElements, myQueue.size());
 
     myQueue = internalCreate();
 
@@ -762,7 +762,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     myQueue.enqueue(testObject, testVal);
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), testVal + getRandom().nextDouble());
     }
 
@@ -770,7 +770,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     assertNull(myQueue.dequeue(testObject));
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       Entry<Object, Double> testIt = myQueue.dequeue();
       assertTrue("Dequeued element found again in the queue !! " + i,
           testIt.getEvent() != testObject);
@@ -786,23 +786,23 @@ public abstract class EventQueueTest extends ChattyTestCase {
   public final void testEnqueue() {
     IBasicEventQueue<Object, Double> myQueue = internalCreate();
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), 0.0);
     }
 
-    assertTrue(myQueue.size() == testEle);
+    assertTrue(myQueue.size() == testElements);
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), Double.POSITIVE_INFINITY);
     }
 
-    assertTrue(myQueue.size() == testEle * 2);
+    assertTrue(myQueue.size() == testElements * 2);
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
     }
 
-    assertTrue(myQueue.size() == testEle * 3);
+    assertTrue(myQueue.size() == testElements * 3);
 
     // large size
     for (int i = 0; i < 10000; i++) {
@@ -810,7 +810,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     }
 
     assertTrue("Number of entries in queue is " + myQueue.size()
-        + ". That's not ok.", myQueue.size() == testEle * 3 + 10000);
+        + ". That's not ok.", myQueue.size() == testElements * 3 + 10000);
 
     for (int i = 0; i < 10000; i++) {
       try {
@@ -824,13 +824,13 @@ public abstract class EventQueueTest extends ChattyTestCase {
         fail();
       }
     }
-    assertEquals(testEle * 3, myQueue.size());
+    assertEquals(testElements * 3, myQueue.size());
 
-    assertTrue(myQueue.size() == testEle * 3);
+    assertTrue(myQueue.size() == testElements * 3);
 
     myQueue = internalCreate();
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), Double.POSITIVE_INFINITY);
     }
 
@@ -849,19 +849,19 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     myQueue = internalCreate();
 
-    for (int i = 0; i < testEle * 4; i++) {
+    for (int i = 0; i < testElements * 4; i++) {
       myQueue.enqueue(new Object(), getRandom().nextDouble() * 1000);
     }
 
-    assertEquals(testEle * 4, myQueue.size());
+    assertEquals(testElements * 4, myQueue.size());
 
     for (int j = 3; j > 0; j--) {
 
-      for (int i = 0; i < testEle; i++) {
+      for (int i = 0; i < testElements; i++) {
         myQueue.dequeue();
       }
 
-      assertEquals(testEle * j, myQueue.size());
+      assertEquals(testElements * j, myQueue.size());
     }
 
     // mixed enqueue - dequeue test
@@ -872,7 +872,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // time dequeued are enqueued.
     Double t = 0.;
 
-    while (myQueue.size() < testEle * 4) {
+    while (myQueue.size() < testElements * 4) {
 
       int s = myQueue.size();
 
@@ -908,7 +908,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // should be > 1!!!
     int repeatCount = 2;
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       oldSize = size;
       Double r = testEntry.getTime() + getRandom().nextDouble();
       // enqueue time stamps more than once - in a queue stamps may appear
@@ -1018,7 +1018,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     myQueue = internalCreate();
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), Double.POSITIVE_INFINITY);
     }
 
@@ -1065,7 +1065,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     }
 
     // add more entries
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), testVal + getRandom().nextDouble());
     }
 
@@ -1125,14 +1125,14 @@ public abstract class EventQueueTest extends ChattyTestCase {
     assertEquals(true, myQueue.size() == 0);
     assertEquals(true, myQueue.isEmpty());
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       myQueue.enqueue(new Object(), getRandom().nextDouble());
       assertEquals(false, myQueue.isEmpty());
     }
 
-    assertEquals(true, myQueue.size() == testEle);
+    assertEquals(true, myQueue.size() == testElements);
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       assertEquals(false, myQueue.isEmpty());
       // int j = myQueue.size();
       // System.out.println("deq "+i+" --- "+j);
@@ -1172,7 +1172,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     assertTrue((testIt.getEvent() == testObject)
         && (testIt.getTime().compareTo(0.5) == 0));
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       testObject = new Object();
       myQueue.enqueue(testObject, getRandom().nextDouble());
       int size = myQueue.size();
@@ -1182,10 +1182,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
       assertTrue(size == myQueue.size());
     }
 
-    // the queue should contain testEle elements
+    // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testEle, myQueue.size() == testEle);
+            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1296,7 +1296,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // after en/re/de queueing two elements the queue should be empty again
     assertTrue(myQueue.isEmpty());
 
-    for (int i = 0; i < testEle; i++) {
+    for (int i = 0; i < testElements; i++) {
       testObject = new Object();
       Double r = getRandom().nextDouble();
       myQueue.enqueue(testObject, r);
@@ -1306,10 +1306,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
       assertTrue(size == myQueue.size());
     }
 
-    // the queue should contain testEle elements
+    // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testEle, myQueue.size() == testEle);
+            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1434,7 +1434,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
   private void upDown(AbstractDistribution distribution) {
     IEventQueue<Object, Double> queue = internalCreate();
     // enqueue numOfInitialElements and get the time per enqueue operation
-    for (int i = 1; i <= testEle; i++) {
+    for (int i = 1; i <= testElements; i++) {
       double time = Math.max(0, distribution.getRandomNumber());
       Object o = new Object();
       queue.enqueue(o, time);
@@ -1442,7 +1442,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     Double t = -1.;
     // dequeue all elements
-    for (int i = 1; i <= testEle; i++) {
+    for (int i = 1; i <= testElements; i++) {
       Double val = queue.dequeue().getTime();
       // check whether they are properly ordered
       assertTrue("Values have to be dequeued in ascending order. But " + val

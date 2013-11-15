@@ -174,9 +174,12 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
 
   @Override
   public List<E> dequeueAll(Double time) {
-    Map<E, Object> result = (nearFuture.remove(time));
+    Map<E, Object> result = nearFuture.remove(time);
     if (result == null) {
-      return new ArrayList<>();
+      result = farFuture.remove(time);
+      if (result == null) {
+        return new ArrayList<>();
+      }
     }
     for (E e : result.keySet()) {
       events.remove(e);
