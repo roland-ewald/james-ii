@@ -45,11 +45,10 @@ public class BucketsThresholdTest extends EventQueueTest {
   /**
    * Print the current queue using the toString method.
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected void print() {
     if (isDebug()) {
-      System.out.println(((BucketsThreshold<Object>) getCurrent())
+      System.out.println(((BucketsThreshold<Object>) getEventQueue())
           .toString(true));
     }
   }

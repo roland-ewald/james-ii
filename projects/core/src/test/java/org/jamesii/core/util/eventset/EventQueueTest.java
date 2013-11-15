@@ -48,7 +48,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
   }
 
   /** The start time. */
-  private long startTime = System.currentTimeMillis();
+  private final long startTime = System.currentTimeMillis();
 
   /** The number of test elements. */
   private int testEle = 100;
@@ -58,9 +58,9 @@ public abstract class EventQueueTest extends ChattyTestCase {
   private IRandom random;
 
   /**
-   * The current object the test is run on.
+   * The event queue the test is run on.
    */
-  private Object current = null;
+  private IEventQueue<Object, Double> eventQueue = null;
 
   /**
    * Instantiates a new event queue test.
@@ -81,7 +81,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
   private IEventQueue<Object, Double> internalCreate() {
     IEventQueue<Object, Double> result = create();
-    setCurrent(result);
+    setEventQueue(result);
     return result;
   }
 
@@ -102,26 +102,14 @@ public abstract class EventQueueTest extends ChattyTestCase {
     super.tearDown();
   }
 
-  /*
-   * { return new MList<Object>(); //return new MListRe<Object>(); //return new
-   * CalendarQueue<Object>(); // return new HashedTONIEEventQueue<Object>(); //
-   * return new HTONIEAndHEventEventQueue<Object>(); // return new
-   * HTONIEAndHEventWithHThresholdEventQueue<Object>(); // return new
-   * HTONIEAndHEventWithThresholdEventQueue<Object>(); }
-   */
-
-  /*
-   * Class under test for Entry dequeue() used ops: deqeue, enqueue
-   */
   /**
    * Test dequeue.
    */
   public void testDequeue() {
     testEle = 10;
-    // System.out.print("D:");
 
-    IBasicEventQueue<Object, Double> myQueue = internalCreate();
-    setCurrent(myQueue);
+    IEventQueue<Object, Double> myQueue = internalCreate();
+    setEventQueue(myQueue);
 
     // check whether dequeue using an empty queue is causing a problem
     assertEquals(true, myQueue.dequeue() == null);
@@ -135,7 +123,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
       Double r = testEntry.getTime() + 0.1 + getRandom().nextDouble();
       for (int j = 0; j < repeatCount; j++) {
         myQueue.enqueue(new Object(), r);
-        // System.out.println(myQueue);
       }
 
     }
@@ -171,7 +158,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
     for (int i = 0; i < testEle * 2; i++) {
       theLastEntry = theEntry;
       oldsize = size;
-      // System.out.println(myQueue.size());
       theEntry = myQueue.dequeue();
       size = myQueue.size();
       assertNotNull("The value returned is null but it shouldn't!", theEntry);
@@ -195,9 +181,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
       myQueue.dequeue();
     }
     assertTrue("Queue size is not fine ... ", myQueue.size() == 0);
-
-    // long elapsedTime = System.currentTimeMillis() - startTime;
-    // System.out.println("dequeue finished at " + elapsedTime);
 
     // Add a number of element with one time stamp, dequeue 1/2 of them, add the
     // same number again, and repeat this 3 times: check whether the handling of
@@ -1384,10 +1367,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
   public final void testSize() {
     IEventQueue<Object, Double> myQueue = internalCreate();
     myQueue.enqueue(1, 1.0);
-    myQueue.enqueue(1, 2.0);
-    myQueue.enqueue(new Integer(1), 3.0);
+    myQueue.requeue(1, 2.0);
+    myQueue.requeue(new Integer(1), 3.0);
     myQueue.enqueue(2, 1.0);
-    myQueue.enqueue(new Integer(2), 2.0);
+    myQueue.requeue(new Integer(2), 2.0);
     myQueue.enqueue(3, 2.5);
     int sizeBefore = myQueue.size();
     int numDequeued = 0;
@@ -1397,8 +1380,9 @@ public abstract class EventQueueTest extends ChattyTestCase {
           + myQueue + " (" + myQueue.getClass() + ")", entry);
       numDequeued++;
     }
-    assertTrue("Queue allowed more dequeue operations than elements were enqueued before: " + myQueue
-        + " (" + myQueue.getClass() + ")",numDequeued <= 6);
+    assertTrue(
+        "Queue allowed more dequeue operations than elements were enqueued before: "
+            + myQueue + " (" + myQueue.getClass() + ")", numDequeued <= 6);
     assertEquals(
         "Queue reported size of " + sizeBefore + ", but allowed dequeue of "
             + numDequeued + " elements before reporting empty: " + myQueue
@@ -1515,15 +1499,17 @@ public abstract class EventQueueTest extends ChattyTestCase {
     queue.enqueue(1, 2.0);
     List<EqIdBehavior> eqIdBs = new LinkedList<>();
     int sizeAfterTwoIdEnq = queue.size();
-    if (sizeAfterTwoIdEnq == 1)
+    if (sizeAfterTwoIdEnq == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     queue.requeue(new Integer(1), 1.0);
-    if (queue.size() - sizeAfterTwoIdEnq == 0)
+    if (queue.size() - sizeAfterTwoIdEnq == 0) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     queue.enqueue(2, 2.0);
 
     print();
@@ -1531,16 +1517,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
     List<Object> rslt2 = queue.dequeueAll(2.0);
     List<Object> rslt1 = queue.dequeueAll();
     assertTrue(rslt2.contains(2));
-    if (rslt2.size() == 1)
+    if (rslt2.size() == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
 
     assertTrue(rslt1.contains(1));
-    if (rslt1.size() == 1)
+    if (rslt1.size() == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
-    else
+    } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
+    }
     EqIdBehavior eqIdB = EqIdBehavior.and(eqIdBs);
 
     System.out.println("equality/identity-behavior of " + queue.getClass()
@@ -1568,34 +1556,34 @@ public abstract class EventQueueTest extends ChattyTestCase {
   protected String createMessageProlog() {
     String result = super.createMessageProlog();
     // append the message by adding the result of a acall to toString on the
-    // current queue
-    result += getCurrent();
+    // eventQueue queue
+    result += getEventQueue();
     return result;
   }
 
   /**
-   * Print the current queue using the toString method. This method should only
+   * Print the eventQueue queue using the toString method. This method should only
    * print something if {@link #isDebug()} returns true.
    */
   protected void print() {
     if (debug) {
-      System.out.println(getCurrent());
+      System.out.println(getEventQueue());
     }
   }
 
   /**
-   * @return the current
+   * @return the eventQueue
    */
-  protected final Object getCurrent() {
-    return current;
+  protected final IEventQueue<Object, Double> getEventQueue() {
+    return eventQueue;
   }
 
   /**
-   * @param current
-   *          the current to set
+   * @param eventQueue
+   *          the eventQueue to set
    */
-  protected final void setCurrent(Object current) {
-    this.current = current;
+  protected final void setEventQueue(IEventQueue<Object, Double> current) {
+    this.eventQueue = current;
   }
 
   /**
