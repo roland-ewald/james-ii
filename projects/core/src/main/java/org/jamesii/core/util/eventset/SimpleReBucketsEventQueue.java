@@ -12,8 +12,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * The SimpleReBuckets event queue is a fast implementation of an event queue
+ * The SimpleReBucketsEventQueue event queue is a fast implementation of an event queue
  * for the sequential simulator. It uses two different hashmaps - one contains
  * the mapping event - tonie, the second one a mapping tonie - models. The
  * second hashmap is used for computing the min. This implementation is faster
@@ -68,21 +69,21 @@ import java.util.Map;
  * @param <E>
  *          the type of the events to be stored in the queue
  */
-public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
+public class SimpleReBucketsEventQueue<E> extends AbstractEventQueue<E, Double> {
 
   /** The Constant serialVersionUID. */
   static final long serialVersionUID = -8663634212054878911L;
 
   /** The bucket. */
-  private final Map<Double, Map<E, Object>> bucket = new HashMap<>();
+  private Map<Double, Map<E, Object>> bucket = new HashMap<>();
 
   /** The events. */
-  private final Map<E, Double> events = new HashMap<>();
+  private Map<E, Double> events = new HashMap<>();
 
   /**
    * Instantiates a new simple re buckets.
    */
-  public SimpleReBuckets() {
+  public SimpleReBucketsEventQueue() {
     super();
   }
 
@@ -107,20 +108,21 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
   @Override
   public Double dequeue(E event) {
 
-    Double d = events.get(event);
+    Double time = events.remove(event);
+    removeFromBucket(event, time);
 
-    events.remove(event);
+    return time;
+  }
 
-    Map<E, Object> list = bucket.get(d);
+  private void removeFromBucket(E event, Double time) {
+    Map<E, Object> list = bucket.get(time);
 
     if (list != null) {
       list.remove(event);
       if (list.size() == 0) {
-        bucket.remove(d);
+        bucket.remove(time);
       }
     }
-
-    return d;
   }
 
   @Override
@@ -168,15 +170,25 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
   @Override
   public void enqueue(E event, Double time) {
     if (time < 0) {
-      return; // invalid value
+      return; // invalid value, not to be used here
     }
+    Double oldTime = events.put(event, time);
+    // take care of already present events (note: requeue operations rely on
+    // this; if functionality is removed, requeue operations need adaptation)
+    if (oldTime != null) {
+      if (oldTime.equals(time)) {
+        return;
+      } else {
+        removeFromBucket(event, oldTime);
+      }
+    }
+
     Map<E, Object> list = bucket.get(time);
     if (list == null) {
       list = new HashMap<>();
       bucket.put(time, list);
     }
     list.put(event, null);
-    events.put(event, time);
   }
 
   @Override
@@ -197,6 +209,7 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
       }
     }
 
+    // System.out.println("got min: "+min);
     return min;
   }
 
@@ -215,13 +228,13 @@ public class SimpleReBuckets<E> extends AbstractEventQueue<E, Double> {
 
   @Override
   public void requeue(E event, Double time) {
-    dequeue(event);
+    // dequeue(event); // enqueue now takes care of already present events
     enqueue(event, time);
   }
 
   @Override
   public void requeue(E event, Double oldTime, Double time) {
-    dequeue(event);
+    // dequeue(event); // enqueue now takes care of already present events
     enqueue(event, time);
   }
 

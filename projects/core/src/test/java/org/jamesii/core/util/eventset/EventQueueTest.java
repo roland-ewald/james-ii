@@ -703,19 +703,24 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     int num = 5;
 
+    for (int i = 0; i < testEle / 2; i++) {
+      myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
+    }
+
     for (int i = 0; i < num; i++) {
       myQueue.enqueue(new Object(), 3.0);
     }
 
-    for (int i = 0; i < testEle; i++) {
-      myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
+    for (int i = testEle / 2; i < testEle; i++) {
+      myQueue.enqueue(new Object(), 2.0 + getRandom().nextDouble());
     }
 
     assertEquals(testEle + num, myQueue.size());
 
     List<Object> list = myQueue.dequeueAll(3.0);
 
-    assertEquals(num, list.size());
+    assertEquals("Incorrect number of dequeued elements with time 3.0", num,
+        list.size());
 
     // number of elements after dequeueAll should be equal to testEle
     assertEquals("Number of elements in the queue should be " + testEle
@@ -1382,11 +1387,13 @@ public abstract class EventQueueTest extends ChattyTestCase {
     }
     assertTrue(
         "Queue allowed more dequeue operations than elements were enqueued before: "
-            + myQueue + " (" + myQueue.getClass() + ")", numDequeued <= 6);
+            + myQueue + " (" + myQueue.getClass() + "); alleged size now: "
+            + myQueue.size(), numDequeued <= 5);
     assertEquals(
         "Queue reported size of " + sizeBefore + ", but allowed dequeue of "
             + numDequeued + " elements before reporting empty: " + myQueue
-            + " (" + myQueue.getClass() + ")", numDequeued, sizeBefore);
+            + " (" + myQueue.getClass() + "); alleged size now: "
+            + +myQueue.size(), sizeBefore, numDequeued);
   }
 
   /**

@@ -26,7 +26,7 @@ public class SimpleBucketsEventQueueFactory extends EventQueueFactory {
 
   @Override
   public <E> IEventQueue<E, Double> createDirect(ParameterBlock parameter) {
-    return new SimpleBuckets<>();
+    return new SimpleBucketsEventQueue<>();
   }
 
   @Override

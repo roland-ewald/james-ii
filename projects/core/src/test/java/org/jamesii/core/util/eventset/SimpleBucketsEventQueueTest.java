@@ -7,16 +7,16 @@
 package org.jamesii.core.util.eventset;
 
 import org.jamesii.core.util.eventset.IEventQueue;
-import org.jamesii.core.util.eventset.SimpleBuckets;
+import org.jamesii.core.util.eventset.SimpleBucketsEventQueue;
 
 /**
- * Tests the {@link SimpleBuckets} event queue.
+ * Tests the {@link SimpleBucketsEventQueue} event queue.
  * 
  * @author Roland Ewald
  * 
  *         27.04.2007
  */
-public class SimpleBucketsTest extends EventQueueTest {
+public class SimpleBucketsEventQueueTest extends EventQueueTest {
 
   /**
    * The Constructor.
@@ -24,19 +24,12 @@ public class SimpleBucketsTest extends EventQueueTest {
    * @param name
    *          the name
    */
-  public SimpleBucketsTest(String name) {
+  public SimpleBucketsEventQueueTest(String name) {
     super(name);
   }
 
-  /**
-   * Creates the queue.
-   * 
-   * @return the i event queue< object>
-   * 
-   * @see org.jamesii.core.util.eventset.EventQueueTest#create()
-   */
   @Override
   public IEventQueue<Object, Double> create() {
-    return new SimpleBuckets<>();
+    return new SimpleBucketsEventQueue<>();
   }
 }
