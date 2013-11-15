@@ -17,7 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.distributed.masterserver.IMasterServer;
@@ -91,7 +93,8 @@ public class TaskConfiguration implements Serializable,
       null;
 
   /** Factory to create a replication criterion. */
-  private ParameterizedFactory<RepCriterionFactory> replicationCriterionFactory = null;
+  private ParameterizedFactory<RepCriterionFactory> replicationCriterionFactory =
+      null;
 
   /** List of all model instrumenter factories and parameters. */
   private final Map<ModelInstrumenterFactory, ParameterBlock> modelInstrumenterFactories =
@@ -713,24 +716,51 @@ public class TaskConfiguration implements Serializable,
   }
 
   /**
-   * This method attempts to create a deep copy of a parameter block. If the
-   * attempt fails, it still creates a shallow copy and issues a warning.
+   * This method attempts to create a deep copy of a parameter block. It is
+   * recursively trying to create a deep copy of the parameter block and its sub
+   * blocks. A swallow copy is created of all non serializable values.
    * 
    * @param pBlock
    *          the parameter block to be copied
    * 
-   * @return the parameter block
+   * @return the clone of the parameter block
    */
   private ParameterBlock attemptDeepCopy(ParameterBlock pBlock) {
     ParameterBlock result = null;
     try {
       result = Clone.cloneSerializable(pBlock);
-    } catch (IOException | ClassNotFoundException e) {
-      // TODO: Decide what to do
-      // SimSystem.report(Level.WARNING, "Deep copy of ParameterBlock failed.",
-      // t);
-      return pBlock.getCopy();
+    } catch (IOException | ClassNotFoundException e1) {
+      // was not able to clone the block completely, try to clone its sub blocks
+      result = new ParameterBlock();
+
+      // if the value of the block is serializable, create a copy of it,
+      // otherwise save the original value into the new parameter block
+      if (pBlock.getValue() != null) {
+        Object clone = null;
+        if (pBlock.getValue() instanceof Serializable) {
+          Serializable object = pBlock.getValue();
+          try {
+            clone = Clone.cloneSerializable(object);
+          } catch (ClassNotFoundException | IOException e) {
+            // ignore concrete message
+          }
+        }
+        if (clone == null) {
+          clone = pBlock.getValue();
+          SimSystem.report(Level.ALL,
+              "Complete deep copy of parameter block failed! Could not clone instance of "
+                  + pBlock.getValue().getClass().getName() + "!");
+        }
+        result.setValue(clone);
+      }
+
+      for (Entry<String, ParameterBlock> subBlock : pBlock.getSubBlocks()
+          .entrySet()) {
+        result
+            .addSubBl(subBlock.getKey(), attemptDeepCopy(subBlock.getValue()));
+      }
     }
+
     return result;
   }
 
