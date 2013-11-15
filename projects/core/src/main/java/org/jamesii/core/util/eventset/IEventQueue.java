@@ -9,6 +9,9 @@ package org.jamesii.core.util.eventset;
 import java.util.List;
 import java.util.Map;
 
+import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
+import org.jamesii.core.util.eventset.plugintype.EventOrderingBehavior;
+
 /**
  * Basic (future) event set/queue/list interface, all event sets must implement
  * this interface.<br/>
@@ -146,14 +149,16 @@ public interface IEventQueue<E, T extends Comparable<T>> extends
 
   /**
    * Dequeue all elements with the smallest time stamp. Will return at least an
-   * empty list.
+   * empty list. The order is implementation-specific and depends on the
+   * {@link EventOrderingBehavior}.
    * 
    * @return a list (never null) containing all least time stamped events
    */
   List<E> dequeueAll();
 
   /**
-   * Dequeue all elements with the given time stamp.
+   * Dequeue all elements with the given time stamp. The order is
+   * implementation-specific and depends on the {@link EventOrderingBehavior}.
    * 
    * @param time
    *          the time
@@ -190,13 +195,15 @@ public interface IEventQueue<E, T extends Comparable<T>> extends
   /**
    * Searches the given event and updates the time entry. The requeue is not
    * part of the original event set problem but is a highly required feature for
-   * the processing of several discrete event systems.<br/>
-   * <b>NOTE</b>: requeue takes ONE of the entries of the event and replaces it
-   * - if an event is scheduled more than once this can lead to indeterministic
-   * behaviour! Also known as update.
+   * the processing of several discrete event systems. Also known as update.<br/>
+   * <b>NOTE</b>: requeue takes ONE entries of an identical event and replaces
+   * it - if an event is scheduled more than once this can lead to
+   * indeterministic behaviour! What is considered to be an identical event is
+   * implementation-specific, see {@link EventIdentityBehavior}.
    * 
    * If an event to be requeued is no longer in the queue this method will
    * behave like the {@link #enqueue(Object, Comparable)} method.
+   * 
    * 
    * @param event
    *          The event to be updated

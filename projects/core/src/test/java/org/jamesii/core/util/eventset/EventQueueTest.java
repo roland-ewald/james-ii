@@ -6,7 +6,6 @@
  */
 package org.jamesii.core.util.eventset;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +27,7 @@ import org.jamesii.core.math.random.distributions.plugintype.DistributionFactory
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.java.JavaRandom;
 import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
 
 /**
  * Tests for most {@link IEventQueue} methods.
@@ -1185,7 +1185,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
+            + myQueue.size() + ":" + testElements,
+        myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1309,7 +1310,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
+            + myQueue.size() + ":" + testElements,
+        myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1453,48 +1455,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
     }
   }
 
-  private enum EqIdBehavior {
-    EQUALITY, IDENTITY, INCONSISTENT;
-
-    /**
-     * Logical "and": If something has this behavior in one respect and that
-     * other behavior in another respect, the overall behavior is...
-     * 
-     * @param other
-     *          other behavior
-     * @return overvall behavior
-     */
-    public EqIdBehavior and(EqIdBehavior other) {
-      if (this.equals(other)) {
-        return this;
-      } else {
-        return INCONSISTENT;
-      }
-    }
-
-    /**
-     * Logical "and" of several different behaviors
-     * 
-     * @param b
-     *          behaviors
-     * @return overall behavior
-     */
-    public static EqIdBehavior and(Iterable<EqIdBehavior> b) {
-      boolean first = true;
-      EqIdBehavior res = null;
-      Iterator<EqIdBehavior> it = b.iterator();
-      while (it.hasNext()) {
-        if (first) {
-          res = it.next();
-          first = false;
-        } else {
-          res = res.and(it.next());
-        }
-      }
-      return res;
-    }
-  }
-
   /**
    * Test event queue behavior when confronted with events that are equal but
    * not identical
@@ -1504,18 +1464,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
     queue.enqueue(new Integer(1), 1.0);
     queue.enqueue(1, 2.0);
-    List<EqIdBehavior> eqIdBs = new LinkedList<>();
+    List<EventIdentityBehavior> eqIdBs = new LinkedList<>();
     int sizeAfterTwoIdEnq = queue.size();
     if (sizeAfterTwoIdEnq == 1) {
-      eqIdBs.add(EqIdBehavior.EQUALITY);
+      eqIdBs.add(EventIdentityBehavior.EQUALITY);
     } else {
-      eqIdBs.add(EqIdBehavior.IDENTITY);
+      eqIdBs.add(EventIdentityBehavior.IDENTITY);
     }
     queue.requeue(new Integer(1), 1.0);
     if (queue.size() - sizeAfterTwoIdEnq == 0) {
-      eqIdBs.add(EqIdBehavior.EQUALITY);
+      eqIdBs.add(EventIdentityBehavior.EQUALITY);
     } else {
-      eqIdBs.add(EqIdBehavior.IDENTITY);
+      eqIdBs.add(EventIdentityBehavior.IDENTITY);
     }
     queue.enqueue(2, 2.0);
 
@@ -1525,18 +1485,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
     List<Object> rslt1 = queue.dequeueAll();
     assertTrue(rslt2.contains(2));
     if (rslt2.size() == 1) {
-      eqIdBs.add(EqIdBehavior.EQUALITY);
+      eqIdBs.add(EventIdentityBehavior.EQUALITY);
     } else {
-      eqIdBs.add(EqIdBehavior.IDENTITY);
+      eqIdBs.add(EventIdentityBehavior.IDENTITY);
     }
 
     assertTrue(rslt1.contains(1));
     if (rslt1.size() == 1) {
-      eqIdBs.add(EqIdBehavior.EQUALITY);
+      eqIdBs.add(EventIdentityBehavior.EQUALITY);
     } else {
-      eqIdBs.add(EqIdBehavior.IDENTITY);
+      eqIdBs.add(EventIdentityBehavior.IDENTITY);
     }
-    EqIdBehavior eqIdB = EqIdBehavior.and(eqIdBs);
+    EventIdentityBehavior eqIdB = EventIdentityBehavior.and(eqIdBs);
 
     System.out.println("equality/identity-behavior of " + queue.getClass()
         + " was " + eqIdB + ": " + rslt2 + "/" + rslt1
@@ -1569,8 +1529,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
   }
 
   /**
-   * Print the eventQueue queue using the toString method. This method should only
-   * print something if {@link #isDebug()} returns true.
+   * Print the eventQueue queue using the toString method. This method should
+   * only print something if {@link #isDebug()} returns true.
    */
   protected void print() {
     if (debug) {
