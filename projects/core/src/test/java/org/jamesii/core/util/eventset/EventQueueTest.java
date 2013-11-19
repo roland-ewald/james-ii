@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.util.eventset;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -1185,7 +1187,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
+            + myQueue.size() + ":" + testElements,
+        myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1248,7 +1251,34 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // (testIt.getTime().compareTo(0.5)== 0));
     long elapsedTime = System.currentTimeMillis() - startTime;
     System.out.println("requeueMDouble finished at " + elapsedTime);
+  }
 
+  /**
+   * Test {@link IEventQueue#requeue(Object, Comparable)} with two equal but not
+   * identical objects. After an initial enqueue, an equal but not identical
+   * event is requeued (possibly relying on its graceful behaviour: if an event
+   * is not in the queue, it should be enqueued).
+   * 
+   * If the event queue uses event equality, the same event should be requeued
+   * three times after the initial enqueue, otherwise two events shall be
+   * requeued once each. In either case, the initial two event times should not
+   * be in the queue anymore after all four operations.
+   */
+  public void testRequeueEqual() {
+    IEventQueue<Object, Double> myQueue = internalCreate();
+    Object firstOne = new Integer(1);
+    Object secondOne = new Integer(1);
+    myQueue.enqueue(firstOne, 1.0);
+    myQueue.requeue(secondOne, 2.0);
+    int sizeAfterTwoOps = myQueue.size();
+    myQueue.requeue(firstOne, 3.0);
+    myQueue.requeue(secondOne, 4.0);
+    int sizeAfterFourOps = myQueue.size();
+    assertTrue(
+        "Requeue should have replaced the initial two event times, but did not!",
+        myQueue.getMin() >= 2.5);
+    assertSame("Requeue of existing events must not change queue size",
+        sizeAfterTwoOps, sizeAfterFourOps);
   }
 
   /**
@@ -1309,7 +1339,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
     // the queue should contain testElements elements
     assertTrue(
         "The queue size after enqueuing and requeuing is not ok: (size:expected size) "
-            + myQueue.size() + ":" + testElements, myQueue.size() == testElements);
+            + myQueue.size() + ":" + testElements,
+        myQueue.size() == testElements);
 
     testIt = myQueue.dequeue();
 
@@ -1500,30 +1531,45 @@ public abstract class EventQueueTest extends ChattyTestCase {
    * not identical
    */
   public final void testEqualEvents() {
-    IEventQueue<Object, Double> queue = internalCreate();
-
-    queue.enqueue(new Integer(1), 1.0);
-    queue.enqueue(1, 2.0);
     List<EqIdBehavior> eqIdBs = new LinkedList<>();
+
+    IEventQueue<Object, Double> queue = internalCreate();
+    Integer firstOne = new Integer(1);
+    Integer secondOne = new Integer(1);
+    queue.enqueue(firstOne, 1.0);
+
+    Double equalNonIdenticalLookupResult = queue.getTime(secondOne);
+    if (equalNonIdenticalLookupResult == null) {
+      eqIdBs.add(EqIdBehavior.IDENTITY);
+    } else {
+      assertEquals(1.0, equalNonIdenticalLookupResult);
+      eqIdBs.add(EqIdBehavior.EQUALITY);
+    }
+
+    queue.enqueue(secondOne, 2.0);
+
     int sizeAfterTwoIdEnq = queue.size();
     if (sizeAfterTwoIdEnq == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
     } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
     }
-    queue.requeue(new Integer(1), 1.0);
+
+    Integer thirdOne = new Integer(1);
+    queue.requeue(thirdOne, 1.0);
+
     if (queue.size() - sizeAfterTwoIdEnq == 0) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
     } else {
       eqIdBs.add(EqIdBehavior.IDENTITY);
     }
+
     queue.enqueue(2, 2.0);
-
     print();
-
     List<Object> rslt2 = queue.dequeueAll(2.0);
     List<Object> rslt1 = queue.dequeueAll();
     assertTrue(rslt2.contains(2));
+
     if (rslt2.size() == 1) {
       eqIdBs.add(EqIdBehavior.EQUALITY);
     } else {
@@ -1542,6 +1588,52 @@ public abstract class EventQueueTest extends ChattyTestCase {
         + " was " + eqIdB + ": " + rslt2 + "/" + rslt1
         + "\n(found with a simple test, a more complex one"
         + " may still reveal inconsistencies)");
+  }
+
+  /**
+   * Test the order in which different (!) events with the same time stamp are
+   * dequeued.
+   */
+  public void testOrder() {
+    IEventQueue<Object, Double> queue = internalCreate();
+
+    queue.enqueue(1, 1.);
+    queue.enqueue(2, 10.);
+
+    List<Integer> sameTimeEvents = new ArrayList<>(testElements);
+    for (int event = 3; event < testElements; event++) {
+      queue.enqueue(event, 2.);
+      sameTimeEvents.add(event);
+    }
+    queue.enqueue(testElements, 9.5);
+    queue.enqueue(testElements + 1, 0.5);
+    queue.enqueue(testElements + 2, 10.5);
+
+    assertEquals(testElements + 2, queue.size());
+
+    // CHECK: test both dequeueAll(Double) and iterative dequeue here?
+    List<Object> dequeudEvents = queue.dequeueAll(2.);
+    if (sameTimeEvents.equals(dequeudEvents)) {
+      System.out.println("FIFO order for same time events in "
+          + queue.getClass() + " (dequeued from " + queue + ")");
+    } else {
+      Collections.reverse(sameTimeEvents);
+      if (sameTimeEvents.equals(dequeudEvents)) {
+        System.out.println("LIFO order for same time events in "
+            + queue.getClass() + " (dequeued from " + queue + ")");
+      } else {
+        System.out.println("No particular order (neither lifo nor fifo)"
+            + " for same time events in " + queue.getClass()
+            + " (dequeued from " + queue + ")");
+        assertTrue(sameTimeEvents.containsAll(dequeudEvents));
+        assertTrue(dequeudEvents.containsAll(sameTimeEvents));
+        assertEquals(sameTimeEvents.size(), dequeudEvents.size());
+      }
+    }
+
+    // // some more things one could test here:
+    // assertEquals(5,queue.size());
+    // assertEquals(0.5,queue.getMin());
   }
 
   /**
@@ -1569,8 +1661,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
   }
 
   /**
-   * Print the eventQueue queue using the toString method. This method should only
-   * print something if {@link #isDebug()} returns true.
+   * Print the eventQueue queue using the toString method. This method should
+   * only print something if {@link #isDebug()} returns true.
    */
   protected void print() {
     if (debug) {
