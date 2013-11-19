@@ -61,8 +61,10 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   /** Identifier of parameter sub-block for the partitioning framework. */
   public static final String PARTITIONER_SUBBLOCK = "partitioner";
 
-  /** The hook for a simulation end. */
-  private ComputationTaskHook<?> endHook = null;
+  /**
+   * The ID object.
+   */
+  private final ComputationTaskIDObject ID;
 
   /** The simulation model's model. */
   private ModelInformation model = new ModelInformation();
@@ -90,7 +92,10 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   private ProcessorInformation processorInfo;
 
   /** The start hook. */
-  private ComputationTaskHook<?> startHook = null;
+  private ComputationTaskHook<ProcessorInformation> startHook = null;
+
+  /** The hook for a simulation end. */
+  private ComputationTaskHook<ProcessorInformation> endHook = null;
 
   /**
    * The context this instance belongs to.
@@ -101,12 +106,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    * The list of child contexts-
    */
   private List<IContext> childContexts = null;
-
-  /**
-   * To be used instead of system.out for model output, by default (as fallback)
-   * System.out.
-   */
-  private transient PrintStream out = System.out;
 
   /** The wall clock start time in milliseconds. */
   private long wcStartTime;
@@ -119,16 +118,11 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    * any fixed sim time value, to any fixed wallclock time value, or until any
    * arbitrary condition is met (e.g., based on the simulation trajectory, ...).
    */
-  private transient IComputationTaskStopPolicy simRunStopPolicy =
-      new SimTimeStop<Double>(Double.POSITIVE_INFINITY);
+  private transient IComputationTaskStopPolicy<ISimulationRun> simRunStopPolicy =
+      new SimTimeStop<>(Double.POSITIVE_INFINITY);
 
   /** The stop watch. */
   private transient StopWatch stopWatch = new StopWatch();
-
-  /**
-   * The ID object.
-   */
-  private final ComputationTaskIDObject ID;
 
   /**
    * Instantiates a new simulation run. Special constructor which should only be
@@ -162,10 +156,10 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
 
     /* processor = */
 
-    //##################Added by nf028 to accept Extended neighbourInfromation
+    // ##################Added by nf028 to accept Extended neighbourInfromation
     this.neighbourInformation = neighbourInformation;
-    //###################################
-    
+    // ###################################
+
     SimulationRun simu =
         part.createProcessor(
             this,
@@ -208,17 +202,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     ID = simRunConfig.getComputationTaskID();
     initFromConfig();
 
-    // save the pointer to the registry
-
-    // FIXME: Setup random number generation elsewhere. This is broken due to
-    // being also called by SimulationRunSetup.
-
-    // IRNGGenerator generator = SimSystem.getRNGGenerator();
-    // generator.setRngFactoryName(config.getExecParams().getSubBlockValue(
-    // IRNGGenerator.RNG_FACTORY, (String) null));
-    // generator.setInitialSeed(config.getExecParams().getSubBlockValue(
-    // IRNGGenerator.RNG_INIT_SEED, System.currentTimeMillis()));
-
     // Partition the model
     Partitioner partitioner = new Partitioner();
     partition =
@@ -239,17 +222,8 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     // set the factory
     partition.setProcessorFactoryRecursively(pf);
 
-    /*
-     * else if (model instanceof IBasicDEVSModel) partition = new
-     * ExecutablePartition(model, new DEVSProcessorFactory(),
-     * partitioner.getModelGraph(), partitioner.getInfrastructureGraph(),
-     * part2);
-     */
-
-    // ((ExecutablePartition) partition).mergeSubPartitions();
     // Each element of parts should be run by an own simulation, i.e.
     // only one part (the top most) will be simulated here.
-    // System.out.println("Creating processor for model");
     SimulationRun simu = partition.createProcessor(this, apfp);
 
     neighbourInformation.getModelInfos().putAll(
@@ -257,9 +231,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     neighbourInformation.getProcessorInfos().putAll(
         simu.getNeighbourProcessorInformation());
     setProcessorInfo(simu.getProcessorInfo());
-
-    /* processor = */
-    // System.out.println("processor : " + processor.getClass().getName());
   }
 
   /**
@@ -321,15 +292,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
         + Strings.indent(config.getExecParams().toString(), " ");
   }
 
-  /**
-   * Gets the end hook.
-   * 
-   * @return the end hook
-   */
-  public ComputationTaskHook<?> getEndHook() {
-    return endHook;
-  }
-
   @Override
   public IModel getModel() {
     return model.getLocal();
@@ -381,11 +343,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     return processorInfo;
   }
 
-  @Override
-  public Comparable<?> getTime() {
-    return processorInfo.getLocal().getTime();
-  }
-
   /**
    * Gets the start hook.
    * 
@@ -393,6 +350,15 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   public ComputationTaskHook<?> getStartHook() {
     return startHook;
+  }
+
+  /**
+   * Gets the end hook.
+   * 
+   * @return the end hook
+   */
+  public ComputationTaskHook<?> getEndHook() {
+    return endHook;
   }
 
   /**
@@ -407,7 +373,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   @Override
-  public IComputationTaskStopPolicy getStopPolicy() {
+  public IComputationTaskStopPolicy<ISimulationRun> getStopPolicy() {
     return simRunStopPolicy;
   }
 
@@ -418,6 +384,11 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   public StopWatch getStopWatch() {
     return stopWatch;
+  }
+
+  @Override
+  public Comparable<?> getTime() {
+    return processorInfo.getLocal().getTime();
   }
 
   /**
@@ -446,24 +417,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    */
   public void setStartTime(double startTime) {
     this.startTime = startTime;
-  }
-
-  // /**
-  // * Sets the stop time.
-  // *
-  // * @param stopTime the new stop time
-  // */
-  // public void setStopTime(double stopTime) {
-  // this.stopTime = stopTime;
-  // }
-
-  /**
-   * Gets the wall clock time.
-   * 
-   * @return the wall clock time
-   */
-  protected double getWallClockTime() {
-    return Calendar.getInstance().getTimeInMillis();
   }
 
   /**
@@ -604,17 +557,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   /**
-   * Sets the end hook.
-   * 
-   * @param hook
-   *          the hook
-   */
-  @Override
-  public void setEndHook(ComputationTaskHook<?> hook) {
-    endHook = hook;
-  }
-
-  /**
    * Sets the root / top most model class. This maybe the only existing class or
    * just a root class, however that's of no interest here.
    * 
@@ -642,8 +584,18 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
    * @param hook
    *          the new start hook
    */
-  public void setStartHook(ComputationTaskHook<?> hook) {
+  public void setStartHook(ComputationTaskHook<ProcessorInformation> hook) {
     startHook = hook;
+  }
+
+  /**
+   * Sets the end hook for the simulation.
+   * 
+   * @param hook
+   *          for executing last operations when the simulation is finished
+   */
+  public void setEndHook(ComputationTaskHook<ProcessorInformation> hook) {
+    endHook = hook;
   }
 
   /**
@@ -710,7 +662,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     if (processorInfo.getLocal() instanceof IRunnable) {
 
       if (startHook != null) {
-        startHook.execute(null);
+        startHook.execute(processorInfo);
       }
 
       if (!config.isSilent()) {
@@ -720,15 +672,13 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       stopWatch.start();
       initializeWallClockTime();
 
-      // System.out.println(this.getStopTime()+" class "+this.getStopTime().getClass());
-      // System.out.println(this.getStopTime().hasReachedEnd());
       ((IRunnable) processorInfo.getLocal()).run(getStopPolicy(), getDelay(),
           isStartPaused());
 
       stopWatch.stop();
 
       if (endHook != null) {
-        endHook.execute(null);
+        endHook.execute(processorInfo);
       }
 
       printMonitoringResults();
@@ -753,7 +703,11 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
     }
   }
 
-  /** Get the information about the neighbours of models and processors */
+  /**
+   * Get the information about the neighbours of models and processors
+   * 
+   * @return
+   */
   public NeighbourInformation getNeighbourInformation() {
     return neighbourInformation;
   }
@@ -872,8 +826,8 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   }
 
   @Override
-  public <O> O create(String pluginType, ParameterBlock block) {    
-    return Context.createInstance (pluginType, block, this);
+  public <O> O create(String pluginType, ParameterBlock block) {
+    return Context.createInstance(pluginType, block, this);
   }
-  
+
 }

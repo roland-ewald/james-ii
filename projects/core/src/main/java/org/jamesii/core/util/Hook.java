@@ -45,7 +45,6 @@ public abstract class Hook<I extends Serializable> implements Serializable {
    *          the old hook
    */
   public Hook(Hook<I> oldHook) {
-    super();
     this.oldHook = oldHook;
   }
 
@@ -53,7 +52,7 @@ public abstract class Hook<I extends Serializable> implements Serializable {
    * Instantiates a new hook.
    */
   public Hook() {
-    oldHook = null;
+    this.oldHook = null;
   }
 
   /**

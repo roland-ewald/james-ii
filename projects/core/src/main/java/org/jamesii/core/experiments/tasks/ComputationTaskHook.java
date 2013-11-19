@@ -11,8 +11,6 @@ import java.io.Serializable;
 import org.jamesii.core.util.Hook;
 
 /**
- * The Class ComputationTaskHook.
- * 
  * @param <I>
  *          the type of the information to be forwarded to the computation task
  *          hook
@@ -32,6 +30,13 @@ public abstract class ComputationTaskHook<I extends Serializable> extends
    */
   public ComputationTaskHook(Hook<I> oldHook) {
     super(oldHook);
+  }
+  
+  /**
+   * Instantiates a new computation task hook.
+   */
+  public ComputationTaskHook() {
+    super();
   }
 
 }

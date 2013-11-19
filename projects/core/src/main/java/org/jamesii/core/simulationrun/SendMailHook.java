@@ -69,7 +69,7 @@ public class SendMailHook<I extends Serializable> extends
    */
   public SendMailHook(String iMailHost, int iPort, String from,
       String[] mailAdresses) {
-    super(null);
+    super();
     mail = new EMail(iMailHost, iPort);
     this.sender = from;
     this.mailAdresses = mailAdresses;

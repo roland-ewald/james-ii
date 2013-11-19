@@ -12,7 +12,6 @@ import java.util.List;
 import org.jamesii.core.base.INamedEntity;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.SimulationRunConfiguration;
-import org.jamesii.core.experiments.tasks.ComputationTaskHook;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.factories.Context;
@@ -30,6 +29,8 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  * @author Roland Ewald
  */
 public class DummySimRun implements ISimulationRun, Serializable {
+
+  private static final long serialVersionUID = 7814518458480633254L;
 
   @Override
   public void freeRessources() {
@@ -158,10 +159,6 @@ public class DummySimRun implements ISimulationRun, Serializable {
 
   @Override
   public void setProcessorInfo(ProcessorInformation processor) {
-  }
-
-  @Override
-  public void setEndHook(ComputationTaskHook<?> hook) {
   }
 
   @Override

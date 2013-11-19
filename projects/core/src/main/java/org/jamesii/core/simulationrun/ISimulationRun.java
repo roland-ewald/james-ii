@@ -70,14 +70,6 @@ public interface ISimulationRun extends INamedEntity, IComputationTask,
   Long getWCStartTime();
 
   /**
-   * Sets the end hook for the simulation.
-   * 
-   * @param hook
-   *          for executing last operations when the simulation is finished
-   */
-  void setEndHook(ComputationTaskHook<?> hook);
-
-  /**
    * Gets the value of a simulation run property.
    * 
    * Available properties are:<br>
