@@ -33,7 +33,7 @@ public class PriorityQueueEventQueueFactory extends EventQueueFactory {
 
   @Override
   public double getEfficencyIndex() {
-    return 0.1;
+    return 0.9;
   }
 
 }

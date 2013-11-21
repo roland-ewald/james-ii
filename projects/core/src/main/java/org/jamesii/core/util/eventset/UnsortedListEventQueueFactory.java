@@ -33,7 +33,7 @@ public class UnsortedListEventQueueFactory extends EventQueueFactory {
 
   @Override
   public double getEfficencyIndex() {
-    return 0;
+    return 0.0001;
   }
 
 }

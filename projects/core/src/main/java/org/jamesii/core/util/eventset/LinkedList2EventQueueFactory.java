@@ -33,7 +33,7 @@ public class LinkedList2EventQueueFactory extends EventQueueFactory {
 
   @Override
   public double getEfficencyIndex() {
-    return 0;
+    return 0.05;
   }
 
 }
