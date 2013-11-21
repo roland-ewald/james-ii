@@ -8,7 +8,6 @@ package org.jamesii.core.simulationrun;
 
 import org.jamesii.core.base.INamedEntity;
 import org.jamesii.core.distributed.partition.Partition;
-import org.jamesii.core.experiments.tasks.ComputationTaskHook;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.util.ITime;

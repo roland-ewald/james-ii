@@ -137,8 +137,8 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
         return f;
       }
     }
-    if (id.compareTo("") != 0) {
-      SimSystem.report(Level.WARNING,
+    if (id.compareTo("") != 0) { // erm... id.isEmpty() ?!
+      SimSystem.report(Level.SEVERE,
           "Was not able to find the given factory (" + id
               + "), trying to use another one.");
     }
