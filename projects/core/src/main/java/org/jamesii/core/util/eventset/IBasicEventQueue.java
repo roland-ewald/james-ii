@@ -8,6 +8,8 @@ package org.jamesii.core.util.eventset;
 
 import java.io.Serializable;
 
+import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
+
 /**
  * A basic event queue / list / future event list / ... . This interface
  * provides the methods of an event list as they are described in the
@@ -19,6 +21,8 @@ import java.io.Serializable;
  * extended interface should be provided instead of this simple one.<br/>
  * 
  * @author Jan Himmelspach
+ * 
+ * @see EventIdentityBehavior
  * 
  * @param <E>
  *          the type of the event
@@ -44,10 +48,12 @@ public interface IBasicEventQueue<E, T extends Comparable<T>> extends
    * Enqueue an event for the given time. Also known as insert and add.
    * 
    * <p/>
-   * <b>IMPORTANT</b>: It is not permitted to enqueue an event if an identical event is already managed by the queue.
-   * Depending on the implementation identity may either refer to reference equality (==) or to
-   * object equality as checked via {@link Object#equals(Object)}. 
-   * To avoid this, use {@link IEventQueue#requeue(Object, Comparable)}. 
+   * <b>IMPORTANT</b>: It is not permitted to enqueue an event if an identical
+   * event is already managed by the queue. Depending on the
+   * {@link EventIdentityBehavior}, an implementation identity may either refer
+   * to reference equality (==) or to object equality as checked via
+   * {@link Object#equals(Object)}. To avoid this, use
+   * {@link IEventQueue#requeue(Object, Comparable)}.
    * 
    * @param event
    *          to be inserted into the queue

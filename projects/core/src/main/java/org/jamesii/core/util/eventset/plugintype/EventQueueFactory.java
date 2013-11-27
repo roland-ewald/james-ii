@@ -57,6 +57,7 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
    *          the parameter
    * @return the i event queue<?, double>
    */
+  @SuppressWarnings("unchecked")
   public <E> IEventQueue<E, Double> create(IReport report,
       ParameterBlock parameter) {
     IEventQueue<?, Double> result = createDirect(parameter);
@@ -73,6 +74,28 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
    * @return 0 for an inefficient and 1 for a highly efficient one
    */
   public abstract double getEfficencyIndex();
+
+  /**
+   * Return an {@link EventIdentityBehavior}. Allows the
+   * {@link AbstractEventQueueFactory} to filter out event queues with
+   * unsuitable assumptions for the given problem.
+   * 
+   * @return the queue's behavior regarding identity checks
+   */
+  public EventIdentityBehavior getEventIdentityBehaviour() {
+    return EventIdentityBehavior.INCONSISTENT;
+  }
+
+  /**
+   * Return an {@link EventOrderingBehavior}. Allows the
+   * {@link AbstractEventQueueFactory} to filter out event queues with
+   * unsuitable assumptions for the given problem.
+   * 
+   * @return the queue's behavior regarding the order of events at the same time
+   */
+  public EventOrderingBehavior getEventOrderingBehaviour() {
+    return EventOrderingBehavior.NO_ORDER;
+  }
 
   @Override
   public String toString() {
