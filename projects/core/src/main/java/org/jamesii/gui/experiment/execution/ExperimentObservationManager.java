@@ -49,7 +49,7 @@ public class ExperimentObservationManager {
    * Check box to let the user decide whether he wants to choose factories
    * manually or not.
    */
-  private JCheckBox chooseAutomaticallyCheckbox = new JCheckBox(
+  private final JCheckBox chooseAutomaticallyCheckbox = new JCheckBox(
       "Choose automatically for this experiment");
 
   /**
@@ -63,13 +63,13 @@ public class ExperimentObservationManager {
    * Check box to let the user decide whether the windows shall be closed after
    * finish.
    */
-  private JCheckBox closeOnFinishCheckbox = new JCheckBox("Close on finish");
+  private final JCheckBox closeOnFinishCheckbox = new JCheckBox("Close on finish");
 
   /**
    * Map that stores which factories and observer listeners to use for observer
    * listener creation or re-use.
    */
-  private Map<String, List<ObserverListenerEntry>> currentObserverListenerEntries =
+  private final Map<String, List<ObserverListenerEntry>> currentObserverListenerEntries =
       new HashMap<>();
 
   /**
@@ -77,7 +77,7 @@ public class ExperimentObservationManager {
    * of notifying observer class => list of all observer listeners that are fed
    * by the notifying observer.
    */
-  private Map<ComputationTaskRuntimeInformation, Map<INotifyingObserver<?>, List<IObserverListener>>> currentObserverListeners =
+  private final Map<ComputationTaskRuntimeInformation, Map<INotifyingObserver<?>, List<IObserverListener>>> currentObserverListeners =
       new HashMap<>();
 
   /** Flag to switch re-use of observer listener windows on/off. */
@@ -87,7 +87,7 @@ public class ExperimentObservationManager {
    * Check box to let the user decide whether the last windows shall be re-used
    * or not.
    */
-  private JCheckBox reuseWindowsCheckbox = new JCheckBox(
+  private final JCheckBox reuseWindowsCheckbox = new JCheckBox(
       "Re-use existing windows");
 
   {
@@ -130,14 +130,14 @@ public class ExperimentObservationManager {
    *          the crti
    * @param observer
    *          the observer
-   * @param aolfp
-   *          the aolfp
+   * @param listenerLookupKey
+   *          the lookup used for the internal buffer of listener observers
    */
   void chooseListenersAutomatically(ComputationTaskRuntimeInformation crti,
-      INotifyingObserver<?> observer) {
+      INotifyingObserver<?> observer, String listenerLookupKey) {
 
     List<ObserverListenerEntry> olEntries =
-        currentObserverListenerEntries.get(observer.getClass());
+        currentObserverListenerEntries.get(listenerLookupKey);
     List<IObserverListener> createdListeners = new ArrayList<>();
 
     for (ObserverListenerEntry olEntry : olEntries) {
@@ -230,7 +230,7 @@ public class ExperimentObservationManager {
 
     if (chooseAutomaticallyForExperiment
         && currentObserverListenerEntries.containsKey(listenerLookupKey)) {
-      chooseListenersAutomatically(crti, observer);
+      chooseListenersAutomatically(crti, observer, listenerLookupKey);
       return;
     }
 
