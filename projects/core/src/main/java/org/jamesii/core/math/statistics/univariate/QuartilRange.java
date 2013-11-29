@@ -46,14 +46,14 @@ public final class QuartilRange {
       // for (int i = 0; i < (y / 2) - 1; i++) {
       // z[i] = x[i];
       // }
-      q1 = Median.median(z);
+      q1 = Median.medianFromSorted(z);
       u = new int[y / 2];
       for (int j = 0; j < (y / 2) - 1; j++) {
         for (int i = y / 2; i < y - 1; i++) {
           u[j] = x[i];
         }
       }
-      q3 = Median.median(u);
+      q3 = Median.medianFromSorted(u);
       h = q3 - q1;
     } else {
       z = new int[(y + 1) / 2];
@@ -61,14 +61,14 @@ public final class QuartilRange {
       // for (int i = 0; i < ((y + 1) / 2) - 1; i++) {
       // z[i] = x[i];
       // }
-      q1 = Median.median(z);
+      q1 = Median.medianFromSorted(z);
       u = new int[(y - 1) / 2 - 1];
       for (int j = 0; j < ((y - 1) / 2) - 1; j++) {
         for (int i = (y - 1) / 2 + 1; i < y - 1; i++) {
           u[j] = x[i];
         }
       }
-      q3 = Median.median(u);
+      q3 = Median.medianFromSorted(u);
       h = q3 - q1;
     }
     return h;

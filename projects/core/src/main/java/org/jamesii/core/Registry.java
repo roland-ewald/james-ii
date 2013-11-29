@@ -1444,10 +1444,8 @@ public class Registry extends InformationObject {
    */
   @SuppressWarnings("unchecked")
   private void loadFactoryClasses(IPlugInFinder cr) {
-    // let's iterate over the found plug-ins, split'em according to
-    // their type
-    // and register in the type dependent lists which are the base for
-    // the
+    // let's iterate over the found plug-ins, split'em according to their type
+    // and register in the type dependent lists which are the base for the
     // factories
 
     Map<String, IId> pluginMem = new HashMap<>();
@@ -1486,12 +1484,9 @@ public class Registry extends InformationObject {
           s = "";
         }
 
-        // if the paths are exactly the same, this is likely a setup
-        // problem in
-        // the configuration (e.g., a JAR file placed twice on the
-        // classpath),
-        // but
-        // cannot be a true plug-in conflict - just issue a warning
+        // if the paths are exactly the same, this is likely a setup problem in
+        // the configuration (e.g., a JAR file placed twice on the classpath),
+        // but cannot be a true plug-in conflict - just issue a warning
         String loadedPlugInVersion = pluginMem.get(id.getName()).getVersion();
         if (s.equals(pathFirstPlugIn)
             && id.getVersion().equals(loadedPlugInVersion)) {
@@ -1533,12 +1528,6 @@ public class Registry extends InformationObject {
       }
 
       for (IFactoryInfo fac : facs) {
-
-        // if (fac == null) continue;
-
-        // report(" - trying to load the factory " +
-        // fac.getClassname());
-
         // load class and instantiate factory
         try {
           if (fac.getClassname() == null) {
@@ -1546,9 +1535,9 @@ public class Registry extends InformationObject {
             continue;
           }
 
-          Class<?> c = loadClass(fac.getClassname());
+          Class<?> clazz = loadClass(fac.getClassname());
 
-          if (c == null) {
+          if (clazz == null) {
             SimSystem.report(Level.WARNING, "Was not able to load factory class of "
             + fac.getClassname());
             continue;
@@ -1557,10 +1546,10 @@ public class Registry extends InformationObject {
           if (first) {
             List<IPluginData> pdat =
                 foundPluginsGrouped
-                    .get(getAbstractFactory((Class<? extends Factory<?>>) c));
+                    .get(getAbstractFactory((Class<? extends Factory<?>>) clazz));
 
             if (pdat == null) {
-              SimSystem.report(Level.WARNING, "Cannot look up plug-in data for " + c);
+              SimSystem.report(Level.WARNING, "Cannot look up plug-in data for " + clazz);
               continue;
             }
 
@@ -1568,7 +1557,7 @@ public class Registry extends InformationObject {
             first = false;
           }
 
-          Object loadedFactory = instantiate(c);
+          Object loadedFactory = instantiate(clazz);
 
           if (loadedFactory instanceof Factory) {
             registerFactory((Factory<?>) loadedFactory, fac);

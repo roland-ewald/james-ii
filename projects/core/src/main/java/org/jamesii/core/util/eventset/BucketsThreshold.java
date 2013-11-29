@@ -332,10 +332,8 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
     }
 
     // get out
-    if (mintime == Double.POSITIVE_INFINITY) {
-      if (events.isEmpty()) {
+    if (mintime == Double.POSITIVE_INFINITY && events.isEmpty()) {
         return null;
-      }
     }
 
     internalGetMin(mintime);

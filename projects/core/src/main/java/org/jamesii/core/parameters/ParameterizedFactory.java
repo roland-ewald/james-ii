@@ -48,12 +48,11 @@ import org.jamesii.core.factories.Factory;
  * <p/>
  * 
  * @author Jan Himmelspach
- * 
- * @param F
+ * @param <F> 
  *          the type of the factory which can be hold by the parameterized
  *          factory instance. Using this type avoids type casting later on.
  */
-public class ParameterizedFactory<F extends Factory> implements Serializable {
+public class ParameterizedFactory<F extends Factory<?>> implements Serializable {
 
   /**
    * The constant serial version ID.
@@ -79,7 +78,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * {@link #setParameter(ParameterBlock)} to fill the instance later on.
    */
   public ParameterizedFactory() {
-    super();
   }
 
   /**
@@ -89,7 +87,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * @param factory
    */
   public ParameterizedFactory(F factory) {
-    this();
     this.factory = factory;
   }
 
@@ -101,7 +98,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * @param parameters
    */
   public ParameterizedFactory(ParameterBlock parameters) {
-    this();
     this.parameter = parameters;
   }
 
@@ -113,7 +109,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * @param parameters
    */
   public ParameterizedFactory(F factory, ParameterBlock parameters) {
-    this();
     this.factory = factory;
     this.parameter = parameters;
   }
@@ -127,7 +122,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * 
    * @return an instance of a factory or null
    */
-  @SuppressWarnings("unchecked")
   public F getFactoryInstance() {
     F result = factory;
     if (factory == null && parameter != null && parameter.getValue() != null) {
@@ -147,7 +141,6 @@ public class ParameterizedFactory<F extends Factory> implements Serializable {
    * 
    * @return an instance of the type to be created by this factory or null
    */
-  @SuppressWarnings("unchecked")
   public <I> I getInstance() {
     F factoryInstance = getFactoryInstance();
     if (factoryInstance == null) {

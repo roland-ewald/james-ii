@@ -22,6 +22,8 @@ import org.jamesii.gui.utils.BasicUtilities;
  * factory must be forwarded to the objects they create.
  * 
  * @author Jan Himmelspach
+ * @param <I>
+ *          Type of produced instances
  */
 public abstract class Factory<I> extends NamedEntity implements IFactory<I> {
 

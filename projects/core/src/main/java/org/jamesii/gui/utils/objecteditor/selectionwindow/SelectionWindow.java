@@ -47,7 +47,7 @@ import org.jamesii.gui.utils.parameters.factories.FactoryParameterPanel;
  * @param <T>
  *          The type of factory that is used in this class.
  */
-public final class SelectionWindow<T extends Factory> extends JDialog {
+public final class SelectionWindow<T extends Factory<?>> extends JDialog {
   /** Serialisation ID. */
   private static final long serialVersionUID = 4097586391034505718L;
 
@@ -124,10 +124,11 @@ public final class SelectionWindow<T extends Factory> extends JDialog {
    *          A list of factories.
    * @param parent
    *          The parent window.
+   * @param parentComponent 
    * @return Either {@code null} in case the dialog was cancelled or a pair of
    *         factory name and its parameters.
    */
-  public static <T extends Factory> Pair<String, ParameterBlock> getSelection(
+  public static <T extends Factory<?>> Pair<String, ParameterBlock> getSelection(
       List<T> factories, Window parent, Component parentComponent) {
     SelectionWindow<T> window =
         new SelectionWindow<>(factories, parent, parentComponent);
@@ -154,11 +155,12 @@ public final class SelectionWindow<T extends Factory> extends JDialog {
    *          The currently set parameters for the factory.
    * @param parent
    *          The parent window.
+   * @param parentComponent 
    * @return Either a pair of the original factory name and its parameters in
    *         case the dialog was cancelled or a pair of a new factory name and
    *         its parameters.
    */
-  public static <T extends Factory> Pair<String, ParameterBlock> editSelection(
+  public static <T extends Factory<?>> Pair<String, ParameterBlock> editSelection(
       List<T> factories, String factoryName, ParameterBlock parameters,
       Window parent, Component parentComponent) {
     SelectionWindow<T> window =
