@@ -6,11 +6,12 @@
  */
 package org.jamesii.core.math.statistics.univariate;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
- * Class which encapsulates methods for computing the median of a previously
- * sorted array.
+ * Static methods for computing the median.
  * 
  * Created on 28.01.2005
  * 
@@ -20,10 +21,31 @@ import java.util.List;
  */
 public final class Median {
 
-  /**
-   * Hidden constructor.
-   */
   private Median() {
+  }
+
+  /**
+   * Median of a collection of numbers. A copy of the collection will be created
+   * and sorted. Time complexity thus corresponds to that of the used sorting
+   * method (ComparableTimSort via {@link Arrays#sort(Object[])}).
+   * 
+   * @author Arne Bittig
+   * 
+   * @param numbers
+   * @return median of these numbers
+   */
+  public static <N extends Number & Comparable<N>> double median(
+      Collection<N> numbers) {
+    N[] arr = (N[]) numbers.toArray();
+    Arrays.sort(arr);
+    int size = arr.length;
+    if (size % 2 == 0) {
+      int sBy2 = size / 2;
+      return (arr[sBy2 - 1].doubleValue() + arr[sBy2].doubleValue()) / 2.;
+    } else {
+      return arr[size / 2].doubleValue();
+    }
+
   }
 
   /**
@@ -34,7 +56,7 @@ public final class Median {
    *          SORTED arraylist of double values
    * @return the median value of the sorted arraylist
    */
-  public static Double median(List<Double> x) {
+  public static Double medianFromSorted(List<Double> x) {
     int n = x.size();
 
     if (n == 0) {
@@ -58,7 +80,7 @@ public final class Median {
    *          SORTED array of double values
    * @return the median value of the sorted array
    */
-  public static double median(double[] x) {
+  public static double medianFromSorted(double[] x) {
     int n = x.length;
     double median;
 
@@ -79,7 +101,7 @@ public final class Median {
    *          SORTED array of float values
    * @return the median value of the sorted array
    */
-  public static float median(float[] x) {
+  public static float medianFromSorted(float[] x) {
     int n = x.length;
     float median;
 
@@ -100,7 +122,7 @@ public final class Median {
    *          SORTED array of integer values
    * @return the median value of the sorted array
    */
-  public static double median(int[] x) {
+  public static double medianFromSorted(int[] x) {
     int n = x.length;
     double median;
     if (n % 2 == 0) { // even!
@@ -123,7 +145,7 @@ public final class Median {
    *          SORTED array of long values
    * @return the median value of the sorted array
    */
-  public static double median(long[] x) {
+  public static double medianFromSorted(long[] x) {
     int n = x.length;
     double median;
     if (n % 2 == 0) { // even!
