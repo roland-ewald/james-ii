@@ -99,8 +99,8 @@ import org.jamesii.core.util.misc.ParameterUtils;
  * and it eases the parallel creation of job configurations, which is supported
  * as long as the "next" configurations do not depend on results of previous
  * runs (as this might be the case for some optimization algorithms, however of
- * some of those parallel variants exist as well). In addition event the
- * software to be used for computation can be exchanged. By default always the
+ * some of those parallel variants exist as well). In addition even the software
+ * to be used for computation can be exchanged. By default always the
  * {@link org.jamesii.core.experiments.tasks.setup.internalsimrun.SimulationRunFactory}
  * is used but this can be changed by using the
  * {@link #setSetupFactory(TaskSetupFactory)} method of instances of this class.
@@ -115,11 +115,6 @@ public class BaseExperiment extends NamedEntity {
 
   /** The default number of replications. */
   public static final int DEFAULT_NUMBER_OF_REPLICATIONS = 1;
-
-  // /**
-  // * Parameter block identifier to be used in {@link #recreate()}.
-  // */
-  // public static final String RECREATE_PARAMS = "recreate";
 
   /**
    * If cancelOnError is set to true any error during execution will cancel the
@@ -1065,8 +1060,7 @@ public class BaseExperiment extends NamedEntity {
       Map<String, Object> modelParameters, ParameterBlock execConfigParamBlock) {
     ParameterBlock scpb =
         (new ParameterBlock()).addSubBl(AbstractModelReaderFactory.URI,
-            new ParameterBlock(
-            modelLocation));
+            new ParameterBlock(modelLocation));
     TaskConfiguration taskConfig =
         new TaskConfiguration(++taskCfgCounter, scpb, modelParameters,
             execConfigParamBlock);
@@ -1245,38 +1239,6 @@ public class BaseExperiment extends NamedEntity {
   public void setReplicationCriterionFactory(
       ParameterizedFactory<RepCriterionFactory> repCriterion) {
     repCriterionFactory = repCriterion;
-  }
-
-  /**
-   * Sets the replication criterion factory.
-   * 
-   * <br/>
-   * Please use the
-   * {@link #setReplicationCriterionFactory(ParameterizedFactory)} method
-   * instead.
-   * 
-   * @param factory
-   *          the factory to be set
-   */
-  @Deprecated
-  public void setReplicationCriterionFactory(RepCriterionFactory factory) {
-    this.repCriterionFactory.setFactory(factory);
-  }
-
-  /**
-   * Sets the replication criterion parameters.
-   * 
-   * <br/>
-   * Please use the
-   * {@link #setReplicationCriterionFactory(ParameterizedFactory)} method
-   * instead.
-   * 
-   * @param parameters
-   *          the new replication criterion parameters
-   */
-  @Deprecated
-  public void setReplicationCriterionParameters(ParameterBlock parameters) {
-    this.repCriterionFactory.setParameter(parameters);
   }
 
   /**

@@ -12,18 +12,17 @@ import org.jamesii.core.parameters.ParameterBlock;
  * An interface for factories creating objects of type I.
  * 
  * @author Jan Himmelspach
+ * @param <I>
+ *          Type of produced instances
  */
 public interface IFactory<I> {
 
   /**
-   * Creates an object of the type this factory has been created for (type
-   * {@value I}).
+   * Creates an object of the type this factory has been created for.
    * 
    * @param parameters
    *          the parameters
-   * 
-   * @return the i
-   * @throws PluginCreationException
+   * @return the created instance
    */
   I create(ParameterBlock parameters);
 
