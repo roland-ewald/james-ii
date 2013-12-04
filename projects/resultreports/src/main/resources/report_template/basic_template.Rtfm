@@ -25,6 +25,7 @@
 \includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
 \caption{${caption} \label{item-${id}}}
 \end{figure}
+\clearpage
 </#macro>
 
 
@@ -48,6 +49,7 @@
 \includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
 \caption{${caption} \label{item-${id}}}
 \end{figure}
+\clearpage
 </#macro>
 
 
@@ -65,6 +67,7 @@
 \includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
 \caption{${caption} \label{item-${id}}}
 \end{figure}
+\clearpage
 </#macro>
 
 
@@ -90,6 +93,7 @@
 \includegraphics[width=${textwidth}\textwidth]{report-item-${id}}
 \caption{${caption} \label{item-${id}}}
 \end{figure}
+\clearpage
 </#macro>
 
 
