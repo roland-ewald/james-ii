@@ -26,8 +26,8 @@ import org.jamesii.gui.utils.factories.ConfigureFactoryPanel;
  * @param <F>
  *          the base factory factories are selected for
  */
-public abstract class AbstractFactorySelectionPanel<F extends Factory> extends
-    JPanel {
+public abstract class AbstractFactorySelectionPanel<F extends Factory<?>>
+    extends JPanel {
 
   /**
    * Serialization ID.
@@ -68,11 +68,11 @@ public abstract class AbstractFactorySelectionPanel<F extends Factory> extends
   /**
    * Set factories.
    * 
-   * @param facs
+   * @param factories
    *          the factories
    * @param selected
    *          the selected
-   * @param bl
+   * @param block
    *          the block
    */
   protected void setFactories(List<F> factories, F selected,

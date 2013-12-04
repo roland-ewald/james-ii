@@ -34,16 +34,16 @@ import org.jamesii.gui.utils.parameters.factories.FactoryParameterPanel;
  *          the type of the base factory
  * @author Roland Ewald
  */
-public class ConfigureFactoryPanel<F extends Factory> extends JPanel {
+public class ConfigureFactoryPanel<F extends Factory<?>> extends JPanel {
 
   /** Serialisation ID. */
   private static final long serialVersionUID = 7856502303107826383L;
 
-  /** Default size to start with */
-  private static final int MIN_SIZE = 100;
+  // /** Default size to start with */
+  // private static final int MIN_SIZE = 100;
 
   /** The combo box for selecting a factory. */
-  private JComboBox factoryComboBox = new JComboBox();
+  private JComboBox<?> factoryComboBox = new JComboBox<>();
 
   /** The panel on which the parameters of the factory are shown. */
   private JPanel parameterPanel = new JPanel(new BorderLayout());
@@ -157,7 +157,7 @@ public class ConfigureFactoryPanel<F extends Factory> extends JPanel {
       for (F f : factories) {
         factoryList.add(f);
       }
-      factoryComboBox = new JComboBox(factoryList.toArray());
+      factoryComboBox = new JComboBox<>(factoryList.toArray());
       factoryComboBox.setRenderer(new FactoryListCellRenderer());
     }
 

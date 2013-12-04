@@ -9,7 +9,6 @@ package org.jamesii.gui.utils.objecteditor.selectionwindow;
 import java.awt.Component;
 import java.util.List;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 
@@ -26,7 +25,7 @@ import org.jamesii.gui.utils.FactoryListCellRenderer;
  * 
  * @param <T>
  */
-public class FactoryComboBox<T extends Factory> extends JComboBox {
+public class FactoryComboBox<T extends Factory<?>> extends JComboBox {
 
   /**
    * A model for the {@link FactoryComboBox} that saves pairs of {@link Factory}
@@ -39,8 +38,8 @@ public class FactoryComboBox<T extends Factory> extends JComboBox {
    * @param <F>
    *          The subclass of {@link Factory} to store in this model.
    */
-  private class FactoryComboBoxModel<F extends Factory> extends
-      AbstractComboBoxModel<ParameterizedFactory<F>> implements ComboBoxModel {
+  private class FactoryComboBoxModel<F extends Factory<?>> extends
+      AbstractComboBoxModel<ParameterizedFactory<F>> {
     /** Serialisation ID. */
     private static final long serialVersionUID = -6697817703706197117L;
 
@@ -126,7 +125,7 @@ public class FactoryComboBox<T extends Factory> extends JComboBox {
     }
 
     ParameterizedFactory<T> pair = (ParameterizedFactory<T>) item;
-    Factory factory = pair.getFactory();
+    Factory<?> factory = pair.getFactory();
 
     return factory.getClass().getName();
   }
@@ -170,7 +169,6 @@ public class FactoryComboBox<T extends Factory> extends JComboBox {
    * @param factoryName
    *          The class name of the factory to select.
    */
-  @SuppressWarnings("unchecked")
   public void setSelectedFactory(String factoryName) {
     int index = ((FactoryComboBoxModel<T>) getModel()).findFactory(factoryName);
 
