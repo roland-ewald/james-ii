@@ -59,13 +59,14 @@ public final class Files {
   }
 
   /**
-   * Replace all backslashs in a file name by slashes.
+   * Replace all backslashes in a path with slashes.
    * 
-   * @param filename
-   * @return
+   * @param path
+   *          the path
+   * @return path with slashes
    */
-  public static String bs2s(String filename) {
-    return filename.replace('\\', '/');
+  public static String bs2s(String path) {
+    return path.replace('\\', '/');
   }
 
   /**
@@ -563,6 +564,33 @@ public final class Files {
   }
 
   /**
+   * Counts the number of lines that contain a certain string in the given file.
+   * 
+   * @param file
+   *          the file to be searched
+   * @param searchString
+   *          the string to be searched for
+   * @return list of line indices (beginning with 0) for all lines of the file
+   *         that contain the given string
+   */
+  public static List<Integer> occurrencesInFile(File file, String searchString)
+      throws IOException {
+    List<Integer> occurrences = new ArrayList<>();
+    int counter = 0;
+    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      String currentLine = reader.readLine();
+      while (currentLine != null) {
+        if (currentLine.contains(searchString)) {
+          occurrences.add(counter);
+        }
+        counter++;
+        currentLine = reader.readLine();
+      }
+    }
+    return occurrences;
+  }
+
+  /**
    * Retrieves files with a given ending (without leading ".") recursively.
    * 
    * @param directory
@@ -833,33 +861,23 @@ public final class Files {
    */
   public static String readASCIIFile(java.io.File file, String charset) {
 
-    InputStreamReader fr = null;
     char[] thechars = null;
     int index = 0;
 
-    try {
-      fr =
-          new InputStreamReader(new BufferedInputStream(new FileInputStream(
-              file)), charset);
+    try (InputStreamReader reader =
+        new InputStreamReader(
+            new BufferedInputStream(new FileInputStream(file)), charset)) {
       int size = (int) file.length();
       thechars = new char[size];
       int count = 0;
       // read in the bytes from the input stream
-      while ((count = fr.read(thechars, index, size)) > 0) {
+      while ((count = reader.read(thechars, index, size)) > 0) {
         size -= count;
         index += count;
       }
 
     } catch (IOException e) {
       SimSystem.report(e);
-    } finally {
-      try {
-        if (fr != null) {
-          fr.close();
-        }
-      } catch (IOException e2) {
-        SimSystem.report(e2);
-      }
     }
     return String.valueOf(thechars, 0, index);
   }

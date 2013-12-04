@@ -138,25 +138,25 @@ ${vm}
 				<#elseif element.type == "SUB_SUB_SECTION">
 				\subsubsection{${element.section.title}}	
 				</#if>
-				\label{sec:${element.ID}}
+				\label{sec:${element.ID?c}}
 				
 				${element.section.description}
 		
 		<#-- Handling of data views -->
 		<#else>
-				<#if element.dataView.class.canonicalName == "james.resultreport.dataview.ScatterPlotDataView">				
+				<#if element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.ScatterPlotDataView">				
 				<@scatterplot id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>				
 				
-				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.BoxPlotDataView">				
+				<#elseif element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.BoxPlotDataView">				
 				<@boxplot id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>				
 				
-				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.HistogramDataView">				
+				<#elseif element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.HistogramDataView">				
 				<@histogram id="${element.ID}" file="${element.ID}-data" breaks="${element.dataView.breakSpec}" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>
 				
-				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.LineChartDataView">
-				<@linechart id="${element.ID}" file="${element.ID}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>
+				<#elseif element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.LineChartDataView">
+				<@linechart id="${element.ID?c}" file="${element.ID?c}-data" caption="${element.dataView.caption}" title="${element.dataView.title}" xLabel="${element.dataView.labels[0]}" yLabel="${element.dataView.labels[1]}"/>
 				
-				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.TableDataView">			
+				<#elseif element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.TableDataView">			
 				\begin{table}[h!]
 				\centering
 				\begin{tabular}{|<#list element.dataView.data[0] as x>c|</#list>}
@@ -172,7 +172,7 @@ ${vm}
 				\caption{${element.dataView.caption}}
 				\end{table}
 								
-				<#elseif element.dataView.class.canonicalName == "james.resultreport.dataview.StatisticalTestDataView">
+				<#elseif element.dataView.class.canonicalName == "org.jamesii.resultreport.dataview.StatisticalTestDataView">
 				<@stattest id="${element.ID}" fileOne="${element.ID}-data-${element.dataView.firstSetName!}" fileTwo="${element.ID}-data-${element.dataView.secondSetName!}"  caption="${element.dataView.caption}" testid="${element.dataView.test.ID}"/>									
 				</#if>								
 		</#if>		  
