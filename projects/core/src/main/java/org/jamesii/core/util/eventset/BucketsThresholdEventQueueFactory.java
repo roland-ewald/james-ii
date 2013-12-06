@@ -7,10 +7,11 @@
 package org.jamesii.core.util.eventset;
 
 import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
 import org.jamesii.core.util.eventset.plugintype.EventQueueFactory;
 
 /**
- * A factory for creating BucketsThresholdEventQueue objects.
+ * A factory for the {@link BucketsThreshold} event queue.
  */
 public class BucketsThresholdEventQueueFactory extends EventQueueFactory {
 
@@ -38,6 +39,11 @@ public class BucketsThresholdEventQueueFactory extends EventQueueFactory {
   @Override
   public double getEfficencyIndex() {
     return 0.3;
+  }
+
+  @Override
+  public EventIdentityBehavior getEventIdentityBehaviour() {
+    return EventIdentityBehavior.EQUALITY;
   }
 
 }

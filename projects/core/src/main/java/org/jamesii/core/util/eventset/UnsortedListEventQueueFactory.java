@@ -7,10 +7,11 @@
 package org.jamesii.core.util.eventset;
 
 import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
 import org.jamesii.core.util.eventset.plugintype.EventQueueFactory;
 
 /**
- * A factory for creating UnsortedListEventQueue objects.
+ * A factory for the {@link UnsortedListEventQueue}.
  * 
  * @author Jan Himmelspach
  */
@@ -18,13 +19,6 @@ public class UnsortedListEventQueueFactory extends EventQueueFactory {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 4673531612550489192L;
-
-  /**
-   * Instantiates a new simple event queue factory.
-   */
-  public UnsortedListEventQueueFactory() {
-    super();
-  }
 
   @Override
   public <E> IEventQueue<E, Double> createDirect(ParameterBlock parameter) {
@@ -34,6 +28,11 @@ public class UnsortedListEventQueueFactory extends EventQueueFactory {
   @Override
   public double getEfficencyIndex() {
     return 0.0001;
+  }
+
+  @Override
+  public EventIdentityBehavior getEventIdentityBehaviour() {
+    return EventIdentityBehavior.IDENTITY;
   }
 
 }

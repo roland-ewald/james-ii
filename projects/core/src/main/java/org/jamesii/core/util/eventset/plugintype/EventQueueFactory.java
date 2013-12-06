@@ -22,13 +22,6 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
   private static final long serialVersionUID = -2223859699427961147L;
 
   /**
-   * Instantiates a new event queue factory.
-   */
-  public EventQueueFactory() {
-    super();
-  }
-
-  /**
    * Return a new instance of the event queue to be used.
    * 
    * @param <E>
@@ -82,9 +75,7 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
    * 
    * @return the queue's behavior regarding identity checks
    */
-  public EventIdentityBehavior getEventIdentityBehaviour() {
-    return EventIdentityBehavior.INCONSISTENT;
-  }
+  public abstract EventIdentityBehavior getEventIdentityBehaviour();
 
   /**
    * Return an {@link EventOrderingBehavior}. Allows the
