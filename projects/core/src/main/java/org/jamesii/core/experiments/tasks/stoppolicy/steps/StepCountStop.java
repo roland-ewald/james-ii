@@ -22,6 +22,9 @@ import org.jamesii.core.experiments.tasks.stoppolicy.AbstractComputationTaskStop
 public class StepCountStop extends
     AbstractComputationTaskStopPolicy<IComputationTask> implements Serializable {
 
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = -195584391313796155L;
+
   /** The stop counter. Default is 1. */
   private long stopCount = 1;
 
@@ -30,6 +33,7 @@ public class StepCountStop extends
 
   /**
    * The Constructor.
+   * 
    * @param stopCount
    *          the stop count
    */

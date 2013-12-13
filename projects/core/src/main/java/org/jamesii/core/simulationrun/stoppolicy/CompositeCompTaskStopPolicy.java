@@ -22,13 +22,12 @@ import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
  * @author Arne Bittig
  * 
  */
-public abstract class CompositeCompTaskStopPolicy
-    extends
-    AbstractComputationTaskStopPolicy implements
-    ISimulationRunStopPolicySimTime {
+public abstract class CompositeCompTaskStopPolicy<T extends IComputationTask>
+    extends AbstractComputationTaskStopPolicy<T> implements
+    ISimulationRunStopPolicySimTime<Double, T> {
 
   /** The computation task stop policies. */
-  private final List<IComputationTaskStopPolicy> compTaskStopPolicies;
+  private final List<IComputationTaskStopPolicy<T>> compTaskStopPolicies;
 
   /**
    * Instantiates a new composite stop policy.
@@ -37,7 +36,7 @@ public abstract class CompositeCompTaskStopPolicy
    *          the simulation run
    */
   public CompositeCompTaskStopPolicy(IComputationTask run) {
-    this(run, new ArrayList<IComputationTaskStopPolicy>());
+    this(run, new ArrayList<IComputationTaskStopPolicy<T>>());
   }
 
   /**
@@ -49,7 +48,7 @@ public abstract class CompositeCompTaskStopPolicy
    *          the policies to be queried
    */
   public CompositeCompTaskStopPolicy(IComputationTask run,
-      List<IComputationTaskStopPolicy> policies) {
+      List<IComputationTaskStopPolicy<T>> policies) {
     super();
     this.compTaskStopPolicies = policies;
   }
@@ -60,7 +59,7 @@ public abstract class CompositeCompTaskStopPolicy
    * @param policy
    *          the policy
    */
-  public void addSimRunStopPolicy(IComputationTaskStopPolicy policy) {
+  public void addSimRunStopPolicy(IComputationTaskStopPolicy<T> policy) {
     getStopPolicies().add(policy);
   }
 
@@ -70,15 +69,15 @@ public abstract class CompositeCompTaskStopPolicy
    * @param policy
    *          the policy
    */
-  public void removeSimRunStopPolicy(IComputationTaskStopPolicy policy) {
+  public void removeSimRunStopPolicy(IComputationTaskStopPolicy<T> policy) {
     getStopPolicies().remove(policy);
   }
 
   @Override
-  public Comparable getEstimatedEndTime() {
-    for (IComputationTaskStopPolicy runStopPolicy : getStopPolicies()) {
+  public Double getEstimatedEndTime() {
+    for (IComputationTaskStopPolicy<?> runStopPolicy : getStopPolicies()) {
       if (runStopPolicy instanceof ISimulationRunStopPolicySimTime) {
-        return ((ISimulationRunStopPolicySimTime) runStopPolicy)
+        return (Double) ((ISimulationRunStopPolicySimTime<?, ?>) runStopPolicy)
             .getEstimatedEndTime();
       }
     }
@@ -100,12 +99,12 @@ public abstract class CompositeCompTaskStopPolicy
    * @return after {@link #hasReachedEnd()} returned true, stop policy whose
    *         changing {@link #hasReachedEnd()} result triggered the former
    */
-  public abstract IComputationTaskStopPolicy getLastRelevantStopPolicy();
+  public abstract IComputationTaskStopPolicy<T> getLastRelevantStopPolicy();
 
   /**
    * @return Copy of the list of stop policies used
    */
-  public List<IComputationTaskStopPolicy> getSimRunStopPolicies() {
+  public List<IComputationTaskStopPolicy<T>> getSimRunStopPolicies() {
     return new ArrayList<>(getStopPolicies());
   }
 
@@ -114,7 +113,7 @@ public abstract class CompositeCompTaskStopPolicy
    *          Stop policies to use (replaces already defined ones)
    */
   protected void setSimRunStopPolicies(
-      List<IComputationTaskStopPolicy> compTaskStopPolicies) {
+      List<IComputationTaskStopPolicy<T>> compTaskStopPolicies) {
     this.getStopPolicies().clear();
     this.getStopPolicies().addAll(compTaskStopPolicies);
   }
@@ -123,7 +122,7 @@ public abstract class CompositeCompTaskStopPolicy
    * @return List of stop policies used (not copied, unlike with
    *         {@link #getSimRunStopPolicies()})
    */
-  protected List<IComputationTaskStopPolicy> getStopPolicies() {
+  protected List<IComputationTaskStopPolicy<T>> getStopPolicies() {
     return compTaskStopPolicies;
   }
 

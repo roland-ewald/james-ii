@@ -89,7 +89,7 @@ public class TaskConfiguration implements Serializable,
   private ParameterizedFactory<DataStorageFactory> dataStorageFactory = null;
 
   /** The computation task end / stop policy factory. */
-  private ParameterizedFactory<ComputationTaskStopPolicyFactory> taskStopPolicyFactory =
+  private ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> taskStopPolicyFactory =
       null;
 
   /** Factory to create a replication criterion. */
@@ -531,7 +531,7 @@ public class TaskConfiguration implements Serializable,
    *          the new computation task stop policy
    */
   public void setComputationTaskStopFactory(
-      ParameterizedFactory<ComputationTaskStopPolicyFactory> endFactory) {
+      ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> endFactory) {
     taskStopPolicyFactory = endFactory;
   }
 

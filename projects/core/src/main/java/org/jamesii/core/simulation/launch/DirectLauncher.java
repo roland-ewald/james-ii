@@ -126,7 +126,7 @@ public class DirectLauncher {
   }
 
   /** The parameters (command line. */
-  private Parameters parameters = new Parameters();
+  private final Parameters parameters = new Parameters();
 
   /** The simulation. */
   private IComputationTask computationTask;
@@ -191,7 +191,7 @@ public class DirectLauncher {
     ParameterBlock pb = new ParameterBlock();
     pb.addSubBlock(SimTimeStopFactory.SIMEND, stopTime);
     config
-        .setComputationTaskStopFactory(new ParameterizedFactory<ComputationTaskStopPolicyFactory>(
+        .setComputationTaskStopFactory(new ParameterizedFactory<ComputationTaskStopPolicyFactory<?>>(
             new SimTimeStopFactory(), pb));
     return config
         .newComputationTaskConfiguration(new ComputationTaskIDObject());

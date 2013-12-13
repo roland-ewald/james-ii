@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy.concurrent;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -18,7 +19,7 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  * @author Jan Himmelspach
  */
 public class ConcurrentComputationTaskStopPolicyFactory extends
-    ComputationTaskStopPolicyFactory {
+    ComputationTaskStopPolicyFactory<IComputationTask> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -6222451902152767896L;
@@ -30,14 +31,16 @@ public class ConcurrentComputationTaskStopPolicyFactory extends
   public static final String POLICY_PARAMS = "POLICY_PARAMS";
 
   @Override
-  public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
-    ComputationTaskStopPolicyFactory policyFactory =
+  public IComputationTaskStopPolicy<IComputationTask> create(
+      ParameterBlock paramBlock) {
+    ComputationTaskStopPolicyFactory<IComputationTask> policyFactory =
         ParameterBlocks.getSubBlockValue(paramBlock, POLICY);
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
     ParameterBlock innerParams =
         paramBlock.getSubBlock(POLICY_PARAMS).getCopy();
     innerParams.addSubBl(COMPTASK, run);
-    IComputationTaskStopPolicy policy = policyFactory.create(innerParams);
+    IComputationTaskStopPolicy<IComputationTask> policy =
+        policyFactory.create(innerParams);
     ConcurrentComputationTaskStopPolicy result =
         new ConcurrentComputationTaskStopPolicy(policy);
     result.start();

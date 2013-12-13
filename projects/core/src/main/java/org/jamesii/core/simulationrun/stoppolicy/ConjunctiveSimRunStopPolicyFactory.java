@@ -8,6 +8,7 @@ package org.jamesii.core.simulationrun.stoppolicy;
 
 import java.util.List;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
@@ -26,11 +27,13 @@ public class ConjunctiveSimRunStopPolicyFactory extends
   private static final long serialVersionUID = -7364245846289653229L;
 
   @Override
-  public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
+  public IComputationTaskStopPolicy<IComputationTask> create(
+      ParameterBlock paramBlock) {
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
-    List<IComputationTaskStopPolicy> policies = createSubPolicies(paramBlock);
+    List<IComputationTaskStopPolicy<IComputationTask>> policies =
+        createSubPolicies(paramBlock);
 
-    return new ConjunctiveSimRunStopPolicy(run, policies);
+    return new ConjunctiveSimRunStopPolicy<IComputationTask>(run, policies);
   }
 
 }

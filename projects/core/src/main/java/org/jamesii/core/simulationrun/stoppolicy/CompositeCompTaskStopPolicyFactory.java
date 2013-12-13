@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -26,7 +27,7 @@ import org.jamesii.core.util.misc.Pair;
  * @author Arne Bittig
  */
 public abstract class CompositeCompTaskStopPolicyFactory extends
-    ComputationTaskStopPolicyFactory {
+    ComputationTaskStopPolicyFactory<IComputationTask> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -4893322013816570490L;
@@ -46,20 +47,21 @@ public abstract class CompositeCompTaskStopPolicyFactory extends
    * 
    * @return the list of simulation run stop policies
    */
-  protected static List<IComputationTaskStopPolicy> createSubPolicies(
+  protected static List<IComputationTaskStopPolicy<IComputationTask>> createSubPolicies(
       ParameterBlock parameters) {
 
     ISimulationRun simRun =
         ParameterBlocks.getSubBlockValue(parameters, COMPTASK);
-    List<IComputationTaskStopPolicy> policies = new ArrayList<>();
-    List<Pair<ComputationTaskStopPolicyFactory, ParameterBlock>> policyFactories =
+    List<IComputationTaskStopPolicy<IComputationTask>> policies =
+        new ArrayList<>();
+    List<Pair<ComputationTaskStopPolicyFactory<IComputationTask>, ParameterBlock>> policyFactories =
         ParameterBlocks.getSubBlockValue(parameters, POLICY_FACTORY_LIST);
 
     if (policyFactories == null) {
       return policies;
     }
 
-    for (Pair<ComputationTaskStopPolicyFactory, ParameterBlock> policyFactorySetup : policyFactories) {
+    for (Pair<ComputationTaskStopPolicyFactory<IComputationTask>, ParameterBlock> policyFactorySetup : policyFactories) {
       createAndAddPolicy(policies, policyFactorySetup, simRun);
     }
 
@@ -77,8 +79,8 @@ public abstract class CompositeCompTaskStopPolicyFactory extends
    *          the simulation run
    */
   protected static void createAndAddPolicy(
-      List<IComputationTaskStopPolicy> policies,
-      Pair<ComputationTaskStopPolicyFactory, ParameterBlock> policyFactorySetup,
+      List<IComputationTaskStopPolicy<IComputationTask>> policies,
+      Pair<ComputationTaskStopPolicyFactory<IComputationTask>, ParameterBlock> policyFactorySetup,
       ISimulationRun simRun) {
     ParameterBlock policyParams = policyFactorySetup.getSecondValue().getCopy();
     policyParams.addSubBlock(COMPTASK, simRun);

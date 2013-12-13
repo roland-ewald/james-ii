@@ -125,7 +125,7 @@ public class BaseExperiment extends NamedEntity {
   /**
    * The history of the experiment.
    */
-  private History history = new History();
+  private final History history = new History();
 
   /**
    * Counter to initialise each computation configuration with a unique number.
@@ -140,7 +140,7 @@ public class BaseExperiment extends NamedEntity {
       new ParameterizedFactory<>();
 
   /** List of all computation task configurations that lead to an error. */
-  private List<TaskConfiguration> errorHistory = new ArrayList<>();
+  private final List<TaskConfiguration> errorHistory = new ArrayList<>();
 
   /** Currently registered computation task execution controller. */
   private transient IExperimentExecutionController executionController =
@@ -156,8 +156,9 @@ public class BaseExperiment extends NamedEntity {
   private Map<String, Object> fixedModelParameters = new HashMap<>();
 
   /** The vector of jobs to be executed. */
-  private List<TaskConfiguration> jobs = new Vector<>(); // NOSONAR:
-                                                         // synchronization!
+  private final List<TaskConfiguration> jobs = new Vector<>(); // NOSONAR:
+
+  // synchronization!
 
   // /** Support for console mode. */
   // private transient InteractiveConsole intCon;
@@ -201,7 +202,7 @@ public class BaseExperiment extends NamedEntity {
   private Parameters parameters = new Parameters();
 
   /** Data structure that stores information on computation execution times. */
-  private Map<TaskConfiguration, List<RunInformation>> results =
+  private final Map<TaskConfiguration, List<RunInformation>> results =
       new HashMap<>();
 
   /** Reference to a computation instrumenter factory. */
@@ -243,8 +244,8 @@ public class BaseExperiment extends NamedEntity {
   private double compStartTime = 0;
 
   /** The default computation task stop policy for this experiment. */
-  private ParameterizedFactory<ComputationTaskStopPolicyFactory> computationTaskStopFactory =
-      new ParameterizedFactory<ComputationTaskStopPolicyFactory>(
+  private ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> computationTaskStopFactory =
+      new ParameterizedFactory<ComputationTaskStopPolicyFactory<?>>(
           new SimTimeStopFactory());
 
   /** If true computation tasks will be started in paused mode. */
@@ -259,7 +260,7 @@ public class BaseExperiment extends NamedEntity {
   /**
    * Class to take care of backing up the experiment.
    */
-  private ExperimentBackup experimentBackup;
+  private final ExperimentBackup experimentBackup;
 
   /**
    * Default constructor. See the variables outSystem, cancelOnError and
@@ -1041,8 +1042,9 @@ public class BaseExperiment extends NamedEntity {
     if (configurator.getStopFactory() == null) {
       taskConfig.setComputationTaskStopFactory(computationTaskStopFactory);
     } else {
-      taskConfig.setComputationTaskStopFactory(new ParameterizedFactory<>(
-          configurator.getStopFactory(), configurator.getStopParameters()));
+      taskConfig
+          .setComputationTaskStopFactory(new ParameterizedFactory<ComputationTaskStopPolicyFactory<?>>(
+              configurator.getStopFactory(), configurator.getStopParameters()));
     }
   }
 
@@ -1336,7 +1338,7 @@ public class BaseExperiment extends NamedEntity {
    * 
    * @return the (default) computation stop factory
    */
-  public ParameterizedFactory<ComputationTaskStopPolicyFactory> getComputationTaskStopFactory() {
+  public ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> getComputationTaskStopFactory() {
     return computationTaskStopFactory;
   }
 
@@ -1349,7 +1351,7 @@ public class BaseExperiment extends NamedEntity {
    * @param computationTaskStopFactory
    */
   public void setComputationTaskStopPolicyFactory(
-      ParameterizedFactory<ComputationTaskStopPolicyFactory> computationTaskStopFactory) {
+      ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> computationTaskStopFactory) {
     this.computationTaskStopFactory = computationTaskStopFactory;
   }
 

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.jamesii.core.cmdparameters.Parameters;
-import org.jamesii.core.experiments.TaskConfiguration;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
 import org.jamesii.core.observe.IObservable;
 import org.jamesii.core.observe.IObserver;
@@ -46,7 +45,7 @@ public class SimulationConfigurationSerializationTest extends
     sc.setSimStartTime(1.23);
     sc.setInterStepDelay(234);
     sc.setStartPaused(true);
-    sc.setComputationTaskStopFactory(new ParameterizedFactory<ComputationTaskStopPolicyFactory>(
+    sc.setComputationTaskStopFactory(new ParameterizedFactory<ComputationTaskStopPolicyFactory<?>>(
         new SimTimeStopFactory(), new ParameterBlock()));
     sc.setSimulationObservers(new ArrayList<IObserver<? extends IObservable>>());
     return sc;

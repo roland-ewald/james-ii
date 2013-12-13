@@ -18,7 +18,7 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  * 
  * @author Jan Himmelspach
  */
-public class SimTimeStopFactory extends ComputationTaskStopPolicyFactory {
+public class SimTimeStopFactory extends ComputationTaskStopPolicyFactory<ISimulationRun> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -887176305434302951L;
@@ -27,7 +27,7 @@ public class SimTimeStopFactory extends ComputationTaskStopPolicyFactory {
   public static final String SIMEND = "SIMEND";
 
   @Override
-  public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
+  public IComputationTaskStopPolicy<ISimulationRun> create(ParameterBlock paramBlock) {
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
     Number endTime = ParameterBlocks.getSubBlockValue(paramBlock, SIMEND);
     if (endTime == null) {

@@ -14,7 +14,7 @@ import org.jamesii.core.factories.AbstractFactory;
  * @author Jan Himmelspach
  */
 public class AbstractComputationTaskStopPolicyFactory extends
-    AbstractFactory<ComputationTaskStopPolicyFactory> {
+    AbstractFactory<ComputationTaskStopPolicyFactory<?>> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -5361308565374446562L;

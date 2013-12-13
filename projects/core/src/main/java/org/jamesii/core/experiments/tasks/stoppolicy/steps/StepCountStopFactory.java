@@ -17,7 +17,8 @@ import org.jamesii.core.parameters.ParameterBlocks;
  * 
  * @author Jan Himmelspach
  */
-public class StepCountStopFactory extends ComputationTaskStopPolicyFactory {
+public class StepCountStopFactory extends
+    ComputationTaskStopPolicyFactory<IComputationTask> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -8944548041403266176L;
@@ -26,9 +27,8 @@ public class StepCountStopFactory extends ComputationTaskStopPolicyFactory {
   public static final String TASKEND = "TASKEND";
 
   @Override
-  public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
-    IComputationTask task =
-        ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
+  public IComputationTaskStopPolicy<IComputationTask> create(
+      ParameterBlock paramBlock) {
     Long stepCount =
         ((Number) ParameterBlocks.getSubBlockValue(paramBlock, TASKEND))
             .longValue();

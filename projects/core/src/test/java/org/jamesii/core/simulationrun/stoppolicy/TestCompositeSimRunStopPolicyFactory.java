@@ -9,17 +9,13 @@ package org.jamesii.core.simulationrun.stoppolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.TestCase;
+
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.simulationrun.stoppolicy.CompositeCompTaskStopPolicyFactory;
-import org.jamesii.core.simulationrun.stoppolicy.SimTimeStop;
-import org.jamesii.core.simulationrun.stoppolicy.SimTimeStopFactory;
-import org.jamesii.core.simulationrun.stoppolicy.WallClockTimeStop;
-import org.jamesii.core.simulationrun.stoppolicy.WallClockTimeStopFactory;
 import org.jamesii.core.util.misc.Pair;
-
-import junit.framework.TestCase;
 
 /**
  * Tests sub-policy instantiation in {@link CompositeCompTaskStopPolicyFactory}.
@@ -39,8 +35,10 @@ public class TestCompositeSimRunStopPolicyFactory extends TestCase {
             prepareSubPolicyParameters()).addSubBl(
             ComputationTaskStopPolicyFactory.COMPTASK, new DummySimRun());
 
-    List<IComputationTaskStopPolicy> subPolicies =
-        CompositeCompTaskStopPolicyFactory.createSubPolicies(parameters);
+    List<IComputationTaskStopPolicy<? extends IComputationTask>> subPolicies =
+        new ArrayList<>();
+    subPolicies.addAll(CompositeCompTaskStopPolicyFactory
+        .createSubPolicies(parameters));
 
     assertEquals(2, subPolicies.size());
     assertTrue(subPolicies.get(0) instanceof SimTimeStop);

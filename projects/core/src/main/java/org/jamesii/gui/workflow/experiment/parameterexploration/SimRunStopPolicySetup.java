@@ -18,7 +18,7 @@ import org.jamesii.core.parameters.ParameterizedFactory;
  * @author Stefan Rybacki
  */
 public class SimRunStopPolicySetup extends
-    AbstractFactorySelectionPanel<ComputationTaskStopPolicyFactory> {
+    AbstractFactorySelectionPanel<ComputationTaskStopPolicyFactory<?>> {
 
   /**
    * Serialization ID
@@ -27,13 +27,13 @@ public class SimRunStopPolicySetup extends
 
   public SimRunStopPolicySetup() {
     super("Select Stop Policy: ", false);
-    List<ComputationTaskStopPolicyFactory> factories = getFactories();
+    List<ComputationTaskStopPolicyFactory<?>> factories = getFactories();
     if (factories != null && factories.size() > 0) {
       setFactories(factories, factories.get(0), null);
     }
   }
 
-  protected final List<ComputationTaskStopPolicyFactory> getFactories() {
+  protected final List<ComputationTaskStopPolicyFactory<?>> getFactories() {
     ParameterBlock block = new ParameterBlock();
     try {
       return SimSystem.getRegistry().getFactoryList(
@@ -59,8 +59,8 @@ public class SimRunStopPolicySetup extends
    * @param computationTaskStopFactory
    */
   public void setSimRunStopPolicy(
-      ParameterizedFactory<ComputationTaskStopPolicyFactory> computationTaskStopFactory) {
-    List<ComputationTaskStopPolicyFactory> factories = getFactories();
+      ParameterizedFactory<ComputationTaskStopPolicyFactory<?>> computationTaskStopFactory) {
+    List<ComputationTaskStopPolicyFactory<?>> factories = getFactories();
     setFactories(factories, computationTaskStopFactory.getFactory(),
         computationTaskStopFactory.getParameters());
   }

@@ -27,16 +27,16 @@ import org.jamesii.core.util.Semaphore;
  * @author Jan Himmelspach
  */
 public class ConcurrentComputationTaskStopPolicy extends Thread implements
-    IComputationTaskStopPolicy {
+    IComputationTaskStopPolicy<IComputationTask> {
 
   /** The end flag. Will be set by the thread if the end has reached. */
   private boolean end = false;
 
   /** The (counting) semaphore. */
-  private Semaphore sem = new Semaphore(0);
+  private final Semaphore sem = new Semaphore(0);
 
   /** The criteria which shall be executed in a thread. */
-  private IComputationTaskStopPolicy threadedPolicy;
+  private final IComputationTaskStopPolicy<IComputationTask> threadedPolicy;
 
   private IComputationTask task;
 
@@ -47,7 +47,7 @@ public class ConcurrentComputationTaskStopPolicy extends Thread implements
    * @param threadedPolicy
    */
   public ConcurrentComputationTaskStopPolicy(
-      IComputationTaskStopPolicy threadedPolicy) {
+      IComputationTaskStopPolicy<IComputationTask> threadedPolicy) {
     super();
     this.threadedPolicy = threadedPolicy;
   }

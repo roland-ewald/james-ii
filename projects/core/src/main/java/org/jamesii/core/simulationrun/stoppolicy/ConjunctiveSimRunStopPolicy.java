@@ -22,7 +22,8 @@ import org.jamesii.core.simulationrun.ISimulationRun;
  * @author Roland Ewald
  * @author Arne Bittig
  */
-public class ConjunctiveSimRunStopPolicy extends CompositeCompTaskStopPolicy {
+public class ConjunctiveSimRunStopPolicy<T extends IComputationTask> extends
+    CompositeCompTaskStopPolicy<T> {
 
   /**
    * Instantiates a new conjunctive sim run stop policy.
@@ -43,15 +44,15 @@ public class ConjunctiveSimRunStopPolicy extends CompositeCompTaskStopPolicy {
    *          the stopping policies
    */
   public ConjunctiveSimRunStopPolicy(ISimulationRun run,
-      List<IComputationTaskStopPolicy> policies) {
+      List<IComputationTaskStopPolicy<T>> policies) {
     super(run, policies);
   }
 
-  private IComputationTaskStopPolicy lastFalse = null;
+  private IComputationTaskStopPolicy<T> lastFalse = null;
 
   @Override
-  public boolean hasReachedEnd(IComputationTask t) {
-    for (IComputationTaskStopPolicy compTaskStopPolicy : getStopPolicies()) {
+  public boolean hasReachedEnd(T t) {
+    for (IComputationTaskStopPolicy<T> compTaskStopPolicy : getStopPolicies()) {
       if (!compTaskStopPolicy.hasReachedEnd(t)) {
         lastFalse = compTaskStopPolicy;
         return false;
@@ -61,7 +62,7 @@ public class ConjunctiveSimRunStopPolicy extends CompositeCompTaskStopPolicy {
   }
 
   @Override
-  public IComputationTaskStopPolicy getLastRelevantStopPolicy() {
+  public IComputationTaskStopPolicy<T> getLastRelevantStopPolicy() {
     return lastFalse;
   }
 

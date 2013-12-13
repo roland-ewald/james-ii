@@ -9,6 +9,7 @@ package org.jamesii.core.simulationrun.stoppolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -29,11 +30,12 @@ public class DisjunctiveSimRunStopPolicyFactory extends
   private static final long serialVersionUID = -1587165003419760852L;
 
   @Override
-  public IComputationTaskStopPolicy create(ParameterBlock paramBlock) {
+  public IComputationTaskStopPolicy<IComputationTask> create(
+      ParameterBlock paramBlock) {
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
-    List<IComputationTaskStopPolicy> policies = createSubPolicies(paramBlock);
-
-    return new DisjunctiveSimRunStopPolicy(run, policies);
+    List<IComputationTaskStopPolicy<IComputationTask>> policies =
+        createSubPolicies(paramBlock);
+    return new DisjunctiveSimRunStopPolicy<IComputationTask>(run, policies);
   }
 
   /**
@@ -50,20 +52,17 @@ public class DisjunctiveSimRunStopPolicyFactory extends
       Double simEndTime, Long wallClockTime) {
     ParameterBlock factoryBlock =
         new ParameterBlock(DisjunctiveSimRunStopPolicyFactory.class.getName());
-
-    List<Pair<ComputationTaskStopPolicyFactory, ParameterBlock>> subPolicyList =
+    List<Pair<ComputationTaskStopPolicyFactory<? extends IComputationTask>, ParameterBlock>> subPolicyList =
         new ArrayList<>();
     subPolicyList
-        .add(new Pair<ComputationTaskStopPolicyFactory, ParameterBlock>(
+        .add(new Pair<ComputationTaskStopPolicyFactory<? extends IComputationTask>, ParameterBlock>(
             new SimTimeStopFactory(), new ParameterBlock().addSubBl(
                 SimTimeStopFactory.SIMEND, simEndTime)));
-
     subPolicyList
-        .add(new Pair<ComputationTaskStopPolicyFactory, ParameterBlock>(
+        .add(new Pair<ComputationTaskStopPolicyFactory<? extends IComputationTask>, ParameterBlock>(
             new WallClockTimeStopFactory(), new ParameterBlock().addSubBl(
                 WallClockTimeStopFactory.SIMEND, wallClockTime)));
     factoryBlock.addSubBl(POLICY_FACTORY_LIST, subPolicyList);
-
     return factoryBlock;
   }
 }

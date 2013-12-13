@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy.plugintype;
 
+import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -19,8 +20,8 @@ import org.jamesii.core.parameters.ParameterBlock;
  * @author Jan Himmelspach
  * 
  */
-public abstract class ComputationTaskStopPolicyFactory extends
-    Factory<IComputationTaskStopPolicy> {
+public abstract class ComputationTaskStopPolicyFactory<T extends IComputationTask>
+    extends Factory<IComputationTaskStopPolicy<T>> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -3039426107252686102L;
@@ -38,6 +39,6 @@ public abstract class ComputationTaskStopPolicyFactory extends
    * @return the computation task run end component
    */
   @Override
-  public abstract IComputationTaskStopPolicy create(ParameterBlock paramBlock);
+  public abstract IComputationTaskStopPolicy<T> create(ParameterBlock paramBlock);
 
 }
