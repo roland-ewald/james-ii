@@ -36,7 +36,25 @@ public final class MosanExportUtils {
 
     return builder.toString();
   }
+  
+  
+  
+  /**
+   * Write the file header with names
+   */
+  public static String createHeader(List<String> nameList) {
+    StringBuilder builder = new StringBuilder();
+    builder.append("index, time");
+    for (String name : nameList) {
+      builder.append(", " + name);
+    }
 
+    builder.append(", eventid");
+    builder.append(NL);
+
+    return builder.toString();
+  }
+  
   /**
    * Creates a line for the result file.
    * 
