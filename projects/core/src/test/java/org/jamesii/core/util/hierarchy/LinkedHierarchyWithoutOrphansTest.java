@@ -1,7 +1,7 @@
 package org.jamesii.core.util.hierarchy;
 
 /**
- * Perform tests of {@link AbstractHierarchyTest} on {@link TwoMapHierarchy}.
+ * Perform tests of {@link AbstractHierarchyTest} on {@link LinkedHierarchy}.
  * 
  * @author Arne Bittig
  */

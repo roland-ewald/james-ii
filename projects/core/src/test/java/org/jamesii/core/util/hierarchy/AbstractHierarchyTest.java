@@ -94,6 +94,7 @@ public abstract class AbstractHierarchyTest<H extends IHierarchy<String> & Seria
    * {@link IHierarchy#removeChildParentRelation(Object)}
    */
   public void testAddAndRemove() {
+    boolean supportsOrphans = checkOrphans(sampleH);
     // add sample nodes
     final String nodeN1 = "n1";
     final String nodeN2 = "n2";
@@ -121,12 +122,16 @@ public abstract class AbstractHierarchyTest<H extends IHierarchy<String> & Seria
     // remove leaf, check children' update
     sampleH.removeNode(nodeN2);
     assertFalse(sampleH.getChildren(nodeN3).contains(nodeN2));
+    assertTrue(supportsOrphans ? sampleH.getOrphans().isEmpty() : sampleH
+        .getOrphans() == null);
     sampleH.addChildParentRelation(nodeN2, nodeN3);
 
     // remove inner node, check children relation
     sampleH.removeNode(nodeN3);
     assertNull(sampleH.getParent(nodeN3));
     assertTrue(sampleH.getChildren(nodeN3).isEmpty());
+    assertTrue(supportsOrphans ? sampleH.getOrphans().isEmpty() : sampleH
+        .getOrphans() == null);
     assertEquals(nodeN4, sampleH.getParent(nodeN2));
 
     Collection<String> ch4 = sampleH.getChildren(nodeN4);
@@ -138,7 +143,6 @@ public abstract class AbstractHierarchyTest<H extends IHierarchy<String> & Seria
 
     // test remove child-parent relation
     sampleH.removeChildParentRelation(nodeN2);
-    boolean supportsOrphans = checkOrphans(sampleH);
 
     // test root node removal
     sampleH.addChildParentRelation(nodeN3, nodeN4);
