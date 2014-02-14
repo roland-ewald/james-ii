@@ -288,7 +288,8 @@ public final class RandomSampler extends Entity {
   }
 
   /**
-   * Sample point cloud of {@link Double} arrays.
+   * Sample point cloud of {@link Double} arrays. The points are distributed
+   * uniformly.
    * 
    * @param generator
    *          the generator

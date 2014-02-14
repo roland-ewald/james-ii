@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author Roland Ewald
  * @author Jan Himmelspach
- * 
+ * @author Danhua Peng
  */
 public final class MosanExportUtils {
 
@@ -22,7 +22,11 @@ public final class MosanExportUtils {
   }
 
   /**
-   * Write the file header.
+   * Create the file header for a list of IDs.
+   * 
+   * @param idCollection
+   *          the IDs for the header
+   * @return the header
    */
   public static String createHeader(Collection<Integer> idCollection) {
     StringBuilder builder = new StringBuilder();
@@ -36,11 +40,13 @@ public final class MosanExportUtils {
 
     return builder.toString();
   }
-  
-  
-  
+
   /**
-   * Write the file header with names
+   * Create the file header for a list of output variable names.
+   * 
+   * @param nameList
+   *          the list of output variable names
+   * @return the header
    */
   public static String createHeader(List<String> nameList) {
     StringBuilder builder = new StringBuilder();
@@ -54,7 +60,7 @@ public final class MosanExportUtils {
 
     return builder.toString();
   }
-  
+
   /**
    * Creates a line for the result file.
    * 
