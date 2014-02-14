@@ -12,9 +12,9 @@ import org.jamesii.core.serialization.IConstructorParameterProvider;
 import org.jamesii.core.serialization.SerialisationUtils;
 
 /**
- * Implementation of {@link IHierarchy} backed by two maps (but which does not
- * itself implement the {@link Map} interface) and possibly a set (if orphans,
- * i.e. unconnected nodes, are allowed by using the appropriate constructor).
+ * Implementation of {@link IHierarchy} backed by two {@link HashMap}s and
+ * possibly a set (if orphans, i.e. unconnected nodes, are allowed by using the
+ * appropriate constructor), using {@link HashSet}s internally.
  * 
  * This is the original implementation based on {@link HashMap}s, a
  * {@link HashSet} for the orphans (if applicable) and {@link ArrayList}s for

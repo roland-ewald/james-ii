@@ -205,7 +205,7 @@ public abstract class AbstractHierarchy<T> implements IHierarchy<T>,
       return Collections.emptySet();
     }
 
-    T nodeParent = removeRelationChildPart(node);
+    T nodeParent = childToParent.remove(node);
 
     Collection<T> nodeChildren = parentToChildren.remove(node);
     if (nodeChildren == null) { // node was leaf
