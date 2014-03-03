@@ -11,7 +11,7 @@ import java.io.Serializable;
 import org.jamesii.core.util.collection.Fifo;
 
 /**
- * Class FifoMessageBuffer implements a first-in-first-out queue storing
+ * This class implements a first-in-first-out queue storing
  * messages. The queue's length dynamically increases and decreases. There must
  * be producers and consumers in order to put a message in or get a message out.
  * This buffer synchronizes producers and consumers in that way, that a producer
@@ -129,7 +129,7 @@ public final class MessageQueue<T> implements Serializable {
   }
 
   /**
-   * used for the wakeup of the thread who wait for the queue ,when some one
+   * Used to wake up of the thread who wait for the queue ,when some one
    * want to force the end of this certain thread.
    */
   public synchronized void fairwell() {
