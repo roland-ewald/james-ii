@@ -13,6 +13,7 @@ import org.jamesii.core.parameters.ParameterBlock;
  * 
  * @author Jan Himmelspach
  */
+@Deprecated
 public interface IReport {
 
   /**

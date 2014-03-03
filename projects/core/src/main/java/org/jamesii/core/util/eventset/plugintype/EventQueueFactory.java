@@ -50,10 +50,10 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
    *          the parameter
    * @return the i event queue<?, double>
    */
-  @SuppressWarnings("unchecked")
+  @Deprecated
   public <E> IEventQueue<E, Double> create(IReport report,
       ParameterBlock parameter) {
-    IEventQueue<?, Double> result = createDirect(parameter);
+    IEventQueue<E, Double> result = createDirect(parameter);
     if (report != null) {
       report.addEntry("Event queue created", result, parameter);
     }

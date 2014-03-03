@@ -13,6 +13,7 @@ package org.jamesii.core.factories;
  * @author Stefan Rybacki
  * 
  */
+@Deprecated
 public class PluginCreationException extends RuntimeException {
 
   /**

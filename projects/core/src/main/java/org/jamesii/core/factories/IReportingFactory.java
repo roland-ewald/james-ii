@@ -15,6 +15,7 @@ import org.jamesii.core.parameters.ParameterBlock;
  * create method defined in here provides an extra attribute which allows to
  * pass an IReport instance.
  */
+@Deprecated
 public interface IReportingFactory<I> extends IFactory<I> {
 
   /**

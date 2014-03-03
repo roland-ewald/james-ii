@@ -15,6 +15,7 @@ package org.jamesii.core.math.statistics.univariate;
 /**
  * The Class QuartilRange.
  */
+@Deprecated
 public final class QuartilRange {
 
   /**

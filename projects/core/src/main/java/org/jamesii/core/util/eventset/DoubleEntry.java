@@ -13,6 +13,7 @@ package org.jamesii.core.util.eventset;
  * @param <E>
  *          the type of the event
  */
+@Deprecated
 public class DoubleEntry<E> extends Entry<E, Double> {
 
   /** The Constant serialVersionUID. */
