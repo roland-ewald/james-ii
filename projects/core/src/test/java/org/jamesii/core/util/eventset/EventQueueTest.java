@@ -1427,7 +1427,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
       }
       // List<Long> enqOrderCopy = new ArrayList<>(enqOrder);
       // Collections.sort(enqOrderCopy);
-      // if (enqOrderCopy.equals(dequeueAll2)) {
+      // if (enqOrderCopy.equals(dequeueAll1)) {
       // lexicals++;
       // }
       if (enqOrder.equals(dequeueAll1)) {

@@ -8,6 +8,7 @@ package org.jamesii.core.util.eventset;
 
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
+import org.jamesii.core.util.eventset.plugintype.EventOrderingBehavior;
 import org.jamesii.core.util.eventset.plugintype.EventQueueFactory;
 
 /**
@@ -35,4 +36,8 @@ public class UnsortedListEventQueueFactory extends EventQueueFactory {
     return EventIdentityBehavior.IDENTITY;
   }
 
+  @Override
+  public EventOrderingBehavior getEventOrderingBehaviour() {
+    return EventOrderingBehavior.FIFO;
+  }
 }
