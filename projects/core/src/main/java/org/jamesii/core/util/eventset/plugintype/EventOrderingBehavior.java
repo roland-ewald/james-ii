@@ -30,8 +30,8 @@ public enum EventOrderingBehavior {
 	 */
 	LIFO(false, true),
 
-	/** Natural order of the event type, regardless of enqueue order */
-	NATURAL(false, true),
+  // /** Natural order of the event type, regardless of enqueue order */
+  // NATURAL(false, true),
 
 	/**
 	 * Same-time events are not returned in first-in-first-out,
