@@ -85,7 +85,7 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
    * @return the queue's behavior regarding the order of events at the same time
    */
   public EventOrderingBehavior getEventOrderingBehaviour() {
-    return EventOrderingBehavior.NO_ORDER;
+    return EventOrderingBehavior.UNREPRODUCIBLE;
   }
 
   @Override
