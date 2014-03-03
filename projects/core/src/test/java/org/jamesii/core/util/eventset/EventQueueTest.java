@@ -115,23 +115,17 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		testElements = 10;
 
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		// check whether dequeue using an empty queue is causing a problem
 		assertEquals(true, myQueue.dequeue() == null);
-
 		Entry<Object, Double> testEntry = new Entry<>(new Object(), 0.00000001);
 
 		int repeatCount = 2;
-
 		for (int i = 0; i < testElements; i++) {
-
 			Double r = testEntry.getTime() + 0.1 + getRandom().nextDouble();
 			for (int j = 0; j < repeatCount; j++) {
 				myQueue.enqueue(new Object(), r);
 			}
-
 		}
-
 		// check whether all elements have been enqueued
 		assertTrue(
 				"Queue lost elements! contains:should contain = "
@@ -223,88 +217,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 						+ testElements, myQueue.size() == testElements);
 			}
 		}
-
-		myQueue = internalCreate();
-
-		// //try to use resizing methods of queues
-		// for (int i = 0; i < 100000; i++) {
-		//
-		// Double r = testEntry.getTime() + 0.1 + random.nextDouble();
-		// myQueue.enqueue(new Object(), r);
-		//
-		// }
-		//
-		// theLastEntry = null;
-		// //take out 75% percent
-		// for (int i = 0; i < myQueue.size() * 3 / 4; i++) {
-		//
-		// Double r = testEntry.getTime() + 0.1 + random.nextDouble();
-		// theEntry = myQueue.dequeue();
-		//
-		// if (theLastEntry != null)
-		// assertTrue ("Dequeued " + theEntry.getTime() + " after "
-		// + theLastEntry.getTime(), theLastEntry.getTime().compareTo(
-		// theEntry.getTime()) <= 0);
-		//
-		// theLastEntry = theEntry;
-		// }
-		//
-		// Double minTime = myQueue.getMin();
-		//
-		// //try to use resizing methods of queues
-		// for (int i = 0; i < 100000; i++) {
-		// myQueue.enqueue(new Object(), minTime);
-		// }
-		//
-		// for (int i = 0; i < 100000; i++) {
-		// theEntry = myQueue.dequeue();
-		// assertTrue ("Dequeued " + theEntry.getTime() + " but should be "
-		// + minTime, theEntry.getTime().compareTo(
-		// minTime) == 0);
-		// }
-
 	}
-
-	// /**
-	// * Events with the same time stamp have to be treated identically by all
-	// * queues.
-	// */
-	// public final void testOrderOfEqualStamps() {
-	// IEventQueue<Object, Double> myQueue = internalCreate();
-	//
-	// // insert elements; should be in there in ascending order
-	// for (Integer i = 0; i < 100; i++) {
-	// myQueue.enqueue(i, 2.0);
-	// }
-	//
-	// // retrieve elements; should be dequeued in ascending order
-	// for (Integer i = 0; i < 100; i++) {
-	// assertEquals(myQueue.dequeue().getEvent(), i);
-	// }
-	//
-	// myQueue.enqueue(2354265, 2.1);
-	// // insert elements; should be in there in ascending order
-	// for (Integer i = 0; i < 100; i++) {
-	// myQueue.enqueue(i, 2.0);
-	// }
-	//
-	// // retrieve elements; should be dequeued in ascending order
-	// for (Integer i = 0; i < 20; i++) {
-	// assertEquals(myQueue.dequeue().getEvent(), i);
-	// }
-	//
-	// // insert elements; should be in there in ascending order
-	// for (Integer i = 100; i < 200; i++) {
-	// myQueue.enqueue(i, 2.0);
-	// }
-	//
-	// // retrieve elements; should be dequeued in ascending order
-	// for (Integer i = 20; i < 100; i++) {
-	// assertEquals(myQueue.dequeue().getEvent(), i);
-	// }
-	//
-	//
-	// }
 
 	/**
 	 * Test {@link IEventQueue#dequeueAll()}. must return all elements having
@@ -316,33 +229,23 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	public final void testDequeueAll() {
 
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		List<Object> objectList = myQueue.dequeueAll();
-
 		assertNotNull(objectList);
-
 		assertTrue(objectList.isEmpty());
 
 		objectList = myQueue.dequeueAll();
-
 		assertNotNull(objectList);
-
 		assertTrue(objectList.isEmpty());
 
 		myQueue.enqueue(new Object(), 1000.);
-
 		objectList = myQueue.dequeueAll();
-
 		assertNotNull("The object list should not be null", objectList);
-
 		assertTrue(
 				"The queue should be empty but isEmpty does not return true. According to size the queue contains "
 						+ myQueue.size() + " element(s).", myQueue.isEmpty());
-
 		assertFalse(
 				"The object list has to contain one element and should thus not be empty.",
 				objectList.isEmpty());
-
 		assertTrue(
 				"The list should only contain a single elements. But it contains "
 						+ myQueue.size(), objectList.size() == 1);
@@ -367,13 +270,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		assertEquals(1, objectList.size());
 
 		objectList = myQueue.dequeueAll();
-
 		assertNotNull(objectList);
-
 		assertFalse(objectList.isEmpty());
 
 		// tests with more elements
-
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), 0.0);
 		}
@@ -382,7 +282,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
 
 		assertTrue("Queue is not empty but should be!", myQueue.isEmpty());
 		assertTrue(t.size() == testElements);
-
 		// t = myQueue.dequeueAll();
 		// assertTrue (t != null);
 
@@ -457,14 +356,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		}
 
 		// myQueue = internalCreate();
-
 		eles = 1000;
-
 		// The seed -7538847116595691071l caused a problem in one of the queues
 		// (with at least 1000 and 10000 eles)
-
 		IRandom rand = new JavaRandom(-7538847116595691071l);
-
 		for (int i = 0; i < eles; i++) {
 			myQueue.enqueue(new Object(), tim + rand.nextDouble());
 		}
@@ -492,14 +387,11 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		assertTrue("The queue should have as min time " + ti + " but it is "
 				+ myQueue.getMin(), myQueue.getMin().compareTo(ti) == 0);
 		// assertTrue(myQueue.size() == eles);
-
 		// Queue has eles elements in it
 
 		// add 10 elements with time time, thus together with the one already in
 		// there should be 11 at all
 		for (int i = 0; i < 10; i++) {
-			// System.out.println("added ele with time "+ti);
-
 			myQueue.enqueue(new NamedEntity("" + i), ti);
 			assertTrue("Size should be " + (eles + i + rememberSize)
 					+ " but is " + myQueue.size(), myQueue.size() == eles + i
@@ -509,24 +401,15 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		assertTrue("Size is " + myQueue.size() + " instead of " + eles + 10,
 				eles + 10 == myQueue.size());
 
-		// System.out.println("enqueued 10 elements with time "+ti+"\n"+myQueue+". Now there are "+myQueue.size()+" elements in the queue.");
-
-		System.out.println(myQueue);
-
+		// System.out.println("enqueued 10 elements with time "+ti+"\n"+
+		// myQueue+". Now there are "+myQueue.size()+" elements in the queue.");
 		t = myQueue.dequeueAll();
-
 		assertTrue(
-				"Size should be "
-						+ (eles - rememberSize)
-						+ " but is "
-						+ myQueue.size()
-						+ "\nThe min extracted:"
-						+ ti
-						+ "\nExtracted "
-						+ t.size()
-						+ " elements ("
-						+ t
-						+ ") with that time\nThe queue contains the following elements\n\n"
+				"Size should be " + (eles - rememberSize) + " but is "
+						+ myQueue.size() + "\nThe min extracted:" + ti
+						+ "\nExtracted " + t.size() + " elements (" + t
+						+ ") with that time\n"
+						+ "The queue contains the following elements\n\n"
 						+ myQueue.toString(), myQueue.size() == eles
 						- rememberSize);
 
@@ -541,75 +424,18 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		// System.out.println("dequeueAll finished at " + elapsedTime);
 	}
 
-	// /**
-	// * Test enqueue and dequeue order. Checks whether the order of dequeued
-	// events matches the requirements from the interface (FIFO order).
-	// */
-	// public final void testEnqueueAndDequeueOrder() {
-	// IEventQueue<Object, Double> myQueue = internalCreate();
-	//
-	// Object o1 = new Object();
-	// Object o2 = new Object();
-	// Object o3 = new Object();
-	//
-	// double time = 1.4;
-	//
-	// // simple test - enqueue three elements and dequeue them, according to
-	// the
-	// // interface they have to be in FIFO order
-	//
-	// myQueue.enqueue(o1, time);
-	// myQueue.enqueue(o2, time);
-	// myQueue.enqueue(o3, time);
-	//
-	// assertEquals(o1, myQueue.dequeue());
-	// assertEquals(o2, myQueue.dequeue());
-	// assertEquals(o3, myQueue.dequeue());
-	//
-	// // enqueue the three events again; get out one, enqueue this again, and
-	// // check whether it will be dequeued as last one
-	//
-	// myQueue.enqueue(o1, time);
-	// myQueue.enqueue(o2, time);
-	// myQueue.enqueue(o3, time);
-	//
-	// assertEquals(o1, myQueue.dequeue());
-	// myQueue.enqueue(o1, time);
-	//
-	// assertEquals(o2, myQueue.dequeue());
-	// assertEquals(o3, myQueue.dequeue());
-	// assertEquals(o1, myQueue.dequeue());
-	//
-	// // enqueue three events; requeue the second one which should then be
-	// // dequeued as last
-	//
-	// myQueue.enqueue(o1, time);
-	// myQueue.enqueue(o2, time);
-	// myQueue.enqueue(o3, time);
-	//
-	// myQueue.requeue(o2, time);
-	//
-	// assertEquals(o1, myQueue.dequeue());
-	// assertEquals(o3, myQueue.dequeue());
-	// assertEquals(o2, myQueue.dequeue());
-	//
-	// }
-
 	/**
 	 * Test {@link IEventQueue#dequeueAllHashed()}. must return all elements
 	 * having the least time stamp.
 	 */
 	public final void testDequeueAllHashed() {
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		assertNotNull(myQueue.dequeueAllHashed());
 
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), 0.0);
 		}
-
 		Map<Object, Object> t = myQueue.dequeueAllHashed();
-
 		assertEquals(
 				"Not empty! Still contains some elements: " + myQueue.size(),
 				true, myQueue.isEmpty());
@@ -727,28 +553,21 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 */
 	public final void testDequeueAllTimed() {
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		int num = 5;
-
 		for (int i = 0; i < testElements / 2; i++) {
 			myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
 		}
-
 		for (int i = 0; i < num; i++) {
 			myQueue.enqueue(new Object(), 3.0);
 		}
-
 		for (int i = testElements / 2; i < testElements; i++) {
 			myQueue.enqueue(new Object(), 2.0 + getRandom().nextDouble());
 		}
-
 		assertEquals(testElements + num, myQueue.size());
 
 		List<Object> list = myQueue.dequeueAll(3.0);
-
 		assertEquals("Incorrect number of dequeued elements with time 3.0",
 				num, list.size());
-
 		// number of elements after dequeueAll should be equal to testElements
 		assertEquals("Number of elements in the queue should be "
 				+ testElements + " but is " + myQueue.size(), testElements,
@@ -757,9 +576,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		myQueue = internalCreate();
 
 		myQueue.enqueue(new Object(), 0.0);
-
 		list = myQueue.dequeueAll(0.0);
-
 		assertEquals(list.size(), 1);
 
 		myQueue = internalCreate();
@@ -782,21 +599,15 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 */
 	public final void testDequeueEvent() {
 		Object testObject = new Object();
-
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		assertTrue(myQueue.dequeue(testObject) == null);
 
 		Double testVal = new Double(0.1);
-
 		myQueue.enqueue(testObject, testVal);
-
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), testVal + getRandom().nextDouble());
 		}
-
 		myQueue.dequeue(testObject);
-
 		assertNull(myQueue.dequeue(testObject));
 
 		for (int i = 0; i < testElements; i++) {
@@ -818,26 +629,22 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), 0.0);
 		}
-
 		assertTrue(myQueue.size() == testElements);
 
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), Double.POSITIVE_INFINITY);
 		}
-
 		assertTrue(myQueue.size() == testElements * 2);
 
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), 4.0 + getRandom().nextDouble());
 		}
-
 		assertTrue(myQueue.size() == testElements * 3);
 
 		// large size
 		for (int i = 0; i < 10000; i++) {
 			myQueue.enqueue(new Object(), getRandom().nextDouble());
 		}
-
 		assertTrue("Number of entries in queue is " + myQueue.size()
 				+ ". That's not ok.",
 				myQueue.size() == testElements * 3 + 10000);
@@ -859,7 +666,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
 			}
 		}
 		assertEquals(testElements * 3, myQueue.size());
-
 		assertTrue(myQueue.size() == testElements * 3);
 
 		myQueue = internalCreate();
@@ -869,7 +675,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		}
 
 		myQueue.enqueue(new Object(), 2.);
-
 		assertTrue(myQueue.getMin().compareTo(2.) == 0);
 		assertTrue(myQueue.getMin().compareTo(2.) == 0);
 
@@ -929,16 +734,10 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 * Test {@link IEventQueue#enqueue(Object, Comparable)} again.
 	 */
 	public final void testEnqueueAgain() {
-
-		// System.out.print("E:");
-
-		// System.out.println("################################ ENQUEUE");
-
 		IBasicEventQueue<Object, Double> myQueue = internalCreate();
 
 		int oldSize = 0;
 		int size = 0;
-
 		Entry<Object, Double> testEntry = new Entry<>(new Object(), 0.00000001);
 
 		// should be > 1!!!
@@ -961,7 +760,6 @@ public abstract class EventQueueTest extends ChattyTestCase {
 			}
 
 			size = myQueue.size();
-
 			// we have added repeatCount entries, thus there should be
 			// repeatCount entries more in the queue
 			assertTrue("Failed on inserting " + r + " " + repeatCount
@@ -1087,29 +885,22 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 * Test {@link IEventQueue#getTime(Object)}.
 	 */
 	public final void testGetTime() {
-
 		Object testObject = new Object();
-
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		Double testVal = new Double(0.1);
-
 		assertTrue(myQueue.getTime(testObject) == null);
 
 		myQueue.enqueue(testObject, testVal);
-
 		// test: only this entry has been added ...
 		for (int i = 0; i < 3; i++) {
 			// compare the time of the getMin (testobject) to it's time stamp
 			// (testVal)
 			assertTrue(testVal.compareTo(myQueue.getTime(testObject)) == 0);
 		}
-
 		// add more entries
 		for (int i = 0; i < testElements; i++) {
 			myQueue.enqueue(new Object(), testVal + getRandom().nextDouble());
 		}
-
 		// now retest
 		for (int i = 0; i < 3; i++) {
 			// compare the time of the getMin (testobject) to it's time stamp
@@ -1118,11 +909,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		}
 
 		testObject = new Object();
-
 		testVal += 20000;
-
 		myQueue.enqueue(testObject, testVal);
-
 		for (int i = 0; i < 3; i++) {
 			// compare the time of the getMin (testobject) to it's time stamp
 			// (testVal)
@@ -1130,10 +918,8 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		}
 
 		// TODO getTime of a not existing object!
-
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		System.out.println("getTime finished at " + elapsedTime);
-
 	}
 
 	/**
@@ -1300,34 +1086,16 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 * Test {@link IEventQueue#requeue(Object, Comparable, Comparable)}.
 	 */
 	public final void testRequeueWithOldTime() {
-
 		Object testObject = new Object();
-
 		IEventQueue<Object, Double> myQueue = internalCreate();
-
 		myQueue.enqueue(testObject, 0.0);
-
-		// ((MList)myQueue).print();
-
 		myQueue.requeue(testObject, 0.0, 0.1);
-
-		// ((MList)myQueue).print();
-
 		myQueue.requeue(testObject, 0.1, 0.5);
-
-		// ((MList)myQueue).print();
-
 		Object testObject2 = new Object();
 		// this line will cause an error if the event has already been scheduled
 		// and if the list implementation does not check this!!
 		myQueue.enqueue(testObject2, 0.6);
-
-		// ((MList)myQueue).print();
-
 		myQueue.requeue(testObject2, 0.6, 0.4);
-
-		// ((MList)myQueue).print();
-
 		// the least time stamp should be 0.4
 		Entry<Object, Double> testIt = myQueue.dequeue();
 		assertTrue((testIt.getEvent() == testObject2)
@@ -1377,10 +1145,9 @@ public abstract class EventQueueTest extends ChattyTestCase {
 		newEventTime = 0.125;
 		myQueue.requeue(newTestEvent, 0.1, newEventTime);
 
-		// // uncomment the following three statements if null should be an
-		// allowed
-		// // value for oldTime (the doc is unclear on which wrong values to
-		// cover)
+		// uncomment the following three statements if null should be an
+		// allowed value for oldTime (the doc is unclear on which wrong
+		// values to cover)
 
 		// assertEquals("Event passed to requeue should have been enqueued at time "
 		// + newEventTime, newEventTime, myQueue.getMin());
@@ -1612,9 +1379,9 @@ public abstract class EventQueueTest extends ChattyTestCase {
 			List<Object> dequeueAll2 = eq2.dequeueAll();
 			numBlocks++;
 			List<Long> enqOrder = enqOrders.get(time1);
-			
-			assertSame(dequeueAll1.size(),dequeueAll2.size());
-			assertSame(enqOrder.size(),dequeueAll1.size());
+
+			assertSame(dequeueAll1.size(), dequeueAll2.size());
+			assertSame(enqOrder.size(), dequeueAll1.size());
 			// System.err.println(eq1.getClass().getSimpleName() + "\n" +
 			// enqOrder + "\n" + dequeueAll1 + "\n" + dequeueAll2);
 			if (!dequeueAll1.equals(dequeueAll2)) {
@@ -1704,6 +1471,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 * Print the eventQueue queue using the toString method. This method should
 	 * only print something if {@link #isDebug()} returns true.
 	 */
+	@Deprecated
 	protected void print() {
 		if (debug) {
 			System.out.println(getEventQueue());
@@ -1728,6 +1496,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	/**
 	 * @return the debug
 	 */
+	@Deprecated
 	protected boolean isDebug() {
 		return debug;
 	}
@@ -1740,6 +1509,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
 	 * @param debug
 	 *            the debug to set
 	 */
+	@Deprecated
 	protected void setDebug(boolean debug) {
 		this.debug = debug;
 	}
