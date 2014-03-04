@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="Performance database: performance measurer plugins" version="1.0" /> 
+  <abstractfactory>org.jamesii.perfdb.recording.performance.plugintype.AbstractPerformanceMeasurerFactory</abstractfactory> 
+  <basefactory>org.jamesii.perfdb.recording.performance.plugintype.PerformanceMeasurerFactory</basefactory> 
+  <description>Plug-ins that calculate performance metrics</description>
+</plugintype>

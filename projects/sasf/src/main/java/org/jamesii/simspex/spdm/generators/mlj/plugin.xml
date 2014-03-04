@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SASF: Predictor Generators based on MLJ (SPDM)" version="1.0" /> 
+  
+  <factory classname="org.jamesii.simspex.spdm.generators.mlj.NaiveBayesPredictorGeneratorFactory">
+  	<parameter name="numOfClasses" type="java.lang.Integer" defaultValue="3">
+      <description>The number of performance classes the decision tree shall distinguish.</description>
+    </parameter>
+  </factory>
+
+  <factory classname="org.jamesii.simspex.spdm.generators.mlj.ID3PredictorGeneratorFactory">
+  	<parameter name="numOfClasses" type="java.lang.Integer" defaultValue="3">
+      <description>The number of performance classes the decision tree shall distinguish.</description>
+    </parameter>
+  </factory>
+
+</plugin>

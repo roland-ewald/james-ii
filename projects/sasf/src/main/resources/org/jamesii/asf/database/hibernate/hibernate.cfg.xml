@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- Lots of required properties are still missing here! -->
+    <mapping resource="org/jamesii/asf/database/hibernate/SelectorType.hbm.xml" />
+    <mapping resource="org/jamesii/asf/database/hibernate/Selector.hbm.xml" />
+    <mapping resource="org/jamesii/asf/database/hibernate/TrainingProblem.hbm.xml" />
+    <mapping resource="org/jamesii/asf/database/hibernate/Selection.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SASF: JOONE-based Neural Network Predictor Generator (SPDM)" version="1.0" />  
+  <factory classname="org.jamesii.simspex.spdm.generators.joone.NeuralNetworkPredGenFactory">
+    <parameter name="learnerType" type="java.lang.Integer" defaultValue="1">
+      <description>Enumeration index of learner type (see org.jamesii.simspex.spdm.generators.joone.NNLearner).</description>
+    </parameter>
+    <parameter name="layerType" type="java.lang.Integer" defaultValue="1">
+      <description>Enumeration index of layer type (see org.jamesii.simspex.spdm.generators.joone.NNLayer).</description>
+    </parameter>    
+    <parameter name="synapseType" type="java.lang.Integer" defaultValue="1">
+      <description>Enumeration index of synpase type (see org.jamesii.simspex.spdm.generators.joone.NNSynapse).</description>
+    </parameter>
+    <parameter name="neuronsPerLayer" type="java.lang.Integer" defaultValue="10">
+      <description>Number of neurons per layer.</description>
+    </parameter>
+    <parameter name="numOfLayers" type="java.lang.Integer" defaultValue="1">
+      <description>Number of hidden layers.</description>
+    </parameter>    
+    <parameter name="trainingCycles" type="java.lang.Integer" defaultValue="100">
+      <description>Number of training cycles.</description>
+    </parameter>
+    <parameter name="momentum" type="java.lang.Double" defaultValue="0.5">
+      <description>Momentum of neural network learner.Momentum allows that previous weight changes are taken into account as well (scaled by this factor). It should be in [0,1].</description>
+    </parameter>
+    <parameter name="learningRate" type="java.lang.Double" defaultValue="1">
+      <description>Learning rate of neural network learner.</description>
+    </parameter>
+    <parameter name="multiThreadingEnabled" type="java.lang.Boolean" defaultValue="false">
+      <description>Turn this on to enable multi-threading (only makes sense when training *large* networks).</description>
+    </parameter>
+  </factory>
+</plugin>

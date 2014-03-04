@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sasf</artifactId>
+	<packaging>jar</packaging>
+	<name>SASF (Simulation Algorithm Selection Framework)</name>
+
+	<parent>
+		<groupId>org.jamesii</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.9.5-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<!-- Internal -->
+		<dependency>
+			<groupId>org.jamesii</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jamesii</groupId>
+			<artifactId>core</artifactId>
+			<version>0.9.5-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jamesii</groupId>
+			<artifactId>resultreports</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- External -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+		</dependency>
+
+		<!-- HyperSQL (file/mem-based Java DB) -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+		</dependency>
+
+		<!-- MySQL support (useful for debugging) -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>joone</groupId>
+			<artifactId>joone-engine</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mlj</groupId>
+			<artifactId>mlj</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+</project>

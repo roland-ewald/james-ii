@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.asf.database.hibernate">
+<class name="Selection" table="selections">
+<id name="ID">
+	<generator class="native"/>
+</id>
+<many-to-one name="sel" column="selector_id"/>
+<many-to-one name="runtimeConfig" column="config_id"/>
+<set name="features" table="selection_features">
+	<key column="selection_id"/>
+	<many-to-many column="feature_id" class="org.jamesii.perfdb.hibernate.Feature"/>
+</set>
+</class>
+</hibernate-mapping>

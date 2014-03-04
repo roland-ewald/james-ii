@@ -1,0 +1,1 @@
+SELECT RT.id, COUNT(*) FROM runtime_configurations as RT LEFT JOIN (performance_measurements as PM) ON (RT.id = PM.config_id) WHERE PM.performance < 0 GROUP BY RT.id;

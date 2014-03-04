@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SASF: Adaptive Task Runner" version="1.0" />   
+  <factory classname="org.jamesii.simspex.adaptiverunner.AdaptiveTaskRunnerFactory">
+    <parameter name="Master Server" type="java.lang.String">
+      <description>Name of the master server.</description>
+    </parameter>
+    <parameter name="Number of used cores" type="java.lang.Integer">
+      <description>Number of cores to be used by the parallel task runner (default is the number of available cores).</description>
+    </parameter>
+    <parameter name="MinBanditPolicy" type="java.lang.String" plugintype="org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory">
+		<description>Parameter block to select/initialise the min bandit policy to be used.</description>    	
+    </parameter>    
+    <parameter name="PolicyObservers" type="java.util.List">
+    	<description>List of observers for the policy.</description>
+    </parameter>
+    <parameter name="BlackList" type="java.util.List">
+    	<description>List of factories that shall be ignored.</description>
+    </parameter>    
+  </factory> 
+</plugin>

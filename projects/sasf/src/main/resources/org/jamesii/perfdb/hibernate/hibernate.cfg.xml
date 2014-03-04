@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+
+    <!-- HSQLDB:'org.hibernate.dialect.HSQLDialect' -->
+    <!-- MySQL:'org.hibernate.dialect.MySQL5Dialect' -->
+    <property name="dialect">
+      org.hibernate.dialect.HSQLDialect
+    </property>
+
+    <!-- HSQLDB:'org.hsqldb.jdbcDriver' -->
+    <!-- MySQL:'com.mysql.jdbc.Driver' -->
+    <property name="connection.driver_class">
+      org.hsqldb.jdbcDriver
+    </property>
+
+    <property name="connection.username">
+      sa
+    </property>
+
+    <property name="connection.password">
+    </property>
+
+    <!-- HSQLDB: e.g. 'jdbc:hsqldb:mem:j2_perf_sel_db' -->
+    <!-- HSQLDB: e.g. 'jdbc://localhost/j2_perf_sel_db' -->
+    <property name="connection.url">
+      jdbc:hsqldb:mem:j2_perf_sel_db
+    </property>
+    <mapping resource="org/jamesii/perfdb/hibernate/ProblemScheme.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/ProblemDefinition.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/ProblemInstance.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/Machine.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/HardwareSetup.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/RuntimeConfiguration.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/Application.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/FeatureType.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/Feature.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/PerformanceType.hbm.xml" />
+    <mapping resource="org/jamesii/perfdb/hibernate/Performance.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>

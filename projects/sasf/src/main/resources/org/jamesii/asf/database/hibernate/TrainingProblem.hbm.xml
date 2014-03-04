@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.asf.database.hibernate">
+<class name="TrainingProblem" table="training_problems">
+<id name="ID">
+	<generator class="native"/>
+</id>
+<many-to-one name="sel" column="selector_id"/>
+<many-to-one name="simProblem" column="problem_id"/>
+<property name="numOfConfigs" column="num_configs"/>
+<property name="numOfFeatures" column="num_features"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SASF: Policies for Multi-Armed Bandit Problems" version="1.0" /> 
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonGreedyDecreasingFactory">
+    <parameter name="C" type="java.lang.Double" defaultValue="0.2">
+      <description>Controls degree of exploration - the higher, the more exploration. Has to be > 0.</description>
+    </parameter> 
+    <parameter name="D" type="java.lang.Double" defaultValue="0.5">
+      <description>Controls degree of exploitation - the higher, the more exploitation. Has to be in (0,1).</description>
+    </parameter>   
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonGreedyDecrInitFactory">
+    <parameter name="C" type="java.lang.Double" defaultValue="0.2">
+      <description>Controls degree of exploration - the higher, the more exploration. Has to be > 0.</description>
+    </parameter> 
+    <parameter name="D" type="java.lang.Double" defaultValue="0.5">
+      <description>Controls degree of exploitation - the higher, the more exploitation. Has to be in (0,1).</description>
+    </parameter>
+    <parameter name="minNumOfTrials" type="java.lang.Integer" defaultValue="1">
+      <description>The minimal number of trials to be conducted per option. Corresponds to the number of initial rounds.</description>
+    </parameter>   
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.UCB1Factory"></factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.UCB1TunedFactory"></factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.RandomSelFactory"></factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.BiasedRandomSelectionFactory">
+    <parameter name="biasPower" type="java.lang.Double" defaultValue="3.0">
+      <description>Controls degree of exploitation - the higher, the more bias towards faster algorithms. Bias power of n will result in an arm probability of 1/(x^n), with x being average reward per pull.</description>
+    </parameter>
+    <parameter name="numberOfInitialRounds" type="java.lang.Integer" defaultValue="3">
+      <description>Controls the number of initial rounds where each algorithm is tried once in a round-robin manner. In other words, each algorithm is at least used this often (if number horizon permits it).</description>
+    </parameter>     
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.UCB2Factory">
+    <parameter name="alpha" type="java.lang.Double" defaultValue="0.001">
+      <description>Controls degree of exploration. Has to be in (0,1).</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonFirstFactory">
+    <parameter name="EP" type="java.lang.Double" defaultValue="0.15">
+      <description>Controls degree of exploration. Gives the percentage of arms that will be pulled randomly before the best arm (so far) will be exploited afterward. Has to be in (0,1].</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonGreedyFactory">
+    <parameter name="EP" type="java.lang.Double" defaultValue="0.15">
+      <description>Controls degree of exploration. The higher epsilon, the more exploration takes place. Has to be in (0,1].</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonDecreasingFactory">
+    <parameter name="EP" type="java.lang.Double" defaultValue="5">
+      <description>Controls degree of exploration. The higher epsilon, the more exploration takes place.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonDecreasingMixFactory">
+    <parameter name="EP" type="java.lang.Double" defaultValue="5">
+      <description>Controls degree of exploration. The higher epsilon, the more exploration takes place.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.EpsilonLeastTakenFactory">
+    <parameter name="EP" type="java.lang.Double" defaultValue="0.15">
+      <description>Controls degree of exploration. The higher epsilon, the more exploration takes place.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.SoftMaxFactory">
+    <parameter name="T" type="java.lang.Double" defaultValue="0.1">
+      <description>Controls degree of exploration. The higher the temperature, the more exploration takes place.</description>
+    </parameter> 
+  </factory>  
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.SoftMaxDecreasingFactory">
+    <parameter name="T" type="java.lang.Double" defaultValue="1.0">
+      <description>Controls degree of exploration. The higher the temperature, the more exploration takes place.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.SoftMaxDecreasingMixFactory">
+    <parameter name="T" type="java.lang.Double" defaultValue="1.0">
+      <description>Controls degree of exploration. The higher the temperature, the more exploration takes place.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.IntEstimFactory">
+    <parameter name="A" type="java.lang.Double" defaultValue="0.05">
+      <description> Parameter of the heuristic. Has to be in (0,1). Note that smaller alpha values lead to more exploration.</description>
+    </parameter>
+        <parameter name="D" type="java.lang.Integer" defaultValue="20">
+      <description>Parameter for the start of the heuristic has to be in [0,100]. The higher, the more worse arms will be tested.</description>
+    </parameter> 
+  </factory>
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.IntEstimDecFactory">
+    <parameter name="A" type="java.lang.Double" defaultValue="0.05">
+      <description> Parameter of the heuristic. Has to be in (0,0.5). Note that smaller alpha values lead to more exploration.</description>
+    </parameter>
+        <parameter name="D" type="java.lang.Integer" defaultValue="20">
+      <description>Parameter for the start of the heuristic has to be in [0,100]. The higher, the more worse arms will be tested.</description>
+    </parameter> 
+  </factory>  
+  <factory classname="org.jamesii.simspex.adaptiverunner.policies.RewardComparisonFactory">
+    <parameter name="alpha" type="java.lang.Double" defaultValue="0.5">
+      <description>Has to be in (0,1].</description>
+    </parameter> 
+    <parameter name="beta" type="java.lang.Double" defaultValue="0.5">
+      <description>Parameter of the heuristic. The higher, the more exploitation takes place. Has to be > 0.0.</description>
+    </parameter> 
+  </factory>
+    <factory classname="org.jamesii.simspex.adaptiverunner.policies.PursuitFactory">
+    <parameter name="beta" type="java.lang.Double" defaultValue="0.01">
+      <description>Parameter of the heuristic. The higher, the more exploitation takes place. Has to be in (0,1).</description>
+    </parameter> 
+  </factory>
+</plugin>

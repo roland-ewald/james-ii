@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.perfdb.hibernate">
+  <class name="Application" table="applications">
+    <id name="ID">
+      <generator class="native" />
+    </id>
+    <property name="executionDate" column="execution_date"
+      type="timestamp" />
+    <many-to-one name="problemInst" column="problem_instance_id" />
+    <many-to-one name="hardwareSetup" column="setup_id" />
+    <many-to-one name="runtimeConfig" column="config_id" />
+    <property name="dataProvider" column="data_provider"
+      length="4096" />
+  </class>
+</hibernate-mapping>

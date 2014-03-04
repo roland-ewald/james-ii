@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.asf.database.hibernate">
+<class name="Selector" table="selectors">
+<id name="ID">
+	<generator class="native"/>
+</id>
+<many-to-one name="selType" column="selector_type_id"/>
+<property name="name"/>
+<property name="description"/>
+<property name="uriString" column="uri"/>
+<property name="code"/>
+<property name="parameters"/>
+</class>
+</hibernate-mapping>

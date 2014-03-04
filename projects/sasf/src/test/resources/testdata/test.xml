@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0-ea" class="java.beans.XMLDecoder">
+ <object class="org.jamesii.asf.spdm.dataimport.PerformanceDataSet">
+  <void property="instances">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.james.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.drm.DirectReactionProcessorVarAFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>4.1104719764011834</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>27.7470000000001</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>16.034770000000005</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>15.482653061224513</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>34.460999999999984</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>44.660100000000035</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>12.733847601128897</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>17.277510000000007</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>33.30895000000004</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>24.460330000000038</double>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="org.jamesii.asf.spdm.dataimport.PerformanceTuple">
+      <void property="configuration">
+       <object class="org.jamesii.asf.spdm.Configuration">
+        <void method="put">
+         <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+         <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+        </void>
+       </object>
+      </void>
+      <void property="features">
+       <object class="org.jamesii.asf.spdm.Features">
+        <void method="put">
+         <string>#Species</string>
+         <int>5</int>
+        </void>
+        <void method="put">
+         <string>#Reactions</string>
+         <int>15</int>
+        </void>
+        <void method="put">
+         <string>#AvgReactProdDegree</string>
+         <double>2.0</double>
+        </void>
+       </object>
+      </void>
+      <void property="perfMeasureFactory">
+       <class>org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory</class>
+      </void>
+      <void property="performance">
+       <double>23.93397000000002</double>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void property="metaData">
+   <object class="org.jamesii.asf.spdm.dataimport.PerfTupleMetaData">
+    <void property="nominalAttribs">
+     <void method="put">
+      <string>org.jamesii.core.processor.plugintype.AbstractProcessorFactory</string>
+      <object class="java.util.HashSet">
+       <void method="add">
+        <string>simulator.ssa.nrm.NextReactionProcessorVarBFactory</string>
+       </void>
+       <void method="add">
+        <string>simulator.ssa.drm.DirectReactionProcessorVarAFactory</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="numericAttribs">
+     <void method="add">
+      <string>#Species</string>
+     </void>
+     <void method="add">
+      <string>#Reactions</string>
+     </void>
+     <void method="add">
+      <string>#AvgReactProdDegree</string>
+     </void>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

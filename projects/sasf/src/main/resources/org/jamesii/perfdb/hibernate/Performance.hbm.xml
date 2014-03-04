@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.perfdb.hibernate">
+
+<class name="Performance" table="performances">
+<id name="ID">
+	<generator class="native"/>
+</id>
+<many-to-one name="app" column="app_id"/>
+<many-to-one name="perfType" column="performance_type_id"/>
+<property name="performance" />
+</class>
+
+<database-object>
+ <create>CREATE VIEW `app_problem_ids` AS select `applications`.`ID` AS `app_id`,`problem_instances`.`problem_id` AS `prob_id`,`problem_instances`.`ID` AS `inst_id`,`applications`.`config_id` AS `config_id`,`applications`.`setup_id` AS `setup_id`,`applications`.`data_provider` AS `data_provider` from (`applications` left join `problem_instances` on((`applications`.`problem_instance_id` = `problem_instances`.`ID`)))</create>
+ <drop>DROP VIEW IF EXISTS `app_problem_ids`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `app_perfs` AS select `performances`.`performance` AS `performance`,`app_problem_ids`.`app_id` AS `app_id`,`app_problem_ids`.`prob_id` AS `prob_id`,`app_problem_ids`.`inst_id` AS `inst_id`,`app_problem_ids`.`config_id` AS `config_id`,`app_problem_ids`.`setup_id` AS `setup_id`,`app_problem_ids`.`data_provider` AS `data_provider`,`performances`.`performance_type_id` AS `performance_type_id` from (`app_problem_ids` left join `performances` on((`app_problem_ids`.`app_id` = `performances`.`app_id`))) where `performances`.`performance`>=0</create>
+ <drop>DROP VIEW IF EXISTS `app_perfs`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `perf_inst_stats` AS select count(0) AS `trials`,min(`app_perfs`.`performance`) AS `min_perf`,avg(`app_perfs`.`performance`) AS `avg_perf`,max(`app_perfs`.`performance`) AS `max_perf`,std(`app_perfs`.`performance`) AS `perf_stddev`,variance(`app_perfs`.`performance`) AS `perf_var`,`app_perfs`.`performance_type_id` AS `perf_type`,`app_perfs`.`prob_id` AS `prob_id`,`app_perfs`.`config_id` AS `config_id`,`app_perfs`.`setup_id` AS `setup_id` from `app_perfs` group by `app_perfs`.`prob_id`,`app_perfs`.`config_id`,`app_perfs`.`setup_id`</create>
+ <drop>DROP VIEW IF EXISTS `perf_inst_stats`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `perf_prob_stats` AS select count(0) AS `configs`,min(`perf_inst_stats`.`avg_perf`) AS `min_perf`,max(`perf_inst_stats`.`avg_perf`) AS `max_perf`,`perf_inst_stats`.`prob_id` AS `prob_id` from `perf_inst_stats` group by `perf_inst_stats`.`prob_id`</create>
+ <drop>DROP VIEW IF EXISTS `perf_prob_stats`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `gain_problems` AS select ((`perf_prob_stats`.`max_perf` / `perf_prob_stats`.`min_perf`) - 1) AS `relative_slow_down`,`perf_prob_stats`.`min_perf` AS `min_perf`,`perf_prob_stats`.`max_perf` AS `max_perf`,`problems`.`sim_end_time` AS `sim_end_time`,`perf_prob_stats`.`prob_id` AS `prob_id`,`problems`.`model_id` AS `model_id` from (`perf_prob_stats` left join `problems` on((`perf_prob_stats`.`prob_id` = `problems`.`ID`))) order by (`perf_prob_stats`.`max_perf` / `perf_prob_stats`.`min_perf`) desc</create>
+ <drop>DROP VIEW IF EXISTS `gain_problems`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `gain_models` AS select avg(`gain_problems`.`relative_slow_down`) AS `avg_rel_slow_down`,`models`.`name` AS `model_name`,`models`.`description` AS `model_desc`,`models`.`uri` AS `model_uri`,`models`.`typeString` AS `model_type` from (`gain_problems` left join `models` on((`gain_problems`.`model_id` = `models`.`ID`))) group by `gain_problems`.`model_id` order by avg(`gain_problems`.`relative_slow_down`) desc</create>
+ <drop>DROP VIEW IF EXISTS `gain_models`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE VIEW `config_winners` AS select `gain_problems`.`relative_slow_down` AS `relative_slow_down`,`gain_problems`.`min_perf` AS `min_perf`,`gain_problems`.`sim_end_time` AS `sim_end_time`,`gain_problems`.`prob_id` AS `prob_id`,`gain_problems`.`model_id` AS `model_id`,`perf_inst_stats`.`config_id` AS `config_id` from (`gain_problems` left join `perf_inst_stats` on(((`gain_problems`.`prob_id` = `perf_inst_stats`.`prob_id`) and (`gain_problems`.`min_perf` = `perf_inst_stats`.`avg_perf`)))) order by `gain_problems`.`relative_slow_down` desc</create>
+ <drop>DROP VIEW IF EXISTS `config_winners`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE VIEW `config_losers` AS select `gain_problems`.`relative_slow_down` AS `relative_slow_down`,`gain_problems`.`max_perf` AS `max_perf`,`gain_problems`.`sim_end_time` AS `sim_end_time`,`gain_problems`.`prob_id` AS `prob_id`,`gain_problems`.`model_id` AS `model_id`,`perf_inst_stats`.`config_id` AS `config_id` from (`gain_problems` left join `perf_inst_stats` on(((`gain_problems`.`prob_id` = `perf_inst_stats`.`prob_id`) and (`gain_problems`.`max_perf` = `perf_inst_stats`.`avg_perf`)))) order by `gain_problems`.`relative_slow_down` desc</create>
+ <drop>DROP VIEW IF EXISTS `config_losers`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+<database-object>
+ <create>CREATE  VIEW `app_failed` AS select count(*) AS `failed_apps`,`app_problem_ids`.`prob_id` AS `prob_id`,`app_problem_ids`.`config_id` AS `config_id` from (`app_problem_ids` left join `performances` on((`app_problem_ids`.`app_id` = `performances`.`app_id`))) where `performances`.`performance` &lt; 0 group by config_id,prob_id</create>
+ <drop>DROP VIEW IF EXISTS `app_failed`</drop>
+ <dialect-scope name='org.hibernate.dialect.MySQL5Dialect' />
+</database-object>
+
+</hibernate-mapping>

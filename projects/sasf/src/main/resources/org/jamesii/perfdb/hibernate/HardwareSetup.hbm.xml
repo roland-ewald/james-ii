@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.perfdb.hibernate">
+  <class name="HardwareSetup" table="setups">
+    <id name="ID">
+      <generator class="native" />
+    </id>
+    <property name="name" />
+    <property name="description" />
+    <property name="networkSpeed" column="network_speed" />
+    <property name="networkTopology" column="network_topology" />
+    <set name="machines" table="machine_setups">
+      <key column="setup_id" />
+      <many-to-many column="machine_id" class="org.jamesii.perfdb.hibernate.Machine" />
+    </set>
+  </class>
+</hibernate-mapping>

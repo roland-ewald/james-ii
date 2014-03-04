@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.perfdb.hibernate">
+  <class name="RuntimeConfiguration" table="runtime_configurations">
+    <id name="ID">
+      <generator class="native" />
+    </id>
+    <property name="upToDate" column="up_to_date" />
+    <property name="version" />
+    <property name="introductionDate" column="introduction_date"
+      type="timestamp" />
+    <property name="selectionTree" column="selection_tree"
+      length="16384" />
+    <property name="selectionTreeHash" column="selection_hash" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SimSpEx:BasicSelEvalStrategies" version="1.0" /> 
+  
+  <factory classname="org.jamesii.simspex.spdm.evaluation.bootstrapping.BootStrappingFactory">
+    <parameter name="numberOfPasses" type="java.lang.Integer" defaultValue="10">
+      <description>The number of passes/repetitions to be executed.</description>
+    </parameter>
+  </factory>  
+  
+  <factory classname="org.jamesii.simspex.spdm.evaluation.crossvalidation.CrossValidationFactory">
+    <parameter name="folds" type="java.lang.Integer" defaultValue="10">
+      <description>The number of folds.</description>
+    </parameter>
+    <parameter name="leaveOneOut" type="java.lang.Boolean" defaultValue="false">
+      <description>Flag to activate leave-one-out cross-validation.</description>
+    </parameter>
+    <parameter name="numberOfPasses" type="java.lang.Integer" defaultValue="10">
+      <description>The number of passes/repetitions to be executed.</description>
+    </parameter>
+  </factory>
+  
+  <factory classname="org.jamesii.simspex.spdm.evaluation.simple.SimpleEvaluationFactory">
+    <parameter name="percentage" type="java.lang.Double" defaultValue="0.5">
+      <description>The percentage of data used for training.</description>
+    </parameter>
+  </factory> 
+    
+</plugin>

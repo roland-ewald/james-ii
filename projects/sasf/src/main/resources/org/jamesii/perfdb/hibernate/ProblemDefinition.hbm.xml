@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.jamesii.perfdb.hibernate">
+  <class name="ProblemDefinition" table="problem_definitions">
+    <id name="ID">
+      <generator class="native" />
+    </id>
+    <many-to-one name="scheme" column="scheme_id" />
+    <property name="definitionParametersHash" column="def_params_hash" />
+    <map name="definitionParameters" table="problem_def_parameters">
+      <key column="id" />
+      <map-key type="string" column="name" />
+      <element type="java.io.Serializable" column="value"
+        length="524288" /> <!-- parameter size assumed <= 512K -->
+    </map>
+    <property name="schemeParametersHash" column="scheme_params_hash" />
+    <map name="schemeParameters" table="problem_scheme_parameters">
+      <key column="id" />
+      <map-key type="string" column="name" />
+      <element type="java.io.Serializable" column="value"
+        length="52428800" /> <!-- parameter size assumed <= 50 MB -->
+    </map>
+  </class>
+</hibernate-mapping>

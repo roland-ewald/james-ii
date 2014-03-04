@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="SASF: Generator for Ensemble Predictors (SPDM)" version="1.0" /> 
+  <factory classname="org.jamesii.asf.spdm.generators.ensemble.EnsemblePredictorGenFactory">
+    <parameter name="predGenFactory" type="java.lang.String" plugintype="org.jamesii.asf.spdm.generators.plugintype.PerformancePredictorGeneratorFactory" required="true">
+      <description>The predictor generator factory to generate the ensemble.</description>
+    </parameter>
+    <parameter name="predGenFacParams" type="org.jamesii.asf.core.simulation.parameters.ParameterBlock" required="true">
+    	<description>The parameters for the predictor generator factory to generate the ensemble.</description>
+    </parameter>
+  </factory>
+</plugin>
