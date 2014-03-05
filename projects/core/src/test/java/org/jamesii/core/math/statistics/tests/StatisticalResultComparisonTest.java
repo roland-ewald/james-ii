@@ -653,7 +653,7 @@ public abstract class StatisticalResultComparisonTest extends
   /**
    * Sets the p value of the wilcoxon test.
    */
-  public void setPValue(int pValue) {
+  public void setPValue(double pValue) {
     this.pValue = pValue;
   }
 
