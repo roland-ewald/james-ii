@@ -47,11 +47,42 @@ public interface IMinBanditPolicy extends IEntity {
   void receiveReward(int arm, double reward);
   
   /**
+   * Create a copy of the policy and initialize it properly with its data, i.e.,
+   * reuse gained knowledge somehow.
+   */
+  IMinBanditPolicy getNewInitializedCopy();
+  
+  /**
+   * Gets the reward sum for a given arm.
+   * 
+   * @param armIndex
+   *          the arm index
+   * @return the reward sum
+   */
+  double getRewardSum(int armIndex);
+  
+  /**
    * Gets the number of arms.
    * 
    * @return the number of arms
    */
   int getNumOfArms();
+  
+  /**
+   * Gets the pull count for a given arm.
+   * 
+   * @param armIndex
+   *          the arm index
+   * @return the pull count
+   */
+  int getPullCount(int armIndex);
+  
+  /**
+   * Gets the overall pulls count.
+   * 
+   * @return the finished pulls count
+   */
+  int getOverallPullCount();
   
   /**
    * Signals the policy to exclude a given arm from future selection decisions.

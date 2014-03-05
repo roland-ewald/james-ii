@@ -6,6 +6,8 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
+
 /**
  * Heuristic policy for multi-armed bandit problem. Implementation is based on
  * the algorithm presented by Auer et al in
@@ -29,6 +31,11 @@ public class UCB1 extends UCB {
     int pulls = getPullCount(arm);
     return getRewardSum(arm) / pulls
         - Math.sqrt(2 * Math.log(getOverallPullCount()) / pulls);
+  }
+  
+  @Override
+  public IMinBanditPolicy getNewInitializedCopy() {
+    throw new UnsupportedOperationException("Not implemented yet!");
   }
 
 }

@@ -6,6 +6,8 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
+
 /**
  * As long as no pull is finished, a random arm is pulled. After that, the best
  * arm is pulled with a probability of (1- epsilon). With a probability of
@@ -38,5 +40,19 @@ public class EpsilonGreedy extends SemiUniform {
     changed(choice);
     return choice;
   }
+
+  @Override
+  public IMinBanditPolicy getNewInitializedCopy() {
+    EpsilonGreedy newPolicy = new EpsilonGreedy();
+    newPolicy.setEpsilon(getEpsilon());
+    newPolicy.init(getNumOfArms(), getHorizon());
+    for (int i = 0; i < getNumOfArms(); ++i) {
+      // use the average reward for each arm for the new policy
+      newPolicy.setRewardSum(i, getPullCount(i) == 0 ? 0 : getRewardSum(i) / getPullCount(i));
+      newPolicy.setPullCount(i, getPullCount(i) == 0 ? 0 : 1);
+    }
+    return newPolicy;
+  }
+  
 
 }

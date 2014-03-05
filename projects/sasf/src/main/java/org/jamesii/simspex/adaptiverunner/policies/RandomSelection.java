@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.math.random.generators.IRandom;
+import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 
 /**
  * This policy selects each arm with the same random probability. If an arm has
@@ -62,6 +63,13 @@ public class RandomSelection extends AbstractMinBanditPolicy {
 
   public IRandom getRandom() {
     return random;
+  }
+  
+  @Override
+  public IMinBanditPolicy getNewInitializedCopy() {
+    IMinBanditPolicy newPolicy = new RandomSelection();
+    newPolicy.init(getNumOfArms(), getHorizon());
+    return newPolicy;
   }
 
 }
