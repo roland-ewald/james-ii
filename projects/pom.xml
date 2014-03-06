@@ -95,7 +95,15 @@
 	<scm>
 		<connection>scm:hg:${james2.source.repo}</connection>
 	  <tag>HEAD</tag>
-  </scm>
+	</scm>
+  
+  	<!-- Maven repository setup -->
+	<repositories>
+		<repository>
+			<id>jamesii-repo</id>
+			<url>http://wwwmosi.informatik.uni-rostock.de/jamesIIreleases/maven/</url>
+		</repository>
+	</repositories>
 
 	<!-- Add new modules here (please keep in alphabetical order) -->
 	<modules>
