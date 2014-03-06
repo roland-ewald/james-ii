@@ -136,7 +136,7 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    *          the arm index
    * @return the reward sum
    */
-  protected double getRewardSum(int armIndex) {
+  public double getRewardSum(int armIndex) {
     return rewardSums[armIndex];
   }
   
@@ -147,7 +147,7 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    *          the arm index
    * @return the pull count
    */
-  protected int getPullCount(int armIndex) {
+  public int getPullCount(int armIndex) {
     return pulls[armIndex];
   }
 
@@ -176,6 +176,18 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    */
   protected void setRewardSum(int armIndex, double newSum) {
     rewardSums[armIndex] = newSum;
+  }
+  
+  /**
+   * Sets the pull count for a given arm.
+   * 
+   * @param armindex
+   *    the arm index 
+   * @param pullCount
+   *    the new pull count
+   */
+  protected void setPullCount(int armIndex, int pullCount) {
+    pulls[armIndex] = pullCount;
   }
 
   /**
@@ -210,7 +222,7 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    * 
    * @return the finished pulls count
    */
-  protected int getOverallPullCount() {
+  public int getOverallPullCount() {
     return overallPullCount;
   }
 }
