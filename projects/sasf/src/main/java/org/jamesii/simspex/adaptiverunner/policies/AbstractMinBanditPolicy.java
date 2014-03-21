@@ -86,11 +86,6 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
       throw new IllegalArgumentException("Arm with index " + arm
           + " is not defined!");
     }
-    if (reward < 0) {
-      throw new IllegalArgumentException(
-          "Negative reward is not allowed, but reward for arm " + arm
-              + " was set to " + reward);
-    }
     if (quarantine[arm]) {
       return 0.0;
     }
