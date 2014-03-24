@@ -6,8 +6,6 @@
  */
 package org.jamesii.core.util.collection.list;
 
-import org.jamesii.core.util.collection.list.LinkedList;
-
 import junit.framework.TestCase;
 
 /**
@@ -171,6 +169,23 @@ public class LinkedListTest extends TestCase {
     list.remove();
     assertEquals(list.get(0), o3);
 
+  }
+
+  public void testContains() {
+    java.util.LinkedList<String> list1 = new java.util.LinkedList<>();
+    org.jamesii.core.util.collection.list.LinkedList<String> list2 =
+        new org.jamesii.core.util.collection.list.LinkedList<>();
+
+    String hello1 = new String("Hello World");
+    String hello2 = new String("Hello World");
+
+    list1.add(hello1);
+    list2.add(hello1);
+
+    assertTrue(hello1 != hello2);
+    assertTrue(hello1.equals(hello2));
+    assertTrue(list1.contains(hello2));
+    assertTrue(list2.contains(hello2));
   }
 
 }

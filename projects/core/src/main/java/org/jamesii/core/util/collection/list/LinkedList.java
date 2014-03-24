@@ -440,7 +440,8 @@ public class LinkedList<E> implements List<E>, Deque<E> {
   private Entry<E> firstOccurrence(Object o) {
     Entry<E> current = getRoot();
     for (int i = 0; i < getSize(); i++) {
-      if (current.value == o) {
+      if (current.value == o
+          || (o != null ? o.equals(current.value) : current.value.equals(o))) {
         return current;
       }
       current = current.next;
@@ -458,7 +459,8 @@ public class LinkedList<E> implements List<E>, Deque<E> {
   private Entry<E> lastOccurrence(Object o) {
     Entry<E> current = getEnd();
     for (int i = 0; i < getSize(); i++) {
-      if (current.value == o) {
+      if (current.value == o
+          || (o != null ? o.equals(current.value) : current.value.equals(o))) {
         return current;
       }
       current = current.previous;
