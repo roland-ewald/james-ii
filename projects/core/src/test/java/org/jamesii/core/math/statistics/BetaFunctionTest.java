@@ -7,11 +7,8 @@
 package org.jamesii.core.math.statistics;
 
 import static java.lang.Math.*;
-import static java.lang.Double.*;
 import static org.jamesii.core.math.statistics.BetaFunction.*;
 import static org.jamesii.core.math.statistics.univariate.GammaFunction.*;
-
-import org.jamesii.core.math.statistics.BetaFunction;
 
 import junit.framework.TestCase;
 
@@ -43,7 +40,7 @@ public class BetaFunctionTest extends TestCase {
         expected,
         actual,
         pow(10, -significantFigures)
-            * pow(10, floor(log10(max(abs(expected), abs(actual))))));
+              * pow(10, floor(log10(max(abs(expected), abs(actual))))));
   }
 
   /**
@@ -67,8 +64,8 @@ public class BetaFunctionTest extends TestCase {
     assertEquals(1.0000000009998366979e11, beta(1e-11, .01), 2);
     assertEquals(9.999999999412696905e10, beta(1e-11, 200), 3);
     assertEquals(9.999999999999918221e14, beta(1e-15, 2000), 3);
-    assertEquals(POSITIVE_INFINITY, beta(-2, -3.6));
-    assertEquals(POSITIVE_INFINITY, beta(-1.2, -3));
+    assertEquals(Double.POSITIVE_INFINITY, beta(-2, -3.6));
+    assertEquals(Double.POSITIVE_INFINITY, beta(-1.2, -3));
   }
 
   /** Tests general properties of the Beta function ({@link BetaFunction#beta}). */
