@@ -13,7 +13,7 @@ package org.jamesii.gui.syntaxeditor;
  * @see SyntaxEditor
  * @author Stefan Rybacki
  */
-public interface ILexerToken extends Comparable<ILexerToken> {
+public interface ILexerToken<Type> extends Comparable<ILexerToken<Type>> {
   /**
    * @return the tokens start position in the text and has to be <b>>=0</b>
    */
@@ -46,4 +46,9 @@ public interface ILexerToken extends Comparable<ILexerToken> {
    *          the amount the end position is shifted
    */
   void moveEnd(int length);
+
+  /**
+   * @return the token type
+   */
+  Type getType();
 }

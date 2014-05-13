@@ -119,4 +119,10 @@ public interface IInfoProvider {
    * @return the actions for token
    */
   List<ITokenAction> getActionsForToken(ILexerToken token);
+
+  /**
+   * Blocks the current thread until the last content change is parsed and the
+   * resulting info tokens are present
+   */
+  void waitForParsingResult();
 }

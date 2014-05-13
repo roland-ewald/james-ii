@@ -21,11 +21,11 @@ package org.jamesii.gui.syntaxeditor;
  * @see org.jamesii.gui.tooltip.StyledToolTipSyntaxToken
  * @see org.jamesii.gui.tooltip.StyledToolTipProblemToken
  */
-public class DefaultLexerToken<Type> implements ILexerToken {
+public class DefaultLexerToken<Type> implements ILexerToken<Type> {
   /**
    * token type (generic parameter)
    */
-  private Type type;
+  private final Type type;
 
   /**
    * start position of token in text
@@ -62,6 +62,7 @@ public class DefaultLexerToken<Type> implements ILexerToken {
   /**
    * @return the token type
    */
+  @Override
   public final Type getType() {
     return type;
   }
