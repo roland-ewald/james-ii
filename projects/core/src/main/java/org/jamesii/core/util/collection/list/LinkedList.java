@@ -14,12 +14,16 @@ import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
- * An alternative linked list implementation. The implementation provided in
- * Java does not allow an efficient modification of the list if the list
- * iterator is used: in this case the iterator will hand over an index to the
- * main class to modify the list, thereby the iterator has already the pointer
- * where to change. This means that in the Java impl the pointer has to be
- * searched again. This implementation here avoids that.
+ * An alternative linked list implementation. The implementation probably came
+ * into existence due to a misreading of java.util.LinkedList's code (or an
+ * inefficient implementation in an early Java version).
+ * 
+ * (For reference, the original justification was <strike>The implementation
+ * provided in Java does not allow an efficient modification of the list if the
+ * list iterator is used: in this case the iterator will hand over an index to
+ * the main class to modify the list, thereby the iterator has already the
+ * pointer where to change. This means that in the Java impl the pointer has to
+ * be searched again. This implementation here avoids that.</strike>)
  * 
  * @author Jan Himmelspach
  * 
