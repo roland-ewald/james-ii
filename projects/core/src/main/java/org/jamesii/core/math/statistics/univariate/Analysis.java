@@ -1,3 +1,9 @@
+/*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
 package org.jamesii.core.math.statistics.univariate;
 
 import java.util.Arrays;

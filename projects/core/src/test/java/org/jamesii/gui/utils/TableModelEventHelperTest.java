@@ -1,3 +1,9 @@
+/*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
 package org.jamesii.gui.utils;
 
 import static org.jamesii.gui.utils.TableModelEventHelper.*;

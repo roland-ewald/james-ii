@@ -1,3 +1,9 @@
+/*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
 /**
  * Title:        CoSA: AccessRestriction
  * Description:  This class can be set to a model for restricting certain 

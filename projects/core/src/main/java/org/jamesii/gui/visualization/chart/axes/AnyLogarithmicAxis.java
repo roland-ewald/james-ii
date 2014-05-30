@@ -1,3 +1,9 @@
+/*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
 /**
  * Class implementing a logarithmic axis where the logarithmic scale could start at any point on the axis between nin and max.
  * 

@@ -1,4 +1,10 @@
 /*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
+/*
  * Created on 12.05.2004
  *
  * To change the template for this generated file go to

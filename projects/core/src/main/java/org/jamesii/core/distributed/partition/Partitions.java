@@ -1,4 +1,10 @@
 /*
+ * The general modelling and simulation framework JAMES II.
+ * Copyright by the University of Rostock.
+ *
+ * LICENCE: JAMESLIC
+ */
+/*
  * Partitions.java
  *
  * Created on 2. Oktober 2003, 10:53
