@@ -5,7 +5,7 @@
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <name>James II</name>
-  <version>0.9.6</version>
+  <version>0.9.7-SNAPSHOT</version>
   <url>http://www.jamesii.org</url>
 
   <dependencyManagement>
@@ -15,22 +15,22 @@
       <dependency>
         <groupId>org.jamesii</groupId>
         <artifactId>core</artifactId>
-        <version>0.9.6</version>
+        <version>0.9.7-SNAPSHOT</version>
       </dependency>
 	  <dependency>
 		<groupId>org.jamesii</groupId>
 		<artifactId>devs</artifactId>
-		<version>0.9.6</version>
+		<version>0.9.7-SNAPSHOT</version>
 	  </dependency>
       <dependency>
         <groupId>org.jamesii</groupId>
         <artifactId>resultreports</artifactId>
-        <version>0.9.6</version>
+        <version>0.9.7-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jamesii</groupId>
         <artifactId>sasf</artifactId>
-        <version>0.9.6</version>
+        <version>0.9.7-SNAPSHOT</version>
       </dependency>
 
       <!-- External (please keep in alphabetical order by groupId.artifactId) -->
@@ -99,7 +99,7 @@
   <!-- Source repository setup -->
   <scm>
     <connection>scm:hg:${james2.source.repo}</connection>
-    <tag>releases/james-ii-0.9.6</tag>
+    <tag>HEAD</tag>
   </scm>
   
   <!-- Maven repository setup -->
