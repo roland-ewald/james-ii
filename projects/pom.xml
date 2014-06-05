@@ -113,6 +113,7 @@
   <!-- Add new modules here (please keep in alphabetical order) -->
   <modules>
     <module>core</module>
+	<module>devs</module>
     <module>resultreports</module>
     <module>sasf</module>
   </modules>
