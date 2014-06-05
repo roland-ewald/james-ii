@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="devsabstractsequential" version="1.0" /> 
+  <factory classname="simulator.devs.abstractsequential.AbstractSequentialProcessorFactory">
+    <parameter name="eventqueue"  type="java.lang.String" plugintype="org.jamesii.core.util.eventset.plugintype.EventQueueFactory">
+      <description>Discrete event simulators make intensive use of event queues for managing upcoming events. Depending on the model different event queues may be the best choice. The simulation system will automatically use one of the available event queues if this parameter is not used.</description>
+    </parameter>  
+  </factory> 
+</plugin>

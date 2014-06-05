@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="flat sequential simulator event routing addon plug-ins" version="1.0" /> 
+  <abstractfactory>simulator.devs.flatsequential.eventforwarding.plugintype.AbstractExternalEventForwardingHandlerFactory</abstractfactory> 
+  <basefactory>simulator.devs.flatsequential.eventforwarding.plugintype.ExternalEventForwardingHandlerFactory</basefactory> 
+  <description>Event forwarding plug-ins for flat sequential simulators</description>
+</plugintype>

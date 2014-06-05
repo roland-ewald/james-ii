@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="devs model set addon plugins" version="1.0" /> 
+  <abstractfactory>model.devscore.models.plugintype.AbstractModelSetFactory</abstractfactory> 
+  <basefactory>model.devscore.models.plugintype.BaseModelSetFactory</basefactory> 
+  <description>Model set plugins for the devs formalisms</description>
+</plugintype>

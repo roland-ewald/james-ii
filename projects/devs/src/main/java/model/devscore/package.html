@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	0.1 2009/01/01
+
+  Copyright 2009 University of Rostock 
+  
+
+  
+  
+  
+  
+  
+
+  
+
+-->
+</head>
+<body bgcolor="white">
+
+Provides the basics for *DEVS (executable) model classes. 
+
+<h2>General description</h2>
+
+DEVS is meanwhile a relatively old modeling formalism. 
+As often many extensions of the basic formalism exist. 
+Basically most DEVS variants differentiate between coupled/network and atomic models.
+Most DEVS models have sets of input and output ports, most network models a set of 
+models and several sets of couplings.
+These basic elements can be reused throughout many implementations, and thus it is useful
+to have these in an extra package so that they can be reused from several standalone 
+packages later on.<br>
+All data structure used by PDEVS models (for port, coupling, and model sets) are realized 
+in sub packages of this package. For some of these alternatives might be good to have:
+so the implementation giving the best performance in regards to memory consumption and 
+run time behavior can be used. <br>
+Consequently this package does not provide a usable formalism - if you want to use DEVS
+for modeling you have to get a package (maybe based on this) providing supporting for the
+*DEVS formalism you want to use.
+
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><i>Zeigler, B. P.; Praehofer, H. & Kim, T. G.</i> <b>Theory of Modeling and Simulation</b> Academic Press, 2000</li>
+  <li><i>Himmelspach, J.</i><b>Konzeption, Realisierung und Verwendung eines allgemeinen Modellierungs-, Simulations und Experimentiersystems - Entwicklung und Evaluation effizienter Simulationsalgorithmen</b> Sierke Verlag, 2007</li>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

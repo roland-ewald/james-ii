@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="flatsequential event forwarding" version="1.0" /> 
+  <factory classname="simulator.devs.flatsequential.eventforwarding.DirectExternalEventForwardingHandlerFactory"></factory> 
+  <factory classname="simulator.devs.flatsequential.eventforwarding.HierarchicalExternalEventForwardingHandlerFactory"></factory>   
+</plugin>
