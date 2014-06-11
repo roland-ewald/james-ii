@@ -51,6 +51,16 @@ final class PluginTypeXPath {
   private final XPathExpression parameterExpr;
 
   /**
+   * The configuration expression.
+   */
+  private final XPathExpression configurationExpr;
+  
+  /**
+   * The parameter value expression.
+   */
+  private final XPathExpression parameterValueExpr;
+  
+  /**
    * The description expression.
    */
   private final XPathExpression descriptionExpr;
@@ -79,6 +89,9 @@ final class PluginTypeXPath {
 
       parameterExpr =
           xpath.compile("/plugintype:plugintype/plugintype:parameter");
+      
+      configurationExpr = xpath.compile("/plugintype:plugintype/plugintype:configuration");
+      parameterValueExpr = xpath.compile("/plugintype:plugintype/plugintype:parameterValue");
 
       iconURIExpr = xpath.compile("/plugin:plugin/plugin:icon/@uri");
 
@@ -123,6 +136,13 @@ final class PluginTypeXPath {
    */
   public static XPathExpression getParameterExpr() {
     return instance.parameterExpr;
+  }
+  
+  /**
+   * @return the configurationExpr
+   */
+  public static XPathExpression getConfigurationExpr() {
+    return instance.configurationExpr;
   }
 
   /**

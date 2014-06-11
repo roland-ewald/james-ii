@@ -22,9 +22,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * The Class DomFactory.
+ * General factory info class for all factories defined within plugin.xml files.
+ * Typically, instances of this class are created automatically by the
+ * {@link Registry}.
  * 
- * @author Jan Himmelspach
+ * @author Jan Himmelspach, Tobias Helms
  */
 public class DomFactory implements IFactoryInfo, Serializable {
 
@@ -39,6 +41,9 @@ public class DomFactory implements IFactoryInfo, Serializable {
 
   /** The parameters. */
   private List<IParameter> parameters = new ArrayList<>();
+
+  /** The configurations. */
+  private List<IConfiguration> configurations = new ArrayList<>();
 
   /**
    * The description.
@@ -89,6 +94,16 @@ public class DomFactory implements IFactoryInfo, Serializable {
           (String) PluginXPath.getFactoryDescriptionExpr().evaluate(idElement,
               XPathConstants.STRING);
 
+      NodeList configurationList =
+          (NodeList) PluginXPath.getFactoryConfigurationExpr().evaluate(idElement,
+              XPathConstants.NODESET);
+      for (int i = 0; i < configurationList.getLength(); i++) {
+        Node curParameter = configurationList.item(i);
+        IConfiguration curConfig = new DomConfiguration((Element) curParameter, parameters);
+        configurations.add(curConfig);
+      }
+      
+      
       try {
         // fetch the icon URI, if set
         String uri = idElement.getAttribute("icon");
@@ -125,6 +140,11 @@ public class DomFactory implements IFactoryInfo, Serializable {
   @Override
   public List<IParameter> getParameters() {
     return parameters;
+  }
+  
+  @Override
+  public List<IConfiguration> getConfigurations() {
+    return configurations;
   }
 
   /**

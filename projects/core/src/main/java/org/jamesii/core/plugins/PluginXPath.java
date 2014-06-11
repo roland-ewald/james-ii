@@ -17,7 +17,7 @@ import org.jamesii.SimSystem;
  * Static class that provides access to precompiled {@link XPathExpression}s
  * that can be used to get data from a plugin.xml.
  * 
- * @author Stefan Rybacki
+ * @author Stefan Rybacki, Tobias Helms
  */
 final class PluginXPath {
 
@@ -50,6 +50,16 @@ final class PluginXPath {
    * The parameter expression.
    */
   private XPathExpression parameterExpr;
+  
+  /**
+   * The configuration expression.
+   */
+  private XPathExpression configurationExpr;
+  
+  /**
+   * The parameter value expression (for default configurations).
+   */
+  private XPathExpression parameterValueExpr;
 
   /**
    * The factory description expression.
@@ -85,6 +95,9 @@ final class PluginXPath {
 
       dependsExpr = xpath.compile("/plugin:plugin/plugin:depends");
       parameterExpr = xpath.compile("./plugin:parameter");
+      
+      configurationExpr = xpath.compile("./plugin:configuration");
+      parameterValueExpr = xpath.compile("./plugin:parameterValue");
 
       factoryDescriptionExpr = xpath.compile("./plugin:description/text()");
 
@@ -136,6 +149,20 @@ final class PluginXPath {
     return instance.parameterExpr;
   }
 
+  /**
+   * Gets the configuration expression.
+   */
+  public static XPathExpression getFactoryConfigurationExpr() {
+    return instance.configurationExpr;
+  }
+  
+  /**
+   * Gets the parameter value expression.
+   */
+  public static XPathExpression getParameterValueExpr() {
+    return instance.parameterValueExpr;
+  }
+  
   /**
    * Gets the factory description expression.
    * 

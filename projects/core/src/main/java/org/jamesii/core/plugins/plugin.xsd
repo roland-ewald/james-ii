@@ -9,6 +9,7 @@
 	elementFormDefault="qualified">
 
 	<xsd:include schemaLocation="parameter.xsd" />
+	<xsd:include schemaLocation="configuration.xsd" />
 
 	<!-- a factory definition -->
 	<xsd:complexType name="Factory">
@@ -18,6 +19,7 @@
 				minOccurs="0" />
 			<xsd:element name="description" maxOccurs="1" type="xsd:string"
 				minOccurs="0" />
+			<xsd:element name="configuration" maxOccurs="unbounded" type="Configuration" minOccurs="0" />
 		</xsd:sequence>
 
 		<!-- Class names of factories -->

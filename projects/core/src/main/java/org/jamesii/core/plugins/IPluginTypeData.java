@@ -52,4 +52,9 @@ public interface IPluginTypeData {
    */
   List<IParameter> getParameters();
 
+  /**
+   * Return the configurations.
+   */
+  List<IConfiguration> getConfigurations();
+
 }

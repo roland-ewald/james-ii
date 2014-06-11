@@ -89,6 +89,8 @@ public class SchemaResolver implements EntityResolver {
       path = PATH + "/base.xsd";
     } else if (systemID.contains("parameter.xsd")) {
       path = PATH + "/parameter.xsd";
+    } else if (systemID.contains("configuration.xsd")) {
+      path = PATH + "/configuration.xsd";
     } else if (systemID.startsWith("http://")) {
       // TODO is this needed? We could return null or empty
       // InputSource

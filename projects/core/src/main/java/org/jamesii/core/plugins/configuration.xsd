@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- $Id$ -->
+<xsd:schema  
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" 
+	>
+ 
+	<!--<xsd:include schemaLocation="base.xsd" />-->
+
+	<!-- A key value pair of a parameter. -->
+	<xsd:complexType name="ParameterValue">
+		<xsd:sequence>
+			<xsd:element name="description" maxOccurs="1" type="xsd:string"
+				minOccurs="0" />
+		</xsd:sequence>
+
+		<!-- basically a name -->
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+
+		<!-- a value -->
+		<xsd:attribute name="value" type="xsd:string" use="required"/>
+	</xsd:complexType>
+
+	<!-- A configuration. -->
+	<xsd:complexType name="Configuration">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="description" maxOccurs="1" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="parameterValue" maxOccurs="unbounded" minOccurs="0" type="ParameterValue" />
+		</xsd:choice>
+		
+		<!-- basically a name -->
+		<xsd:attribute name="name" type="xsd:string"/>
+
+	</xsd:complexType>
+
+	<!-- A list of configurations -->
+	<xsd:complexType name="Configurations">
+		<!-- the configurations -->
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="configuration" type="Configuration" />
+		</xsd:sequence>
+
+	</xsd:complexType>
+</xsd:schema>

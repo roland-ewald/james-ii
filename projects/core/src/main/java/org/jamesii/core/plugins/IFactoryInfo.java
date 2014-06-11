@@ -30,6 +30,11 @@ public interface IFactoryInfo extends Serializable {
    * @return the parameters that can be set for this factory
    */
   List<IParameter> getParameters();
+  
+  /**
+   * Gets default configurations for primitive parameters.
+   */
+  List<IConfiguration> getConfigurations();
 
   /**
    * Gets the description of the factory.

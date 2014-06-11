@@ -8,6 +8,7 @@
 	elementFormDefault="qualified" 
 >
     <xsd:include schemaLocation="parameter.xsd"/>
+    <xsd:include schemaLocation="configuration.xsd"/>
     
     <!-- A PluginType Definition -->
 	<xsd:complexType name="PluginType">
@@ -23,6 +24,9 @@
 			<xsd:element name="basefactory" type="JavaClass" maxOccurs="1" minOccurs="1"/>
 
 			<xsd:element name="parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+			
+			<xsd:element name="configuration" type="Configuration" minOccurs="0" maxOccurs="unbounded"/>
+			
 			<!--
 				Description of plugin type 
 			-->

@@ -40,6 +40,9 @@ public class DomPluginTypeData implements IPluginTypeData, Serializable {
 
   /** The parameters. */
   private List<IParameter> parameters = new ArrayList<>();
+  
+  /** The configurations. */
+  private List<IConfiguration> configurations = new ArrayList<>();
 
   /**
    * Instantiates a new dom plugin type data.
@@ -88,6 +91,16 @@ public class DomPluginTypeData implements IPluginTypeData, Serializable {
         IParameter curPara = new DomParameter((Element) curParameter);
         parameters.add(curPara);
       }
+      
+      NodeList configurationList =
+          (NodeList) PluginTypeXPath.getConfigurationExpr().evaluate(domData,
+              XPathConstants.NODESET);
+
+      for (int i = 0; i < configurationList.getLength(); i++) {
+        Node curConfiguration = configurationList.item(i);
+        IConfiguration curConfig = new DomConfiguration((Element) curConfiguration, parameters);
+        configurations.add(curConfig);
+      }
 
       description =
           (String) PluginTypeXPath.getDescriptionExpr().evaluate(domData,
@@ -122,6 +135,11 @@ public class DomPluginTypeData implements IPluginTypeData, Serializable {
   @Override
   public List<IParameter> getParameters() {
     return parameters;
+  }
+  
+  @Override
+  public List<IConfiguration> getConfigurations() {
+    return configurations;
   }
 
   @Override
