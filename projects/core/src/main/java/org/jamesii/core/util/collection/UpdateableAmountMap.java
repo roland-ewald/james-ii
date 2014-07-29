@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.AbstractMap;
 import java.util.AbstractSet;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,8 +35,9 @@ import org.jamesii.core.math.random.generators.IRandom;
  * lower bound is specified by using the appropriate constructor). Updates of
  * absent (e.g. removed) keys are treated as if the respective key is associated
  * with value 0. Direct modification of values of keys already present are not
- * allowed (i.e. put(key) throws and error if key is present). Uses a HashMap
- * internally, unless otherwise specified in the appropriate constructor.
+ * allowed (i.e. put(key) throws and error if key is present). Uses a
+ * {@link LinkedHashMap} internally, unless otherwise specified in the
+ * appropriate constructor.
  * 
  * @author Arne Bittig
  * 
@@ -211,8 +213,8 @@ public class UpdateableAmountMap<K> implements IUpdateableMap<K, Integer>,
   private static <K, V> Map<K, V> tryToCopyMapReflectively(Map<K, V> mapToCopy) {
     try { // ...to construct new Map using its type's copy constructor
       @SuppressWarnings("rawtypes")
-      Constructor<? extends Map> mapCtr =
-          mapToCopy.getClass().getConstructor(Map.class);
+      Constructor<? extends Map> mapCtr = mapToCopy.getClass().getConstructor(
+          Map.class);
       return mapCtr.newInstance(mapToCopy);
     } catch (ReflectiveOperationException e) { /* see below */
     }
@@ -447,6 +449,18 @@ public class UpdateableAmountMap<K> implements IUpdateableMap<K, Integer>,
     return internalMap.toString();
   }
 
+  
+  private static final IUpdateableMap<Object, Integer> EMPTY_MAP = new UpdateableAmountMap<>(Collections.EMPTY_MAP);
+  
+  /**
+   * The empty map (immutable). Wraps {@link Collections#EMPTY_MAP}.
+   * @return empty map
+   */
+  @SuppressWarnings("unchecked")
+  public static <K> IUpdateableMap<K, Integer> emptyMap() {
+    return (IUpdateableMap<K, Integer>) EMPTY_MAP;
+  }
+  
   /**
    * Copy of a key -> integer value map where each key is associated with the
    * negation of its value in the parameter map. Copying is attempted via
@@ -501,8 +515,8 @@ public class UpdateableAmountMap<K> implements IUpdateableMap<K, Integer>,
 
         @Override
         public Iterator<java.util.Map.Entry<K, Integer>> iterator() {
-          final Iterator<Map.Entry<K, Integer>> it =
-              getMap().entrySet().iterator();
+          final Iterator<Map.Entry<K, Integer>> it = getMap().entrySet()
+              .iterator();
           return new Iterator<Map.Entry<K, Integer>>() {
 
             @Override
