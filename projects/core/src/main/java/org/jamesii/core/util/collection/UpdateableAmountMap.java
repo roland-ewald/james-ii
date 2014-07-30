@@ -449,18 +449,19 @@ public class UpdateableAmountMap<K> implements IUpdateableMap<K, Integer>,
     return internalMap.toString();
   }
 
-  
-  private static final IUpdateableMap<Object, Integer> EMPTY_MAP = new UpdateableAmountMap<>(Collections.EMPTY_MAP);
-  
+  private static final IUpdateableMap<Object, Integer> EMPTY_MAP = new UpdateableAmountMap<>(
+      Collections.EMPTY_MAP, 0);
+
   /**
    * The empty map (immutable). Wraps {@link Collections#EMPTY_MAP}.
+   * 
    * @return empty map
    */
   @SuppressWarnings("unchecked")
   public static <K> IUpdateableMap<K, Integer> emptyMap() {
     return (IUpdateableMap<K, Integer>) EMPTY_MAP;
   }
-  
+
   /**
    * Copy of a key -> integer value map where each key is associated with the
    * negation of its value in the parameter map. Copying is attempted via
