@@ -6,6 +6,27 @@
  */
 package org.jamesii.core;
 
+import org.jamesii.SimSystem;
+import org.jamesii.core.algoselect.SelectionInformation;
+import org.jamesii.core.base.InformationObject;
+import org.jamesii.core.data.report.IReport;
+import org.jamesii.core.factories.*;
+import org.jamesii.core.model.formalism.Formalism;
+import org.jamesii.core.model.formalism.Formalisms;
+import org.jamesii.core.model.plugintype.ModelFactory;
+import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.plugins.*;
+import org.jamesii.core.plugins.install.CachePlugInFinder;
+import org.jamesii.core.plugins.install.DiscPlugInFinder;
+import org.jamesii.core.plugins.install.IPlugInFinder;
+import org.jamesii.core.plugins.install.XMLReader;
+import org.jamesii.core.plugins.metadata.*;
+import org.jamesii.core.plugins.metadata.file.RegFileDStorage;
+import org.jamesii.core.util.Hook;
+import org.jamesii.core.util.info.JavaInfo;
+import org.jamesii.core.util.misc.Strings;
+import org.xml.sax.InputSource;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,52 +39,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.logging.Level;
-
-import org.jamesii.SimSystem;
-import org.jamesii.core.algoselect.SelectionInformation;
-import org.jamesii.core.base.InformationObject;
-import org.jamesii.core.data.report.IReport;
-import org.jamesii.core.factories.AbstractFactory;
-import org.jamesii.core.factories.Factory;
-import org.jamesii.core.factories.FactoryInstantiationException;
-import org.jamesii.core.factories.FactoryLoadingException;
-import org.jamesii.core.factories.FactoryTypeException;
-import org.jamesii.core.factories.IContext;
-import org.jamesii.core.factories.NoFactoryFoundException;
-import org.jamesii.core.model.formalism.Formalism;
-import org.jamesii.core.model.formalism.Formalisms;
-import org.jamesii.core.model.plugintype.ModelFactory;
-import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.plugins.IFactoryInfo;
-import org.jamesii.core.plugins.IId;
-import org.jamesii.core.plugins.IParameter;
-import org.jamesii.core.plugins.IPluginData;
-import org.jamesii.core.plugins.IPluginTypeData;
-import org.jamesii.core.plugins.PluginLoadException;
-import org.jamesii.core.plugins.install.CachePlugInFinder;
-import org.jamesii.core.plugins.install.DiscPlugInFinder;
-import org.jamesii.core.plugins.install.IPlugInFinder;
-import org.jamesii.core.plugins.install.XMLReader;
-import org.jamesii.core.plugins.metadata.ComponentState;
-import org.jamesii.core.plugins.metadata.FactoryDataSynchronizer;
-import org.jamesii.core.plugins.metadata.FactoryRuntimeData;
-import org.jamesii.core.plugins.metadata.FailureTolerance;
-import org.jamesii.core.plugins.metadata.IFactoryRuntimeDataStorage;
-import org.jamesii.core.plugins.metadata.file.RegFileDStorage;
-import org.jamesii.core.util.Hook;
-import org.jamesii.core.util.info.JavaInfo;
-import org.jamesii.core.util.misc.Arrays;
-import org.jamesii.core.util.misc.Strings;
-import org.xml.sax.InputSource;
 
 /**
  * The Registry class is a wrapper for any (through the registry centralised)
@@ -117,19 +95,19 @@ public class Registry extends InformationObject {
    * Map abstract factory => managed factories super class.
    */
   private transient Map<Class<? extends AbstractFactory<?>>, Class<? extends Factory<?>>> abstractFactories =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /**
    * Map managed factories super class => abstract factory.
    */
   private transient Map<Class<? extends Factory<?>>, Class<? extends AbstractFactory<?>>> abstractFactoriesInv =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /**
    * Map of already initialised abstract factories.
    */
   private transient Map<Class<? extends AbstractFactory<?>>, AbstractFactory<?>> initializedAbstractFactories =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /**
    * Class loader.
@@ -142,10 +120,10 @@ public class Registry extends InformationObject {
    * one list!
    */
   private transient Map<Class<? extends Factory<?>>, List<Factory<?>>> factories =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /** The mapping FQCN -> actual factory object. */
-  private transient Map<String, Factory<?>> factoryNameMap = new HashMap<>();
+  private transient Map<String, Factory<?>> factoryNameMap = new LinkedHashMap<>();
 
   /**
    * Hook to be aware of any factory selections.
@@ -166,12 +144,12 @@ public class Registry extends InformationObject {
    * A list of all plug-ins, grouped by the abstract factories.
    */
   private transient Map<Class<? extends AbstractFactory<?>>, List<IPluginData>> foundPluginsGrouped =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /**
    * Maps the class names of the registered factories to their information.
    */
-  private transient Map<String, IFactoryInfo> factoryInfo = new HashMap<>();
+  private transient Map<String, IFactoryInfo> factoryInfo = new LinkedHashMap<>();
 
   /**
    * A list of all plug-in types as they have been found on the system.
@@ -191,7 +169,7 @@ public class Registry extends InformationObject {
    * Map of information objects.
    */
   private transient Map<String, InformationObject> informationObjects =
-      new HashMap<>();
+      new LinkedHashMap<>();
 
   /** List of known base factory classes. */
   private transient List<Class<? extends Factory<?>>> knownBaseFactoryClasses =
@@ -739,7 +717,10 @@ public class Registry extends InformationObject {
     try {
       instAF = af.newInstance();
     } catch (Exception e) {
-      SimSystem.report(Level.SEVERE, "An internal error occured. The system was not able to create the required instance of an abstract factory. Thus it cannot select an approbiate factory for and thus we cannot create the required datastructure/algorithm.");
+      SimSystem
+          .report(
+              Level.SEVERE,
+              "An internal error occured. The system was not able to create the required instance of an abstract factory. Thus it cannot select an approbiate factory for and thus we cannot create the required datastructure/algorithm.");
       throw new FactoryInstantiationException(
           "Error! Was not able to create the required abstract factory " + af,
           e);
@@ -908,7 +889,10 @@ public class Registry extends InformationObject {
     // as well
     String envPlugInDirectory = System.getenv("JAMES_PLUGINPATH");
     if (envPlugInDirectory != null) {
-      SimSystem.report(Level.INFO, "Searching for plug-ins in dirs defined in the environment variable: JAMES_PLUGINPATH");
+      SimSystem
+          .report(
+              Level.INFO,
+              "Searching for plug-ins in dirs defined in the environment variable: JAMES_PLUGINPATH");
 
       List<String> paths =
           org.jamesii.core.util.misc.Files.getListOfPaths(envPlugInDirectory);
@@ -944,16 +928,19 @@ public class Registry extends InformationObject {
   public void initPlugins() {
 
     SimSystem.report(Level.INFO, Language.getMessage("Registry:initSimSystem",
-    "Initializing %s ... ", new String[] { SimSystem.SIMSYSTEM }));
+        "Initializing %s ... ", new String[] { SimSystem.SIMSYSTEM }));
 
     // FIXME find out why java.class.path only returns jamesII.jar
     // when
     // running from jamesII.jar
-    SimSystem.report(Level.INFO, Language.getMessage(
-    "Registry:pathInfo",
-    "... which has been started from %s" + "\n... using the classpath %s",
-    new String[] { System.getProperty("user.dir"),
-        System.getProperty("java.class.path") }));
+    SimSystem.report(
+        Level.INFO,
+        Language.getMessage(
+            "Registry:pathInfo",
+            "... which has been started from %s"
+                + "\n... using the classpath %s",
+            new String[] { System.getProperty("user.dir"),
+                System.getProperty("java.class.path") }));
 
     // TODO (general) load language file
     // loadLanguage("simsystem_"+language+".po");
@@ -1018,11 +1005,23 @@ public class Registry extends InformationObject {
     // class loader)
     List<URL> classPath = pluginFinder.getJARLocations();
 
+    // merge the jar files and the normal directories
+    classPath.addAll(0, pURLs);
+
+    // sort classPath by locations to always have a deterministic list of urls
+    Collections.sort(classPath, new Comparator<URL>() {
+      @Override
+      public int compare(URL o1, URL o2) {
+        if (o1 == null)
+          return -1;
+        if (o2 == null)
+          return 1;
+        return o1.toExternalForm().compareTo(o2.toExternalForm());
+      }
+    });
+
     URL[] path = new URL[classPath.size()];
     classPath.toArray(path);
-
-    // merge the jar files and the normal directories
-    path = Arrays.merge(path, pURLs.toArray(new URL[pURLs.size()]));
 
     final URL[] p = path;
 
@@ -1038,12 +1037,41 @@ public class Registry extends InformationObject {
         });
 
     foundPlugins = pluginFinder.getFoundPlugins();
+    //sort plugin list to ensure deterministic ordering
+    Collections.sort(foundPlugins, new Comparator<IPluginData>() {
+      @Override
+      public int compare(IPluginData o1, IPluginData o2) {
+        if (o1==null)
+          return -1;
+        if (o2==null)
+          return 1;
+        return o1.getId().compareTo(o2.getId());
+      }
+    });
+
+
     foundPluginTypes = pluginFinder.getFoundPluginTypes();
+    //sort plugintypes list first to ensure deterministic ordering
+    Collections.sort(foundPluginTypes, new Comparator<IPluginTypeData>() {
+      @Override
+      public int compare(IPluginTypeData o1, IPluginTypeData o2) {
+        if (o1==null)
+          return -1;
+        if (o2==null)
+          return 1;
+        return o1.getBaseFactory().getClass().getName().compareTo(o2.getBaseFactory().getClass().getName());
+      }
+    });
 
-    SimSystem.report(Level.INFO, "Found plug-in types: " + foundPluginTypes.size());
-    SimSystem.report(Level.INFO, "Found and loaded plug-ins: " + foundPlugins.size());
 
-    SimSystem.report(Level.INFO, "Loading classes in found plug-in types and plug-ins ... ");
+
+    SimSystem.report(Level.INFO,
+        "Found plug-in types: " + foundPluginTypes.size());
+    SimSystem.report(Level.INFO,
+        "Found and loaded plug-ins: " + foundPlugins.size());
+
+    SimSystem.report(Level.INFO,
+        "Loading classes in found plug-in types and plug-ins ... ");
 
     // load the classes of the abstract factories
     loadPluginTypesClasses();
@@ -1427,11 +1455,13 @@ public class Registry extends InformationObject {
           (Class<Factory<?>>) baseFacClass);
       abstractFactoriesInv.put((Class<Factory<?>>) baseFacClass,
           (Class<? extends AbstractFactory<?>>) abstractFacClass);
-      SimSystem.report(Level.INFO, "Registry:LoadedPluginType", "Installed plug-in type : %s", new Object[] { ptd.getId().getName() + " - "
-      + ptd.getId().getVersion() });
+      SimSystem.report(Level.INFO, "Registry:LoadedPluginType",
+          "Installed plug-in type : %s", new Object[] { ptd.getId().getName()
+              + " - " + ptd.getId().getVersion() });
     } catch (Exception e) {
-      SimSystem.report(Level.SEVERE, "Failed on loading a plug-in type (" + ptd.getAbstractFactory()
-      + "), skipping plug-in");
+      SimSystem.report(Level.SEVERE,
+          "Failed on loading a plug-in type (" + ptd.getAbstractFactory()
+              + "), skipping plug-in");
       SimSystem.report(e);
     }
   }
@@ -1448,13 +1478,14 @@ public class Registry extends InformationObject {
     // and register in the type dependent lists which are the base for the
     // factories
 
-    Map<String, IId> pluginMem = new HashMap<>();
+    Map<String, IId> pluginMem = new LinkedHashMap<>();
 
     // int cj = 0;
     for (IPluginData pd : foundPlugins) {
       // System.out.println(cj++);
       // get a list of class fac
-      SimSystem.report(Level.INFO, "Loading the plug-in " + pd.getId().getName() + " ... ");
+      SimSystem.report(Level.INFO, "Loading the plug-in "
+          + pd.getId().getName() + " ... ");
 
       // Test whether a plug-in with the same name has already been
       // loaded
@@ -1531,15 +1562,16 @@ public class Registry extends InformationObject {
         // load class and instantiate factory
         try {
           if (fac.getClassname() == null) {
-            SimSystem.report(Level.WARNING, "There is no factory class name for " + fac);
+            SimSystem.report(Level.WARNING,
+                "There is no factory class name for " + fac);
             continue;
           }
 
           Class<?> clazz = loadClass(fac.getClassname());
 
           if (clazz == null) {
-            SimSystem.report(Level.WARNING, "Was not able to load factory class of "
-            + fac.getClassname());
+            SimSystem.report(Level.WARNING,
+                "Was not able to load factory class of " + fac.getClassname());
             continue;
           }
 
@@ -1549,7 +1581,8 @@ public class Registry extends InformationObject {
                     .get(getAbstractFactory((Class<? extends Factory<?>>) clazz));
 
             if (pdat == null) {
-              SimSystem.report(Level.WARNING, "Cannot look up plug-in data for " + clazz);
+              SimSystem.report(Level.WARNING,
+                  "Cannot look up plug-in data for " + clazz);
               continue;
             }
 
@@ -1883,9 +1916,9 @@ public class Registry extends InformationObject {
 
     Class<?> result = null;
     try {
-       result = Class.forName(pluginType);
+      result = Class.forName(pluginType);
     } catch (ClassNotFoundException e) {
-      
+
       for (IPluginTypeData ptd : foundPluginTypes) {
         if (ptd.getId().getName().compareTo(pluginType) == 0) {
           try {
@@ -1895,8 +1928,8 @@ public class Registry extends InformationObject {
           }
         }
       }
-      
-    }    
+
+    }
     return (Class<AbstractFactory<Factory<?>>>) result;
   }
 }

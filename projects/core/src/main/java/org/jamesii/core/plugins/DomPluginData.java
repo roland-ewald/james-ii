@@ -6,18 +6,19 @@
  */
 package org.jamesii.core.plugins;
 
-import java.io.Serializable;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.xpath.XPathConstants;
-
 import org.jamesii.SimSystem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import javax.xml.xpath.XPathConstants;
+import java.io.Serializable;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * The Class DomPluginData.
@@ -118,6 +119,7 @@ public class DomPluginData implements IPluginData, Serializable {
       // TODO better error handling
     }
 
+    sortFactories();
   }
 
   @Override
@@ -127,7 +129,7 @@ public class DomPluginData implements IPluginData, Serializable {
 
   @Override
   public List<IFactoryInfo> getFactories() {
-    return factories;
+    return Collections.unmodifiableList(factories);
   }
 
   @Override
@@ -152,7 +154,21 @@ public class DomPluginData implements IPluginData, Serializable {
    *          the new factories
    */
   public void setFactories(List<IFactoryInfo> factories) {
-    this.factories = factories;
+    this.factories = new ArrayList<>(factories);
+    sortFactories();
+  }
+
+  private void sortFactories() {
+    Collections.sort(factories, new Comparator<IFactoryInfo>() {
+      @Override
+      public int compare(IFactoryInfo o1, IFactoryInfo o2) {
+        if (o1==null)
+          return -1;
+        if (o2==null)
+          return 1;
+        return o1.getClassname().compareTo(o2.getClassname());
+      }
+    });
   }
 
   @Override

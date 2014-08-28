@@ -6,14 +6,15 @@
  */
 package org.jamesii.core.factories;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.logging.Level;
-
 import org.jamesii.SimSystem;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.logging.Level;
 
 /**
  * The AbstractFactory class used in the plug-in mechanism.
@@ -44,6 +45,8 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
   /** List of factories which can be returned by this abstract factory. */
   private List<F> factories = new ArrayList<>();
 
+  private boolean needsSorting = true;
+
   /**
    * Instantiates a new abstract factory.
    */
@@ -68,7 +71,10 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
    *          the factory
    */
   public void addFactory(F factory) {
-    factories.add(factory);
+    synchronized (factories) {
+      factories.add(factory);
+      needsSorting = true;
+    }
   }
 
   /**
@@ -116,7 +122,6 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
    * @return a factory or null
    */
   protected F createFactoryDirectly(ParameterBlock parameter) {
-
     String id = null;
     try {
       id = ParameterBlocks.getValue(parameter);
@@ -129,18 +134,20 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
     if (id == null) {
       return null;
     }
-    for (F f : factories) {
-      if (f.getName() == null) {
-        continue;
-      }
-      if (f.getName().compareTo(id) == 0) {
-        return f;
+    synchronized (factories) {
+      checkSorting();
+      for (F f : factories) {
+        if (f.getName() == null) {
+          continue;
+        }
+        if (f.getName().compareTo(id) == 0) {
+          return f;
+        }
       }
     }
     if (id.compareTo("") != 0) { // erm... id.isEmpty() ?!
-      SimSystem.report(Level.SEVERE,
-          "Was not able to find the given factory (" + id
-              + "), trying to use another one.");
+      SimSystem.report(Level.SEVERE, "Was not able to find the given factory ("
+          + id + "), trying to use another one.");
     }
     return null;
   }
@@ -166,7 +173,10 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
     // thus we'll have to search for another one
     if (result == null) {
       // make a copy of all available factories
-      facs.addAll(factories);
+      synchronized (factories) {
+        checkSorting();
+        facs.addAll(factories);
+      }
     } else {
       // we have been able, add this one to the list (this enabling the
       // filtering process
@@ -180,8 +190,9 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
       try {
         facs = fc.filter(facs, parameter);
       } catch (Exception e) {
-        SimSystem.report(Level.WARNING, "Problem on filtering, filter " + fc + " is not applied : "
-        + e.getClass().getName() + " - " + e.getMessage());
+        SimSystem.report(Level.WARNING,
+            "Problem on filtering, filter " + fc + " is not applied : "
+                + e.getClass().getName() + " - " + e.getMessage());
       }
 
       // as soon as no factory is left we raise an exception
@@ -207,6 +218,31 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
    * @return the factories
    */
   protected List<F> getFactories() {
-    return Collections.unmodifiableList(factories);
+    synchronized (factories) {
+      checkSorting();
+      return Collections.unmodifiableList(factories);
+    }
+  }
+
+  /**
+   * if needed the #factories list will be sorted according to the factories'
+   * class names to ensure a consistent ordering of that list in case factories
+   * are added in a different order
+   */
+  private void checkSorting() {
+    if (needsSorting) {
+      Collections.sort(factories, new Comparator<F>() {
+        @Override
+        public int compare(F o1, F o2) {
+          if (o1 == null)
+            return -1;
+          if (o2 == null)
+            return 1;
+
+          return o1.getClass().getName().compareTo(o2.getClass().getName());
+        }
+      });
+      needsSorting = false;
+    }
   }
 }
