@@ -6,27 +6,21 @@
  */
 package org.jamesii.gui;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import org.jamesii.gui.utils.BasicUtilities;
+import org.jamesii.gui.utils.history.History;
+
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-
-import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.history.History;
 
 /**
  * Class to test HistoryTextField and it's document listener
@@ -222,7 +216,7 @@ public class SimpleAutoText {
 
         String text = doc.getText(0, doc.getLength());
         List<String> keyList = getListFromHistory("testtext");
-        for (String item : keyList) {
+        for (final String item : keyList) {
           if (item.equals(text)) {
             break;
           }
