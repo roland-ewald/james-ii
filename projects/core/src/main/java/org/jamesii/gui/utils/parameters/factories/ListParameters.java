@@ -28,7 +28,7 @@ public class ListParameters extends PluginTypeParameters {
     // extract list from block if any
     if (block.getValue() instanceof List<?>) {
 
-      List<?> newList = (List<?>) block.getValue();
+      List<?> newList = block.getValue();
 
       if (newList.isEmpty()) {
         return;

@@ -53,7 +53,7 @@ public class VariablesAssignment extends LinkedHashMap<String, Serializable> {
 
   @Override
   public String toString() {
-    StringBuffer result = new StringBuffer("variable assignment:\t");
+    StringBuilder result = new StringBuilder("variable assignment:\t");
     for (Entry<String, Serializable> variable : entrySet()) {
       result.append(variable.getKey() + "= " + variable.toString() + "\t");
     }
@@ -68,7 +68,6 @@ public class VariablesAssignment extends LinkedHashMap<String, Serializable> {
         result.put(variable.getKey(),
             Clone.cloneSerializable(variable.getValue()));
       } catch (Exception ex) {
-        continue;
       }
     }
     return result;

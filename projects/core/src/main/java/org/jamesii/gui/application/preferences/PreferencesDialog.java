@@ -289,7 +289,7 @@ public final class PreferencesDialog extends ApplicationDialog implements
    * @param wm
    *          the window manager to use
    */
-  public static final void showPreferencesDialog(final IWindowManager wm) {
+  public static void showPreferencesDialog(final IWindowManager wm) {
     BasicUtilities.invokeLaterOnEDT(new Runnable() {
       @Override
       public void run() {

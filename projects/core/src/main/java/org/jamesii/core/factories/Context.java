@@ -73,7 +73,7 @@ public class Context implements IContext {
     SimSystem.report(Level.FINEST, "Created an instance of " + pluginType
         + " in the context " + context);
 
-    return (O) result;
+    return result;
   }
   
   @Override

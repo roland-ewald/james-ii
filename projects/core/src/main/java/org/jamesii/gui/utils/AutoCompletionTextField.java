@@ -95,7 +95,6 @@ public class AutoCompletionTextField extends JTextField implements
           && list.getSelectedValue() != null) {
         showPopUp = true;
         selectItem(list.getSelectedIndex());
-        return;
       }
 
     }

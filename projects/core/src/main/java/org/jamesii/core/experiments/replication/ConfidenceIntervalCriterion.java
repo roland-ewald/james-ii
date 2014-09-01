@@ -245,7 +245,6 @@ public class ConfidenceIntervalCriterion extends DataStorageCriterion {
                     + ")"
                     + ".\n As consequence this value will not be used. Please check your data storage for the reason.");
         SimSystem.report(e);
-        continue;
       }
 
     }

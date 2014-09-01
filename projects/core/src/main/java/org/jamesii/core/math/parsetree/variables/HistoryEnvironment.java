@@ -62,6 +62,6 @@ public class HistoryEnvironment<K extends Serializable> extends Environment<K>
     for (Map<K, Object> m : history) {
       m.remove(ident);
     }
-  };
+  }
 
 }

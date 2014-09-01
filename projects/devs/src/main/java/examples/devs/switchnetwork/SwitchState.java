@@ -24,7 +24,7 @@ public class SwitchState extends State {
   private static final long serialVersionUID = -600715282739830979L;
 
   public static enum Phase {
-    PASSIVE, ACTIVE;
+    PASSIVE, ACTIVE
   }
 
   private Phase phase = Phase.PASSIVE;

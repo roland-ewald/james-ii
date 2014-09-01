@@ -109,7 +109,7 @@ public final class CSVWriter {
   public static <X> void writeResult(X[][] result, String fileName,
       char delimiter, boolean addDelimsToFirstRow) throws IOException {
     try (FileWriter fw = new FileWriter(fileName)) {
-      fw.append(toCSV(new ObjectMatrix<X>(result), delimiter,
+      fw.append(toCSV(new ObjectMatrix<>(result), delimiter,
           addDelimsToFirstRow));
     }
   }
@@ -147,7 +147,7 @@ public final class CSVWriter {
    * @return the string builder containing the data
    */
   public static <X> StringBuilder toCSV(X[][] matrix, char delim) {
-    return toCSV(new ObjectMatrix<X>(matrix), delim, false);
+    return toCSV(new ObjectMatrix<>(matrix), delim, false);
   }
 
   /**

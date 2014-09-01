@@ -141,7 +141,7 @@ public class SelectionTreeFlattener implements ICallBack<SelectedFactoryNode> {
    * @return the path
    */
   String getPath(SelectedFactoryNode node) {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     List<SelectedFactoryNode> nodesFromRoot =
         BasicTree.getVertexSequenceFromRoot(childToParentMap, node);
     for (SelectedFactoryNode nodeInSquence : nodesFromRoot) {

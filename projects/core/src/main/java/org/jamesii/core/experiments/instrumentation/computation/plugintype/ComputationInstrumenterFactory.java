@@ -50,8 +50,8 @@ public abstract class ComputationInstrumenterFactory extends
   protected int checkForImplementedModel(ParameterBlock parameters,
       List<Class<?>> supportedInterfaces) {
     URI uri =
-        (URI) parameters
-            .getSubBlockValue(AbstractComputationInstrumenterFactory.MODELURI);
+            parameters
+                .getSubBlockValue(AbstractComputationInstrumenterFactory.MODELURI);
     String className = uri.getSchemeSpecificPart().substring(2);
     try {
       Class<?> modelClass = Class.forName(className);

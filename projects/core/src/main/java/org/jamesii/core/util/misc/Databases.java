@@ -77,7 +77,7 @@ public final class Databases {
     STORED_PROCEDURE,
 
     /** A trigger. */
-    TRIGGER;
+    TRIGGER
   }
 
   /**
@@ -138,7 +138,7 @@ public final class Databases {
    * @param sql
    * @throws SQLException
    */
-  private static final void executeSQL(Connection connection, String sql)
+  private static void executeSQL(Connection connection, String sql)
       throws SQLException {
     try (Statement statement = connection.createStatement()) {
       if (DEBUG_SQL) {
@@ -186,8 +186,8 @@ public final class Databases {
    */
   public static String createTableSQL(String name, String[][] columns,
       String additionalSQL) {
-    StringBuffer sql =
-        new StringBuffer("CREATE TABLE IF NOT EXISTS " + name + " (");
+    StringBuilder sql =
+        new StringBuilder("CREATE TABLE IF NOT EXISTS " + name + " (");
     for (int i = 0; i < columns.length; i++) {
       sql.append(columns[i][0] + " " + columns[i][1]);
       if (i < columns.length - 1) {

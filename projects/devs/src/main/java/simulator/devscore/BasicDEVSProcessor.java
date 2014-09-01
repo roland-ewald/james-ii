@@ -99,7 +99,7 @@ public abstract class BasicDEVSProcessor extends TreeProcessor<Double> implement
    */
   public Map<String, List<Object>> getHashedSendValues() {
     // System.out.println("trying to get send values");
-    IBasicDEVSModel model = (IBasicDEVSModel) getModel();
+    IBasicDEVSModel model = getModel();
 
     Map<String, List<Object>> result = new HashMap<>();
 
@@ -137,7 +137,7 @@ public abstract class BasicDEVSProcessor extends TreeProcessor<Double> implement
    */
   public List<PortParcel> getSendValues() {
 
-    IBasicDEVSModel model = (IBasicDEVSModel) getModel();
+    IBasicDEVSModel model = getModel();
 
     ArrayList<PortParcel> result = new ArrayList<>();
 

@@ -53,7 +53,7 @@ public abstract class MathModifier<T> extends VariableModifier<T> {
     // move, link variables to the environment of the math expression
     ExperimentVariables vars = variables;
 
-    StringBuffer level = new StringBuffer();
+    StringBuilder level = new StringBuilder();
 
     while (vars != null) {
       for (ExperimentVariable<?> v : vars.getVariables()) {

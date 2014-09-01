@@ -77,7 +77,7 @@ public class ExperimentVariable<V> extends NamedEntity implements IVariable<V> {
     if (modifier != null) {
       this.modifier = modifier;
     } else {
-      List<V> singleValueList = new ArrayList<V>();
+      List<V> singleValueList = new ArrayList<>();
       singleValueList.add(value);
       this.modifier = new SequenceModifier<>(singleValueList);
     }
@@ -95,7 +95,7 @@ public class ExperimentVariable<V> extends NamedEntity implements IVariable<V> {
     super(name);
     this.initialValue = value;
     this.value = value;
-    List<V> singleValueList = new ArrayList<V>();
+    List<V> singleValueList = new ArrayList<>();
     singleValueList.add(value);
     this.modifier = new SequenceModifier<>(singleValueList);
   }

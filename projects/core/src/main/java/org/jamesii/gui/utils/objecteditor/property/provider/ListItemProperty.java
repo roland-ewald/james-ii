@@ -56,7 +56,6 @@ public class ListItemProperty extends AbstractProperty {
       ((List<Object>) parent).set(index, value);
     }
 
-    return;
   }
 
   @Override

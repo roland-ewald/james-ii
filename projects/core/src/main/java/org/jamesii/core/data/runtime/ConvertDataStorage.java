@@ -49,7 +49,7 @@ public final class ConvertDataStorage {
     this.execute(ds, fileName);
   }
 
-  static final IWriteReadDataStorage<Long> getDSAs(IDataStorage ds) {
+  static IWriteReadDataStorage<Long> getDSAs(IDataStorage ds) {
     return (IWriteReadDataStorage<Long>) ds;
   }
 

@@ -118,7 +118,7 @@ public class Processor extends AtomicModel<ProcessorState> {
   }
 
   private String printReceivedJob() {
-    StringBuffer buffer = new StringBuffer();
+    StringBuilder buffer = new StringBuilder();
     buffer.append(getName());
     buffer.append(" receieved new job ");
     buffer.append(getState().getJob().toString());

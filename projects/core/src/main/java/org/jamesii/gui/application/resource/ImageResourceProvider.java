@@ -39,7 +39,7 @@ final class ImageResourceProvider implements IResourceProvider {
   /**
    * @return an instance of this provider
    */
-  public static final IResourceProvider getInstance() {
+  public static IResourceProvider getInstance() {
     return instance;
   }
 

@@ -280,7 +280,7 @@ public class SelectionTreeSet implements Serializable {
    */
   private <F extends Factory<?>> boolean checkIfSuitable(F factory) {
     if ((SimSystem.getRegistry() instanceof AlgoSelectionRegistry)) {
-      return ((AlgoSelectionRegistry) SimSystem.getRegistry())
+      return SimSystem.getRegistry()
           .factoryAvailable(factory.getClass());
     }
     return true;

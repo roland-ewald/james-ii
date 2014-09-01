@@ -52,7 +52,7 @@ public abstract class AbstractParameters implements Serializable, IParameters {
    * @return the help
    */
   public String getHelp() {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     Map<Parameter, Object> l = new HashMap<>();
     for (Parameter p : getArgumentList().values()) {
       if (!l.containsKey(p)) {

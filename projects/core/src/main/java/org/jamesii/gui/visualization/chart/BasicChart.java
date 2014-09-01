@@ -6,49 +6,28 @@
  */
 package org.jamesii.gui.visualization.chart;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.Point;
-import java.awt.Transparency;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-
 import org.jamesii.gui.utils.BasicUtilities;
 import org.jamesii.gui.visualization.chart.axes.LinearAxis;
 import org.jamesii.gui.visualization.chart.axes.SteppingAxis;
 import org.jamesii.gui.visualization.chart.coordinatesystem.CoordinateSystemXY;
 import org.jamesii.gui.visualization.chart.coordinatesystem.ICoordinateSystem;
-import org.jamesii.gui.visualization.chart.model.BasicXYChartModel;
-import org.jamesii.gui.visualization.chart.model.DefaultFunctionalXYSeries;
-import org.jamesii.gui.visualization.chart.model.DefaultXYSeries;
-import org.jamesii.gui.visualization.chart.model.IChartModel;
-import org.jamesii.gui.visualization.chart.model.IChartModelListener;
-import org.jamesii.gui.visualization.chart.model.ISeries;
-import org.jamesii.gui.visualization.chart.model.InvalidModelException;
+import org.jamesii.gui.visualization.chart.model.*;
 import org.jamesii.gui.visualization.chart.plot.IPlot;
 import org.jamesii.gui.visualization.chart.plot.LinePlot;
 import org.jamesii.gui.visualization.chart.plot.NullPlot;
 import org.jamesii.gui.visualization.chart.plot.TwoSeriesAreaLinePlot;
+
+import javax.swing.*;
+import javax.swing.Timer;
+import java.awt.*;
+import java.awt.MultipleGradientPaint.CycleMethod;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.util.*;
+import java.util.List;
 
 /**
  * <p>
@@ -176,7 +155,7 @@ public class BasicChart extends JComponent implements IChartModelListener {
   private static final IPlot[] STANDARDPLOTTERS = new IPlot[COLORS.length];
 
   private static final IPlot NULL_PLOT = new NullPlot();
-  {
+  static {
     for (int i = 0; i < COLORS.length; i++) {
       STANDARDPLOTTERS[i] = new LinePlot(COLORS[i % COLORS.length]);
     }
@@ -200,7 +179,7 @@ public class BasicChart extends JComponent implements IChartModelListener {
   /**
    * Holds a set of hidden series
    */
-  private final transient Set<ISeries> hidden = new HashSet<ISeries>();
+  private final transient Set<ISeries> hidden = new HashSet<>();
 
   /**
    * The plotters for each series of the {@link IChartModel}.

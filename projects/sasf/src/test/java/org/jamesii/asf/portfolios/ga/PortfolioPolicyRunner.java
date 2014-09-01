@@ -97,11 +97,11 @@ public class PortfolioPolicyRunner {
   }
 
   public Double[] getOverhead() {
-    return overhead.toArray(new Double[0]);
+    return overhead.toArray(new Double[overhead.size()]);
   }
 
   public Double[] getReward() {
-    return rewards.toArray(new Double[0]);
+    return rewards.toArray(new Double[rewards.size()]);
   }
 
   public Double getSumOfRewards() {

@@ -299,8 +299,8 @@ public class DiscPlugInFinder implements IPlugInFinder {
 
     if (pluginNames.size() > 0) {
 
-      StringBuffer s =
-          new StringBuffer("Found plug-in(s) in " + jarFile.getName() + ":");
+      StringBuilder s =
+          new StringBuilder("Found plug-in(s) in " + jarFile.getName() + ":");
       for (String curName : pluginNames) {
         s.append("    " + curName);
       }

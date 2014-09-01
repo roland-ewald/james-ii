@@ -26,19 +26,19 @@ public class TestXorNode extends TestBinaryNode {
   public void testCalc() {
     BinaryNode b = getInstance(new ValueNode<>(true), new ValueNode<>(false));
     ValueNode<Boolean> result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(true), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(false));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
   }
 
 }

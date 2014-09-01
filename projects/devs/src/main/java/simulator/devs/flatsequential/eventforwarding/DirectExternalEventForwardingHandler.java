@@ -199,19 +199,16 @@ public class DirectExternalEventForwardingHandler extends BasicHandler
     // we'll now take each coupling starting at an atomic model and compute its
     // target
 
-    Iterator<Map.Entry<IBasicDEVSModel, Map<IPort, List<BasicCoupling>>>> modelIterator =
-        allCouplings.entrySet().iterator();
-    while (modelIterator.hasNext()) {
-      IBasicDEVSModel m = modelIterator.next().getKey();
+    for (Map.Entry<IBasicDEVSModel, Map<IPort, List<BasicCoupling>>> iBasicDEVSModelMapEntry : allCouplings.entrySet
+            ()) {
+      IBasicDEVSModel m = iBasicDEVSModelMapEntry.getKey();
 
       // if the model m is an atomic one we have found a potential source of
       // external events
       if (!(m instanceof IBasicCoupledModel)) {
         // get all couplings (per port) of this event source
-        Iterator<Map.Entry<IPort, List<BasicCoupling>>> portIterator =
-            allCouplings.get(m).entrySet().iterator();
-        while (portIterator.hasNext()) {
-          IPort p = portIterator.next().getKey();
+        for (Map.Entry<IPort, List<BasicCoupling>> iPortListEntry : allCouplings.get(m).entrySet()) {
+          IPort p = iPortListEntry.getKey();
 
           List<BasicCoupling> allCouplingsOfPort = allCouplings.get(m).get(p);
 
@@ -235,7 +232,7 @@ public class DirectExternalEventForwardingHandler extends BasicHandler
 
             } else {
               throw new InvalidModelException(
-                  "DMR only supports std DEVS couplings!!!");
+                      "DMR only supports std DEVS couplings!!!");
             }
 
           }

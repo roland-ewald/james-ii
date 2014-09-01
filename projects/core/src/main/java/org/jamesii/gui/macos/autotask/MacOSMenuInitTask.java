@@ -58,7 +58,7 @@ class MacOSMenuInitTask implements IAutoTask {
       String vers =
           System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
-      if (vers.indexOf("mac") >= 0) {
+      if (vers.contains("mac")) {
         Class<?> appClass = Class.forName("com.apple.eawt.Application");
         Object app =
             appClass.getMethod("getApplication", (Class<?>[]) null).invoke(

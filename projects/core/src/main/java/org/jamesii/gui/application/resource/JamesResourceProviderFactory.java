@@ -103,7 +103,7 @@ public final class JamesResourceProviderFactory implements
   /**
    * @return the singleton instance of this factory
    */
-  public static final JamesResourceProviderFactory getInstance() {
+  public static JamesResourceProviderFactory getInstance() {
     return instance;
   }
 

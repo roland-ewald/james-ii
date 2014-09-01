@@ -248,8 +248,10 @@ public class SplayTree<E, K extends Comparable<K>> {
 	//rotate node to left (node is right child of parent)
 	//ROOT NODES CAN NOT BE ROTATED!
 	public void rotateleft(SplayTreeNode<E,K> node){
-		if(node==null)return;
-		else if(node.getParent()==null)return;
+		if(node==null) {
+    }
+		else if(node.getParent()==null) {
+    }
 		else{
 			SplayTreeNode<E,K> p = node.getParent();
 			SplayTreeNode<E,K> l = node.getLeft();
@@ -278,8 +280,10 @@ public class SplayTree<E, K extends Comparable<K>> {
 	//rotate node to right (node is left child of parent)
 	//ROOT NODES CAN NOT BE ROTATED!
 	public void rotateright(SplayTreeNode<E,K> node){
-		if(node==null)return;
-		else if(node.getParent()==null)return;
+		if(node==null) {
+    }
+		else if(node.getParent()==null) {
+    }
 		else{
 			SplayTreeNode<E,K> p = node.getParent();
 			SplayTreeNode<E,K> r = node.getRight();
@@ -312,8 +316,10 @@ public class SplayTree<E, K extends Comparable<K>> {
 	//rotates right if node is left child)
 	//ROOT NODES CAN NOT BE ROTATED!
 	public void rotate(SplayTreeNode<E,K> node){
-		if(node==null)return;
-		else if(node.getParent()==null)return;
+		if(node==null) {
+    }
+		else if(node.getParent()==null) {
+    }
 		else if(node.getParent().getRight()==node){
 			rotateleft(node);
 		}else if(node.getParent().getLeft()==node){

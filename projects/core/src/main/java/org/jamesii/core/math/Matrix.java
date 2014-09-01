@@ -286,9 +286,7 @@ public class Matrix implements Serializable {
 
     double[][] data2 = new double[rows][cols + m.getColumns()];
     for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < cols; j++) {
-        data2[i][j] = data[i][j];
-      }
+      System.arraycopy(data[i], 0, data2[i], 0, cols);
     }
 
     for (int i = 0; i < m.getRows(); i++) {

@@ -137,7 +137,7 @@ public class ComputationServer extends MSSystemHost implements
   @Override
   public <V> V executeJob(IUniqueID id, Serializable data)
       throws RemoteException {
-    return compManager.<V> executeJob(id, data);
+    return compManager.executeJob(id, data);
   }
 
   @Override

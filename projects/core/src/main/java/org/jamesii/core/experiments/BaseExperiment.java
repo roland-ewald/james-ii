@@ -6,16 +6,6 @@
  */
 package org.jamesii.core.experiments;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-import java.util.logging.Level;
-
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.NamedEntity;
 import org.jamesii.core.cmdparameters.Parameters;
@@ -51,6 +41,12 @@ import org.jamesii.core.util.id.IUniqueID;
 import org.jamesii.core.util.id.UniqueIDGenerator;
 import org.jamesii.core.util.info.JavaInfo;
 import org.jamesii.core.util.misc.ParameterUtils;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URI;
+import java.util.*;
+import java.util.logging.Level;
 
 /**
  * Base class for experiments.
@@ -1161,9 +1157,7 @@ public class BaseExperiment extends NamedEntity {
    */
   public void setupVariables(ExperimentVariable<?>... variables) {
     List<ExperimentVariable<?>> expVars = new ArrayList<>();
-    for (ExperimentVariable<?> variable : variables) {
-      expVars.add(variable);
-    }
+    Collections.addAll(expVars, variables);
     this.setupVariables(expVars);
   }
 
@@ -1608,7 +1602,7 @@ public class BaseExperiment extends NamedEntity {
   @Override
   public String getCompleteInfoString() {
     String lineEnd = "\n";
-    StringBuffer sb = new StringBuffer();
+    StringBuilder sb = new StringBuilder();
     sb.append("Experiment (" + getName() + ")" + lineEnd);
     sb.append("  Unique identifier: ");
     sb.append(this.getUniqueIdentifier());

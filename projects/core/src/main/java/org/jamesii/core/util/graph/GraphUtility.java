@@ -9,13 +9,8 @@ package org.jamesii.core.util.graph;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.math.Calc;
@@ -323,10 +318,8 @@ public class GraphUtility {
     }
   }
 
-  {
-    for (String c : colors) {
-      usedColors.add(c);
-    }
+  static {
+    Collections.addAll(usedColors, colors);
   }
 
   /**

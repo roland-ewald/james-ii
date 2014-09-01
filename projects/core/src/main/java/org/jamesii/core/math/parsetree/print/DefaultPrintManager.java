@@ -34,7 +34,7 @@ public class DefaultPrintManager implements IPrintManager {
 
     }
 
-    StringBuffer result = new StringBuffer(node.getName() + "(");
+    StringBuilder result = new StringBuilder(node.getName() + "(");
 
     for (INode param : node.getChildren()) {
       if (param != node.getChildren().get(0)) {

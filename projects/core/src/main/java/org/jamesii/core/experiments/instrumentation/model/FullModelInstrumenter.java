@@ -67,8 +67,8 @@ public class FullModelInstrumenter extends AbstractFullInstrumenter implements
       } else {
         name = entity.getClass().getName();
       }
-      ((IWriteReadDataStorage) getDataStorage()).writeData(
-          entity.getSimpleId(), name, -1, entity.toString());
+      getDataStorage().writeData(
+              entity.getSimpleId(), name, -1, entity.toString());
     }
 
   }

@@ -22,6 +22,6 @@ public enum ExperimentVariableDomain {
    * It is a variable regarding a model's execution (ie, simulation), to be
    * changed during the experiment.
    */
-  EXECUTION;
+  EXECUTION
 
 }

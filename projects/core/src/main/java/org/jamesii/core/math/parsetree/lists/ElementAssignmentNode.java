@@ -46,7 +46,7 @@ public class ElementAssignmentNode extends ElementNode {
   @Override
   public <N extends INode> N calc(IEnvironment<?> cEnv) {
     ListNode listNode = getValue().calc(cEnv);
-    ValueNode<Integer> elem = (ValueNode<Integer>) getNode().calc(cEnv);
+    ValueNode<Integer> elem = getNode().calc(cEnv);
     List<INode> nodeList = listNode.getValue();
     nodeList.remove(elem.getValue());
     nodeList.add(elem.getValue(), value);

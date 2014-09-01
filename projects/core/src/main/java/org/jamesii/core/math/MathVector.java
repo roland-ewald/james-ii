@@ -81,7 +81,7 @@ public class MathVector extends Matrix {
 
   @Override
   public String toString() {
-    StringBuffer result = new StringBuffer("(" + getElement(0));
+    StringBuilder result = new StringBuilder("(" + getElement(0));
     for (int i = 1; i < this.size(); i++) {
       result.append(result + "," + getElement(i));
     }

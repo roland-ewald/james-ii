@@ -156,7 +156,7 @@ public class FactoryVertexConstraintsPanel extends
     for (int i = 0; i < indices.length; i++) {
       int selectedFactoryIndex = indices[i] - i;
       String selectedFactory =
-          (String) sourceFacList.getElementAt(selectedFactoryIndex);
+              sourceFacList.getElementAt(selectedFactoryIndex);
       sourceFacList.removeElementAt(selectedFactoryIndex);
       targetListModel.addElement(selectedFactory);
     }
@@ -168,7 +168,7 @@ public class FactoryVertexConstraintsPanel extends
     Set<Factory<?>> ignoreList = constraints.getIgnoreList();
     ignoreList.clear();
     for (int i = 0; i < igFacListModel.getSize(); i++) {
-      String facName = (String) igFacListModel.getElementAt(i);
+      String facName = igFacListModel.getElementAt(i);
       ignoreList.add(nameMap.get(facName));
     }
   }

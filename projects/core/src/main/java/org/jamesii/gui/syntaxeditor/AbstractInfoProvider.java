@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.jamesii.SimSystem;
 import org.jamesii.core.util.misc.Triple;
 import org.jamesii.gui.utils.BasicUtilities;

@@ -280,7 +280,7 @@ public class MasterServer extends MSSystemHost implements IMasterServer,
     List<IComputationServer> resources =
         serviceRegistry.getServicesForPurpose(id);
     IComputationServer server = resources.get(0);
-    return server.<V> executeJob(id, data);
+    return server.executeJob(id, data);
   }
 
   @Override
@@ -585,7 +585,7 @@ public class MasterServer extends MSSystemHost implements IMasterServer,
   public <D> D getSimulationRunProperty(ComputationTaskIDObject simulationID,
       String property) throws RemoteException {
     ISimulationServer host = getHostOfSimulationRun(simulationID);
-    return host.<D> getSimulationRunProperty(simulationID, property);
+    return host.getSimulationRunProperty(simulationID, property);
   }
 
   @Override

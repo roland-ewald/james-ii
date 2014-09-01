@@ -28,7 +28,7 @@ public class JavaProblemToken extends DefaultLexerToken<JavaProblemToken.Type> {
      * describes the found problem as error
      */
     ERROR
-  };
+  }
 
   /**
    * Creates a new problem token for Java syntax highlighting

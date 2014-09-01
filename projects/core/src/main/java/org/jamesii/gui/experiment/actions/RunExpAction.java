@@ -7,6 +7,7 @@
 package org.jamesii.gui.experiment.actions;
 
 import java.awt.event.ActionEvent;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -92,9 +93,7 @@ public class RunExpAction extends DefaultSwingAction {
     experimentEditor = expEditor;
     putValue(SMALL_ICON,
         IconManager.getIcon(IconIdentifier.PLAY_SMALL, "Run experiment"));
-    for (IExperimentExecutionListener expExecListener : expExListeners) {
-      expExecListeners.add(expExecListener);
-    }
+    Collections.addAll(expExecListeners, expExListeners);
   }
 
   @Override

@@ -7,7 +7,6 @@
 package org.jamesii.core.experiments;
 
 import org.jamesii.core.experiments.BaseExperiment;
-import org.jamesii.core.processor.plugintype.ProcessorFactory;
 import org.jamesii.core.util.misc.SimpleSerializationTest;
 
 /**

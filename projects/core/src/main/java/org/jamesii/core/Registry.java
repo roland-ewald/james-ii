@@ -781,7 +781,7 @@ public class Registry extends InformationObject {
    * @return string containing list of plugins
    */
   public String getPluginList() {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
 
     if (foundPlugins != null) {
       for (IPluginData pd : foundPlugins) {
@@ -1382,7 +1382,6 @@ public class Registry extends InformationObject {
                           + "\") not fitable for the given plug-in type");
                   // TODO remove plugin or remove default
                   // value?
-                  continue;
                 }
               } catch (ClassNotFoundException e) {
                 SimSystem.report(
@@ -1393,7 +1392,6 @@ public class Registry extends InformationObject {
                         + "\" which does not specify a known class ("
                         + p.getDefaultValue() + ") as default value");
                 // TODO remove plugin from registry
-                continue;
               }
             }
 

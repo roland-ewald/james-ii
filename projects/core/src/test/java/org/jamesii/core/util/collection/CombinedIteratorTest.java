@@ -39,7 +39,7 @@ public class CombinedIteratorTest extends ChattyTestCase {
    * @param it2
    *          other iterator
    */
-  public static final void assertIteratorEquality(Iterator<?> it1,
+  public static void assertIteratorEquality(Iterator<?> it1,
       Iterator<?> it2) {
     assertEquals(it1.hasNext(), it2.hasNext());
     while (it1.hasNext()) {

@@ -75,7 +75,7 @@ public final class MultiGradient {
    *          <em>sorted</em> array of colors with applied positions
    * @return the interpolated color
    */
-  public static final Color getColorFor(float pos, GradientColor... colors) {
+  public static Color getColorFor(float pos, GradientColor... colors) {
     if (colors.length > 0) {
       // assuming colors is sorted
       float min = colors[0].position;
@@ -121,7 +121,7 @@ public final class MultiGradient {
    *          the mix value
    * @return mixed color
    */
-  private static final Color mixColors(Color color, Color color2, float mix) {
+  private static Color mixColors(Color color, Color color2, float mix) {
     if (color == null || color2 == null) {
       return null;
     }

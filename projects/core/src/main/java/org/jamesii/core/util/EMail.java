@@ -110,7 +110,6 @@ public class EMail {
    */
   private void clearServerReplies() throws IOException {
     while (smtpServerInputStream.readLine() != null) {
-      ;
     }
   }
 

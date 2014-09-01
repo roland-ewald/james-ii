@@ -76,7 +76,7 @@ public class TreeTable extends JTable {
               e.consume();
             }
           }
-        };
+        }
       };
 
   public TreeTable() {

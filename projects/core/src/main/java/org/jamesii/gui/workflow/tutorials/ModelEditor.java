@@ -189,7 +189,7 @@ class ModelEditor extends AbstractWizardPage {
               .getFirstValue());
 
       URI uri =
-          (URI) parameters.getFirstValue().getSubBlockValue(IURIHandling.URI);
+              parameters.getFirstValue().getSubBlockValue(IURIHandling.URI);
 
       model = reader.read(uri);
 
@@ -396,9 +396,9 @@ class ModelEditor extends AbstractWizardPage {
     // only do this if the model is null, otherwise we have loaded a
     // model and are rebuilding the front end!
     if (model == null) {
-      model = (ISymbolicModel<?>) wizard.getValue(FormalismChooser.MODEL);
+      model = wizard.getValue(FormalismChooser.MODEL);
     }
-    editor = (ModelWindowFactory) wizard.getValue(EditorSelector.EDITOR);
+    editor = wizard.getValue(EditorSelector.EDITOR);
 
     ParameterBlock amwfp =
         new ParameterBlock(model, AbstractModelWindowFactory.MODEL);

@@ -52,7 +52,7 @@ final class TextfileResourceProvider implements IResourceProvider {
         throw new FileNotFoundException("Could not open: " + location);
       }
 
-      StringBuffer buffer = new StringBuffer();
+      StringBuilder buffer = new StringBuilder();
 
       // see if there is a special encoding given as parameter
       String encoding = params.get("encoding");

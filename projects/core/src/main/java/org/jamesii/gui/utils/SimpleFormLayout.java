@@ -335,9 +335,7 @@ public class SimpleFormLayout implements LayoutManager2 {
 
       // copy elements
       for (int i = 0; i < grid.length; i++) {
-        for (int j = 0; j < grid[i].length; j++) {
-          newGrid[i][j] = grid[i][j];
-        }
+        System.arraycopy(grid[i], 0, newGrid[i], 0, grid[i].length);
       }
 
       grid = newGrid;

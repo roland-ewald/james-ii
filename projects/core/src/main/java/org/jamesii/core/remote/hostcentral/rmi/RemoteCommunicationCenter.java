@@ -84,7 +84,7 @@ public class RemoteCommunicationCenter extends UnicastRemoteObject implements
     return uid;
   }
 
-  private final Method getMethod(Object local, String methodName,
+  private Method getMethod(Object local, String methodName,
       Object[] parameters) {
     // FIXME (nf028): CACHE DOES NOT WORK FOR OVERLOADED METHODS!!!!
 

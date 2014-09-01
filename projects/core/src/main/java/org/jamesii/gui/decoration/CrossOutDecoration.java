@@ -27,7 +27,7 @@ public class CrossOutDecoration extends DefaultDecoration {
   protected void paintDecoration(Graphics2D g, Decorator d) {
     super.paintDecoration(g, d);
     // paint cross on top
-    Graphics2D g2d = (Graphics2D) g;
+    Graphics2D g2d = g;
 
     g2d.setStroke(new BasicStroke(3));
     g2d.setColor(Color.red);

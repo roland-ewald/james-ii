@@ -129,9 +129,7 @@ public class ComplexArray1D {
     double[] newdata = new double[2 * length];
 
     // copy old values, if possible
-    for (int i = 0; i < Math.min(data.length, newdata.length); i++) {
-      newdata[i] = data[i];
-    }
+    System.arraycopy(data, 0, newdata, 0, Math.min(data.length, newdata.length));
 
     data = newdata;
   }

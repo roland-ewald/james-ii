@@ -74,7 +74,7 @@ public class Wizard implements WindowListener {
 
     @Override
     public <B> B getValue(final String id) {
-      return model.<B> getValue(id);
+      return model.getValue(id);
     }
 
     @Override
@@ -274,7 +274,6 @@ public class Wizard implements WindowListener {
           finishButton.doClick();
         }
       });
-      return;
     }
 
   }

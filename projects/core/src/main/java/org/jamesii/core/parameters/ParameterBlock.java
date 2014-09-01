@@ -255,7 +255,7 @@ public class ParameterBlock implements Serializable, Comparable<ParameterBlock> 
     if (result == null) {
       return null;
     }
-    return result.<V> getValue();
+    return result.getValue();
   }
 
   /**
@@ -278,7 +278,7 @@ public class ParameterBlock implements Serializable, Comparable<ParameterBlock> 
   public final <V> V getSubBlockValue(String ident, V defaultVal) {
     V val = null;
     if (hasSubBlock(ident)) {
-      val = (V) getSubBlockValue(ident);
+      val = getSubBlockValue(ident);
     }
     if (val == null) {
       val = defaultVal;

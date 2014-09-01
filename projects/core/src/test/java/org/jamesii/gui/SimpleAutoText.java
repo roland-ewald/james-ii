@@ -222,9 +222,7 @@ public class SimpleAutoText {
 
         String text = doc.getText(0, doc.getLength());
         List<String> keyList = getListFromHistory("testtext");
-        Iterator<String> i = keyList.iterator();
-        while (i.hasNext()) {
-          final String item = i.next();
+        for (String item : keyList) {
           if (item.equals(text)) {
             break;
           }

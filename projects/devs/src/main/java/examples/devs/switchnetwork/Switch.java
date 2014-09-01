@@ -99,7 +99,7 @@ public class Switch extends AtomicModel<SwitchState> {
     SwitchState state = getState();
     if (state.getPhase() == Phase.ACTIVE) {
       // determine output port based on current polarity
-      if (state.getPolarity() == true) {
+      if (state.getPolarity()) {
         getOutPort(PORT_OUT).write(state.getJob());
       } else {
         getOutPort(PORT_OUT1).write(state.getJob());

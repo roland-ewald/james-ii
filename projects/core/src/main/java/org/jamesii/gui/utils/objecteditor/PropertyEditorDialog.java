@@ -122,7 +122,7 @@ final class PropertyEditorDialog extends JDialog {
   /**
    * helper method that closes and disposes this dialog.
    */
-  private final void exit() {
+  private void exit() {
     setVisible(false);
     dispose();
   }

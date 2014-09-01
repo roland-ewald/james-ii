@@ -11,14 +11,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.math.random.generators.IRandom;
@@ -445,9 +439,9 @@ public class PartitioningUtilities {
     OutputStreamWriter file = new OutputStreamWriter(stream, "UTF-8");
     int vertexCount = graph.getVertexCount();
     Map<Integer, Double> vertexLabels =
-        ((ILabeledGraph<Integer, ?, Double, ?>) graph).getVertexLabels();
+        graph.getVertexLabels();
     Map<Integer, Map<Integer, Double>> edgeLabels =
-        ((ILabeledGraph<Integer, ?, ?, Double>) graph).getEdgeLabels();
+        graph.getEdgeLabels();
     List<List<Integer>> adjacencyLists = graph.getAdjacencyLists();
 
     if (partition != null) {
@@ -585,10 +579,8 @@ public class PartitioningUtilities {
   /** Randomiser seed. */
   private long randSeed = 0;
 
-  {
-    for (int i = 0; i < COLORS.length; i++) {
-      usedColors.add(COLORS[i]);
-    }
+  static {
+    Collections.addAll(usedColors, COLORS);
   }
 
   /**

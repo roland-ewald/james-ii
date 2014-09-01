@@ -163,7 +163,6 @@ public class ParameterTableModel extends AbstractTableModel implements
       visibleParameters.remove(visibleParameters.indexOf(parameter));
     }
 
-    return;
   }
 
   @Override
@@ -416,7 +415,6 @@ public class ParameterTableModel extends AbstractTableModel implements
 
     }
 
-    return;
   }
 
   /**

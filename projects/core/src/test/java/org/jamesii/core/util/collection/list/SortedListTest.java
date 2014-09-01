@@ -66,8 +66,8 @@ public class SortedListTest extends TestCase {
     Entry<Object, Double> oldE = list.extractTop();
     for (int i = 0; i < testEle - 1; i++) {
       Entry<Object, Double> e = list.extractTop();
-      super.assertTrue("Got " + e.getTime() + " after " + oldE.getTime(),
-          e.compareTo(oldE) >= 0);
+      assertTrue("Got " + e.getTime() + " after " + oldE.getTime(),
+              e.compareTo(oldE) >= 0);
     }
 
   }

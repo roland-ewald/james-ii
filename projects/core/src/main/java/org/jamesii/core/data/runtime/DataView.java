@@ -153,7 +153,7 @@ public class DataView extends ProcessorTriggeredListener {
         data.insertRow();
 
         boolean containsData = false;
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(data.getObject(1)); // time
         for (int i = 2; i < curOffset; i++) {
           Object curData = data.getObject(i);

@@ -47,9 +47,7 @@ public class SimpleModelSet extends ElementSet<IBasicDEVSModel> implements
 
   @Override
   public IBasicDEVSModel getModel(String name) {
-    Iterator<IBasicDEVSModel> it = getVelements().iterator();
-    while (it.hasNext()) {
-      IBasicDEVSModel m = it.next();
+    for (IBasicDEVSModel m : getVelements()) {
       if (m.getName().compareTo(name) == 0) {
         return m;
       }

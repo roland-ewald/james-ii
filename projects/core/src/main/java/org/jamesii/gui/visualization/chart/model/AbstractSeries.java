@@ -149,7 +149,7 @@ public abstract class AbstractSeries implements ISeries {
    * @param oldName
    *          the old name
    */
-  private final synchronized void fireNameChanged(String oldName) {
+  private synchronized void fireNameChanged(String oldName) {
     for (ISeriesListener l : listeners) {
       if (l != null) {
         l.nameChanged(this, oldName);

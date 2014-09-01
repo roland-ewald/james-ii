@@ -59,7 +59,7 @@ public class SelectionInformation<F extends Factory<?>> implements Serializable 
    * selection tree.
    */
   private static final Map<String, Object> PARAM_BLACK_LIST = new HashMap<>();
-  {
+  static {
     // The partition is a complex object storing the model etc.
     PARAM_BLACK_LIST.put(AbstractProcessorFactory.PARTITION, new Object());
     // The rand seed is stored somewhere else in the database.

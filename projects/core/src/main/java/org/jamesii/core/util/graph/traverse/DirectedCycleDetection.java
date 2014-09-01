@@ -75,7 +75,7 @@ public class DirectedCycleDetection {
 
       // add cycles to self
       if (graph.hasEdge(vertex, vertex)) {
-        List<V> self = new ArrayList<V>();
+        List<V> self = new ArrayList<>();
         self.add(vertex);
         cycles.add(self);
       }
@@ -113,7 +113,7 @@ public class DirectedCycleDetection {
     }
 
     if (getLow(vertex, indices) == getIndex(vertex, indices)) {
-      List<V> cycle = new ArrayList<V>();
+      List<V> cycle = new ArrayList<>();
       V comp;
       do {
         comp = stack.remove(0);

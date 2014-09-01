@@ -29,9 +29,7 @@ public class AutonomousLinearOde implements IOde, IOdeJacobian {
     int n = A.length;
     this.A = new double[n][n];
     for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        this.A[i][j] = A[i][j];
-      }
+      System.arraycopy(A[i], 0, this.A[i], 0, n);
     }
   }
 
@@ -63,9 +61,7 @@ public class AutonomousLinearOde implements IOde, IOdeJacobian {
     int n = getDimension();
     double ret[][] = new double[n][n];
     for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        ret[i][j] = A[i][j];
-      }
+      System.arraycopy(A[i], 0, ret[i], 0, n);
     }
     return ret;
   }

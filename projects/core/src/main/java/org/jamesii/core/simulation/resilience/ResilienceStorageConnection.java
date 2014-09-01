@@ -6,15 +6,6 @@
  */
 package org.jamesii.core.simulation.resilience;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.logging.Level;
-
 import org.jamesii.SimSystem;
 import org.jamesii.core.data.IDataBase;
 import org.jamesii.core.data.resilience.IDataResilience;
@@ -25,6 +16,11 @@ import org.jamesii.core.distributed.masterserver.MasterServer;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.simulationrun.ISimulationRun;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.logging.Level;
 
 /**
  * The class is the connection between the datastorage and the
@@ -86,10 +82,10 @@ public class ResilienceStorageConnection implements
                 AbstractDataResilienceFactory.class, null);
 
         ParameterBlock parameter = new ParameterBlock();
-        parameter.addSubBlock(factory.USER, "root");
-        parameter.addSubBlock(factory.PASSWORD, "");
-        parameter.addSubBlock(factory.DRIVER, "com.mysql.jdbc.Driver");
-        parameter.addSubBlock(factory.DATABASEURL,
+        parameter.addSubBlock(DataResilienceFactory.USER, "root");
+        parameter.addSubBlock(DataResilienceFactory.PASSWORD, "");
+        parameter.addSubBlock(DataResilienceFactory.DRIVER, "com.mysql.jdbc.Driver");
+        parameter.addSubBlock(DataResilienceFactory.DATABASEURL,
             "jdbc:mysql://localhost/test");
         setDataStorage(factory.create(parameter));
       } catch (Exception ex) {

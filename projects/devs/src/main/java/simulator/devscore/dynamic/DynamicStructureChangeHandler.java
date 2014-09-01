@@ -9,7 +9,6 @@ package simulator.devscore.dynamic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -186,7 +185,7 @@ public class DynamicStructureChangeHandler extends BasicHandler {
           if (entry == null) {
             throw new InvalidChangeRequestException(
                 "Port change request from model ["
-                    + ((PortChangeRequest) cr).getSource().getFullName()
+                    + cr.getSource().getFullName()
                     + "] for model ["
                     + ((PortChangeRequest) cr).getModel().getFullName()
                     + "] and port ["

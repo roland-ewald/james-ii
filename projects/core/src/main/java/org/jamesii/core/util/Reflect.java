@@ -351,7 +351,7 @@ public final class Reflect {
    * @param value
    *          the value that is to be set
    */
-  public static final void setField(final Object onObject,
+  public static void setField(final Object onObject,
       final String fieldName, final Object value) {
     try {
       final Field declaredField =

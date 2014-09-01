@@ -40,7 +40,6 @@ public class PrintUtility implements Printable {
   private static void disableDoubleBuffering(Component c) {
     RepaintManager currentManager = RepaintManager.currentManager(c);
     currentManager.setDoubleBufferingEnabled(false);
-    return;
   }
 
   /**
@@ -52,7 +51,6 @@ public class PrintUtility implements Printable {
   private static void enableDoubleBuffering(Component c) {
     RepaintManager currentManager = RepaintManager.currentManager(c);
     currentManager.setDoubleBufferingEnabled(true);
-    return;
   }
 
   /**
@@ -68,7 +66,6 @@ public class PrintUtility implements Printable {
 
     new PrintUtility(c).print();
 
-    return;
   }
 
   // The component which is printed
@@ -83,7 +80,6 @@ public class PrintUtility implements Printable {
    */
   public PrintUtility(Component component) {
     componentToBePrinted = component;
-    return;
   }
 
   /**
@@ -102,7 +98,6 @@ public class PrintUtility implements Printable {
       printJob.print(); // print if user said 'ok'
     }
 
-    return;
   }
 
   /**

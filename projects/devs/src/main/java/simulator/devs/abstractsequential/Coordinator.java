@@ -100,7 +100,7 @@ public class Coordinator extends BasicDEVSProcessor implements
   @Override
   public double doRemainder(Double time) {
 
-    ICoupledModel cm = (ICoupledModel) getModel();
+    ICoupledModel cm = getModel();
     imminents.remove(cm);
 
     // the models which get influenced by one of the imminent ones
@@ -155,7 +155,7 @@ public class Coordinator extends BasicDEVSProcessor implements
   public void getOutputs() {
     // call getOutputs imminent child
 
-    ICoupledModel cm = (ICoupledModel) getModel();
+    ICoupledModel cm = getModel();
 
     // System.out.println(getTime()+" -- "+subProcessors.size()+" --- "+
     // events.size());

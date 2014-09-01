@@ -81,7 +81,7 @@ public final class PerspectivePresetManager {
    * @param p
    *          the preset to add
    */
-  public static final synchronized void addPreset(PerspectivePreset p) {
+  public static synchronized void addPreset(PerspectivePreset p) {
     if (p != null && !INSTANCE.presets.contains(p)) {
       INSTANCE.presets.add(p);
       INSTANCE.firePresetAdded(p);
@@ -97,7 +97,7 @@ public final class PerspectivePresetManager {
    * @param p
    *          the preset to delete
    */
-  public static final synchronized void deletePreset(PerspectivePreset p) {
+  public static synchronized void deletePreset(PerspectivePreset p) {
     if (p != null && INSTANCE.presets.contains(p)) {
       INSTANCE.presets.remove(p);
       INSTANCE.firePresetDeleted(p);
@@ -116,7 +116,7 @@ public final class PerspectivePresetManager {
    *          a list of perspectives
    * @return null if no proper preset was found a preset else
    */
-  public static final PerspectivePreset findPresetForPerspectives(
+  public static PerspectivePreset findPresetForPerspectives(
       List<IPerspective> perspectives) {
     if (perspectives == null) {
       return null;
@@ -164,7 +164,7 @@ public final class PerspectivePresetManager {
    * @param listener
    *          the listener to attach
    */
-  public static final synchronized void addPresetChangeListener(
+  public static synchronized void addPresetChangeListener(
       IPerspectivePresetChangeListener listener) {
     INSTANCE.listeners.addListener(listener);
   }
@@ -175,7 +175,7 @@ public final class PerspectivePresetManager {
    * @param listener
    *          the listener to remove
    */
-  public static final synchronized void removePresetChangeListener(
+  public static synchronized void removePresetChangeListener(
       IPerspectivePresetChangeListener listener) {
     INSTANCE.listeners.removeListener(listener);
   }
@@ -183,7 +183,7 @@ public final class PerspectivePresetManager {
   /**
    * @return all available presets
    */
-  public static final List<PerspectivePreset> getAvailablePresets() {
+  public static List<PerspectivePreset> getAvailablePresets() {
     return new ArrayList<>(INSTANCE.presets);
   }
 
@@ -230,7 +230,6 @@ public final class PerspectivePresetManager {
 
       if (!p.isInPreset(persp) && PerspectivesManager.isOpen(persp)) {
         PerspectivesManager.closePerspective(persp);
-        continue;
       }
     }
   }

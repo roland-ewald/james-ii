@@ -27,48 +27,48 @@ public class TestIsNotEqualNode extends TestBinaryNode {
   public void testCalc() {
     BinaryNode b = getInstance(new ValueNode<>(0), new ValueNode<>(1));
     ValueNode<Boolean> result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(5), new ValueNode<>(1));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(5), new ValueNode<>(5));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b = getInstance(new ValueNode<>(2.), new ValueNode<>(7.));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(42.), new ValueNode<>(3.5));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     // check sub tree handling
     b =
         getInstance(new AddNode(new ValueNode<>(5), new ValueNode<>(6)),
             new ValueNode<>(1));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b =
         getInstance(new ValueNode<>(1), new AddNode(new ValueNode<>(5),
             new ValueNode<>(6)));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b =
         getInstance(new AddNode(new ValueNode<>(1), new ValueNode<>(1)),
             new AddNode(new ValueNode<>(5), new ValueNode<>(6)));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b =
         getInstance(new AddNode(new ValueNode<>(1), new ValueNode<>(1)),
             new AddNode(new ValueNode<>(1), new ValueNode<>(1)));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
   }
 
 }

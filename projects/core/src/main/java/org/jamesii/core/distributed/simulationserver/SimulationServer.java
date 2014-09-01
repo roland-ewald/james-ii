@@ -634,7 +634,7 @@ public class SimulationServer extends SimulationHost implements
       String property) throws RemoteException {
     // the simulation run has to be a local simulation run object
     ISimulationRun simulation = getSimulationByUID(simulationID);
-    return simulation.<D> getProperty(property);
+    return simulation.getProperty(property);
   }
 
   @Override

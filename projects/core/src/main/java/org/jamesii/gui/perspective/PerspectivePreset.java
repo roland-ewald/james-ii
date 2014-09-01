@@ -8,6 +8,7 @@ package org.jamesii.gui.perspective;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -153,8 +154,6 @@ public class PerspectivePreset implements Serializable {
    */
   public void setPerspectives(String[] p) {
     perspectives.clear();
-    for (String s : p) {
-      perspectives.add(s);
-    }
+    Collections.addAll(perspectives, p);
   }
 }

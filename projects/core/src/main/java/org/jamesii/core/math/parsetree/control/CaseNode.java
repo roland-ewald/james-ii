@@ -66,7 +66,7 @@ public class CaseNode extends Node {
       }
 
       // any other than default case
-      if (p.getFirstValue().compareTo((Comparable) (val.getValue())) == 0) {
+      if (p.getFirstValue().compareTo(val.getValue()) == 0) {
         return (N) p.getSecondValue().calc(cEnv);
       }
     }
@@ -80,7 +80,7 @@ public class CaseNode extends Node {
 
   @Override
   public String toString() {
-    StringBuffer result = new StringBuffer("case " + getCaseStmt() + " of ");
+    StringBuilder result = new StringBuilder("case " + getCaseStmt() + " of ");
 
     for (Pair<? extends Comparable<?>, INode> p : getCaseTerms()) {
       result.append("\n  " + p.getFirstValue() + " : " + p.getSecondValue());

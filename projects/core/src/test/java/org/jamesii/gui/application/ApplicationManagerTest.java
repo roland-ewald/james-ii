@@ -332,7 +332,7 @@ public class ApplicationManagerTest extends TestCase {
       @Override
       public void checkPermission(Permission permission) {
         // This Prevents the shutting down of JVM.(in case of System.exit())
-        if (permission.getName().indexOf("exitVM") >= 0) {
+        if (permission.getName().contains("exitVM")) {
           throw securityException =
               new SecurityException("System.exit attempted and blocked.");
         }

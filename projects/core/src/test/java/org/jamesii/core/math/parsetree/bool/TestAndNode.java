@@ -27,38 +27,38 @@ public class TestAndNode extends TestBinaryNode {
   public void testCalc() {
     BinaryNode b = getInstance(new ValueNode<>(true), new ValueNode<>(false));
     ValueNode<Boolean> result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b = getInstance(new ValueNode<>(true), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(false));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     // check sub tree handling
     b =
         getInstance(new OrNode(new ValueNode<>(true), new ValueNode<>(true)),
             new ValueNode<>(false));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b =
         getInstance(new ValueNode<>(false), new OrNode(new ValueNode<>(true),
             new ValueNode<>(false)));
     result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b =
         getInstance(new OrNode(new ValueNode<>(false), new ValueNode<>(true)),
             new AndNode(new ValueNode<>(true), new ValueNode<>(true)));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
   }
 
 }

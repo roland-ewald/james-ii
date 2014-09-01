@@ -53,7 +53,7 @@ public class Formalism extends InformationObject {
     CONTINUOUS,
     /** The discrete time, typically represented by an ordinal number. */
     DISCRETE
-  };
+  }
 
   /**
    * The Enum SystemSpecification. Can be used to indicate whether the model is
@@ -72,7 +72,7 @@ public class Formalism extends InformationObject {
      * modeling.
      */
     HYBRID
-  };
+  }
 
   /**
    * The Enum TimeProgress. Can be used to indicate whether time in the model is

@@ -272,7 +272,6 @@ public class ParallelComputationTaskRunner extends AbstractTaskRunner {
           this,
           new ComputationTaskRuntimeInformation(null, taskConfig, null, null,
               new RunInformation(true)));
-      return;
     }
   }
 
@@ -433,7 +432,6 @@ public class ParallelComputationTaskRunner extends AbstractTaskRunner {
 
     // get required replication count
     int repCount = getRequiredReplications(taskConfig, runInfo);
-    ;
 
     // System.out.println("schedule "+repCount);
 

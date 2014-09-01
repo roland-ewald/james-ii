@@ -303,7 +303,7 @@ public class BrowseFSDialogViaFileEndings extends ApplicationDialog {
         setSize(getWidth(),
             BrowseFSDialogViaFileEndings.this.getPreferredSize().height);
       }
-    };
+    }
   };
 
   {
@@ -362,9 +362,7 @@ public class BrowseFSDialogViaFileEndings extends ApplicationDialog {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        Iterator<String> it = checkBoxMap.keySet().iterator();
-        while (it.hasNext()) {
-          String key = it.next();
+        for (String key : checkBoxMap.keySet()) {
           JCheckBox tempBox = checkBoxMap.get(key);
           checkMap.put(key, tempBox.isSelected());
         }
@@ -476,7 +474,7 @@ public class BrowseFSDialogViaFileEndings extends ApplicationDialog {
     if (component != null) {
       configPanel.add(component, BorderLayout.SOUTH);
     }
-  };
+  }
 
   /**
    * Generates a configuration panel with check boxes for the given file
@@ -496,9 +494,7 @@ public class BrowseFSDialogViaFileEndings extends ApplicationDialog {
     Map<String, Boolean> lastCheckMap =
         Preferences.get("org.jamesii.browseModels.checkMap");
     JCheckBox box;
-    Iterator<Entry<String, String>> it = fileEndings.entrySet().iterator();
-    while (it.hasNext()) {
-      Entry<String, String> next = it.next();
+    for (Entry<String, String> next : fileEndings.entrySet()) {
       String key = next.getKey().trim().toLowerCase();
 
       box = new JCheckBox(key, true) {

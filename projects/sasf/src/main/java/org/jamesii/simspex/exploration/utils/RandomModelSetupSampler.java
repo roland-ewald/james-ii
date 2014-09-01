@@ -73,7 +73,7 @@ public class RandomModelSetupSampler {
   public static String getDescription(Map<String, Serializable> result) {
     List<String> variableNames = new ArrayList<>(result.keySet());
     Collections.sort(variableNames);
-    StringBuffer strBuf = new StringBuffer();
+    StringBuilder strBuf = new StringBuilder();
     for (String varName : variableNames) {
       strBuf.append(varName);
       strBuf.append('=');

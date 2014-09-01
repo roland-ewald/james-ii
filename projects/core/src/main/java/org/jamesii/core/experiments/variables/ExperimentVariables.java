@@ -117,7 +117,7 @@ public class ExperimentVariables extends NamedEntity {
       }
     }
     if (subLevel != null) {
-      result = (E) subLevel.find(cl); // cast required by javac
+      result = subLevel.find(cl); // cast required by javac
     }
     return result;
   }

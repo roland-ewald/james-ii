@@ -71,10 +71,8 @@ public class StopSimAction extends AbstractSimAction {
       setEnabled(true);
       switch (state) {
       case INITIALIZED:
-        ;
-      case PAUSED:
-        ;
-      case RUNNING:
+        case PAUSED:
+        case RUNNING:
         putValue(SMALL_ICON,
             IconManager.getIcon(IconIdentifier.STOP_SMALL, "Stop"));
         break;

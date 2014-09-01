@@ -231,7 +231,7 @@ public class MultiCoupling extends BasicCoupling {
   @Override
   public String toString() {
 
-    StringBuffer buff = new StringBuffer();
+    StringBuilder buff = new StringBuilder();
     buff.append(getModel1().getName());
     buff.append(":");
     buff.append(getPort1().getName());

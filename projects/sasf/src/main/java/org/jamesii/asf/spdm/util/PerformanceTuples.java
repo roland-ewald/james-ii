@@ -151,7 +151,7 @@ public final class PerformanceTuples {
           sortToConfigMap(im.getPerformanceData().getInstances());
       for (Entry<Configuration, List<PerformanceTuple>> config : configMap
           .entrySet()) {
-        StringBuffer line = new StringBuffer(config.getKey().toString());
+        StringBuilder line = new StringBuilder(config.getKey().toString());
         line.append('\t');
         for (PerformanceTuple tuple : config.getValue()) {
           line.append(tuple.getPerformance());

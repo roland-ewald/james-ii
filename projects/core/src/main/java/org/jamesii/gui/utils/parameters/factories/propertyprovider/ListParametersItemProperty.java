@@ -59,7 +59,6 @@ public class ListParametersItemProperty extends AbstractProperty {
 
   @Override
   public void setValue(Object parent, Object value) {
-    return;
   }
 
   @Override

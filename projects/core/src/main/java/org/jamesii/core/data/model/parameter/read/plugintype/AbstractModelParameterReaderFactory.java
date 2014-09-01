@@ -87,7 +87,6 @@ public class AbstractModelParameterReaderFactory extends
               && factory.supportsModel((ISymbolicModel<?>) ParameterBlocks
                   .getSubBlockValue(parameter, MODEL))) {
             filteredFactories.add(factories.get(i));
-            continue;
           }
 
         } catch (Exception e) {

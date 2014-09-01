@@ -345,7 +345,7 @@ public final class BetaFunction {
    *          Integration limit.
    * @return <i>I</i><sub><i>x</i></sub>(<i>a</i>, <i>b</i>)
    */
-  private static final double iBetaContinuedFraction2(double a, double b,
+  private static double iBetaContinuedFraction2(double a, double b,
       double x) {
     double xk, pk, pkm1, pkm2, qk, qkm1, qkm2;
     double k1, k2, k3, k4, k5, k6, k7, k8;

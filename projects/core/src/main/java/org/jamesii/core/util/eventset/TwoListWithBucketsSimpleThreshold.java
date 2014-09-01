@@ -462,9 +462,7 @@ public class TwoListWithBucketsSimpleThreshold<E> extends
    */
   @SuppressWarnings({ "unused" })
   private void shift(Double[] arr) {
-    for (int i = arr.length - 1; i > 0; i--) {
-      arr[i] = arr[i - 1];
-    }
+    System.arraycopy(arr, 0, arr, 1, arr.length - 1);
   }
 
   @Override

@@ -272,7 +272,7 @@ public final class JamesGUI extends AbstractApplicationInformation implements
         System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     // only execute if we are actually on a mac system
-    if (vers.indexOf("mac") >= 0) {
+    if (vers.contains("mac")) {
       System.setProperty("apple.laf.useScreenMenuBar", "true");
       System.setProperty("com.apple.macos.smallTabs", "true");
       System.setProperty("com.apple.mrj.application.growbox.intrudes", "false");
@@ -308,7 +308,7 @@ public final class JamesGUI extends AbstractApplicationInformation implements
       public void checkPermission(Permission permission) {
         // This Prevents the shutting down of JVM.(in case of
         // System.exit())
-        if (permission.getName().indexOf("exitVM") >= 0) {
+        if (permission.getName().contains("exitVM")) {
           throw new SecurityException("System.exit attempted and blocked.");
           // TODO sr137: in case somebody (plugin) tries to exit org.jamesii
           // issue a

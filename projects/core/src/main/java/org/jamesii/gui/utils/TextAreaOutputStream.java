@@ -142,9 +142,7 @@ public class TextAreaOutputStream extends OutputStream {
     // new byte array is initialized
     byte[] outArray = new byte[len - off];
     if (off > 0 || len < b.length) {
-      for (int i = 0; i < len; i++) {
-        outArray[i] = b[off + i];
-      }
+      System.arraycopy(b, off + 0, outArray, 0, len);
     } else {
       outArray = b; // won't need to copy input from a buffered stream
     }

@@ -111,7 +111,6 @@ public class SequentialComputationTaskRunner extends AbstractTaskRunner {
   @Override
   public void cancelConfiguration(TaskConfiguration taskConfiguration) {
     while (getTodoList().remove(taskConfiguration)) {
-      ;
     }
   }
 

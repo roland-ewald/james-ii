@@ -10,7 +10,6 @@ import org.jamesii.core.math.parsetree.BinaryNode;
 import org.jamesii.core.math.parsetree.INode;
 import org.jamesii.core.math.parsetree.TestBinaryNode;
 import org.jamesii.core.math.parsetree.ValueNode;
-import org.jamesii.core.math.parsetree.bool.ImpliesNode;
 
 /**
  * The Class TestImpliesNode.
@@ -26,27 +25,27 @@ public class TestImpliesNode extends TestBinaryNode {
   public void testCalc() {
     BinaryNode b = getInstance(new ValueNode<>(true), new ValueNode<>(false));
     ValueNode<Boolean> result = b.calc(null);
-    assertTrue(result.getValue() == false);
+    assertTrue(!result.getValue());
 
     b = getInstance(new ValueNode<>(true), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(true));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(false), new ValueNode<>(false));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(2), new ValueNode<>(2));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
 
     b = getInstance(new ValueNode<>(0), new ValueNode<>(0));
     result = b.calc(null);
-    assertTrue(result.getValue() == true);
+    assertTrue(result.getValue());
   }
 
 }

@@ -78,7 +78,7 @@ public class WeakArrayList<T> implements List<T> {
 
     @Override
     public void add(E e) {
-      listIterator.add(new WeakReference<E>(e, queue));
+      listIterator.add(new WeakReference<>(e, queue));
     }
 
     @Override

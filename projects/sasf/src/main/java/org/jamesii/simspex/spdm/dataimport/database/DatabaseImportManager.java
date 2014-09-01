@@ -149,7 +149,7 @@ public class DatabaseImportManager implements
     List<PerformanceMeasurerFactory> factories =
         SimSystem.getRegistry().getFactories(PerformanceMeasurerFactory.class);
     for (PerformanceMeasurerFactory factory : factories) {
-      if (factory.getName().indexOf(targetPerformance) >= 0) {
+      if (factory.getName().contains(targetPerformance)) {
         targetPerfFactory = factory;
         break;
       }
@@ -179,7 +179,7 @@ public class DatabaseImportManager implements
       perfDB.open();
       List<IProblemScheme> allModels = perfDB.getAllProblemSchemes();
       for (IProblemScheme model : allModels) {
-        if (model.getUri().toString().indexOf(targetProblemSchemeURIPart) >= 0) {
+        if (model.getUri().toString().contains(targetProblemSchemeURIPart)) {
           data.addAll(getPerfDataForScheme(model));
         }
       }

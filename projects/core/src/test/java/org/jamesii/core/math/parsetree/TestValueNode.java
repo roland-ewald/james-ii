@@ -32,7 +32,7 @@ public class TestValueNode extends TestNode {
    */
   public void testGetValue() {
     ValueNode<Boolean> bN = getInstance(true);
-    assertTrue(bN.getValue() == true);
+    assertTrue(bN.getValue());
 
     ValueNode<Integer> bI = getInstance(42);
     assertTrue(bI.getValue() == 42);
@@ -44,7 +44,7 @@ public class TestValueNode extends TestNode {
   public void testSetValue() {
     ValueNode<Boolean> bN = getInstance(true);
     bN.setValue(false);
-    assertTrue(bN.getValue() == false);
+    assertTrue(!bN.getValue());
 
     ValueNode<Integer> bI = getInstance(42);
     bI.setValue(24);

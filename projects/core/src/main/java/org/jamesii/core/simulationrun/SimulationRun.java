@@ -236,7 +236,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
   /**
    * Initialization the from the given {@link SimulationRunConfiguration}.
    */
-  private final void initFromConfig() {
+  private void initFromConfig() {
     startTime = config.getSimStartTime();
 
     ParameterBlock pb = config.getStopPolicyParameters();

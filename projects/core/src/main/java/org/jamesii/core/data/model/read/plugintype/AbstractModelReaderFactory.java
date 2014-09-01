@@ -59,7 +59,7 @@ public class AbstractModelReaderFactory extends
         ModelReaderFactory factory = factories.get(i);
 
         if (hasURI) {
-          URI uri = (URI) ParameterBlocks.getSubBlockValue(parameter, URI);
+          URI uri = ParameterBlocks.getSubBlockValue(parameter, URI);
           if ((uri == null)) {
             continue;
           }
@@ -89,7 +89,6 @@ public class AbstractModelReaderFactory extends
             && factory.supportsMIMEType((IMIMEType) parameter
                 .getSubBlockValue(MIME_TYPE))) {
           filteredFactories.add(factories.get(i));
-          continue;
         }
 
       }

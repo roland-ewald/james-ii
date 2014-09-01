@@ -384,9 +384,7 @@ public class BucketsThreshold<E> extends BasicHashedBucketsEventQueue<E> {
    *          if is zero the whole array will be shifted
    */
   private void shift(Double[] arr, int breakIndex) {
-    for (int i = arr.length - 1; i > breakIndex; i--) {
-      arr[i] = arr[i - 1];
-    }
+    System.arraycopy(arr, breakIndex, arr, breakIndex + 1, arr.length - 1 - breakIndex);
   }
 
   @Override

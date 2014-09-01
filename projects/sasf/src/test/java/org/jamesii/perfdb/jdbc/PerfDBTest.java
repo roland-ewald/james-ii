@@ -30,7 +30,7 @@ public abstract class PerfDBTest<X extends SimpleDataBaseEntity<X>> extends
    */
   PerformanceDatabase perfDB;
 
-  public static final PerformanceDatabase getPerfDB() throws Exception {
+  public static PerformanceDatabase getPerfDB() throws Exception {
     return new PerformanceDatabase(DBConfiguration.getTestConnectionData());
   }
 

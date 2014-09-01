@@ -100,7 +100,7 @@ public class JamesState extends State implements Cloneable {
   @Override
   public String toString() {
     return ("phase: " + phase + (beliefs == null ? "" : ", beliefs: "
-        + beliefs.toString()));
+        + beliefs));
   }
 
 }

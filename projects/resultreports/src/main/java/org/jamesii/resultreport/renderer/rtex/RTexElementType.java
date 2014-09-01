@@ -26,5 +26,5 @@ public enum RTexElementType {
   SUB_SECTION,
 
   /** This is the beginning of a sub-sub-section. */
-  SUB_SUB_SECTION;
+  SUB_SUB_SECTION
 }

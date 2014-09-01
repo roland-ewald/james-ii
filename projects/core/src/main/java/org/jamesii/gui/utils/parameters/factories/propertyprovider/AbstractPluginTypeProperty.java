@@ -116,7 +116,6 @@ public abstract class AbstractPluginTypeProperty extends AbstractProperty {
           ((PluginTypeParameters) value).getAsParameterBlock());
     }
 
-    return;
   }
 
 }

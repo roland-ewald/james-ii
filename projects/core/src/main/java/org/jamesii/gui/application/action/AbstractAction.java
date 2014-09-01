@@ -6,14 +6,14 @@
  */
 package org.jamesii.gui.application.action;
 
+import org.jamesii.gui.application.IWindow;
+
+import javax.swing.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import javax.swing.Icon;
-
-import org.jamesii.gui.application.IWindow;
 
 /**
  * Abstract class implementing basic functionality of {@link IAction}. This
@@ -120,9 +120,7 @@ public abstract class AbstractAction implements IAction {
     if (paths == null) {
       throw new IllegalArgumentException("paths can't be null");
     }
-    for (String s : paths) {
-      this.paths.add(s);
-    }
+    Collections.addAll(this.paths, paths);
     this.keyStroke = keyStroke;
     this.mnemonic = mnemonic;
 

@@ -53,7 +53,7 @@ public class FileChooser extends JFileChooser {
   /**
    * Helper method to restore current directory from {@link History}.
    */
-  private final void restoreCurrentDirectory() {
+  private void restoreCurrentDirectory() {
     if (chooserId != null) {
       List<String> latestValues =
           History.getValues(chooserId, true, History.LATEST, 1);
@@ -80,7 +80,7 @@ public class FileChooser extends JFileChooser {
   /**
    * Helper method to store current directory into {@link History}.
    */
-  private final void storeCurrentDirectory() {
+  private void storeCurrentDirectory() {
     File sf = getSelectedFile();
     if (sf != null && chooserId != null) {
       if (sf.isDirectory()) {

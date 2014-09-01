@@ -29,5 +29,5 @@ public enum ParamILSMessageType {
   ParameterAdjusting,
 
   /** The ParameterConfiguration calculated. */
-  PerformanceEstimation;
+  PerformanceEstimation
 }

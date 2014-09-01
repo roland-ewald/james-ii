@@ -107,7 +107,7 @@ public class BasicWorkflow extends AbstractWizardController {
     /** The model location (temporary file of model description). */
     URI modelLocation = null;
 
-    modelLocation = (URI) wizard.getValue(ModelEditor.MODEL_LOCATION);
+    modelLocation = wizard.getValue(ModelEditor.MODEL_LOCATION);
     // Entity.report("Will use model " + modelLocation);
     // Entity.report("Will not use model " + wizard.getValue("modellocation"));
 

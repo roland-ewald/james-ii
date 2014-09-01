@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.variables.modifier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -65,9 +66,7 @@ public class SequenceModifier<V> extends VariableModifier<V> {
    */
   public SequenceModifier(V... valueArray) {
     this.values = new ArrayList<>();
-    for (V value : valueArray) {
-      this.values.add(value);
-    }
+    Collections.addAll(this.values, valueArray);
     reset();
   }
 

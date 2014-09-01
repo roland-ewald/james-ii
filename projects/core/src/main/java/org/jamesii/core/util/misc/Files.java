@@ -6,30 +6,12 @@
  */
 package org.jamesii.core.util.misc;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.RandomAccessFile;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.logging.Level;
+import org.jamesii.SimSystem;
+import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.serialization.XMLEncoderFactory;
+import org.jamesii.core.util.encoding.IEncoding;
+import org.jamesii.core.util.encoding.plugintype.EncodingFactory;
+import org.w3c.dom.Document;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -37,13 +19,16 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.jamesii.SimSystem;
-import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.serialization.XMLEncoderFactory;
-import org.jamesii.core.util.encoding.IEncoding;
-import org.jamesii.core.util.encoding.plugintype.EncodingFactory;
-import org.w3c.dom.Document;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
 
 /**
  * Set of auxiliary file functions.
@@ -963,9 +948,7 @@ public final class Files {
           last = false;
         }
         test = "";
-        for (int l = start; l < lines.length; l++) {
-          result.add(lines[l]);
-        }
+        result.addAll(java.util.Arrays.asList(lines).subList(start, lines.length));
 
       }
 

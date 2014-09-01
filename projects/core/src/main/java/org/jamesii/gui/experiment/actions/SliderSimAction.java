@@ -97,7 +97,6 @@ public class SliderSimAction extends AbstractSimAction {
           // getSimRuntimeInfo().setState(SimulationRuntimeState.RUNNING);
         }
       } catch (Exception e2) {
-        return;
       }
     }
 

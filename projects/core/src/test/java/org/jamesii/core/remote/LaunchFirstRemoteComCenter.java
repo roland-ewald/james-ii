@@ -94,9 +94,6 @@ public class LaunchFirstRemoteComCenter {
     }
     try {
       r.bind(MIGRATION_CONTROLLER, mc);
-    } catch (AccessException e) {
-      e.printStackTrace();
-      return;
     } catch (RemoteException | AlreadyBoundException e) {
       e.printStackTrace();
       return;

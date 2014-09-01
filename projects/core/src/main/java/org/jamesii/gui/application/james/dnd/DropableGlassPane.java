@@ -86,7 +86,7 @@ public class DropableGlassPane extends JPanel implements DropTargetListener {
 
       ((Graphics2D) g).draw(currentDropRegion.getBounds());
     }
-  };
+  }
 
   /**
    * Instantiates a new dropable glass pane.

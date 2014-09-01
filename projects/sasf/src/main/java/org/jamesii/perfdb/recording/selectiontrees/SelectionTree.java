@@ -252,7 +252,7 @@ public class SelectionTree extends
    */
   private String mergeNonemptyCondensedRepresentation(String ownName,
       String paramRepresentation, List<String> childRepresentations) {
-    StringBuffer representation = new StringBuffer("[");
+    StringBuilder representation = new StringBuilder("[");
     representation.append(ownName);
     representation.append(paramRepresentation);
     if (!paramRepresentation.isEmpty() && !childRepresentations.isEmpty()) {
@@ -303,7 +303,7 @@ public class SelectionTree extends
    */
   private String getCondensedParameterRepresentation(
       ParameterBlock parameterBlock, Map<String, String> abbreviations) {
-    StringBuffer representation = new StringBuffer("(");
+    StringBuilder representation = new StringBuilder("(");
     boolean firstParam = true;
     for (Entry<String, ParameterBlock> subBlockEntry : parameterBlock
         .getSubBlocks().entrySet()) {

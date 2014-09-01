@@ -34,10 +34,10 @@ public class MasterServerViewFactory extends ServiceViewFactory {
     Contribution contr = Contribution.EDITOR;
     if (params != null) {
       server =
-          (IMasterServer) params.getSubBlockValue(ServiceViewFactory.SERVICE);
+              params.getSubBlockValue(ServiceViewFactory.SERVICE);
       contr =
-          (Contribution) params
-              .getSubBlockValue(ServiceViewFactory.CONTRIBUTAION);
+              params
+                  .getSubBlockValue(ServiceViewFactory.CONTRIBUTAION);
     }
     if (server != null) {
       return new MasterServerView(server, contr);

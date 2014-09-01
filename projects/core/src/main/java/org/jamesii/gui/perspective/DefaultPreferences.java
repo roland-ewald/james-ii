@@ -97,7 +97,6 @@ class DefaultPreferences extends AbstractPreferencesPage {
         if (!PerspectivesManager.isOpen(persp)
             && (selectedPerspectives.contains(persp) || persp.isMandatory())) {
           PerspectivesManager.openPerspective(persp);
-          continue;
         }
       }
 

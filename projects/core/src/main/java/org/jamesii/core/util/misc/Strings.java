@@ -788,7 +788,7 @@ public final class Strings {
    *          the random number generator to use
    * @return the generated string
    */
-  public static final String generateRandomString(int length, Random rnd) {
+  public static String generateRandomString(int length, Random rnd) {
     if (length <= 0) {
       return "";
     }

@@ -62,7 +62,7 @@ public class CSVReader {
 
   private String[] getSplitLine(String strLine) {
     if (sepEscape == null || sepEscape.isEmpty()
-        || strLine.indexOf(sepEscape) == -1) {
+        || !strLine.contains(sepEscape)) {
       return strLine.split(separator);
     }
     List<String> retVal = new ArrayList<>();

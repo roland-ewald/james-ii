@@ -121,7 +121,7 @@ public class MasterServerView extends ServerView {
           try {
             String name = "";
             if (service instanceof IMSSystemHost) {
-              name = ((IMSSystemHost) service).getName();
+              name = service.getName();
             }
             view =
                 new PlugInView(name, host.getPluginInfo(), Contribution.EDITOR);

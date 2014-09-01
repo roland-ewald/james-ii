@@ -2411,7 +2411,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
    */
   @Override
   public String toString() {
-    StringBuffer buf = new StringBuffer();
+    StringBuilder buf = new StringBuilder();
 
     try {
       int columnCount = rsmd.getColumnCount();

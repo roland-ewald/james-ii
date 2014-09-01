@@ -57,7 +57,7 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
     if (report != null) {
       report.addEntry("Event queue created", result, parameter);
     }
-    return (IEventQueue<E, Double>) result;
+    return result;
   }
 
   /**

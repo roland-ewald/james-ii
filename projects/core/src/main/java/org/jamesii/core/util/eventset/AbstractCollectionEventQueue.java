@@ -57,9 +57,7 @@ public abstract class AbstractCollectionEventQueue<E, T extends Comparable<T>, D
   @Override
   public T getTime(E event) {
 
-    Iterator<Entry<E, T>> eIt = getData().iterator();
-    while (eIt.hasNext()) {
-      Entry<E, T> entry = eIt.next();
+    for (Entry<E, T> entry : getData()) {
       if (entry.getEvent() == event) {
         return entry.getTime();
       }

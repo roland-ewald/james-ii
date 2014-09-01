@@ -112,7 +112,7 @@ class TreeTableViewModel extends AbstractTableModel implements
    * Initialises and resets internal caches. This is necessary on first
    * initialisation of the ViewModel and also when the underlying model changes.
    */
-  private final void init() {
+  private void init() {
     depths = new HashMap<>();
     items = new ArrayList<>();
     expanded = new HashSet<>();

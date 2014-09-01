@@ -178,7 +178,7 @@ public class GeneticAlgorithmPortfolioSelector extends
    * @return the string representation of the results
    */
   private String resultDescForProblem(PortfolioProblemDescription problem) {
-    StringBuffer s = new StringBuffer();
+    StringBuilder s = new StringBuilder();
     s.append("BestFitness" + "\t" + "AverageFitness\n");
     for (int i = 0; i < avgFitnesses.size(); i++) {
       s.append(bestFitnesses.get(i));

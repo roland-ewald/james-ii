@@ -32,7 +32,7 @@ public class MacOSMenuInitTaskFactory extends AutoTaskFactory {
     String vers =
         System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
-    if (vers.indexOf("mac") >= 0) {
+    if (vers.contains("mac")) {
       return new MacOSMenuInitTask();
     }
 

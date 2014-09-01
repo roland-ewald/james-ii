@@ -49,8 +49,8 @@ public class ModelTextEditorFactory extends ModelWindowFactory {
       ISymbolicModelWindowManager mlManager) {
 
     ISymbolicModel<?> model =
-        (ISymbolicModel<?>) params
-            .getSubBlockValue(AbstractModelWindowFactory.MODEL);
+            params
+                .getSubBlockValue(AbstractModelWindowFactory.MODEL);
 
     if (model == null) {
       return null;
@@ -75,7 +75,6 @@ public class ModelTextEditorFactory extends ModelWindowFactory {
       }
     } catch (Exception e) {
     }
-    ;
 
     return new ModelTextEditor(String.format("Model '%s'", model.getName()),
         model, mlManager, highlighters, infoProviders);

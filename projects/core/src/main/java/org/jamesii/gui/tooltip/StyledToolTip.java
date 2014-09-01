@@ -241,7 +241,7 @@ public class StyledToolTip extends JToolTip {
   /**
    * @return the maximum tooltip width
    */
-  public static final int getMaxWidth() {
+  public static int getMaxWidth() {
     return maxWidth;
   }
 
@@ -252,7 +252,7 @@ public class StyledToolTip extends JToolTip {
    * @param height
    *          the height to set
    */
-  public static final void setMaxHeight(int height) {
+  public static void setMaxHeight(int height) {
     maxHeight = height;
   }
 
@@ -261,7 +261,7 @@ public class StyledToolTip extends JToolTip {
    * 
    * @return the maximum tooltip height
    */
-  public static final int getMaxHeight() {
+  public static int getMaxHeight() {
     return maxHeight;
   }
 
@@ -272,7 +272,7 @@ public class StyledToolTip extends JToolTip {
    * @param width
    *          the width to set
    */
-  public static final void setMaxWidth(int width) {
+  public static void setMaxWidth(int width) {
     maxWidth = width;
   }
 

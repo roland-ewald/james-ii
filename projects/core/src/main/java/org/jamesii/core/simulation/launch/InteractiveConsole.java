@@ -166,8 +166,8 @@ public class InteractiveConsole {
 
     @Override
     public String toString() {
-      StringBuffer result =
-          new StringBuffer(bold + command + normal + "\n"
+      StringBuilder result =
+          new StringBuilder(bold + command + normal + "\n"
               + Strings.indent(comment, INDENT));
       if (subCommands.size() > 0) {
         if (subCommands.size() > 1) {
@@ -1288,7 +1288,7 @@ public class InteractiveConsole {
    * @param param
    *          the param
    */
-  private final void help(String param) {
+  private void help(String param) {
     if (param == null) {
 
       out.println("\n** command list **\n");
@@ -1331,7 +1331,7 @@ public class InteractiveConsole {
    * @param aboutWhat
    *          the about what
    */
-  private final void helpOn(String aboutWhat) {
+  private void helpOn(String aboutWhat) {
     out.println(SimSystem.getRegistry().getInformation(aboutWhat));
   }
 

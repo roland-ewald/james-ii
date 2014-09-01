@@ -67,8 +67,6 @@ public class CachePlugInFinder implements IPlugInFinder {
     try {
       Files.save(info, SimSystem.getConfigDirectory() + File.separator
           + cacheName);// new JavaInfo().getUserWorkingDir()+cacheName);
-    } catch (FileNotFoundException e) {
-      SimSystem.report(e);
     } catch (IOException e) {
       SimSystem.report(e);
     }

@@ -404,8 +404,8 @@ public abstract class StatisticalResultComparisonTest extends
       SimTaskDescription taskDescription, String varName,
       List<? extends Number> referenceResult,
       List<? extends Number> testResult, double comparisonPValue) {
-    StringBuffer failureDescription =
-        new StringBuffer(
+    StringBuilder failureDescription =
+        new StringBuilder(
             "\n\n==FAILURE==\n\nThis setup fails comparison with reference implementation:"
                 + ParameterBlocks.printParamTree(testSetup));
     failureDescription.append("\nReference results: "

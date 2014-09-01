@@ -179,7 +179,7 @@ public class JItemList extends JPanel implements ItemListener {
     ((IItemView) view).setSelectionMode(selectionMode);
   }
 
-  private final void createView(ViewFactory viewFactory) {
+  private void createView(ViewFactory viewFactory) {
 
     ParameterBlock pb = new ParameterBlock();
     pb.addSubBl(ViewFactory.DATA, data);

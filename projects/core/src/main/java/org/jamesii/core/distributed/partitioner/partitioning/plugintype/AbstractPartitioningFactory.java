@@ -51,7 +51,7 @@ public class AbstractPartitioningFactory extends
      */
     ANY_TYPE
 
-  };
+  }
 
   /**
    * Serialisation ID.

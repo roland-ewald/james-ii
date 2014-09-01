@@ -76,7 +76,7 @@ public class MultiCouplingTargetList implements Serializable {
   public MultiCouplingTarget getTarget(IBasicDEVSModel model) {
     if (!content.containsKey(model)) {
 
-      StringBuffer buff = new StringBuffer();
+      StringBuilder buff = new StringBuilder();
       buff.append("The Model: ");
       buff.append(model.getFullName());
       buff.append(" could no be found!");
@@ -153,7 +153,7 @@ public class MultiCouplingTargetList implements Serializable {
       content.remove(target);
     } else {
 
-      StringBuffer buff = new StringBuffer();
+      StringBuilder buff = new StringBuilder();
       buff.append("The Model: ");
       buff.append(target.getFullName());
       buff.append(" could no be found!");
@@ -178,7 +178,7 @@ public class MultiCouplingTargetList implements Serializable {
       content.remove(target.getModel());
     } else {
 
-      StringBuffer buff = new StringBuffer();
+      StringBuilder buff = new StringBuilder();
       buff.append("The Model: ");
       buff.append(target.getModel().getName());
       buff.append(" could no be found!");
@@ -196,7 +196,7 @@ public class MultiCouplingTargetList implements Serializable {
    */
   @Override
   public String toString() {
-    StringBuffer buff = new StringBuffer();
+    StringBuilder buff = new StringBuilder();
     Iterator<MultiCouplingTarget> keyIterator = content.values().iterator();
     boolean firstElement = true;
 

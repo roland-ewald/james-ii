@@ -344,5 +344,5 @@ public final class TransitionDecoration extends DefaultDecoration implements
     TRANSITION_STARTED,
     /** The TRANSITIO n_ finished. */
     TRANSITION_FINISHED
-  };
+  }
 }

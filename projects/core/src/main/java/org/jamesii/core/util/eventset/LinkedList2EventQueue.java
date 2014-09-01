@@ -183,7 +183,7 @@ public class LinkedList2EventQueue<E, T extends Comparable<T>> extends
 
   @Override
   public String toString() {
-    StringBuffer sb = new StringBuffer();
+    StringBuilder sb = new StringBuilder();
     Iterator<Entry<E, T>> it = getData().iterator();
     while (it.hasNext()) {
       Entry<E, T> ent = it.next();

@@ -83,7 +83,7 @@ public class Configuration implements Serializable, Cloneable {
 
   @Override
   public String toString() {
-    StringBuffer result = new StringBuffer("Configuration:\t");
+    StringBuilder result = new StringBuilder("Configuration:\t");
     for (BaseVariable<?> bv : content.values()) {
       result.append(bv.getName() + "= " + bv.getValue() + " -- ");
     }

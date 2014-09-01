@@ -108,7 +108,7 @@ public class SelectedFactoryNode implements Serializable {
     if (!(o instanceof SelectedFactoryNode)) {
       return false;
     }
-    return this.toString().equals(((SelectedFactoryNode) o).toString())
+    return this.toString().equals(o.toString())
         && parentsEqual(((SelectedFactoryNode) o).getParent());
   }
 

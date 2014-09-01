@@ -27,11 +27,11 @@ public class TestNotNode extends TestValueNodeAbstract<NotNode, INode> {
     NotNode n = getInstance(getA(1));
 
     ValueNode<Boolean> res = n.calc(null);
-    assertTrue(res.getValue() == true);
+    assertTrue(res.getValue());
 
     NotNode n2 = new NotNode(new NotNode(new ValueNode<>(false)));
     res = n2.calc(null);
-    assertTrue(res.getValue() == false);
+    assertTrue(!res.getValue());
 
   }
 

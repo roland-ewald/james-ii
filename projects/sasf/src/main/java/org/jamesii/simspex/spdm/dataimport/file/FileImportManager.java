@@ -149,7 +149,7 @@ public class FileImportManager extends Entity implements
     for (File file : files) {
       if (file.isDirectory()) {
         results.addAll(getEligibleFiles(file));
-      } else if (file.getName().indexOf(TARGET_FILE_NAME) != -1) {
+      } else if (file.getName().contains(TARGET_FILE_NAME)) {
         results.add(file);
       }
     }

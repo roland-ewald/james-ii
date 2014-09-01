@@ -78,7 +78,6 @@ class DefaultProperty extends AbstractProperty {
     } catch (Exception e) {
       SimSystem.report(e);
     }
-    return;
   }
 
   @Override

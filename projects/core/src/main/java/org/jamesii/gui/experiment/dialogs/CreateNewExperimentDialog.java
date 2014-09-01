@@ -312,7 +312,7 @@ public class CreateNewExperimentDialog extends ApplicationDialog {
    *          the component
    * @return the panel
    */
-  private final JPanel embedToPanel(Component component) {
+  private JPanel embedToPanel(Component component) {
     JPanel retPanel = new JPanel(new BorderLayout());
     retPanel.add(new JPanel(), BorderLayout.NORTH);
     retPanel.add(new JPanel(), BorderLayout.WEST);

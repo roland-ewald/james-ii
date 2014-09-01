@@ -58,7 +58,7 @@ public abstract class TestSelectionDBEntity<X> extends TestHibernateEntity<X> {
     List<String> configLocations =
         new ArrayList<>(Arrays.asList(super.getConfigLocations()));
     configLocations.add(ASF_DATABASE_HIBERNATE_CONFIG);
-    return configLocations.toArray(new String[0]);
+    return configLocations.toArray(new String[configLocations.size()]);
   }
 
 }

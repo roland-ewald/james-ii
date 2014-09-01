@@ -101,7 +101,7 @@ public final class FileExport {
    */
   private static void writeHeader(String delimiter, List<String> attributes,
       BufferedWriter bw) throws IOException {
-    StringBuffer header = new StringBuffer();
+    StringBuilder header = new StringBuilder();
     for (String attribute : attributes) {
       header.append(attribute);
       header.append(delimiter);

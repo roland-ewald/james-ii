@@ -6,12 +6,12 @@
  */
 package org.jamesii.core.data.runtime;
 
+import org.jamesii.core.util.CharSequenceCharacterIterator;
+
 import java.io.Serializable;
 import java.text.CharacterIterator;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jamesii.core.util.CharSequenceCharacterIterator;
 
 /**
  * Helper class for parsing CSV files according to the usual rules. Those are:
@@ -185,7 +185,7 @@ public class CSVParser implements Serializable {
       }
     }
 
-    return tokens.toArray(new String[] {});
+    return tokens.toArray(new String[tokens.size()]);
   }
 
   /**

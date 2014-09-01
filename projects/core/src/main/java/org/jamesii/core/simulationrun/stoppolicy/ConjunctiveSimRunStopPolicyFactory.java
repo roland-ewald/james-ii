@@ -33,7 +33,7 @@ public class ConjunctiveSimRunStopPolicyFactory extends
     List<IComputationTaskStopPolicy<IComputationTask>> policies =
         createSubPolicies(paramBlock);
 
-    return new ConjunctiveSimRunStopPolicy<IComputationTask>(run, policies);
+    return new ConjunctiveSimRunStopPolicy<>(run, policies);
   }
 
 }

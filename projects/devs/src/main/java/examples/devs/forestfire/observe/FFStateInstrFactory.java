@@ -31,9 +31,9 @@ public class FFStateInstrFactory extends ModelInstrumenterFactory {
 
   @Override
   public int supportsParameters(ParameterBlock params) {
-    if (((URI) params
-        .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI))
-        .toString().indexOf("ForestFire") != -1) {
+    if (params
+            .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI)
+            .toString().contains("ForestFire")) {
       return 1;
     }
     return 0;

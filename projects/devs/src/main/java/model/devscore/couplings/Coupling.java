@@ -71,7 +71,7 @@ public class Coupling extends BasicCoupling {
     if (o instanceof Coupling) {
       int i = getModel1().compareTo(o.getModel1());
       int j = getModel2().compareTo(((Coupling) o).getModel2());
-      int k = getPort1().compareTo(((Coupling) o).getPort1());
+      int k = getPort1().compareTo(o.getPort1());
       int l = getPort2().compareTo(((Coupling) o).getPort2());
       if ((i == j) && (i == k) && (i == l) && (i == 0)) {
         return 0;
@@ -140,7 +140,7 @@ public class Coupling extends BasicCoupling {
   @Override
   public String toString() {
 
-    StringBuffer buff = new StringBuffer();
+    StringBuilder buff = new StringBuilder();
     buff.append(getModel1().getName());
     buff.append(":");
     buff.append(getPort1().getName());

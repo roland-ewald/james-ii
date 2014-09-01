@@ -88,7 +88,7 @@ public class URLTreeModel<E> extends DefaultTreeModel {
    */
   public String getPath(URLTreeNode<E> node) {
     TreeNode[] pathToRoot = getPathToRoot(node);
-    StringBuffer path = new StringBuffer();
+    StringBuilder path = new StringBuilder();
     for (TreeNode n : pathToRoot) {
       if (n != getRoot()) {
         path.append("/");

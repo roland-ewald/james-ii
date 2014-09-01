@@ -228,8 +228,8 @@ final class LineNumberBar extends JComponent implements ChangeListener,
                   && t.getStart() < e.getEndOffset()) {
                 Icon icon = stylizer.getIconFor(t);
                 if (icon != null) {
-                  ((Graphics2D) g).drawImage(BasicUtilities.iconToImage(icon),
-                      r.x, r.y, r.width, r.height, this);
+                  g.drawImage(BasicUtilities.iconToImage(icon),
+                          r.x, r.y, r.width, r.height, this);
                   displayedTokens.add(t);
                 }
               }
@@ -333,7 +333,7 @@ final class LineNumberBar extends JComponent implements ChangeListener,
   @Override
   public void mouseMoved(MouseEvent e1) {
     // go thru displayed tokens and find the one the mouse is over
-    StringBuffer tooltip = new StringBuffer();
+    StringBuilder tooltip = new StringBuilder();
     int markerCount = 0;
     for (ILexerToken t : displayedTokens) {
       try {

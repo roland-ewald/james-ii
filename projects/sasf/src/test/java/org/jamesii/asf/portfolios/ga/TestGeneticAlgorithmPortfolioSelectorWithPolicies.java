@@ -363,24 +363,27 @@ public class TestGeneticAlgorithmPortfolioSelectorWithPolicies extends TestCase 
           for (String policyName : policyNames) {
             double overheadMeanGA =
                 ArithmeticMean.arithmeticMean(aggregatedDifferences.avgOverheads
-                    .get(scenario).get(policyName).gaPortfolio
-                    .toArray(new Double[0]));
+                        .get(scenario).get(policyName).gaPortfolio
+                        .toArray(new Double[aggregatedDifferences.avgOverheads
+                                .get(scenario).get(policyName).gaPortfolio.size()]));
             double overheadStdDevGA =
                 StandardDeviation
                     .standardDeviation(aggregatedDifferences.avgOverheads.get(
                         scenario).get(policyName).gaPortfolio);
             double overheadMeanSt =
                 ArithmeticMean.arithmeticMean(aggregatedDifferences.avgOverheads
-                    .get(scenario).get(policyName).stochPortfolio
-                    .toArray(new Double[0]));
+                        .get(scenario).get(policyName).stochPortfolio
+                        .toArray(new Double[aggregatedDifferences.avgOverheads
+                                .get(scenario).get(policyName).stochPortfolio.size()]));
             double overheadStdDevSt =
                 StandardDeviation
                     .standardDeviation(aggregatedDifferences.avgOverheads.get(
                         scenario).get(policyName).stochPortfolio);
             double overheadMeanNone =
                 ArithmeticMean.arithmeticMean(aggregatedDifferences.avgOverheads
-                    .get(scenario).get(policyName).noPortfolio
-                    .toArray(new Double[0]));
+                        .get(scenario).get(policyName).noPortfolio
+                        .toArray(new Double[aggregatedDifferences.avgOverheads
+                                .get(scenario).get(policyName).noPortfolio.size()]));
             double overheadStdDevNone =
                 StandardDeviation
                     .standardDeviation(aggregatedDifferences.avgOverheads.get(
@@ -437,7 +440,7 @@ public class TestGeneticAlgorithmPortfolioSelectorWithPolicies extends TestCase 
    */
   private String writeHeader(List<String> policyNames,
       int portfolioSelectionReps) {
-    StringBuffer strBuf = new StringBuffer();
+    StringBuilder strBuf = new StringBuilder();
     for (String headerElement : descriptionElements) {
       strBuf.append(headerElement + delimiter);
     }
@@ -533,7 +536,7 @@ public class TestGeneticAlgorithmPortfolioSelectorWithPolicies extends TestCase 
     try {
       try (FileWriter fileWriter = new FileWriter(fileName)) {
         for (Double[] ohDifferences : overheadDifferences) {
-          StringBuffer strBuf = new StringBuffer();
+          StringBuilder strBuf = new StringBuilder();
           for (Double ohDiff : ohDifferences) {
             strBuf.append(ohDiff + delimiter);
           }

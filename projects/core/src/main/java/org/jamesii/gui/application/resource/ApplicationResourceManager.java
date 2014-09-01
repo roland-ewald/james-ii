@@ -64,7 +64,7 @@ public final class ApplicationResourceManager {
    *           if no resource could be loaded
    */
   @SuppressWarnings("unchecked")
-  public static final <T> T getResource(String resourceURL,
+  public static <T> T getResource(String resourceURL,
       Class<?> requestingClass) throws ResourceLoadingException {
     return (T) getResource(resourceURL, true, requestingClass);
   }
@@ -83,7 +83,7 @@ public final class ApplicationResourceManager {
    *           if no resource could be loaded
    */
   @SuppressWarnings("unchecked")
-  public static final <T> T getResource(String resourceURL)
+  public static <T> T getResource(String resourceURL)
       throws ResourceLoadingException {
     return (T) getResource(resourceURL, true, null);
   }
@@ -114,7 +114,7 @@ public final class ApplicationResourceManager {
    *           thrown when resource couldn't be loaded
    */
   @SuppressWarnings("unchecked")
-  public static final synchronized <T> T getResource(String resourceURL,
+  public static synchronized <T> T getResource(String resourceURL,
       boolean cacheable, Class<?> requestingClass)
       throws ResourceLoadingException {
     // check cache first
@@ -204,7 +204,7 @@ public final class ApplicationResourceManager {
   /**
    * @return the default resource provider factory
    */
-  public static final synchronized IResourceProviderFactory getDefaultResourceProviderFactory() {
+  public static synchronized IResourceProviderFactory getDefaultResourceProviderFactory() {
     if (resourceFactory == null) {
       resourceFactory = JamesResourceProviderFactory.getInstance();
     }
@@ -219,7 +219,7 @@ public final class ApplicationResourceManager {
    * @param factory
    *          the factory to use
    */
-  public static final synchronized void setDefaultResourceProviderFactory(
+  public static synchronized void setDefaultResourceProviderFactory(
       IResourceProviderFactory factory) {
     if (factory == null) {
       throw new IllegalArgumentException("Factory can't be null");

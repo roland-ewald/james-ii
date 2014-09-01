@@ -138,7 +138,6 @@ public abstract class DataStorageTest extends TestCase {
   public void testExperimentSystemInformation() throws Exception {
     IUniqueID uid = UniqueIDGenerator.createUniqueID();
     Serializable expid = getDataStorage().setExperimentID(uid);
-    ;
     long mid = 987987;
     String version = "AlphaBetaGamma123";
     JavaInfo ji1 = new JavaInfo();
@@ -174,7 +173,7 @@ public abstract class DataStorageTest extends TestCase {
     expid =
         getDataStorage().setExperimentID(
             uid = UniqueIDGenerator.createUniqueID());
-    ; // avoids duplicate entries ;)
+    // avoids duplicate entries ;)
     getDataStorage().writeExperimentSystemInformation(uid, mid, version, null);
     assertTrue(getDataStorage().getExperimentSystemInformation(expid)
         .getJavaInfo() == null);
@@ -183,7 +182,6 @@ public abstract class DataStorageTest extends TestCase {
     expid =
         getDataStorage().setExperimentID(
             uid = UniqueIDGenerator.createUniqueID());
-    ;
     getDataStorage().writeExperimentSystemInformation(uid, mid, null, ji1);
     assertNull(getDataStorage().getExperimentSystemInformation(expid)
         .getJamesVersion());
@@ -390,7 +388,6 @@ public abstract class DataStorageTest extends TestCase {
     // this should throw an Exception, that no SimId has been set:
     try {
       bns.setExperimentID(UniqueIDGenerator.createUniqueID());
-      ;
       bns.writeData(42, "bla", 13.37, "zweiundvierzig");
       fail("SimID has to be set before.");
     } catch (DataStorageException expected) {
@@ -399,7 +396,6 @@ public abstract class DataStorageTest extends TestCase {
     // this should throw an Exception, that no SimId has been set:
     try {
       bns.setConfigurationID(null, UniqueIDGenerator.createUniqueID());
-      ;
       bns.writeData(42, "bla", 13.37, "zweiundvierzig");
       fail("ConfID has to be set before.");
     } catch (DataStorageException expected) {

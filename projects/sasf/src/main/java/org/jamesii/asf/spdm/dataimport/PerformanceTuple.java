@@ -104,7 +104,7 @@ public class PerformanceTuple implements Serializable {
   @Override
   public String toString() {
 
-    StringBuffer result = new StringBuffer("(");
+    StringBuilder result = new StringBuilder("(");
 
     for (Object o : features.values()) {
       result.append(o);

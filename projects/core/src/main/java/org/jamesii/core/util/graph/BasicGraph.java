@@ -38,7 +38,6 @@ public abstract class BasicGraph<V, E extends Edge<V>> implements IGraph<V, E>,
     for (V v : vertices) {
       this.addVertex(v);
     }
-    return;
   }
 
   /**

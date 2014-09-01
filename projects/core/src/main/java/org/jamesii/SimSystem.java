@@ -420,7 +420,7 @@ public final class SimSystem {
     // get temp dir path
     String plugInDirs = System.getenv("JAMES_PLUGINPATH");
     
-    List<String> result = new ArrayList<String>();
+    List<String> result = new ArrayList<>();
     // check temp directory for existence
     if (plugInDirs != null) {
       StringTokenizer st = new StringTokenizer(plugInDirs, ";");

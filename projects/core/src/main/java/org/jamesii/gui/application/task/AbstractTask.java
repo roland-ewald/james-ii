@@ -144,7 +144,7 @@ public abstract class AbstractTask implements ITask, IProgressListener {
   /**
    * Method used to notify listeners of a progress change
    */
-  private final synchronized void fireProgress() {
+  private synchronized void fireProgress() {
     for (IProgressListener l : listeners.getListeners()) {
       if (l != null) {
         l.progress(this, progress);
@@ -172,7 +172,7 @@ public abstract class AbstractTask implements ITask, IProgressListener {
    * @param info
    *          the new info
    */
-  private final synchronized void fireTaskInfo() {
+  private synchronized void fireTaskInfo() {
     for (IProgressListener l : listeners.getListeners()) {
       if (l != null) {
         l.taskInfo(this, taskInfo);

@@ -71,7 +71,7 @@ public class StyledToolTipUtils {
    * @return the {@link StyledToolTip} tagged text
    */
   private static String formatText(StyleState state, String text) {
-    StringBuffer buffer = new StringBuffer(text.length());
+    StringBuilder buffer = new StringBuilder(text.length());
 
     String textPrep = getEscapedToolTip(text);
 
@@ -150,7 +150,7 @@ public class StyledToolTipUtils {
    *          the text to escape
    * @return escaped text
    */
-  public static final String getEscapedToolTip(String text) {
+  public static String getEscapedToolTip(String text) {
     // escape using <</> instead of <
     return text.replace("<", "<</>");
   }
@@ -168,7 +168,7 @@ public class StyledToolTipUtils {
    *          stylizer used for highlighting given text
    * @return {@link StyledToolTip} tagged text representing the highlighted text
    */
-  public static final String getHighlightedToolTip(String text, ILexer lexer,
+  public static String getHighlightedToolTip(String text, ILexer lexer,
       ILexerTokenStylizer<ILexerToken> stylizer) {
     /*
      * Use the ILexer to generate syntax tokens that in return are used to
@@ -179,7 +179,7 @@ public class StyledToolTipUtils {
     // defensive copy
     List<ILexerToken> tokens = new ArrayList<>(lexer.getSyntaxTokens());
 
-    StringBuffer result = new StringBuffer(text.length());
+    StringBuilder result = new StringBuilder(text.length());
 
     result.append("<fontMonospaced/>");
 
@@ -264,7 +264,7 @@ public class StyledToolTipUtils {
    *          the {@link StyledToolTip} tagged text
    * @return HTML version of text1
    */
-  public static final String getHTMLFromStyledToolTip(String text) {
+  public static String getHTMLFromStyledToolTip(String text) {
     StringBuilder result = new StringBuilder();
     if (text != null) {
       result.append("<html><body><pre>");

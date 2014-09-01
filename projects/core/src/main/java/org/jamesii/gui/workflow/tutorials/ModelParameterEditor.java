@@ -127,7 +127,7 @@ class ModelParameterEditor extends AbstractWizardPage {
   @Override
   protected void prepopulatePage(IWizard wizard) {
     // get model
-    model = (ISymbolicModel<?>) wizard.getValue(FormalismChooser.MODEL);
+    model = wizard.getValue(FormalismChooser.MODEL);
 
     // find editors for model TODO use automatic factory filter here
     Registry registry = SimSystem.getRegistry();

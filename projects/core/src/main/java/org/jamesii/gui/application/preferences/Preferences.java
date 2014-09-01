@@ -50,7 +50,7 @@ public final class Preferences {
    * @throws FileNotFoundException
    * @throws Exception
    */
-  public static final void loadFrom(String file) throws FileNotFoundException {
+  public static void loadFrom(String file) throws FileNotFoundException {
     INSTANCE.config.readFile(file);
   }
 
@@ -62,7 +62,7 @@ public final class Preferences {
    * @throws FileNotFoundException
    * @throws Exception
    */
-  public static final void saveTo(String file) throws FileNotFoundException {
+  public static void saveTo(String file) throws FileNotFoundException {
     INSTANCE.config.writeFile(file);
   }
 
@@ -76,7 +76,7 @@ public final class Preferences {
    * @throws FileNotFoundException
    * @throws Exception
    */
-  public static final void addFromFile(String file)
+  public static void addFromFile(String file)
       throws FileNotFoundException {
     ConfFile m = new MainConfFile();
     m.readFile(file);
@@ -91,7 +91,7 @@ public final class Preferences {
    * @param value
    *          the value to store
    */
-  public static final void put(String key, Serializable value) {
+  public static void put(String key, Serializable value) {
     INSTANCE.config.put(key, value);
   }
 
@@ -106,7 +106,7 @@ public final class Preferences {
    *         not existing
    */
   @SuppressWarnings("unchecked")
-  public static final <E> E get(String key) {
+  public static <E> E get(String key) {
     return (E) INSTANCE.config.get(key);
   }
 }

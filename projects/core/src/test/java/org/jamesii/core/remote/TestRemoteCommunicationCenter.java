@@ -158,9 +158,6 @@ public class TestRemoteCommunicationCenter extends TestCase {
     }
     try {
       r.bind(MIGRATION_CONTROLLER, mc);
-    } catch (AccessException e) {
-      e.printStackTrace();
-      fail("No exception expected");
     } catch (RemoteException | AlreadyBoundException e) {
       e.printStackTrace();
       fail("No exception expected");

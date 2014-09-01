@@ -25,7 +25,7 @@ import org.jamesii.core.util.Reflect;
  * @author Enrico Seib
  */
 final class HistoryItem implements IEncoderCompatible {
-  {
+  static {
     PersistenceDelegate delegate = new DefaultPersistenceDelegate() {
       @Override
       protected Expression instantiate(Object oldInstance, Encoder out) {

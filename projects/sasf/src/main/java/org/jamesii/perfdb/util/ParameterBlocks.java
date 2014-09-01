@@ -165,7 +165,7 @@ public final class ParameterBlocks {
     }
 
     Map<String, ParameterBlock> subBlocks = block.getSubBlocks();
-    StringBuffer result = new StringBuffer("(");
+    StringBuilder result = new StringBuilder("(");
     List<String> sbNames = new ArrayList<>(subBlocks.keySet());
     Collections.sort(sbNames);
 

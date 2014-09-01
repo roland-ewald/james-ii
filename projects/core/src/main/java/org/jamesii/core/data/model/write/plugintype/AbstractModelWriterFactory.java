@@ -84,7 +84,6 @@ public class AbstractModelWriterFactory extends
             && factory.supportsMIMEType((IMIMEType) parameter
                 .getSubBlockValue(MIME_TYPE))) {
           filteredFactories.add(0, factories.get(i));
-          continue;
         }
 
       }
@@ -115,7 +114,6 @@ public class AbstractModelWriterFactory extends
             && (factory.supportsMIMEType(((ISymbolicModel<?>) ParameterBlocks
                 .getSubBlockValue(parameter, MODEL)).getSourceMimeType()))) {
           filteredFactories.add(0, factory);
-          continue;
         } else {
           filteredFactories.add(factory);
         }

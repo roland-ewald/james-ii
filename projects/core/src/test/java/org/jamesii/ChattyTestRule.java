@@ -178,5 +178,5 @@ public class ChattyTestRule extends TestWatcher {
             + createMessageProlog());
     failure.setStackTrace(t.getStackTrace());
     throw failure;
-  };
+  }
 }

@@ -7,6 +7,7 @@
 package org.jamesii.core.math.parsetree.lists;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.jamesii.core.math.parsetree.INode;
@@ -56,9 +57,7 @@ public class TestLengthNode extends TestValueNodeAbstract<LengthNode, INode> {
 
   private List<INode> toList(Node... nodes) {
     ArrayList<INode> result = new ArrayList<>();
-    for (Node n : nodes) {
-      result.add(n);
-    }
+    Collections.addAll(result, nodes);
     return result;
   }
 

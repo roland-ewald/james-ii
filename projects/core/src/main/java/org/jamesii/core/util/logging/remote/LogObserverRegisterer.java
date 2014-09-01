@@ -22,7 +22,7 @@ public class LogObserverRegisterer implements IObserverRegisterer {
   private static final long serialVersionUID = 5595522550781912605L;
 
   /** The publish history. */
-  private boolean publishHistory = true;;
+  private boolean publishHistory = true;
 
   /**
    * Instantiates a new log observer registerer.

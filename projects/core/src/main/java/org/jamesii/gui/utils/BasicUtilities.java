@@ -96,7 +96,6 @@ public final class BasicUtilities {
             .getHeight() - window.getHeight()) / 2);
 
     window.setLocation(locationX, locationY);
-    return;
   }
 
   /**

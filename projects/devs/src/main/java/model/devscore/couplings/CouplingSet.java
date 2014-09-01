@@ -76,7 +76,7 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
       setElementIterator(null);
       changed();
     } else {
-      StringBuffer buff = new StringBuffer();
+      StringBuilder buff = new StringBuilder();
       buff.append("A coupling between these models and ports already exist! (");
       buff.append(coupling.getName());
       buff.append(")");
@@ -108,9 +108,8 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
    */
   @Override
   public boolean contains(String ident) {
-    Iterator<Map<String, BasicCoupling>> it = content.values().iterator();
-    while (it.hasNext()) {
-      if ((it.next()).containsKey(ident)) {
+    for (Map<String, BasicCoupling> stringBasicCouplingMap : content.values()) {
+      if ((stringBasicCouplingMap).containsKey(ident)) {
         return true;
       }
     }
@@ -128,11 +127,9 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
   @Override
   public BasicCoupling getCoupling(String name) {
 
-    Iterator<Map<String, BasicCoupling>> it = content.values().iterator();
+    for (Map<String, BasicCoupling> stringBasicCouplingMap : content.values()) {
 
-    while (it.hasNext()) {
-
-      BasicCoupling bc = it.next().get(name);
+      BasicCoupling bc = stringBasicCouplingMap.get(name);
       if (bc != null) {
         return bc;
       }
@@ -205,7 +202,7 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
       err = true;
     }
     if (err) {
-      StringBuffer buff = new StringBuffer();
+      StringBuilder buff = new StringBuilder();
       buff.append("coupling was not found: (");
       buff.append(coupling.getName());
       buff.append(")");
@@ -338,11 +335,11 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
           // if we have a normal coupling and the model is the target
           if ((bc instanceof Coupling) && (((Coupling) bc).isModel2(modelName))) {
             Map<String, BasicCoupling> removeFrom =
-                content.get(((Coupling) bc).getModel1());
+                content.get(bc.getModel1());
 
             removeFrom.remove(bc.getName());
 
-            iterators.remove(((Coupling) bc).getModel1());
+            iterators.remove(bc.getModel1());
 
             it.remove();
 
@@ -458,9 +455,8 @@ public class CouplingSet extends ElementSet<BasicCoupling> implements
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder();
-    Iterator<BasicCoupling> it = getVelements().iterator();
-    while (it.hasNext()) {
-      result.append(it.next().toString());
+    for (BasicCoupling basicCoupling : getVelements()) {
+      result.append(basicCoupling.toString());
       result.append("\n");
     }
     return result.toString();

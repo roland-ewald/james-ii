@@ -96,7 +96,7 @@ public class AbstractAxisTest extends TestCase {
    * @param axis
    *          the axis to test
    */
-  public static final void getTickMarkTest(IAxis axis) {
+  public static void getTickMarkTest(IAxis axis) {
     List<Double> list = axis.getTickMarks(10);
     assertNotNull(list);
 
@@ -118,7 +118,7 @@ public class AbstractAxisTest extends TestCase {
    * @param axis
    *          the axis to test
    */
-  public static final void transformInvTest(IAxis axis) {
+  public static void transformInvTest(IAxis axis) {
     for (int i = 0; i < 1000; i++) {
       // forward
       double value =

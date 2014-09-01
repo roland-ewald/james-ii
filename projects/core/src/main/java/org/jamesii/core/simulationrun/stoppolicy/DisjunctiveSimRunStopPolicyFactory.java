@@ -35,7 +35,7 @@ public class DisjunctiveSimRunStopPolicyFactory extends
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
     List<IComputationTaskStopPolicy<IComputationTask>> policies =
         createSubPolicies(paramBlock);
-    return new DisjunctiveSimRunStopPolicy<IComputationTask>(run, policies);
+    return new DisjunctiveSimRunStopPolicy<>(run, policies);
   }
 
   /**

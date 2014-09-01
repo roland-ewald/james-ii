@@ -86,9 +86,7 @@ public class ChooseModelToSaveDialog extends ApplicationDialog {
     selectAll.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Iterator<IModel> it = modelCheckMap.keySet().iterator();
-        while (it.hasNext()) {
-          IModel key = it.next();
+        for (IModel key : modelCheckMap.keySet()) {
           Checkbox tempBox = modelCheckMap.get(key);
           tempBox.setState(true);
           modelCheckMap.put(key, tempBox);
@@ -104,9 +102,7 @@ public class ChooseModelToSaveDialog extends ApplicationDialog {
     deselectAll.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Iterator<IModel> it = modelCheckMap.keySet().iterator();
-        while (it.hasNext()) {
-          IModel key = it.next();
+        for (IModel key : modelCheckMap.keySet()) {
           Checkbox tempBox = modelCheckMap.get(key);
           tempBox.setState(false);
           modelCheckMap.put(key, tempBox);
@@ -160,9 +156,7 @@ public class ChooseModelToSaveDialog extends ApplicationDialog {
    * {@link ChooseModelToSaveDialog#results}.
    */
   private void retrieveResults() {
-    Iterator<IModel> it = modelCheckMap.keySet().iterator();
-    while (it.hasNext()) {
-      IModel key = it.next();
+    for (IModel key : modelCheckMap.keySet()) {
       Checkbox tempBox = modelCheckMap.get(key);
       modelSaveMap.put(key, tempBox.getState());
     }

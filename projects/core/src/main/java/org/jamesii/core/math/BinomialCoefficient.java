@@ -36,7 +36,7 @@ public final class BinomialCoefficient {
    * 
    * @return the binomial coefficient (n over k)
    */
-  public static final long binomial(int n, int k) {
+  public static long binomial(int n, int k) {
     if (n < 0) {
       throw new IllegalArgumentException("n must be non-negative");
     }
@@ -60,7 +60,7 @@ public final class BinomialCoefficient {
    *          integer
    * @return binomial coefficient (n over k)
    */
-  public static final double binomialQuick(int n, int k) {
+  public static double binomialQuick(int n, int k) {
     if (n < 0) {
       throw new IllegalArgumentException("n must be non-negative");
     }
@@ -95,7 +95,7 @@ public final class BinomialCoefficient {
    *          long
    * @return binomial coefficient (n over k)
    */
-  public static final double binomialQuick(long n, long k) {
+  public static double binomialQuick(long n, long k) {
     if (n < 0) {
       throw new IllegalArgumentException(
           "The value passed as first parameter must be non-negative. The value passed is "
@@ -121,7 +121,7 @@ public final class BinomialCoefficient {
     return result / kFac;
   }
 
-  public static final double binomialQuick3(long n, long k) {
+  public static double binomialQuick3(long n, long k) {
     if (k == 1) {
       return n;
     }
@@ -151,7 +151,7 @@ public final class BinomialCoefficient {
     return result / kFac;
   }
 
-  public static final double binomialQuick2(long n, long k) {
+  public static double binomialQuick2(long n, long k) {
 
     if (n < 0) {
       throw new IllegalArgumentException("n must be non-negative");
@@ -186,7 +186,7 @@ public final class BinomialCoefficient {
     return result / kFac;
   }
 
-  public static final double binomial(double n, double k) {
+  public static double binomial(double n, double k) {
     if (k > n) {
       return 0.0;
     }

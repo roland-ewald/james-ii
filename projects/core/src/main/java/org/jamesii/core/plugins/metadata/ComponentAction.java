@@ -47,6 +47,6 @@ public enum ComponentAction {
    * Withdraw a plug-in so that it is regarded as being 'under development',
    * e.g. for optimisation or refactoring.
    */
-  WITHDRAW;
+  WITHDRAW
 
 }

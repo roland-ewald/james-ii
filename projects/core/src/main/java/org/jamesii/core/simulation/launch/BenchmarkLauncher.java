@@ -88,7 +88,7 @@ public abstract class BenchmarkLauncher {
    * @return the all results as string
    */
   protected String getAllResultsAsString() {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
 
     for (List<RunResult> ar : results) {
       result.append(getResultsAsString(ar) + "\n");

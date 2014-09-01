@@ -199,7 +199,7 @@ public class FlatSequentialProcessor extends BasicDEVSProcessor implements
     // search for the atomic model to b executed by calling all select methods
     // on its path
     IBasicDEVSModel imminent = null;
-    ICoupledModel cm = (ICoupledModel) getModel();
+    ICoupledModel cm = getModel();
 
     // imminent can't be null in the end, there is always at least one imminent
     // model or the simulation run will terminate before

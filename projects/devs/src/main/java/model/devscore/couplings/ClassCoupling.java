@@ -119,8 +119,8 @@ public class ClassCoupling extends BasicCoupling {
       int k = getPort1().compareTo(o.getPort1());
 
       int l =
-          ((Comparable<String>) getPort2()).compareTo(((Coupling) o).getPort2()
-              .getName());
+          getPort2().compareTo(((Coupling) o).getPort2()
+                  .getName());
       if ((i == j) && (i == k) && (i == l) && (i == 0)) {
         return 0;
       } else if ((i > j) || (i == j) && (k > l)) {
@@ -188,7 +188,7 @@ public class ClassCoupling extends BasicCoupling {
   @Override
   public String toString() {
 
-    StringBuffer buff = new StringBuffer();
+    StringBuilder buff = new StringBuilder();
     buff.append(getModel1().getName());
     buff.append(":");
     buff.append(getPort1().getName());

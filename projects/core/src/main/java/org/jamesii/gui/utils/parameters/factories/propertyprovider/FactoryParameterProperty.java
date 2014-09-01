@@ -48,7 +48,6 @@ class FactoryParameterProperty extends AbstractProperty {
     }
 
     ((FactoryParameters) parent).setParameter(getName(), value);
-    return;
   }
 
 }

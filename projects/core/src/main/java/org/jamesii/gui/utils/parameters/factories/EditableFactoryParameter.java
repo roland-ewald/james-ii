@@ -6,12 +6,6 @@
  */
 package org.jamesii.gui.utils.parameters.factories;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-
 import org.jamesii.SimSystem;
 import org.jamesii.core.plugins.IParameter;
 import org.jamesii.core.util.IConstraint;
@@ -19,6 +13,12 @@ import org.jamesii.core.util.misc.Strings;
 import org.jamesii.gui.utils.parameters.editable.CopyNotSupportedException;
 import org.jamesii.gui.utils.parameters.editable.IEditable;
 import org.jamesii.gui.utils.parameters.editor.plugintype.AbstractParamEditorFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * This is a generic object that integrates the {@link IParameter} objects from
@@ -96,7 +96,7 @@ public class EditableFactoryParameter<V> implements IEditable<V> {
     if (value == null) {
       if (AbstractParamEditorFactory.isSupportedPrimitive(paramType)) {
         defaultValue =
-            AbstractParamEditorFactory.<V> getDefaultForPrimitive(paramType);
+            AbstractParamEditorFactory.getDefaultForPrimitive(paramType);
       } else if (!paramType.isInterface()) {
         try {
           defaultValue = paramType.newInstance();

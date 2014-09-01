@@ -38,8 +38,8 @@ public abstract class ModelInstrumenterFactory extends
    */
   public static int supportsSchemes(ParameterBlock params, String... schemes) {
     URI uri =
-        (URI) params
-            .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI);
+            params
+                .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI);
     return uri == null ? 0 : matchScheme(uri.getScheme(), schemes);
   }
 
@@ -56,8 +56,8 @@ public abstract class ModelInstrumenterFactory extends
    */
   public static int supportsURIStrings(ParameterBlock params, String... strings) {
     URI uri =
-        (URI) params
-            .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI);
+            params
+                .getSubBlockValue(AbstractModelInstrumenterFactory.MODELURI);
     return uri == null ? 0 : matchStrings(uri.toString(), strings);
   }
 

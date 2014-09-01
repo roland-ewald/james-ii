@@ -6,14 +6,11 @@
  */
 package org.jamesii.gui.application.action;
 
+import org.jamesii.gui.application.IWindow;
+
+import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.KeyStroke;
-
-import org.jamesii.gui.application.IWindow;
 
 /**
  * Wrapper class that creates an {@link IAction} from a standard Swing
@@ -87,7 +84,7 @@ public final class ActionIAction extends AbstractAction implements
   @Override
   public String getKeyStroke() {
     if (action.getValue(Action.ACCELERATOR_KEY) != null) {
-      return ((KeyStroke) action.getValue(Action.ACCELERATOR_KEY)).toString();
+      return action.getValue(Action.ACCELERATOR_KEY).toString();
     }
     return null;
   }

@@ -46,9 +46,7 @@ public class SetModelSet extends Entity implements IModelSet {
 
   @Override
   public IBasicDEVSModel getModel(String name) {
-    Iterator<IBasicDEVSModel> it = models.iterator();
-    while (it.hasNext()) {
-      IBasicDEVSModel m = it.next();
+    for (IBasicDEVSModel m : models) {
       if (m.getName().compareTo(name) == 0) {
         return m;
       }

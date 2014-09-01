@@ -218,7 +218,6 @@ public class SerializableTest extends UnicastRemoteObject implements
       }
     };
     t.start();
-    return;
   }
 
   @Override

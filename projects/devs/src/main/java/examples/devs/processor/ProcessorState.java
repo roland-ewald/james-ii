@@ -25,7 +25,7 @@ public class ProcessorState extends State {
    * The phases a processor can be in
    */
   public static enum Phase {
-    ACTIVE, PASSIVE;
+    ACTIVE, PASSIVE
   }
 
   /**

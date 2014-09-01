@@ -441,7 +441,7 @@ public class FileRowSetExceptionsInapplicableTest extends
 
   public void testSetClobIntReaderLongThrowsException() throws Exception {
     try {
-      frs.setClob(1, (Reader) null, 0L);
+      frs.setClob(1, null, 0L);
       fail();
     } catch (UnsupportedOperationException e) {
     }

@@ -23,7 +23,7 @@ import org.jamesii.gui.application.Contribution;
  */
 
 public final class LogView extends BasicLogView {
-  {
+  static {
     PersistenceDelegate delegate = new DefaultPersistenceDelegate() {
       @Override
       protected Expression instantiate(Object oldInstance, Encoder out) {

@@ -65,7 +65,7 @@ public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
    * 
    * @return true if the model class can be computed by using this processor
    */
-  public static final boolean isSupported(Class<? extends IModel> model) {
+  public static boolean isSupported(Class<? extends IModel> model) {
     List<Class<? extends IModel>> classes = getSupportedModelClasses();
     boolean result = false;
     for (int i = 0; i < classes.size(); i++) {
@@ -85,7 +85,7 @@ public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
    * 
    * @return true, if checks if is supported
    */
-  public static final boolean isSupported(IModel model) {
+  public static boolean isSupported(IModel model) {
     return isSupported(model.getClass());
   }
 
@@ -95,7 +95,7 @@ public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
    * 
    * @return the string
    */
-  public static final String supportedModels() {
+  public static String supportedModels() {
     List<Class<? extends IModel>> classes = getSupportedModelClasses();
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < classes.size(); i++) {

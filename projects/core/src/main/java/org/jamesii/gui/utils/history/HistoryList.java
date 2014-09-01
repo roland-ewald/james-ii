@@ -6,6 +6,10 @@
  */
 package org.jamesii.gui.utils.history;
 
+import org.jamesii.core.serialization.IEncoderCompatible;
+import org.jamesii.core.serialization.XMLEncoderFactory;
+import org.jamesii.core.util.Reflect;
+
 import java.beans.DefaultPersistenceDelegate;
 import java.beans.Encoder;
 import java.beans.Expression;
@@ -14,10 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-import org.jamesii.core.serialization.IEncoderCompatible;
-import org.jamesii.core.serialization.XMLEncoderFactory;
-import org.jamesii.core.util.Reflect;
 
 /**
  * The Class HistoryList. <b>For internal use only!</b> This class implements a
@@ -187,9 +187,8 @@ final class HistoryList implements IEncoderCompatible {
   public void updateItem(String value) {
     if (value != null) {
       HistoryItem hi;
-      Iterator<HistoryItem> i = hList.iterator();
-      while (i.hasNext()) {
-        hi = i.next();
+      for (HistoryItem aHList : hList) {
+        hi = aHList;
         if (hi.getValue().equals(value)) {
           hi.update();
           break;
@@ -208,9 +207,8 @@ final class HistoryList implements IEncoderCompatible {
   public void removeItem(String value) {
     if (value != null) {
       HistoryItem hi;
-      Iterator<HistoryItem> i = hList.iterator();
-      while (i.hasNext()) {
-        hi = i.next();
+      for (HistoryItem aHList : hList) {
+        hi = aHList;
         if (hi.getValue().equals(value)) {
           hList.remove(hi);
           break;
@@ -227,7 +225,7 @@ final class HistoryList implements IEncoderCompatible {
    */
   public String getId() {
     return id;
-  };
+  }
 
   /**
    * Returns true if HistoryList is empty, else false

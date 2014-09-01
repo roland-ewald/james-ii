@@ -35,11 +35,11 @@ public class SimulationServerViewFactory extends ServiceViewFactory {
     Contribution contr = Contribution.EDITOR;
     if (params != null) {
       server =
-          (ISimulationServer) params
-              .getSubBlockValue(ServiceViewFactory.SERVICE);
+              params
+                  .getSubBlockValue(ServiceViewFactory.SERVICE);
       contr =
-          (Contribution) params
-              .getSubBlockValue(ServiceViewFactory.CONTRIBUTAION);
+              params
+                  .getSubBlockValue(ServiceViewFactory.CONTRIBUTAION);
     }
     if (server != null) {
       return new SimulationServerView(server, contr);

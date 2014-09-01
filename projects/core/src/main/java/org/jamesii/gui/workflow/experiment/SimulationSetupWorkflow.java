@@ -94,7 +94,7 @@ public class SimulationSetupWorkflow extends AbstractWizardController {
     /** The model location (temporary file of model description). */
     URI modelLocation = null;
 
-    modelLocation = (URI) wizard.getValue(ModelLoader.MODEL_URI);
+    modelLocation = wizard.getValue(ModelLoader.MODEL_URI);
     // Entity.report("Will use model " + modelLocation);
     // Entity.report("Will not use model " +
     // wizard.getValue("modellocation"));

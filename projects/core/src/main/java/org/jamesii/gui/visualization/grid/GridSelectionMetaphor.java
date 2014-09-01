@@ -152,7 +152,7 @@ public final class GridSelectionMetaphor extends MouseAdapter {
    * @param grid
    *          the grid to create the selection metaphor for
    */
-  public static final void createSelectionMetaphorFor(Grid2D grid) {
+  public static void createSelectionMetaphorFor(Grid2D grid) {
     new GridSelectionMetaphor(grid);
   }
 }

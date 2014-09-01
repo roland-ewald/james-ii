@@ -112,7 +112,7 @@ public final class ParameterBlocks {
     if (result == null) {
       return null;
     }
-    return result.<V> getValue();
+    return result.getValue();
   }
 
   /**
@@ -164,7 +164,7 @@ public final class ParameterBlocks {
     if (block == null) {
       return null;
     }
-    return block.<V> getValue();
+    return block.getValue();
   }
 
   /**
@@ -287,8 +287,8 @@ public final class ParameterBlocks {
       indentation.append(" ");
     }
 
-    StringBuffer result =
-        new StringBuffer((block.getValue() == null ? "" : String.valueOf(block
+    StringBuilder result =
+        new StringBuilder((block.getValue() == null ? "" : String.valueOf(block
             .getValue())));
     Map<String, ParameterBlock> subBlocks = block.getSubBlocks();
 

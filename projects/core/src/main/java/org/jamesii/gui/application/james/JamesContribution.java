@@ -25,7 +25,7 @@ public class JamesContribution implements IEncoderCompatible {
    * Serialization ID
    */
   private static final long serialVersionUID = 8605414140948333962L;
-  {
+  static {
     PersistenceDelegate delegate =
         new DefaultPersistenceDelegate(new String[] { "position" });
 
@@ -143,7 +143,7 @@ public class JamesContribution implements IEncoderCompatible {
    *          the position string to parse
    * @return
    */
-  public static final List<JamesContributionNode> parsePosition(String pos) {
+  public static List<JamesContributionNode> parsePosition(String pos) {
     // check highest level
     return parseLocation(pos, 0);
   }

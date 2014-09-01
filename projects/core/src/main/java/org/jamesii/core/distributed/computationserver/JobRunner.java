@@ -28,7 +28,7 @@ public class JobRunner<V> implements Callable<V> {
    */
   public static enum Duty {
 
-    INITIALIZE, FINISH;
+    INITIALIZE, FINISH
   }
 
   /**

@@ -9,6 +9,7 @@ package org.jamesii.gui.perspective.laf;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.LookAndFeel;
@@ -57,9 +58,7 @@ public final class LafManager implements PropertyChangeListener {
   private LafManager() {
     LookAndFeelInfo[] lFs = UIManager.getInstalledLookAndFeels();
 
-    for (LookAndFeelInfo info : lFs) {
-      lafs.add(info);
-    }
+    Collections.addAll(lafs, lFs);
 
     UIManager.addPropertyChangeListener(this);
   }

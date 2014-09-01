@@ -243,10 +243,7 @@ public class SimpleBucketsEventQueue<E> extends AbstractEventQueue<E, Double> {
   @Override
   public Double getTime(E event) {
 
-    Iterator<Double> it = events.keySet().iterator();
-
-    while (it.hasNext()) {
-      Double d = it.next();
+    for (Double d : events.keySet()) {
       List<E> list = events.get(d);
       for (E m : list) {
         if (m == event) {

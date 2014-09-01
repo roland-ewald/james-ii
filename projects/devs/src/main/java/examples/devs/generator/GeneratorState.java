@@ -25,7 +25,7 @@ public class GeneratorState extends State {
    * The phases of the generator
    */
   public static enum Phase {
-    ACTIVE, PASSIVE;
+    ACTIVE, PASSIVE
   }
   
   /**

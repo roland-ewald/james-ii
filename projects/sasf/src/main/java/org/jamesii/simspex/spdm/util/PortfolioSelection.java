@@ -182,8 +182,8 @@ public class PortfolioSelection {
       Map<IRuntimeConfiguration, List<Double>> perfMap) {
     for (Entry<IRuntimeConfiguration, List<Double>> perfEntry : perfMap
         .entrySet()) {
-      StringBuffer perfEntryDesc =
-          new StringBuffer(DatabaseImportManager.createConfiguration(
+      StringBuilder perfEntryDesc =
+          new StringBuilder(DatabaseImportManager.createConfiguration(
               perfEntry.getKey()).toString());
       perfEntryDesc.append('\t');
       for (Double d : perfEntry.getValue()) {

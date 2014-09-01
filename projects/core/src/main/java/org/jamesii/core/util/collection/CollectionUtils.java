@@ -264,7 +264,7 @@ public final class CollectionUtils {
 
               @Override
               public java.util.Map.Entry<K, Object> next() {
-                return new AbstractMap.SimpleImmutableEntry<K, Object>(
+                return new AbstractMap.SimpleImmutableEntry<>(
                     collIt.next(), null);
               }
 

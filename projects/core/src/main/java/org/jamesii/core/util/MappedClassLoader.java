@@ -116,5 +116,5 @@ public class MappedClassLoader extends ClassLoader {
     } catch (Exception e) {
       return super.loadClass(name);
     }
-  };
+  }
 }

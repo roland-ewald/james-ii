@@ -211,7 +211,6 @@ public class WindowPane extends JTabbedPane implements MouseListener,
 
     if (component != null && component.isFocusable()) {
       component.requestFocusInWindow();
-      return;
     }
   }
 
