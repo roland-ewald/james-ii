@@ -6,10 +6,25 @@
  */
 package org.jamesii.core;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.logging.Level;
+
 import org.jamesii.SimSystem;
 import org.jamesii.core.algoselect.SelectionInformation;
 import org.jamesii.core.base.InformationObject;
-import org.jamesii.core.data.report.IReport;
 import org.jamesii.core.factories.*;
 import org.jamesii.core.model.formalism.Formalism;
 import org.jamesii.core.model.formalism.Formalisms;
@@ -26,22 +41,6 @@ import org.jamesii.core.util.Hook;
 import org.jamesii.core.util.info.JavaInfo;
 import org.jamesii.core.util.misc.Strings;
 import org.xml.sax.InputSource;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.logging.Level;
 
 /**
  * The Registry class is a wrapper for any (through the registry centralised)
@@ -123,7 +122,8 @@ public class Registry extends InformationObject {
       new LinkedHashMap<>();
 
   /** The mapping FQCN -> actual factory object. */
-  private transient Map<String, Factory<?>> factoryNameMap = new LinkedHashMap<>();
+  private transient Map<String, Factory<?>> factoryNameMap =
+      new LinkedHashMap<>();
 
   /**
    * Hook to be aware of any factory selections.
@@ -149,7 +149,8 @@ public class Registry extends InformationObject {
   /**
    * Maps the class names of the registered factories to their information.
    */
-  private transient Map<String, IFactoryInfo> factoryInfo = new LinkedHashMap<>();
+  private transient Map<String, IFactoryInfo> factoryInfo =
+      new LinkedHashMap<>();
 
   /**
    * A list of all plug-in types as they have been found on the system.
@@ -1037,33 +1038,31 @@ public class Registry extends InformationObject {
         });
 
     foundPlugins = pluginFinder.getFoundPlugins();
-    //sort plugin list to ensure deterministic ordering
+    // sort plugin list to ensure deterministic ordering
     Collections.sort(foundPlugins, new Comparator<IPluginData>() {
       @Override
       public int compare(IPluginData o1, IPluginData o2) {
-        if (o1==null)
+        if (o1 == null)
           return -1;
-        if (o2==null)
+        if (o2 == null)
           return 1;
         return o1.getId().compareTo(o2.getId());
       }
     });
 
-
     foundPluginTypes = pluginFinder.getFoundPluginTypes();
-    //sort plugintypes list first to ensure deterministic ordering
+    // sort plugintypes list first to ensure deterministic ordering
     Collections.sort(foundPluginTypes, new Comparator<IPluginTypeData>() {
       @Override
       public int compare(IPluginTypeData o1, IPluginTypeData o2) {
-        if (o1==null)
+        if (o1 == null)
           return -1;
-        if (o2==null)
+        if (o2 == null)
           return 1;
-        return o1.getBaseFactory().getClass().getName().compareTo(o2.getBaseFactory().getClass().getName());
+        return o1.getBaseFactory().getClass().getName()
+            .compareTo(o2.getBaseFactory().getClass().getName());
       }
     });
-
-
 
     SimSystem.report(Level.INFO,
         "Found plug-in types: " + foundPluginTypes.size());
@@ -1838,39 +1837,6 @@ public class Registry extends InformationObject {
   }
 
   /**
-   * Create an instance using the factory and the parameters passed and auto set
-   * the context if the instance generated implements the {@link IContext}
-   * interface.
-   * 
-   * If there is a report for
-   * 
-   * @param factory
-   *          to be used to create the instance
-   * @param block
-   *          of parameters to be used to create the instance
-   * @param context
-   *          the new instance shall be embedded in
-   * @return the return value of the {@link Factory#create(ParameterBlock)}
-   *         method.
-   */
-  public static <I> I create(Factory<I> factory, ParameterBlock block,
-      IContext context, IReport report) {
-    I result = factory.create(block);
-    if (result instanceof IContext) {
-      ((IContext) result).setContext(context);
-    }
-    // search the root
-    IContext root = context;
-    while (root != null && root.getContext() != null) {
-      root = root.getContext();
-    }
-
-    // report.addEntry("Instance created", object, block)
-
-    return result;
-  }
-
-  /**
    * Returns true if the class path has been excluded from the plug-in search.
    * 
    * @return true or false
@@ -1930,4 +1896,12 @@ public class Registry extends InformationObject {
     }
     return (Class<AbstractFactory<Factory<?>>>) result;
   }
+
+  /**
+   * Create a new context and return it.
+   */
+  public static Context createContext() {
+	  return new Context();
+  }
+  
 }

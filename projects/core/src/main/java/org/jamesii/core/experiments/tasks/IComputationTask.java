@@ -7,7 +7,6 @@
 package org.jamesii.core.experiments.tasks;
 
 import org.jamesii.core.experiments.IComputationTaskConfiguration;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.observe.IObservable;
 import org.jamesii.core.processor.ProcessorInformation;
@@ -19,8 +18,7 @@ import org.jamesii.core.util.id.IUniqueIdentifier;
  * 
  * @author Jan Himmelspach
  */
-public interface IComputationTask extends IUniqueIdentifier, IObservable,
-    IContext {
+public interface IComputationTask extends IUniqueIdentifier, IObservable {
 
   /**
    * Start the computation of the task, i.e., call the processor's run method.

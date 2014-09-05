@@ -87,10 +87,10 @@ public abstract class Factory<I> extends NamedEntity implements IFactory<I> {
    * statements of such a method.
    */
   protected I setInstanceContext(I instance, ParameterBlock block) {
-    if (instance instanceof IContext) {
-      IContext context =
-          ParameterBlocks.getSubBlockValue(block, IContext.class.getName());
-      ((IContext) instance).setContext(context);
+    if (instance instanceof Context) {
+      Context context =
+          ParameterBlocks.getSubBlockValue(block, Context.class.getName());
+      // ((Context) instance).setContext(context);
       SimSystem.report(Level.CONFIG, " The object " + instance
           + " has been assigned to the context " + context);
     }

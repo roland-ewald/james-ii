@@ -26,8 +26,6 @@ import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.AbstractComputationTaskStopPolicyFactory;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
-import org.jamesii.core.factories.Context;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.ModelInformation;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -96,16 +94,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
 
   /** The hook for a simulation end. */
   private ComputationTaskHook<ProcessorInformation> endHook = null;
-
-  /**
-   * The context this instance belongs to.
-   */
-  private IContext context = null;
-
-  /**
-   * The list of child contexts-
-   */
-  private List<IContext> childContexts = null;
 
   /** The wall clock start time in milliseconds. */
   private long wcStartTime;
@@ -801,33 +789,6 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       result = wcStartTime;
     }
     return (D) result;
-  }
-
-  @Override
-  public void setContext(IContext context) {
-    this.context = context;
-  }
-
-  @Override
-  public IContext getContext() {
-    return context;
-  }
-
-  @Override
-  public void registerContext(IContext context) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public List<IContext> getChildContexts() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public <O> O create(String pluginType, ParameterBlock block) {
-    return Context.createInstance(pluginType, block, this);
   }
 
 }

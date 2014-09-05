@@ -6,7 +6,8 @@
  */
 package org.jamesii.core.factories;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -21,64 +22,79 @@ import org.jamesii.core.parameters.ParameterBlock;
  * @author Jan Himmelspach
  * 
  */
-public class Context implements IContext {
+public class Context {
 
-  /**
-   * The parent context.
-   */
-  private IContext parent;
+	/**
+	 * The parent context.
+	 */
+	private Context parent;
 
-  /**
-   * The child contexts.
-   */
-  private List<IContext> children;
+	/**
+	 * The child contexts.
+	 */
+	private List<Context> children;
 
-  @Override
-  public void setContext(IContext context) {
-    parent = context;
-  }
+	/**
+	 * Listeners of this context.
+	 */
+	private List<IContextListener> listenerList = new ArrayList<>();
 
-  @Override
-  public IContext getContext() {
-    return parent;
-  }
+	/**
+	 * A new context and object is created. Inform all listeners and notify the parent context.
+	 */
+	protected void createdEvent(Object object, List<Context> hierarchy) {
+		hierarchy.add(this);
+		for (IContextListener listener : listenerList) {
+			listener.createdEvent(object, Collections.unmodifiableList(hierarchy));
+		}
+		parent.createdEvent(object, hierarchy);
+	}
+	
+	/**
+	 * Add a listener to the context. Return true, if the listener was added
+	 * successfully. Return false, if the listener is already registered at this
+	 * context.
+	 */
+	public boolean addListener(IContextListener listener) {
+		if (!listenerList.contains(listener)) {
+			listenerList.add(listener);
+			return true;
+		}
+		return false;
+	}
 
-  @Override
-  public void registerContext(IContext context) {
-    if (children == null) {
-      children = new LinkedList<>();
-    }
-    children.add(context);
-  }
+	/**
+	 * Remove a listener from the context. Return true, if the listener was
+	 * removed successfully. Return false, if the listener could not be removed
+	 * because it is not registered at this context.
+	 */
+	public boolean removeListener(IContextListener listener) {
+		return listenerList.remove(listener);
+	}
 
-  @Override
-  public List<IContext> getChildContexts() {
-    return children;
-  }
+	@SuppressWarnings("unchecked")
+	public static <O> O createInstance(String pluginType, ParameterBlock block,
+			Context context) {
 
-  @SuppressWarnings("unchecked")
-  public static <O> O createInstance(String pluginType, ParameterBlock block, IContext context) {
+		Class<? extends AbstractFactory<Factory<?>>> abstractFactory = SimSystem
+				.getRegistry().getFactoryType(pluginType);
 
-    Class<? extends AbstractFactory<Factory<?>>> abstractFactory =
-        SimSystem.getRegistry().getFactoryType(pluginType);
+		Factory<?> factory = SimSystem.getRegistry().getFactory(
+				abstractFactory, block);
 
-    Factory<?> factory =
-        SimSystem.getRegistry().getFactory(abstractFactory, block);
+		O result = null;
+		if (factory != null) {
+			result = (O) factory.create(block);
+		}
 
-    O result = null;
-    if (factory != null) {
-      result = (O) factory.create(block);
-    }
+		SimSystem.report(Level.FINEST, "Created an instance of " + pluginType
+				+ " in the context " + context);
 
-    SimSystem.report(Level.FINEST, "Created an instance of " + pluginType
-        + " in the context " + context);
+		return result;
+	}
 
-    return result;
-  }
-  
-  @Override
-  public <O> O create(String pluginType, ParameterBlock block) {    
-    return createInstance (pluginType, block, this);
-  }
+	public <O> O create(String pluginType, ParameterBlock block) {
+		return createInstance(pluginType, block, this);
+	}
 
 }

@@ -7,19 +7,15 @@
 package org.jamesii.core.simulationrun.stoppolicy;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.jamesii.core.base.INamedEntity;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.SimulationRunConfiguration;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
-import org.jamesii.core.factories.Context;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.observe.IMediator;
 import org.jamesii.core.observe.IObserver;
-import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.ProcessorInformation;
 import org.jamesii.core.simulationrun.ISimulationRun;
 
@@ -165,29 +161,4 @@ public class DummySimRun implements ISimulationRun, Serializable {
   public void changed(Object hint) {
   }
 
-  @Override
-  public void setContext(IContext context) {
-  }
-
-  @Override
-  public IContext getContext() {
-    return null;
-  }
-
-  @Override
-  public void registerContext(IContext context) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public List<IContext> getChildContexts() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  
-  @Override
-  public <O> O create(String pluginType, ParameterBlock block) {    
-    return Context.createInstance (pluginType, block, this);
-  }
 }

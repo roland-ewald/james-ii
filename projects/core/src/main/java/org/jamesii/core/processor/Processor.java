@@ -12,11 +12,8 @@ import java.util.List;
 
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.experiments.tasks.IComputationTask;
-import org.jamesii.core.factories.Context;
-import org.jamesii.core.factories.IContext;
 import org.jamesii.core.model.AccessRestriction;
 import org.jamesii.core.model.IModel;
-import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.simulationrun.ISimulationRun;
 import org.jamesii.core.util.Hook;
 
@@ -36,15 +33,10 @@ import org.jamesii.core.util.Hook;
  * @author Jan Himmmelspach
  */
 public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
-    Entity implements IProcessor<TimeBase>, IContext {
+    Entity implements IProcessor<TimeBase> {
 
   /** Serialisation ID. */
   private static final long serialVersionUID = 4211086838445451497L;
-
-  /**
-   * The list of sub contexts.
-   */
-  private List<IContext> childContexts;
 
   /**
    * This method returns a list of all model classes which are supported by this
@@ -319,7 +311,6 @@ public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
   @Override
   public void setComputationTask(IComputationTask simulation) {
     this.computationTask = simulation;
-    setContext(simulation);
   }
 
   /**
@@ -349,29 +340,4 @@ public abstract class Processor<TimeBase extends Comparable<TimeBase>> extends
     this.accessRestriction = accessRestriction;
   }
 
-  @Override
-  public void setContext(IContext context) {
-    this.computationTask = (IComputationTask) context;
-  }
-
-  @Override
-  public IContext getContext() {
-    return computationTask;
-  }
-
-  @Override
-  public void registerContext(IContext context) {
-    childContexts.add(context);
-  }
-
-  @Override
-  public List<IContext> getChildContexts() {
-    return childContexts;
-  }
-
-  @Override
-  public <O> O create(String pluginType, ParameterBlock block) {    
-    return Context.createInstance (pluginType, block, this);
-  }
-  
 }
