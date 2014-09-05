@@ -16,6 +16,7 @@ import org.jamesii.asf.integrationtest.bogus.application.model.IBogusModel;
 import org.jamesii.core.algoselect.UnderDevelopment;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.tasks.IComputationTask;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.IProcessor;
@@ -52,7 +53,7 @@ public class FlexibleBogusSimulatorFactory extends JamesProcessorFactory {
   @Override
   public final IProcessor<Double> create(IModel model,
       IComputationTask simulation,
-      Partition partition, ParameterBlock params) {
+      Partition partition, ParameterBlock params, Context context) {
     IBogusSimulatorProperties properties = determineProperties(params);
     FlexibleBogusSimulator sim = new FlexibleBogusSimulator(model, properties);
     sim.setComputationTask(simulation);

@@ -8,6 +8,7 @@ package org.jamesii.core.distributed.partition;
 
 import java.io.Serializable;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.Model;
@@ -151,7 +152,7 @@ public class Partition implements Serializable {
 
     IProcessor proc;
 
-    proc = processorFactory.create(getModel(), simulation, this, parameter);
+    proc = processorFactory.create(getModel(), simulation, this, parameter, SimSystem.getRegistry().createContext());
     proc.setComputationTask(simulation);
     simulation.setProcessorInfo(new ProcessorInformation(proc));
 

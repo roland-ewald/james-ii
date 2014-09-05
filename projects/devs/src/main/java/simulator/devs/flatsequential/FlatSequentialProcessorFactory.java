@@ -17,6 +17,7 @@ import model.devs.ICoupledModel;
 import org.jamesii.SimSystem;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.tasks.IComputationTask;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.IProcessor;
@@ -39,7 +40,7 @@ public class FlatSequentialProcessorFactory extends JamesProcessorFactory {
 
   @Override
   public IProcessor create(IModel model, IComputationTask computationTask,
-      Partition partition, ParameterBlock parameters) {
+      Partition partition, ParameterBlock parameters, Context context) {
 
     ISimulationRun simulation = (ISimulationRun) computationTask;
 

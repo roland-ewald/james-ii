@@ -52,26 +52,26 @@ public abstract class ProcessorFactory extends Factory<IProcessor> {
    * 
    * @param model
    *          The model for which the processor has to be created
-   * @param computationTask
+ * @param computationTask
    *          the computation task the processor belongs to
-   * @param partition
+ * @param partition
    *          If the model shall be executed in a distributed manner this
    *          parameter contains the mapping
-   * @param params
+ * @param params
    *          Additional parameters (e.g. event queue), tuples of parameter
    *          ident and value object
-   * 
+ * @param context TODO
    * @return the instance of the processor created
    */
   public abstract IProcessor create(IModel model,
       IComputationTask computationTask, Partition partition,
-      ParameterBlock params);
+      ParameterBlock params, Context context);
 
   @Override
   public IProcessor create(ParameterBlock parameters, Context context) {
     return create((IModel) parameters.getSubBlockValue("MODEL"),
         (IComputationTask) parameters.getSubBlockValue("TASK"),
-        (Partition) parameters.getSubBlockValue("PARTITION"), parameters);
+        (Partition) parameters.getSubBlockValue("PARTITION"), parameters, context);
   }
 
   /**

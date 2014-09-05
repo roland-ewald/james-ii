@@ -13,6 +13,7 @@ import java.util.List;
 import org.jamesii.core.algoselect.UnderDevelopment;
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.tasks.IComputationTask;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.IProcessor;
@@ -34,7 +35,7 @@ public class BestSimulatorInTheWorldFactory extends JamesProcessorFactory {
 
   @Override
   public IProcessor<Double> create(IModel model, IComputationTask simulation,
-      Partition partition, ParameterBlock params) {
+      Partition partition, ParameterBlock params, Context context) {
     throw new UnsupportedOperationException(
         "Re-calibration of flux capacitor failed.");
   }
