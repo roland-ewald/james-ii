@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.util.info.benchmark.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.info.benchmark.IBenchmark;
@@ -23,12 +24,11 @@ public abstract class BenchmarkFactory extends Factory<IBenchmark> {
 
   /**
    * Creates an instance of a benchmark.
-   * 
-   * @param params
+ * @param params
    *          parameters
-   * @return benchmark
+ * @return benchmark
    */
   @Override
-  public abstract IBenchmark create(ParameterBlock params);
+  public abstract IBenchmark create(ParameterBlock params, Context context);
 
 }

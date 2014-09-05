@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.replication;
 
 import org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -36,7 +37,7 @@ public class ConfidenceIntervalCriterionFactory extends RepCriterionFactory {
   public static final String ATTRIBUTE_ID = "attributeID";
 
   @Override
-  public IReplicationCriterion create(ParameterBlock params) {
+  public IReplicationCriterion create(ParameterBlock params, Context context) {
 
     long dataid = 0l;
     String attribute = null;

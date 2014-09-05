@@ -117,7 +117,7 @@ public class SymbolicModelWindowManager implements ISymbolicModelWindowManager {
     if (model == null) {
       try {
         model =
-            factoryR.create(cutomReaderParameters).read(
+            factoryR.create(cutomReaderParameters, SimSystem.getRegistry().createContext()).read(
                 (URI) parameter.getSubBlockValue("URI"));
       } catch (Throwable t) {
         SimSystem.report(Level.SEVERE, "Reading the given model failed.", t);
@@ -380,7 +380,7 @@ public class SymbolicModelWindowManager implements ISymbolicModelWindowManager {
     URI uri = parameter.getSubBlockValue(IURIHandling.URI);
     setupModelSaving(modelWindow, model);
     try {
-      mrwFactory.create(customWriterParameters).write(model, uri);
+      mrwFactory.create(customWriterParameters, SimSystem.getRegistry().createContext()).write(model, uri);
     } catch (Exception ex) {
       SimSystem.report(
           Level.SEVERE,

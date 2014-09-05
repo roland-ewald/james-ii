@@ -6,6 +6,7 @@
  */
 package org.jamesii.perfdb.recording.performance.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -46,13 +47,12 @@ public abstract class PerformanceMeasurerFactory extends
 
   /**
    * Creates the performance measurer.
-   * 
-   * @param parameterBlock
+ * @param parameterBlock
    *          the parameter block to be used for creation
-   * @return the performance measurer
+ * @return the performance measurer
    */
   @Override
-  public abstract IPerformanceMeasurer<?> create(ParameterBlock parameterBlock);
+  public abstract IPerformanceMeasurer<?> create(ParameterBlock parameterBlock, Context context);
 
   /**
    * Defines whether this performance measure shall be maximised or not

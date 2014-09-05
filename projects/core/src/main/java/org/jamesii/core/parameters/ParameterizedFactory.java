@@ -146,7 +146,7 @@ public class ParameterizedFactory<F extends Factory<?>> implements Serializable 
     if (factoryInstance == null) {
       return null;
     }
-    return (I) factoryInstance.create(getParameter());
+    return (I) factoryInstance.create(getParameter(), SimSystem.getRegistry().createContext());
   }
 
   /**

@@ -225,7 +225,7 @@ public class ExperimentEditor extends AbstractWindow {
 
     IExperimentWriter writer =
         ((ExperimentWriterFactory) parameters.getSecondValue())
-            .create(parameters.getFirstValue());
+            .create(parameters.getFirstValue(), SimSystem.getRegistry().createContext());
 
     if (writer == null) {
       SimSystem.report(Level.SEVERE, "Could not initialise experiment writer.");

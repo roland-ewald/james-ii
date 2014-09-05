@@ -17,7 +17,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.jamesii.perfdb.hibernate.PerformanceDatabase;
 
 /**
  * General class to test hibernate entities.

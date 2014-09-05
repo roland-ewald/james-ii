@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.bootstrapping;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.IPredictorGeneratorEvaluationStrategy;
 import org.jamesii.simspex.spdm.evaluation.plugintype.PredictorGeneratorEvaluationFactory;
@@ -24,7 +25,7 @@ public class BootStrappingFactory extends PredictorGeneratorEvaluationFactory {
 
   @Override
   public IPredictorGeneratorEvaluationStrategy create(
-      ParameterBlock params) {
+      ParameterBlock params, Context context) {
     return new BootStrapping(params.getSubBlockValue(NUMBER_OF_PASSES,
         DEFAULT_VAL_NUM_PASSES));
   }

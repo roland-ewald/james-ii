@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.exploration.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.exploration.ISimSpaceExplorer;
@@ -25,11 +26,10 @@ public abstract class SimSpaceExplorerFactory extends
 
   /**
    * Creates simulation space explorer.
-   * 
-   * @param absParameters
+ * @param absParameters
    *          parameters to configure object creation
-   * @return simulation space explorer
+ * @return simulation space explorer
    */
-  public abstract ISimSpaceExplorer create(ParameterBlock params);
+  public abstract ISimSpaceExplorer create(ParameterBlock params, Context context);
 
 }

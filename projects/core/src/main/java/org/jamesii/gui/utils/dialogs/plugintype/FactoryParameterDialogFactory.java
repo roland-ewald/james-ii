@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jamesii.core.factories.AbstractFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.dialogs.IFactoryParameterDialog;
@@ -32,15 +33,13 @@ public abstract class FactoryParameterDialogFactory<X extends Factory<?>, F exte
 
   /**
    * Creates factory dialog.
-   * 
-   * @param factoryDialogParameter
+ * @param factoryDialogParameter
    *          the parameters for the selection of a proper dialog
-   * 
-   * @return dialog to create factory parameter
+ * @return dialog to create factory parameter
    */
   @Override
   public final IFactoryParameterDialog<F> create(
-      ParameterBlock factoryDialogParameter) {
+      ParameterBlock factoryDialogParameter, Context context) {
     // defensive copy of parameter block since it might be altered in this
     // method
     factoryDialogParameter = factoryDialogParameter.getCopy();

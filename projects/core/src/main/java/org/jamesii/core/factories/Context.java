@@ -84,7 +84,7 @@ public class Context {
 
 		O result = null;
 		if (factory != null) {
-			result = (O) factory.create(block);
+			result = (O) factory.create(block, SimSystem.getRegistry().createContext());
 		}
 
 		SimSystem.report(Level.FINEST, "Created an instance of " + pluginType

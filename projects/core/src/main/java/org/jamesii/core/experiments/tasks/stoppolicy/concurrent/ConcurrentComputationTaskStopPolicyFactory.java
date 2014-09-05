@@ -6,9 +6,11 @@
  */
 package org.jamesii.core.experiments.tasks.stoppolicy.concurrent;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.simulationrun.ISimulationRun;
@@ -32,7 +34,7 @@ public class ConcurrentComputationTaskStopPolicyFactory extends
 
   @Override
   public IComputationTaskStopPolicy<IComputationTask> create(
-      ParameterBlock paramBlock) {
+      ParameterBlock paramBlock, Context context) {
     ComputationTaskStopPolicyFactory<IComputationTask> policyFactory =
         ParameterBlocks.getSubBlockValue(paramBlock, POLICY);
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
@@ -40,7 +42,7 @@ public class ConcurrentComputationTaskStopPolicyFactory extends
         paramBlock.getSubBlock(POLICY_PARAMS).getCopy();
     innerParams.addSubBl(COMPTASK, run);
     IComputationTaskStopPolicy<IComputationTask> policy =
-        policyFactory.create(innerParams);
+        policyFactory.create(innerParams, SimSystem.getRegistry().createContext());
     ConcurrentComputationTaskStopPolicy result =
         new ConcurrentComputationTaskStopPolicy(policy);
     result.start();

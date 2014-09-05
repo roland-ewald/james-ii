@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.observe.listener.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.observe.listener.IObserverListener;
@@ -24,14 +25,12 @@ public abstract class ObserverListenerFactory extends
 
   /**
    * Creates a new observer listener.
-   * 
-   * @param parameter
+ * @param parameter
    *          the parameter
-   * 
-   * @return the created observer listener
+ * @return the created observer listener
    */
   @Override
-  public abstract IObserverListener create(ParameterBlock parameter);
+  public abstract IObserverListener create(ParameterBlock parameter, Context context);
 
   /**
    * Get description of observer listener.

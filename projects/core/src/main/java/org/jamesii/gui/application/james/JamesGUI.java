@@ -687,7 +687,7 @@ public final class JamesGUI extends AbstractApplicationInformation implements
 
       for (IconSetFactory factory : iconSetFactories) {
         try {
-          IIconSet iconSet = factory.create(params);
+          IIconSet iconSet = factory.create(params, SimSystem.getRegistry().createContext());
           // register icon set as available in the icon set manager
           IconSetManager.registerIconSet(iconSet);
 

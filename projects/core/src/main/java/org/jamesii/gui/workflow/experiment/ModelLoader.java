@@ -147,7 +147,7 @@ public class ModelLoader extends AbstractWizardPage {
                   new ParameterBlock(parameters.getFirstValue()
                       .getSubBlockValue(IURIHandling.URI), IURIHandling.URI);
               IModelReader reader =
-                  parameters.getSecondValue().create(readerParams);
+                  parameters.getSecondValue().create(readerParams, SimSystem.getRegistry().createContext());
               model =
                   reader.read((URI) parameters.getFirstValue()
                       .getSubBlockValue(IURIHandling.URI),
@@ -206,7 +206,7 @@ public class ModelLoader extends AbstractWizardPage {
         try {
           IFactoryParameterDialog<ModelReaderFactory> dialog =
               (IFactoryParameterDialog<ModelReaderFactory>) dialogFactory
-                  .create(params);
+                  .create(params, SimSystem.getRegistry().createContext());
           selectionDialogs.add(dialog);
         } catch (Exception e) {
           SimSystem.report(e);

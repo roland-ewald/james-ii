@@ -470,7 +470,7 @@ public class Registry extends InformationObject {
     // use the filtering process of the abstract factory for
     // determining a
     // factory
-    F factory = getInitializedAbstractFactory(af).create(afp);
+    F factory = getInitializedAbstractFactory(af).create(afp, SimSystem.getRegistry().createContext());
 
     if (factorySelectionHook != null) {
       factorySelectionHook
@@ -498,7 +498,7 @@ public class Registry extends InformationObject {
     if (factory == null) {
       return null;
     }
-    return (O) factory.create(afp);
+    return (O) factory.create(afp, SimSystem.getRegistry().createContext());
   }
 
   /**
@@ -1900,7 +1900,7 @@ public class Registry extends InformationObject {
   /**
    * Create a new context and return it.
    */
-  public static Context createContext() {
+  public Context createContext() {
 	  return new Context();
   }
   

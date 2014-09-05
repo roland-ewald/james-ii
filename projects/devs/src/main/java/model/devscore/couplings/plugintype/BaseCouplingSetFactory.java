@@ -6,6 +6,7 @@
  */
 package model.devscore.couplings.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -28,7 +29,7 @@ public abstract class BaseCouplingSetFactory extends Factory<ICouplingSet>  {
   public abstract ICouplingSet createDirect();
 
   @Override
-  public ICouplingSet create(ParameterBlock parameters) {
+  public ICouplingSet create(ParameterBlock parameters, Context context) {
     return createDirect();
   }
   

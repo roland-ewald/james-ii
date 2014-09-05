@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.integrators.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.integrators.AbstractODESolver;
 import org.jamesii.core.math.integrators.IOde;
@@ -39,7 +40,7 @@ public abstract class ODESolverFactory extends Factory<AbstractODESolver> {
       double startVar, double stopVar);
 
   @Override
-  public AbstractODESolver create(ParameterBlock parameters) {
+  public AbstractODESolver create(ParameterBlock parameters, Context context) {
     return createODESolver((IOde) getParameter("ODE_SYSTEM", parameters),
         (Double) getParameter("START", parameters),
         (Double) getParameter("STOP", parameters));

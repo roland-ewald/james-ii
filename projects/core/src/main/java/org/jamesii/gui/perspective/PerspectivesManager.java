@@ -106,7 +106,7 @@ public final class PerspectivesManager implements IPerspectiveChangeListener {
       for (PerspectiveFactory factory : perspFactories) {
         IPerspective perspective = null;
         try {
-          perspective = factory.create(perspParams);
+          perspective = factory.create(perspParams, SimSystem.getRegistry().createContext());
           availablePerspectives.add(perspective);
         } catch (PluginCreationException e) {
           SimSystem.report(Level.WARNING, null,

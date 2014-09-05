@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.model.parametersetup.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.model.symbolic.ISymbolicModel;
@@ -25,14 +26,12 @@ public abstract class ModelParameterSetupWindowFactory extends
 
   /**
    * Creates a model parameter setup window.
-   * 
-   * @param params
+ * @param params
    *          parameters that contain all information regarding the model
-   * 
-   * @return the model parameter window<? extends i symbolic model<?>>
+ * @return the model parameter window<? extends i symbolic model<?>>
    */
   @Override
   public abstract ModelParameterWindow<? extends ISymbolicModel<?>> create(
-      ParameterBlock params);
+      ParameterBlock params, Context context);
 
 }

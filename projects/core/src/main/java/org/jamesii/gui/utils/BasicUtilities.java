@@ -211,7 +211,7 @@ public final class BasicUtilities {
     facList.add(concreteFactory);
 
     return fpdFactory.create(FactoryParameterDialogParameter.getParameterBlock(
-        factoryClass, facList));
+        factoryClass, facList), SimSystem.getRegistry().createContext());
   }
 
   /**

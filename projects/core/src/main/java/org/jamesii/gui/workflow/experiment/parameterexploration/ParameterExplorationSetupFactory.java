@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.workflow.experiment.parameterexploration;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.workflow.experiment.plugintype.ExperimentSetupEditorFactory;
 import org.jamesii.gui.workflow.experiment.plugintype.IExperimentSetup;
@@ -22,7 +23,7 @@ public class ParameterExplorationSetupFactory extends
   private static final long serialVersionUID = 6453027339484955830L;
 
   @Override
-  public IExperimentSetup create(ParameterBlock params) {
+  public IExperimentSetup create(ParameterBlock params, Context context) {
     return new ParameterExplorationSetup(params);
   }
 

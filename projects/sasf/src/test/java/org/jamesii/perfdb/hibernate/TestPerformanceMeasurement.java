@@ -6,7 +6,6 @@
  */
 package org.jamesii.perfdb.hibernate;
 
-import org.jamesii.perfdb.hibernate.Performance;
 
 /**
  * Test for {@link Performance}.

@@ -280,7 +280,7 @@ public class TestGeneticAlgorithmPortfolioSelectorWithPolicies extends TestCase 
           .getFirstValue()));
 
       for (MinBanditPolicyFactory policyFactory : policyFactories) {
-        IMinBanditPolicy policy = policyFactory.create(new ParameterBlock());
+        IMinBanditPolicy policy = policyFactory.create(new ParameterBlock(), SimSystem.getRegistry().createContext());
         SimSystem.report(Level.INFO, "\tExecuting policy:" + policy.getClass());
         aggregatedData.registerGAPerformance(
             description,

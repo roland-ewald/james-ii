@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.perspective.IPerspective;
 import org.jamesii.gui.perspective.plugintype.PerspectiveFactory;
@@ -26,7 +27,7 @@ public class VisDataAnalysisPerspectiveFactory extends PerspectiveFactory {
   private static final long serialVersionUID = -6063710384342993226L;
 
   @Override
-  public IPerspective create(ParameterBlock params) {
+  public IPerspective create(ParameterBlock params, Context context) {
     return new VisDataAnalysisPerspective();
   }
 

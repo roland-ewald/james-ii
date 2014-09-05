@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.optimization.algorithm.plugintype;
 
 import org.jamesii.core.experiments.optimization.algorithm.IOptimizationAlgorithm;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -27,12 +28,11 @@ public abstract class OptimizationAlgorithmFactory extends
 
   /**
    * Creates an optimization algorithm.
-   * 
-   * @param params
+ * @param params
    *          parameters of the algorithm.
-   * @return the algorithm
+ * @return the algorithm
    */
   @Override
-  public abstract IOptimizationAlgorithm create(ParameterBlock params);
+  public abstract IOptimizationAlgorithm create(ParameterBlock params, Context context);
 
 }

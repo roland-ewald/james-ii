@@ -89,7 +89,7 @@ public class MasterServerView extends ServerView {
         ServiceViewFactory factory =
             SimSystem.getRegistry().getFactory(
                 AbstractServiceViewFactory.class, viewParams);
-        IServiceView view = factory.create(viewParams);
+        IServiceView view = factory.create(viewParams, SimSystem.getRegistry().createContext());
         view.setupObservers();
         getWindowManager().addWindow(view);
       }

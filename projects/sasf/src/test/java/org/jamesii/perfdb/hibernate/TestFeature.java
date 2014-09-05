@@ -8,7 +8,6 @@ package org.jamesii.perfdb.hibernate;
 
 
 import org.hibernate.Session;
-import org.jamesii.perfdb.hibernate.FeatureType;
 import org.jamesii.perfdb.recording.features.plugintype.FeatureExtractorFactory;
 
 /**

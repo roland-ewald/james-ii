@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization.modelbrowser.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -29,13 +30,11 @@ public abstract class ModelBrowserFactory extends Factory<IWindow> implements
 
   /**
    * Creates a model browser.
-   * 
-   * 
-   * @param params
+ * @param params
    *          the parameter block to configure the model browser
-   * @return newly created model browser
+ * @return newly created model browser
    */
   @Override
-  public abstract IWindow create(ParameterBlock params);
+  public abstract IWindow create(ParameterBlock params, Context context);
 
 }

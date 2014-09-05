@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.interpolation.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.interpolation.IInterpolator;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -29,5 +30,5 @@ public abstract class InterpolationFactory extends Factory<IInterpolator> {
    * @return the interpolator
    */
   @Override
-  public abstract IInterpolator create(ParameterBlock parameters);
+  public abstract IInterpolator create(ParameterBlock parameters, Context context);
 }

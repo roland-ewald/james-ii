@@ -11,6 +11,7 @@ import java.net.URI;
 import org.jamesii.core.data.model.IModelReader;
 import org.jamesii.core.data.model.read.plugintype.IMIMEType;
 import org.jamesii.core.data.model.read.plugintype.ModelReaderFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.symbolic.ISymbolicModel;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -31,7 +32,7 @@ public class ImplementedModelReaderFactory extends ModelReaderFactory {
   private static final long serialVersionUID = 1L;
 
   @Override
-  public IModelReader create(ParameterBlock params) {
+  public IModelReader create(ParameterBlock params, Context context) {
     return new ImplementedModelReader();
   }
 

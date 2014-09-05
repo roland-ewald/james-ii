@@ -186,7 +186,7 @@ class ModelEditor extends AbstractWizardPage {
 
       IModelReader reader =
           ((ModelReaderFactory) parameters.getSecondValue()).create(parameters
-              .getFirstValue());
+              .getFirstValue(), SimSystem.getRegistry().createContext());
 
       URI uri =
               parameters.getFirstValue().getSubBlockValue(IURIHandling.URI);
@@ -200,7 +200,7 @@ class ModelEditor extends AbstractWizardPage {
         ParameterBlock pa =
             new ParameterBlock(model, AbstractModelWindowFactory.MODEL);
 
-        ModelWindow<? extends ISymbolicModel<?>> w = editor.create(pa, null);
+        ModelWindow<? extends ISymbolicModel<?>> w = editor.create(pa, SimSystem.getRegistry().createContext());
         JComponent jamesWin = w.getContent();
 
         window = w;
@@ -250,7 +250,7 @@ class ModelEditor extends AbstractWizardPage {
 
       IModelWriter writer =
           ((ModelWriterFactory) parameters.getSecondValue()).create(parameters
-              .getFirstValue());
+              .getFirstValue(), SimSystem.getRegistry().createContext());
 
       writer.write(ModelEditor.this.model, (URI) parameters.getFirstValue()
           .getSubBlockValue(IURIHandling.URI));
@@ -374,7 +374,7 @@ class ModelEditor extends AbstractWizardPage {
           modelURI = Files.getURIFromFile(file);
 
           block.addSubBl(IURIHandling.URI, modelURI);
-          IModelWriter writer = selected.create(block);
+          IModelWriter writer = selected.create(block, SimSystem.getRegistry().createContext());
 
           writer.write(model, modelURI);
         }
@@ -403,7 +403,7 @@ class ModelEditor extends AbstractWizardPage {
     ParameterBlock amwfp =
         new ParameterBlock(model, AbstractModelWindowFactory.MODEL);
 
-    window = editor.create(amwfp, null);
+    window = editor.create(amwfp, SimSystem.getRegistry().createContext());
 
     BasicUtilities.invokeLaterOnEDT(new SetupUI());
   }
@@ -464,7 +464,7 @@ class ModelEditor extends AbstractWizardPage {
 
       for (FactoryParameterDialogFactory<?, ?, ?> d : dialogFactories) {
         try {
-          final IFactoryParameterDialog<?> dialog = d.create(params);
+          final IFactoryParameterDialog<?> dialog = d.create(params, SimSystem.getRegistry().createContext());
           String description = dialog.getMenuDescription();
 
           Action l =
@@ -517,7 +517,7 @@ class ModelEditor extends AbstractWizardPage {
 
       for (FactoryParameterDialogFactory<?, ?, ?> d : dialogFactories) {
         try {
-          final IFactoryParameterDialog<?> dialog = d.create(params);
+          final IFactoryParameterDialog<?> dialog = d.create(params, SimSystem.getRegistry().createContext());
           String description = dialog.getMenuDescription();
 
           Action s =

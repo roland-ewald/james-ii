@@ -44,7 +44,7 @@ public final class ConvertDataStorage {
       String fileName) {
 
     IDataStorage ds =
-        factory.getFactoryInstance().create(factory.getParameter());
+        factory.getFactoryInstance().create(factory.getParameter(), SimSystem.getRegistry().createContext());
 
     this.execute(ds, fileName);
   }

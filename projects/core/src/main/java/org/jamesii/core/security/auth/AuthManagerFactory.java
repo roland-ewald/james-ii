@@ -8,6 +8,7 @@ package org.jamesii.core.security.auth;
 
 import java.io.File;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -32,7 +33,7 @@ public abstract class AuthManagerFactory extends Factory<IAuthManager> {
    * @return an auth manager
    */
   @Override
-  public abstract IAuthManager create(ParameterBlock parameters);
+  public abstract IAuthManager create(ParameterBlock parameters, Context context);
 
   /**
    * The return value should be chosen in a way that a client can deduce the

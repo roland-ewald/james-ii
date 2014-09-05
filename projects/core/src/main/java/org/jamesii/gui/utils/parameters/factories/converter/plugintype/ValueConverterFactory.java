@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.utils.parameters.factories.converter.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -28,12 +29,11 @@ public abstract class ValueConverterFactory<D> extends
 
   /**
    * Creates the converter.
-   * 
-   * @param paramBlock
+ * @param paramBlock
    *          the parameter block
-   * @return the string converter
+ * @return the string converter
    */
   @Override
-  public abstract IStringConverter<D> create(ParameterBlock paramBlock);
+  public abstract IStringConverter<D> create(ParameterBlock paramBlock, Context context);
 
 }

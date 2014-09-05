@@ -6,14 +6,15 @@
  */
 package org.jamesii.core.remote;
 
-import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import junit.framework.TestCase;
+
+import org.jamesii.SimSystem;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.remote.IMigrationController;
 import org.jamesii.core.remote.dummyobjects.Dummy;
 import org.jamesii.core.remote.dummyobjects.IDummyController;
 import org.jamesii.core.remote.hostcentral.BasicRemoteObjectId;
@@ -23,8 +24,6 @@ import org.jamesii.core.remote.hostcentral.controller.MigrationController;
 import org.jamesii.core.remote.hostcentral.rmi.IRemoteCommunicationCenter;
 import org.jamesii.core.remote.hostcentral.rmi.LocalCommunicationCenter;
 import org.jamesii.core.remote.hostcentral.rmi.RemoteCommunicationCenter;
-
-import junit.framework.TestCase;
 
 /**
  * Tests for the remote communication center and the migration controller.
@@ -90,7 +89,7 @@ public class TestRemoteCommunicationCenter extends TestCase {
   public void testObjectRegistration() {
     HostCentralIDFactory idFac = new HostCentralIDFactory();
     d = new Dummy();
-    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT));
+    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT), SimSystem.getRegistry().createContext());
     assertTrue(null != id);
 
     IObjectId id2 =
@@ -115,7 +114,7 @@ public class TestRemoteCommunicationCenter extends TestCase {
   public void testLocalMethodCalling() {
     HostCentralIDFactory idFac = new HostCentralIDFactory();
     d = new Dummy();
-    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT));
+    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT), SimSystem.getRegistry().createContext());
     lcc.registerObject(id, d);
     Object o = lcc.executeMethod(Dummy.ONLY_METHOD, null, id);
     assertEquals(Dummy.RESULT, o);

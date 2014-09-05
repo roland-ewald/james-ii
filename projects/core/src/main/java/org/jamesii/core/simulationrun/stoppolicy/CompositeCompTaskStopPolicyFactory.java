@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
@@ -84,7 +85,7 @@ public abstract class CompositeCompTaskStopPolicyFactory extends
       ISimulationRun simRun) {
     ParameterBlock policyParams = policyFactorySetup.getSecondValue().getCopy();
     policyParams.addSubBlock(COMPTASK, simRun);
-    policies.add(policyFactorySetup.getFirstValue().create(policyParams));
+    policies.add(policyFactorySetup.getFirstValue().create(policyParams, SimSystem.getRegistry().createContext()));
   }
 
   /**

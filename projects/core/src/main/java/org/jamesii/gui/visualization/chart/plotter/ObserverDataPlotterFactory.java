@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization.chart.plotter;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.observe.listener.IObserverListener;
 import org.jamesii.core.observe.listener.plugintype.AbstractObserverListenerFactory;
 import org.jamesii.core.observe.listener.plugintype.ObserverListenerFactory;
@@ -28,7 +29,7 @@ public class ObserverDataPlotterFactory extends ObserverListenerFactory {
   private static final long serialVersionUID = 1L;
 
   @Override
-  public IObserverListener create(ParameterBlock parameter) {
+  public IObserverListener create(ParameterBlock parameter, Context context) {
     ObserverPlotter observerPlotter = new ObserverPlotter();
     if (WindowManagerManager.getWindowManager() != null) {
       WindowManagerManager.getWindowManager().addWindow(observerPlotter);

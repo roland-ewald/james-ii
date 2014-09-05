@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import org.jamesii.SimSystem;
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.PerformanceDataSet;
 import org.jamesii.asf.spdm.dataimport.PerformanceTuple;
@@ -147,7 +148,7 @@ public class SelectorGenerationTask {
             DBImportManagerFactory.PERFORMANCE_DATABASE).addSubBl(
             DBImportManagerFactory.TARGET_MODEL, model)
             .addSubBl(DBImportManagerFactory.TARGET_PERF_MEASURE,
-                exploration.perfMeasure)));
+                exploration.perfMeasure)), SimSystem.getRegistry().createContext());
 
     perfDataSet = dbImportManager.getPerformanceData();
     selPerformances = evaluateSelectorGenerators();

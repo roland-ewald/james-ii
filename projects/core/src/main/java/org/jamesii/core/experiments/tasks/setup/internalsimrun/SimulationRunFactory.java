@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.tasks.setup.internalsimrun;
 
 import org.jamesii.core.experiments.tasks.setup.IComputationTaskSetup;
 import org.jamesii.core.experiments.tasks.setup.plugintype.TaskSetupFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.plugintype.IJamesProcessorFactory;
@@ -26,7 +27,7 @@ public class SimulationRunFactory extends TaskSetupFactory {
   private static final long serialVersionUID = -8017556363756259948L;
 
   @Override
-  public IComputationTaskSetup create(ParameterBlock parameter) {
+  public IComputationTaskSetup create(ParameterBlock parameter, Context context) {
     return new SimulationRunSetup();
   }
 

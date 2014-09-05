@@ -10,6 +10,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Stroke;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory;
@@ -27,7 +28,7 @@ public class SkylinePlotFactory extends PlotFactory {
   public static final String STROKE = "stroke";
 
   @Override
-  public IColoredPlot create(ParameterBlock params) {
+  public IColoredPlot create(ParameterBlock params, Context context) {
     Color c =
         ParameterBlocks.getSubBlockValueOrDefault(params, COLOR, Color.red);
     Stroke s =

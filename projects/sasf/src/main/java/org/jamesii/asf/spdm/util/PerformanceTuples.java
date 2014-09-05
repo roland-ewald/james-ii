@@ -146,7 +146,7 @@ public final class PerformanceTuples {
           SimSystem
               .getRegistry()
               .getFactory(AbstractDMDataImporterFactory.class,
-                  importManagerParams).create(importManagerParams);
+                  importManagerParams).create(importManagerParams, SimSystem.getRegistry().createContext());
       Map<Configuration, List<PerformanceTuple>> configMap =
           sortToConfigMap(im.getPerformanceData().getInstances());
       for (Entry<Configuration, List<PerformanceTuple>> config : configMap

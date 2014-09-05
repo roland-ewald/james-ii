@@ -9,8 +9,10 @@ package org.jamesii.core.experiments.instrumentation.computation.composed;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.instrumentation.computation.IComputationInstrumenter;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -49,13 +51,13 @@ public class ComputationInstrumenterListFactory extends
   }
 
   @Override
-  public IComputationInstrumenter create(ParameterBlock parameter) {
+  public IComputationInstrumenter create(ParameterBlock parameter, Context context) {
 
     List<IComputationInstrumenter> instrumenters = new ArrayList<>();
 
     for (ComputationInstrumenterFactory simInstrFac : comInstrFacList) {
       if (simInstrFac.supportsParameters(parameter) > 0) {
-        instrumenters.add(simInstrFac.create(parameter));
+        instrumenters.add(simInstrFac.create(parameter, SimSystem.getRegistry().createContext()));
       }
     }
 

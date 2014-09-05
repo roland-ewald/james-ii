@@ -7,6 +7,7 @@
 
 package org.jamesii.core.util.info.benchmark.simple;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.info.benchmark.IBenchmark;
 import org.jamesii.core.util.info.benchmark.plugintype.BenchmarkFactory;
@@ -22,7 +23,7 @@ public class SimpleBenchmarkFactory extends BenchmarkFactory {
   private static final long serialVersionUID = 3661151579615236568L;
 
   @Override
-  public IBenchmark create(ParameterBlock params) {
+  public IBenchmark create(ParameterBlock params, Context context) {
     return new SimpleBenchmark();
   }
 

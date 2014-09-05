@@ -10,6 +10,7 @@ import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.service.view.IServiceView;
@@ -30,7 +31,7 @@ public class SimulationServerViewFactory extends ServiceViewFactory {
   private static final long serialVersionUID = -604266211071106087L;
 
   @Override
-  public IServiceView create(ParameterBlock params) {
+  public IServiceView create(ParameterBlock params, Context context) {
     ISimulationServer server = null;
     Contribution contr = Contribution.EDITOR;
     if (params != null) {

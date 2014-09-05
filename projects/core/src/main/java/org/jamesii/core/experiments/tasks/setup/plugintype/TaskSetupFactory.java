@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.tasks.setup.plugintype;
 
 import org.jamesii.core.experiments.tasks.setup.IComputationTaskSetup;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -30,15 +31,13 @@ public abstract class TaskSetupFactory extends Factory<IComputationTaskSetup> {
 
   /**
    * Return a new instance of the computation task to be used.
-   * 
-   * @param parameter
+ * @param parameter
    *          configuration parameters
-   * 
-   * @return the class to instantiate the problem and the solution algorithms
+ * @return the class to instantiate the problem and the solution algorithms
    *         for a computation task
    */
   @Override
-  public abstract IComputationTaskSetup create(ParameterBlock parameter);
+  public abstract IComputationTaskSetup create(ParameterBlock parameter, Context context);
 
   /**
    * Used to filter factories according to a processor factory.

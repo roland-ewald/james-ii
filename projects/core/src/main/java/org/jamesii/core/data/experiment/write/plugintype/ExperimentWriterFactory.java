@@ -8,6 +8,7 @@ package org.jamesii.core.data.experiment.write.plugintype;
 
 import org.jamesii.core.data.experiment.IExperimentWriter;
 import org.jamesii.core.data.experimentsuite.IExperimentSuiteWriter;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -29,13 +30,12 @@ public abstract class ExperimentWriterFactory extends
    * description to the data sink the writer created by this factory has been
    * designed for. There are no format restrictions for experiment definitions.
    * Check the {@link IExperimentWriter} interface for more details.
-   * 
-   * @param param
+ * @param param
    *          parameters
-   * @return the writer
+ * @return the writer
    */
   @Override
-  public abstract IExperimentWriter create(ParameterBlock param);
+  public abstract IExperimentWriter create(ParameterBlock param, Context context);
 
   /**
    * Used to determine whether this factory also provides experiment suite

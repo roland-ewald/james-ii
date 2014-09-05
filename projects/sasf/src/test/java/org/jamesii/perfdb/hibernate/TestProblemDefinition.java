@@ -17,8 +17,6 @@ import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskS
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.simulationrun.stoppolicy.SimTimeStopFactory;
 import org.jamesii.perfdb.entities.IProblemInstance;
-import org.jamesii.perfdb.hibernate.ProblemDefinition;
-import org.jamesii.perfdb.hibernate.ProblemScheme;
 import org.jamesii.simspex.util.SimulationProblemDefinition;
 
 

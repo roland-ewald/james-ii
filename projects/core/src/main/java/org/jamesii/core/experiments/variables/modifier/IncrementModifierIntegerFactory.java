@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.variables.modifier;
 
 import org.jamesii.core.experiments.variables.modifier.plugintype.VariableModifierFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -20,7 +21,7 @@ public class IncrementModifierIntegerFactory extends VariableModifierFactory {
   private static final long serialVersionUID = -2702607164082604449L;
 
   @Override
-  public IVariableModifier<?> create(ParameterBlock parameter) {
+  public IVariableModifier<?> create(ParameterBlock parameter, Context context) {
     Integer startVal = 0;
     Integer inc = 0;
     Integer stopVal = 0;

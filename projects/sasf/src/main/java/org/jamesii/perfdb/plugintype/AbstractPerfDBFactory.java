@@ -44,7 +44,7 @@ public class AbstractPerfDBFactory extends
               .getFactory(AbstractPerfDBFactory.class, null)
               .create(
                   new ParameterBlock(connectionData,
-                      PerfDBFactory.CONNECTION_DATA));
+                      PerfDBFactory.CONNECTION_DATA), SimSystem.getRegistry().createContext());
 
       performanceDatabase.open();
 

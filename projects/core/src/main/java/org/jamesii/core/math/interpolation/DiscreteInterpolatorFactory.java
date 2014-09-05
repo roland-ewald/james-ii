@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.interpolation;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.interpolation.plugintype.InterpolationFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -18,7 +19,7 @@ public class DiscreteInterpolatorFactory extends InterpolationFactory {
   private static final long serialVersionUID = -3484969666124880844L;
 
   @Override
-  public IInterpolator create(ParameterBlock parameters) {
+  public IInterpolator create(ParameterBlock parameters, Context context) {
     return new DiscreteInterpolator();
   }
 }

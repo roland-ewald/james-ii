@@ -7,6 +7,7 @@
 package org.jamesii.asf.integrationtest.bogus.application.model.features;
 
 import org.jamesii.asf.integrationtest.bogus.application.model.IBogusModel;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.recording.features.plugintype.ModelFeatureExtractor;
 import org.jamesii.perfdb.recording.features.plugintype.ModelFeatureExtractorFactory;
@@ -31,7 +32,7 @@ public class BogusModelFeatureExtractorFactory extends
   }
 
   @Override
-  public ModelFeatureExtractor<IBogusModel> create(ParameterBlock params) {
+  public ModelFeatureExtractor<IBogusModel> create(ParameterBlock params, Context context) {
     return new BogusModelFeatureExtractor();
   }
 

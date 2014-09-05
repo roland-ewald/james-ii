@@ -112,7 +112,7 @@ public class OfflineVisDialog extends JDialog {
 
     if (dsFactoryPair.getFactory() != null) {
       dataStorage =
-          dsFactoryPair.getFactory().create(dsFactoryPair.getParameters());
+          dsFactoryPair.getFactory().create(dsFactoryPair.getParameters(), SimSystem.getRegistry().createContext());
     }
 
     ParameterizedFactory<OfflineVisFactory> ovFactoryPair =

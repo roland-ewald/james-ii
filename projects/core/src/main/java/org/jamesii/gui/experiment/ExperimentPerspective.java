@@ -85,7 +85,7 @@ public class ExperimentPerspective extends AbstractPerspective {
   public void openExperiment(ExperimentReaderFactory expRWFac,
       ParameterBlock param) {
     // IExperimentWriter writer = expRWFac.getWriter(param);
-    IExperimentReader reader = expRWFac.create(param);
+    IExperimentReader reader = expRWFac.create(param, SimSystem.getRegistry().createContext());
     try {
       BaseExperiment exp = reader.readExperiment(param);
       if (exp == null) {
@@ -117,7 +117,7 @@ public class ExperimentPerspective extends AbstractPerspective {
   public void openExperimentSuite(ExperimentSuiteReaderFactory factory,
       ParameterBlock param) {
     try {
-      IExperimentSuiteReader reader = factory.create(param);
+      IExperimentSuiteReader reader = factory.create(param, SimSystem.getRegistry().createContext());
 
       ExperimentSuite<BaseExperiment> expSuite =
           reader.readExperimentSuite(BaseExperiment.class, param);
@@ -192,7 +192,7 @@ public class ExperimentPerspective extends AbstractPerspective {
 
       for (FactoryParameterDialogFactory<?, ?, ?> f : factories) {
         try {
-          IFactoryParameterDialog<?> dialog = f.create(paramBlock);
+          IFactoryParameterDialog<?> dialog = f.create(paramBlock, SimSystem.getRegistry().createContext());
 
           ExperimentReadAction a =
               new ExperimentReadAction(this, dialog,
@@ -234,7 +234,7 @@ public class ExperimentPerspective extends AbstractPerspective {
               AbstractFactoryParameterDialogFactory.class, paramBlock);
 
       for (FactoryParameterDialogFactory<?, ?, ?> f : factories) {
-        IFactoryParameterDialog<?> dialog = f.create(paramBlock);
+        IFactoryParameterDialog<?> dialog = f.create(paramBlock, SimSystem.getRegistry().createContext());
 
         ExperimentSuiteReadAction a =
             new ExperimentSuiteReadAction(this, dialog,

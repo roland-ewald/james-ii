@@ -9,6 +9,7 @@ package org.jamesii.core.experiments.variables.modifier;
 import java.util.List;
 
 import org.jamesii.core.experiments.variables.modifier.plugintype.VariableModifierFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -23,7 +24,7 @@ public class SequenceModifierFactory extends VariableModifierFactory {
   private static final long serialVersionUID = 6747349675906103692L;
 
   @Override
-  public IVariableModifier<?> create(ParameterBlock parameter) {
+  public IVariableModifier<?> create(ParameterBlock parameter, Context context) {
     List<?> values = ParameterBlocks.getSubBlockValue(parameter, VALUES);
     return createModifier(values);
   }

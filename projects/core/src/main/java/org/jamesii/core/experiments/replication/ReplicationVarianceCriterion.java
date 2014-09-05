@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.replication;
 
 import java.util.List;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.data.runtime.DatabaseCreationException;
 import org.jamesii.core.data.runtime.IWriteReadDataStorage;
 import org.jamesii.core.data.runtime.ObjectNotFoundException;
@@ -111,7 +112,7 @@ public class ReplicationVarianceCriterion implements IReplicationCriterion {
       throw new DatabaseCreationException(ex);
     }
 
-    storage = dsf.create(rI.getDataStorageParams());
+    storage = dsf.create(rI.getDataStorageParams(), SimSystem.getRegistry().createContext());
     storage.setExperimentID(rI.getExpID());
   }
 

@@ -10,6 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.jamesii.core.experiments.instrumentation.computation.IComputationInstrumenter;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -28,14 +29,12 @@ public abstract class ComputationInstrumenterFactory extends
 
   /**
    * Create simulation instrumenter.
-   * 
-   * @param parameter
+ * @param parameter
    *          parameters needed to instantiate instrumenter
-   * 
-   * @return a newly created simulation instrumenter
+ * @return a newly created simulation instrumenter
    */
   @Override
-  public abstract IComputationInstrumenter create(ParameterBlock parameter);
+  public abstract IComputationInstrumenter create(ParameterBlock parameter, Context context);
 
   /**
    * Check for implemented model.

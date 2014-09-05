@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.perfmeasures;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.perfmeasures.plugintype.PredictorPerfMeasureFactory;
 
@@ -26,7 +27,7 @@ public class SimpleDifferencePerfMeasureFactory extends PredictorPerfMeasureFact
   private static final long serialVersionUID = -2974155935027551328L;
 
   @Override
-  public IPredictorPerformanceMeasure create(ParameterBlock params) {
+  public IPredictorPerformanceMeasure create(ParameterBlock params, Context context) {
     return new SimpleDifferencePerfMeasure();
   }
 

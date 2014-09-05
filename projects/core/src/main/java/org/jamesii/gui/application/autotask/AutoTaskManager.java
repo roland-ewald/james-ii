@@ -51,7 +51,7 @@ public final class AutoTaskManager {
 
     for (AutoTaskFactory f : taskFactories) {
       try {
-        IAutoTask autoTask = f.create(params);
+        IAutoTask autoTask = f.create(params, SimSystem.getRegistry().createContext());
         if (autoTask != null) {
           autoTasks.add(autoTask);
         }

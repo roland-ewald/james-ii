@@ -10,6 +10,7 @@ package org.jamesii.resultreport.renderer.rtex;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.resultreport.dataview.BoxPlotDataView;
 import org.jamesii.resultreport.dataview.HistogramDataView;
@@ -47,7 +48,7 @@ public class RTexResultReportRendererFactory extends
   }
 
   @Override
-  public IResultReportRenderer create(ParameterBlock params) {
+  public IResultReportRenderer create(ParameterBlock params, Context context) {
     return new RTexResultReportRenderer();
   }
 

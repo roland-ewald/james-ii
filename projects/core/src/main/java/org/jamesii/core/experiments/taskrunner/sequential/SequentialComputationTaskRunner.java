@@ -146,7 +146,7 @@ public class SequentialComputationTaskRunner extends AbstractTaskRunner {
       }
 
       setModelReader(modelReaderWriterFactory.create(taskConfig
-          .getCustomRWParams()));
+          .getCustomRWParams(), SimSystem.getRegistry().createContext()));
 
       setAbsModReaderParams(taskConfig.getModelReaderParams());
     }

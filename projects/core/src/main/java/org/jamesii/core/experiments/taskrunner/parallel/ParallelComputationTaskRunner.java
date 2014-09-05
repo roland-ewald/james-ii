@@ -350,7 +350,7 @@ public class ParallelComputationTaskRunner extends AbstractTaskRunner {
           SimSystem.getRegistry().getFactory(AbstractModelReaderFactory.class,
               taskConfig.getModelReaderParams());
       setModelReader(modelReaderWriterFactory.create(taskConfig
-          .getCustomRWParams()));
+          .getCustomRWParams(), SimSystem.getRegistry().createContext()));
       setAbsModReaderParams(taskConfig.getModelReaderParams());
     }
   }

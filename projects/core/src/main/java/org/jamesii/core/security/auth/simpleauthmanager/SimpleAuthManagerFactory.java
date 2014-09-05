@@ -8,6 +8,7 @@ package org.jamesii.core.security.auth.simpleauthmanager;
 
 import java.io.File;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.security.auth.AuthManagerFactory;
 import org.jamesii.core.security.auth.IAuthManager;
@@ -26,7 +27,7 @@ public class SimpleAuthManagerFactory extends AuthManagerFactory {
   private static final long serialVersionUID = -4997578037635395335L;
 
   @Override
-  public IAuthManager create(ParameterBlock parameters) {
+  public IAuthManager create(ParameterBlock parameters, Context context) {
     return new SimpleAuthManager();
   }
 

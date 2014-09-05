@@ -9,6 +9,7 @@ package org.jamesii.core.experiments.tasks.stoppolicy.steps;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -28,7 +29,7 @@ public class StepCountStopFactory extends
 
   @Override
   public IComputationTaskStopPolicy<IComputationTask> create(
-      ParameterBlock paramBlock) {
+      ParameterBlock paramBlock, Context context) {
     Long stepCount =
         ((Number) ParameterBlocks.getSubBlockValue(paramBlock, TASKEND))
             .longValue();

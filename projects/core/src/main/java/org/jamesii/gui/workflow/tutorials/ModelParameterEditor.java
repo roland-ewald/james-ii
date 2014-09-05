@@ -176,7 +176,7 @@ class ModelParameterEditor extends AbstractWizardPage {
       return;
     }
 
-    modelParameterWindow = editor.create(amwfp);
+    modelParameterWindow = editor.create(amwfp, SimSystem.getRegistry().createContext());
 
     // TODO sr137: replace this by getWizardContent in a dedicated
     // interface
@@ -323,7 +323,7 @@ class ModelParameterEditor extends AbstractWizardPage {
 
       for (FactoryParameterDialogFactory<?, ?, ?> d : dialogFactories) {
         try {
-          final IFactoryParameterDialog<?> dialog = d.create(params);
+          final IFactoryParameterDialog<?> dialog = d.create(params, SimSystem.getRegistry().createContext());
           String description = dialog.getMenuDescription();
 
           Action l =
@@ -343,7 +343,7 @@ class ModelParameterEditor extends AbstractWizardPage {
 
                   IModelParameterReader reader =
                       ((ModelParameterReaderFactory) parameters
-                          .getSecondValue()).create(parameters.getFirstValue());
+                          .getSecondValue()).create(parameters.getFirstValue(), SimSystem.getRegistry().createContext());
 
                   Map<String, ?> p =
                       reader.read((URI) parameters.getFirstValue()
@@ -401,7 +401,7 @@ class ModelParameterEditor extends AbstractWizardPage {
       for (FactoryParameterDialogFactory<?, ?, ?> d : dialogFactories) {
         // TODO sr137: centralize the loading of dialogs for factories
         try {
-          final IFactoryParameterDialog<?> dialog = d.create(params);
+          final IFactoryParameterDialog<?> dialog = d.create(params, SimSystem.getRegistry().createContext());
           String description = dialog.getMenuDescription();
 
           Action s =
@@ -421,7 +421,7 @@ class ModelParameterEditor extends AbstractWizardPage {
 
                   IModelParameterWriter writer =
                       ((ModelParameterWriterFactory) parameters
-                          .getSecondValue()).create(parameters.getFirstValue());
+                          .getSecondValue()).create(parameters.getFirstValue(), SimSystem.getRegistry().createContext());
 
                   writer.write((URI) parameters.getFirstValue()
                       .getSubBlockValue(IURIHandling.URI), modelParameterWindow

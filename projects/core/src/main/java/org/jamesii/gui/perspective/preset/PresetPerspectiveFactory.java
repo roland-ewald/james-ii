@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.perspective.preset;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.perspective.IPerspective;
 import org.jamesii.gui.perspective.plugintype.PerspectiveFactory;
@@ -25,7 +26,7 @@ public class PresetPerspectiveFactory extends PerspectiveFactory {
   private static final long serialVersionUID = -6063710384240993227L;
 
   @Override
-  public IPerspective create(ParameterBlock params) {
+  public IPerspective create(ParameterBlock params, Context context) {
     return new PresetPerspective();
   }
 

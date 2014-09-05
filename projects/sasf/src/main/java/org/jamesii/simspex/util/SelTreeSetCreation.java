@@ -60,7 +60,7 @@ public final class SelTreeSetCreation {
 		rwParams.addSubBlock(IURIHandling.URI, new ParameterBlock(modelLocation));
 		ModelReaderFactory modelReaderWriterFactory = SimSystem.getRegistry()
 		    .getFactory(AbstractModelReaderFactory.class, rwParams);
-		IModel model = modelReaderWriterFactory.create(rwParams).read(
+		IModel model = modelReaderWriterFactory.create(rwParams, SimSystem.getRegistry().createContext()).read(
 		    modelLocation, modelParameters);
 		return model;
 	}

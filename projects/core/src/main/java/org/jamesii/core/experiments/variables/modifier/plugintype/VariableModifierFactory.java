@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.variables.modifier.plugintype;
 
 import org.jamesii.core.experiments.variables.modifier.IVariableModifier;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -29,19 +30,17 @@ public abstract class VariableModifierFactory extends
 
   /**
    * The constant VALUES. Use this as ident in the parameter block based to the
-   * {@link #create(ParameterBlock)} method to pass on the vector of values.
+   * {@link #create(ParameterBlock, Context)} method to pass on the vector of values.
    */
   public static final String VALUES = "values";
 
   /**
    * Return a new instance of the variable modifier to be used.
-   * 
-   * @param parameter
+ * @param parameter
    *          configuration parameters
-   * 
-   * @return variable modifier
+ * @return variable modifier
    */
   @Override
-  public abstract IVariableModifier<?> create(ParameterBlock parameter);
+  public abstract IVariableModifier<?> create(ParameterBlock parameter, Context context);
 
 }

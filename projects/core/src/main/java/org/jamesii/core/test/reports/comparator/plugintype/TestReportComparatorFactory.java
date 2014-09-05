@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.test.reports.comparator.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -27,11 +28,10 @@ public abstract class TestReportComparatorFactory extends
 
   /**
    * Creates a test comparator.
-   * 
-   * @param params
+ * @param params
    *          the parameters
-   * @return the comparator
+ * @return the comparator
    */
   @Override
-  public abstract ITestReportComparator create(ParameterBlock params);
+  public abstract ITestReportComparator create(ParameterBlock params, Context context);
 }

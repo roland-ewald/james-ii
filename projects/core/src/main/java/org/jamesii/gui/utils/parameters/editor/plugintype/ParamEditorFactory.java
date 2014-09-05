@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.utils.parameters.editor.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -28,13 +29,11 @@ public abstract class ParamEditorFactory extends Factory<IEditor<?>> implements
 
   /**
    * Returns editor for given editable and parameters.
-   * 
-   * @param params
+ * @param params
    *          factory parameters
-   * 
-   * @return editor for this editable variable
+ * @return editor for this editable variable
    */
   @Override
-  public abstract IEditor<?> create(ParameterBlock params);
+  public abstract IEditor<?> create(ParameterBlock params, Context context);
 
 }

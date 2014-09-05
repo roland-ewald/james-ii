@@ -7,6 +7,7 @@
 package org.jamesii.perfdb.recording.performance.accuracy;
 
 import org.jamesii.core.experiments.ComputationTaskRuntimeInformation;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.recording.performance.IPerformanceMeasurer;
 import org.jamesii.perfdb.recording.performance.plugintype.PerformanceMeasurerFactory;
@@ -26,7 +27,7 @@ public class SnapshotAccuracyPerfMeasurerFactory extends
 
   @Override
   public IPerformanceMeasurer<ComputationTaskRuntimeInformation> create(
-      ParameterBlock parameterBlock) {
+      ParameterBlock parameterBlock, Context context) {
     return new SnapshotAccuracyPerformance();
   }
 

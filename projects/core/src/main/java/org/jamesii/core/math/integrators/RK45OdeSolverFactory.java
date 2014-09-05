@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.integrators;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.integrators.plugintype.AdaptiveOneStepOdeSolverFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -61,7 +62,7 @@ public class RK45OdeSolverFactory extends AdaptiveOneStepOdeSolverFactory {
   }
 
   @Override
-  public IOdeOneStep create(ParameterBlock pb) {
+  public IOdeOneStep create(ParameterBlock pb, Context context) {
     return new RKEmbedStep(A, B1, B2, C, order);
   }
 

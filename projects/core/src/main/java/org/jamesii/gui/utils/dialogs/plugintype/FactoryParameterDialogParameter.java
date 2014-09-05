@@ -9,6 +9,7 @@ package org.jamesii.gui.utils.dialogs.plugintype;
 import java.util.List;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -21,7 +22,7 @@ public final class FactoryParameterDialogParameter {
 
   /**
    * Create a {@link ParameterBlock} usable with
-   * {@link FactoryParameterDialogFactory#create(ParameterBlock)}.
+   * {@link FactoryParameterDialogFactory#create(ParameterBlock, Context)}.
    * 
    * @param <F>
    *          the general factory class (to ensure the provided list matches

@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.problemsolver.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -23,7 +24,7 @@ public abstract class ProblemSolverFactory extends
   private static final long serialVersionUID = 2423683356450857270L;
 
   @Override
-  public abstract IProblemSolver<?, ?> create(ParameterBlock params);
+  public abstract IProblemSolver<?, ?> create(ParameterBlock params, Context context);
 
   @Override
   public int supportsParameters(ParameterBlock params) {

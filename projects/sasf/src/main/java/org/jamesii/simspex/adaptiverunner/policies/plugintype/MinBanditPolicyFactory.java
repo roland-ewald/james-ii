@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -22,12 +23,11 @@ public abstract class MinBanditPolicyFactory extends Factory<IMinBanditPolicy> {
 
   /**
    * Create instance of {@link IMinBanditPolicy}.
-   * 
-   * @param params
+ * @param params
    *          parameters for the policy
-   * @return instance of {@link IMinBanditPolicy}
+ * @return instance of {@link IMinBanditPolicy}
    */
   @Override
-  public abstract IMinBanditPolicy create(ParameterBlock params);
+  public abstract IMinBanditPolicy create(ParameterBlock params, Context context);
 
 }

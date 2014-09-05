@@ -10,7 +10,6 @@ package org.jamesii.perfdb.hibernate;
 import java.util.Calendar;
 
 import org.hibernate.Session;
-import org.jamesii.perfdb.hibernate.RuntimeConfiguration;
 import org.jamesii.perfdb.recording.selectiontrees.SelectionTree;
 
 /**

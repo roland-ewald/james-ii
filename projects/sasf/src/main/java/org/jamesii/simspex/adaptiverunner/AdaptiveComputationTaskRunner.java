@@ -134,7 +134,7 @@ public class AdaptiveComputationTaskRunner extends
         "Adaptive Task Runner: Having " + options.size() + " options.");
     repInfos.put(taskConfig, new ReplicationInfo(taskConfig, options,
         taskConfig.allowedReplications(getRunInfos().get(taskConfig)),
-        policyFactory.create(policyParameters), policyObservers));
+        policyFactory.create(policyParameters, SimSystem.getRegistry().createContext()), policyObservers));
   }
 
   /**

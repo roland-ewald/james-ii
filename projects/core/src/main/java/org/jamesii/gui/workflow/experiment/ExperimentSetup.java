@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -70,7 +71,7 @@ public class ExperimentSetup extends AbstractWizardPage {
         new ParameterBlock(model, ExperimentSetupEditorFactory.MODEL);
 
     page.removeAll();
-    editor = experimentFactory.create(params);
+    editor = experimentFactory.create(params, SimSystem.getRegistry().createContext());
     editor.setupFromExperiment(experiment);
     for (int i = 0; i < editor.getPageCount(); i++) {
       page.addTab(editor.getPageTitle(i), editor.getPage(i));

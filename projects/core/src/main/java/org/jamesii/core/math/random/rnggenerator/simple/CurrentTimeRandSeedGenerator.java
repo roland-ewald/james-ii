@@ -90,7 +90,7 @@ public class CurrentTimeRandSeedGenerator implements IRNGGenerator {
     ParameterBlock parameters = rngFactory.getParameters().getCopy();
     parameters.addSubBl(AbstractRandomGeneratorFactory.SEED,
         randSeedGenerator.nextLong());
-    return rngFactory.getFactoryInstance().create(parameters);
+    return rngFactory.getFactoryInstance().create(parameters, SimSystem.getRegistry().createContext());
   }
 
   @Override

@@ -123,7 +123,7 @@ public class SetsOfTimeSeriesBootstrappingComparisonTest extends ChattyTestCase 
     SetsOfTimeSeriesBootstrappingComparison<Double> timeSeriesComparison =
         new SetsOfTimeSeriesBootstrappingComparison<>(sample1, sample2,
             new TimeSeriesDistanceForTesting(),
-            new IPairedTest[] { STAT_TEST.create(new ParameterBlock()) });
+            new IPairedTest[] { STAT_TEST.create(new ParameterBlock(), SimSystem.getRegistry().createContext()) });
 
     double[] confidences = timeSeriesComparison.execute(SAMPLE_SIZE_COMPARISON);
     assertEquals("There is one difference measure, hence one cnonfidence.", 1,

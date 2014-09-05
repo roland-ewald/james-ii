@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.taskrunner.plugintype;
 
 import org.jamesii.core.experiments.taskrunner.ITaskRunner;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -22,13 +23,11 @@ public abstract class TaskRunnerFactory extends Factory<ITaskRunner> {
 
   /**
    * Return a new instance of the task runner to be used.
-   * 
-   * @param parameter
+ * @param parameter
    *          configuration parameters
-   * 
-   * @return simulation runner
+ * @return simulation runner
    */
   @Override
-  public abstract ITaskRunner create(ParameterBlock parameter);
+  public abstract ITaskRunner create(ParameterBlock parameter, Context context);
 
 }

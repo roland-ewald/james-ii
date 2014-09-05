@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.tasks.stoppolicy;
 
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -24,7 +25,7 @@ public class EmptyStopConditionStopPolicyFactory extends
 
   @Override
   public IComputationTaskStopPolicy<IComputationTask> create(
-      ParameterBlock paramBlock) {
+      ParameterBlock paramBlock, Context context) {
     return new EmptyStopCondition();
   }
 

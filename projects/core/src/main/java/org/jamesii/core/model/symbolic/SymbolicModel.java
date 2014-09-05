@@ -104,7 +104,7 @@ public class SymbolicModel<D> extends NamedEntity implements ISymbolicModel<D> {
           + targetFormat + " exists!", nothingFound);
     }
     pb.setValue(this);
-    return cF.create(pb);
+    return cF.create(pb, SimSystem.getRegistry().createContext());
   }
 
   @Override

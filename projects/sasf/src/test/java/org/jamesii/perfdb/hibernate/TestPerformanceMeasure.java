@@ -8,7 +8,6 @@ package org.jamesii.perfdb.hibernate;
 
 
 import org.hibernate.Session;
-import org.jamesii.perfdb.hibernate.PerformanceType;
 import org.jamesii.perfdb.recording.performance.plugintype.PerformanceMeasurerFactory;
 import org.jamesii.perfdb.recording.performance.totaltime.TotalRuntimePerfMeasurerFactory;
 

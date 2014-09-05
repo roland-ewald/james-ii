@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization.chart.plot.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.visualization.chart.plot.IColoredPlot;
@@ -20,6 +21,6 @@ public abstract class PlotFactory extends Factory<IColoredPlot> {
   private static final long serialVersionUID = -3039426107252686102L;
 
   @Override
-  public abstract IColoredPlot create(ParameterBlock paramBlock);
+  public abstract IColoredPlot create(ParameterBlock paramBlock, Context context);
 
 }

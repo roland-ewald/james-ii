@@ -32,7 +32,7 @@ public class TestInterpolations extends TestCase {
         SimSystem.getRegistry().getFactoryList(
             AbstractInterpolationFactory.class, null);
     for (int i = 0; i < list.size(); i++) {
-      IInterpolator inter = list.get(i).create(null);
+      IInterpolator inter = list.get(i).create(null, SimSystem.getRegistry().createContext());
       List<Double> xValues = new ArrayList<>();
       xValues.add(0.0);
       xValues.add(1.0);

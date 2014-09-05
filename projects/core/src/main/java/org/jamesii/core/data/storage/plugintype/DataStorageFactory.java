@@ -7,6 +7,7 @@
 package org.jamesii.core.data.storage.plugintype;
 
 import org.jamesii.core.data.storage.IDataStorage;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -34,18 +35,16 @@ public abstract class DataStorageFactory extends Factory<IDataStorage<?>> {
 
   /**
    * Creates a storage type with the given parameter.
-   * 
-   * @param parameter
+ * @param parameter
    *          the parameters to be used to create the instance of the data
    *          storage. The parameters allowed here depend on the data storage to
    *          be created. An example for a such a parameter is the URL where the
    *          storage can be found.
-   * 
-   * @return an instance of a data storage accessible via the
+ * @return an instance of a data storage accessible via the
    *         {@link org.jamesii.core.data.storage.IDataStorage} interface.
    */
   @Override
-  public abstract IDataStorage<?> create(ParameterBlock parameter);
+  public abstract IDataStorage<?> create(ParameterBlock parameter, Context context);
 
   /**
    * This function signalizes if the data storage factory at hand may be

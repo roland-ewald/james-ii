@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.simple;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.IPredictorGeneratorEvaluationStrategy;
 import org.jamesii.simspex.spdm.evaluation.plugintype.PredictorGeneratorEvaluationFactory;
@@ -35,7 +36,7 @@ public class SimpleEvaluationFactory extends PredictorGeneratorEvaluationFactory
 
   @Override
   public IPredictorGeneratorEvaluationStrategy create(
-      ParameterBlock params) {
+      ParameterBlock params, Context context) {
     return new SimpleEvaluationStrategy(params.getSubBlockValue(PERCENTAGE,
         DEFAULT_VAL_TRAINING_DATA_PERCENTAGE));
   }

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization.chart.model.aggregator.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.visualization.chart.model.aggregator.IAggregator;
@@ -25,12 +26,10 @@ public abstract class AggregatorFactory extends Factory<IAggregator> {
 
   /**
    * Creates the aggregator.
-   * 
-   * @param params
+ * @param params
    *          the params
-   * 
-   * @return the created aggregator
+ * @return the created aggregator
    */
   @Override
-  public abstract IAggregator create(ParameterBlock params);
+  public abstract IAggregator create(ParameterBlock params, Context context);
 }

@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.observe.listener.IObserverListener;
 import org.jamesii.core.observe.listener.plugintype.AbstractObserverListenerFactory;
 import org.jamesii.core.observe.listener.plugintype.ObserverListenerFactory;
@@ -35,14 +36,14 @@ public class ObserverDataPlotterIncrementalFactory extends
   public static final String PLOT_TYPE = "default plot";
 
   @Override
-  public IObserverListener create(ParameterBlock parameter) {
+  public IObserverListener create(ParameterBlock parameter, Context context) {
     IColoredPlot type = null;
     String t = ParameterBlocks.getSubBlockValue(parameter, PLOT_TYPE);
     if (t != null) {
       try {
         PlotFactory factory =
             (PlotFactory) SimSystem.getRegistry().getFactory(t);
-        type = factory.create(parameter);
+        type = factory.create(parameter, SimSystem.getRegistry().createContext());
       } catch (Exception e) {
         SimSystem.report(Level.WARNING, "Factory could not be found: " + t, e);
       }

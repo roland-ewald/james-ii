@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.random.rnggenerator.simple;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.random.rnggenerator.IRNGGenerator;
 import org.jamesii.core.math.random.rnggenerator.plugintype.RNGGeneratorFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -21,7 +22,7 @@ public class CurrentTimeRandSeedGeneratorFactory extends RNGGeneratorFactory {
   private static final long serialVersionUID = -7860890476350977919L;
 
   @Override
-  public IRNGGenerator create(ParameterBlock parameter) {
+  public IRNGGenerator create(ParameterBlock parameter, Context context) {
     return new CurrentTimeRandSeedGenerator();
   }
 

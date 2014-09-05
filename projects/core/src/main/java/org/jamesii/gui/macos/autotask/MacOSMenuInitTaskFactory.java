@@ -8,6 +8,7 @@ package org.jamesii.gui.macos.autotask;
 
 import java.util.Locale;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.autotask.IAutoTask;
 import org.jamesii.gui.application.autotask.plugintype.AutoTaskFactory;
@@ -26,7 +27,7 @@ public class MacOSMenuInitTaskFactory extends AutoTaskFactory {
   private static final long serialVersionUID = 606371284240993256L;
 
   @Override
-  public IAutoTask create(ParameterBlock params) {
+  public IAutoTask create(ParameterBlock params, Context context) {
     // check for macos first to avoid compilation or class not found
     // exceptions/errors
     String vers =

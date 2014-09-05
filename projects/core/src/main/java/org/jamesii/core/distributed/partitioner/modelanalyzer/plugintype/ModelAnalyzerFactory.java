@@ -9,6 +9,7 @@ package org.jamesii.core.distributed.partitioner.modelanalyzer.plugintype;
 import org.jamesii.core.distributed.partitioner.PartitionMapping;
 import org.jamesii.core.distributed.partitioner.modelanalyzer.AbstractModelAnalyzer;
 import org.jamesii.core.distributed.partitioner.partitioning.AbstractExecutablePartition;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.model.IModel;
@@ -78,7 +79,7 @@ public abstract class ModelAnalyzerFactory extends
   public abstract AbstractModelAnalyzer createFromModel(IModel model);
 
   @Override
-  public AbstractModelAnalyzer create(ParameterBlock parameters) {
+  public AbstractModelAnalyzer create(ParameterBlock parameters, Context context) {
     return createFromModel((IModel) parameters.getSubBlockValue("MODEL"));
   }
 

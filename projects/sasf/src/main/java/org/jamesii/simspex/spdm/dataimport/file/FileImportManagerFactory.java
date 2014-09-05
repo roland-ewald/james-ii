@@ -9,6 +9,7 @@ package org.jamesii.simspex.spdm.dataimport.file;
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.PerformanceTuple;
 import org.jamesii.asf.spdm.dataimport.plugintype.DMDataImporterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 
@@ -31,7 +32,7 @@ public class FileImportManagerFactory extends DMDataImporterFactory {
   public static final String MAXIMISE_PERFORMANCE = "maximizePerformance";
 
   @Override
-  public IDMDataImportManager<PerformanceTuple> create(ParameterBlock params) {
+  public IDMDataImportManager<PerformanceTuple> create(ParameterBlock params, Context context) {
     return new FileImportManager(params.getSubBlockValue(TARGET_DIR,
         "perf_data"), params.getSubBlockValue(MAXIMISE_PERFORMANCE, false));
   }

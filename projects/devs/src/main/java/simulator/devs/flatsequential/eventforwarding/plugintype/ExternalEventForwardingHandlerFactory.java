@@ -6,6 +6,7 @@
  */
 package simulator.devs.flatsequential.eventforwarding.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -31,6 +32,6 @@ public abstract class ExternalEventForwardingHandlerFactory extends
    * @return the handler
    */
   public abstract ExternalEventForwardingHandler create(
-      ParameterBlock parameters);
+      ParameterBlock parameters, Context context);
 
 }

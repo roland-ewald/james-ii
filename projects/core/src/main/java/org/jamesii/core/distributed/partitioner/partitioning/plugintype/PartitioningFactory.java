@@ -7,6 +7,7 @@
 package org.jamesii.core.distributed.partitioner.partitioning.plugintype;
 
 import org.jamesii.core.distributed.partitioner.partitioning.AbstractPartitioningAlgorithm;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.model.IModel;
@@ -42,7 +43,7 @@ public abstract class PartitioningFactory extends
       ISimpleGraph modelGraph, ISimpleGraph hardwareGraph);
 
   @Override
-  public AbstractPartitioningAlgorithm create(ParameterBlock pb) {
+  public AbstractPartitioningAlgorithm create(ParameterBlock pb, Context context) {
     return create((IModel) pb.getSubBlockValue("MODEL"),
         (ISimpleGraph) pb.getSubBlockValue("MODEL_GRAPH"),
         (ISimpleGraph) pb.getSubBlockValue("HARDWARE_GRAPH"));

@@ -9,6 +9,7 @@ package org.jamesii.core;
 import java.util.List;
 
 import org.jamesii.core.Registry;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.random.rnggenerator.plugintype.AbstractRandomSeedGeneratorFactory;
 import org.jamesii.core.model.plugintype.AbstractModelFactory;
@@ -120,7 +121,7 @@ public class TestRegistry extends TestCase {
       private static final long serialVersionUID = 1L;
 
       @Override
-      public Object create(ParameterBlock parameters) {
+      public Object create(ParameterBlock parameters, Context context) {
         return null;
       }
     }

@@ -6,6 +6,7 @@
  */
 package simulator.devs.flatsequential.eventforwarding;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 import simulator.devs.flatsequential.eventforwarding.plugintype.ExternalEventForwardingHandlerFactory;
@@ -22,7 +23,7 @@ public class HierarchicalExternalEventForwardingHandlerFactory extends
   private static final long serialVersionUID = -6546831084766313384L;
 
   @Override
-  public ExternalEventForwardingHandler create(ParameterBlock parameters) {
+  public ExternalEventForwardingHandler create(ParameterBlock parameters, Context context) {
     return new HierarchicalExternalEventForwardingHandler();
   }
 

@@ -100,7 +100,7 @@ public class ExperimentBackup implements Serializable {
         return;
       }
 
-      IExperimentWriter writer = erwf.create(parameter);
+      IExperimentWriter writer = erwf.create(parameter, SimSystem.getRegistry().createContext());
 
       // write BaseExperiment to the file
       try {

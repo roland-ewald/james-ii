@@ -9,6 +9,7 @@ package org.jamesii.core.data.transmission;
 import java.io.File;
 
 import org.jamesii.core.data.transmission.plugintype.ObjectTransmissionFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -35,7 +36,7 @@ public class LazyObjectReceiverFactory extends ObjectTransmissionFactory {
   }
 
   @Override
-  public IObjectReceiver create(ParameterBlock parameters) {
+  public IObjectReceiver create(ParameterBlock parameters, Context context) {
     if (parameters.hasSubBlock("OBJECT")) {
       return create(parameters.getSubBlockValue("OBJECT"));
     }

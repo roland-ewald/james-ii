@@ -68,7 +68,7 @@ public abstract class DataStorageCriterion implements IReplicationCriterion {
   private void setupStorage(RunInformation rI) {
     setStorage(SimSystem.getRegistry()
         .instantiateFactory(rI.getDataStorageFactory())
-        .create(rI.getDataStorageParams()));
+        .create(rI.getDataStorageParams(), SimSystem.getRegistry().createContext()));
   }
 
   @Override

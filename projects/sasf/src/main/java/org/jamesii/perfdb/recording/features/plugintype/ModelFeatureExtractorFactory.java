@@ -6,6 +6,7 @@
  */
 package org.jamesii.perfdb.recording.features.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -36,7 +37,7 @@ public abstract class ModelFeatureExtractorFactory<M extends IModel> extends
   }
 
   @Override
-  public abstract ModelFeatureExtractor<M> create(ParameterBlock params);
+  public abstract ModelFeatureExtractor<M> create(ParameterBlock params, Context context);
 
   @Override
   public int supportsParameters(ParameterBlock parameters) {

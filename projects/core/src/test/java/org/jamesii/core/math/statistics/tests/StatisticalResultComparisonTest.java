@@ -324,7 +324,7 @@ public abstract class StatisticalResultComparisonTest extends
             .getRegistry()
             .getFactory(AbstractPairedTestFactory.class,
                 new ParameterBlock(statisticalTestFactory.getName()))
-            .create(null);
+            .create(null, SimSystem.getRegistry().createContext());
 
     for (String varName : referenceResults.keySet()) {
 

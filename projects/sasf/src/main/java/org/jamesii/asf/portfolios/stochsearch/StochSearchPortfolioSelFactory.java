@@ -9,6 +9,7 @@ package org.jamesii.asf.portfolios.stochsearch;
 import org.jamesii.SimSystem;
 import org.jamesii.asf.portfolios.plugintype.IPortfolioSelector;
 import org.jamesii.asf.portfolios.plugintype.PortfolioSelectorFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.random.generators.plugintype.AbstractRandomGeneratorFactory;
 import org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -36,14 +37,14 @@ public class StochSearchPortfolioSelFactory extends PortfolioSelectorFactory {
   private static final int DEFAULT_SAMPLE_SIZE = 10000;
 
   @Override
-  public IPortfolioSelector create(ParameterBlock params) {
+  public IPortfolioSelector create(ParameterBlock params, Context context) {
     ParameterBlock rngParameters =
         ParameterUtils.getFactorySubBlock(params, RandomGeneratorFactory.class);
     RandomGeneratorFactory mbFac =
         SimSystem.getRegistry().getFactory(
             AbstractRandomGeneratorFactory.class, rngParameters);
     return new StochSearchPortfolioSelector(params.getSubBlockValue(
-        SAMPLE_SIZE, DEFAULT_SAMPLE_SIZE), mbFac.create(rngParameters));
+        SAMPLE_SIZE, DEFAULT_SAMPLE_SIZE), mbFac.create(rngParameters, SimSystem.getRegistry().createContext()));
   }
 
 }

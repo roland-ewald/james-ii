@@ -12,6 +12,7 @@ import java.util.List;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.simulationrun.ISimulationRun;
@@ -31,7 +32,7 @@ public class DisjunctiveSimRunStopPolicyFactory extends
 
   @Override
   public IComputationTaskStopPolicy<IComputationTask> create(
-      ParameterBlock paramBlock) {
+      ParameterBlock paramBlock, Context context) {
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
     List<IComputationTaskStopPolicy<IComputationTask>> policies =
         createSubPolicies(paramBlock);

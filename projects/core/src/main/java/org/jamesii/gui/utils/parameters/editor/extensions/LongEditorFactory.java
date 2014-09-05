@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.utils.parameters.editor.extensions;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.parameters.editable.IEditor;
 import org.jamesii.gui.utils.parameters.editor.plugintype.AbstractParamEditorFactory;
@@ -22,7 +23,7 @@ public class LongEditorFactory extends ParamEditorFactory {
   private static final long serialVersionUID = -7737019031905785290L;
 
   @Override
-  public IEditor<?> create(ParameterBlock params) {
+  public IEditor<?> create(ParameterBlock params, Context context) {
     return new NumberEditor<>();
   }
 

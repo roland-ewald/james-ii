@@ -12,6 +12,7 @@ import java.net.URI;
 import org.jamesii.core.experiments.instrumentation.model.IModelInstrumenter;
 import org.jamesii.core.experiments.instrumentation.model.plugintype.AbstractModelInstrumenterFactory;
 import org.jamesii.core.experiments.instrumentation.model.plugintype.ModelInstrumenterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -25,7 +26,7 @@ public class FFStateInstrFactory extends ModelInstrumenterFactory {
   private static final long serialVersionUID = -8666395112456630719L;
 
   @Override
-  public IModelInstrumenter create(ParameterBlock parameter) {
+  public IModelInstrumenter create(ParameterBlock parameter, Context context) {
     return new FFInstrumenter();
   }
 

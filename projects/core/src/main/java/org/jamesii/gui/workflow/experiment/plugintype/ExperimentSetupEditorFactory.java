@@ -7,6 +7,7 @@
 package org.jamesii.gui.workflow.experiment.plugintype;
 
 import org.jamesii.core.data.model.read.plugintype.AbstractModelReaderFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -29,12 +30,11 @@ public abstract class ExperimentSetupEditorFactory extends
 
   /**
    * Creates specialized experiment editor for use in experiment workflow.
-   * 
-   * @param params
+ * @param params
    *          the parameter block to configure the wizard page
-   * @return newly created editor
+ * @return newly created editor
    */
   @Override
-  public abstract IExperimentSetup create(ParameterBlock params);
+  public abstract IExperimentSetup create(ParameterBlock params, Context context);
 
 }

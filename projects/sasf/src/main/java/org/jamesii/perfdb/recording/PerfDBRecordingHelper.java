@@ -317,7 +317,7 @@ public class PerfDBRecordingHelper {
         .get(perfMeasurerHash);
     if (perfMeasurer == null) {
       perfMeasurer = (IPerformanceMeasurer<T>) perfMeasurerFactory
-          .create(perfMeasurerParams);
+          .create(perfMeasurerParams, SimSystem.getRegistry().createContext());
       performanceMeasurers.put(perfMeasurerHash, perfMeasurer);
     }
     Double performance = perfMeasurer.measurePerformance(performanceData);
@@ -366,7 +366,7 @@ public class PerfDBRecordingHelper {
       // Should be guaranteed by the factories, checking for problem
       // representation in the parameter block
       Map<String, Serializable> extractedFeatures = ((IFeatureExtractor<P>) suitableFactory
-          .create(parameters)).extractFeatures(problemRepresentation);
+          .create(parameters, SimSystem.getRegistry().createContext())).extractFeatures(problemRepresentation);
       allFeatures.putAll(extractedFeatures);
       database.newFeature(application, featureType, extractedFeatures);
     }

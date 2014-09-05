@@ -9,6 +9,7 @@ package org.jamesii.core.data.model.parameter.write.plugintype;
 import java.net.URI;
 
 import org.jamesii.core.data.model.parameter.IModelParameterWriter;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.symbolic.ISymbolicModel;
@@ -30,13 +31,12 @@ public abstract class ModelParameterWriterFactory extends
 
   /**
    * Create model writer.
-   * 
-   * @param params
+ * @param params
    *          parameters, may be null
-   * @return model writer
+ * @return model writer
    */
   @Override
-  public abstract IModelParameterWriter create(ParameterBlock params);
+  public abstract IModelParameterWriter create(ParameterBlock params, Context context);
 
   /**
    * Returns true if the factory is able to handle such models.

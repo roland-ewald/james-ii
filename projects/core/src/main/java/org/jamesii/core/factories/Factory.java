@@ -25,7 +25,7 @@ import org.jamesii.gui.utils.BasicUtilities;
  * @param <I>
  *          Type of produced instances
  */
-public abstract class Factory<I> extends NamedEntity implements IFactory<I> {
+public abstract class Factory<I> extends NamedEntity {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = -566466464342451827L;
@@ -83,7 +83,7 @@ public abstract class Factory<I> extends NamedEntity implements IFactory<I> {
    * callers of create can set themself as context of the object just created.
    * 
    * This method can be called from implementations of the
-   * {@link #create(ParameterBlock)} method, e.g., wrapping the last return
+   * {@link #create(ParameterBlock, Context)} method, e.g., wrapping the last return
    * statements of such a method.
    */
   protected I setInstanceContext(I instance, ParameterBlock block) {
@@ -154,5 +154,15 @@ public abstract class Factory<I> extends NamedEntity implements IFactory<I> {
     }
     return null; // throw exception
   }
+
+  /**
+   * Creates an object of the type this factory has been created for.
+   * 
+   * @param parameters
+   *          the parameters
+ * @param context TODO
+ * @return the created instance
+   */
+  public abstract I create(ParameterBlock parameters, Context context);
 
 }

@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.IPredictorGeneratorEvaluationStrategy;
@@ -37,13 +38,11 @@ public abstract class PredictorGeneratorEvaluationFactory extends
 
   /**
    * Creates evaluation strategy.
-   * 
-   * @param params
+ * @param params
    *          parameters for evaluation strategy
-   * 
-   * @return evaluation strategy
+ * @return evaluation strategy
    */
   public abstract IPredictorGeneratorEvaluationStrategy create(
-      ParameterBlock params);
+      ParameterBlock params, Context context);
 
 }

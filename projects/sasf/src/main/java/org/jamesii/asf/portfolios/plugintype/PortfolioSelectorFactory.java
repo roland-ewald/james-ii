@@ -6,6 +6,7 @@
  */
 package org.jamesii.asf.portfolios.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -24,12 +25,10 @@ public abstract class PortfolioSelectorFactory extends
 
   /**
    * Creates a portfolio selector.
-   * 
-   * @param params
+ * @param params
    *          the parameters to initialize the portfolio selector
-   * 
-   * @return the portfolio selector
+ * @return the portfolio selector
    */
   @Override
-  public abstract IPortfolioSelector create(ParameterBlock params);
+  public abstract IPortfolioSelector create(ParameterBlock params, Context context);
 }

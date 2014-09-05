@@ -169,7 +169,7 @@ public class ModelPerspective extends AbstractPerspective {
         try {
           final IFactoryParameterDialog<ModelReaderFactory> dialog =
               (IFactoryParameterDialog<ModelReaderFactory>) dialogFactory
-                  .create(params);
+                  .create(params, SimSystem.getRegistry().createContext());
  
 
          baseActions

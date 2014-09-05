@@ -7,6 +7,7 @@
 package org.jamesii.gui.utils.parameters.editor.extensions;
 
 import org.jamesii.core.data.DBConnectionData;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.parameters.editable.IEditor;
 import org.jamesii.gui.utils.parameters.editor.plugintype.AbstractParamEditorFactory;
@@ -23,7 +24,7 @@ public class DBConnectionDataEditorFactory extends ParamEditorFactory {
   private static final long serialVersionUID = -6769237793587867553L;
 
   @Override
-  public IEditor<?> create(ParameterBlock params) {
+  public IEditor<?> create(ParameterBlock params, Context context) {
     return new DBConnectionDataEditor();
   }
 

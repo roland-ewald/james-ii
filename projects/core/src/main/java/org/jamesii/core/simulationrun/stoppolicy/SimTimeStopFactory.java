@@ -8,6 +8,7 @@ package org.jamesii.core.simulationrun.stoppolicy;
 
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
 import org.jamesii.core.experiments.tasks.stoppolicy.plugintype.ComputationTaskStopPolicyFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.simulationrun.ISimulationRun;
@@ -27,7 +28,7 @@ public class SimTimeStopFactory extends ComputationTaskStopPolicyFactory<ISimula
   public static final String SIMEND = "SIMEND";
 
   @Override
-  public IComputationTaskStopPolicy<ISimulationRun> create(ParameterBlock paramBlock) {
+  public IComputationTaskStopPolicy<ISimulationRun> create(ParameterBlock paramBlock, Context context) {
     ISimulationRun run = ParameterBlocks.getSubBlockValue(paramBlock, COMPTASK);
     Number endTime = ParameterBlocks.getSubBlockValue(paramBlock, SIMEND);
     if (endTime == null) {

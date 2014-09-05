@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.instrumentation.computation.generic;
 
 import org.jamesii.core.experiments.instrumentation.computation.IComputationInstrumenter;
 import org.jamesii.core.experiments.instrumentation.computation.plugintype.ComputationInstrumenterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
@@ -49,7 +50,7 @@ public class GenericComputationInstrumenterFactory extends
   }
 
   @Override
-  public IComputationInstrumenter create(ParameterBlock parameter) {
+  public IComputationInstrumenter create(ParameterBlock parameter, Context context) {
     if (!ParameterBlocks.hasSubBlock(parameter, OBSERVER_TO_USE)
         || !(ParameterBlocks.getSubBlockValue(parameter, OBSERVER_TO_USE) instanceof IObserver<?>)) {
       throw new IllegalArgumentException("Observer '"

@@ -71,7 +71,7 @@ public class ModelTextEditorFactory extends ModelWindowFactory {
           SimSystem.getRegistry().getFactoryList(
               AbstractModelInfoProviderFactory.class, par);
       for (ModelInfoProviderFactory f : list) {
-        infoProviders.add(f.create(par));
+        infoProviders.add(f.create(par, SimSystem.getRegistry().createContext()));
       }
     } catch (Exception e) {
     }

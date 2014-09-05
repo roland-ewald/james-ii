@@ -7,6 +7,7 @@
 package org.jamesii.core.distributed.partitioner.partitioning.multilevel.coarsening;
 
 import org.jamesii.core.distributed.partitioner.partitioning.multilevel.abortcriterion.AbstractAbortCriterion;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.graph.ISimpleGraph;
@@ -35,7 +36,7 @@ public abstract class CoarsenFactory extends Factory<AbstractCoarsenAlgorithm> {
       ISimpleGraph input, AbstractAbortCriterion aborter);
 
   @Override
-  public AbstractCoarsenAlgorithm create(ParameterBlock parameters) {
+  public AbstractCoarsenAlgorithm create(ParameterBlock parameters, Context context) {
     return getCoarsenAlgorithm(
         (ISimpleGraph) getParameter("INPUT", parameters),
         (AbstractAbortCriterion) getParameter("ABORTER", parameters));

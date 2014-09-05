@@ -8,6 +8,7 @@ package org.jamesii.core.processor.execontrol.plugintype;
 
 import java.util.List;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.processor.IProcessor;
@@ -44,7 +45,7 @@ public abstract class ExecutionControlFactory extends Factory<ExecutionControl> 
   public abstract List<Class<? extends IProcessor>> getSupportedProcessors();
 
   @Override
-  public ExecutionControl create(ParameterBlock parameters) {
+  public ExecutionControl create(ParameterBlock parameters, Context context) {
     return createExecutionControl((Processor) parameters
         .getSubBlockValue("PROCESSOR"));
   }

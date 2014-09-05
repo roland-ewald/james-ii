@@ -6,6 +6,7 @@
  */
 package model.devscore.models.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -29,7 +30,7 @@ public abstract class BaseModelSetFactory extends Factory<IModelSet> {
   public abstract IModelSet createDirect();
 
   @Override
-  public IModelSet create (ParameterBlock parameters) {
+  public IModelSet create (ParameterBlock parameters, Context context) {
     return createDirect();
   }
   

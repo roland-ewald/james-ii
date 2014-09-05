@@ -7,6 +7,7 @@
 package org.jamesii.gui.visualization.offline.plugintype;
 
 import org.jamesii.core.data.storage.IDataStorage;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -38,7 +39,7 @@ public abstract class OfflineVisFactory extends Factory<IOfflineVisualizer>
       ParameterBlock params);
 
   @Override
-  public IOfflineVisualizer create(ParameterBlock params) {
+  public IOfflineVisualizer create(ParameterBlock params, Context context) {
     return create((IDataStorage) params.getValue(), params);
   }
 

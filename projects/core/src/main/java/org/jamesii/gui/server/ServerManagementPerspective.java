@@ -207,7 +207,7 @@ public class ServerManagementPerspective extends AbstractPerspective {
         ServiceViewFactory factory =
             SimSystem.getRegistry().getFactory(
                 AbstractServiceViewFactory.class, viewParams);
-        IServiceView view = factory.create(viewParams);
+        IServiceView view = factory.create(viewParams, SimSystem.getRegistry().createContext());
         view.setupObservers();
         getWindowManager().addWindow(view);
         view.setupObservers();
@@ -243,7 +243,7 @@ public class ServerManagementPerspective extends AbstractPerspective {
         ServiceViewFactory factory =
             SimSystem.getRegistry().getFactory(
                 AbstractServiceViewFactory.class, viewParams);
-        IServiceView view = factory.create(viewParams);
+        IServiceView view = factory.create(viewParams, SimSystem.getRegistry().createContext());
         view.setupObservers();
         getWindowManager().addWindow(view);
       } catch (Exception e) {

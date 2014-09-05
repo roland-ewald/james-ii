@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.statistics.tests.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.math.statistics.tests.IPairedTest;
@@ -28,12 +29,10 @@ public abstract class PairedTestFactory extends Factory<IPairedTest> implements
   /**
    * Return a new instance of the
    * {@link org.jamesii.core.math.statistics.tests.IPairedTest} to be used.
-   * 
-   * @param parameter
+ * @param parameter
    *          configuration parameters
-   * 
-   * @return test class
+ * @return test class
    */
   @Override
-  public abstract IPairedTest create(ParameterBlock parameter);
+  public abstract IPairedTest create(ParameterBlock parameter, Context context);
 }

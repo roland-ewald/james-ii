@@ -11,6 +11,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import junit.framework.TestCase;
+
+import org.jamesii.SimSystem;
 import org.jamesii.asf.spdm.Features;
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.PerfTupleMetaData;
@@ -19,8 +22,6 @@ import org.jamesii.asf.spdm.dataimport.PerformanceTuple;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.dataimport.file.FileImportManager;
 import org.jamesii.simspex.spdm.dataimport.file.FileImportManagerFactory;
-
-import junit.framework.TestCase;
 
 /**
  * Tests the {@link FileImportManager}.
@@ -144,7 +145,7 @@ public class FileImportManagerTest extends TestCase {
    */
   public static IDMDataImportManager<PerformanceTuple> createTestFileImportManager() {
     return (new FileImportManagerFactory()).create(new ParameterBlock(TEST_DIR,
-        FileImportManagerFactory.TARGET_DIR));
+        FileImportManagerFactory.TARGET_DIR), SimSystem.getRegistry().createContext());
   }
 
 }

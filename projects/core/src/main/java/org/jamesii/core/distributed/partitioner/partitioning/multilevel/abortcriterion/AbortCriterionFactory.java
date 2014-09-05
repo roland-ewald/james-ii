@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.distributed.partitioner.partitioning.multilevel.abortcriterion;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -28,7 +29,7 @@ public abstract class AbortCriterionFactory extends
   public abstract AbstractAbortCriterion getAbortCriterion();
 
   @Override
-  public AbstractAbortCriterion create(ParameterBlock parameters) {
+  public AbstractAbortCriterion create(ParameterBlock parameters, Context context) {
     return getAbortCriterion();
   }
 }

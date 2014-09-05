@@ -52,7 +52,7 @@ public class FlatSequentialProcessorFactory extends JamesProcessorFactory {
     ExternalEventForwardingHandlerFactory f =
         SimSystem.getRegistry().getFactory(
             AbstractExternalEventForwardingHandlerFactory.class, ef);
-    ExternalEventForwardingHandler eefh = f.create(null);
+    ExternalEventForwardingHandler eefh = f.create(null, SimSystem.getRegistry().createContext());
 
     SimSystem.report(Level.CONFIG, "Using " + eefh.getClass().getName()
         + " as external event forwarding mechanism.");

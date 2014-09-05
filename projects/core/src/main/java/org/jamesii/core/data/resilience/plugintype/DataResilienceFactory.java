@@ -7,6 +7,7 @@
 package org.jamesii.core.data.resilience.plugintype;
 
 import org.jamesii.core.data.resilience.IDataResilience;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -40,13 +41,11 @@ public abstract class DataResilienceFactory extends Factory<IDataResilience> {
 
   /**
    * Creates a new DataResilience object.
-   * 
-   * @param parameter
+ * @param parameter
    *          the parameter block used to create the resilience
-   * 
-   * @return the data resilience
+ * @return the data resilience
    */
   @Override
-  public abstract IDataResilience create(ParameterBlock parameter);
+  public abstract IDataResilience create(ParameterBlock parameter, Context context);
 
 }

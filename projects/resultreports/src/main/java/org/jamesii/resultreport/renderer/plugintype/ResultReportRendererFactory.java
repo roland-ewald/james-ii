@@ -6,6 +6,7 @@
  */
 package org.jamesii.resultreport.renderer.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.resultreport.dataview.ResultDataView;
@@ -24,13 +25,12 @@ public abstract class ResultReportRendererFactory extends
 
   /**
    * Creates the corresponding result report renderer.
-   * 
-   * @param params
+ * @param params
    *          the parameters
-   * @return the result report renderer
+ * @return the result report renderer
    */
   @Override
-  public abstract IResultReportRenderer create(ParameterBlock params);
+  public abstract IResultReportRenderer create(ParameterBlock params, Context context);
 
   /**
    * Checks whether the renderer supports a certain data view.

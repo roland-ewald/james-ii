@@ -9,6 +9,7 @@ package org.jamesii.core.data.experiment.filesystem.write;
 import org.jamesii.core.data.experiment.IExperimentWriter;
 import org.jamesii.core.data.experiment.filesystem.ExperimentFileReaderWriter;
 import org.jamesii.core.data.experiment.write.plugintype.ExperimentFileWriterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -32,7 +33,7 @@ public class BaseExperimentFileWriterFactory extends
   }
 
   @Override
-  public IExperimentWriter create(ParameterBlock param) {
+  public IExperimentWriter create(ParameterBlock param, Context context) {
     return new ExperimentFileReaderWriter();
   }
 

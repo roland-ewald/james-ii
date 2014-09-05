@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.exploration.simple;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.recording.selectiontrees.SelectionTreeSet;
 import org.jamesii.simspex.exploration.plugintype.SimSpaceExplorerFactory;
@@ -29,7 +30,7 @@ public class SimpleSimSpaceExplorerFactory extends SimSpaceExplorerFactory {
   public static final String SELECTION_TREE_SET = "selTreeSet";
 
   @Override
-  public SimpleSimSpaceExplorer create(ParameterBlock params) {
+  public SimpleSimSpaceExplorer create(ParameterBlock params, Context context) {
     if (params.hasSubBlock(SELECTION_TREE_SET)) {
       return new SimpleSimSpaceExplorer(
           (SelectionTreeSet) params.getSubBlockValue(SELECTION_TREE_SET));

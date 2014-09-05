@@ -343,7 +343,7 @@ public class PropertyEditorPanel extends JPanel implements IPropertyEditor {
   // It is asserted by the factories that the types are compatible
   protected <X> IEditor<X> createEditor(ParameterBlock absParam,
       ParamEditorFactory editorFactory, IEditable<X> editable) {
-    IEditor<X> editor = (IEditor<X>) editorFactory.create(absParam);
+    IEditor<X> editor = (IEditor<X>) editorFactory.create(absParam, SimSystem.getRegistry().createContext());
     try {
       editor.configureEditor(editable, this);
     } catch (Exception ex) {

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.visualization.chart.model.aggregator;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.visualization.chart.model.aggregator.plugintype.AggregatorFactory;
 
@@ -26,7 +27,7 @@ public class DeviationAggregatorFactory extends AggregatorFactory {
   private static final IAggregator aggregator = new DeviationAggregator();
 
   @Override
-  public IAggregator create(ParameterBlock params) {
+  public IAggregator create(ParameterBlock params, Context context) {
     return aggregator;
   }
 

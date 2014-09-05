@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.random.distributions.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
@@ -61,7 +62,7 @@ public abstract class DistributionFactory<E extends IDistribution> extends
   }
 
   @Override
-  public E create(ParameterBlock block) {
+  public E create(ParameterBlock block, Context context) {
     return create((IRandom) block.getSubBlockValue("RANDOM"));
   }
 

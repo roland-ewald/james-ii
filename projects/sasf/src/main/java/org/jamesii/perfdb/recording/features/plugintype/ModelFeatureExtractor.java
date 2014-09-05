@@ -114,7 +114,7 @@ public abstract class ModelFeatureExtractor<M extends IModel> implements
             amrwfp);
     Map<String, Serializable> parameters = new HashMap<>();
     parameters.putAll(simProblem.getSchemeParameters());
-    return mrwf.create(null).read(
+    return mrwf.create(null, SimSystem.getRegistry().createContext()).read(
         (URI) amrwfp.getSubBlockValue(IURIHandling.URI), parameters);
   }
 

@@ -9,6 +9,7 @@ package org.jamesii.core.distributed.partitioner.partitioning.multilevel.refinin
 import java.util.List;
 import java.util.Map;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.graph.ISimpleGraph;
@@ -38,7 +39,7 @@ public abstract class RefineFactory extends Factory<AbstractRefineAlgorithm> {
       List<Map<Integer, Integer>> coarseMappings);
 
   @Override
-  public AbstractRefineAlgorithm create(ParameterBlock parameters) {
+  public AbstractRefineAlgorithm create(ParameterBlock parameters, Context context) {
     return getRefineAlgorithm(
         (List<ISimpleGraph>) getParameter("COARSE_LEVELS", parameters),
         (List<Map<Integer, Integer>>) getParameter("COARSE_MAPPINGS",

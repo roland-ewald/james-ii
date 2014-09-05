@@ -144,7 +144,7 @@ public class ExperimentObservationManager {
 
       if (!reuseWindows) {
         olEntry.setListener(olEntry.getListenerFactory().create(
-            olEntry.getParameters()));
+            olEntry.getParameters(), SimSystem.getRegistry().createContext()));
       }
 
       registerListener(observer, olEntry.getListener(), !reuseWindows);
@@ -264,7 +264,7 @@ public class ExperimentObservationManager {
 
       for (ParameterizedFactory<ObserverListenerFactory> factory : selectedFactories) {
         IObserverListener observerListener =
-            factory.getFactory().create(factory.getParameters());
+            factory.getFactory().create(factory.getParameters(), SimSystem.getRegistry().createContext());
 
         if (observerListener == null) {
           continue;

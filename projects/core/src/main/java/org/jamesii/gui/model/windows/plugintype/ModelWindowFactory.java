@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.model.windows.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.model.symbolic.ISymbolicModel;
@@ -40,7 +41,7 @@ public abstract class ModelWindowFactory extends
 
   @Override
   public ModelWindow<? extends ISymbolicModel<?>> create(
-      ParameterBlock parameters) {
+      ParameterBlock parameters, Context context) {
     return create(parameters,
         (ISymbolicModelWindowManager) parameters.getSubBlock("MW_MANAGER"));
   }

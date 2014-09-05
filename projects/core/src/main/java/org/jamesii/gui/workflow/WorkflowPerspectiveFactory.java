@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.workflow;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.perspective.IPerspective;
 import org.jamesii.gui.perspective.plugintype.PerspectiveFactory;
@@ -24,7 +25,7 @@ public class WorkflowPerspectiveFactory extends PerspectiveFactory {
   private static final long serialVersionUID = -6063703424099322235L;
 
   @Override
-  public IPerspective create(ParameterBlock params) {
+  public IPerspective create(ParameterBlock params, Context context) {
     return WorkflowPerspective.getInstance();
   }
 

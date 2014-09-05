@@ -8,6 +8,7 @@ package org.jamesii.gui.utils.parameters.factories.converter;
 
 import java.awt.Color;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.AbstractValueConverterFactory;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.ValueConverterFactory;
@@ -23,7 +24,7 @@ public class ColorConverterFactory extends ValueConverterFactory<Color> {
   private static final long serialVersionUID = 7745033071401967377L;
 
   @Override
-  public IStringConverter<Color> create(ParameterBlock paramBlock) {
+  public IStringConverter<Color> create(ParameterBlock paramBlock, Context context) {
     return new ColorConverter();
   }
 

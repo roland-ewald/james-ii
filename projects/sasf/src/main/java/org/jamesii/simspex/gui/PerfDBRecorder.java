@@ -424,7 +424,7 @@ public class PerfDBRecorder implements IExperimentExecutionListener {
     if (perfMeasurer == null) {
       perfMeasurer =
           (IPerformanceMeasurer<ComputationTaskRuntimeInformation>) factory
-              .create(perfMeasurerParams);
+              .create(perfMeasurerParams, SimSystem.getRegistry().createContext());
       performanceMeasurers.put(perfMeasurerHash, perfMeasurer);
     }
 

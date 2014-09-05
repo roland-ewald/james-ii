@@ -8,6 +8,7 @@ package org.jamesii.core.model.plugintype;
 
 import java.util.List;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.formalism.Formalism;
@@ -49,7 +50,7 @@ public abstract class ModelFactory extends Factory<ISymbolicModel<?>> {
   public abstract ISymbolicModel<?> create();
 
   @Override
-  public ISymbolicModel<?> create(ParameterBlock block) {
+  public ISymbolicModel<?> create(ParameterBlock block, Context context) {
     return create();
   }
 

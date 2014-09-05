@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.interpolation;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.interpolation.plugintype.InterpolationFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -20,7 +21,7 @@ public class PolynomialNewtonInterpolatorFactory extends InterpolationFactory {
   private static final long serialVersionUID = 2932981553462628498L;
 
   @Override
-  public IInterpolator create(ParameterBlock parameters) {
+  public IInterpolator create(ParameterBlock parameters, Context context) {
     return new PolynomialNewtonInterpolator();
   }
 

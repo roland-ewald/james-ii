@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.utils.parameters.factories.converter;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.misc.IDirectory;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.AbstractValueConverterFactory;
@@ -23,7 +24,7 @@ public class DirectoryConverterFactory extends
   private static final long serialVersionUID = 7745033071401967377L;
 
   @Override
-  public IStringConverter<IDirectory> create(ParameterBlock paramBlock) {
+  public IStringConverter<IDirectory> create(ParameterBlock paramBlock, Context context) {
     return new DirectoryConverter();
   }
 

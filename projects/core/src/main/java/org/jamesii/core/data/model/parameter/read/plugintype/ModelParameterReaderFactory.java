@@ -8,6 +8,7 @@ package org.jamesii.core.data.model.parameter.read.plugintype;
 
 import org.jamesii.core.data.IURIHandling;
 import org.jamesii.core.data.model.parameter.IModelParameterReader;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.model.symbolic.ISymbolicModel;
@@ -28,13 +29,12 @@ public abstract class ModelParameterReaderFactory extends
 
   /**
    * Create model reader.
-   * 
-   * @param params
+ * @param params
    *          parameters, may be null
-   * @return model reader
+ * @return model reader
    */
   @Override
-  public abstract IModelParameterReader create(ParameterBlock params);
+  public abstract IModelParameterReader create(ParameterBlock params, Context context);
 
   /**
    * Returns true if the factory is able to handle such models.

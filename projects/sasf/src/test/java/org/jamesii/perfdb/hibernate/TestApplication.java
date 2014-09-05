@@ -12,10 +12,6 @@ import java.util.Date;
 
 import org.hibernate.Session;
 import org.jamesii.perfdb.entities.IResultDataProvider;
-import org.jamesii.perfdb.hibernate.Application;
-import org.jamesii.perfdb.hibernate.HardwareSetup;
-import org.jamesii.perfdb.hibernate.ProblemInstance;
-import org.jamesii.perfdb.hibernate.RuntimeConfiguration;
 
 /**
  * Test for hibernate implementation of applications.

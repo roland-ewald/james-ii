@@ -87,7 +87,7 @@ public class ResilienceStorageConnection implements
         parameter.addSubBlock(DataResilienceFactory.DRIVER, "com.mysql.jdbc.Driver");
         parameter.addSubBlock(DataResilienceFactory.DATABASEURL,
             "jdbc:mysql://localhost/test");
-        setDataStorage(factory.create(parameter));
+        setDataStorage(factory.create(parameter, SimSystem.getRegistry().createContext()));
       } catch (Exception ex) {
         SimSystem.report(Level.SEVERE,
             "It was not possible to establish the Resilience data connection! "

@@ -8,6 +8,7 @@ package org.jamesii.core.distributed.allocation;
 
 import org.jamesii.core.distributed.allocation.plugintype.ISimulationResourceAllocator;
 import org.jamesii.core.distributed.allocation.plugintype.SimulationResourceAllocatorFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -28,7 +29,7 @@ public class ConstantResourceAllocatorFactory extends
   public static final String NUM_RESOURCES = "numberOfResources";
 
   @Override
-  public ISimulationResourceAllocator create(ParameterBlock paramBlock) {
+  public ISimulationResourceAllocator create(ParameterBlock paramBlock, Context context) {
     return new ConstantResourceAllocator(paramBlock.getSubBlockValue(
         NUM_RESOURCES, 1));
   }

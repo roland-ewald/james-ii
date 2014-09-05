@@ -87,7 +87,7 @@ public class ModelStructureViewAction extends AbstractSimAction {
       // SimSystem.getRegistry().getFactory(AbstractModelBrowserFactory.class,
       // pBlock);
 
-      WindowManagerManager.getWindowManager().addWindow(mbFac.create(pBlock));
+      WindowManagerManager.getWindowManager().addWindow(mbFac.create(pBlock, SimSystem.getRegistry().createContext()));
 
       // FIXME the window has to be closed! Btw what about these actions and
       // concurrent runs?

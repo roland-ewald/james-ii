@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.syntaxeditor.highlighting.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.syntaxeditor.highlighting.IHighlighter;
@@ -26,16 +27,15 @@ public abstract class HighlightingFactory extends Factory<IHighlighter> {
 
   /**
    * Creates highlighter.
-   * 
-   * @param getValue
+ * @param getValue
    *          opf the parameter block should return the input that should be
    *          highlighted (needed so the factory can decide which highlighter to
    *          return)
-   * @return highlighter (null if no highlighter can be provided for given
+ * @return highlighter (null if no highlighter can be provided for given
    *         input)
    */
   @Override
-  public abstract IHighlighter create(ParameterBlock input);
+  public abstract IHighlighter create(ParameterBlock input, Context context);
 
   /**
    * Specifies whether the factory can provide a suitable highlighter for the

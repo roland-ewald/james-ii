@@ -9,6 +9,7 @@ package org.jamesii.core.experiments.variables.modifier;
 import java.util.List;
 
 import org.jamesii.core.experiments.variables.modifier.plugintype.VariableModifierFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -24,12 +25,12 @@ public class DoubleVectorElementModifierFactory extends VariableModifierFactory 
 
   /**
    * The constant DIM. Use this as ident in the parameter block based to the
-   * {@link #create(ParameterBlock)} method to pass on the dimension.
+   * {@link #create(ParameterBlock, Context)} method to pass on the dimension.
    */
   public static final String DIM = "dim";
 
   @Override
-  public IVariableModifier<?> create(ParameterBlock parameter) {
+  public IVariableModifier<?> create(ParameterBlock parameter, Context context) {
     List<Double[]> values = ParameterBlocks.getSubBlockValue(parameter, VALUES);
     Integer dim = ParameterBlocks.getSubBlockValue(parameter, DIM);
     if (dim == null) {

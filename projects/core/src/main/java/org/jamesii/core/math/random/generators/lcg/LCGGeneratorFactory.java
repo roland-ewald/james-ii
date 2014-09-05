@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.random.generators.lcg;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -27,7 +28,7 @@ public class LCGGeneratorFactory extends RandomGeneratorFactory {
   }
 
   @Override
-  public IRandom create(ParameterBlock block) {
+  public IRandom create(ParameterBlock block, Context context) {
     Long seed = ParameterBlocks.getSubBlockValue(block, "seed");
     Long multiplier = LCG.DEFAULTMULTIPLIER; // e.g. using 2 instead of the
                                              // given value

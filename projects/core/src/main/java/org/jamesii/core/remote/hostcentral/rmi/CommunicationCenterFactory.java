@@ -9,6 +9,7 @@ package org.jamesii.core.remote.hostcentral.rmi;
 import java.rmi.RemoteException;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.remote.hostcentral.IRemoteMethodCaller;
@@ -35,14 +36,13 @@ public class CommunicationCenterFactory extends
 
   /**
    * This method returns a pair of remote and local communication center.
-   * 
-   * @param pb
+ * @param pb
    *          Currently ignored.
-   * @return The two singletons Remote- and LocalCommunicationCenter.
+ * @return The two singletons Remote- and LocalCommunicationCenter.
    */
   @Override
   public Pair<IRemoteCommunicationCenter, IRemoteMethodCaller> create(
-      ParameterBlock pb) {
+      ParameterBlock pb, Context context) {
     try {
       if (center == null) {
         center = new RemoteCommunicationCenter();

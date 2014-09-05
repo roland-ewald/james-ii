@@ -155,7 +155,7 @@ public class FeatureExtraction {
       try {
         @SuppressWarnings("unchecked")
         IFeatureExtractor<ParameterBlock> extractor =
-            (IFeatureExtractor<ParameterBlock>) feFactory.create(null);
+            (IFeatureExtractor<ParameterBlock>) feFactory.create(null, SimSystem.getRegistry().createContext());
         perfDB.newFeature(app, availableFeature, extractor);
       } catch (Exception ex) {
         SimSystem.report(Level.SEVERE,

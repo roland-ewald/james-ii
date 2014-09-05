@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
@@ -30,7 +31,7 @@ public class EpsilonGreedyDecrInitFactory extends
   private static final int DEFAULT_MIN_TRIALS = 1;
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     EpsilonGreedyDecrInit egdi =
         new EpsilonGreedyDecrInit(ParameterBlocks.getSubBlockValueOrDefault(
             params, MIN_NUM_TRIALS, DEFAULT_MIN_TRIALS));

@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.replication;
 
 import org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -26,7 +27,7 @@ public class RepNumberCriterionFactory extends RepCriterionFactory {
   public static final int DEFAULT_NUMBER_REPLICATIONS = 1;
 
   @Override
-  public IReplicationCriterion create(ParameterBlock params) {
+  public IReplicationCriterion create(ParameterBlock params, Context context) {
     return new ReplicationNumberCriterion(
         ParameterBlocks.getSubBlockValueOrDefault(params, NUM_REPS,
             DEFAULT_NUMBER_REPLICATIONS));

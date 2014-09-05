@@ -55,7 +55,7 @@ public class MigrationController extends UnicastRemoteObject implements
   public MigrationController() throws RemoteException {
     super();
     this.rcCenter =
-        new CommunicationCenterFactory().create(null).getFirstValue();
+        new CommunicationCenterFactory().create(null, SimSystem.getRegistry().createContext()).getFirstValue();
   }
 
   @Override

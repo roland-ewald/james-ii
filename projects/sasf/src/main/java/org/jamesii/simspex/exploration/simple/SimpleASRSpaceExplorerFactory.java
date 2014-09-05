@@ -9,6 +9,7 @@ package org.jamesii.simspex.exploration.simple;
 
 import java.util.ArrayList;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.AdaptiveTaskRunnerFactory;
 import org.jamesii.simspex.exploration.ISimSpaceExplorer;
@@ -27,7 +28,7 @@ public class SimpleASRSpaceExplorerFactory extends SimSpaceExplorerFactory {
   private static final long serialVersionUID = -1697455688056830890L;
 
   @Override
-  public ISimSpaceExplorer create(ParameterBlock params) {
+  public ISimSpaceExplorer create(ParameterBlock params, Context context) {
     return new SimpleASRSpaceExplorer(params.getSubBlockValue(
         AdaptiveTaskRunnerFactory.PORTFOLIO,
         new ArrayList<ParameterBlock>()));

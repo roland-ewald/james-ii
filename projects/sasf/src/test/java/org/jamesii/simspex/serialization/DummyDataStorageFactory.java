@@ -8,6 +8,7 @@ package org.jamesii.simspex.serialization;
 
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.util.JamesSimDataProvider;
 
@@ -24,7 +25,7 @@ public class DummyDataStorageFactory extends DataStorageFactory {
   private static final long serialVersionUID = -38269949553852002L;
 
   @Override
-  public IDataStorage<?> create(ParameterBlock parameter) {
+  public IDataStorage<?> create(ParameterBlock parameter, Context context) {
     return null;
   }
 

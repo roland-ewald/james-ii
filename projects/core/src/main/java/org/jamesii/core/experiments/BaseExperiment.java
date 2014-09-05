@@ -6,6 +6,17 @@
  */
 package org.jamesii.core.experiments;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+import java.util.logging.Level;
+
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.NamedEntity;
 import org.jamesii.core.cmdparameters.Parameters;
@@ -41,12 +52,6 @@ import org.jamesii.core.util.id.IUniqueID;
 import org.jamesii.core.util.id.UniqueIDGenerator;
 import org.jamesii.core.util.info.JavaInfo;
 import org.jamesii.core.util.misc.ParameterUtils;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URI;
-import java.util.*;
-import java.util.logging.Level;
 
 /**
  * Base class for experiments.
@@ -329,7 +334,7 @@ public class BaseExperiment extends NamedEntity {
     // Create and select computatation task runner
     this.taskRunner =
         taskRunnerFactory.getFactoryInstance().create(
-            taskRunnerFactory.getParameter());
+            taskRunnerFactory.getParameter(), SimSystem.getRegistry().createContext());
     this.taskRunner.setErrorHook(taskRunnerErrorHook);
 
     // Start execution controller thread
@@ -564,7 +569,7 @@ public class BaseExperiment extends NamedEntity {
    */
   protected IComputationTaskSetup getComputationTaskSetup() {
     // we could reuse a cached one here as well!
-    return getSetupFactory().create(null);
+    return getSetupFactory().create(null, SimSystem.getRegistry().createContext());
   }
 
   /**

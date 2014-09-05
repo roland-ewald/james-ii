@@ -8,6 +8,7 @@ package org.jamesii.asf.portfolios.ga;
 
 import org.jamesii.asf.portfolios.plugintype.IPortfolioSelector;
 import org.jamesii.asf.portfolios.plugintype.PortfolioSelectorFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 
@@ -27,7 +28,7 @@ public class GeneticAlgorithmPortfolioSelectorFactory extends
   // rate, etc.
 
   @Override
-  public IPortfolioSelector create(ParameterBlock params) {
+  public IPortfolioSelector create(ParameterBlock params, Context context) {
     return new GeneticAlgorithmPortfolioSelector();
   }
 

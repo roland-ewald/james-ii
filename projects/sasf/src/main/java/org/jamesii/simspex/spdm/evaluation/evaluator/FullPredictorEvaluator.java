@@ -33,7 +33,7 @@ public class FullPredictorEvaluator extends PredictorEvaluator {
         SimSystem.getRegistry().getFactories(PredictorPerfMeasureFactory.class);
 
     for (PredictorPerfMeasureFactory factory : factories) {
-      results.add(factory.create(parameters));
+      results.add(factory.create(parameters, SimSystem.getRegistry().createContext()));
     }
 
     return results;

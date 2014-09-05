@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.replication;
 
 import org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -23,7 +24,7 @@ public class RepVarianceCriterionFactory extends RepCriterionFactory {
   public static final String MAX_VARIANCE = "maxVariance";
 
   @Override
-  public IReplicationCriterion create(ParameterBlock params) {
+  public IReplicationCriterion create(ParameterBlock params, Context context) {
     Double maxVariance = 0.;
     // -- test cases begin
     Long dataid = 12345l;

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.application.resource.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.IResourceProvider;
@@ -26,12 +27,11 @@ public abstract class ResourceProviderFactory extends
 
   /**
    * Creates resource provider factory.
-   * 
-   * @param params
+ * @param params
    *          parameters
-   * @return resource provider factory
+ * @return resource provider factory
    */
   @Override
-  public abstract IResourceProvider create(ParameterBlock params);
+  public abstract IResourceProvider create(ParameterBlock params, Context context);
 
 }

@@ -8,6 +8,7 @@ package org.jamesii.gui.utils.list.view.plugintype;
 
 import javax.swing.JComponent;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -34,14 +35,10 @@ public abstract class ViewFactory extends Factory<JComponent> {
 
   /**
    * Return a new instance of the view to be used.
-   * 
-   * 
-   * @param parameter
-   * 
-   * 
-   * @return the event queue
+ * @param parameter
+ * @return the event queue
    */
   @Override
-  public abstract JComponent create(ParameterBlock parameter);
+  public abstract JComponent create(ParameterBlock parameter, Context context);
 
 }

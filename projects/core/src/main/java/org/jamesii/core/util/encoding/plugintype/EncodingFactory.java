@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.util.encoding.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.encoding.IEncoding;
@@ -22,14 +23,11 @@ public abstract class EncodingFactory extends Factory<IEncoding> {
 
   /**
    * Creates a encoding guesser.
-   * 
-   * 
-   * @param parameter
+ * @param parameter
    *          the parameter
-   * 
-   * @return An instance of the respective encoding guesser.
+ * @return An instance of the respective encoding guesser.
    */
   @Override
-  public abstract IEncoding create(ParameterBlock parameter);
+  public abstract IEncoding create(ParameterBlock parameter, Context context);
 
 }

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.utils.parameters.factories.converter;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.AbstractValueConverterFactory;
 import org.jamesii.gui.utils.parameters.factories.converter.plugintype.ValueConverterFactory;
@@ -21,7 +22,7 @@ public class LongConverterFactory extends ValueConverterFactory<Long> {
   private static final long serialVersionUID = 7745033071401967378L;
 
   @Override
-  public IStringConverter<Long> create(ParameterBlock paramBlock) {
+  public IStringConverter<Long> create(ParameterBlock paramBlock, Context context) {
     return new LongConverter();
   }
 

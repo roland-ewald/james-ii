@@ -7,6 +7,7 @@
 package org.jamesii.core.distributed.loadbalancing.plugintype;
 
 import org.jamesii.core.distributed.loadbalancing.ILoadBalancingSetup;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -46,13 +47,11 @@ public abstract class LoadBalancingFactory extends Factory<ILoadBalancingSetup> 
 
   /**
    * Creates a new {@link ILoadBalancingSetup} object.
-   * 
-   * @param paramBlock
+ * @param paramBlock
    *          the parameter block
-   * 
-   * @return the load balancing setup component
+ * @return the load balancing setup component
    */
   @Override
-  public abstract ILoadBalancingSetup create(ParameterBlock paramBlock);
+  public abstract ILoadBalancingSetup create(ParameterBlock paramBlock, Context context);
 
 }

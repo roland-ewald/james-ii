@@ -51,7 +51,7 @@ public final class HighlightingManager {
       for (HighlightingFactory f : highlightingFactories) {
         try {
           if (f.supportsInput(objectToSupport)) {
-            IHighlighter highlighter = f.create(params);
+            IHighlighter highlighter = f.create(params, SimSystem.getRegistry().createContext());
 
             highlighters.add(highlighter);
           }

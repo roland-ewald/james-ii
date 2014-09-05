@@ -7,6 +7,7 @@
 package org.jamesii.core.data.experimentsuite.write.plugintype;
 
 import org.jamesii.core.data.experimentsuite.IExperimentSuiteWriter;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -25,12 +26,11 @@ public abstract class ExperimentSuiteWriterFactory extends
 
   /**
    * Get experiment suite writer.
-   * 
-   * @param param
+ * @param param
    *          parameters
-   * @return experiment suite reader, or null if not supported
+ * @return experiment suite reader, or null if not supported
    */
   @Override
-  public abstract IExperimentSuiteWriter create(ParameterBlock param);
+  public abstract IExperimentSuiteWriter create(ParameterBlock param, Context context);
 
 }

@@ -78,7 +78,7 @@ public final class LafManager implements PropertyChangeListener {
         }
 
         for (LookAndFeelFactory f : factories) {
-          registerLookAndFeel(f.create(null));
+          registerLookAndFeel(f.create(null, SimSystem.getRegistry().createContext()));
         }
 
         registryChecked = true;

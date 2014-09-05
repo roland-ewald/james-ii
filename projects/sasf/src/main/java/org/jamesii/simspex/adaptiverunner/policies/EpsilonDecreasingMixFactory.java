@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -31,7 +32,7 @@ public class EpsilonDecreasingMixFactory extends MinBanditPolicyFactory {
   public static final String PARAM_EP = "EP";
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     EpsilonDecreasingMix eDecreasingMix = new EpsilonDecreasingMix();
     eDecreasingMix.setEpsilon(params.getSubBlockValue(PARAM_EP,
         EpsilonDecreasing.DEFAULT_EPSILON));

@@ -11,7 +11,6 @@ import java.util.HashSet;
 
 import org.hibernate.Session;
 import org.jamesii.perfdb.entities.IMachine;
-import org.jamesii.perfdb.hibernate.HardwareSetup;
 
 /**
  * Tests {@link HardwareSetup}.

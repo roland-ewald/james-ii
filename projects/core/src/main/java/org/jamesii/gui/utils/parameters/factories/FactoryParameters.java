@@ -91,7 +91,7 @@ public class FactoryParameters {
             SimSystem.getRegistry().getFactory(
                 AbstractValueConverterFactory.class, dBlock);
 
-        IStringConverter<?> converter = cf.create(dBlock);
+        IStringConverter<?> converter = cf.create(dBlock, SimSystem.getRegistry().createContext());
         setParameter(p.getName(), converter.convert(p.getDefaultValue()));
       } catch (Exception e) {
         SimSystem.report(e);

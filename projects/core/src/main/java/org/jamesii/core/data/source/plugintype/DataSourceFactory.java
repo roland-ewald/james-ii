@@ -7,6 +7,7 @@
 package org.jamesii.core.data.source.plugintype;
 
 import org.jamesii.core.data.source.IDataSource;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -29,12 +30,10 @@ public abstract class DataSourceFactory extends Factory<IDataSource> {
 
   /**
    * Creates a storage type with the given params.
-   * 
-   * @param params
+ * @param params
    *          the params
-   * 
-   * @return the data source
+ * @return the data source
    */
   @Override
-  public abstract IDataSource create(ParameterBlock params);
+  public abstract IDataSource create(ParameterBlock params, Context context);
 }

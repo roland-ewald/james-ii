@@ -6,12 +6,12 @@
  */
 package org.jamesii.core.remote;
 
-import java.rmi.AccessException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.remote.dummyobjects.Dummy;
 import org.jamesii.core.remote.dummyobjects.DummyMigrationController;
@@ -102,7 +102,7 @@ public class LaunchFirstRemoteComCenter {
     // Registering an object here.
     HostCentralIDFactory idFac = new HostCentralIDFactory();
     d = new Dummy();
-    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT));
+    id = idFac.create(new ParameterBlock(d, HostCentralIDFactory.PARAM_OBJECT), SimSystem.getRegistry().createContext());
     try {
       rcc.registerLocalObject(id, d);
     } catch (RemoteException e) {

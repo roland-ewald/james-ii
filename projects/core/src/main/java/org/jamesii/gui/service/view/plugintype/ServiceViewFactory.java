@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.service.view.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -36,12 +37,11 @@ public abstract class ServiceViewFactory extends Factory<IServiceView>
 
   /**
    * Creates a view.
-   * 
-   * @param params
+ * @param params
    *          parameters containing the service
-   * @return the view for the service
+ * @return the view for the service
    */
   @Override
-  public abstract IServiceView create(ParameterBlock params);
+  public abstract IServiceView create(ParameterBlock params, Context context);
 
 }

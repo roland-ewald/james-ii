@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.random.rnggenerator.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.random.rnggenerator.IRNGGenerator;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -25,13 +26,11 @@ public abstract class RNGGeneratorFactory extends Factory<IRNGGenerator> {
    * 
    * parameter seed: The seed to use. This may be truncated to accommodate for
    * RNGs with smaller seed values.
-   * 
-   * @param parameter
+ * @param parameter
    *          the parameter
-   * 
-   * @return An instance of the respective random number generator.
+ * @return An instance of the respective random number generator.
    */
   @Override
-  public abstract IRNGGenerator create(ParameterBlock parameter);
+  public abstract IRNGGenerator create(ParameterBlock parameter, Context context);
 
 }

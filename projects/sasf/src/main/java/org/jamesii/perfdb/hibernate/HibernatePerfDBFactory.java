@@ -7,6 +7,7 @@
 package org.jamesii.perfdb.hibernate;
 
 import org.jamesii.core.data.DBConnectionData;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.IPerformanceDatabase;
 import org.jamesii.perfdb.plugintype.PerfDBFactory;
@@ -24,7 +25,7 @@ public class HibernatePerfDBFactory extends PerfDBFactory {
   private static final long serialVersionUID = -6793171050687865687L;
 
   @Override
-  public IPerformanceDatabase create(ParameterBlock params) {
+  public IPerformanceDatabase create(ParameterBlock params, Context context) {
     PerformanceDatabase perfDB =
         new PerformanceDatabase(
             (DBConnectionData) params

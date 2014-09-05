@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.jamesii.core.distributed.partition.Partition;
 import org.jamesii.core.experiments.tasks.IComputationTask;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.model.IModel;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -67,7 +68,7 @@ public abstract class ProcessorFactory extends Factory<IProcessor> {
       ParameterBlock params);
 
   @Override
-  public IProcessor create(ParameterBlock parameters) {
+  public IProcessor create(ParameterBlock parameters, Context context) {
     return create((IModel) parameters.getSubBlockValue("MODEL"),
         (IComputationTask) parameters.getSubBlockValue("TASK"),
         (Partition) parameters.getSubBlockValue("PARTITION"), parameters);

@@ -9,7 +9,6 @@ package org.jamesii.perfdb.hibernate;
 
 import org.hibernate.Session;
 import org.jamesii.core.util.misc.Strings;
-import org.jamesii.perfdb.hibernate.Machine;
 
 /**
  * Test for {@link Machine}.

@@ -59,7 +59,7 @@ public class MaximizingReplicationCriterion implements IReplicationCriterion {
       }
       int sufficientRepsForCriterion =
           repCriterionFactory.getFactoryInstance()
-              .create(repCriterionFactory.getParameters())
+              .create(repCriterionFactory.getParameters(), SimSystem.getRegistry().createContext())
               .sufficientReplications(runInformation);
       if (sufficientRepsForCriterion > sufficientReplications) {
         sufficientReplications = sufficientRepsForCriterion;

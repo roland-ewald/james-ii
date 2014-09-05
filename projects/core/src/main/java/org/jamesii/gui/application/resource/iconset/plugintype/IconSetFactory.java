@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.application.resource.iconset.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.iconset.IIconSet;
@@ -25,12 +26,11 @@ public abstract class IconSetFactory extends Factory<IIconSet> {
 
   /**
    * Creates icon set
-   * 
-   * @param params
+ * @param params
    *          parameters
-   * @return icon set
+ * @return icon set
    */
   @Override
-  public abstract IIconSet create(ParameterBlock params);
+  public abstract IIconSet create(ParameterBlock params, Context context);
 
 }

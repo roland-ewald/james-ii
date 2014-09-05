@@ -9,6 +9,7 @@ package org.jamesii.simspex.spdm.dataimport.database;
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.ProblemPerformanceTuple;
 import org.jamesii.asf.spdm.dataimport.plugintype.DMDataImporterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.gui.SimSpExPerspective;
 
@@ -38,7 +39,7 @@ public class DBImportManagerFactory extends DMDataImporterFactory {
 
   @Override
   public IDMDataImportManager<ProblemPerformanceTuple> create(
-      ParameterBlock params) {
+      ParameterBlock params, Context context) {
     return new DatabaseImportManager(params.getSubBlockValue(TARGET_MODEL,
         "BenchmarkModel"), params.getSubBlockValue(TARGET_PERF_MEASURE,
         "TotalRuntime"), params.getSubBlockValue(PERFORMANCE_DATABASE,

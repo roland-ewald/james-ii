@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -35,7 +36,7 @@ public class RewardComparisonFactory extends MinBanditPolicyFactory {
   public static final String PARAM_BE = "BE";
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     RewardComparison rewComp = new RewardComparison();
     rewComp.setAlpha(params.getSubBlockValue(PARAM_AL,
         RewardComparison.DEFAULT_VAL_ALPHA));

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.perspective.autotask;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.autotask.IAutoTask;
 import org.jamesii.gui.application.autotask.plugintype.AutoTaskFactory;
@@ -24,7 +25,7 @@ public class DefaultAutoTaskFactory extends AutoTaskFactory {
   private static final long serialVersionUID = 606371284240993256L;
 
   @Override
-  public IAutoTask create(ParameterBlock params) {
+  public IAutoTask create(ParameterBlock params, Context context) {
     return new DefaultAutoTask();
   }
 

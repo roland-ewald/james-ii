@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.tasks.stoppolicy.plugintype;
 
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.experiments.tasks.stoppolicy.IComputationTaskStopPolicy;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -32,13 +33,11 @@ public abstract class ComputationTaskStopPolicyFactory<T extends IComputationTas
 
   /**
    * Creates a new {@link IComputationTaskStopPolicy} object.
-   * 
-   * @param paramBlock
+ * @param paramBlock
    *          the parameter block
-   * 
-   * @return the computation task run end component
+ * @return the computation task run end component
    */
   @Override
-  public abstract IComputationTaskStopPolicy<T> create(ParameterBlock paramBlock);
+  public abstract IComputationTaskStopPolicy<T> create(ParameterBlock paramBlock, Context context);
 
 }

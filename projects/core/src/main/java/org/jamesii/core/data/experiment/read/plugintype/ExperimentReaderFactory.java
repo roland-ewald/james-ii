@@ -7,6 +7,7 @@
 package org.jamesii.core.data.experiment.read.plugintype;
 
 import org.jamesii.core.data.experiment.IExperimentReader;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -28,12 +29,11 @@ public abstract class ExperimentReaderFactory extends
    * from the data sink it has been designed for. Check the
    * {@link IExperimentReader} interface for more information about the
    * experiment readers.
-   * 
-   * @param param
+ * @param param
    *          parameters
-   * @return the reader
+ * @return the reader
    */
   @Override
-  public abstract IExperimentReader create(ParameterBlock param);
+  public abstract IExperimentReader create(ParameterBlock param, Context context);
 
 }

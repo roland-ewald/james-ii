@@ -26,6 +26,7 @@ import org.jamesii.core.experiments.instrumentation.computation.plugintype.Compu
 import org.jamesii.core.experiments.instrumentation.model.IModelInstrumenter;
 import org.jamesii.core.experiments.instrumentation.model.plugintype.AbstractModelInstrumenterFactory;
 import org.jamesii.core.experiments.instrumentation.model.plugintype.ModelInstrumenterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.utils.FactoryListCellRenderer;
@@ -208,7 +209,7 @@ final class NoComputationTaskInstrumentation extends
   private static final long serialVersionUID = 1676485172133596192L;
 
   @Override
-  public IComputationInstrumenter create(ParameterBlock parameter) {
+  public IComputationInstrumenter create(ParameterBlock parameter, Context context) {
     return null;
   }
 
@@ -225,7 +226,7 @@ final class NoModelInstrumentation extends ModelInstrumenterFactory {
   private static final long serialVersionUID = -8967358197789143970L;
 
   @Override
-  public IModelInstrumenter create(ParameterBlock parameter) {
+  public IModelInstrumenter create(ParameterBlock parameter, Context context) {
     return null;
   }
 

@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -41,7 +42,7 @@ public class IntEstimFactory extends MinBanditPolicyFactory {
   public static final int DEFAULT_VAL_D = 20;
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     IntEstim iEst = new IntEstim();
     iEst.setAlpha(params.getSubBlockValue(PARAM_A, DEFAULT_VAL_A));
     iEst.setStartDeviation(params.getSubBlockValue(PARAM_D, DEFAULT_VAL_D));

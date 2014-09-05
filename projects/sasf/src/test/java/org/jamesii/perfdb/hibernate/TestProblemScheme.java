@@ -11,7 +11,6 @@ import static org.jamesii.simspex.util.DatabaseUtils.convertModelTypeToSchemeTyp
 import java.net.URI;
 
 import org.hibernate.Session;
-import org.jamesii.perfdb.hibernate.ProblemScheme;
 import org.jamesii.simspex.util.BenchmarkModelType;
 
 

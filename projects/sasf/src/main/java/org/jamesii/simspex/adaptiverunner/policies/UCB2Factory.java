@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -32,7 +33,7 @@ public class UCB2Factory extends MinBanditPolicyFactory {
   public static final String ALPHA = "alpha";
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     UCB2 ucb2 = new UCB2();
     ucb2.setAlpha(params.getSubBlockValue(ALPHA, DEFAULT_VAL_ALPHA));
     return ucb2;

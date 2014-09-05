@@ -8,6 +8,7 @@ package org.jamesii.core.math.random.rnggenerator.pre;
 
 import java.util.List;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.random.rnggenerator.IRNGGenerator;
 import org.jamesii.core.math.random.rnggenerator.plugintype.RNGGeneratorFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -30,7 +31,7 @@ public class PreDefinedSeedsRandGeneratorFactory extends RNGGeneratorFactory {
   public static final String HOOK = "Hook";
 
   @Override
-  public IRNGGenerator create(ParameterBlock parameter) {
+  public IRNGGenerator create(ParameterBlock parameter, Context context) {
     return new PreDefinedSeedsRandGenerator(
         ParameterBlocks.<List<Long>> getSubBlockValue(parameter, SEEDS),
         ParameterBlocks.<Hook<PreDefinedSeedsRandGenerator>> getSubBlockValue(

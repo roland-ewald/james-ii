@@ -7,6 +7,7 @@
 package org.jamesii.perfdb.jdbc;
 
 import org.jamesii.core.data.DBConnectionData;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.IPerformanceDatabase;
 import org.jamesii.perfdb.plugintype.PerfDBFactory;
@@ -24,7 +25,7 @@ public class JDBCPerfDBFactory extends PerfDBFactory {
   private static final long serialVersionUID = 4735314009307116963L;
 
   @Override
-  public IPerformanceDatabase create(ParameterBlock params) {
+  public IPerformanceDatabase create(ParameterBlock params, Context context) {
     PerfDBImplementation perfDB = new PerfDBImplementation();
     perfDB.init((DBConnectionData) params
         .getSubBlockValue(PerfDBFactory.CONNECTION_DATA));

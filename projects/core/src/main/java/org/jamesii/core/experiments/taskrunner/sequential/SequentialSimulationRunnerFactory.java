@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.taskrunner.ITaskRunner;
 import org.jamesii.core.experiments.taskrunner.plugintype.TaskRunnerFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -31,7 +32,7 @@ public class SequentialSimulationRunnerFactory extends TaskRunnerFactory {
   }
 
   @Override
-  public ITaskRunner create(ParameterBlock parameter) {
+  public ITaskRunner create(ParameterBlock parameter, Context context) {
     SequentialComputationTaskRunner ssr = null;
     try {
       ssr = new SequentialComputationTaskRunner();

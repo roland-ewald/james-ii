@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.crossvalidation;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.IPredictorGeneratorEvaluationStrategy;
 import org.jamesii.simspex.spdm.evaluation.plugintype.PredictorGeneratorEvaluationFactory;
@@ -31,7 +32,7 @@ public class CrossValidationFactory extends PredictorGeneratorEvaluationFactory 
   public static final String LEAVE_ONE_OUT = "leaveOneOut";
 
   @Override
-  public IPredictorGeneratorEvaluationStrategy create(ParameterBlock params) {
+  public IPredictorGeneratorEvaluationStrategy create(ParameterBlock params, Context context) {
     return new CrossValidation(params.getSubBlockValue(FOLDS,
         DEFAULT_NUMBER_FOLDS), params.getSubBlockValue(LEAVE_ONE_OUT, false),
         params.getSubBlockValue(NUMBER_OF_PASSES, DEFAULT_VAL_NUM_PASSES));

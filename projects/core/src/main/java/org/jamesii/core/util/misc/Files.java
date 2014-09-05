@@ -729,7 +729,7 @@ public final class Files {
     }
 
     for (EncodingFactory ef : encodingFacs) {
-      IEncoding encoding = ef.create(new ParameterBlock(file));
+      IEncoding encoding = ef.create(new ParameterBlock(file), SimSystem.getRegistry().createContext());
       String result = encoding.getEncoding(file);
       if ((result != null) && (!result.isEmpty())) {
         return result;

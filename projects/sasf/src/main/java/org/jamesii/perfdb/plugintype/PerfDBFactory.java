@@ -6,6 +6,7 @@
  */
 package org.jamesii.perfdb.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -34,14 +35,13 @@ IParameterFilterFactory {
 
   /**
    * Create performance database.
-   * 
-   * @param absParameters
+ * @param absParameters
    *          database parameters, e.g. connection data
-   * @return performance database
+ * @return performance database
    * @throws Exception
    *           if creation of base failed (i.e., due to connection errors, etc.)
    */
   public abstract IPerformanceDatabase create(
-      ParameterBlock params);
+      ParameterBlock params, Context context);
 
 }

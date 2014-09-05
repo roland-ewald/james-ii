@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -32,7 +33,7 @@ public class BiasedRandomSelectionFactory extends MinBanditPolicyFactory {
   public static final String NUM_INIT_ROUNDS = "numberOfInitialRounds";
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     BiasedRandomSelection brs = new BiasedRandomSelection();
     if (params != null) {
       brs.setBiasPower(params.getSubBlockValue(BIAS_POWER, 3.0));

@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
@@ -35,7 +36,7 @@ public class EpsilonGreedyDecreasingFactory extends MinBanditPolicyFactory {
   public static final String PARAM_D = "D";
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     EpsilonGreedyDecreasing eGreedy = new EpsilonGreedyDecreasing();
     setupPolicy(eGreedy, params);
     return eGreedy;

@@ -8,6 +8,7 @@ package org.jamesii.core.simulation.distributed;
 
 import java.util.List;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -115,7 +116,7 @@ public abstract class RemoteFactory<R, L, I> extends Factory<R> {
   }
 
   @Override
-  public R create(ParameterBlock parameters) {
+  public R create(ParameterBlock parameters, Context context) {
     return getRemote((L) parameters.getSubBlockValue("LOCAL"));
   }
 

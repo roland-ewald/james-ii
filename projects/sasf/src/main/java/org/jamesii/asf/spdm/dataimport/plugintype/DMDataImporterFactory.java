@@ -8,6 +8,7 @@ package org.jamesii.asf.spdm.dataimport.plugintype;
 
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.PerformanceTuple;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -25,12 +26,11 @@ public abstract class DMDataImporterFactory<P extends PerformanceTuple> extends
 
   /**
    * Creates a data-mining data import manager.
-   * 
-   * @param params
+ * @param params
    *          the parameters
-   * @return the data import manager
+ * @return the data import manager
    */
   @Override
-  public abstract IDMDataImportManager<P> create(ParameterBlock params);
+  public abstract IDMDataImportManager<P> create(ParameterBlock params, Context context);
 
 }

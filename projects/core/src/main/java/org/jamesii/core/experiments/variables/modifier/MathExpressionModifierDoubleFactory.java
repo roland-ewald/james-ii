@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.variables.modifier;
 
 import org.jamesii.core.experiments.variables.modifier.plugintype.VariableModifierFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.parsetree.INode;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
@@ -23,7 +24,7 @@ public class MathExpressionModifierDoubleFactory extends
   private static final long serialVersionUID = -7080751306938363931L;
 
   @Override
-  public IVariableModifier<?> create(ParameterBlock parameter) {
+  public IVariableModifier<?> create(ParameterBlock parameter, Context context) {
     INode mathExpression =
         ParameterBlocks.getSubBlockValue(parameter, EXPRESSION);
     return createModifier(mathExpression);

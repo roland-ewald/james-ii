@@ -178,7 +178,7 @@ public class TaskConfiguration implements Serializable,
     if (dataStorageFactory != null && dataStorageFactory.isInitialized()) {
       IDataStorage dataStorage =
           dataStorageFactory.getFactoryInstance().create(
-              dataStorageFactory.getParameter());
+              dataStorageFactory.getParameter(), SimSystem.getRegistry().createContext());
       dataStorage.setExperimentID(experimentID);
       dataStorage.setConfigurationID(experimentID, uniqueID);
       // ExperimentInfo exi = new ExperimentInfo();
@@ -306,7 +306,7 @@ public class TaskConfiguration implements Serializable,
     if (replicationCriterion == null) {
       replicationCriterion =
           replicationCriterionFactory.getFactoryInstance().create(
-              replicationCriterionFactory.getParameters());
+              replicationCriterionFactory.getParameters(), SimSystem.getRegistry().createContext());
     }
     return replicationCriterion.sufficientReplications(runInfo);
   }
@@ -695,7 +695,7 @@ public class TaskConfiguration implements Serializable,
         .entrySet()) {
       ParameterBlock sifParams = ParameterBlocks.newOrCopy(entry.getValue());
       IComputationInstrumenter simulationInstrumenter =
-          entry.getKey().create(sifParams);
+          entry.getKey().create(sifParams, SimSystem.getRegistry().createContext());
       result.add(simulationInstrumenter);
     }
     return result;
@@ -709,7 +709,7 @@ public class TaskConfiguration implements Serializable,
     for (Map.Entry<ModelInstrumenterFactory, ParameterBlock> entry : modelInstrumenterFactories
         .entrySet()) {
       ParameterBlock mifParams = ParameterBlocks.newOrCopy(entry.getValue());
-      IModelInstrumenter modelInstrumenter = entry.getKey().create(mifParams);
+      IModelInstrumenter modelInstrumenter = entry.getKey().create(mifParams, SimSystem.getRegistry().createContext());
       result.add(modelInstrumenter);
     }
     return result;

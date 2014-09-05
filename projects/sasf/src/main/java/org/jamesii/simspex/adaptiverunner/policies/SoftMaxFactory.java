@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.adaptiverunner.policies;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.IMinBanditPolicy;
 import org.jamesii.simspex.adaptiverunner.policies.plugintype.MinBanditPolicyFactory;
@@ -32,7 +33,7 @@ public class SoftMaxFactory extends MinBanditPolicyFactory {
   static final double DEFAULT_SOFTMAX_T = 1.0;
 
   @Override
-  public IMinBanditPolicy create(ParameterBlock params) {
+  public IMinBanditPolicy create(ParameterBlock params, Context context) {
     SoftMax sMax = new SoftMax();
     sMax.setTemperature(params.getSubBlockValue(PARAM_T, DEFAULT_SOFTMAX_T));
     return sMax;

@@ -9,6 +9,7 @@ package org.jamesii.core.experiments.replication;
 import java.util.ArrayList;
 
 import org.jamesii.core.experiments.replication.plugintype.RepCriterionFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.parameters.ParameterizedFactory;
@@ -32,7 +33,7 @@ public class MaximizingReplicationCriterionFactory extends RepCriterionFactory {
       "repCriterionFactories";
 
   @Override
-  public IReplicationCriterion create(ParameterBlock params) {
+  public IReplicationCriterion create(ParameterBlock params, Context context) {
     return new MaximizingReplicationCriterion(
         ParameterBlocks.getSubBlockValueOrDefault(params,
             REPLICATION_CRITERION_FACTORIES,

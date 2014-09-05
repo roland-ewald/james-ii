@@ -10,9 +10,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jamesii.perfdb.hibernate.Feature;
-import org.jamesii.perfdb.hibernate.FeatureType;
-
 /**
  * Tests {@link Feature} entities.
  * 

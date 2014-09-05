@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.remote.hostcentral;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.id.UniqueIDGenerator;
@@ -41,13 +42,12 @@ public class HostCentralIDFactory extends Factory<IObjectId> {
    * @param parameter
    *          parameter has to contain a sub block
    *          HostCentralIDFactory.PARAM_OBJECT which holds an object at will.
-   * 
-   * @return A new ObjectId fitting to the object that has been part of the
+ * @return A new ObjectId fitting to the object that has been part of the
    *         parameterblock. The ID contains MAC, PID, HashCode and a time
    *         stamp.
    */
   @Override
-  public IObjectId create(ParameterBlock parameter) {
+  public IObjectId create(ParameterBlock parameter, Context context) {
     Object value = parameter.getSubBlock(PARAM_OBJECT).getValue();
     /*
      * JavaInfo info = new JavaInfo(); String mac = ""; for( byte b :

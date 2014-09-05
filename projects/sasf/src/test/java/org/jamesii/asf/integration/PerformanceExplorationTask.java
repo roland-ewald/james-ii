@@ -234,7 +234,7 @@ public class PerformanceExplorationTask {
       SelectionTreeSet selectionTreeSet) {
     SimpleSimSpaceExplorer explorer =
         simSpExFactory.create(new ParameterBlock(selectionTreeSet,
-            SimpleSimSpaceExplorerFactory.SELECTION_TREE_SET));
+            SimpleSimSpaceExplorerFactory.SELECTION_TREE_SET), SimSystem.getRegistry().createContext());
     explorer.setNumOfReplications(replications);
     explorer.setMaxModelSpaceElems(sampleSize);
     return explorer;

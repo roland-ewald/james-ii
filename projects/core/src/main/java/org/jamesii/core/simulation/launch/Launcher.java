@@ -130,7 +130,7 @@ public class Launcher {
     pb.addSubBlock("experimentInfo", new ParameterBlock(info));
     IExperimentReader reader =
         SimSystem.getRegistry()
-            .getFactory(AbstractExperimentReaderFactory.class, pb).create(null);
+            .getFactory(AbstractExperimentReaderFactory.class, pb).create(null, SimSystem.getRegistry().createContext());
 
     BaseExperiment exp = null;
     try {

@@ -185,7 +185,7 @@ public class JItemList extends JPanel implements ItemListener {
     pb.addSubBl(ViewFactory.DATA, data);
     pb.addSubBl(ViewFactory.PROPERTIES, properties);
 
-    view = viewFactory.create(pb);
+    view = viewFactory.create(pb, SimSystem.getRegistry().createContext());
     pane.setViewportView(view);
 
     // ((IItemView) view).setTransferHandler(new ItemListTransferHandler());

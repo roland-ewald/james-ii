@@ -6,13 +6,14 @@
  */
 package org.jamesii.simspex.spdm.dataimport;
 
+import junit.framework.TestCase;
+
+import org.jamesii.SimSystem;
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.PerformanceDataSet;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.dataimport.xml.XMLImportManager;
 import org.jamesii.simspex.spdm.dataimport.xml.XMLImportManagerFactory;
-
-import junit.framework.TestCase;
 
 /**
  * Test for the {@link XMLImportManager}.
@@ -28,7 +29,7 @@ public class XMLImportManagerTest extends TestCase {
   public void setUp() {
     manager =
         (new XMLImportManagerFactory()).create(new ParameterBlock(
-            "./testdata/test.xml", XMLImportManagerFactory.RESULT_FILE));
+            "./testdata/test.xml", XMLImportManagerFactory.RESULT_FILE), SimSystem.getRegistry().createContext());
   }
 
   public void testImport() {

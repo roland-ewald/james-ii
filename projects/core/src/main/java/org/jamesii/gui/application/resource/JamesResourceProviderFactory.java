@@ -88,7 +88,7 @@ public final class JamesResourceProviderFactory implements
 
       for (ResourceProviderFactory f : providerFactories) {
         try {
-          IResourceProvider provider = f.create(params);
+          IResourceProvider provider = f.create(params, SimSystem.getRegistry().createContext());
           addResourceProvider(provider);
         } catch (Throwable e) {
           SimSystem.report(Level.WARNING, null,

@@ -8,6 +8,7 @@ package org.jamesii.gui.visualization.chart.plot;
 
 import java.awt.Color;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory;
@@ -25,7 +26,7 @@ public class LinePlotFactory extends PlotFactory {
   public static final String STROKE = "stroke";
 
   @Override
-  public IColoredPlot create(ParameterBlock params) {
+  public IColoredPlot create(ParameterBlock params, Context context) {
     Color c =
         ParameterBlocks.getSubBlockValueOrDefault(params, COLOR, Color.red);
 

@@ -8,6 +8,7 @@ package org.jamesii.simspex.spdm.dataimport.xml;
 
 import org.jamesii.asf.spdm.dataimport.IDMDataImportManager;
 import org.jamesii.asf.spdm.dataimport.plugintype.DMDataImporterFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 
 
@@ -29,7 +30,7 @@ public class XMLImportManagerFactory extends DMDataImporterFactory {
   public static final String RESULT_FILE = "ResultFile";
 
   @Override
-  public IDMDataImportManager create(ParameterBlock params) {
+  public IDMDataImportManager create(ParameterBlock params, Context context) {
     return new XMLImportManager((String) params.getSubBlockValue(RESULT_FILE));
   }
 

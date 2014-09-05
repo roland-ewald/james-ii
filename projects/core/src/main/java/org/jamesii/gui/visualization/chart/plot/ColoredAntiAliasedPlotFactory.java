@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.gui.visualization.chart.plot.plugintype.PlotFactory;
@@ -25,7 +26,7 @@ public class ColoredAntiAliasedPlotFactory extends PlotFactory {
   public static final String PLOT = "plot";
 
   @Override
-  public IColoredPlot create(ParameterBlock params) {
+  public IColoredPlot create(ParameterBlock params, Context context) {
     String t = ParameterBlocks.getSubBlockValue(params, PLOT);
     IColoredPlot p = null;
 
@@ -33,7 +34,7 @@ public class ColoredAntiAliasedPlotFactory extends PlotFactory {
       try {
         PlotFactory factory =
             (PlotFactory) SimSystem.getRegistry().getFactory(t);
-        p = factory.create(params.getSubBlock(PLOT));
+        p = factory.create(params.getSubBlock(PLOT), SimSystem.getRegistry().createContext());
       } catch (Exception e) {
         SimSystem.report(Level.WARNING, "Factory could not be loaded: " + t, e);
       }

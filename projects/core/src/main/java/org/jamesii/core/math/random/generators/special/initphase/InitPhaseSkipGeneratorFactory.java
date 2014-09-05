@@ -7,6 +7,7 @@
 package org.jamesii.core.math.random.generators.special.initphase;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.mersennetwister.MersenneTwister;
 import org.jamesii.core.math.random.generators.plugintype.RandomGeneratorFactory;
@@ -31,13 +32,12 @@ public class InitPhaseSkipGeneratorFactory extends RandomGeneratorFactory {
 
   /**
    * Creates a random number generator with the given parameters.
-   * 
-   * @param block
+ * @param block
    *          The parameter block to use. Should contain a “PRNG” parameter.
-   * @return An instance of the respective random number generator.
+ * @return An instance of the respective random number generator.
    */
   @Override
-  public IRandom create(ParameterBlock block) {
+  public IRandom create(ParameterBlock block, Context context) {
 
     RandomGeneratorFactory factory = null;
     try {
@@ -50,7 +50,7 @@ public class InitPhaseSkipGeneratorFactory extends RandomGeneratorFactory {
       SimSystem.report(e);
       return null;
     }
-    return new InitPhaseSkipGenerator(factory.create(block));
+    return new InitPhaseSkipGenerator(factory.create(block, SimSystem.getRegistry().createContext()));
   }
 
 }

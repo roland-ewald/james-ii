@@ -9,6 +9,7 @@ package org.jamesii.core.data.transmission.plugintype;
 import java.io.File;
 
 import org.jamesii.core.data.transmission.IObjectReceiver;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -47,7 +48,7 @@ public abstract class ObjectTransmissionFactory extends
   public abstract IObjectReceiver create(File file);
 
   @Override
-  public IObjectReceiver create(ParameterBlock parameters) {
+  public IObjectReceiver create(ParameterBlock parameters, Context context) {
     if (parameters.getValue() instanceof File) {
       return create((File) parameters.getValue());
     }

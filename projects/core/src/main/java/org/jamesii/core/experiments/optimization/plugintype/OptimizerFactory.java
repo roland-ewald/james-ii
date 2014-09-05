@@ -8,6 +8,7 @@ package org.jamesii.core.experiments.optimization.plugintype;
 
 import org.jamesii.core.experiments.optimization.Optimizer;
 import org.jamesii.core.experiments.optimization.parameter.OptimizationProblemDefinition;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -23,17 +24,15 @@ public abstract class OptimizerFactory extends Factory<Optimizer> {
 
   /**
    * Instantiate and return an optimiser.
-   * 
-   * @param problemDefinition
+ * @param problemDefinition
    *          the problem definition
-   * @param parameter
+ * @param parameter
    *          the parameter block, containing an
    *          {@link OptimizationProblemDefinition} as value
-   * 
-   * @return the optimiser
+ * @return the optimiser
    */
   @Override
-  public abstract Optimizer create(ParameterBlock parameter);
+  public abstract Optimizer create(ParameterBlock parameter, Context context);
 
   /**
    * Return true if this factory needs to implement IOrderedSet for factors.

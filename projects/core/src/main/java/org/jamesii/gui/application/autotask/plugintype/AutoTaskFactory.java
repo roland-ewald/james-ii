@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.application.autotask.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.autotask.IAutoTask;
@@ -25,12 +26,11 @@ public abstract class AutoTaskFactory extends Factory<IAutoTask> {
 
   /**
    * Creates autotask
-   * 
-   * @param params
+ * @param params
    *          parameters
-   * @return auto task
+ * @return auto task
    */
   @Override
-  public abstract IAutoTask create(ParameterBlock params);
+  public abstract IAutoTask create(ParameterBlock params, Context context);
 
 }

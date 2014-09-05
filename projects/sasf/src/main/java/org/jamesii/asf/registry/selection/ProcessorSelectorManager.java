@@ -94,7 +94,7 @@ public class ProcessorSelectorManager extends SelectorManager {
       if (featExtractFactory instanceof ModelFeatureExtractorFactory<?>
           && featExtractFactory.supportsParametersRuntime(parameters)) {
         ModelFeatureExtractor<?> featureExtractor =
-            ((ModelFeatureExtractorFactory<?>) featExtractFactory).create(null);
+            ((ModelFeatureExtractorFactory<?>) featExtractFactory).create(null, SimSystem.getRegistry().createContext());
         // If applicable, use it to generate features
         features.putAll(featureExtractor.extractModelFeaturesRuntime(model));
       }

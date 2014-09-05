@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.observe.listener;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.observe.listener.plugintype.ObserverListenerFactory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -25,7 +26,7 @@ public class DefaultObserverListenerFactory extends ObserverListenerFactory {
   private static final long serialVersionUID = 1L;
 
   @Override
-  public IObserverListener create(ParameterBlock parameter) {
+  public IObserverListener create(ParameterBlock parameter, Context context) {
     return new DefaultObserverListener();
   }
 

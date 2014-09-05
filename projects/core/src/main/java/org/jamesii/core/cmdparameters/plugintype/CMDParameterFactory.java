@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.cmdparameters.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -24,13 +25,11 @@ public abstract class CMDParameterFactory extends Factory<Object> implements
 
   /**
    * Creates the.
-   * 
-   * @param params
+ * @param params
    *          the params
-   * 
-   * @return the object
+ * @return the object
    */
   @Override
-  public abstract Object create(ParameterBlock params);
+  public abstract Object create(ParameterBlock params, Context context);
 
 }

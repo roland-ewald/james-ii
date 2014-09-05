@@ -80,15 +80,13 @@ public abstract class AbstractFactory<F extends Factory<?>> extends Factory<F> {
   /**
    * An abstract factory returns a factory to be used for creating the instances
    * to be used.
-   * 
-   * @param parameter
+ * @param parameter
    *          parameter. May contain additional information used by one of the
    *          criteria for the selection of the factory to be returned
-   * 
-   * @return a factory for the creation of an instance of a certain object type
+ * @return a factory for the creation of an instance of a certain object type
    */
   @Override
-  public F create(ParameterBlock parameter) {
+  public F create(ParameterBlock parameter, Context context) {
 
     List<F> facs = getFactoryList(parameter);
 

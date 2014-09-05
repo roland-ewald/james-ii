@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.mersennetwister.MersenneTwisterGeneratorFactory;
 import org.jamesii.core.math.random.generators.plugintype.AbstractRandomGeneratorFactory;
@@ -112,7 +113,7 @@ public class PreDefinedSeedsRandGenerator implements IRNGGenerator {
     }
     ParameterBlock parameters = rngFactory.getParameters().getCopy();
     parameters.addSubBl(AbstractRandomGeneratorFactory.SEED, nextSeed);
-    return rngFactory.getFactoryInstance().create(parameters);
+    return rngFactory.getFactoryInstance().create(parameters, SimSystem.getRegistry().createContext());
   }
 
   @Override

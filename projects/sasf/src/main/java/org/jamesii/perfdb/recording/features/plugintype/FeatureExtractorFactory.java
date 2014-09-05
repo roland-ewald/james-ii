@@ -6,6 +6,7 @@
  */
 package org.jamesii.perfdb.recording.features.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.IParameterFilterFactory;
 import org.jamesii.core.parameters.ParameterBlock;
@@ -28,14 +29,12 @@ public abstract class FeatureExtractorFactory extends
 
   /**
    * Create feature extractor.
-   * 
-   * @param params
+ * @param params
    *          the parameters for creation
-   * 
-   * @return the created feature extractor
+ * @return the created feature extractor
    */
   @Override
-  public abstract IFeatureExtractor<?> create(ParameterBlock params);
+  public abstract IFeatureExtractor<?> create(ParameterBlock params, Context context);
 
   /**
    * Get name of the feature to be extracted.

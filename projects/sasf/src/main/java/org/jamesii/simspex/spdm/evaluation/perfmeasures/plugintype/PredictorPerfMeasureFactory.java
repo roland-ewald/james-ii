@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.spdm.evaluation.perfmeasures.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.simspex.spdm.evaluation.perfmeasures.IPredictorPerformanceMeasure;
@@ -25,12 +26,11 @@ public abstract class PredictorPerfMeasureFactory extends
 
   /**
    * Creates performance measurement for predictor.
-   * 
-   * @param params
+ * @param params
    *          parameters for initialisation
-   * @return predictor performance measure
+ * @return predictor performance measure
    */
   @Override
-  public abstract IPredictorPerformanceMeasure create(ParameterBlock params);
+  public abstract IPredictorPerformanceMeasure create(ParameterBlock params, Context context);
 
 }

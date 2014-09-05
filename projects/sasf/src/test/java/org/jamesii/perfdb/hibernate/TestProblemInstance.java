@@ -9,8 +9,6 @@ package org.jamesii.perfdb.hibernate;
 
 import org.hibernate.Session;
 import org.jamesii.core.math.random.generators.java.JavaRandomGeneratorFactory;
-import org.jamesii.perfdb.hibernate.ProblemDefinition;
-import org.jamesii.perfdb.hibernate.ProblemInstance;
 
 /**
  * Test for {@link ProblemInstance}.

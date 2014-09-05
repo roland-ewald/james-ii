@@ -8,6 +8,7 @@ package org.jamesii.asf.spdm.generators.plugintype;
 
 import org.jamesii.asf.spdm.dataimport.PerformanceTuple;
 import org.jamesii.asf.spdm.generators.preprocess.IDMDataPreProcessor;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -76,7 +77,7 @@ public abstract class PerformancePredictorGeneratorFactory extends
   }
 
   @Override
-  public IPerformancePredictorGenerator create(ParameterBlock parameters) {
+  public IPerformancePredictorGenerator create(ParameterBlock parameters, Context context) {
     return createPredictorGenerator(parameters, null);
   }
 

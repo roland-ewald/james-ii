@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.test.reports.comparator;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.test.reports.StatisticalMeasureReport;
 import org.jamesii.core.test.reports.comparator.plugintype.AbstractTestReportComparatorFactory;
@@ -26,7 +27,7 @@ public class StatisticalMeasureComparatorFactory extends
   private static final long serialVersionUID = -8616442331873218794L;
 
   @Override
-  public ITestReportComparator create(ParameterBlock params) {
+  public ITestReportComparator create(ParameterBlock params, Context context) {
     return new StatisticalMeasureComparator();
   }
 

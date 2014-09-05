@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.math.statistics.tests.wilcoxon;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.math.statistics.tests.IPairedTest;
 import org.jamesii.core.math.statistics.tests.plugintype.AbstractPairedTestFactory;
 import org.jamesii.core.math.statistics.tests.plugintype.PairedTestFactory;
@@ -26,7 +27,7 @@ public class WilcoxonRankSumTestFactory extends PairedTestFactory {
   private static final long serialVersionUID = 8806658895945057716L;
 
   @Override
-  public IPairedTest create(ParameterBlock parameter) {
+  public IPairedTest create(ParameterBlock parameter, Context context) {
     return new WilcoxonRankSumTest();
   }
 

@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.application.resource;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.application.resource.plugintype.ResourceProviderFactory;
 
@@ -24,7 +25,7 @@ public class IconResourceProviderFactory extends ResourceProviderFactory {
   private static final long serialVersionUID = 4182190479198660118L;
 
   @Override
-  public IResourceProvider create(ParameterBlock params) {
+  public IResourceProvider create(ParameterBlock params, Context context) {
     return IconResourceProvider.getInstance();
   }
 

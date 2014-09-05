@@ -7,6 +7,7 @@
 package org.jamesii.core.util.eventset.plugintype;
 
 import org.jamesii.core.data.report.IReport;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.eventset.IEventQueue;
@@ -36,7 +37,7 @@ public abstract class EventQueueFactory extends Factory<IEventQueue<?, Double>> 
       ParameterBlock parameter);
 
   @Override
-  public IEventQueue<?, Double> create(ParameterBlock parameter) {
+  public IEventQueue<?, Double> create(ParameterBlock parameter, Context context) {
     return createDirect(parameter);
   }
 

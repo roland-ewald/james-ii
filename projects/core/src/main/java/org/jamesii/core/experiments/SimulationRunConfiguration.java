@@ -234,7 +234,7 @@ public class SimulationRunConfiguration implements
       // If data storage factory could be instantiated, use it to create a data
       // storage
       if (dsFactory != null) {
-        IDataStorage dataStorage = dsFactory.create(dataStorageParameters);
+        IDataStorage dataStorage = dsFactory.create(dataStorageParameters, SimSystem.getRegistry().createContext());
         dataStorage.setExperimentID(experimentID);
         dataStorage.setConfigurationID(experimentID, configurationID);
         dataStorage.setComputationTaskID(experimentID, configurationID,
@@ -518,7 +518,7 @@ public class SimulationRunConfiguration implements
     SimulationResourceAllocatorFactory sraf =
         SimSystem.getRegistry().getFactory(
             AbstractSimulationResourceAllocatorFactory.class, allocParams);
-    return sraf.create(allocParams);
+    return sraf.create(allocParams, SimSystem.getRegistry().createContext());
   }
 
   @Override

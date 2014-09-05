@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.jamesii.core.distributed.partitioner.infrastructureanalyzer.AbstractInfrasctructureAnalyzer;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -52,7 +53,7 @@ public abstract class InfrastructureAnalyzerFactory extends
       List<ISimulationServer> resources);
 
   @Override
-  public AbstractInfrasctructureAnalyzer create(ParameterBlock parameters) {
+  public AbstractInfrasctructureAnalyzer create(ParameterBlock parameters, Context context) {
     return create((List<ISimulationServer>) getParameter("RESOURCES",
         parameters));
   }

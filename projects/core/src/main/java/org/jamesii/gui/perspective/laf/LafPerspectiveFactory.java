@@ -6,6 +6,7 @@
  */
 package org.jamesii.gui.perspective.laf;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.gui.perspective.IPerspective;
 import org.jamesii.gui.perspective.plugintype.PerspectiveFactory;
@@ -25,7 +26,7 @@ public class LafPerspectiveFactory extends PerspectiveFactory {
   private static final long serialVersionUID = -6063710384240993228L;
 
   @Override
-  public IPerspective create(ParameterBlock params) {
+  public IPerspective create(ParameterBlock params, Context context) {
     return new LafPerspective();
   }
 

@@ -6,12 +6,11 @@
  */
 package org.jamesii.perfdb.hibernate;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.data.DBConnectionData;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.perfdb.IPerformanceDatabase;
 import org.jamesii.perfdb.PerfDBTest;
-import org.jamesii.perfdb.hibernate.HibernatePerfDBFactory;
-import org.jamesii.perfdb.hibernate.Performance;
 import org.jamesii.perfdb.plugintype.PerfDBFactory;
 
 
@@ -28,7 +27,7 @@ public class HibernatePerfDBTest extends PerfDBTest {
       throws Exception {
     IPerformanceDatabase perfDB = (new HibernatePerfDBFactory())
         .create(new ParameterBlock(dbConn,
-            PerfDBFactory.CONNECTION_DATA));
+            PerfDBFactory.CONNECTION_DATA), SimSystem.getRegistry().createContext());
     perfDB.open();
     return perfDB;
   }

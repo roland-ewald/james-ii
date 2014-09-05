@@ -11,6 +11,7 @@ import org.jamesii.core.data.experiment.read.plugintype.AbstractExperimentReader
 import org.jamesii.core.data.experimentsuite.IExperimentSuiteReader;
 import org.jamesii.core.data.experimentsuite.filesystem.ExperimentSuiteFileReaderWriter;
 import org.jamesii.core.data.experimentsuite.read.plugintype.ExperimentSuiteFileReaderFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 
@@ -37,7 +38,7 @@ public class ExpSuiteReaderFSFactory extends ExperimentSuiteFileReaderFactory {
   }
 
   @Override
-  public IExperimentSuiteReader create(ParameterBlock param) {
+  public IExperimentSuiteReader create(ParameterBlock param, Context context) {
     return new ExperimentSuiteFileReaderWriter();
   }
 

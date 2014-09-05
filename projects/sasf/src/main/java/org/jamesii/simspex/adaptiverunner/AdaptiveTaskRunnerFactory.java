@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import org.jamesii.SimSystem;
 import org.jamesii.core.experiments.taskrunner.ITaskRunner;
 import org.jamesii.core.experiments.taskrunner.parallel.ParallelComputationTaskRunnerFactory;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.observe.IObserver;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
@@ -58,7 +59,7 @@ public class AdaptiveTaskRunnerFactory extends
   public static final String POLICY = "MinBanditPolicy";
 
   @Override
-  public ITaskRunner create(ParameterBlock params) {
+  public ITaskRunner create(ParameterBlock params, Context context) {
     AdaptiveComputationTaskRunner asr = null;
     try {
       ParameterBlock policyParameters =

@@ -7,6 +7,7 @@
 package org.jamesii.core.experiments.replication.plugintype;
 
 import org.jamesii.core.experiments.replication.IReplicationCriterion;
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -23,13 +24,11 @@ public abstract class RepCriterionFactory extends
 
   /**
    * Creates replication criterion.
-   * 
-   * @param params
+ * @param params
    *          the parameters
-   * 
-   * @return newly created replication criterion
+ * @return newly created replication criterion
    */
   @Override
-  public abstract IReplicationCriterion create(ParameterBlock params);
+  public abstract IReplicationCriterion create(ParameterBlock params, Context context);
 
 }

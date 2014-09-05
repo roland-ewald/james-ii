@@ -276,7 +276,7 @@ public class SimulationServer extends SimulationHost implements
     ModelReaderFactory modelReaderFactory =
         SimSystem.getRegistry().getFactory(AbstractModelReaderFactory.class,
             config.getAbsModelReaderFactoryParams());
-    modelReader = modelReaderFactory.create(config.getModelReaderParams());
+    modelReader = modelReaderFactory.create(config.getModelReaderParams(), SimSystem.getRegistry().createContext());
 
     // IDataStorage ds = config.createDataStorage(simID.id);
 
@@ -640,6 +640,6 @@ public class SimulationServer extends SimulationHost implements
   @Override
   public IRemoteCommunicationCenter getRemoteCommunicationCenter(
       IUniqueID uniqueID, ParameterBlock params) throws RemoteException {
-    return new CommunicationCenterFactory().create(null).getFirstValue();
+    return new CommunicationCenterFactory().create(null, SimSystem.getRegistry().createContext()).getFirstValue();
   }
 }

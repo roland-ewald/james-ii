@@ -6,6 +6,7 @@
  */
 package org.jamesii.simspex.util;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.data.storage.IDataStorage;
 import org.jamesii.core.data.storage.plugintype.DataStorageFactory;
 import org.jamesii.core.experiments.RunInformation;
@@ -67,7 +68,7 @@ public abstract class JamesSimDataProvider<D> implements IResultDataProvider<D> 
       } catch (Exception ex) {
         throw new IllegalArgumentException(ex);
       }
-      dataStorage = dsf.create(dsParameters);
+      dataStorage = dsf.create(dsParameters, SimSystem.getRegistry().createContext());
     }
   }
 
@@ -155,7 +156,7 @@ public abstract class JamesSimDataProvider<D> implements IResultDataProvider<D> 
     if (dataStorage != null) {
       return dataStorage;
     }
-    dataStorage = (dsFactory.newInstance()).create(dsParameters);
+    dataStorage = (dsFactory.newInstance()).create(dsParameters, SimSystem.getRegistry().createContext());
     dataStorage.setExperimentID(expID);
     dataStorage.setConfigurationID(expID, confID);
     dataStorage.setComputationTaskID(expID, confID, taskID.getId());

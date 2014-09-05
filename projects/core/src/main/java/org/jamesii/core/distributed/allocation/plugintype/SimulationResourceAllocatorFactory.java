@@ -6,6 +6,7 @@
  */
 package org.jamesii.core.distributed.allocation.plugintype;
 
+import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
 
@@ -24,14 +25,12 @@ public abstract class SimulationResourceAllocatorFactory extends
 
   /**
    * Creates a simulation resource allocator.
-   * 
-   * @param paramBlock
+ * @param paramBlock
    *          the parameter block
-   * 
-   * @return the simulation resource allocator
+ * @return the simulation resource allocator
    * 
    *         A simulation resource allocator.
    */
   @Override
-  public abstract ISimulationResourceAllocator create(ParameterBlock paramBlock);
+  public abstract ISimulationResourceAllocator create(ParameterBlock paramBlock, Context context);
 }

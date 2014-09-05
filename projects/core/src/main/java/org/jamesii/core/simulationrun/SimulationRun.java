@@ -252,7 +252,7 @@ public class SimulationRun extends NamedEntity implements ISimulationRun {
       }
     }
 
-    simRunStopPolicy = stopPolicyFactory.create(pb);
+    simRunStopPolicy = stopPolicyFactory.create(pb, SimSystem.getRegistry().createContext());
 
   }
 
