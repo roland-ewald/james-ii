@@ -9,9 +9,7 @@ package org.jamesii.core.factories;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
 
-import org.jamesii.SimSystem;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -30,11 +28,6 @@ public class Context {
 	private Context parent;
 
 	/**
-	 * The child contexts.
-	 */
-	private List<Context> children;
-
-	/**
 	 * Listeners of this context.
 	 */
 	private List<IContextListener> listenerList = new ArrayList<>();
@@ -47,7 +40,9 @@ public class Context {
 		for (IContextListener listener : listenerList) {
 			listener.createdEvent(object, Collections.unmodifiableList(hierarchy));
 		}
-		parent.createdEvent(object, hierarchy);
+		if (parent != null) {
+		  parent.createdEvent(object, hierarchy);
+		}
 	}
 	
 	/**
@@ -72,29 +67,34 @@ public class Context {
 		return listenerList.remove(listener);
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <O> O createInstance(String pluginType, ParameterBlock block,
-			Context context) {
-
-		Class<? extends AbstractFactory<Factory<?>>> abstractFactory = SimSystem
-				.getRegistry().getFactoryType(pluginType);
-
-		Factory<?> factory = SimSystem.getRegistry().getFactory(
-				abstractFactory, block);
-
-		O result = null;
-		if (factory != null) {
-			result = (O) factory.create(block, SimSystem.getRegistry().createContext());
-		}
-
-		SimSystem.report(Level.FINEST, "Created an instance of " + pluginType
-				+ " in the context " + context);
-
-		return result;
+	/**
+	 * Create a new instance with the given factory and parameters and context.
+	 */
+	public static <O> O createInstance(Factory<O> factory, ParameterBlock params, Context context) {
+	  O result = factory.create(params, context);
+	  context.createdEvent(result, new ArrayList<Context>());
+	  return result;
+	}
+	
+	/**
+	 * Create a sub context of this context and return it.
+	 */
+	public Context createSubContext() {
+	  return new Context(this);
+	}
+	
+	/**
+	 * Constructor which sets the parent to null.
+	 */
+	public Context() {
+	  this.parent = null;
 	}
 
-	public <O> O create(String pluginType, ParameterBlock block) {
-		return createInstance(pluginType, block, this);
+	/**
+	 * Constructor with the parent of the new context as parameter.
+	 */
+	public Context(Context parent) {
+	  this.parent = parent;
 	}
-
+	
 }
