@@ -68,6 +68,7 @@ import org.jamesii.core.util.collection.list.LinkedList;
  * @param <T>
  *          the type of the time / priority ordering
  */
+@Deprecated
 public class LinkedList2EventQueue<E, T extends Comparable<T>> extends
     AbstractCollectionEventQueue<E, T, LinkedList<Entry<E, T>>> {
 

@@ -29,6 +29,7 @@ import java.util.NoSuchElementException;
  * 
  * @param <E>
  */
+@Deprecated
 public class LinkedList<E> implements List<E>, Deque<E> {
 
   /**
@@ -722,7 +723,7 @@ public class LinkedList<E> implements List<E>, Deque<E> {
      */
     private Entry<E> cursor;
 
-    private LinkedList<E> list;
+    private final LinkedList<E> list;
 
     private int index;
 
@@ -846,7 +847,7 @@ public class LinkedList<E> implements List<E>, Deque<E> {
     /**
      * The reference to the list we are iterating on.
      */
-    private LinkedList<E> list;
+    private final LinkedList<E> list;
 
     public DecIter(LinkedList<E> list) {
       this.list = list;

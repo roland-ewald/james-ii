@@ -13,6 +13,7 @@ import junit.framework.TestCase;
  * @author Jan Himmelspach
  * 
  */
+@Deprecated
 public class LinkedListTest extends TestCase {
 
   public void testSize() {
