@@ -156,7 +156,10 @@ public abstract class Factory<I> extends NamedEntity {
   }
 
   /**
-   * Creates an object of the type this factory has been created for.
+   * Creates an object of the type this factory has been created for. If context
+   * is relevant (i.e. not <code>null</code>),
+   * {@link Context#createInstance(Factory, ParameterBlock, Context)} should be
+   * used instead of calling this method directly.
    * 
    * @param parameters
    *          the parameters

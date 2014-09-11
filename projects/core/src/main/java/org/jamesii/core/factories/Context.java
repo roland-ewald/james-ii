@@ -13,24 +13,24 @@ import java.util.List;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
- * Default implementation of the {@link IContext} interface to be used for
- * delegation.
- * 
+ * Contexts are used in factories to determine the context in which an object is
+ * being created. This makes it easier to observe dependencies between objects
+ * (which object created which).
  * 
  * @author Jan Himmelspach
- * 
+ * @author Tobias Helms
  */
 public class Context {
 
 	/**
 	 * The parent context.
 	 */
-	private Context parent;
+	private final Context parent;
 
 	/**
 	 * Listeners of this context.
 	 */
-	private List<IContextListener> listenerList = new ArrayList<>();
+	private final List<IContextListener> listenerList = new ArrayList<>();
 
 	/**
 	 * A new context and object is created. Inform all listeners and notify the parent context.
