@@ -18,6 +18,7 @@ import java.util.List;
  * 
  *         10.05.2007
  */
+@Deprecated
 public interface IDataSource {
 
   /**

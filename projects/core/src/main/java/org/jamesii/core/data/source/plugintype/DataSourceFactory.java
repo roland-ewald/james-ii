@@ -17,6 +17,7 @@ import org.jamesii.core.parameters.ParameterBlock;
  * @author Roland Ewald
  * 
  */
+@Deprecated
 public abstract class DataSourceFactory extends Factory<IDataSource> {
 
   /** The serialization ID. */

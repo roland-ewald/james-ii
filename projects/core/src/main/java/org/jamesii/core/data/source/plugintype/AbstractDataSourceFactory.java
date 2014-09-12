@@ -15,6 +15,7 @@ import org.jamesii.core.factories.AbstractFactory;
  * 
  *         10.05.2007
  */
+@Deprecated
 public class AbstractDataSourceFactory extends
     AbstractFactory<DataSourceFactory> {
 
