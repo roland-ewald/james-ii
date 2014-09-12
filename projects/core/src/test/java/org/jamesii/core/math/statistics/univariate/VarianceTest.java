@@ -9,11 +9,9 @@ package org.jamesii.core.math.statistics.univariate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jamesii.core.math.statistics.univariate.Analysis;
-import org.jamesii.core.math.statistics.univariate.Variance;
-import org.jamesii.core.util.misc.Pair;
-
 import junit.framework.TestCase;
+
+import org.jamesii.core.util.misc.Pair;
 
 /**
  * @author Jan Himmelspach *
@@ -113,7 +111,7 @@ public class VarianceTest extends TestCase {
     assertTrue((Double.compare(Variance.varianceTwoPass(asList(d1)), 0) == 0));
 
     assertTrue((Double.compare(Variance.variance(asList(d1)), 0) == 0));
-    assertEquals(new Analysis().compute(d1).getVariance(),
+    assertEquals(Analysis.compute(d1).getVariance(),
         Variance.variance(d1), 0.0001);
 
     double[] d2 = { 1., 1., 1., 1., 1. };
@@ -127,7 +125,7 @@ public class VarianceTest extends TestCase {
 
     assertTrue((Double.compare(Variance.variance(asList(d2)), 0) == 0));
 
-    assertEquals(new Analysis().compute(d2).getVariance(),
+    assertEquals(Analysis.compute(d2).getVariance(),
         Variance.variance(d2), 0.0001);
 
     double[] d3 = { 1., 1., 1., 1., 1., 100. };
@@ -143,12 +141,12 @@ public class VarianceTest extends TestCase {
     assertTrue((Double.compare(Variance.variance(asList(d3)), 0) != 0));
     assertTrue((Double.compare(Variance.variance(asList(d3)), 1633.5) == 0));
 
-    assertEquals(new Analysis().compute(d3).getVariance(),
+    assertEquals(Analysis.compute(d3).getVariance(),
         Variance.variance(d3), 0.0001);
 
     // large values which only differs slightly
     double[] d4 = { 10e9 + 4, 10e9 + 7, 10e9 + 13, 10e9 + 16 };
-    assertEquals(new Analysis().compute(d4).getVariance(),
+    assertEquals(Analysis.compute(d4).getVariance(),
         Variance.variance(d4), 0.0001);
     assertEquals(30, Variance.variance(d4), 0.0001);
 
@@ -203,9 +201,9 @@ public class VarianceTest extends TestCase {
     assertTrue((Double.compare(result.getFirstValue(), 0) == 0));
     assertTrue((Double.compare(result.getSecondValue(), 1.0) == 0));
 
-    assertEquals(new Analysis().compute(d1).getVariance(),
+    assertEquals(Analysis.compute(d1).getVariance(),
         result.getFirstValue(), 0.0001);
-    assertEquals(new Analysis().compute(d1).getMean(), result.getSecondValue(),
+    assertEquals(Analysis.compute(d1).getMean(), result.getSecondValue(),
         0.0001);
 
     result = Variance.varianceAndAM(asList(d1));
@@ -217,17 +215,17 @@ public class VarianceTest extends TestCase {
     result = Variance.varianceAndAM(d2);
     assertTrue((Double.compare(result.getFirstValue(), 0) == 0));
     assertTrue((Double.compare(result.getSecondValue(), 1.0) == 0));
-    assertEquals(new Analysis().compute(d2).getVariance(),
+    assertEquals(Analysis.compute(d2).getVariance(),
         result.getFirstValue(), 0.0001);
-    assertEquals(new Analysis().compute(d2).getMean(), result.getSecondValue(),
+    assertEquals(Analysis.compute(d2).getMean(), result.getSecondValue(),
         0.0001);
 
     result = Variance.varianceAndAM(asList(d2));
     assertTrue((Double.compare(result.getFirstValue(), 0) == 0));
     assertTrue((Double.compare(result.getSecondValue(), 1.0) == 0));
-    assertEquals(new Analysis().compute(d2).getVariance(),
+    assertEquals(Analysis.compute(d2).getVariance(),
         result.getFirstValue(), 0.0001);
-    assertEquals(new Analysis().compute(d2).getMean(), result.getSecondValue(),
+    assertEquals(Analysis.compute(d2).getMean(), result.getSecondValue(),
         0.0001);
 
     double[] d3 = { 1., 1., 1., 1., 1., 100. };
@@ -237,9 +235,9 @@ public class VarianceTest extends TestCase {
     assertTrue((Double.compare(result.getFirstValue(), 0) != 0));
     assertTrue((Double.compare(result.getFirstValue(), 1633.5) == 0));
     assertTrue((Double.compare(result.getSecondValue(), 17.5) == 0));
-    assertEquals(new Analysis().compute(d3).getVariance(),
+    assertEquals(Analysis.compute(d3).getVariance(),
         result.getFirstValue(), 0.0001);
-    assertEquals(new Analysis().compute(d3).getMean(), result.getSecondValue(),
+    assertEquals(Analysis.compute(d3).getMean(), result.getSecondValue(),
         0.0001);
 
     result = Variance.varianceAndAM(asList(d3));

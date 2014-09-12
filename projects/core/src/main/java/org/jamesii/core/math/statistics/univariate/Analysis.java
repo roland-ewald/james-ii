@@ -23,12 +23,14 @@ import java.util.List;
  * 
  * @author Jan Himmelspach
  */
-public class Analysis {
+public final class Analysis {
 
+  private Analysis() {}
+  
   /**
    * The Class StatResult.
    */
-  public class StatResult {
+  public static class StatResult {
 
     /**
      * Get the value of the min.
@@ -218,7 +220,7 @@ public class Analysis {
 
   }
 
-  public StatResult compute(List<Double> x) {
+  public static StatResult compute(List<Double> x) {
     double[] x2 = new double[x.size()];
     int c = 0;
     for (double d : x) {
@@ -236,7 +238,7 @@ public class Analysis {
    * 
    * @return the stat result
    */
-  public StatResult compute(double[] x) {
+  public static StatResult compute(double[] x) {
     StatResult result = new StatResult();
 
     // sorting is useful here (we should start adding small numbers, range

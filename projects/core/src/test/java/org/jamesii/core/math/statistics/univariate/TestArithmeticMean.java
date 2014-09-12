@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jamesii.core.math.statistics.StatisticsTest;
-import org.jamesii.core.math.statistics.univariate.Analysis;
-import org.jamesii.core.math.statistics.univariate.ArithmeticMean;
 
 /**
  * The Class TestArithmeticMean.
@@ -85,8 +83,8 @@ public class TestArithmeticMean extends StatisticsTest {
     assertEquals(ArithmeticMean.arithmeticMean(new double[] { 42.0 }), 42.0);
 
     assertEquals(ArithmeticMean.arithmeticMean(new double[] { 42.0 }),
-        new Analysis().compute(new double[] { 42.0 }).getMean(), EPSILON);
-    assertEquals(ArithmeticMean.arithmeticMean(a), new Analysis().compute(a)
+        Analysis.compute(new double[] { 42.0 }).getMean(), EPSILON);
+    assertEquals(ArithmeticMean.arithmeticMean(a), Analysis.compute(a)
         .getMean(), EPSILON);
   }
 
@@ -113,7 +111,7 @@ public class TestArithmeticMean extends StatisticsTest {
 
     isWithinEpsilon(ArithmeticMean.arithmeticMeanLarge(a), -10.5425);
 
-    assertEquals(ArithmeticMean.arithmeticMean(a), new Analysis().compute(a)
+    assertEquals(ArithmeticMean.arithmeticMean(a), Analysis.compute(a)
         .getMean(), EPSILON);
 
     assertEquals(ArithmeticMean.arithmeticMeanLarge(new double[] {}), 0.0);

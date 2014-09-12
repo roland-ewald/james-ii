@@ -7,8 +7,6 @@
 package org.jamesii.core.math.statistics.univariate;
 
 import org.jamesii.core.math.statistics.StatisticsTest;
-import org.jamesii.core.math.statistics.univariate.Analysis;
-import org.jamesii.core.math.statistics.univariate.Skewness;
 
 /**
  * @author Jan Himmelspach *
@@ -36,12 +34,11 @@ public class SkewnessTest extends StatisticsTest {
    * Test skewness double.
    */
   public void testSkewnessDouble() {
-
     // cross check
-    assertEquals(Skewness.skewness(new double[] { 42.0 }), new Analysis()
+    assertEquals(Skewness.skewness(new double[] { 42.0 }), Analysis
         .compute(new double[] { 42.0 }).getSkewness(), EPSILON);
     double[] d3 = { 1., 4., 1., 1., 2., 1. };
-    assertEquals(Skewness.skewness(d3), new Analysis().compute(d3)
+    assertEquals(Skewness.skewness(d3), Analysis.compute(d3)
         .getSkewness(), EPSILON);
   }
 

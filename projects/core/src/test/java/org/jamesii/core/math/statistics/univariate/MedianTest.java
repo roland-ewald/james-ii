@@ -64,12 +64,12 @@ public class MedianTest extends StatisticsTest {
     double[] test = new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7 };
     assertEquals(4.4, Median.medianFromSorted(test));
 
-    assertEquals(4.4, new Analysis().compute(test).getMedian(), EPSILON);
+    assertEquals(4.4, Analysis.compute(test).getMedian(), EPSILON);
 
     test = new double[] { 1.1, 2.2, 3, 4, 5.2, 6.4 };
     assertEquals(3.5, Median.medianFromSorted(test));
 
-    assertEquals(3.5, new Analysis().compute(test).getMedian(), EPSILON);
+    assertEquals(3.5, Analysis.compute(test).getMedian(), EPSILON);
   }
 
   /** Tests the {@link Median#medianFromSorted(float[])} method. */
