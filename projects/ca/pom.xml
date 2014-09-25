@@ -34,6 +34,7 @@
 		<dependency>
 			<groupId>org.jamesii.private</groupId>
 			<artifactId>annotation-processing</artifactId>
+			<version>0.9.6</version>
 		</dependency>
 	</dependencies>
 
