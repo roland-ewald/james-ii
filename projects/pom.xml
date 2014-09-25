@@ -58,7 +58,13 @@
         <version>5.1.17</version>
         <scope>runtime</scope>
       </dependency>
-			
+	
+	  <dependency>
+		<groupId>org.antlr</groupId>
+		<artifactId>antlr</artifactId>
+		<version>3.2</version>
+	  </dependency>
+	
       <dependency>
         <groupId>org.freemarker</groupId>
         <artifactId>freemarker</artifactId>

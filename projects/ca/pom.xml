@@ -30,7 +30,6 @@
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr</artifactId>
-			<version>3.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jamesii.private</groupId>
