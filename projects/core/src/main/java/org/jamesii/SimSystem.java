@@ -93,7 +93,7 @@ public final class SimSystem {
   private static long uidCounter = -1;
 
   /** The (minor) version of the simulation system. */
-  public static final String VERSION = "0.9.7";
+  public static final String VERSION = "0.9.8";
 
   /**
    * Helper variable to ensure that a "unique" name is not reported back more
