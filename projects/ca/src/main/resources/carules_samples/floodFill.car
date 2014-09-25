@@ -1,0 +1,9 @@
+@caversion 1;
+dimensions 2;
+neighborhood neumann;
+state BACKGROUND, FILLCOLOR, HELPER;
+
+rule {BACKGROUND} : HELPER{1,} -> HELPER;
+
+rule {HELPER} :  -> FILLCOLOR;
+

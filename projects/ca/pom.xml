@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ca</artifactId>
+	<packaging>jar</packaging>
+	<name>Cellular Automata Formalism</name>
+
+	<parent>
+		<groupId>org.jamesii</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.9.7-SNAPSHOT</version>
+		<relativePath>../.</relativePath>
+	</parent>
+
+	<dependencies>
+
+		<!-- Internal -->
+		<dependency>
+			<groupId>org.jamesii</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jamesii</groupId>
+			<artifactId>core</artifactId>
+			<version>0.9.7-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jamesii.private</groupId>
+			<artifactId>annotation-processing</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

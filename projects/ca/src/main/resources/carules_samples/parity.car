@@ -1,0 +1,42 @@
+/**
+ Parity CA model.
+
+ Nice start pattern:
+
+     XXXXX
+     XXXXX
+     XXXXX
+     XXXXX
+     XXXXX
+
+*/
+@caversion 1;
+
+//2D parity CA model
+dimensions 2;
+
+//available states
+state DEAD, ALIVE;
+
+/*
+ if current state is ALIVE and the 
+ neighborhood contains either 1 or 
+ 3 ALIVE cells which in return would 
+ result in an even number of ALIVE 
+ cells in neighborhood including 
+ current cell and the cell would 
+ turn into DEAD
+*/
+rule{ALIVE} : ALIVE{1} | ALIVE{3} -> DEAD;
+
+
+/*
+ if current state is DEAD and the 
+ neighborhood contains either 1 or 
+ 3 ALIVE cells which in return would 
+ result in an odd number of ALIVE 
+ cells in neighborhood including 
+ current cell and the cell would 
+ turn into ALIVE
+*/
+rule{DEAD}  : ALIVE{1} | ALIVE{3} -> ALIVE;

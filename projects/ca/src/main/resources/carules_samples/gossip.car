@@ -1,0 +1,7 @@
+@caversion 1;
+
+dimensions 2;
+
+state DEAD, ALIVE;
+
+rule{DEAD} [0.5]:ALIVE{1,} -> ALIVE;

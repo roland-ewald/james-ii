@@ -1,0 +1,33 @@
+Example models - cellular automata
+################################### 
+
+Model (gameOfLife)
+-----
+  
+   - moore neighbourhood
+  
+file : gameOfLife.car
+
+nice start pattern
+
+    XX XX
+    XX XX
+     X X
+   X X X X
+   X X X X
+   XX   XX
+   
+Model (parity)
+-----
+   
+  - von neumann neighbourhood
+
+file:parity.car
+
+nice start pattern (to be placed in the middle of the grid)
+
+	xxxxx
+	xxxxx
+	xxxxx
+	xxxxx
+	xxxxx

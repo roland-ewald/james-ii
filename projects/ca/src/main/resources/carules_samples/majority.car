@@ -1,0 +1,10 @@
+@caversion 1;
+
+dimensions 2;
+
+neighborhood moore;
+
+state STATE1, STATE2;
+
+rule : STATE1{5,} -> STATE1;
+rule : STATE2{5,} -> STATE2;

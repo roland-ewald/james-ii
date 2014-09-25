@@ -1,0 +1,65 @@
+/** 
+ Wireworld CA model. Can be used to
+ simulate electric circuits.
+
+ Simple start patterns:
+
+ CLOCK:
+
+     CCTHCC CCCCCCCCCCCCCCCCC
+    C      C
+    C      C
+     CCCCCC
+
+
+ 2 DIODEs with CLOCK
+
+                        cC
+     CCTHCC CCCCCCCCCCCCC CCCCCCC
+    C      C   C        CC
+    C      C   C
+     CCCCCC    C
+               c        cc
+               ccccccccc ccccccc
+                        cc
+
+   - you can see the diode only lets 
+     electrons pass in one direction
+
+*/
+@caversion 1;
+/* 2D dimension of CA */
+dimensions 2;
+
+//the used neighborhood
+neighborhood moore;
+
+
+//available states
+state BLANK,
+
+//wire
+COPPER,
+
+//electron head
+HEAD,
+
+//electron tail
+TAIL;
+
+//the rules start here
+
+//BLANK stays BLANK
+rule{BLANK}  : -> BLANK;
+
+/*
+ COPPER turns into electron head if the
+ neighborhood contains 1 or 2 electron
+ heads
+*/
+rule{COPPER} : HEAD{1,2} -> HEAD;
+
+//HEAD always becomes TAIL
+rule{HEAD}   : -> TAIL ;
+//TAIL always becomes COPPER
+rule{TAIL}   : -> COPPER;

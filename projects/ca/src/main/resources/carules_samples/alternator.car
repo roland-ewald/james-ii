@@ -1,0 +1,9 @@
+@caversion 1;
+
+dimensions 2;
+
+state BLANK, ON, OFF;
+
+rule{BLANK}:->BLANK;
+rule{ON}:->OFF;
+rule{OFF}:->ON;
