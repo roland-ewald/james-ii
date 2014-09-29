@@ -6,15 +6,14 @@
  */
 package org.jamesii.gui.utils.objecteditor.property.editor;
 
+import javax.swing.*;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
-
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
 
 /**
  * Editor for {@link Double} properties.
- * 
+ *
  * @author Stefan Rybacki
  */
 public class DoublePropertyEditor extends AbstractPropertyEditor<Double> {
@@ -27,9 +26,13 @@ public class DoublePropertyEditor extends AbstractPropertyEditor<Double> {
   /**
    * The in place editing component.
    */
-  private JFormattedTextField field = new JFormattedTextField(
-      DecimalFormat.getInstance());
+  private JFormattedTextField field;
+
   {
+    NumberFormat format = DecimalFormat.getInstance();
+    format.setMaximumFractionDigits(20);
+    field = new JFormattedTextField(
+        format);
     field.setBorder(null);
   }
 
