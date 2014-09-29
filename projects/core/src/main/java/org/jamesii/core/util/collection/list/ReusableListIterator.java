@@ -10,12 +10,11 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.RandomAccess;
 
 /**
- * The Class ReusableArrayIterator.
- * 
  * This class provides a "reusable" iterator - thus the iterator can be used
- * more than once. If {@link #first} is called the iterator will jump back to
+ * more than once. If {@link #init()} is called the iterator will jump back to
  * the first entry.
  * 
  * This implementation does not make any copy of the underlying array list, and
@@ -24,22 +23,26 @@ import java.util.NoSuchElementException;
  * and of any potential modification. Thus one should only use this class if
  * performance is of very high importance, and only if it is sure to do so.
  * 
+ * Since the {@link #next()} method here used {@link List#get(int)} calls,
+ * performance will actually decrease if the list to be iterated over is not
+ * {@link RandomAccess}.
+ * 
  * @author Jan Himmelspach
  * @param <E>
+ *          Element type
  */
 public class ReusableListIterator<E> implements Iterator<E>, Serializable {
 
-  /** The Constant serialVersionUID. */
   static final long serialVersionUID = -6144199426035407640L;
 
   /** The current. */
   private int current = -1;
 
   /** The elements. */
-  private List<E> elements;
+  private final List<E> elements;
 
-  /** The elementscount. */
-  private int elementscount;
+  /** The elements count. */
+  private int numElements;
 
   /** The next. */
   private int next = -1;
@@ -53,26 +56,17 @@ public class ReusableListIterator<E> implements Iterator<E>, Serializable {
   public ReusableListIterator(List<E> elements) {
     this.elements = elements;
     if (elements != null) {
-      elementscount = elements.size();
+      numElements = elements.size();
     } else {
-      elementscount = -1;
+      numElements = -1;
     }
 
     next = 0;
   }
 
-  /**
-   * Reset the iterator.
-   */
-  public void first() {
-    current = 0;
-    next = 1;
-    // if (elementscount != ports.size())
-  }
-
   @Override
   public boolean hasNext() {
-    return (next < elementscount);
+    return (next < numElements);
   }
 
   /**
@@ -87,18 +81,16 @@ public class ReusableListIterator<E> implements Iterator<E>, Serializable {
   public E next() {
     current = next;
     next++;
-    if (current >= elementscount) {
-      throw new NoSuchElementException("");
+    if (current >= numElements) {
+      throw new NoSuchElementException();
     }
     return elements.get(current);
   }
 
   @Override
-  @Deprecated
   public void remove() {
-    System.out
-        .println("ERROR: Please use a private Iterator for deleting items");
-    // NOT IMPLEMENTED
+    throw new UnsupportedOperationException(
+        "ERROR: Please use a private Iterator for deleting items");
   }
 
-} // EOF
+}
