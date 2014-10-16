@@ -59,7 +59,10 @@ public abstract class AbstractDistribution implements IDistribution,
    * thus a simulation run is not repeatable!
    * 
    * @return a copy of the distribution
+   * @see #getSimilar(IRandom)
+   * @see #getRandom()
    */
+   @Deprecated
   public AbstractDistribution getSimilar() {
     return getSimilar(this.random);
   }

@@ -47,9 +47,9 @@ public interface IDistribution {
    * randomiser.
    * 
    * @param random
-   *          the randomiser to be used by the newly created instance
-   * 
-   * @return the similar
+   *          the random number generator to be used by the newly created
+   *          instance
+   * @return similar distribution
    */
   IDistribution getSimilar(IRandom random);
 }

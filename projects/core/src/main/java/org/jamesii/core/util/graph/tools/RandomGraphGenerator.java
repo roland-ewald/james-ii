@@ -32,13 +32,13 @@ import org.jamesii.core.util.graph.SimpleGraph;
 public class RandomGraphGenerator {
 
   /** The distribution with which we should generate degrees. */
-  private IDistribution degDistri;
+  private final IDistribution degDistri;
 
   /** The distribution with which we should generate edges. */
-  private IDistribution elDistri;
+  private final IDistribution elDistri;
 
   /** The nl distri. */
-  private IDistribution nlDistri;
+  private final IDistribution nlDistri;
 
   /**
    * Uses uniform distributions with degree [1,10], labels [0,1].
@@ -49,39 +49,8 @@ public class RandomGraphGenerator {
     dis.setLowerBorder(1d);
     dis.setUpperBorder(10d);
     degDistri = dis;
-    nlDistri = dis.getSimilar();
-    elDistri = dis.getSimilar();
-  }
-
-  /**
-   * Let u set edgeDistribution, others will be uniform.
-   * 
-   * @param degreeDistribution
-   *          the degree distribution
-   */
-  public RandomGraphGenerator(IDistribution degreeDistribution) {
-    IDistribution dis =
-        new UniformDistribution(SimSystem.getRNGGenerator().getNextRNG());
-    degDistri = degreeDistribution;
-    nlDistri = dis;
+    nlDistri = dis.getSimilar(dis.getRandom());
     elDistri = dis.getSimilar(dis.getRandom());
-  }
-
-  /**
-   * Let u set edge and node label distribution, edge label will be uniform.
-   * 
-   * @param degreeDistribution
-   *          Custom edge distribution, must give values >= 1 (ceiling is used)
-   * @param nodeLabelDistribution
-   *          Custom node label distribution or null to set constant one
-   */
-  public RandomGraphGenerator(IDistribution degreeDistribution,
-      IDistribution nodeLabelDistribution) {
-    IDistribution dis =
-        new UniformDistribution(SimSystem.getRNGGenerator().getNextRNG());
-    degDistri = degreeDistribution;
-    nlDistri = nodeLabelDistribution;
-    elDistri = dis;
   }
 
   /**
@@ -95,11 +64,14 @@ public class RandomGraphGenerator {
    *          Custom edge label distribution or null to set constant one
    */
   public RandomGraphGenerator(IDistribution degreeDistribution,
-      IDistribution nodeLabelDistribution,
-      IDistribution edgeLabelDistribution) {
+      IDistribution nodeLabelDistribution, IDistribution edgeLabelDistribution) {
     degDistri = degreeDistribution;
-    nlDistri = nodeLabelDistribution;
-    elDistri = edgeLabelDistribution;
+    nlDistri =
+        nodeLabelDistribution != null ? nodeLabelDistribution
+            : new ConstantDistribution();
+    elDistri =
+        edgeLabelDistribution != null ? edgeLabelDistribution
+            : new ConstantDistribution();
   }
 
   /**
@@ -130,7 +102,7 @@ public class RandomGraphGenerator {
   public <T extends ISimpleGraph> T getRandomSimpleGraph(T graph) {
     // lets give vertex labels
     for (Integer node : graph.getVertices()) {
-      graph.setLabel(node, nextDisVal(nlDistri));
+      graph.setLabel(node, nlDistri.getRandomNumber());
     }
 
     // generate edges
@@ -191,7 +163,7 @@ public class RandomGraphGenerator {
             // to predecessor or successor
             if (i > 0) {
               graph.addEdge(new AnnotatedEdge<>(nodeList.get(i), nodeList
-                  .get(i - 1), nextDisVal(elDistri)));
+                  .get(i - 1), elDistri.getRandomNumber()));
               System.out.println("Force edge from " + nodeList.get(i) + " to "
                   + nodeList.get(i - 1));
               nodeHasDeg.set(i - 1, nodeHasDeg.get(i - 1) + 1);
@@ -199,7 +171,7 @@ public class RandomGraphGenerator {
             }
             if (i < nodeList.size() - 1) {
               graph.addEdge(new AnnotatedEdge<>(nodeList.get(i), nodeList
-                  .get(i + 1), nextDisVal(elDistri)));
+                  .get(i + 1), elDistri.getRandomNumber()));
               System.out.println("Force edge from " + nodeList.get(i) + " to "
                   + nodeList.get(i + 1));
               nodeHasDeg.set(i + 1, nodeHasDeg.get(i + 1) + 1);
@@ -218,8 +190,8 @@ public class RandomGraphGenerator {
         // pick one randomly
         int partnerIndex = rnd.nextInt(possibleNeighbourIndices.size());
         graph.addEdge(new AnnotatedEdge<>(nodeList.get(i), nodeList
-            .get(possibleNeighbourIndices.get(partnerIndex)),
-            nextDisVal(elDistri)));
+            .get(possibleNeighbourIndices.get(partnerIndex)), elDistri
+            .getRandomNumber()));
 
         // update degrees
         nodeHasDeg.set(i, nodeHasDeg.get(i) + 1);
@@ -236,18 +208,26 @@ public class RandomGraphGenerator {
     return graph;
   }
 
-  /**
-   * Next dis val.
-   * 
-   * @param d
-   *          the d
-   * 
-   * @return the double
-   */
-  private double nextDisVal(IDistribution d) {
-    if (d == null) {
-      return 1d;
+  private static class ConstantDistribution implements IDistribution {
+
+    @Override
+    public double getRandomNumber() {
+      return 1.;
     }
-    return d.getRandomNumber();
+
+    @Override
+    public void setRandom(IRandom random) { /* No Op */
+    }
+
+    @Override
+    public IRandom getRandom() {
+      return null;
+    }
+
+    @Override
+    public IDistribution getSimilar(IRandom random) {
+      return this;
+    }
+
   }
 }
