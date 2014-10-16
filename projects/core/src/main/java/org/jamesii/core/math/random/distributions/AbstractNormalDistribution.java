@@ -6,7 +6,10 @@
  */
 package org.jamesii.core.math.random.distributions;
 
+import java.io.Serializable;
+
 import org.jamesii.core.math.random.generators.IRandom;
+import org.jamesii.core.math.random.generators.java.JavaRandom;
 
 /**
  * Superclass generalizing the (two) normal distributions already present.
@@ -25,7 +28,7 @@ import org.jamesii.core.math.random.generators.IRandom;
  * @date 10.02.2011
  * 
  */
-public abstract class AbstractNormalDistribution extends AbstractDistribution {
+public abstract class AbstractNormalDistribution implements IDistribution, Serializable {
 
   /** Serialization ID */
   private static final long serialVersionUID = -8156278759206169530L;
@@ -36,22 +39,20 @@ public abstract class AbstractNormalDistribution extends AbstractDistribution {
   /** Value mean. */
   private double mean;
 
+  private IRandom random;
+
   /**
    * @param seed
    */
   public AbstractNormalDistribution(long seed) {
-    super(seed);
-    setMean(0);
-    setDeviation(1);
+    this(new JavaRandom(seed));
   }
 
   /**
    * @param randomizer
    */
   public AbstractNormalDistribution(IRandom randomizer) {
-    super(randomizer);
-    setMean(0);
-    setDeviation(1);
+    this(randomizer,0.,1.);
   }
 
   /**
@@ -66,18 +67,25 @@ public abstract class AbstractNormalDistribution extends AbstractDistribution {
    */
   public AbstractNormalDistribution(IRandom randomizer, double mean,
       double deviation) {
-    super(randomizer);
+    setRandom(randomizer);
     setMean(mean);
     setDeviation(deviation);
   }
 
   /**
-   * Get deviation.
-   * 
-   * @return deviation
+   * @return the random
    */
-  public double getDeviation() {
-    return deviation;
+  @Override
+  public final IRandom getRandom() {
+    return random;
+  }
+
+  /**
+   * @param random the random to set
+   */
+  @Override
+  public final void setRandom(IRandom random) {
+    this.random = random;
   }
 
   /**
@@ -87,6 +95,15 @@ public abstract class AbstractNormalDistribution extends AbstractDistribution {
    */
   public final double getMean() {
     return mean;
+  }
+
+  /**
+   * Get deviation.
+   * 
+   * @return deviation
+   */
+  public double getDeviation() {
+    return deviation;
   }
 
   /**
@@ -121,7 +138,7 @@ public abstract class AbstractNormalDistribution extends AbstractDistribution {
    * 
    * @return The next normal-N(0,1)-distributed random number.
    */
-  protected abstract double getNextGaussian();
+  public abstract double getNextGaussian();
 
   /**
    * Gets the random number.

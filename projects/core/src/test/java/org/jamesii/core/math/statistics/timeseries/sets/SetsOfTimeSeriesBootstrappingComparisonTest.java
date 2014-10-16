@@ -12,14 +12,12 @@ import java.util.logging.Level;
 
 import org.jamesii.ChattyTestCase;
 import org.jamesii.SimSystem;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.NormalDistribution;
 import org.jamesii.core.math.random.distributions.UniformDistribution;
 import org.jamesii.core.math.statistics.tests.IPairedTest;
 import org.jamesii.core.math.statistics.tests.plugintype.PairedTestFactory;
 import org.jamesii.core.math.statistics.tests.wilcoxon.WilcoxonRankSumTestFactory;
-import org.jamesii.core.math.statistics.timeseries.sets.ITimeSeriesDistance;
-import org.jamesii.core.math.statistics.timeseries.sets.SetsOfTimeSeriesBootstrappingComparison;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -55,7 +53,7 @@ public class SetsOfTimeSeriesBootstrappingComparisonTest extends ChattyTestCase 
   private static final double HIGHER_MEAN_FOR_TESTING = 0.2;
 
   /** The default random distribution to be used. */
-  private static final AbstractDistribution DEFAULT_RANDOM_DIST =
+  private static final IDistribution DEFAULT_RANDOM_DIST =
       new NormalDistribution(SimSystem.getRNGGenerator().getNextRNG());
 
   /** The statistical test to be used. */
@@ -114,7 +112,7 @@ public class SetsOfTimeSeriesBootstrappingComparisonTest extends ChattyTestCase 
    *          series set
    */
   private void testWithRandomData(boolean shouldReject,
-      AbstractDistribution distribution1, AbstractDistribution distribution2) {
+      IDistribution distribution1, IDistribution distribution2) {
     List<List<Double>> sample1 =
         generateRandomTimeSeriesSampleSet(distribution1);
     List<List<Double>> sample2 =
@@ -158,7 +156,7 @@ public class SetsOfTimeSeriesBootstrappingComparisonTest extends ChattyTestCase 
    * @return the generated sample set
    */
   private List<List<Double>> generateRandomTimeSeriesSampleSet(
-      AbstractDistribution randomDist) {
+      IDistribution randomDist) {
     List<List<Double>> sampleSet = new ArrayList<>();
     for (int i = 0; i < SAMPLE_SIZE; i++) {
       sampleSet.add(generateTimeSeries(randomDist));
@@ -173,7 +171,7 @@ public class SetsOfTimeSeriesBootstrappingComparisonTest extends ChattyTestCase 
    *          the random distribution to be used
    * @return the generated time series
    */
-  private List<Double> generateTimeSeries(AbstractDistribution randomDist) {
+  private List<Double> generateTimeSeries(IDistribution randomDist) {
     List<Double> timeSeries = new ArrayList<>();
     for (int i = 0; i < DATA_POINTS; i++) {
       timeSeries.add(randomDist.getRandomNumber());

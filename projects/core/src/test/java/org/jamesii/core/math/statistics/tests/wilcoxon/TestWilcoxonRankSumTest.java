@@ -10,16 +10,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import junit.framework.TestCase;
+
 import org.jamesii.SimSystem;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
 import org.jamesii.core.math.random.distributions.BinomialDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.NormalDistribution;
 import org.jamesii.core.math.random.distributions.UniformDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
-import org.jamesii.core.math.statistics.tests.wilcoxon.WilcoxonRankSumTest;
 import org.jamesii.core.util.misc.Pair;
-
-import junit.framework.TestCase;
 
 /**
  * Test for Wilcoxon {@link WilcoxonRankSumTest}.
@@ -180,7 +179,7 @@ public class TestWilcoxonRankSumTest extends TestCase {
    *          the distribution used to generate the sample
    * @return the random sample
    */
-  private List<Double> getRandomSample(AbstractDistribution distribution) {
+  private List<Double> getRandomSample(IDistribution distribution) {
     List<Double> normalDistSample = new ArrayList<>();
     for (int i = 0; i < SAMPLE_SIZE; i++) {
       normalDistSample.add(distribution.getRandomNumber());

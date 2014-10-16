@@ -17,11 +17,11 @@ import java.util.TreeMap;
 
 import org.jamesii.ChattyTestCase;
 import org.jamesii.core.base.NamedEntity;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
 import org.jamesii.core.math.random.distributions.BimodalDistribution;
 import org.jamesii.core.math.random.distributions.BimodalDistributionFactory;
 import org.jamesii.core.math.random.distributions.CamelDistribution;
 import org.jamesii.core.math.random.distributions.CamelDistributionFactory;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.NegativeTriangularDistribution;
 import org.jamesii.core.math.random.distributions.NegativeTriangularDistributionFactory;
 import org.jamesii.core.math.random.distributions.NormalDistribution;
@@ -1212,7 +1212,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     upDown(nod);
   }
 
-  private <I extends AbstractDistribution> I getDistrib(
+  private <I extends IDistribution> I getDistrib(
       DistributionFactory<I> dFac) {
     Long seed = Math.round(Math.random() * (Long.MAX_VALUE - 1));
 
@@ -1222,7 +1222,7 @@ public abstract class EventQueueTest extends ChattyTestCase {
     return dFac.create(new ParameterBlock(), getRandom());
   }
 
-  private void upDown(AbstractDistribution distribution) {
+  private void upDown(IDistribution distribution) {
     IEventQueue<Object, Double> queue = internalCreate();
     // enqueue numOfInitialElements and get the time per enqueue operation
     for (int i = 1; i <= testElements; i++) {

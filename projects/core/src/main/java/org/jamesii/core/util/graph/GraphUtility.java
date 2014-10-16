@@ -9,15 +9,20 @@ package org.jamesii.core.util.graph;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.math.Calc;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
-import org.jamesii.core.math.random.distributions.NormalDistributionFactory;
+import org.jamesii.core.math.random.distributions.AbstractNormalDistribution;
+import org.jamesii.core.math.random.distributions.NormalDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
-import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.util.graph.trees.SimpleTree;
 
 /**
@@ -50,7 +55,7 @@ public class GraphUtility {
   private static List<String> usedColors = new ArrayList<>();
 
   /** Randomiser. */
-  private IRandom rand;
+  private final IRandom rand;
 
   /**
    * Writes a graph partition for partitioning with METIS.
@@ -444,10 +449,8 @@ public class GraphUtility {
       addEdge(tree, actualNodeNum, oldLevel.get(randomParent));
       nodesOnLevel.add(actualNodeNum);
       actualNodeNum++;
-      AbstractDistribution normDist =
-          (new NormalDistributionFactory()).create((new ParameterBlock()
-              .addSubBl(NormalDistributionFactory.MEAN, 0).addSubBl(
-              NormalDistributionFactory.DEVIATION, 1.0)), rand);
+      AbstractNormalDistribution normDist =
+          new NormalDistribution(rand, 0., 1.);
 
       for (int i : oldLevel) {
 

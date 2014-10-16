@@ -69,7 +69,7 @@ public class NormalDistributionBoxMuller extends AbstractNormalDistribution {
    * @return The next normal-distributed random number.
    */
   @Override
-  protected double getNextGaussian() {
+  public double getNextGaussian() {
     if (gotNextGaussian) {
       gotNextGaussian = false;
       return nextGaussian;
@@ -89,7 +89,7 @@ public class NormalDistributionBoxMuller extends AbstractNormalDistribution {
   }
 
   @Override
-  public AbstractDistribution getSimilar(IRandom newRandomizer) {
+  public IDistribution getSimilar(IRandom newRandomizer) {
     return new NormalDistributionBoxMuller(newRandomizer, getMean(),
         getDeviation());
   }

@@ -18,7 +18,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.jamesii.core.base.Entity;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.UniformDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.util.misc.Generics;
@@ -396,7 +396,7 @@ public final class RandomSampler extends Entity {
    * @return the comparable point
    */
   private static ComparableNumberPoint sampleDoublePoint(
-      AbstractDistribution[] distributions) {
+      IDistribution[] distributions) {
     Double[] sampledPoint = new Double[distributions.length];
     for (int i = 0; i < distributions.length; i++) {
       sampledPoint[i] = distributions[i].getRandomNumber();
@@ -413,7 +413,7 @@ public final class RandomSampler extends Entity {
    * @return the comparable point
    */
   private static ComparableNumberPoint sampleIntegerPoint(
-      AbstractDistribution[] distributions) {
+      IDistribution[] distributions) {
     Integer[] sampledPoint = new Integer[distributions.length];
     for (int i = 0; i < distributions.length; i++) {
       sampledPoint[i] = (int) distributions[i].getRandomNumber();

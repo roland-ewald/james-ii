@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.jamesii.SimSystem;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
 import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.UniformDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
@@ -95,9 +94,9 @@ public class RandomGraphGenerator {
    * @param edgeLabelDistribution
    *          Custom edge label distribution or null to set constant one
    */
-  public RandomGraphGenerator(AbstractDistribution degreeDistribution,
-      AbstractDistribution nodeLabelDistribution,
-      AbstractDistribution edgeLabelDistribution) {
+  public RandomGraphGenerator(IDistribution degreeDistribution,
+      IDistribution nodeLabelDistribution,
+      IDistribution edgeLabelDistribution) {
     degDistri = degreeDistribution;
     nlDistri = nodeLabelDistribution;
     elDistri = edgeLabelDistribution;

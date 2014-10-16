@@ -13,7 +13,7 @@ import org.jamesii.core.math.parsetree.INode;
 import org.jamesii.core.math.parsetree.Node;
 import org.jamesii.core.math.parsetree.ValueNode;
 import org.jamesii.core.math.parsetree.variables.IEnvironment;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.UniformDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.java.JavaRandom;
@@ -35,7 +35,7 @@ public class UniformNode extends Node {
   private IRandom random = new JavaRandom();
 
   /** The distrib. */
-  private AbstractDistribution distrib = new UniformDistribution(random);
+  private IDistribution distrib = new UniformDistribution(random);
 
   /** The lower b. */
   private INode lowerB;
