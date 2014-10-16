@@ -13,7 +13,7 @@ import java.util.List;
 import org.jamesii.SimSystem;
 import org.jamesii.asf.portfolios.ga.GeneticAlgorithmPortfolioSelector;
 import org.jamesii.asf.portfolios.plugintype.PortfolioPerformanceData;
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.NormalDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.statistics.univariate.ArithmeticMean;
@@ -26,7 +26,8 @@ import org.jamesii.core.math.statistics.univariate.ArithmeticMean;
  * standard deviations for same same class of problems. The number of problem
  * classes can be adjusted as well.
  * 
- * @author René Schulz, Roland Ewald
+ * @author René Schulz
+ * @author Roland Ewald
  */
 
 public class PerformanceDataGenerator {
@@ -63,7 +64,7 @@ public class PerformanceDataGenerator {
   private double minimalPerformance = 0.5;
 
   /** The distribution of the deviations. */
-  final AbstractDistribution deviationDistribution = new NormalDistribution(
+  final IDistribution deviationDistribution = new NormalDistribution(
       rng, 1.0, 0.5);
 
   /**
@@ -280,7 +281,7 @@ public class PerformanceDataGenerator {
    * 
    * @return the deviation distribution
    */
-  public AbstractDistribution getDeviationDistribution() {
+  public IDistribution getDeviationDistribution() {
     return deviationDistribution;
   }
 

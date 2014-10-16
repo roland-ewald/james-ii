@@ -6,7 +6,7 @@
  */
 package org.jamesii.asf.portfolios.ga;
 
-import org.jamesii.core.math.random.distributions.AbstractDistribution;
+import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.distributions.NormalDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
 
@@ -15,13 +15,14 @@ import org.jamesii.core.math.random.generators.IRandom;
  * algorithms that operate similarly well on the same problem classes, but with
  * differing standard deviation.
  * 
- * @author René Schulz, Roland Ewald
+ * @author René Schulz
+ * @author Roland Ewald
  */
 
 public class AlgorithmCluster {
 
   /** The array of algorithm performance distributions. */
-  private final AbstractDistribution algorithmPerformance[];
+  private final IDistribution algorithmPerformance[];
 
   /**
    * Instantiates a new algorithm cluster.
@@ -36,8 +37,8 @@ public class AlgorithmCluster {
    *          the deviation distribution
    */
   public AlgorithmCluster(IRandom rng, int numOfAlgosPerCluster,
-      AbstractDistribution deviationDistribution) {
-    algorithmPerformance = new AbstractDistribution[numOfAlgosPerCluster];
+      IDistribution deviationDistribution) {
+    algorithmPerformance = new IDistribution[numOfAlgosPerCluster];
     // TODO: generalise, to be able to set arbitrary distributions!
     // algorithmPerformance[i] = new ErlangDistribution(rng, 0.5, 2);
     for (int i = 0; i < numOfAlgosPerCluster; i++) {
