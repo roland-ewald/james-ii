@@ -6,13 +6,18 @@
  */
 package org.jamesii.core.math.statistics.univariate;
 
-import static org.jamesii.core.math.statistics.univariate.ErrorFunction.*;
-
-import org.jamesii.core.math.statistics.univariate.ErrorFunction;
-
+import static org.jamesii.core.math.statistics.univariate.ErrorFunction.erf;
+import static org.jamesii.core.math.statistics.univariate.ErrorFunction.erfc;
+import static org.jamesii.core.math.statistics.univariate.ErrorFunction.inverf;
+import static org.jamesii.core.math.statistics.univariate.ErrorFunction.inverfc;
 import junit.framework.TestCase;
 
-/** Tests the {@link ErrorFunction} class. */
+/**
+ * Tests the {@link ErrorFunction} class.
+ * 
+ * @author unascribed
+ * @author Arne Bittig
+ */
 public class ErrorFunctionTest extends TestCase {
 
   /** Data points for testing. */
@@ -64,12 +69,42 @@ public class ErrorFunctionTest extends TestCase {
   }
 
   /**
-   * Tests the {@link ErrorFunction#inverfc(double)} function.
+   * Test {@link ErrorFunction#inverf(double)} and
+   * {@link ErrorFunction#inverfc(double)} functions.
    */
   public void testInverted() {
-    double x = 0.3;
-    assertTrue(Math.abs(x - inverf(erf(x))) < 0.001);
-    assertTrue(Math.abs(x - inverfc(erfc(x))) < 0.001);
+    double[] testvalues = { 0.001, 0.3, 0.5, 0.7 };
+    for (int i = 0; i < testvalues.length; i++) {
+      double x = testvalues[i];
+      double inverfErfRes = inverf(erf(x));
+      assertEquals(x, inverfErfRes, 0.001);
+      double erfInverfRes = erf(inverf(x));
+      assertEquals(x, erfInverfRes, 0.001);
+      double inverfcErfcRes = inverfc(erfc(x));
+      assertEquals(x, inverfcErfcRes, 0.001);
+      // // too imprecise for low values:
+      // double erfCInverfcRes = erfc(inverfc(x));
+      // assertEquals(x,erfCInverfcRes, 0.001);
+    }
+  }
+
+  /**
+   * Tests the precision of the {@link ErrorFunction#inverf(double,double)} and
+   * {@link ErrorFunction#inverfc(double,double)} function.
+   */
+  public void testInvertedPrecision() {
+    double[] testvalues = { 0.001, 0.3, 0.5, 0.7 };
+    double[] precisions = { 0.00001, 0.0001, 0.001 };
+    for (int i = 0; i < testvalues.length; i++) {
+      for (int ip = 0; ip < precisions.length; ip++) {
+        double x = testvalues[i];
+        double prec = precisions[ip];
+        double inverfErfRes = inverf(erf(x), prec);
+        assertEquals(x, inverfErfRes, prec);
+        double inverfcErfcRes = inverfc(erfc(x), prec);
+        assertEquals(x, inverfcErfcRes, prec);
+      }
+    }
   }
 
   /**

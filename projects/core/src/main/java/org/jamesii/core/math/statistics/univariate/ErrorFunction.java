@@ -14,7 +14,9 @@ package org.jamesii.core.math.statistics.univariate;
  * href="http://www.netlib.org/cephes/">Cephes Mathematical Library</a> by <a
  * href="http://www.moshier.net">Stephen L. Moshier</a>.
  * 
- * @author Johannes Rössel, Roland Ewald
+ * @author Johannes Rössel
+ * @author Roland Ewald
+ * @author Arne Bittig
  */
 public final class ErrorFunction {
 
@@ -136,6 +138,22 @@ public final class ErrorFunction {
   /**
    * Computes inverse of the complementary error function erfc. This is done by
    * a <a href="http://mathworld.wolfram.com/InverseErf.html">Maclaurin
+   * series</a>, more precisely, the simplified form, for 6 terms. Gets
+   * imprecise for values above 0.7.
+   * 
+   * @param x
+   *          the function parameter
+   * @return erf^-1(x)
+   * @see #inverf(double, int)
+   * @see #inverf(double, double)
+   */
+  public static double inverf(double x) {
+    return inverf(x, 5);
+  }
+
+  /**
+   * Computes inverse of the complementary error function erfc. This is done by
+   * a <a href="http://mathworld.wolfram.com/InverseErf.html">Maclaurin
    * series</a>. However, inverf(erf(x)) is only approximately given (with
    * precision better than 0.001) for x in [0,3].
    * 
@@ -144,23 +162,93 @@ public final class ErrorFunction {
    * 
    * @return erf^-1(z)
    */
-  public static double inverf(double z) {
+  @Deprecated
+  // originally present version based on the non-simplified form and with
+  // explicit powers-of-z calculations for each term (gives a much coarser
+  // approximation), but with coefficients extracted as constants
+  public static double inverfConst(double z) {
+    double result =
+        z + PI_1_12 * Math.pow(z, 3) + PI_7_480 * Math.pow(z, 5) + PI_127_40320
+            * Math.pow(z, 7) + PI_4369_5806080 * Math.pow(z, 9)
+            + PI_34807_182476800 * Math.pow(z, 11);
+    return HALF_SQRT_PI * result;
+  }
 
-    // TODO: Replace math ops by constants for fast execution - but these
-    // constants aren't very good anyway
-    double result = z + ((Math.PI * Math.pow(z, 3)) / 12)// NOSONAR
-        + ((7 * Math.PI * Math.pow(z, 5)) / 480)// NOSONAR
-        + ((127 * Math.PI * Math.pow(z, 7)) / 40320)// NOSONAR
-        + ((4369 * Math.PI * Math.pow(z, 9)) / 5806080)// NOSONAR
-        + ((34807 * Math.PI * Math.pow(z, 11)) / 182476800);// NOSONAR
+  private static final double PI_1_12 = Math.PI / 12;
 
-    return 0.5 * Math.sqrt(Math.PI) * result;// NOSONAR
+  private static final double PI_7_480 = 7 * Math.PI / 480;
+
+  private static final double PI_127_40320 = 127 * Math.PI / 40320;
+
+  private static final double PI_4369_5806080 = 4369 * Math.PI / 5806080;
+
+  private static final double PI_34807_182476800 = 34807 * Math.PI / 182476800;
+
+  private static final double HALF_SQRT_PI = 0.5 * Math.sqrt(Math.PI);
+
+  /**
+   * Coefficients for inverf(2*x/sqrt(pi)); see http://oeis.org/A092676 and
+   * http://oeis.org/A092677
+   */
+  private static final double[] SIMPLE_COEFFS = new double[] { 1. / 3.,
+      7. / 30., 127. / 630., 4369. / 22680., 34807. / 178200.,
+      20036983. / 97297200., 2280356863. / 10216206000.,
+      49020204823. / 198486288000., 65967241200001. / 237588086736000.,
+      15773461423793767. / 49893498214560000.,
+      655889589032992201. / 1803293578326240000.,
+      94020690191035873697. / 222759794969712000000.,
+      655782249799531714375489. / 1329207696584271504000000. };
+
+  /**
+   * inverf(x) approximated by given number of terms of the Maclaurin simplified
+   * series
+   * 
+   * @param x
+   *          Function parameter
+   * @param precision
+   *          number of terms of the Maclaurin series -1
+   * @return erf^-1(x)
+   */
+  public static double inverf(double x, int precision) {
+    double res = x * HALF_SQRT_PI;
+    double xsqr = res * res;
+    double xpow = res * xsqr;
+    for (int i = 0; i < precision; i++) {
+      res += SIMPLE_COEFFS[i] * xpow;
+      xpow *= xsqr;
+    }
+    return res;
+  }
+
+  /**
+   * inverf(x) approximated by Maclaurin simplified series until last term is
+   * smaller than given delta
+   * 
+   * @param x
+   *          Function parameter
+   * @param delta
+   *          approximation precision
+   * @return erf^-1(x)
+   */
+  public static double inverf(double x, double delta) {
+    double res = x * HALF_SQRT_PI;
+    double xsqr = res * res;
+    double xpow = res * xsqr;
+    int i = 0;
+    double add;
+    do {
+      add = SIMPLE_COEFFS[i] * xpow;
+      res += add;
+      xpow *= xsqr;
+      i++;
+    } while (add > delta && i < SIMPLE_COEFFS.length);
+    return res;
   }
 
   /**
    * Computes inverse complementary function by falling back to
-   * {@link ErrorFunction#inverf(double)}. Same restrictions of precisions
-   * apply!
+   * {@link ErrorFunction#inverf(double)}. Gets imprecise for values below 0.3 =
+   * 1-0.7.
    * 
    * @param z
    *          the parameter
@@ -168,5 +256,18 @@ public final class ErrorFunction {
    */
   public static double inverfc(double z) {
     return inverf(1 - z);
+  }
+
+  /**
+   * Computes inverse complementary function with given precision (if possible).
+   * 
+   * @param x
+   *          Function parameter
+   * @param delta
+   *          approximation precision
+   * @return erfc^-1(x)
+   */
+  public static double inverfc(double x, double delta) {
+    return inverf(1 - x, delta);
   }
 }
