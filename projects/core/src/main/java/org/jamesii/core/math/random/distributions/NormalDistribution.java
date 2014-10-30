@@ -9,9 +9,9 @@ package org.jamesii.core.math.random.distributions;
 import org.jamesii.core.math.random.generators.IRandom;
 
 /**
- * NormalDistribution -
- * 
- * This class helps to generate normal distributed random numbers.
+ * Normally distributed random numbers generated via <a href=
+ * "http://en.wikipedia.org/wiki/Marsaglia_polar_method"> Marsaglia's polar
+ * method</a>.
  * 
  * @author Roland Ewald
  */

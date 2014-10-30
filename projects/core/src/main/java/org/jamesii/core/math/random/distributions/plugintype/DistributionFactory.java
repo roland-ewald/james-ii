@@ -10,16 +10,18 @@ import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.math.random.distributions.IDistribution;
 import org.jamesii.core.math.random.generators.IRandom;
+import org.jamesii.core.math.random.generators.java.JavaRandom;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
  * A factory for creating Distribution objects.
  * 
  * @author Jan Himmelspach
- * @param <E>
+ * @param <D>
+ *          Distribution type
  */
-public abstract class DistributionFactory<E extends IDistribution> extends
-    Factory<E> {
+public abstract class DistributionFactory<D extends IDistribution> extends
+    Factory<D> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 5077251648358580692L;
@@ -28,42 +30,42 @@ public abstract class DistributionFactory<E extends IDistribution> extends
    * Create and return a distribution. A distribution is always initialized with
    * default parameters here!
    * 
+   * Creates a default random number generator (usually {@link JavaRandom}) with
+   * given seat. Prefer explicit rng specification as in
+   * {@link #create(IRandom)}.
+   * 
    * @param seed
    *          the seed
-   * 
-   * @return the E
+   * @return Distribution
    */
-  public abstract E create(long seed);
+  @Deprecated
+  public abstract D create(long seed);
 
   /**
    * Create and return a distribution. A distribution is always initialized with
    * default parameters here!
    * 
    * @param random
-   *          the random
-   * 
-   * @return the E
+   *          Random number generator
+   * @return Distribution
    */
-  public abstract E create(IRandom random);
+  public abstract D create(IRandom random);
 
   /**
-   * Create and return a distribution. A distribution is always initialized with
-   * default parameters here!
+   * Create and return a distribution with specific parameters
    * 
    * @param block
-   *          the block
-   * @param random
-   *          the random
-   * 
-   * @return the E
+   *          Parameters
+   *          Random number generator
+   * @return Distribution
    */
-  public E create(ParameterBlock block, IRandom random) {
+  public D create(ParameterBlock block, IRandom random) {
     return create(random);
   }
 
   @Override
-  public E create(ParameterBlock block, Context context) {
-    return create((IRandom) block.getSubBlockValue("RANDOM"));
+  public D create(ParameterBlock block, Context context) {
+    return create(block, (IRandom) block.getSubBlockValue("RANDOM"));
   }
 
 }
