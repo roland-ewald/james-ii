@@ -4,13 +4,14 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.eventset;
+package org.jamesii.core.util.eventset.bucket;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.eventset.AbstractEventQueue;
 
 /**
  * The Class BasicHashedBucketsEventQueue.

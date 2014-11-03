@@ -4,9 +4,10 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.eventset;
+package org.jamesii.core.util.eventset.bucket;
 
 import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.util.eventset.IEventQueue;
 import org.jamesii.core.util.eventset.plugintype.EventIdentityBehavior;
 import org.jamesii.core.util.eventset.plugintype.EventOrderingBehavior;
 import org.jamesii.core.util.eventset.plugintype.EventQueueFactory;

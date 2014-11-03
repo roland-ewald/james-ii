@@ -4,13 +4,16 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.eventset;
+package org.jamesii.core.util.eventset.bucket;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.jamesii.core.util.eventset.AbstractEventQueue;
+import org.jamesii.core.util.eventset.Entry;
 
 /**
  * The SimpleBucketsEventQueue is an event queue implementation which uses a HashMap for

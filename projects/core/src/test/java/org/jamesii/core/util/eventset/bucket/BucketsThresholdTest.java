@@ -4,7 +4,11 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.eventset;
+package org.jamesii.core.util.eventset.bucket;
+
+import org.jamesii.core.util.eventset.EventQueueTest;
+import org.jamesii.core.util.eventset.IEventQueue;
+import org.jamesii.core.util.eventset.bucket.BucketsThreshold;
 
 /**
  * The Class BucketsThresholdTest.

@@ -4,13 +4,15 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.eventset;
+package org.jamesii.core.util.eventset.bucket;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.jamesii.core.util.eventset.Entry;
 
 /**
  * This event queue implementation is a two list event queue implementation. It
