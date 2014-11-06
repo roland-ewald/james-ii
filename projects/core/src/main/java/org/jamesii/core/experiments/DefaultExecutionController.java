@@ -74,10 +74,11 @@ public class DefaultExecutionController implements
   private AtomicBoolean stopping = new AtomicBoolean(false);
 
   /**
-   * The set of SRTIs that are currently being executed. Can be used to retrieve
-   * them for overall switching their state, e.g. stopping them all.
+   * The set of RT informations of tasks that are currently being executed. Can
+   * be used to retrieve them for overall switching their state, e.g. stopping
+   * them all.
    */
-  private Set<ComputationTaskRuntimeInformation> currentSRTIs = Collections
+  private Set<ComputationTaskRuntimeInformation> currentTasksRTInfos = Collections
       .synchronizedSet(new HashSet<ComputationTaskRuntimeInformation>());
 
   @Override
@@ -116,8 +117,8 @@ public class DefaultExecutionController implements
         // the stop method adds a poison pill to the queue so that this run
         // method will terminate in case of a call to stop and an empty job
         // queue
-        jobs.take().process();
-
+        ControlJob job = jobs.take();
+        job.process();
       }
     } catch (InterruptedException ex) {
       SimSystem.report(ex);
@@ -153,7 +154,7 @@ public class DefaultExecutionController implements
       ComputationTaskRuntimeInformation ctrti, RunInformation runInfo) {
 
     ctrti.setState(ComputationRuntimeState.FINISHED);
-    getCurrentSRTIs().remove(ctrti);
+    getCurrentTasksRTInfos().remove(ctrti);
     jobs.add(new ExperimentNotificationJob(getExperiment(), ctrti, runInfo));
     synchronized (this) {
       for (IExperimentExecutionListener listener : expExecListeners) {
@@ -171,26 +172,26 @@ public class DefaultExecutionController implements
    * 
    * @param taskRunner
    *          the task runner
-   * @param srti
-   *          the srti
+   * @param taskRTInfo
+   *          the computation task run time information
    */
   @Override
   public void computationTaskInitialized(ITaskRunner taskRunner,
-      ComputationTaskRuntimeInformation srti) {
+      ComputationTaskRuntimeInformation taskRTInfo) {
 
     // Has been started in paused mode?
-    if (srti.getSimulationRunConfiguration() != null
-        && srti.getSimulationRunConfiguration().isStartPaused()) {
-      srti.setState(ComputationRuntimeState.PAUSED);
+    if (taskRTInfo.getSimulationRunConfiguration() != null
+        && taskRTInfo.getSimulationRunConfiguration().isStartPaused()) {
+      taskRTInfo.setState(ComputationRuntimeState.PAUSED);
     } else {
-      srti.setState(ComputationRuntimeState.RUNNING);
+      taskRTInfo.setState(ComputationRuntimeState.RUNNING);
     }
-    getCurrentSRTIs().add(srti);
-    jobs.add(new TaskRunnerControlJob(taskRunner, srti));
+    getCurrentTasksRTInfos().add(taskRTInfo);
+    jobs.add(new TaskRunnerControlJob(taskRunner, taskRTInfo));
     synchronized (this) {
       for (IExperimentExecutionListener listener : expExecListeners) {
         try {
-          listener.simulationInitialized(taskRunner, srti);
+          listener.simulationInitialized(taskRunner, taskRTInfo);
         } catch (Exception ex) { // NOSONAR:{needs_to_be_robust}
           reportListenerError(listener, ex);
         }
@@ -219,12 +220,12 @@ public class DefaultExecutionController implements
     // new job
     jobs.add(new StopJob());
     if (stopComputations) {
-      for (ComputationTaskRuntimeInformation srti : getCurrentSRTIs()) {
-        if ((srti.getState() == ComputationRuntimeState.RUNNING || srti
+      for (ComputationTaskRuntimeInformation currTaskRTI : getCurrentTasksRTInfos()) {
+        if ((currTaskRTI.getState() == ComputationRuntimeState.RUNNING || currTaskRTI
             .getState() == ComputationRuntimeState.PAUSED)
             && ComputationTaskRuntimeInformation
-                .computationTaskControlPossible(srti)) {
-          ((IRunnable) srti.getComputationTask().getProcessorInfo().getLocal())
+                .computationTaskControlPossible(currTaskRTI)) {
+          ((IRunnable) currTaskRTI.getComputationTask().getProcessorInfo().getLocal())
               .stop();
         }
       }
@@ -234,26 +235,26 @@ public class DefaultExecutionController implements
   /**
    * Gets the experiment execution listeners.
    * 
-   * @return the expExecListeners
+   * @return the experiment execution listeners
    */
   protected List<IExperimentExecutionListener> getExpExecListeners() {
     return Collections.unmodifiableList(expExecListeners);
   }
 
   /**
-   * @return the currentSRTIs
+   * @return the set of the current tasks' RT informations
    */
-  protected final Set<ComputationTaskRuntimeInformation> getCurrentSRTIs() {
-    return currentSRTIs;
+  protected final Set<ComputationTaskRuntimeInformation> getCurrentTasksRTInfos() {
+    return currentTasksRTInfos;
   }
 
   /**
-   * @param currentSRTIs
-   *          the currentSRTIs to set
+   * @param currentTasksRTInfos
+   *          the RT informations of the current tasks to be set
    */
-  protected final void setCurrentSRTIs(
-      Set<ComputationTaskRuntimeInformation> currentSRTIs) {
-    this.currentSRTIs = currentSRTIs;
+  protected final void setCurrentTaskRTInfos(
+      Set<ComputationTaskRuntimeInformation> currentTasksRTInfos) {
+    this.currentTasksRTInfos = currentTasksRTInfos;
   }
 
 }

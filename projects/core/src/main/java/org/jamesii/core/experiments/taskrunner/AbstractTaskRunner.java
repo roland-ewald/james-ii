@@ -423,7 +423,7 @@ public abstract class AbstractTaskRunner implements ITaskRunner {
       ComputationTaskRuntimeInformation compTaskRuntimeInformation, boolean run);
 
   /**
-   * Checks for a failure an notifies the error hook.
+   * Checks for a failure and notifies the error hook.
    * 
    * @param runner
    *          the actual runner

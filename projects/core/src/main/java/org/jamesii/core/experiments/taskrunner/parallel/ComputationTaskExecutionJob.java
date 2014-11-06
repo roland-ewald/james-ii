@@ -25,7 +25,7 @@ import org.jamesii.core.parameters.ParameterBlock;
 
 /**
  * 
- * The SimulationExecutionJob is created by the
+ * The ComputationTaskExecutionJob is created by the
  * {@link ParallelComputationTaskRunner} to create and run a computation task
  * independently.
  * 

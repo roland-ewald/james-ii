@@ -433,8 +433,6 @@ public class ParallelComputationTaskRunner extends AbstractTaskRunner {
     // get required replication count
     int repCount = getRequiredReplications(taskConfig, runInfo);
 
-    // System.out.println("schedule "+repCount);
-
     // stop as soon as possible
     if (isStopping()) {
       return repCount != 0;
