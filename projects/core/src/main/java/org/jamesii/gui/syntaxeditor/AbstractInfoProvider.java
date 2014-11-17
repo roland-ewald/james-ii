@@ -13,9 +13,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.core.util.misc.Triple;
 import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Abstract class for {@link IInfoProvider} implementing basic functionality
@@ -120,7 +120,7 @@ public abstract class AbstractInfoProvider implements IInfoProvider {
               s.release();
             }
           } finally {
-            BasicUtilities.close(first.getB());
+            org.jamesii.core.util.BasicUtilities.close(first.getB());
           }
           Thread.yield();
         } catch (InterruptedException e) {

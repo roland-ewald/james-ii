@@ -73,7 +73,7 @@ final class TextfileResourceProvider implements IResourceProvider {
     } catch (IOException e) {
       SimSystem.report(e);
     } finally {
-      BasicUtilities.close(reader);
+      org.jamesii.core.util.BasicUtilities.close(reader);
     }
 
     return null;

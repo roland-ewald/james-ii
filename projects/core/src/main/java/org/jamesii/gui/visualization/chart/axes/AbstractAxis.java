@@ -11,7 +11,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract class that can be used to implement own {@link IAxis} classes.

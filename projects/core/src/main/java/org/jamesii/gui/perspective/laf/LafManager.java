@@ -17,9 +17,9 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.Registry;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.perspective.laf.plugintype.LookAndFeelFactory;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Manager class that manages look and feels this includes installed look and

@@ -26,9 +26,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.action.ActionManager;
 import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Abstract class implementing main functionality of the {@link IWindowManager}

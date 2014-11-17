@@ -19,7 +19,7 @@ import org.jamesii.core.data.experiment.write.plugintype.AbstractExperimentWrite
 import org.jamesii.core.data.experiment.write.plugintype.ExperimentWriterFactory;
 import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.gui.experiment.ExperimentPerspective;
+import org.jamesii.core.util.BasicUtilities;
 
 /**
  * The experiment backup class is used from the BaseExperiment and encapsulates
@@ -106,7 +106,7 @@ public class ExperimentBackup implements Serializable {
       try {
         writer.writeExperiment(parameter, experiment);
         SimSystem.report(Level.CONFIG, "Experiment backup saved to: "
-            + ExperimentPerspective.getExpLocation(parameter));
+            + BasicUtilities.getExpLocation(parameter));
       } catch (IOException e) {
         SimSystem.report(Level.WARNING,
             "Can't write backup of BaseExperiment:", e);

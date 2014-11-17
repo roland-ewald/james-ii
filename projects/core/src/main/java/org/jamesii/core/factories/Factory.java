@@ -14,7 +14,6 @@ import org.jamesii.core.base.NamedEntity;
 import org.jamesii.core.parameters.ParameterBlock;
 import org.jamesii.core.parameters.ParameterBlocks;
 import org.jamesii.core.plugins.IFactoryInfo;
-import org.jamesii.gui.utils.BasicUtilities;
 
 /**
  * Base factory class. Each factory can be parameterized (have a list of custom
@@ -66,7 +65,7 @@ public abstract class Factory<I> extends NamedEntity {
         }
       }
 
-      readableName = BasicUtilities.makeFactoryClassNameReadable(this);
+      readableName = org.jamesii.core.util.BasicUtilities.makeFactoryClassNameReadable(this);
     }
 
     return readableName;

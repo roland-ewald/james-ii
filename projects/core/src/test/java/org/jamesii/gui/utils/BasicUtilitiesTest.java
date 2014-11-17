@@ -7,8 +7,7 @@
 package org.jamesii.gui.utils;
 
 import org.jamesii.ChattyTestCase;
-import org.jamesii.gui.utils.BasicUtilities;
-
+import org.jamesii.core.util.BasicUtilities;
 /**
  * @author Stefan Rybacki
  */
@@ -21,7 +20,7 @@ public class BasicUtilitiesTest extends ChattyTestCase {
 
   /**
    * Test method for
-   * {@link org.jamesii.gui.utils.BasicUtilities#makeCamelCaseReadable(java.lang.String)}
+   * {@link org.jamesii.core.util.BasicUtilities#makeCamelCaseReadable(java.lang.String)}
    * .
    */
   public final void testMakeCamelCaseReadable() {

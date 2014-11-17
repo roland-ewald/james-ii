@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Simple abstract wizard page implementing some of the methods already. It also

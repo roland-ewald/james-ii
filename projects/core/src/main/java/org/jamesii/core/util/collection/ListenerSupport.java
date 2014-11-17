@@ -4,7 +4,7 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.gui.utils;
+package org.jamesii.core.util.collection;
 
 import java.util.ArrayList;
 import java.util.Collection;

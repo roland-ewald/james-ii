@@ -9,7 +9,7 @@ package org.jamesii.gui.visualization.chart.model;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract class that provides basic implementation of {@link IChartModel} plus

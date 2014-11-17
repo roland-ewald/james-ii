@@ -90,17 +90,17 @@ public class ExperimentPerspective extends AbstractPerspective {
       BaseExperiment exp = reader.readExperiment(param);
       if (exp == null) {
         SimSystem.report(Level.SEVERE, null,
-            "Error opening experiment located at '" + getExpLocation(param)
+            "Error opening experiment located at '" + org.jamesii.core.util.BasicUtilities.getExpLocation(param)
                 + "' with reader + '" + reader.getClass().toString() + "'",
             null);
         return;
       }
       getWindowManager().addWindow(new ExperimentEditor(exp, param));
       SimSystem.report(Level.INFO, null, "Opened experiment '" + exp.getName()
-          + "' from " + getExpLocation(param), null);
+          + "' from " + org.jamesii.core.util.BasicUtilities.getExpLocation(param), null);
     } catch (IOException ex) {
       SimSystem.report(Level.SEVERE, null,
-          "Error opening experiment located at '" + getExpLocation(param)
+          "Error opening experiment located at '" + org.jamesii.core.util.BasicUtilities.getExpLocation(param)
               + "' with reader + '" + reader.getClass().toString() + "'", null,
           ex);
     }
@@ -124,18 +124,18 @@ public class ExperimentPerspective extends AbstractPerspective {
       if (expSuite == null) {
         SimSystem.report(Level.SEVERE, null,
             "Error opening experiment suite located at '"
-                + getExpLocation(param) + "' with reader + '"
+                + org.jamesii.core.util.BasicUtilities.getExpLocation(param) + "' with reader + '"
                 + reader.getClass().toString() + "'", null);
         return;
       }
       SimSystem.report(Level.INFO, null, "Opened experiment suite from '"
-          + getExpLocation(param) + "'", null);
+          + org.jamesii.core.util.BasicUtilities.getExpLocation(param) + "'", null);
       // TODO: Integrate experiment suites
       // getWindowManager().addWindow(
       // new EditExperimentSuiteWindow(null, expSuite));
     } catch (IOException ex) {
       SimSystem.report(Level.SEVERE, null,
-          "Error opening experiment suite located at '" + getExpLocation(param)
+          "Error opening experiment suite located at '" + org.jamesii.core.util.BasicUtilities.getExpLocation(param)
               + "' with factory + '" + factory.getClass().toString() + "'",
           null, ex);
     }
@@ -253,24 +253,6 @@ public class ExperimentPerspective extends AbstractPerspective {
     }
 
     return actions;
-  }
-
-  /**
-   * Auxiliary function for displaying log messages related to experiment I/O.
-   * 
-   * @param param
-   *          parameter block of experiment reader/writer factory
-   * @return the location of the experiment
-   */
-  public static String getExpLocation(ParameterBlock param) {
-    if (!param.hasSubBlock(AbstractExperimentReaderFactory.EXPERIMENT_INFO)
-        || !(param
-            .getSubBlockValue(AbstractExperimentReaderFactory.EXPERIMENT_INFO) instanceof ExperimentInfo)) {
-      return "UNKNOWN";
-    }
-    return BasicUtilities.displayURI(((ExperimentInfo) param
-        .getSubBlockValue(AbstractExperimentReaderFactory.EXPERIMENT_INFO))
-        .getIdent());
   }
 
   @Override

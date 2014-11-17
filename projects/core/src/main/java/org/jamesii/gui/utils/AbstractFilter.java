@@ -6,6 +6,8 @@
  */
 package org.jamesii.gui.utils;
 
+import org.jamesii.core.util.collection.ListenerSupport;
+
 /**
  * Implements basic functionality of {@link IFilter} and should be the starting
  * point for custom {@link IFilter} implementations.

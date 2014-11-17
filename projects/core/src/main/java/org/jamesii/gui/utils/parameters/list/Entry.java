@@ -90,7 +90,7 @@ public class Entry {
 
   @Override
   public String toString() {
-    return factoryName != null ? BasicUtilities
+    return factoryName != null ? org.jamesii.core.util.BasicUtilities
         .makeFactoryClassNameReadable(factoryName) : "null";
   }
 }

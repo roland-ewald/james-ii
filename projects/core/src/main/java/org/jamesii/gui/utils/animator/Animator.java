@@ -9,7 +9,7 @@ package org.jamesii.gui.utils.animator;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * This class is used for animation purposes. It allows for an easy animation

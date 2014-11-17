@@ -36,6 +36,7 @@ import javax.swing.JToolTip;
 import javax.swing.ListSelectionModel;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.core.util.misc.Files;
 import org.jamesii.gui.application.ApplicationDialog;
 import org.jamesii.gui.application.preferences.Preferences;
@@ -45,7 +46,6 @@ import org.jamesii.gui.tooltip.StyledToolTip;
 import org.jamesii.gui.utils.BasicUtilities;
 import org.jamesii.gui.utils.ExpandingPanel;
 import org.jamesii.gui.utils.FileChooser;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.utils.history.History;
 import org.jamesii.gui.utils.history.HistoryTextField;
 

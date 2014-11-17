@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.jamesii.SimSystem;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.utils.objecteditor.property.IProperty;
 import org.jamesii.gui.utils.objecteditor.property.IPropertyFilter;
 import org.jamesii.gui.utils.objecteditor.property.provider.DefaultPropertyProvider;

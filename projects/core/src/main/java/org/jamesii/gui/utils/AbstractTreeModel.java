@@ -15,6 +15,7 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract class for implementing {@link TreeModel} which already implements a

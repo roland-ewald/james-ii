@@ -15,8 +15,8 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.lang.ref.SoftReference;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.utils.animator.IAnimatorListener;
 import org.jamesii.gui.utils.animator.SplineInterpolator;
 import org.jamesii.gui.utils.animator.SwingAnimator;

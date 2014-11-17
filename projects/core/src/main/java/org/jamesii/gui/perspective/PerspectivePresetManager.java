@@ -9,8 +9,8 @@ package org.jamesii.gui.perspective;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.preferences.Preferences;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Static class for managing and using installed {@link PerspectivePreset}s.

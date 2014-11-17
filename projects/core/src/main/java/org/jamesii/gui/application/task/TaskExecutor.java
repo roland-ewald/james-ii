@@ -19,8 +19,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.IProgressListener;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.utils.ProgressAdapter;
 
 /**

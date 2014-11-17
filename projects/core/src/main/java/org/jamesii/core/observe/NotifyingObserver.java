@@ -7,7 +7,7 @@
 package org.jamesii.core.observe;
 
 import org.jamesii.core.observe.listener.IObserverListener;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * This is basically an extended version of the observer class that also

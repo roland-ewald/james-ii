@@ -8,7 +8,7 @@ package org.jamesii.gui.validation;
 
 import java.util.Collection;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Use this class for extension rather than the {@link IValidator} interface

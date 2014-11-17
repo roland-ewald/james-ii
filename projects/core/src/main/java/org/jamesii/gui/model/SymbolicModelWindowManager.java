@@ -250,7 +250,7 @@ public class SymbolicModelWindowManager implements ISymbolicModelWindowManager {
    */
   void displayStatus(ISymbolicModel<?> model, URI uri) {
     SimSystem.report(Level.INFO, "Model '" + model.getName() + "' saved to: "
-        + BasicUtilities.displayURI(uri));
+        + org.jamesii.core.util.BasicUtilities.displayURI(uri));
   }
 
   @Override
@@ -385,7 +385,7 @@ public class SymbolicModelWindowManager implements ISymbolicModelWindowManager {
       SimSystem.report(
           Level.SEVERE,
           "Error while saving model '" + model.getName() + "' to URI '"
-              + BasicUtilities.displayURI(uri) + "' with factory "
+              + org.jamesii.core.util.BasicUtilities.displayURI(uri) + "' with factory "
               + mrwFactory.getClass(), ex);
       return;
     }

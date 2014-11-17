@@ -9,6 +9,7 @@ package org.jamesii.gui.perspective;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.ApplicationManagerManager;
 import org.jamesii.gui.application.IApplicationManager;
 import org.jamesii.gui.application.IPerspectiveChangeListener;
@@ -16,7 +17,6 @@ import org.jamesii.gui.application.IWindowManager;
 import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.application.preferences.IPreferencesPage;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Abstract class that implements basic functionality for a class that

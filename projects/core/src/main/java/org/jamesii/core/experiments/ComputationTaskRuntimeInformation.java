@@ -13,7 +13,7 @@ import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.experiments.tasks.IComputationTask;
 import org.jamesii.core.observe.IObservable;
 import org.jamesii.core.observe.IObserver;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * This class contains all information that is essential to manage the execution

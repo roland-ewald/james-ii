@@ -43,6 +43,7 @@ import javax.swing.plaf.TabbedPaneUI;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.IWindow;
 import org.jamesii.gui.application.IWindowChangeListener;
@@ -50,7 +51,6 @@ import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.application.james.dnd.WindowPaneDragSupport;
 import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Custom implementation of {@link JTabbedPane} meant to serve as

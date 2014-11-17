@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.preferences.Preferences;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * The Class History. This class is used to store items (Strings) in the

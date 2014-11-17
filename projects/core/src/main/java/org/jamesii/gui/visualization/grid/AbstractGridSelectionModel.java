@@ -6,7 +6,7 @@
  */
 package org.jamesii.gui.visualization.grid;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Basic abstract implementation of {@link IGridSelectionModel}.

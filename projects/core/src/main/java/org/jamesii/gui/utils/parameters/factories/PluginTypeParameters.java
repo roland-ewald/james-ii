@@ -40,7 +40,7 @@ public class PluginTypeParameters extends FactoryParameters {
 
   @Override
   public String toString() {
-    return BasicUtilities.makeFactoryClassNameReadable(getFactory());
+    return org.jamesii.core.util.BasicUtilities.makeFactoryClassNameReadable(getFactory());
   }
 
   /**

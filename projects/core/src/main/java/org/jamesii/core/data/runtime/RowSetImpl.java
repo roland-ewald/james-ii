@@ -30,6 +30,7 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Vector;
 
@@ -40,7 +41,7 @@ import javax.sql.RowSetListener;
 import javax.sql.RowSetMetaData;
 
 import org.jamesii.SimSystem;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Provides transparent access to tabular data that should be retrieved/stored
@@ -62,7 +63,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
   private int columnIndexBuffer = 0; // remember the last read column
 
   /** The content. */
-  private Vector<Object[]> content = new Vector<>(0);
+  private final Vector<Object[]> content = new Vector<>(0);
 
   /** The cursor. */
   private int cursor = -1; // the sql cursor
@@ -74,7 +75,7 @@ public class RowSetImpl implements RowSet, RowSetInternal {
   private String datasourcename;
 
   /** The depexc. */
-  private String depexc = "The called method was deprecated.";
+  private final String depexc = "The called method was deprecated.";
 
   /** The insert row. */
   private Object[] insertRow;
@@ -96,14 +97,14 @@ public class RowSetImpl implements RowSet, RowSetInternal {
   // 3: TYPE_SCROLL_SENSITIVE
 
   /** The tolongexc. */
-  private String tolongexc =
+  private final String tolongexc =
       "The length is greater then the max integervalue. A lossless processing isn't possible.";
 
   /** the list of registered listeners */
-  private ListenerSupport<RowSetListener> listeners = new ListenerSupport<>();
+  private final Collection<RowSetListener> listeners = new ListenerSupport<>();
 
   /** the event sent around when the row set has changed */
-  private RowSetEvent rowSetEvent = new RowSetEvent(this);
+  private final RowSetEvent rowSetEvent = new RowSetEvent(this);
 
   @Override
   public boolean absolute(int row) throws SQLException {

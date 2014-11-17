@@ -25,6 +25,7 @@ import org.jamesii.core.experiments.BaseExperiment;
 import org.jamesii.core.experiments.IExperimentExecutionListener;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.parameters.ParameterBlock;
+import org.jamesii.core.util.BasicUtilities;
 import org.jamesii.core.util.misc.Pair;
 import org.jamesii.gui.application.AbstractWindow;
 import org.jamesii.gui.application.Contribution;
@@ -194,10 +195,10 @@ public class ExperimentEditor extends AbstractWindow {
       // this.recentExpMenu.updateItemDisplayString(experiment.getName(),
       // lastExperimentWriterParam);
       SimSystem.report(Level.INFO, "Experiment saved to: "
-          + ExperimentPerspective.getExpLocation(lastWriterParam));
+          + BasicUtilities.getExpLocation(lastWriterParam));
     } catch (IOException ex) {
       SimSystem.report(Level.SEVERE, "Error saving experiment located at '"
-          + ExperimentPerspective.getExpLocation(lastWriterParam)
+          + BasicUtilities.getExpLocation(lastWriterParam)
           + "' with writer + '" + lastWriter.getClass().toString() + "'", ex);
     }
   }

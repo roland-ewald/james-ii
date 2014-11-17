@@ -8,7 +8,7 @@ package org.jamesii.gui.visualization.grid;
 
 import java.awt.Rectangle;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract model class for a {@link Grid2D}. This class already handles the

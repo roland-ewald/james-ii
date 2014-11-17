@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import org.jamesii.SimSystem;
 import org.jamesii.core.base.Entity;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Static accessible class for application wide logging.

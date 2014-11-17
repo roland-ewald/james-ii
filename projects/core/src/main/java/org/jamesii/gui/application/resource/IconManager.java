@@ -26,9 +26,9 @@ import java.util.logging.Level;
 import javax.swing.Icon;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.resource.iconset.IconIdentifier;
 import org.jamesii.gui.application.resource.iconset.IconSetManager;
-import org.jamesii.gui.utils.ListenerSupport;
 
 // TODO: Auto-generated Javadoc
 /**

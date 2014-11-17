@@ -13,9 +13,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.syntaxeditor.JamesUndoManager;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * An abstract class that already implements a lot of functionality of

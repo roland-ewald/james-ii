@@ -4,7 +4,7 @@
  *
  * LICENCE: JAMESLIC
  */
-package org.jamesii.gui.base;
+package org.jamesii.core.util.collection.list;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;

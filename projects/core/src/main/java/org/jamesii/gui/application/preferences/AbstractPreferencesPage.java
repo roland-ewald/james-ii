@@ -9,7 +9,7 @@ package org.jamesii.gui.application.preferences;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract implementation of {@link IPreferencesPage} to provide basic

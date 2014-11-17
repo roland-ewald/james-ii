@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.jamesii.SimSystem;
-import org.jamesii.gui.base.WeakArrayList;
+import org.jamesii.core.util.collection.list.WeakArrayList;
 
 /**
  * Static factory class that creates {@link XMLEncoder} instances for a given

@@ -6,8 +6,8 @@
  */
 package org.jamesii.gui.application.task;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.IProgressListener;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Base class for {@link ITask} implementations. Extend this class for future

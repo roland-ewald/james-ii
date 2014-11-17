@@ -22,7 +22,6 @@ import org.jamesii.SimSystem;
 import org.jamesii.core.util.caching.ILowMemoryListener;
 import org.jamesii.core.util.caching.MemoryObserver;
 import org.jamesii.core.util.misc.Files;
-import org.jamesii.gui.utils.BasicUtilities;
 
 /**
  * The Class FileLog. Provides very simple archiving functionality for the log.
@@ -43,7 +42,7 @@ public final class FileLog implements ILogListener, ILowMemoryListener {
    * The formatter is used to format the log records so that they are human
    * readable.
    */
-  private SimpleFormatter formatter = new SimpleFormatter();
+  private final SimpleFormatter formatter = new SimpleFormatter();
 
   /**
    * The buffered writer. If the buffer size is > 0 the buffer helps to reduce
@@ -91,7 +90,7 @@ public final class FileLog implements ILogListener, ILowMemoryListener {
   /**
    * The shutdown hook.
    */
-  private Thread shutdownThread = new Thread() {
+  private final Thread shutdownThread = new Thread() {
     @Override
     public void run() {
       close();
@@ -231,7 +230,7 @@ public final class FileLog implements ILogListener, ILowMemoryListener {
   protected void finalize() throws Throwable {
     if (writer != null) {
       cancelDelayedWrite();
-      BasicUtilities.close(writer);
+      org.jamesii.core.util.BasicUtilities.close(writer);
     }
     super.finalize();
   }
@@ -247,7 +246,7 @@ public final class FileLog implements ILogListener, ILowMemoryListener {
     MemoryObserver.INSTANCE.unregister(this);
 
     cancelDelayedWrite();
-    BasicUtilities.close(writer);
+    org.jamesii.core.util.BasicUtilities.close(writer);
     writer = null;
   }
 

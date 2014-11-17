@@ -20,8 +20,8 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.IProgressListener;
-import org.jamesii.gui.utils.ListenerSupport;
 
 /**
  * Internal class that implements {@link javax.swing.tree.TreeModel} and

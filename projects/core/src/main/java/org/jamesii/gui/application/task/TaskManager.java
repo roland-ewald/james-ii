@@ -13,7 +13,7 @@ import java.util.concurrent.Semaphore;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.util.ICallBack;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.utils.ProgressAdapter;
 
 /**

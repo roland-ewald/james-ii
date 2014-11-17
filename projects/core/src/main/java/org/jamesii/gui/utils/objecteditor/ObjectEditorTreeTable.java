@@ -22,8 +22,8 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.core.util.misc.IDirectory;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.utils.objecteditor.implementationprovider.IImplementationProvider;
 import org.jamesii.gui.utils.objecteditor.property.IPropertyFilter;
 import org.jamesii.gui.utils.objecteditor.property.editor.BooleanPropertyEditor;

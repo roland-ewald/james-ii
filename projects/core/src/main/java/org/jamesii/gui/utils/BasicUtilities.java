@@ -16,17 +16,10 @@ import java.awt.Toolkit;
 import java.awt.Transparency;
 import java.awt.Window;
 import java.awt.image.BufferedImage;
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URI;
-import java.net.URLDecoder;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -96,25 +89,6 @@ public final class BasicUtilities {
             .getHeight() - window.getHeight()) / 2);
 
     window.setLocation(locationX, locationY);
-  }
-
-  /**
-   * Displays a {@link URI} using {@link URLDecoder} with encoding from
-   * {@link SimSystem#getEncoding()}. Useful for displaying save/load location
-   * in the status bar.
-   * 
-   * @param uri
-   *          the URI to be decoded
-   * @return decoded String
-   */
-  public static String displayURI(URI uri) {
-    String decodedURL = "";
-    try {
-      decodedURL = URLDecoder.decode(uri.toString(), SimSystem.getEncoding());
-    } catch (UnsupportedEncodingException e) {
-      SimSystem.report(e);
-    }
-    return decodedURL;
   }
 
   /**
@@ -274,7 +248,7 @@ public final class BasicUtilities {
       SimSystem.report(e);
       return new ImageIcon();
     } finally {
-      close(iconSource);
+      org.jamesii.core.util.BasicUtilities.close(iconSource);
     }
   }
 
@@ -492,62 +466,6 @@ public final class BasicUtilities {
   }
 
   /**
-   * Make factory class name readable.
-   * 
-   * @param fName
-   *          the factory name
-   * @return the readable version of the factory name
-   */
-  public static String makeFactoryClassNameReadable(String fName) {
-    if (fName == null) {
-      return null;
-    }
-
-    String result = fName.replaceAll("Factory", "");
-    result = result.replaceAll("_", " ");
-
-    // now only use the simple class name version in case its fully
-    // qualified
-    int a = result.lastIndexOf('.');
-    if (a >= 0) {
-      result = result.substring(a + 1);
-    }
-
-    return makeCamelCaseReadable(result);
-  }
-
-  /**
-   * Make factory class name readable.
-   * 
-   * @param f
-   *          the factory
-   * @return the readable version of the factory name
-   */
-  public static String makeFactoryClassNameReadable(Factory f) {
-    return makeFactoryClassNameReadable(f.getClass().getName());
-  }
-
-  /**
-   * Make camel case readable.
-   * 
-   * @param camelCase
-   *          the camel case string
-   * @return the readable version of the camel case string
-   */
-  public static String makeCamelCaseReadable(String camelCase) {
-    if (camelCase == null) {
-      return null;
-    }
-    // acronyms
-    String result =
-        camelCase.replaceAll("([A-Z0-9]+)([A-Z0-9]|\\z|\\s)", "$1 $2");
-    // camelcase splitting
-    result = result.replaceAll("([a-z])([A-Z])", "$1 $2");
-
-    return result.trim();
-  }
-
-  /**
    * Helper method that converts an {@link Icon} to an {@link Image}
    * 
    * @param icon
@@ -662,27 +580,6 @@ public final class BasicUtilities {
   }
 
   /**
-   * Helper method that should be used in a finally block when closing
-   * {@link Closeable} objects such as {@link InputStream},
-   * {@link java.io.OutputStream} and so on. It checks for <code>null</code> and
-   * catches execeptions that might be thrown when closing silently.
-   * 
-   * @param closeable
-   *          the object to close
-   */
-  public static void close(Closeable closeable) {
-    if (closeable == null) {
-      return;
-    }
-
-    try {
-      closeable.close();
-    } catch (IOException e) {
-      SimSystem.report(e);
-    }
-  }
-
-  /**
    * Simple helper to make a 1:1 copy of an array.
    * 
    * @param src
@@ -691,30 +588,6 @@ public final class BasicUtilities {
    */
   public static <T> T[] copyArray(T[] src) {
     return Arrays.copyOf(src, src.length);
-  }
-
-  public static void close(Statement closeable) {
-    if (closeable == null) {
-      return;
-    }
-
-    try {
-      closeable.close();
-    } catch (SQLException e) {
-      SimSystem.report(e);
-    }
-  }
-
-  public static void close(ResultSet closeable) {
-    if (closeable == null) {
-      return;
-    }
-
-    try {
-      closeable.close();
-    } catch (SQLException e) {
-      SimSystem.report(e);
-    }
   }
 
 }

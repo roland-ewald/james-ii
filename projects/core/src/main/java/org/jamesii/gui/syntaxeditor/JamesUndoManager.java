@@ -9,7 +9,7 @@ package org.jamesii.gui.syntaxeditor;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.undo.UndoableEdit;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Custom UndoManager that provides the ability to attach

@@ -72,7 +72,7 @@ public abstract class SimpleGUIFileExporter {
         bw.close();
         SimSystem.report(Level.INFO, "Exported information to: " + file);
       } catch (Exception ex) {
-        BasicUtilities.close(bw);
+        org.jamesii.core.util.BasicUtilities.close(bw);
         SimSystem.report(Level.SEVERE,
             "Error while writing to '" + file.getName() + "'.", ex);
       }

@@ -9,7 +9,7 @@ package org.jamesii.gui.visualization.chart.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Basic abstract implementation of an {@link ISeries} already implementing a
