@@ -23,20 +23,25 @@ import java.util.Queue;
 public class CombinedIterator<E> implements Iterator<E> {
 
   /**
-   * Factory method for wrapping combined iterator in an (anonymos) {@link Iterable}, e.g. for enhanced for loops. 
-   * @param iterables Iterables/Collections to iterate over sequentially
+   * Factory method for wrapping combined iterator in an (anonymous)
+   * {@link Iterable}, e.g. for enhanced for loops.
+   * 
+   * @param iterables
+   *          Iterables/Collections to iterate over sequentially
    * @return Iterable
    */
   @SafeVarargs
-  public static <E1> Iterable<E1> join(final Iterable<? extends E1>... iterables) {
+  public static <E1> Iterable<E1> join(
+      final Iterable<? extends E1>... iterables) {
     return new Iterable<E1>() {
 
       @Override
       public Iterator<E1> iterator() {
         return new CombinedIterator<>(iterables);
-      }};
+      }
+    };
   }
-  
+
   private final Queue<Iterator<? extends E>> queue = new LinkedList<>();
 
   private Iterator<? extends E> current;

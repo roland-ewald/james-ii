@@ -40,7 +40,7 @@ public class ExperimentBackup implements Serializable {
   /**
    * The experiment to backup.
    */
-  private BaseExperiment experiment;
+  private final BaseExperiment experiment;
 
   /** Flag to determine whether experiment backups are enabled. */
   private boolean enabled = true;
@@ -86,7 +86,7 @@ public class ExperimentBackup implements Serializable {
     String path = thePath.endsWith(".exp") ? thePath : thePath + ".exp";
 
     File file = new File(path);
-    if (file != null && (!file.exists() || file.canWrite())) {
+    if (!file.exists() || file.canWrite()) {
       // get an ExperimentWriter from a factory
       ParameterBlock parameter =
           new ParameterBlock(new ExperimentInfo(file.toURI(), null),

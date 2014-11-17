@@ -18,24 +18,46 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.algoselect.SelectionInformation;
 import org.jamesii.core.base.InformationObject;
-import org.jamesii.core.factories.*;
+import org.jamesii.core.factories.AbstractFactory;
+import org.jamesii.core.factories.Context;
+import org.jamesii.core.factories.Factory;
+import org.jamesii.core.factories.FactoryInstantiationException;
+import org.jamesii.core.factories.FactoryLoadingException;
+import org.jamesii.core.factories.FactoryTypeException;
+import org.jamesii.core.factories.NoFactoryFoundException;
 import org.jamesii.core.model.formalism.Formalism;
 import org.jamesii.core.model.formalism.Formalisms;
 import org.jamesii.core.model.plugintype.ModelFactory;
 import org.jamesii.core.parameters.ParameterBlock;
-import org.jamesii.core.plugins.*;
+import org.jamesii.core.plugins.IFactoryInfo;
+import org.jamesii.core.plugins.IId;
+import org.jamesii.core.plugins.IParameter;
+import org.jamesii.core.plugins.IPluginData;
+import org.jamesii.core.plugins.IPluginTypeData;
+import org.jamesii.core.plugins.PluginLoadException;
 import org.jamesii.core.plugins.install.CachePlugInFinder;
 import org.jamesii.core.plugins.install.DiscPlugInFinder;
 import org.jamesii.core.plugins.install.IPlugInFinder;
 import org.jamesii.core.plugins.install.XMLReader;
-import org.jamesii.core.plugins.metadata.*;
+import org.jamesii.core.plugins.metadata.ComponentState;
+import org.jamesii.core.plugins.metadata.FactoryDataSynchronizer;
+import org.jamesii.core.plugins.metadata.FactoryRuntimeData;
+import org.jamesii.core.plugins.metadata.FailureTolerance;
+import org.jamesii.core.plugins.metadata.IFactoryRuntimeDataStorage;
 import org.jamesii.core.plugins.metadata.file.RegFileDStorage;
 import org.jamesii.core.util.Hook;
 import org.jamesii.core.util.info.JavaInfo;
@@ -79,7 +101,7 @@ public class Registry extends InformationObject {
   private static boolean excludeClassPathOnSearch = false;
 
   /** Use plug-in cache. */
-  private boolean useCache = false;
+  private final boolean useCache = false;
 
   /** The start up time. */
   private final long startUpTime = System.currentTimeMillis();
@@ -133,7 +155,7 @@ public class Registry extends InformationObject {
   /**
    * List of available formalisms.
    */
-  private Formalisms formalisms = new Formalisms();
+  private final Formalisms formalisms = new Formalisms();
 
   /**
    * A list of all plug-ins as they have been found on the system.
@@ -1013,10 +1035,12 @@ public class Registry extends InformationObject {
     Collections.sort(classPath, new Comparator<URL>() {
       @Override
       public int compare(URL o1, URL o2) {
-        if (o1 == null)
+        if (o1 == null) {
           return -1;
-        if (o2 == null)
+        }
+        if (o2 == null) {
           return 1;
+        }
         return o1.toExternalForm().compareTo(o2.toExternalForm());
       }
     });
@@ -1042,10 +1066,12 @@ public class Registry extends InformationObject {
     Collections.sort(foundPlugins, new Comparator<IPluginData>() {
       @Override
       public int compare(IPluginData o1, IPluginData o2) {
-        if (o1 == null)
+        if (o1 == null) {
           return -1;
-        if (o2 == null)
+        }
+        if (o2 == null) {
           return 1;
+        }
         return o1.getId().compareTo(o2.getId());
       }
     });
@@ -1055,10 +1081,12 @@ public class Registry extends InformationObject {
     Collections.sort(foundPluginTypes, new Comparator<IPluginTypeData>() {
       @Override
       public int compare(IPluginTypeData o1, IPluginTypeData o2) {
-        if (o1 == null)
+        if (o1 == null) {
           return -1;
-        if (o2 == null)
+        }
+        if (o2 == null) {
           return 1;
+        }
         return o1.getBaseFactory().getClass().getName()
             .compareTo(o2.getBaseFactory().getClass().getName());
       }
@@ -1530,8 +1558,8 @@ public class Registry extends InformationObject {
           SimSystem.report(
               Level.INFO,
               "The declaration of plug-in " + id.getName() + " with "
-                  + id.getVersion() + " was read TWICE. Using the one from "
-                  + pathFirstPlugIn);
+                  + id.getVersion() + " was read TWICE. Using the one from\n"
+                  + pathFirstPlugIn + ", not the one from\n" + s);
           continue;
         }
 
