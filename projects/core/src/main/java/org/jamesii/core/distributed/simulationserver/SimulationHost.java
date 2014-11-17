@@ -40,7 +40,7 @@ public class SimulationHost extends MSSystemHost implements ISimulationHost {
   static final long serialVersionUID = -7474231023840820625L;
 
   /** The manager managing the simulation runs. */
-  private ComputationTaskManagement taskManager =
+  private final ComputationTaskManagement taskManager =
       new ComputationTaskManagement();
 
   /**
@@ -214,7 +214,7 @@ public class SimulationHost extends MSSystemHost implements ISimulationHost {
   /**
    * @return the taskManager
    */
-  protected ComputationTaskManagement getTaskManager() {
+  public ComputationTaskManagement getTaskManager() {
     return taskManager;
   }
 

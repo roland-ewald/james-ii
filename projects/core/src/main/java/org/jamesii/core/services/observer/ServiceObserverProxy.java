@@ -15,7 +15,7 @@ import org.jamesii.core.observe.Observer;
 
 /**
  * Proxy for a remote
- * {@link org.jamesii.core.distributed.masterserver.ServiceRegistryObserver}.
+ * {@link org.jamesii.gui.server.view.master.ServiceRegistryObserver}.
  * 
  * @author Stefan Leye
  */

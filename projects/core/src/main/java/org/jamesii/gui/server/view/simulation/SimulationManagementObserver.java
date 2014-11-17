@@ -4,7 +4,7 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.distributed.simulationserver;
+package org.jamesii.gui.server.view.simulation;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -12,7 +12,6 @@ import java.rmi.server.UnicastRemoteObject;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
-import org.jamesii.gui.server.view.simulation.SimulationServerView;
 
 /**
  * Remote observer for the simulation management of a simulation host

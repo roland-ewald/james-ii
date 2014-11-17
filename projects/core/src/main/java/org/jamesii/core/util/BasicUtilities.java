@@ -138,4 +138,25 @@ public class BasicUtilities {
     }
   }
 
+  /**
+   * Helper method that checks the java version.
+   * 
+   * @param requiredVersion
+   *          specifies the required version e.g. "1.6"
+   * 
+   * @return true, if successful
+   */
+  public static boolean checkJavaVersion(final String requiredVersion) {
+    // check java version first
+    String usedVersion = System.getProperty("java.specification.version");
+    boolean sufficient = false;
+    try {
+      sufficient =
+          !(usedVersion == null || Double.valueOf(usedVersion).doubleValue() < Double
+              .valueOf(requiredVersion).doubleValue());
+    } catch (Exception e) {
+    }
+    return sufficient;
+  }
+
 }

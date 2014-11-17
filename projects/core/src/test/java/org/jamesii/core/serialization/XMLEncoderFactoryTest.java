@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.jamesii.ChattyTestCase;
-import org.jamesii.core.serialization.XMLEncoderFactory;
-import org.jamesii.gui.utils.BasicUtilities;
 
 /**
  * The Class XMLEncoderFactoryTest.
@@ -86,7 +84,7 @@ public class XMLEncoderFactoryTest extends ChattyTestCase {
     // Java 6 seems to register delegates globally where as Java 7 does it
     // locally (this test test for locally registration because this is more
     // intuitive and seems to be fixed in Java 7)
-    if (BasicUtilities.checkJavaVersion("1.7")) {
+    if (org.jamesii.core.util.BasicUtilities.checkJavaVersion("1.7")) {
       assertNotSame(delegate,
           encoderNotUpdated.getPersistenceDelegate(String.class));
     }

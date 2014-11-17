@@ -4,12 +4,13 @@
  *
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.distributed.masterserver;
+package org.jamesii.gui.server.view.master;
 
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.distributed.masterserver.MasterServer;
 import org.jamesii.core.hosts.system.IMSSystemHost;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
@@ -18,8 +19,8 @@ import org.jamesii.core.services.observer.ServiceObserverProxy;
 
 /**
  * Class to register a
- * {@link rg.jamesii.core.distributed.simulationserver.SimulationManagementObserver}
- * at a {@link rg.jamesii.core.distributed.simulationserver.SimulationServer}.
+ * {@link org.jamesii.gui.server.view.simulation.SimulationManagementObserver}
+ * at a {@link org.jamesii.core.distributed.simulationserver.SimulationServer}.
  * 
  * @author Stefan Leye
  * 

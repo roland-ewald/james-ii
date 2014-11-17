@@ -4,7 +4,7 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.util.logging.remote;
+package org.jamesii.gui.application.logging;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -14,7 +14,7 @@ import java.util.logging.LogRecord;
 import org.jamesii.SimSystem;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
-import org.jamesii.gui.application.logging.BasicLogView;
+import org.jamesii.core.util.logging.remote.LogObserverRegisterer;
 
 /**
  * Listener for remote logs.

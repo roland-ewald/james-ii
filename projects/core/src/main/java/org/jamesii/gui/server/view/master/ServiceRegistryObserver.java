@@ -4,7 +4,7 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.distributed.masterserver;
+package org.jamesii.gui.server.view.master;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -12,7 +12,6 @@ import java.rmi.server.UnicastRemoteObject;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;
 import org.jamesii.core.services.ServiceInfo;
-import org.jamesii.gui.server.view.master.MasterServerView;
 
 /**
  * Remote observer for the serviceRegistry of a master server.

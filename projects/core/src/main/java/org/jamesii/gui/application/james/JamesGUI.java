@@ -280,7 +280,7 @@ public final class JamesGUI extends AbstractApplicationInformation implements
           SimSystem.SIMSYSTEM + " " + SimSystem.VERSION);
     }
 
-    if (!BasicUtilities.checkJavaVersion("1.6")) {
+    if (!org.jamesii.core.util.BasicUtilities.checkJavaVersion("1.6")) {
       String msg =
           String.format("You are not running " + SimSystem.SIMSYSTEM
               + " from a sufficient JRE!\n" + SimSystem.SIMSYSTEM

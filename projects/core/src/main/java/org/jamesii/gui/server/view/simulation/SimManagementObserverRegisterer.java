@@ -4,12 +4,14 @@
  * 
  * LICENCE: JAMESLIC
  */
-package org.jamesii.core.distributed.simulationserver;
+package org.jamesii.gui.server.view.simulation;
 
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 
 import org.jamesii.SimSystem;
+import org.jamesii.core.distributed.simulationserver.SimulationHost;
+import org.jamesii.core.distributed.simulationserver.SimulationServer;
 import org.jamesii.core.hosts.system.IMSSystemHost;
 import org.jamesii.core.hosts.system.IObserverRegisterer;
 import org.jamesii.core.hosts.system.IRemoteObserver;

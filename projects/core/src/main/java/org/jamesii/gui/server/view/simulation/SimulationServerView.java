@@ -20,7 +20,6 @@ import javax.swing.tree.DefaultTreeModel;
 
 import org.jamesii.SimSystem;
 import org.jamesii.core.distributed.simulationserver.ISimulationServer;
-import org.jamesii.core.distributed.simulationserver.SimulationManagementObserver;
 import org.jamesii.core.experiments.tasks.ComputationTaskIDObject;
 import org.jamesii.core.observe.IMediator;
 import org.jamesii.core.observe.Mediator;
