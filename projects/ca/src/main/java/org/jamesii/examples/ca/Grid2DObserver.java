@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 
 import org.jamesii.core.base.IEntity;
 import org.jamesii.core.observe.Observer;
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.visualization.grid.IGrid2DModel;
 import org.jamesii.gui.visualization.grid.IGridCellListener;
 import org.jamesii.model.ca.grid.ICAGrid;

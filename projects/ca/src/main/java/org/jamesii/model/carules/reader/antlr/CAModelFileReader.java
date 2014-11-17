@@ -262,7 +262,7 @@ class CAModelFileReader implements IModelReader {
     } catch (IOException e) {
       SimSystem.report(e);
     } finally {
-      BasicUtilities.close(reader);
+      org.jamesii.core.util.BasicUtilities.close(reader);
     }
 
     return null;
@@ -297,7 +297,7 @@ class CAModelFileReader implements IModelReader {
     } catch (IOException e) {
       SimSystem.report(e);
     } finally {
-      BasicUtilities.close(reader);
+      org.jamesii.core.util.BasicUtilities.close(reader);
     }
 
     return null;
@@ -335,7 +335,7 @@ class CAModelFileReader implements IModelReader {
     } catch (IOException e) {
       return null;
     } finally {
-      BasicUtilities.close(reader);
+      org.jamesii.core.util.BasicUtilities.close(reader);
     }
 
     try {
@@ -359,7 +359,7 @@ class CAModelFileReader implements IModelReader {
     } catch (IOException e) {
       return null;
     } finally {
-      BasicUtilities.close(stream);
+      org.jamesii.core.util.BasicUtilities.close(stream);
     }
   }
 

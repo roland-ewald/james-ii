@@ -6,7 +6,7 @@
  */
 package org.jamesii.gui.model.editor.ca.cellrenderer.valuemapper;
 
-import org.jamesii.gui.utils.ListenerSupport;
+import org.jamesii.core.util.collection.ListenerSupport;
 
 /**
  * Abstract base class for value mappers, that handles most common actions, like

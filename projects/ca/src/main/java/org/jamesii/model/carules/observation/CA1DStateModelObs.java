@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 
 import org.jamesii.core.observe.Observer;
 import org.jamesii.core.processor.IRunnable;
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.application.AbstractWindow;
 import org.jamesii.gui.application.Contribution;
 import org.jamesii.gui.application.IWindow;
@@ -23,7 +24,6 @@ import org.jamesii.gui.application.WindowManagerManager;
 import org.jamesii.gui.application.action.ActionIAction;
 import org.jamesii.gui.application.action.IAction;
 import org.jamesii.gui.experiment.actions.RunSimAction;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.gui.visualization.grid.Grid2D;
 import org.jamesii.gui.visualization.grid.IGrid2DModel;
 import org.jamesii.gui.visualization.grid.IGridCellListener;

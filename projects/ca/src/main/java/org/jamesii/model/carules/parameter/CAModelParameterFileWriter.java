@@ -113,7 +113,7 @@ class CAModelParameterFileWriter implements IModelParameterWriter {
       } catch (IOException e) {
         SimSystem.report(e);
       } finally {
-        BasicUtilities.close(writer);
+        org.jamesii.core.util.BasicUtilities.close(writer);
       }
 
     } catch (UnsupportedEncodingException | FileNotFoundException e) {

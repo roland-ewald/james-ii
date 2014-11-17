@@ -21,13 +21,13 @@ import javax.swing.JPopupMenu;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
+import org.jamesii.core.util.collection.ListenerSupport;
 import org.jamesii.gui.model.editor.ca.cellrenderer.ICACellRenderer;
 import org.jamesii.gui.model.editor.ca.cellrenderer.valuemapper.ICAValueMapper;
 import org.jamesii.gui.model.editor.ca.cellrenderer.valuemapper.IMappingChangedListener;
 import org.jamesii.gui.model.editor.ca.cellrenderer.valuemapper.editor.CAValueMapperEditorManager;
 import org.jamesii.gui.model.editor.ca.cellrenderer.valuemapper.editor.ICAValueMapperEditor;
 import org.jamesii.gui.utils.BasicUtilities;
-import org.jamesii.gui.utils.ListenerSupport;
 import org.jamesii.model.carules.symbolic.ISymbolicCAModel;
 import org.jamesii.model.carules.symbolic.ISymbolicCAModelInformation;
 
