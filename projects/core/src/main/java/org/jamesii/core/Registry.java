@@ -37,7 +37,6 @@ import org.jamesii.core.factories.Context;
 import org.jamesii.core.factories.Factory;
 import org.jamesii.core.factories.FactoryInstantiationException;
 import org.jamesii.core.factories.FactoryLoadingException;
-import org.jamesii.core.factories.FactoryTypeException;
 import org.jamesii.core.factories.NoFactoryFoundException;
 import org.jamesii.core.model.formalism.Formalism;
 import org.jamesii.core.model.formalism.Formalisms;
@@ -492,7 +491,9 @@ public class Registry extends InformationObject {
     // use the filtering process of the abstract factory for
     // determining a
     // factory
-    F factory = getInitializedAbstractFactory(af).create(afp, SimSystem.getRegistry().createContext());
+    F factory =
+        getInitializedAbstractFactory(af).create(afp,
+            SimSystem.getRegistry().createContext());
 
     if (factorySelectionHook != null) {
       factorySelectionHook
@@ -1585,48 +1586,50 @@ public class Registry extends InformationObject {
 
       for (IFactoryInfo fac : facs) {
         // load class and instantiate factory
-        try {
-          if (fac.getClassname() == null) {
-            SimSystem.report(Level.WARNING,
-                "There is no factory class name for " + fac);
-            continue;
-          }
+        if (fac.getClassname() == null) {
+          SimSystem.report(Level.WARNING, "There is no factory class name for "
+              + fac);
+          continue;
+        }
 
-          Class<?> clazz = loadClass(fac.getClassname());
+        Class<?> clazz = loadClass(fac.getClassname());
 
-          if (clazz == null) {
-            SimSystem.report(Level.WARNING,
-                "Was not able to load factory class of " + fac.getClassname());
-            continue;
-          }
-
-          if (first) {
-            List<IPluginData> pdat =
-                foundPluginsGrouped
-                    .get(getAbstractFactory((Class<? extends Factory<?>>) clazz));
-
-            if (pdat == null) {
-              SimSystem.report(Level.WARNING,
-                  "Cannot look up plug-in data for " + clazz);
-              continue;
-            }
-
-            pdat.add(pd);
-            first = false;
-          }
-
-          Object loadedFactory = instantiate(clazz);
-
-          if (loadedFactory instanceof Factory) {
-            registerFactory((Factory<?>) loadedFactory, fac);
-          } else {
-            throw new FactoryTypeException(
-                "Loaded Factory is not an instance of " + Factory.class + "\n");
-          }
-
-        } catch (FactoryTypeException t) {
+        if (clazz == null) {
           SimSystem.report(Level.WARNING,
-              "Failed on loading a plug-in (" + fac.getClassname() + ")", t);
+              "Was not able to load factory class of " + fac.getClassname());
+          continue;
+        }
+
+        if (first) {
+          List<IPluginData> pdat =
+              foundPluginsGrouped
+                  .get(getAbstractFactory((Class<? extends Factory<?>>) clazz));
+
+          if (pdat == null) {
+            SimSystem.report(Level.WARNING, "Cannot look up plug-in data for "
+                + clazz);
+            continue;
+          }
+
+          pdat.add(pd);
+          first = false;
+        }
+        Object loadedFactory = null;
+        try {
+          loadedFactory = instantiate(clazz);
+        } catch (NoClassDefFoundError err) {
+          // not everything named "...Factory" is a factory in the JamesII
+          // sense, sometimes intentionally so
+          SimSystem.report(Level.CONFIG, "Failed to load " + fac.getClassname()
+              + "as a plug-in. Not a class.");
+          continue;
+        }
+        if (loadedFactory instanceof Factory) {
+          registerFactory((Factory<?>) loadedFactory, fac);
+        } else {
+          SimSystem.report(Level.WARNING,
+              "Failed to load a plug-in (" + fac.getClassname()
+                  + "). Loaded Factory is not an instance of " + Factory.class);
         }
       }
     }
@@ -1929,7 +1932,7 @@ public class Registry extends InformationObject {
    * Create a new context and return it.
    */
   public Context createContext() {
-	  return new Context();
+    return new Context();
   }
-  
+
 }
