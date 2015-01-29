@@ -104,7 +104,9 @@ public class TestFactorial extends TestCase {
   /** Tests the {@link Factorial#fac(int, int)} method. */
   public void testFacIntInt() {
     assertEquals(Factorial.fac(0, 0), 1);
-    for (int i = 1; i < 50; i++) {
+    for (int i = 1; i < 21; i++) {
+      // result for i>20 does not fit into long (i.e. test would be for
+      // wrong result from overflow)
       assertEquals(Factorial.fac(i, i), 1);
       assertEquals(Factorial.fac(i, 1), Factorial.fac(i));
       assertEquals(Factorial.fac(i, i - 1), i);

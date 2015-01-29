@@ -69,7 +69,7 @@ public final class Factorial {
     return result;
   }
 
-  private static final long[] CACHED_LONG = new long[25];
+  private static final long[] CACHED_LONG = new long[21];
   static {
     CACHED_LONG[0] = 1;
     CACHED_LONG[1] = 1;
@@ -140,7 +140,7 @@ public final class Factorial {
     return result;
   }
 
-  private static final long[] CACHED_SEMI = new long[34];
+  private static final long[] CACHED_SEMI = new long[33];
   static {
     CACHED_SEMI[0] = 1;
     CACHED_SEMI[1] = 1;
