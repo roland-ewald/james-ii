@@ -12,12 +12,12 @@ package org.jamesii.core.math;
  * thus allowing different max n for computation.
  * 
  * The {@link #quickFac(int)} methods uses pre-computed faculties (
- * {@link #cached_vals} ) for the first m ns, and thus reduces the number of
+ * {@link #CACHED_VALUES} ) for the first m ns, and thus reduces the number of
  * multiplications to be done to 0 or n - number of pre-computed values
  * available.
  * 
  * @author Jan Himmelspach
- * @version 1.0
+ * @author Arne Bittig
  */
 public final class Factorial {
 
@@ -25,7 +25,7 @@ public final class Factorial {
    * The Constant cached_vals. Contains pre-computed facs for values up to the
    * length of the array starting with the fac of 0
    */
-  public static final double[] cached_vals = new double[] { 1 /* = 0! */,
+  public static final double[] CACHED_VALUES = new double[] { 1 /* = 0! */,
       1 /* 1! */, 2 /* 2! */, 6 /* 3! */, 24 /* 4! */, 120 /* 5! */,
       720 /* 6! */, 5040 /* 7! */, 40320 /* 8! */, 362880 /* 9! */,
       3628800 /* 10! */, 39916800 /* 11! */, 479001600 /* 12! */,
@@ -34,15 +34,20 @@ public final class Factorial {
       6402373705728000l /* 18! */, 121645100408832000l /* 19! */,
       2432902008176640000l /* 20! */, 51090942171709440000d /* 21! */,
       1124000727777607680000d /* 22! */, 25852016738884976640000d /* 23! */,
-      620448401733239439360000d /* 24! */, 15511210043330985984000000d /*
-                                                                        * 25!
-                                                                        */,
+      620448401733239439360000d /* 24! */,
+      15511210043330985984000000d /* 25! */,
       403291461126605635584000000d /* 26! */,
       10888869450418352160768000000d /* 27! */,
       304888344611713860501504000000d /* 28! */,
       8841761993739701954543616000000d /* 29! */,
       8841761993739701954543616000000d * 30 /* 30! */
   };
+
+  private static final int NUM_CACHED_VALS = CACHED_VALUES.length;
+
+  /** Private empty constructor to prevent instantiation. */
+  private Factorial() {
+  }
 
   /**
    * Quick fac.
@@ -53,22 +58,24 @@ public final class Factorial {
    * @return the double
    */
   public static double quickFac(int n) {
-
-    if (n < cached_vals.length) {
-      return cached_vals[n];
+    if (n < NUM_CACHED_VALS) {
+      return CACHED_VALUES[n];
     }
 
-    double result = cached_vals[cached_vals.length - 1];
-
-    for (int i = cached_vals.length; i <= n; i++) {
+    double result = CACHED_VALUES[NUM_CACHED_VALS - 1];
+    for (int i = NUM_CACHED_VALS; i <= n; i++) {
       result *= i;
     }
-
     return result;
   }
 
-  /** Private empty constructor to prevent instantiation. */
-  private Factorial() {
+  private static final long[] CACHED_LONG = new long[25];
+  static {
+    CACHED_LONG[0] = 1;
+    CACHED_LONG[1] = 1;
+    for (int i = 2; i < CACHED_LONG.length; i++) {
+      CACHED_LONG[i] = i * CACHED_LONG[i - 1];
+    }
   }
 
   /**
@@ -76,15 +83,22 @@ public final class Factorial {
    * 
    * @param n
    *          the n
-   * 
    * @return the factorial of n
+   * @throws IllegalArgumentException
+   *           if n<0
+   * @throws ArithmeticException
+   *           in case of long overflow
    */
   public static long fac(int n) {
-    long result = 1;
-    for (int i = 2; i <= n; i++) {
-      result *= i;
+    if (n < 0) {
+      throw new IllegalArgumentException("Argument must be non-negative, not "
+          + n);
     }
-    return result;
+    if (n >= CACHED_LONG.length) {
+      throw new ArithmeticException("Long overflow for argument " + n + " >= "
+          + CACHED_LONG.length);
+    }
+    return CACHED_LONG[n];
   }
 
   /**
@@ -124,6 +138,40 @@ public final class Factorial {
       result *= i;
     }
     return result;
+  }
+
+  private static final long[] CACHED_SEMI = new long[34];
+  static {
+    CACHED_SEMI[0] = 1;
+    CACHED_SEMI[1] = 1;
+    for (int i = 2; i < CACHED_SEMI.length; i++) {
+      CACHED_SEMI[i] = i * CACHED_SEMI[i - 2];
+    }
+  }
+
+  /**
+   * Semi-factorial, also called double factorial or n!!, is the product of all
+   * positive integers up to some n with the same parity as n, i.e. the product
+   * of every second integer from 1 to odd n or from 2 to even n.
+   * 
+   * @param n
+   *          semi-factorial argument
+   * @return n!!
+   * @throws IllegalArgumentException
+   *           for n<0
+   * @throws ArithmeticException
+   *           if result does not fit into long
+   */
+  public static long semiFac(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Argument must be non-negative, not "
+          + n);
+    }
+    if (n >= CACHED_SEMI.length) {
+      throw new ArithmeticException("Long overflow for argument " + n + " >= "
+          + CACHED_SEMI.length);
+    }
+    return CACHED_SEMI[n];
   }
 
 }

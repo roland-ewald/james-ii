@@ -171,8 +171,8 @@ public final class BinomialCoefficient {
     double kFac = 1;
 
     // just check whether we can avoid the computation of the kFac
-    if (k < Factorial.cached_vals.length) {
-      kFac = Factorial.cached_vals[(int) k];
+    if (k < Factorial.CACHED_VALUES.length) {
+      kFac = Factorial.CACHED_VALUES[(int) k];
       for (int i = 1; i < k; i++) {
         result *= (n - i);
       }

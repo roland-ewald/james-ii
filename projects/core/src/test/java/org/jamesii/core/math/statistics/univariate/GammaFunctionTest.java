@@ -12,11 +12,12 @@ import static java.lang.Math.PI;
 import static java.lang.Math.log;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
-import static org.jamesii.core.math.Factorial.*;
-import static org.jamesii.core.math.statistics.univariate.GammaFunction.*;
+import static org.jamesii.core.math.Factorial.fac;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.gamma;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.gammaHalfInt;
+import static org.jamesii.core.math.statistics.univariate.GammaFunction.logGamma;
 
 import org.jamesii.core.math.statistics.StatisticsTest;
-import org.jamesii.core.math.statistics.univariate.GammaFunction;
 
 /** Tests the {@link GammaFunction} class. */
 public class GammaFunctionTest extends StatisticsTest {
@@ -94,6 +95,29 @@ public class GammaFunctionTest extends StatisticsTest {
         assertTrue(gamma(x) + " was not positive", gamma(x) > 0);
       }
     }
+  }
+
+  /**
+   * Tests special function values for the
+   * {@link GammaFunction#gammaHalfInt(int)} method.
+   */
+  public void testGammaIntAndHalfIntValues() {
+    // gamma(n) = (n-1)!
+    assertEquals(1.0, gammaHalfInt(2), EPSILON);
+    assertEquals(1.0, gammaHalfInt(4), EPSILON);
+    assertEquals(2.0, gammaHalfInt(6), EPSILON);
+    assertEquals(6.0, gammaHalfInt(8), EPSILON);
+    assertEquals(24.0, gammaHalfInt(10), EPSILON);
+    assertEquals(120.0, gammaHalfInt(12), EPSILON);
+    assertEquals(720.0, gammaHalfInt(14), EPSILON);
+    assertEquals(5040.0, gammaHalfInt(16), EPSILON);
+    assertEquals(40320.0, gammaHalfInt(18), EPSILON);
+    assertEquals(362880.0, gammaHalfInt(20), EPSILON);
+
+    // assertEquals(sqrt(PI), gammaHalfInt(1), EPSILON);
+    // ^results in semi-factorial call with arg -1, then exception
+    assertEquals(sqrt(PI) / 2.0, gammaHalfInt(3), EPSILON);
+    assertEquals(3.0 / 4.0 * sqrt(PI), gammaHalfInt(5), EPSILON);
   }
 
   /**

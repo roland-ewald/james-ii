@@ -19,6 +19,8 @@ import static java.lang.Math.log;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
+import org.jamesii.core.math.Factorial;
+
 /**
  * Class for calculating the Gamma function and a related function, the logGamma
  * function.
@@ -150,6 +152,27 @@ public final class GammaFunction {
             * z + 7.14304917030273074085E-2)// NOSONAR
             * z + 1.00000000000000000320E0);// NOSONAR
     return x * p / q;
+  }
+
+  private static final double SQRT_PI = Math.sqrt(Math.PI);
+
+  /**
+   * Simpler gamma function calculation for integers or real numbers ending .5
+   * (twice the actual argument is the input for the function)
+   * 
+   * @param twoN
+   *          twice the argument to evaluate
+   * @return Gamma(N)=Gamma(twoN/2)
+   */
+  public static double gammaHalfInt(int twoN) {
+    if (twoN <= 0) {
+      throw new IllegalArgumentException("Argument must be >0, not " + twoN);
+    }
+    if (twoN % 2 == 0) {
+      return Factorial.fac(twoN / 2 - 1);
+    } else {
+      return SQRT_PI * Factorial.semiFac(twoN - 2) / (1 << ((twoN - 1) / 2));
+    }
   }
 
   /**
