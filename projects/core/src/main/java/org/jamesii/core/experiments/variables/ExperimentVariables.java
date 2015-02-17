@@ -10,12 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
 
+import org.jamesii.SimSystem;
 import org.jamesii.core.base.NamedEntity;
 import org.jamesii.core.experiments.RunInformation;
 import org.jamesii.core.experiments.TaskConfiguration;
 import org.jamesii.core.experiments.execonfig.ExecutionConfigurationVariable;
 import org.jamesii.core.experiments.steering.ExperimentSteererVariable;
+import org.jamesii.core.experiments.variables.modifier.AbstractIncrementModifier;
+import org.jamesii.core.experiments.variables.modifier.IVariableModifier;
+import org.jamesii.core.experiments.variables.modifier.SequenceModifier;
 import org.jamesii.core.parameters.ParameterBlock;
 
 /**
@@ -455,14 +460,38 @@ public class ExperimentVariables extends NamedEntity {
   public static ExperimentVariables generateExperimentVariables(
       List<ExperimentVariable<?>> variables) {
 
+    int totalConfigs = 1;
+
     // Create simple nested structure
     List<List<ExperimentVariable<?>>> nestedStructure = new ArrayList<>();
     for (ExperimentVariable<?> variable : variables) {
       ArrayList<ExperimentVariable<?>> singleVarList = new ArrayList<>();
       singleVarList.add(variable);
       nestedStructure.add(singleVarList);
+
+      if (totalConfigs > 0) {
+        totalConfigs *= getModifierSize(variable.getModifier());
+      }
+    }
+    if (totalConfigs > 0) {
+      SimSystem.report(Level.CONFIG, totalConfigs
+          + " variable configurations set up.");
     }
     return generateNestedExperimentVariables(nestedStructure);
+  }
+
+  private static int getModifierSize(IVariableModifier<?> modifier) {
+    if (modifier instanceof SequenceModifier<?>) {
+      return ((SequenceModifier<?>) modifier).getValues().size();
+    }
+    if (modifier instanceof AbstractIncrementModifier<?>) {
+      @SuppressWarnings("unchecked")
+      AbstractIncrementModifier<? extends Number> aim =
+          (AbstractIncrementModifier<? extends Number>) modifier;
+      return (int) ((aim.getStopValue().doubleValue() - aim.getStartValue()
+          .doubleValue()) / aim.getIncrementBy().doubleValue());
+    }
+    return -1;
   }
 
   /**
