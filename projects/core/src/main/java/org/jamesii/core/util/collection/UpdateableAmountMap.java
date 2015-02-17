@@ -25,10 +25,7 @@ import org.jamesii.core.math.random.generators.IRandom;
 /**
  * Map of keys and amount values (Integers). Can be used to represent
  * multiset-like structures (a.k.a. bags), but with read access through the
- * {@link Map} interface. (James II has an {@link IMultiSet}, but that offers no
- * direct access to the amount of each member in the set and manipulation of
- * amounts only in steps of one (via {@link Set#add(Object)} and
- * {@link Set#remove(Object)}).
+ * {@link Map} interface.
  * 
  * This implementation automatically removes keys with associated amount of 0
  * and throws an error if the amount becomes less than that (unless another

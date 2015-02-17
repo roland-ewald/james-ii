@@ -15,9 +15,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Implements a *simple* labelled, directed graph.
- * 
- * CAUTION: some methods are not yet implemented. They will throw Exceptions.
+ * Implements a *simple* labeled, directed graph.
  * 
  * @param <V>
  *          type of vertices
@@ -109,7 +107,7 @@ public class LabeledDirectedGraph<V extends Comparable<V>, E extends LabeledEdge
 
   @Override
   public Collection<E> getEdges(V vertex) {
-    throw new InternalError("not applicable for this graph."
+    throw new IllegalStateException("not applicable for this graph."
         + " please use getIncommingEdges() or getOutgoingEdges()");
   }
 

@@ -11,8 +11,8 @@ import java.util.Random;
 
 import org.jamesii.core.math.random.generators.IRandom;
 import org.jamesii.core.math.random.generators.RNGInfo;
-import org.jamesii.core.math.random.generators.RNGPeriod;
 import org.jamesii.core.math.random.generators.RNGInfo.UsableBits;
+import org.jamesii.core.math.random.generators.RNGPeriod;
 
 /**
  * This class encapsulates the default Java random number generator (
@@ -35,7 +35,14 @@ public class JavaRandom implements IRandom {
   private Serializable initialSeed;
 
   /** The rng used internally. */
-  private Random rng = new Random();
+  private final Random rng;
+
+  /**
+   * @return internally used Java {@link Random} number generator
+   */
+  public Random getRng() {
+    return rng;
+  }
 
   /**
    * Initialises the generator with a default seed.
@@ -43,7 +50,7 @@ public class JavaRandom implements IRandom {
    * <strong>NOT RECOMMENDED AND ONLY A TEMPORARY STOPGAP SOLUTION!</strong>
    */
   public JavaRandom() {
-    setSeed(System.currentTimeMillis());
+    this(new Random(System.currentTimeMillis()));
   }
 
   /**
@@ -54,7 +61,15 @@ public class JavaRandom implements IRandom {
    *          pseudo-random numbers.
    */
   public JavaRandom(long seed) {
-    setSeed(seed);
+    this(new Random(seed));
+  }
+
+  /**
+   * Initializes the generator with the {@link java.util.Random} instance to wrap
+   * @param random
+   */
+  public JavaRandom(Random random) {
+    this.rng = random;
   }
 
   @Override
