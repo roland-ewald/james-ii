@@ -85,6 +85,8 @@ public class ErrorFunctionTest extends TestCase {
       // // too imprecise for low values:
       // double erfCInverfcRes = erfc(inverfc(x));
       // assertEquals(x,erfCInverfcRes, 0.001);
+      System.out.print("inverf("+ x + ") = " + inverf(x));
+      System.out.println("; inverf("+ (x+0.25) + ") = " + inverf(x+0.25,13));
     }
   }
 

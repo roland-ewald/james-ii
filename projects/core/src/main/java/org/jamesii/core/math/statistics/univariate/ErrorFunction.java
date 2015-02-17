@@ -151,34 +151,6 @@ public final class ErrorFunction {
     return inverf(x, 5);
   }
 
-  /**
-   * Computes inverse of the complementary error function erfc. This is done by
-   * a <a href="http://mathworld.wolfram.com/InverseErf.html">Maclaurin
-   * series</a>. However, inverf(erf(x)) is only approximately given (with
-   * precision better than 0.001) for x in [0,3].
-   * 
-   * @param x
-   *          the parameter
-   * 
-   * @return erf^-1(x)
-   */
-  @Deprecated
-  // originally present version based on the non-simplified form and with
-  // explicit powers-of-z calculations for each term (gives a much coarser
-  // approximation), but with coefficients extracted as constants
-  public static double inverfConst(double x) {
-    double result =
-        x + PI_1_12 * Math.pow(x, 3) + PI_7_480 * Math.pow(x, 5) + PI_127_40320
-            * Math.pow(x, 7) + PI_4369_5806080 * Math.pow(x, 9)
-            + PI_34807_182476800 * Math.pow(x, 11);
-    return HALF_SQRT_PI * result;
-  }
-
-  private static final double PI_1_12 = Math.PI / 12;
-  private static final double PI_7_480 = 7 * Math.PI / 480;
-  private static final double PI_127_40320 = 127 * Math.PI / 40320;
-  private static final double PI_4369_5806080 = 4369 * Math.PI / 5806080;
-  private static final double PI_34807_182476800 = 34807 * Math.PI / 182476800;
   private static final double HALF_SQRT_PI = 0.5 * Math.sqrt(Math.PI);
 
   /**
