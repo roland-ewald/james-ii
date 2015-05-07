@@ -72,7 +72,7 @@ public class STSetTreeRenderer extends DefaultTreeCellRenderer {
     Factory<?> firstFac = factories.iterator().next();
     @SuppressWarnings("unchecked")
     // getClass() call for wild-card type
-    Class<? extends AbstractFactory<? extends Factory<?>>> absFacClass =
+    Class<? extends AbstractFactory<?>> absFacClass =
         SimSystem.getRegistry().getAbstractFactoryForFactory(
             (Class<? extends Factory<?>>) firstFac.getClass());
     if (absFacClass == null) {

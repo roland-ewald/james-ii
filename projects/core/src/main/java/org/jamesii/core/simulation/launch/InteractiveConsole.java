@@ -1009,7 +1009,7 @@ public class InteractiveConsole {
     public boolean execute(String param) {
       // param is either ident=xyz or simply an ident
       if (param.indexOf('=') == -1) {
-        out.println(variables.get(param));
+        out.println((String)variables.get(param));
       } else {
         String ident = param.substring(0, param.indexOf('='));
         String value = param.substring(param.indexOf('=') + 1, param.length());

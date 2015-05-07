@@ -86,7 +86,7 @@ public class TestParameterBlock extends TestCase {
     // Check that the value is set properly
     result = ParameterBlocks.merge(new ParameterBlock(), second);
     assertEquals(second.getSubBlocks().size(), result.getSubBlocks().size());
-    assertEquals(second.getValue(), result.getValue());
+    assertEquals((Integer)second.getValue(), (Integer)result.getValue());
   }
 
   /**
