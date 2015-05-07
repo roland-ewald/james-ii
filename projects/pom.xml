@@ -89,7 +89,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <source.version>1.7</source.version>
+    <source.version>1.8</source.version>
     <maven.test.failure.ignore>false</maven.test.failure.ignore>
     <maven.test.error.ignore>false</maven.test.error.ignore>
 		
