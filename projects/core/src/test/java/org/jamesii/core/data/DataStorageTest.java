@@ -303,14 +303,14 @@ public abstract class DataStorageTest extends TestCase {
     getDataStorage().writeData(100, "C50", 200.0, (long) 222);
 
     assertEquals("March", getDataStorage().readLatestData(100, "A50"));
-    assertEquals(222, getDataStorage().readLatestData(100, "B50"));
-    assertEquals((long) 222, getDataStorage().readLatestData(100, "C50"));
+    assertEquals(222, (Number)getDataStorage().readLatestData(100, "B50"));
+    assertEquals((long) 222, (Number)getDataStorage().readLatestData(100, "C50"));
 
     getDataStorage().setComputationTaskID(null, null,
         UniqueIDGenerator.createUniqueID());
     getDataStorage().writeData(100, "B50", 200.0, 333);
-    assertEquals(333, getDataStorage().readLatestData(100, "B50"));
-    assertEquals(222, getDataStorage()
+    assertEquals(333, (Number)getDataStorage().readLatestData(100, "B50"));
+    assertEquals(222, (Number)getDataStorage()
         .readLatestData(confid, simid, 100, "B50"));
   }
 
