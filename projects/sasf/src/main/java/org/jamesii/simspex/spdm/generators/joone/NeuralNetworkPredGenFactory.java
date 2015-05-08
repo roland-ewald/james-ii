@@ -117,7 +117,7 @@ public class NeuralNetworkPredGenFactory extends
             NUM_OF_LAYERS, DEFAULT_VAL_NUM_LAYERS), params.getSubBlockValue(
             TRAINING_CYCLES, DEFAULT_VAL_TRAINING_CYCLES),
         params.getSubBlockValue(MOMENTUM, DEFAULT_VAL_MOMENTUM),
-        params.getSubBlockValue(LEARNING_RATE, DEFAULT_VAL_LEARNING_RATE),
+        (double) params.getSubBlockValue(LEARNING_RATE, DEFAULT_VAL_LEARNING_RATE),
         params.getSubBlockValue(ENABLE_MULTI_THREADING,
             DEFAULT_VAL_MULTITHREADING_ENABLED));
   }
