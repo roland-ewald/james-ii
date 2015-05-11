@@ -25,7 +25,7 @@ import junit.framework.TestCase;
  * 
  * @author Johannes Rössel
  */
-public class FileLineIteratorTest extends TestCase {
+public class FileLineIteratorTestFailingTest extends TestCase {
   private FileLineIterator it;
 
   private static File blank;

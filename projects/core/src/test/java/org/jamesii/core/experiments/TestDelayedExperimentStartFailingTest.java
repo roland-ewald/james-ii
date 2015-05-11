@@ -21,14 +21,14 @@ import org.jamesii.core.util.logging.TestingLogListener;
  * is the case in this test).
  * <p/>
  * <b>NOTE:</b> This test assumes it takes the registry *more* than
- * {@link TestDelayedExperimentStart#EXP_STOP_DELAY} milliseconds to be
+ * {@link TestDelayedExperimentStartFailingTest#EXP_STOP_DELAY} milliseconds to be
  * initialized. If not, this test will fail *erroneously*, because the specified
  * experiment is not valid.
  * 
  * @author Roland Ewald
  * 
  */
-public class TestDelayedExperimentStart extends ChattyTestCase {
+public class TestDelayedExperimentStartFailingTest extends ChattyTestCase {
 
   /** The time delay until {@link BaseExperiment#stop(boolean)} is called. */
   private static final long EXP_STOP_DELAY = 500L;
