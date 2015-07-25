@@ -316,7 +316,7 @@ public class SelectionTree extends
 
         representation.append(abbreviations.get(subBlockEntry.getKey()));
         representation.append('=');
-        representation.append(subBlockEntry.getValue().getValue());
+        representation.append((String)subBlockEntry.getValue().getValue());
       }
     }
     representation.append(")");

@@ -34,7 +34,7 @@ public class EpsilonDecreasingMixFactory extends MinBanditPolicyFactory {
   @Override
   public IMinBanditPolicy create(ParameterBlock params, Context context) {
     EpsilonDecreasingMix eDecreasingMix = new EpsilonDecreasingMix();
-    eDecreasingMix.setEpsilon(params.getSubBlockValue(PARAM_EP,
+    eDecreasingMix.setEpsilon((double) params.getSubBlockValue(PARAM_EP,
         EpsilonDecreasing.DEFAULT_EPSILON));
     return eDecreasingMix;
   }

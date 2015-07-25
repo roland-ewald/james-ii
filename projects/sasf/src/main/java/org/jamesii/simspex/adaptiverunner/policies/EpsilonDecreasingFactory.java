@@ -32,7 +32,7 @@ public class EpsilonDecreasingFactory extends MinBanditPolicyFactory {
   @Override
   public IMinBanditPolicy create(ParameterBlock params, Context context) {
     EpsilonDecreasing eDecreasing = new EpsilonDecreasing();
-    eDecreasing.setEpsilon(params.getSubBlockValue(PARAM_EP,
+    eDecreasing.setEpsilon((double) params.getSubBlockValue(PARAM_EP,
         EpsilonDecreasing.DEFAULT_EPSILON));
     return eDecreasing;
   }

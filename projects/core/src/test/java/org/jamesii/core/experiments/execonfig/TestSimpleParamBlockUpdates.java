@@ -79,8 +79,8 @@ public class TestSimpleParamBlockUpdates extends TestCase {
 
     assertTrue(afBlock1.hasSubBlock(NAME_PARAMETER));
     assertTrue(afBlock2.hasSubBlock(NAME_PARAMETER));
-    assertEquals(23, afBlock1.getSubBlockValue(NAME_PARAMETER));
-    assertEquals(23, afBlock2.getSubBlockValue(NAME_PARAMETER));
+    assertEquals(23, (Number)afBlock1.getSubBlockValue(NAME_PARAMETER));
+    assertEquals(23, (Number)afBlock2.getSubBlockValue(NAME_PARAMETER));
     assertFalse(newParam == afBlock1.getSubBlockValue(NAME_PARAMETER));
     assertFalse(newParam == afBlock2.getSubBlockValue(NAME_PARAMETER));
     assertTrue(afBlock2.getSubBlock(NAME_PARAMETER).hasSubBlock("b"));

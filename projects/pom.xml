@@ -89,7 +89,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <source.version>1.7</source.version>
+    <source.version>1.8</source.version>
     <maven.test.failure.ignore>false</maven.test.failure.ignore>
     <maven.test.error.ignore>false</maven.test.error.ignore>
 		
@@ -97,10 +97,10 @@
     <james2.source.repo>https://bitbucket.org/jamesii/main</james2.source.repo>
 
     <!-- Maven plugin versions -->
-    <maven.compiler.v>3.0</maven.compiler.v>
+    <maven.compiler.v>3.2</maven.compiler.v>
     <maven.processor.v>2.0.5</maven.processor.v>
     <maven.resources.v>2.5</maven.resources.v>
-    <maven.surefire.v>2.14.1</maven.surefire.v>
+    <maven.surefire.v>2.18.1</maven.surefire.v>
     <maven.release.v>2.3.2</maven.release.v>
     <maven.source.v>2.1.2</maven.source.v>
     <maven.jar.v>2.4</maven.jar.v>
@@ -188,11 +188,11 @@
           <!-- Wait no more than 30 minutes: -->
           <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
           <workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
+		  <failIfNoTests>false</failIfNoTests>
           <runOrder>random</runOrder>
           <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
           <useManifestOnlyJar>false</useManifestOnlyJar>
-          <argLine>-XX:-UseSplitVerifier</argLine>
           <includes>
             <include>**/*Test*.java</include>
           </includes>

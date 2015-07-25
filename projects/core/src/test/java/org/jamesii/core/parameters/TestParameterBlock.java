@@ -65,16 +65,16 @@ public class TestParameterBlock extends TestCase {
 
     // Check Contents
     ParameterBlock result = ParameterBlocks.merge(first, second);
-    assertEquals(1, result.getValue());
+    assertEquals(1, (Number)result.getValue());
     assertEquals(3, result.getSubBlocks().size());
     assertTrue(result.hasSubBlock(SB1));
-    assertEquals(2, result.getSubBlock(SB1).getValue());
+    assertEquals(2, (Number)result.getSubBlock(SB1).getValue());
     assertTrue(result.getSubBlock(SB1).hasSubBlock(SSB1));
-    assertEquals(7, result.getSubBlock(SB1).getSubBlock(SSB1).getValue());
+    assertEquals(7, (Number)result.getSubBlock(SB1).getSubBlock(SSB1).getValue());
     assertTrue(result.hasSubBlock(SB2));
-    assertEquals(3, result.getSubBlock(SB2).getValue());
+    assertEquals(3, (Number)result.getSubBlock(SB2).getValue());
     assertTrue(result.hasSubBlock(SB3));
-    assertEquals(6, result.getSubBlock(SB3).getValue());
+    assertEquals(6, (Number)result.getSubBlock(SB3).getValue());
 
     // Check that there is no additional content
     assertEquals(1, result.getSubBlock(SB1).getSubBlocks().size());
@@ -86,7 +86,7 @@ public class TestParameterBlock extends TestCase {
     // Check that the value is set properly
     result = ParameterBlocks.merge(new ParameterBlock(), second);
     assertEquals(second.getSubBlocks().size(), result.getSubBlocks().size());
-    assertEquals(second.getValue(), result.getValue());
+    assertEquals((Integer)second.getValue(), (Integer)result.getValue());
   }
 
   /**
@@ -96,10 +96,10 @@ public class TestParameterBlock extends TestCase {
   public void testSearchSubBlock() {
     assertNull(ParameterBlocks.searchSubBlock(first, "notaTestBlock"));
     assertNotNull(ParameterBlocks.searchSubBlock(first, SSB1));
-    assertEquals(7, ParameterBlocks.searchSubBlock(first, SSB1).getValue());
-    assertEquals(7, ParameterBlocks.searchSubBlock(first, SSB1, 7).getValue());
+    assertEquals(7, (Number)ParameterBlocks.searchSubBlock(first, SSB1).getValue());
+    assertEquals(7, (Number)ParameterBlocks.searchSubBlock(first, SSB1, 7).getValue());
     assertNull(ParameterBlocks.searchSubBlock(first, SSB1, 8));
-    assertEquals(8, ParameterBlocks.searchSubBlock(second, SSB1).getValue());
+    assertEquals(8, (Number)ParameterBlocks.searchSubBlock(second, SSB1).getValue());
   }
 
   /**
