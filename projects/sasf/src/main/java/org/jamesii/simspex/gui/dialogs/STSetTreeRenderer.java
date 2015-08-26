@@ -6,15 +6,6 @@
  */
 package org.jamesii.simspex.gui.dialogs;
 
-
-import java.awt.Component;
-import java.util.Set;
-
-import javax.swing.JLabel;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
-
 import org.jamesii.SimSystem;
 import org.jamesii.core.factories.AbstractFactory;
 import org.jamesii.core.factories.Factory;
@@ -22,6 +13,12 @@ import org.jamesii.core.util.misc.Strings;
 import org.jamesii.perfdb.recording.selectiontrees.FactoryVertex;
 import org.jamesii.perfdb.recording.selectiontrees.ParameterVertex;
 import org.jamesii.perfdb.recording.selectiontrees.SelTreeSetVertex;
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import java.awt.*;
+import java.util.Set;
 
 /**
  * Renderer for the table displaying the

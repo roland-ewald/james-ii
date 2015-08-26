@@ -6,6 +6,8 @@
  */
 package org.jamesii.core.util.mosan;
 
+import static org.jamesii.core.util.mosan.MosanExportUtils.NL;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -58,9 +60,10 @@ public final class MosanExportUtils {
     StringBuilder builder = new StringBuilder();
     builder.append("index, time");
     for (String name : nameList) {
-      builder.append(", " + name);
+//      builder.append(", " + name);
+      builder.append(", " + name.replace(',', '/'));
     }
-
+    
     builder.append(", eventid");
     builder.append(NL);
 
