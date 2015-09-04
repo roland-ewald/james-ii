@@ -157,7 +157,7 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    * 
    * @return the horizon
    */
-  protected int getHorizon() {
+  public int getHorizon() {
     return horizon;
   }
 
@@ -169,8 +169,12 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    * @param newSum
    *          the new sum
    */
-  protected void setRewardSum(int armIndex, double newSum) {
+  public void setRewardSum(int armIndex, double newSum) {
     rewardSums[armIndex] = newSum;
+  }
+  
+  public void setOverallPullCount(int count) {
+    this.overallPullCount = count;
   }
   
   /**
@@ -181,7 +185,7 @@ public abstract class AbstractMinBanditPolicy extends Entity implements
    * @param pullCount
    *    the new pull count
    */
-  protected void setPullCount(int armIndex, int pullCount) {
+  public void setPullCount(int armIndex, int pullCount) {
     pulls[armIndex] = pullCount;
   }
 

@@ -9,6 +9,7 @@ package org.jamesii.core.math.parsetree.bool;
 import org.jamesii.core.math.parsetree.BinaryNode;
 import org.jamesii.core.math.parsetree.INode;
 import org.jamesii.core.math.parsetree.ValueNode;
+import org.jamesii.core.math.parsetree.variables.IEnvironment;
 
 /**
  * Node that represent a boolean "or" operation. Thus
@@ -42,44 +43,48 @@ public class OrNode extends BinaryNode {
     super(left, right);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  public INode calc(ValueNode<?> l, ValueNode<?> r) {
+  public <N extends INode> N calc(IEnvironment<?> cEnv) {
+    ValueNode<?> lv = getLeft().calc(cEnv);
+    Boolean blv = null;
+    Boolean brv = null;
+    
+    if (lv.getValue() instanceof Boolean) {
+      blv = (Boolean) lv.getValue();
+    } else if (lv.getValue() instanceof Number) {
+      blv =
+          Double.valueOf(((Number) lv.getValue()).doubleValue()).compareTo(0.) > 0;
+    }
+    if (blv != null && blv) {
+      return (N) new ValueNode<>(true);
+    }
+    
+    ValueNode<?> rv = getRight().calc(cEnv);
 
-    Boolean result;
-    Boolean lv = null;
-    Boolean rv = null;
-
-    if (l.getValue() instanceof Boolean) {
-      lv = (Boolean) l.getValue();
+    if (rv.getValue() instanceof Boolean) {
+      brv = (Boolean) rv.getValue();
+    } else if (rv.getValue() instanceof Number) {
+      brv =
+          Double.valueOf(((Number) rv.getValue()).doubleValue()).compareTo(0.) > 0;
     }
 
-    if (l.getValue() instanceof Number) {
-      lv =
-          Double.valueOf(((Number) l.getValue()).doubleValue()).compareTo(0.) > 0;
-    }
-
-    if (r.getValue() instanceof Boolean) {
-      rv = (Boolean) r.getValue();
-    }
-
-    if (r.getValue() instanceof Number) {
-      rv =
-          Double.valueOf(((Number) r.getValue()).doubleValue()).compareTo(0.) > 0;
-    }
-
-    if ((lv == null) || (rv == null)) {
+    if ((blv == null) || (brv == null)) {
       return null;
     }
-
-    result = lv || rv;
-
-    return new ValueNode<>(result);
-
+    
+    // System.out.println("bin op result "+result);
+    return (N) new ValueNode<>(brv);
   }
 
   @Override
   public String getName() {
     return "OR";
+  }
+
+  @Override
+  protected INode calc(ValueNode<?> l, ValueNode<?> r) {
+    throw new RuntimeException("Invalid!!!!!");
   }
 
 }

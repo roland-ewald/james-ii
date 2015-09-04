@@ -40,7 +40,6 @@ public class EpsilonDecreasing extends SemiUniform {
 
   @Override
   public int nextChoice() {
-
     int choice;
     // if no pull is finished, pull random arm
     if ((getOverallPullCount() == 0)
@@ -59,11 +58,14 @@ public class EpsilonDecreasing extends SemiUniform {
     EpsilonDecreasing newPolicy = new EpsilonDecreasing();
     newPolicy.setEpsilon(getEpsilon());
     newPolicy.init(getNumOfArms(), getHorizon());
+    int overall = 0;
     for (int i = 0; i < getNumOfArms(); ++i) {
       // use the average reward for each arm for the new policy
       newPolicy.setRewardSum(i, getPullCount(i) == 0 ? 0 : getRewardSum(i) / getPullCount(i));
       newPolicy.setPullCount(i, getPullCount(i) == 0 ? 0 : 1);
+      overall += getPullCount(i) == 0 ? 0 : 1;
     }
+    newPolicy.setOverallPullCount(overall);
     return newPolicy;
   }
   
