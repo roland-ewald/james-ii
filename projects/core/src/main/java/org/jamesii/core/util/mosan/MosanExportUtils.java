@@ -60,8 +60,7 @@ public final class MosanExportUtils {
     StringBuilder builder = new StringBuilder();
     builder.append("index, time");
     for (String name : nameList) {
-//      builder.append(", " + name);
-      builder.append(", " + name.replace(',', '/'));
+      builder.append(", " + name.replace(',', ';'));
     }
     
     builder.append(", eventid");

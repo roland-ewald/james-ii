@@ -179,7 +179,7 @@ import org.jamesii.SimSystem;
  * @see ILexerTokenStylizer
  * @see ILexerToken
  */
-public final class SyntaxEditor extends JComponent implements DocumentListener,
+public class SyntaxEditor extends JComponent implements DocumentListener,
     CaretListener {
 
   /**
@@ -265,6 +265,7 @@ public final class SyntaxEditor extends JComponent implements DocumentListener,
    */
   private void init() {
     setPreferredSize(new Dimension(320, 240));
+   
 
     super.setLayout(new BorderLayout());
 
