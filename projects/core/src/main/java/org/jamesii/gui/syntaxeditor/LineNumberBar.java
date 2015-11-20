@@ -54,7 +54,7 @@ import org.jamesii.gui.utils.BasicUtilities;
  * @see SyntaxEditor
  * @author Stefan Rybacki
  */
-final class LineNumberBar extends JComponent implements ChangeListener,
+public final class LineNumberBar extends JComponent implements ChangeListener,
     DocumentListener, MouseMotionListener, MouseListener,
     PropertyChangeListener, IInfoProviderListener {
 
