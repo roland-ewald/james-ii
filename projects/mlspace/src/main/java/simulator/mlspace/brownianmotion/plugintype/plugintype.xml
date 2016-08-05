@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugintype xmlns="http://www.jamesii.org/plugintype" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugintype http://www.jamesii.org/plugintype/plugintype.xsd">
+  <id name="Brownian motion position update determination plugins" version="1.0" /> 
+  <abstractfactory>simulator.mlspace.brownianmotion.plugintype.AbstractPositionUpdaterFactory</abstractfactory> 
+  <basefactory>simulator.mlspace.brownianmotion.PositionUpdaterFactory</basefactory>
+  <description>position update determination methods for simulation of Brownian-motion-like behaviour in continuous space.</description>
+</plugintype>

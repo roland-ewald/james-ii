@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+  <id name="treemapeventqueues" version="1.0" icon="BasicEventQueues.png"/> 
+
+  <factory classname="org.jamesii.core.util.eventset.TreeAndHashMapEventQueueFactory"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.TreeAndHashMapFEventQueueFactory"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.TreeAndHashMapSetEventQueueFactory"></factory> 
+  <factory classname="org.jamesii.core.util.eventset.TreeAndHashMapSetFEventQueueFactory"></factory> 
+</plugin>

@@ -1,0 +1,100 @@
+// Reproduction of Patel, Shiriha, Huang: "Optimal Dynamics for Quality Control in Spatially
+// Distributed Mitochondrial Networks", PLoS Comp Biol 9(7), doi:10.1371/journal.pcbi.1003108, 
+// adapted and extended with Fis1 and Drp1 for CMSB14 short paper & poster
+// Bittig, Reinhardt, Baltrusch, Uhrmacher "Predictive Modelling of Mitochondrial Spatial
+// Structure and Health" in P. Mendes et al. (Eds.): CMSB 2014, LNBI 8859, pp. 252–255, 2014.
+
+//// Constants ////
+maxHealth = 10;
+minNewHealth = maxHealth/2;
+
+ExchangeDirSwitch = 0; // 1 -> up, 0 -> either, -1 -> down, -1.3 -> up and down
+pUp = [(ExchangeDirSwitch+0.25)^2];
+pDown = [(-ExchangeDirSwitch+1)/2];
+pEither = [1-ExchangeDirSwitch^2];
+
+skipSameUp = 0; // flag (0 or 1) whether to skip "up"ward "healing" in case of same-health collision
+skipSameDown = 0;
+
+rDamage = 5*10^-4;
+// rFusion = 0.1; // fusion probabilities in case of collisions used instead
+// rFission = 0.1; // superseded by nFis & nDrp expressions
+rAutophagy = 3.33*10^-3;
+rMicrotubeAttach = 0.2; // not clear from original paper
+rMicrotubeDetach = 0.2; // not clear from original paper
+
+// all lengths in micro-m, all times in min (thus speed in micro-m/min)
+mitoRadius = 0.5;
+mitoDiff = 0.0;
+mitoSpeed = 0.5;
+healthExchange = 2;
+cellSideLength = 25;
+mitoNum = 150;
+mitoNumVariability = 1;
+
+rReplication = 0.02 * mitoNum / cellSideLength^2; // adjusted for 0th-order reaction instead of 1st-order
+
+maxFis = 8;
+maxDrp = 2;
+rFisRecruitment = 1.;
+rDrpRecruitment = 1.;
+DrpRecThreshold = 4;
+
+
+fusionThreshold = 0.3*maxHealth;
+autophagyThreshold = 0.3*maxHealth;
+maxHealthForExchange = maxHealth-healthExchange;
+
+switchFused = 2; // 0: no damage or autophagy of fused mitos, 1: damage, but no autophagy, 2: damage & autophagy (incl. more likely fission)
+switchFusedDamage = [(switchFused+1)/2]; // min(switchFused,1);
+switchFusedAutophagy = [switchFused/2];  // max(switchFused,0);
+
+fisdrpFactor = 1;
+fisNum = mitoNum * maxFis * fisdrpFactor;
+drpNum = mitoNum * maxDrp * fisdrpFactor;
+
+tau = 2*PI;
+
+
+//// Species definitions ////
+Cell(shape:square,size:cellSideLength^2, nm:0,nFis:fisNum,nDrp:drpNum);
+Mito(shape:circle,size:PI*mitoRadius^2, diffusion:mitoDiff,direction:[0...tau],velocity:[0...mitoSpeed], health:minNewHealth:maxHealth,nFis:0,nDrp:0)<bs:0>;
+
+
+//// Initial state ////
+1 Cell(position:(0,0),nm:mitoNum)[
+   mitoNum-1 Mito(velocity:0) + 1 Mito(velocity:mitoSpeed,direction:PI)
+];
+
+//// Rules ////
+
+// microtubule attachment and detatchment rules
+Mito(velocity>0) -> Mito(velocity=0) @ rMicrotubeDetach
+Mito(velocity==0)<bs:free> -> Mito(velocity=mitoSpeed,direction:[0...tau]) @ rMicrotubeAttach
+
+// fusion rules (incl. health unit exchange)
+Mito(h=health>=fusionThreshold)<bs:free> + Mito(health in [h+skipSameUp...maxHealthForExchange])<bs:free>
+   -> Mito(velocity=0,health-=healthExchange)<bs:bind> .Mito(velocity=0,health+=healthExchange)<bs:bind> @ pUp
+Mito(h=health<=maxHealth)<bs:free> + Mito(health in [fusionThreshold...min(h-skipSameDown,maxHealthForExchange)])<bs:free>
+   -> Mito(velocity=0,health-=healthExchange)<bs:bind> .Mito(velocity=0,health+=healthExchange)<bs:bind> @ pDown
+Mito(health>=fusionThreshold)<bs:free> + Mito(health<=maxHealthForExchange)<bs:free>
+   -> Mito(velocity=0,health-=healthExchange)<bs:bind> .Mito(velocity=0,health+=healthExchange)<bs:bind> @ pEither
+
+// Fis and Drp recruitment
+Cell(cf=nFis>0)[Mito(f=nFis<maxFis)<bs:Mito(nFis<maxFis-f)>] -> Cell(nFis-=1)[Mito(nFis+=1)] @ rFisRecruitment * cf
+Cell(cd=nDrp>0)[Mito(f=nFis,d=nDrp) <bs:Mito(nFis>=DrpRecThreshold-f,nDrp<maxDrp-d)> ] -> Cell(nDrp-=1)[Mito(nDrp+=1)] @ rDrpRecruitment * cd
+
+// fission; Mito().Mito() ->...would be interpreted as 2nd-order rule 
+Cell[Mito(f=nFis,d=nDrp)<bs:Mito(nFis>=maxFis-f,nDrp>=maxDrp-d)>] -> Cell(nFis+=f,nDrp+=d)[Mito(nFis=0,nDrp=0)<bs:release>] @ Infinity  
+Cell[Mito(f=nFis>0)<bs:free>] -> Cell(nFis+=f)[Mito(nFis=0)] @ Infinity
+Cell[Mito(d=nDrp>0)<bs:free>] -> Cell(nDrp+=d)[Mito(nDrp=0)] @ Infinity
+
+// damage
+Mito(h=health>0)<bs:free> -> Mito(health-=1) @ rDamage*h
+Mito(h=health>0)<bs:occ> -> Mito(health-=1) @ rDamage*h*switchFusedDamage
+
+// autophagy and biogenesis
+Cell[Mito(health<autophagyThreshold)<bs:free>] -> Cell(nm-=1)[] @ rAutophagy
+Mito(health<autophagyThreshold)<bs:occ> -> Mito(health=-1)<bs:release> @ rAutophagy*switchFusedAutophagy
+Cell[Mito(f=nFis,d=nDrp,health==-1)] -> Cell(nm-=1,nDrp+=d,nFis+=f)[] @ Infinity
+Cell(x=nm)[] -> Cell(nm+=1)[Mito(velocity=0)] @ rReplication * 1/(1+e^((x - mitoNum)/mitoNumVariability))
