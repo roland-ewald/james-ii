@@ -1,0 +1,30 @@
+// Reproduction of Nicolau, Burrage, Parton, Hancock:  "Identifying optimal lipid Organelle characteristics required
+// to promote nanoscale protein-protein interactions on the plasma membrane." Mol Cell Biol. 2006 26(1):313-23.
+// http://dx.doi.org/10.1128/mcb.26.1.313-323.2006 
+
+rho = 0.25; // fluidity value, a.k.a. ProteinDiffInOutRatio 
+orgCov = 0.25; // organelle coverage, i.e. ratio of volume
+x=100; y=80; z=60;
+periodicBoundaries = {-x/2,-y/2,-z/2,x/2,y/2,z/2};
+
+sizeOrg = 4000; // organelle volume
+numOrg = [x*y*z*orgCov/sizeOrg+0.5]; // [...+0.5] -> round to integer
+sizeProt = 4/3*PI;
+orgBound = soft;
+
+numProt = 2000;
+diffProt = 2;
+diffOrg = diffProt * (4/3*PI / 4000)^(1./3); // scale by default prot & org size, even if those are overridden 
+
+
+Cell(diffusion:0.0,size:x*y*z,shape:cuboid,aspectratio:(x,y,z));
+Organelle(boundary:orgBound,shape:sphere,size:sizeOrg,diffusion:diffOrg);
+Protein(shape:sphere,size:sizeProt,diffusion:diffProt);  //
+
+1 Cell(position:(0,0,0))[
+	numProt Protein
+  + numOrg Organelle
+];
+
+Protein + Organelle -> Organelle[Protein(diffusion*=rho)] @ 1
+Organelle[Protein] -> Protein(diffusion/=rho) + Organelle @ 1

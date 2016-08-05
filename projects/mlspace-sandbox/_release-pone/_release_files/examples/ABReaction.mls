@@ -1,0 +1,35 @@
+// ML-Space crowding model for experiments perfomed for
+// Andrews, S. S. et al. Simulating macromolecular crowding with
+// particle and lattice-based methods, vol. 4 of Dagstuhl Reports, 170-187 
+// (Schloss Dagstuhl-Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2015). 
+// URL http://drops.dagstuhl.de/opus/volltexte/2015/4972.
+
+sc = 1.; // scaling factor to simulate smaller system (if <1) -- scales volume and amounts (not particle sizes)
+
+phi = 0.1; // crowding parameter, sphere placement may be difficult for values near 1
+annihilation = 1; // switch; 1: A+B-> [nothing] or 0: A+B->C
+nParticles = 100; // A and B, each
+nA = nParticles; nB = nParticles;
+
+sysSide = 50; sysSize = sysSide^3;
+pbsc = sc^(1./3); // helper constant to incorporate scaling factor into the (a bit complicated) periodic boundary definition
+periodicBoundaries = (-sysSide/2*pbsc,-sysSide/2*pbsc,-sysSide/2*pbsc,sysSide/2*pbsc,sysSide/2*pbsc,sysSide/2*pbsc);
+
+ABsize = pi/6;
+ABdiff = 0.1;
+crowdSize = ABsize;
+crowdDiff = ABdiff;
+
+freeVol = sysSize*phi-(nA+nB)*ABsize; // without crowders, auxiliary constant
+nCrowders = [sc*freeVol / crowdSize + 0.5]; // brackets = next smaller integer
+
+System(size:sysSize*sc,shape:cube);
+A(shape:circle,size:ABsize,diffusion:ABdiff);
+B(shape:circle,size:ABsize,diffusion:ABdiff);
+C(shape:circle,size:ABsize,diffusion:ABdiff);
+Crowder(shape:circle,size:crowdSize,diffusion:crowdDiff);
+
+1 System(position:(0,0,0))[nCrowders*sc Crowder + nA*sc A + nB*sc B];
+
+A + B -> C @ (1-annihilation)
+A + B ->  @ annihilation

@@ -27,6 +27,16 @@
 		<artifactId>devs</artifactId>
 		<version>0.9.8-SNAPSHOT</version>
 	  </dependency>
+	  <dependency>
+		<groupId>org.jamesii</groupId>
+		<artifactId>mlspace</artifactId>
+		<version>0.9.8-SNAPSHOT</version>
+	  </dependency>
+	  <dependency>
+		<groupId>org.jamesii</groupId>
+		<artifactId>mlspace-util</artifactId>
+		<version>0.9.8-SNAPSHOT</version>
+	  </dependency>
       <dependency>
         <groupId>org.jamesii</groupId>
         <artifactId>resultreports</artifactId>

@@ -1,0 +1,36 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+  <id>Pone</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  
+  <!-- Include files in release folder -->  
+  <fileSets>
+    <fileSet>
+      <directory>_release_files</directory>
+      <outputDirectory/>
+    </fileSet>
+  </fileSets>
+  
+  <!-- Include all dependencies -->
+  <dependencySets>
+  	 <dependencySet>
+	   <useProjectAttachments>true</useProjectAttachments>
+       <outputDirectory/>
+	   <includes>
+		  <include>org.jamesii.private:mlspace-pone:jar:all</include>
+       </includes>
+<!--	   <outputFileNameMapping>${artifact.artifactId}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>-->
+	   <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
+     </dependencySet>
+     <dependencySet>
+       <outputDirectory>src</outputDirectory>
+       <includes>
+		  <include>org.jamesii.private:*:jar:sources</include>
+       </includes>
+     </dependencySet>
+  </dependencySets>  
+  
+</assembly>

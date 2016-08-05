@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="spatial indices for collision detection" version="1.0" />
+	<factory
+		classname="org.jamesii.core.math.geometry.spatialindex.StaticGridSpatialIndexFactory">
+		<parameter name="SurroundingShape" type="java.lang.Object" defaultValue="null">
+			<description>Shape defining boundaries of the system (only shapes within these boundaries will be correctly handled). If null, the first registered shape is used.</description>
+		</parameter>
+		<parameter name="NumGridCells" type="java.lang.Integer" defaultValue="9">
+			<description>Target number of grid cells (actual number may be slightly smaller)</description>
+		</parameter>
+		<parameter name="gridCellSideLength" type="java.lang.Double" defaultValue="1.">
+			<description>Target size of each grid cell in each dimension (actual size may be slightly smaller)</description>
+		</parameter>
+		<description>Spatial index partitioning fixed bounding shape into subblocks (grid cells), keeping track of entities in each block.</description>
+	</factory>
+</plugin>

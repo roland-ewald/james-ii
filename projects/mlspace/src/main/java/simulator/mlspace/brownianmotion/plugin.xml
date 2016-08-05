@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.jamesii.org/plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jamesii.org/plugin http://www.jamesii.org/plugin/plugin.xsd">
+	<id name="position update determination methods for simulation of Brownian-motion-like behaviour in continuous space" version="1.0" />
+	<factory
+		classname="simulator.mlspace.brownianmotion.ContinuousPositionUpdaterFactory">
+		<parameter name="UsePolarSpherical" type="java.lang.Boolean" defaultValue="false">
+			<description>Draw random numbers for polar/(hyper-)spherical coordinates, transform them to cartesian (otherwise: draw random numbers for cartesian coordinates directly)</description>
+		</parameter>
+		<parameter name="RNG" type="org.jamesii.core.math.random.generators.IRandom" defaultValue="null">
+			<description>Random number generator (uniformly distributed; will be ignored if normal distribution is given)</description>
+		</parameter>
+		<parameter name="NormalDistribution" type="org.jamesii.core.math.random.distributions.AbstractNormalDistribution" defaultValue="null">
+			<description>Normally distributed random number generation method</description>
+		</parameter>
+		<parameter name="TravelDistance" type="java.lang.Integer" defaultValue="null">
+			<description>Target average distance for each update step</description>
+		</parameter>
+		<parameter name="VectorFactory" type="model.mlspace.geometry.vectors.IVectorFactory" defaultValue="null">
+			<description>Vector factory for creating the (correct kind of) position update (displacement) vectors</description>
+		</parameter>
+		<description>Position update of varying lengths steps for any given time interval</description>
+	</factory>
+	<factory
+		classname="simulator.mlspace.brownianmotion.DiscretePositionUpdaterFactory">
+		<parameter name="RNG" type="org.jamesii.core.math.random.generators.IRandom" defaultValue="null">
+			<description>Random number generator (uniformly distributed; will be ignored if normal distribution is given)</description>
+		</parameter>
+		<parameter name="Steps" type="model.mlspace.geometry.vectors.IDisplacementVector" defaultValue="null">
+			<description>Distance to be traveled per update step in each direction</description>
+		</parameter>
+		<parameter name="MaskedPosUpdater" type="simulator.mlspace.brownianmotion.IPositionUpdaterGivenTimeSteps" defaultValue="null">
+			<description>Position updater (without fixed distance steps) to use in the background</description>
+		</parameter>
+		<description>Fixed distance position updater that uses a non-fixed distance one internally (and tracks movement across implicit grid block boundaries)</description>
+	</factory>
+</plugin>

@@ -1,0 +1,39 @@
+// Reproduction of Nicolau, Burrage, Parton, Hancock:  "Identifying optimal lipid raft characteristics required
+// to promote nanoscale protein-protein interactions on the plasma membrane." Mol Cell Biol. 2006 26(1):313-23.
+// http://dx.doi.org/10.1128/mcb.26.1.313-323.2006 
+
+div = 1; // ratio of original space used (e.g. 2 = half in each direction)
+
+x = 700 / div;
+y = 500 / div;
+
+periodicBoundaries = {-x/2,-y/2,x/2,y/2};
+raftRadius = 25;
+exactRaftVol = PI * raftRadius^2;
+raftCov = 0.250;
+numRaft = [raftCov*x*y/exactRaftVol+0.5];
+raftVol = raftCov*x*y/numRaft; // adjust raft radius/volume slightly such that
+                  // %numRaft% rafts cover exactly %raftCov% of the total area 
+protRadius = 1;
+protVol = PI * protRadius^2;
+raftBoundaries = soft;
+postponedRegionInit = false; // set to true to try applying rules immediately to proteins randomly placed 
+                    // in (on top of) lipid rafts during initialization before repeating placement attempt
+
+numProt = 2500 / div / div;
+kDiffProt = 2;
+kDiffRaft = kDiffProt * (-0.00010985*raftRadius^3 + 0.00536*raftRadius^2 - 0.08992*raftRadius + 0.94449);
+// polyFit(...,3) such that raft diam. 6-> kDR==0.72*kDiffProt ... 50 -> kDR==0.33*kDiffProt 
+rho = 0.25; // fluidity value, a.k.a. ProtDiffInOutRatio 
+
+Membrane(diffusion:0.0,size:x*y,shape:rectangle,aspectratio:(x,y));
+Raft(boundary:raftBoundaries,shape:circle,size:raftVol,diffusion:kDiffRaft);
+Prot(shape:circle,size:protVol,diffusion:[0.0..kDiffProt]);  //
+
+1 Membrane(position:(0,0))[
+	[numProt/div/div + 0.5] Prot(diffusion:kDiffProt)
+	+numRaft Raft()
+	];
+
+Prot() + Raft() -> Raft()[Prot(diffusion*=rho)] @ 1
+Raft()[Prot()] -> Prot(diffusion/=rho) + Raft() @ 1

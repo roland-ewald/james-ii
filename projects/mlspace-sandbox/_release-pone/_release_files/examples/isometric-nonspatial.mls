@@ -1,0 +1,17 @@
+ // Two-state conformational transition toy model of two conformational isomers—isomers that can be interconverted by rotation about single bonds 
+ // used in some rare event sim approaches where p_{A==100,B0=0}(B_{t<=10}>=30) is studied, i.e. the amount of B reaches 30 before time 10,
+ // which has a theoretically derived probability of 1.1911×10-5 (Cao&Liang2013, http://dx.doi.org/10.1063/1.4811286)
+
+D=1 // arbitrary diffusion constant in case we want to extend the model spatially
+
+nA0=100;
+nB0=0;
+
+Cell(size:1,position:(0,0,0),shape:cube);
+A(diffusion:D);
+B(diffusion:D);
+
+1 Cell[nA0 A + nB0 B];
+
+rAB: A -> B @ 0.12
+rBA: B -> A @ 1
