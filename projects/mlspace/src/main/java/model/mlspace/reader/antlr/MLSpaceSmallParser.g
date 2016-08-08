@@ -177,7 +177,7 @@ private static final Collection<String> RANDOM_VECTOR_KEYWORDS = Arrays.asList("
   
   private void removeLastLoopVar(String varName) {
     String poppedName = forVarNames.pop();
-    assert poppedName == varName;
+    assert poppedName.equals(varName);
     forVarNextPos.pop();
     AbstractValueRange<?> prevVal = forVarOverridden.remove(varName);
     if (prevVal != null) addVariable(varName,prevVal);
