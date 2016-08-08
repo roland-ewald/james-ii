@@ -136,6 +136,7 @@
     <module>ca</module>
     <module>core</module>
     <module>devs</module>
+    <module>mlspace-util</module>
     <module>mlspace</module>
     <module>resultreports</module>
     <module>sasf</module>
