@@ -133,9 +133,10 @@
 
   <!-- Add new modules here (please keep in alphabetical order) -->
   <modules>
-	<module>ca</module>
+    <module>ca</module>
     <module>core</module>
-	<module>devs</module>
+    <module>devs</module>
+    <module>mlspace</module>
     <module>resultreports</module>
     <module>sasf</module>
   </modules>
