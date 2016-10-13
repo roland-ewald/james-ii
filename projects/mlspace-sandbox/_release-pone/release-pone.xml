@@ -20,7 +20,7 @@
 	   <useProjectAttachments>true</useProjectAttachments>
        <outputDirectory/>
 	   <includes>
-		  <include>org.jamesii.private:mlspace-pone:jar:all</include>
+		  <include>org.jamesii:mlspace-pone:jar:all</include>
        </includes>
 <!--	   <outputFileNameMapping>${artifact.artifactId}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>-->
 	   <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
@@ -28,7 +28,7 @@
      <dependencySet>
        <outputDirectory>src</outputDirectory>
        <includes>
-		  <include>org.jamesii.private:*:jar:sources</include>
+		  <include>org.jamesii:*:jar:sources</include>
        </includes>
      </dependencySet>
   </dependencySets>  
