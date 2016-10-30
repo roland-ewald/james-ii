@@ -109,8 +109,9 @@ public class MLSpaceModelReader implements IModelReader {
       addNewPassOnInfo(model, parser, parameters);
       ApplicationLogger.log(
           parser.getNumberOfSyntaxErrors() > 0 ? Level.SEVERE : Level.INFO,
-          "Model parsed with " + parser.getNumberOfSyntaxErrors()
-              + " syntax error(s). Info: " + model.getInfoMap());
+          "Model from " + source + " parsed with "
+              + parser.getNumberOfSyntaxErrors() + " syntax error(s). Info: "
+              + model.getInfoMap());
       lastNumSyntaxErrors = parser.getNumberOfSyntaxErrors();
       lastBacktrackingLevel = parser.getBacktrackingLevel();
       return model;
@@ -143,8 +144,9 @@ public class MLSpaceModelReader implements IModelReader {
       MLSpaceModel model = parser.fullmodel().model;
       addOldPassOnInfo(model, parser, parameters);
       ApplicationLogger.log(Level.INFO,
-          "Model parsed with " + parser.getNumberOfSyntaxErrors()
-              + " syntax error(s). Info: " + model.getInfoMap());
+          "Model from " + source + " parsed with "
+              + parser.getNumberOfSyntaxErrors() + " syntax error(s). Info: "
+              + model.getInfoMap());
       lastNumSyntaxErrors = parser.getNumberOfSyntaxErrors();
       lastBacktrackingLevel = parser.getBacktrackingLevel();
       return model;
