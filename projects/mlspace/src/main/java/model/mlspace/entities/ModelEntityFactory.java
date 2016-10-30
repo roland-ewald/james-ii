@@ -340,18 +340,26 @@ public class ModelEntityFactory implements java.io.Serializable {
     // }
     String sizeAttName = SpatialAttribute.SIZE.toString();
     if (ent.hasAttribute(sizeAttName)) {
-      return checkValidSize(ent.getAttribute(sizeAttName));
+      Object size = ent.getAttribute(sizeAttName);
+      if (size instanceof Pair<?, ?>) {
+        @SuppressWarnings("rawtypes")
+        Object sizeValue = ((Pair) size).getFirstValue();
+        // special treatment for RuleEntity instances:
+        // attribute may be used only to assign its value to a local variable...
+        // .. then sizeValue is null and cannot be used for the check here.
+        if (sizeValue != null) {
+          return checkValidSize(sizeValue);
+        }
+      } else {
+        return checkValidSize(size);
+      }
     }
     return checkValidSize(defAtts.get(sizeAttName));
   }
 
-  private boolean checkValidSize(Object obj) {
-    if (obj == null) {
+  private boolean checkValidSize(Object size) {
+    if (size == null) {
       return false;
-    }
-    Object size = obj;
-    if (obj instanceof Pair<?, ?>) {
-      size = ((Pair) obj).getFirstValue();
     }
     if (size instanceof Number) {
       double value = ((Number) size).doubleValue();
