@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 14:05:07 model\\mlspace\\reader\\antlr\\MLSpaceDirectParser.g
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 model\\mlspace\\reader\\antlr\\MLSpaceDirectParser.g
 
 package model.mlspace.reader.antlr;
 
@@ -53,53 +53,53 @@ public class MLSpaceDirectParser extends Parser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "L_BRACKET", "R_BRACKET", "L_BRACE", "R_BRACE", "COLON", "SEMIC", "COMMA", "ARROW", "AT", "HASH", "EQ", "LESSTHAN", "GREATERTHAN", "DOTS", "DOT", "FOR", "FREE", "OCC", "BIND", "RELEASE", "REPLACE", "IN", "MODELNAMEKW", "L_PAREN", "R_PAREN", "BECOMES", "EXPONENT", "FLOAT", "PLUS", "MINUS", "TIMES", "DIV", "POW", "SQR", "CUB", "MIN", "MAX", "IF", "THEN", "ELSE", "DEGREES", "ID", "COMMENT", "WS", "STRING", "Tokens"
     };
-    public static final int BECOMES=29;
-    public static final int MINUS=33;
-    public static final int CUB=38;
-    public static final int ELSE=43;
-    public static final int ID=45;
-    public static final int REPLACE=24;
-    public static final int IF=41;
-    public static final int Tokens=49;
-    public static final int BIND=22;
-    public static final int IN=25;
+    public static final int EOF=-1;
+    public static final int L_BRACKET=4;
+    public static final int R_BRACKET=5;
+    public static final int L_BRACE=6;
+    public static final int R_BRACE=7;
+    public static final int COLON=8;
     public static final int SEMIC=9;
+    public static final int COMMA=10;
+    public static final int ARROW=11;
+    public static final int AT=12;
+    public static final int HASH=13;
+    public static final int EQ=14;
+    public static final int LESSTHAN=15;
+    public static final int GREATERTHAN=16;
+    public static final int DOTS=17;
     public static final int DOT=18;
     public static final int FOR=19;
-    public static final int RELEASE=23;
-    public static final int EQ=14;
-    public static final int HASH=13;
-    public static final int AT=12;
-    public static final int MIN=39;
-    public static final int SQR=37;
-    public static final int POW=36;
-    public static final int THEN=42;
-    public static final int PLUS=32;
-    public static final int FLOAT=31;
-    public static final int R_BRACE=7;
-    public static final int MAX=40;
-    public static final int L_BRACKET=4;
-    public static final int L_PAREN=27;
     public static final int FREE=20;
-    public static final int COMMENT=46;
-    public static final int ARROW=11;
-    public static final int R_PAREN=28;
-    public static final int WS=47;
-    public static final int EOF=-1;
-    public static final int L_BRACE=6;
-    public static final int COMMA=10;
-    public static final int TIMES=34;
-    public static final int COLON=8;
-    public static final int DOTS=17;
-    public static final int R_BRACKET=5;
     public static final int OCC=21;
-    public static final int DIV=35;
-    public static final int DEGREES=44;
-    public static final int LESSTHAN=15;
-    public static final int EXPONENT=30;
-    public static final int STRING=48;
-    public static final int GREATERTHAN=16;
+    public static final int BIND=22;
+    public static final int RELEASE=23;
+    public static final int REPLACE=24;
+    public static final int IN=25;
     public static final int MODELNAMEKW=26;
+    public static final int L_PAREN=27;
+    public static final int R_PAREN=28;
+    public static final int BECOMES=29;
+    public static final int EXPONENT=30;
+    public static final int FLOAT=31;
+    public static final int PLUS=32;
+    public static final int MINUS=33;
+    public static final int TIMES=34;
+    public static final int DIV=35;
+    public static final int POW=36;
+    public static final int SQR=37;
+    public static final int CUB=38;
+    public static final int MIN=39;
+    public static final int MAX=40;
+    public static final int IF=41;
+    public static final int THEN=42;
+    public static final int ELSE=43;
+    public static final int DEGREES=44;
+    public static final int ID=45;
+    public static final int COMMENT=46;
+    public static final int WS=47;
+    public static final int STRING=48;
+    public static final int Tokens=49;
 
     // delegates
     // delegators
@@ -8504,20 +8504,30 @@ public class MLSpaceDirectParser extends Parser {
     static final String DFA24_eofS =
         "\41\uffff";
     static final String DFA24_minS =
-        "\1\6\1\4\1\12\1\0\5\uffff\1\4\11\uffff\1\7\15\uffff";
+        "\1\6\1\4\3\uffff\1\12\2\uffff\1\0\10\uffff\1\4\1\uffff\1\7\15\uffff";
     static final String DFA24_maxS =
-        "\1\6\1\55\1\54\1\0\5\uffff\1\55\11\uffff\1\54\15\uffff";
+        "\1\6\1\55\3\uffff\1\54\2\uffff\1\0\10\uffff\1\55\1\uffff\1\54\15"+
+        "\uffff";
     static final String DFA24_acceptS =
-        "\4\uffff\5\1\1\uffff\10\1\1\2\1\uffff\15\1";
+        "\2\uffff\3\1\1\uffff\2\1\1\uffff\10\1\1\uffff\1\2\1\uffff\15\1";
     static final String DFA24_specialS =
-        "\1\uffff\1\2\1\1\1\3\5\uffff\1\4\11\uffff\1\0\15\uffff}>";
+        "\1\uffff\1\2\3\uffff\1\1\2\uffff\1\3\10\uffff\1\4\1\uffff\1\0\15"+
+        "\uffff}>";
     static final String[] DFA24_transitionS = {
             "\1\1",
-            "\1\10\2\uffff\1\3\23\uffff\1\7\3\uffff\1\6\1\5\1\4\13\uffff"+
-            "\1\2",
-            "\1\11\25\uffff\1\20\1\21\1\16\1\17\1\15\1\12\1\13\5\uffff"+
-            "\1\14",
+            "\1\7\2\uffff\1\10\23\uffff\1\6\3\uffff\1\4\1\3\1\2\13\uffff"+
+            "\1\5",
+            "",
+            "",
+            "",
+            "\1\21\25\uffff\1\17\1\20\1\15\1\16\1\14\1\11\1\12\5\uffff"+
+            "\1\13",
+            "",
+            "",
             "\1\uffff",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -8525,16 +8535,8 @@ public class MLSpaceDirectParser extends Parser {
             "",
             "\1\30\26\uffff\1\27\3\uffff\1\26\1\25\1\24\13\uffff\1\23",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\3\2\uffff\1\11\25\uffff\1\37\1\40\1\35\1\36\1\34\1\31\1"+
-            "\32\5\uffff\1\33",
+            "\1\10\2\uffff\1\21\25\uffff\1\37\1\40\1\35\1\36\1\34\1\31"+
+            "\1\32\5\uffff\1\33",
             "",
             "",
             "",
@@ -8593,9 +8595,9 @@ public class MLSpaceDirectParser extends Parser {
                         int index24_19 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_19==R_BRACE) ) {s = 3;}
+                        if ( (LA24_19==R_BRACE) ) {s = 8;}
 
-                        else if ( (LA24_19==COMMA) ) {s = 9;}
+                        else if ( (LA24_19==COMMA) ) {s = 17;}
 
                         else if ( (LA24_19==SQR) && (synpred56_MLSpaceDirectParser())) {s = 25;}
 
@@ -8618,32 +8620,32 @@ public class MLSpaceDirectParser extends Parser {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA24_2 = input.LA(1);
+                        int LA24_5 = input.LA(1);
 
                          
-                        int index24_2 = input.index();
+                        int index24_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_2==COMMA) ) {s = 9;}
+                        if ( (LA24_5==SQR) && (synpred56_MLSpaceDirectParser())) {s = 9;}
 
-                        else if ( (LA24_2==SQR) && (synpred56_MLSpaceDirectParser())) {s = 10;}
+                        else if ( (LA24_5==CUB) && (synpred56_MLSpaceDirectParser())) {s = 10;}
 
-                        else if ( (LA24_2==CUB) && (synpred56_MLSpaceDirectParser())) {s = 11;}
+                        else if ( (LA24_5==DEGREES) && (synpred56_MLSpaceDirectParser())) {s = 11;}
 
-                        else if ( (LA24_2==DEGREES) && (synpred56_MLSpaceDirectParser())) {s = 12;}
+                        else if ( (LA24_5==POW) && (synpred56_MLSpaceDirectParser())) {s = 12;}
 
-                        else if ( (LA24_2==POW) && (synpred56_MLSpaceDirectParser())) {s = 13;}
+                        else if ( (LA24_5==TIMES) && (synpred56_MLSpaceDirectParser())) {s = 13;}
 
-                        else if ( (LA24_2==TIMES) && (synpred56_MLSpaceDirectParser())) {s = 14;}
+                        else if ( (LA24_5==DIV) && (synpred56_MLSpaceDirectParser())) {s = 14;}
 
-                        else if ( (LA24_2==DIV) && (synpred56_MLSpaceDirectParser())) {s = 15;}
+                        else if ( (LA24_5==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 15;}
 
-                        else if ( (LA24_2==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 16;}
+                        else if ( (LA24_5==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 16;}
 
-                        else if ( (LA24_2==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 17;}
+                        else if ( (LA24_5==COMMA) ) {s = 17;}
 
                          
-                        input.seek(index24_2);
+                        input.seek(index24_5);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
@@ -8653,60 +8655,60 @@ public class MLSpaceDirectParser extends Parser {
                         int index24_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_1==ID) ) {s = 2;}
+                        if ( (LA24_1==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 2;}
 
-                        else if ( (LA24_1==R_BRACE) ) {s = 3;}
+                        else if ( (LA24_1==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 3;}
 
-                        else if ( (LA24_1==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 4;}
+                        else if ( (LA24_1==FLOAT) && (synpred56_MLSpaceDirectParser())) {s = 4;}
 
-                        else if ( (LA24_1==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 5;}
+                        else if ( (LA24_1==ID) ) {s = 5;}
 
-                        else if ( (LA24_1==FLOAT) && (synpred56_MLSpaceDirectParser())) {s = 6;}
+                        else if ( (LA24_1==L_PAREN) && (synpred56_MLSpaceDirectParser())) {s = 6;}
 
-                        else if ( (LA24_1==L_PAREN) && (synpred56_MLSpaceDirectParser())) {s = 7;}
+                        else if ( (LA24_1==L_BRACKET) && (synpred56_MLSpaceDirectParser())) {s = 7;}
 
-                        else if ( (LA24_1==L_BRACKET) && (synpred56_MLSpaceDirectParser())) {s = 8;}
+                        else if ( (LA24_1==R_BRACE) ) {s = 8;}
 
                          
                         input.seek(index24_1);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA24_3 = input.LA(1);
+                        int LA24_8 = input.LA(1);
 
                          
-                        int index24_3 = input.index();
+                        int index24_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred56_MLSpaceDirectParser()) ) {s = 17;}
+                        if ( (synpred56_MLSpaceDirectParser()) ) {s = 16;}
 
                         else if ( (true) ) {s = 18;}
 
                          
-                        input.seek(index24_3);
+                        input.seek(index24_8);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA24_9 = input.LA(1);
+                        int LA24_17 = input.LA(1);
 
                          
-                        int index24_9 = input.index();
+                        int index24_17 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA24_9==ID) ) {s = 19;}
+                        if ( (LA24_17==ID) ) {s = 19;}
 
-                        else if ( (LA24_9==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 20;}
+                        else if ( (LA24_17==MINUS) && (synpred56_MLSpaceDirectParser())) {s = 20;}
 
-                        else if ( (LA24_9==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 21;}
+                        else if ( (LA24_17==PLUS) && (synpred56_MLSpaceDirectParser())) {s = 21;}
 
-                        else if ( (LA24_9==FLOAT) && (synpred56_MLSpaceDirectParser())) {s = 22;}
+                        else if ( (LA24_17==FLOAT) && (synpred56_MLSpaceDirectParser())) {s = 22;}
 
-                        else if ( (LA24_9==L_PAREN) && (synpred56_MLSpaceDirectParser())) {s = 23;}
+                        else if ( (LA24_17==L_PAREN) && (synpred56_MLSpaceDirectParser())) {s = 23;}
 
-                        else if ( (LA24_9==L_BRACKET) && (synpred56_MLSpaceDirectParser())) {s = 24;}
+                        else if ( (LA24_17==L_BRACKET) && (synpred56_MLSpaceDirectParser())) {s = 24;}
 
                          
-                        input.seek(index24_9);
+                        input.seek(index24_17);
                         if ( s>=0 ) return s;
                         break;
             }

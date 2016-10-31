@@ -5,7 +5,6 @@ options {
   output=AST;
   tokenVocab=MLSpaceCompositeLexer;
 }
-//  superClass=TokenAwareParser;
 
 
 /*
@@ -235,8 +234,9 @@ private static final Collection<String> RANDOM_VECTOR_KEYWORDS = Arrays.asList("
 }
 
 
-fragment entsep : PLUS | DOT;
-
+fragment entsepleft : PLUS; 
+fragment entsepright : PLUS | DOT;
+ 
 fullmodel returns [MLSpaceModel model]
 @after{$model.setName(projectName);}
 : variable_defs
@@ -454,18 +454,18 @@ rule_left_hand_side  returns [RuleSide lhs]
 @after{$lhs = lhsBuilder.build();}:
   e1=entity_match {lhsBuilder.addEntity($e1.ent);}
   ((L_BRACKET {lhsBuilder.makeLastContext();}
-   |entsep)
+   |entsepleft)
    (e2=entity_match {lhsBuilder.addEntity($e2.ent);}
-    (entsep en=entity_match {lhsBuilder.addEntity($en.ent);})*)?
+    (entsepleft en=entity_match {lhsBuilder.addEntity($en.ent);})*)?
    ({lhsBuilder.isContextSet()}? R_BRACKET | {}))?
 ;
 
 rule_right_hand_side returns [ModEntity context, List<ModEntity> rhs]
 @init{ $rhs = new ArrayList<>();}:
   e1=entity_result[false] {$rhs.add($e1.ent);}
-  ((L_BRACKET {$context = $rhs.remove(0);} | entsep)
+  ((L_BRACKET {$context = $rhs.remove(0);} | entsepright)
    (e2=entity_result[false] {$rhs.add($e2.ent);}
-   (entsep en=entity_result[false] {$rhs.add($en.ent);})*)?
+   (entsepright en=entity_result[false] {$rhs.add($en.ent);})*)?
    ({$context != null}? R_BRACKET | {}))?
 ;
 
@@ -496,7 +496,7 @@ bindingsite returns [String name, RuleEntityWithBindings ent]:
  
 entities_result[boolean ignore] returns [List<ModEntity> list]  
  @init {$list = new ArrayList<>();}: 
- (e=entity_result[ignore] {$list.add($e.ent);} (entsep! e2=entity_result[ignore] {$list.add($e2.ent);})*)?;
+ (e=entity_result[ignore] {$list.add($e.ent);} (entsepright! e2=entity_result[ignore] {$list.add($e2.ent);})*)?;
 
 entity_result[boolean ignore] returns [ModEntity ent]:
   species {$ent = new ModEntity($species.specName);} 
@@ -536,7 +536,7 @@ bindingaction returns [String name,BindingAction action]:
 
 init[boolean ignore] returns [Map<InitEntity,Integer> map]:
 i1=init_element[ignore] {$map = $i1.map;}
-(entsep! in=init_element[ignore] {$map.putAll($in.map);})*;
+(entsepleft! in=init_element[ignore] {$map.putAll($in.map);})*;
 
 init_element[boolean ignore] returns [Map<InitEntity,Integer> map]
 @init{

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 14:05:07 CommentAndWhitespaceLexer.g
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 CommentAndWhitespaceLexer.g
 
  package model.mlspace.reader.antlr;
  
@@ -12,53 +12,53 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MLSpaceCompositeLexer_CommentAndWhitespaceLexer extends Lexer {
-    public static final int BECOMES=29;
-    public static final int MINUS=33;
-    public static final int CUB=38;
-    public static final int ELSE=43;
-    public static final int ID=45;
-    public static final int REPLACE=24;
-    public static final int IF=41;
-    public static final int Tokens=49;
-    public static final int BIND=22;
-    public static final int IN=25;
+    public static final int EOF=-1;
+    public static final int L_BRACKET=4;
+    public static final int R_BRACKET=5;
+    public static final int L_BRACE=6;
+    public static final int R_BRACE=7;
+    public static final int COLON=8;
     public static final int SEMIC=9;
+    public static final int COMMA=10;
+    public static final int ARROW=11;
+    public static final int AT=12;
+    public static final int HASH=13;
+    public static final int EQ=14;
+    public static final int LESSTHAN=15;
+    public static final int GREATERTHAN=16;
+    public static final int DOTS=17;
     public static final int DOT=18;
     public static final int FOR=19;
-    public static final int RELEASE=23;
-    public static final int EQ=14;
-    public static final int HASH=13;
-    public static final int AT=12;
-    public static final int MIN=39;
-    public static final int SQR=37;
-    public static final int POW=36;
-    public static final int THEN=42;
-    public static final int PLUS=32;
-    public static final int FLOAT=31;
-    public static final int R_BRACE=7;
-    public static final int MAX=40;
-    public static final int L_BRACKET=4;
-    public static final int L_PAREN=27;
     public static final int FREE=20;
-    public static final int COMMENT=46;
-    public static final int ARROW=11;
-    public static final int R_PAREN=28;
-    public static final int WS=47;
-    public static final int EOF=-1;
-    public static final int L_BRACE=6;
-    public static final int COMMA=10;
-    public static final int TIMES=34;
-    public static final int COLON=8;
-    public static final int DOTS=17;
-    public static final int R_BRACKET=5;
     public static final int OCC=21;
-    public static final int DIV=35;
-    public static final int DEGREES=44;
-    public static final int LESSTHAN=15;
-    public static final int EXPONENT=30;
-    public static final int STRING=48;
-    public static final int GREATERTHAN=16;
+    public static final int BIND=22;
+    public static final int RELEASE=23;
+    public static final int REPLACE=24;
+    public static final int IN=25;
     public static final int MODELNAMEKW=26;
+    public static final int L_PAREN=27;
+    public static final int R_PAREN=28;
+    public static final int BECOMES=29;
+    public static final int EXPONENT=30;
+    public static final int FLOAT=31;
+    public static final int PLUS=32;
+    public static final int MINUS=33;
+    public static final int TIMES=34;
+    public static final int DIV=35;
+    public static final int POW=36;
+    public static final int SQR=37;
+    public static final int CUB=38;
+    public static final int MIN=39;
+    public static final int MAX=40;
+    public static final int IF=41;
+    public static final int THEN=42;
+    public static final int ELSE=43;
+    public static final int DEGREES=44;
+    public static final int ID=45;
+    public static final int COMMENT=46;
+    public static final int WS=47;
+    public static final int STRING=48;
+    public static final int Tokens=49;
 
     // delegates
     // delegators

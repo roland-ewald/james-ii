@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 14:05:07 model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g
 
 package model.mlspace.reader.antlr;
 
@@ -60,55 +60,55 @@ public class MLSpaceSmallParser extends Parser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "L_BRACKET", "R_BRACKET", "L_BRACE", "R_BRACE", "COLON", "SEMIC", "COMMA", "ARROW", "AT", "HASH", "EQ", "LESSTHAN", "GREATERTHAN", "DOTS", "DOT", "FOR", "FREE", "OCC", "BIND", "RELEASE", "REPLACE", "IN", "MODELNAMEKW", "L_PAREN", "R_PAREN", "BECOMES", "EXPONENT", "FLOAT", "PLUS", "MINUS", "TIMES", "DIV", "POW", "SQR", "CUB", "MIN", "MAX", "IF", "THEN", "ELSE", "DEGREES", "ID", "COMMENT", "WS", "STRING", "Tokens", "NOTEQ", "INT"
     };
-    public static final int BECOMES=29;
-    public static final int MINUS=33;
-    public static final int CUB=38;
-    public static final int ELSE=43;
-    public static final int ID=45;
-    public static final int REPLACE=24;
-    public static final int IF=41;
-    public static final int Tokens=49;
-    public static final int BIND=22;
-    public static final int IN=25;
+    public static final int EOF=-1;
+    public static final int L_BRACKET=4;
+    public static final int R_BRACKET=5;
+    public static final int L_BRACE=6;
+    public static final int R_BRACE=7;
+    public static final int COLON=8;
     public static final int SEMIC=9;
+    public static final int COMMA=10;
+    public static final int ARROW=11;
+    public static final int AT=12;
+    public static final int HASH=13;
+    public static final int EQ=14;
+    public static final int LESSTHAN=15;
+    public static final int GREATERTHAN=16;
+    public static final int DOTS=17;
     public static final int DOT=18;
     public static final int FOR=19;
-    public static final int RELEASE=23;
-    public static final int EQ=14;
-    public static final int HASH=13;
-    public static final int AT=12;
-    public static final int MIN=39;
-    public static final int SQR=37;
-    public static final int POW=36;
-    public static final int THEN=42;
-    public static final int PLUS=32;
-    public static final int FLOAT=31;
-    public static final int R_BRACE=7;
-    public static final int MAX=40;
-    public static final int L_BRACKET=4;
-    public static final int L_PAREN=27;
     public static final int FREE=20;
-    public static final int COMMENT=46;
-    public static final int INT=51;
-    public static final int ARROW=11;
-    public static final int R_PAREN=28;
-    public static final int WS=47;
-    public static final int EOF=-1;
-    public static final int L_BRACE=6;
-    public static final int COMMA=10;
-    public static final int TIMES=34;
-    public static final int COLON=8;
-    public static final int DOTS=17;
-    public static final int R_BRACKET=5;
     public static final int OCC=21;
-    public static final int NOTEQ=50;
-    public static final int DIV=35;
-    public static final int DEGREES=44;
-    public static final int LESSTHAN=15;
-    public static final int EXPONENT=30;
-    public static final int STRING=48;
-    public static final int GREATERTHAN=16;
+    public static final int BIND=22;
+    public static final int RELEASE=23;
+    public static final int REPLACE=24;
+    public static final int IN=25;
     public static final int MODELNAMEKW=26;
+    public static final int L_PAREN=27;
+    public static final int R_PAREN=28;
+    public static final int BECOMES=29;
+    public static final int EXPONENT=30;
+    public static final int FLOAT=31;
+    public static final int PLUS=32;
+    public static final int MINUS=33;
+    public static final int TIMES=34;
+    public static final int DIV=35;
+    public static final int POW=36;
+    public static final int SQR=37;
+    public static final int CUB=38;
+    public static final int MIN=39;
+    public static final int MAX=40;
+    public static final int IF=41;
+    public static final int THEN=42;
+    public static final int ELSE=43;
+    public static final int DEGREES=44;
+    public static final int ID=45;
+    public static final int COMMENT=46;
+    public static final int WS=47;
+    public static final int STRING=48;
+    public static final int Tokens=49;
+    public static final int NOTEQ=50;
+    public static final int INT=51;
 
     // delegates
     // delegators
@@ -306,33 +306,84 @@ public class MLSpaceSmallParser extends Parser {
 
 
 
-    public static class entsep_return extends ParserRuleReturnScope {
+    public static class entsepleft_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "entsep"
-    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:238:10: fragment entsep : ( PLUS | DOT );
-    public final MLSpaceSmallParser.entsep_return entsep() throws RecognitionException {
-        MLSpaceSmallParser.entsep_return retval = new MLSpaceSmallParser.entsep_return();
+    // $ANTLR start "entsepleft"
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:237:10: fragment entsepleft : PLUS ;
+    public final MLSpaceSmallParser.entsepleft_return entsepleft() throws RecognitionException {
+        MLSpaceSmallParser.entsepleft_return retval = new MLSpaceSmallParser.entsepleft_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token set1=null;
+        Token PLUS1=null;
 
-        Object set1_tree=null;
+        Object PLUS1_tree=null;
 
         try {
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:238:17: ( PLUS | DOT )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:237:21: ( PLUS )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:237:23: PLUS
+            {
+            root_0 = (Object)adaptor.nil();
+
+            PLUS1=(Token)match(input,PLUS,FOLLOW_PLUS_in_entsepleft55); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            PLUS1_tree = (Object)adaptor.create(PLUS1);
+            adaptor.addChild(root_0, PLUS1_tree);
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "entsepleft"
+
+    public static class entsepright_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "entsepright"
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:238:10: fragment entsepright : ( PLUS | DOT );
+    public final MLSpaceSmallParser.entsepright_return entsepright() throws RecognitionException {
+        MLSpaceSmallParser.entsepright_return retval = new MLSpaceSmallParser.entsepright_return();
+        retval.start = input.LT(1);
+
+        Object root_0 = null;
+
+        Token set2=null;
+
+        Object set2_tree=null;
+
+        try {
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:238:22: ( PLUS | DOT )
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:
             {
             root_0 = (Object)adaptor.nil();
 
-            set1=(Token)input.LT(1);
+            set2=(Token)input.LT(1);
             if ( input.LA(1)==DOT||input.LA(1)==PLUS ) {
                 input.consume();
-                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set1));
+                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set2));
                 state.errorRecovery=false;state.failed=false;
             }
             else {
@@ -362,7 +413,7 @@ public class MLSpaceSmallParser extends Parser {
         }
         return retval;
     }
-    // $ANTLR end "entsep"
+    // $ANTLR end "entsepright"
 
     public static class fullmodel_return extends ParserRuleReturnScope {
         public MLSpaceModel model;
@@ -378,9 +429,9 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token SEMIC4=null;
         Token SEMIC5=null;
-        Token EOF6=null;
+        Token SEMIC6=null;
+        Token EOF7=null;
         MLSpaceSmallParser.init_return i1 = null;
 
         MLSpaceSmallParser.rules_return r1 = null;
@@ -389,14 +440,14 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.init_return i2 = null;
 
-        MLSpaceSmallParser.variable_defs_return variable_defs2 = null;
+        MLSpaceSmallParser.variable_defs_return variable_defs3 = null;
 
-        MLSpaceSmallParser.species_defs_return species_defs3 = null;
+        MLSpaceSmallParser.species_defs_return species_defs4 = null;
 
 
-        Object SEMIC4_tree=null;
         Object SEMIC5_tree=null;
-        Object EOF6_tree=null;
+        Object SEMIC6_tree=null;
+        Object EOF7_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:242:1: ( variable_defs species_defs ( ( ( init )=>i1= init[false] ( SEMIC r1= rules )? ) | (r2= rules SEMIC i2= init[false] ) ) EOF )
@@ -404,18 +455,18 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_variable_defs_in_fullmodel76);
-            variable_defs2=variable_defs();
+            pushFollow(FOLLOW_variable_defs_in_fullmodel86);
+            variable_defs3=variable_defs();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, variable_defs2.getTree());
-            pushFollow(FOLLOW_species_defs_in_fullmodel80);
-            species_defs3=species_defs();
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, variable_defs3.getTree());
+            pushFollow(FOLLOW_species_defs_in_fullmodel90);
+            species_defs4=species_defs();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, species_defs3.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, species_defs4.getTree());
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:244:2: ( ( ( init )=>i1= init[false] ( SEMIC r1= rules )? ) | (r2= rules SEMIC i2= init[false] ) )
             int alt2=2;
             alt2 = dfa2.predict(input);
@@ -426,7 +477,7 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:244:3: ( ( init )=>i1= init[false] ( SEMIC r1= rules )? )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:244:4: ( init )=>i1= init[false] ( SEMIC r1= rules )?
                     {
-                    pushFollow(FOLLOW_init_in_fullmodel92);
+                    pushFollow(FOLLOW_init_in_fullmodel102);
                     i1=init(false);
 
                     state._fsp--;
@@ -443,12 +494,12 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:244:29: SEMIC r1= rules
                             {
-                            SEMIC4=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_fullmodel96); if (state.failed) return retval;
+                            SEMIC5=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_fullmodel106); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            SEMIC4_tree = (Object)adaptor.create(SEMIC4);
-                            adaptor.addChild(root_0, SEMIC4_tree);
+                            SEMIC5_tree = (Object)adaptor.create(SEMIC5);
+                            adaptor.addChild(root_0, SEMIC5_tree);
                             }
-                            pushFollow(FOLLOW_rules_in_fullmodel100);
+                            pushFollow(FOLLOW_rules_in_fullmodel110);
                             r1=rules();
 
                             state._fsp--;
@@ -475,18 +526,18 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:245:3: (r2= rules SEMIC i2= init[false] )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:245:4: r2= rules SEMIC i2= init[false]
                     {
-                    pushFollow(FOLLOW_rules_in_fullmodel113);
+                    pushFollow(FOLLOW_rules_in_fullmodel123);
                     r2=rules();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, r2.getTree());
-                    SEMIC5=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_fullmodel115); if (state.failed) return retval;
+                    SEMIC6=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_fullmodel125); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    SEMIC5_tree = (Object)adaptor.create(SEMIC5);
-                    adaptor.addChild(root_0, SEMIC5_tree);
+                    SEMIC6_tree = (Object)adaptor.create(SEMIC6);
+                    adaptor.addChild(root_0, SEMIC6_tree);
                     }
-                    pushFollow(FOLLOW_init_in_fullmodel119);
+                    pushFollow(FOLLOW_init_in_fullmodel129);
                     i2=init(false);
 
                     state._fsp--;
@@ -504,10 +555,10 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            EOF6=(Token)match(input,EOF,FOLLOW_EOF_in_fullmodel128); if (state.failed) return retval;
+            EOF7=(Token)match(input,EOF,FOLLOW_EOF_in_fullmodel138); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            EOF6_tree = (Object)adaptor.create(EOF6);
-            adaptor.addChild(root_0, EOF6_tree);
+            EOF7_tree = (Object)adaptor.create(EOF7);
+            adaptor.addChild(root_0, EOF7_tree);
             }
 
             }
@@ -548,11 +599,11 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token SEMIC8=null;
-        MLSpaceSmallParser.variable_def_return variable_def7 = null;
+        Token SEMIC9=null;
+        MLSpaceSmallParser.variable_def_return variable_def8 = null;
 
 
-        Object SEMIC8_tree=null;
+        Object SEMIC9_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:249:1: ( ( variable_def ( SEMIC )? )* )
@@ -581,12 +632,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:249:4: variable_def ( SEMIC )?
             	    {
-            	    pushFollow(FOLLOW_variable_def_in_variable_defs137);
-            	    variable_def7=variable_def();
+            	    pushFollow(FOLLOW_variable_def_in_variable_defs147);
+            	    variable_def8=variable_def();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, variable_def7.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, variable_def8.getTree());
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:249:22: ( SEMIC )?
             	    int alt3=2;
             	    int LA3_0 = input.LA(1);
@@ -598,7 +649,7 @@ public class MLSpaceSmallParser extends Parser {
             	        case 1 :
             	            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: SEMIC
             	            {
-            	            SEMIC8=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_variable_defs139); if (state.failed) return retval;
+            	            SEMIC9=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_variable_defs149); if (state.failed) return retval;
 
             	            }
             	            break;
@@ -650,13 +701,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID9=null;
-        Token EQ10=null;
+        Token ID10=null;
+        Token EQ11=null;
         MLSpaceSmallParser.valset_or_const_return n = null;
 
 
-        Object ID9_tree=null;
-        Object EQ10_tree=null;
+        Object ID10_tree=null;
+        Object EQ11_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:251:14: ( ID EQ n= valset_or_const )
@@ -664,33 +715,33 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID9=(Token)match(input,ID,FOLLOW_ID_in_variable_def151); if (state.failed) return retval;
+            ID10=(Token)match(input,ID,FOLLOW_ID_in_variable_def161); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID9_tree = (Object)adaptor.create(ID9);
-            adaptor.addChild(root_0, ID9_tree);
+            ID10_tree = (Object)adaptor.create(ID10);
+            adaptor.addChild(root_0, ID10_tree);
             }
-            EQ10=(Token)match(input,EQ,FOLLOW_EQ_in_variable_def153); if (state.failed) return retval;
-            pushFollow(FOLLOW_valset_or_const_in_variable_def158);
+            EQ11=(Token)match(input,EQ,FOLLOW_EQ_in_variable_def163); if (state.failed) return retval;
+            pushFollow(FOLLOW_valset_or_const_in_variable_def168);
             n=valset_or_const();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, n.getTree());
             if ( state.backtracking==0 ) {
-               Object ovVal = varOverrides.get((ID9!=null?ID9.getText():null));
+               Object ovVal = varOverrides.get((ID10!=null?ID10.getText():null));
                 if (ovVal == null)
-                  addVariable((ID9!=null?ID9.getText():null),(n!=null?n.val:null));
+                  addVariable((ID10!=null?ID10.getText():null),(n!=null?n.val:null));
                 else if (ovVal instanceof Number) 
-                    addVariable((ID9!=null?ID9.getText():null),AbstractValueRange.newSingleValue(((Number) ovVal).doubleValue()));
+                    addVariable((ID10!=null?ID10.getText():null),AbstractValueRange.newSingleValue(((Number) ovVal).doubleValue()));
                 else
-                    addVariable((ID9!=null?ID9.getText():null),AbstractValueRange.newSingleValue(((String) ovVal)));
-                if ((ID9!=null?ID9.getText():null).equalsIgnoreCase(MLSpaceParserHelper.PERIODIC_BOUNDARIES_SETTING) &&
-                  parseTool.setPeriodicBoundaries(variables.get((ID9!=null?ID9.getText():null)))!=null) {
-                  actuallyUsedVariables.add((ID9!=null?ID9.getText():null));
+                    addVariable((ID10!=null?ID10.getText():null),AbstractValueRange.newSingleValue(((String) ovVal)));
+                if ((ID10!=null?ID10.getText():null).equalsIgnoreCase(MLSpaceParserHelper.PERIODIC_BOUNDARIES_SETTING) &&
+                  parseTool.setPeriodicBoundaries(variables.get((ID10!=null?ID10.getText():null)))!=null) {
+                  actuallyUsedVariables.add((ID10!=null?ID10.getText():null));
                 }
-                if (MLSpaceParserHelper.INSTANT_TRANSFER_ON_INIT.contains((ID9!=null?ID9.getText():null).toLowerCase())) {
-                  actuallyUsedVariables.add((ID9!=null?ID9.getText():null));
-                  if (Arrays.asList("true", "1", true, 1.0, "yes", "TRUE").containsAll(variables.get((ID9!=null?ID9.getText():null)).toList())) {
+                if (MLSpaceParserHelper.INSTANT_TRANSFER_ON_INIT.contains((ID10!=null?ID10.getText():null).toLowerCase())) {
+                  actuallyUsedVariables.add((ID10!=null?ID10.getText():null));
+                  if (Arrays.asList("true", "1", true, 1.0, "yes", "TRUE").containsAll(variables.get((ID10!=null?ID10.getText():null)).toList())) {
                      instantTransferOnInit = true;
                   }
                 }  
@@ -733,21 +784,21 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token STRING16=null;
-        Token ID17=null;
-        MLSpaceSmallParser.interval_return interval11 = null;
+        Token STRING17=null;
+        Token ID18=null;
+        MLSpaceSmallParser.interval_return interval12 = null;
 
-        MLSpaceSmallParser.range_return range12 = null;
+        MLSpaceSmallParser.range_return range13 = null;
 
-        MLSpaceSmallParser.set_return set13 = null;
+        MLSpaceSmallParser.set_return set14 = null;
 
-        MLSpaceSmallParser.vector_return vector14 = null;
+        MLSpaceSmallParser.vector_return vector15 = null;
 
-        MLSpaceSmallParser.numexpr_return numexpr15 = null;
+        MLSpaceSmallParser.numexpr_return numexpr16 = null;
 
 
-        Object STRING16_tree=null;
-        Object ID17_tree=null;
+        Object STRING17_tree=null;
+        Object ID18_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:271:52: ( ( ( interval )=> interval ) | ( ( range )=> range ) | ( ( set )=> set ) | ( ( vector )=> vector ) | ( numexpr ) | ( STRING ) | ( ID ) )
@@ -762,14 +813,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:272:2: ( ( interval )=> interval )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:272:3: ( interval )=> interval
                     {
-                    pushFollow(FOLLOW_interval_in_valset_or_const179);
-                    interval11=interval();
+                    pushFollow(FOLLOW_interval_in_valset_or_const189);
+                    interval12=interval();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, interval11.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, interval12.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newInterval((interval11!=null?interval11.lower:0.0),(interval11!=null?interval11.upper:0.0),(interval11!=null?interval11.incLower:false),(interval11!=null?interval11.incUpper:false));
+                      retval.val =AbstractValueRange.newInterval((interval12!=null?interval12.lower:0.0),(interval12!=null?interval12.upper:0.0),(interval12!=null?interval12.incLower:false),(interval12!=null?interval12.incUpper:false));
                     }
 
                     }
@@ -785,14 +836,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:273:2: ( ( range )=> range )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:273:3: ( range )=> range
                     {
-                    pushFollow(FOLLOW_range_in_valset_or_const191);
-                    range12=range();
+                    pushFollow(FOLLOW_range_in_valset_or_const201);
+                    range13=range();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, range12.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, range13.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newRange((range12!=null?range12.lower:0.0),(range12!=null?range12.step:0.0),(range12!=null?range12.upper:0.0));
+                      retval.val =AbstractValueRange.newRange((range13!=null?range13.lower:0.0),(range13!=null?range13.step:0.0),(range13!=null?range13.upper:0.0));
                     }
 
                     }
@@ -808,14 +859,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:274:2: ( ( set )=> set )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:274:3: ( set )=> set
                     {
-                    pushFollow(FOLLOW_set_in_valset_or_const203);
-                    set13=set();
+                    pushFollow(FOLLOW_set_in_valset_or_const213);
+                    set14=set();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, set13.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, set14.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newSet((set13!=null?set13.set:null));
+                      retval.val =AbstractValueRange.newSet((set14!=null?set14.set:null));
                     }
 
                     }
@@ -831,14 +882,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:275:2: ( ( vector )=> vector )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:275:3: ( vector )=> vector
                     {
-                    pushFollow(FOLLOW_vector_in_valset_or_const215);
-                    vector14=vector();
+                    pushFollow(FOLLOW_vector_in_valset_or_const225);
+                    vector15=vector();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, vector14.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, vector15.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newSingleValue((vector14!=null?vector14.vec:null));
+                      retval.val =AbstractValueRange.newSingleValue((vector15!=null?vector15.vec:null));
                     }
 
                     }
@@ -854,14 +905,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:276:2: ( numexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:276:3: numexpr
                     {
-                    pushFollow(FOLLOW_numexpr_in_valset_or_const222);
-                    numexpr15=numexpr();
+                    pushFollow(FOLLOW_numexpr_in_valset_or_const232);
+                    numexpr16=numexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr15.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr16.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newSingleValue((numexpr15!=null?numexpr15.val:null));
+                      retval.val =AbstractValueRange.newSingleValue((numexpr16!=null?numexpr16.val:null));
                     }
 
                     }
@@ -877,13 +928,13 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:277:2: ( STRING )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:277:3: STRING
                     {
-                    STRING16=(Token)match(input,STRING,FOLLOW_STRING_in_valset_or_const229); if (state.failed) return retval;
+                    STRING17=(Token)match(input,STRING,FOLLOW_STRING_in_valset_or_const239); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    STRING16_tree = (Object)adaptor.create(STRING16);
-                    adaptor.addChild(root_0, STRING16_tree);
+                    STRING17_tree = (Object)adaptor.create(STRING17);
+                    adaptor.addChild(root_0, STRING17_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val =AbstractValueRange.newSingleValue((STRING16!=null?STRING16.getText():null));
+                      retval.val =AbstractValueRange.newSingleValue((STRING17!=null?STRING17.getText():null));
                     }
 
                     }
@@ -899,13 +950,13 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:278:2: ( ID )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:278:3: ID
                     {
-                    ID17=(Token)match(input,ID,FOLLOW_ID_in_valset_or_const236); if (state.failed) return retval;
+                    ID18=(Token)match(input,ID,FOLLOW_ID_in_valset_or_const246); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID17_tree = (Object)adaptor.create(ID17);
-                    adaptor.addChild(root_0, ID17_tree);
+                    ID18_tree = (Object)adaptor.create(ID18);
+                    adaptor.addChild(root_0, ID18_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      if (variables.containsKey((ID17!=null?ID17.getText():null))) {retval.val =variables.get((ID17!=null?ID17.getText():null)); actuallyUsedVariables.add((ID17!=null?ID17.getText():null));} else retval.val =AbstractValueRange.newSingleValue((ID17!=null?ID17.getText():null));
+                      if (variables.containsKey((ID18!=null?ID18.getText():null))) {retval.val =variables.get((ID18!=null?ID18.getText():null)); actuallyUsedVariables.add((ID18!=null?ID18.getText():null));} else retval.val =AbstractValueRange.newSingleValue((ID18!=null?ID18.getText():null));
                     }
 
                     }
@@ -949,13 +1000,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token COMMA18=null;
+        Token COMMA19=null;
         MLSpaceSmallParser.attribute_match_return a1 = null;
 
         MLSpaceSmallParser.attribute_match_return a2 = null;
 
 
-        Object COMMA18_tree=null;
+        Object COMMA19_tree=null;
 
         retval.attMap = new NonNullMap<>();
         try {
@@ -964,7 +1015,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_attribute_match_in_attributes_match261);
+            pushFollow(FOLLOW_attribute_match_in_attributes_match271);
             a1=attribute_match();
 
             state._fsp--;
@@ -988,8 +1039,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:283:2: COMMA a2= attribute_match
             	    {
-            	    COMMA18=(Token)match(input,COMMA,FOLLOW_COMMA_in_attributes_match266); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_attribute_match_in_attributes_match271);
+            	    COMMA19=(Token)match(input,COMMA,FOLLOW_COMMA_in_attributes_match276); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_attribute_match_in_attributes_match281);
             	    a2=attribute_match();
 
             	    state._fsp--;
@@ -1050,10 +1101,10 @@ public class MLSpaceSmallParser extends Parser {
         Token attn=null;
         Token n1=null;
         Token att1=null;
-        Token L_PAREN19=null;
-        Token EQ20=null;
-        Token R_PAREN21=null;
-        Token EQ22=null;
+        Token L_PAREN20=null;
+        Token EQ21=null;
+        Token R_PAREN22=null;
+        Token EQ23=null;
         MLSpaceSmallParser.var_interval_return vari = null;
 
         MLSpaceSmallParser.var_interval_return vi1 = null;
@@ -1065,10 +1116,10 @@ public class MLSpaceSmallParser extends Parser {
         Object attn_tree=null;
         Object n1_tree=null;
         Object att1_tree=null;
-        Object L_PAREN19_tree=null;
-        Object EQ20_tree=null;
-        Object R_PAREN21_tree=null;
-        Object EQ22_tree=null;
+        Object L_PAREN20_tree=null;
+        Object EQ21_tree=null;
+        Object R_PAREN22_tree=null;
+        Object EQ23_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:286:69: ( ( L_PAREN varn= ID EQ attn= ID (vari= var_interval )? R_PAREN ) | (n1= ID ( ( EQ att1= ID (vi1= var_interval )? ) | (vi2= var_interval ) ) ) )
@@ -1097,18 +1148,18 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:287:3: ( L_PAREN varn= ID EQ attn= ID (vari= var_interval )? R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:287:4: L_PAREN varn= ID EQ attn= ID (vari= var_interval )? R_PAREN
                     {
-                    L_PAREN19=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_attribute_match290); if (state.failed) return retval;
+                    L_PAREN20=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_attribute_match300); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN19_tree = (Object)adaptor.create(L_PAREN19);
-                    adaptor.addChild(root_0, L_PAREN19_tree);
+                    L_PAREN20_tree = (Object)adaptor.create(L_PAREN20);
+                    adaptor.addChild(root_0, L_PAREN20_tree);
                     }
-                    varn=(Token)match(input,ID,FOLLOW_ID_in_attribute_match294); if (state.failed) return retval;
+                    varn=(Token)match(input,ID,FOLLOW_ID_in_attribute_match304); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     varn_tree = (Object)adaptor.create(varn);
                     adaptor.addChild(root_0, varn_tree);
                     }
-                    EQ20=(Token)match(input,EQ,FOLLOW_EQ_in_attribute_match296); if (state.failed) return retval;
-                    attn=(Token)match(input,ID,FOLLOW_ID_in_attribute_match301); if (state.failed) return retval;
+                    EQ21=(Token)match(input,EQ,FOLLOW_EQ_in_attribute_match306); if (state.failed) return retval;
+                    attn=(Token)match(input,ID,FOLLOW_ID_in_attribute_match311); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     attn_tree = (Object)adaptor.create(attn);
                     adaptor.addChild(root_0, attn_tree);
@@ -1124,7 +1175,7 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:287:33: vari= var_interval
                             {
-                            pushFollow(FOLLOW_var_interval_in_attribute_match306);
+                            pushFollow(FOLLOW_var_interval_in_attribute_match316);
                             vari=var_interval();
 
                             state._fsp--;
@@ -1136,10 +1187,10 @@ public class MLSpaceSmallParser extends Parser {
 
                     }
 
-                    R_PAREN21=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_attribute_match310); if (state.failed) return retval;
+                    R_PAREN22=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_attribute_match320); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN21_tree = (Object)adaptor.create(R_PAREN21);
-                    adaptor.addChild(root_0, R_PAREN21_tree);
+                    R_PAREN22_tree = (Object)adaptor.create(R_PAREN22);
+                    adaptor.addChild(root_0, R_PAREN22_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.name =(attn!=null?attn.getText():null);retval.val =(vari!=null?vari.val:null); retval.varName =(varn!=null?varn.getText():null);addLocalRuleVar(retval.varName);
@@ -1158,7 +1209,7 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:289:3: (n1= ID ( ( EQ att1= ID (vi1= var_interval )? ) | (vi2= var_interval ) ) )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:289:4: n1= ID ( ( EQ att1= ID (vi1= var_interval )? ) | (vi2= var_interval ) )
                     {
-                    n1=(Token)match(input,ID,FOLLOW_ID_in_attribute_match324); if (state.failed) return retval;
+                    n1=(Token)match(input,ID,FOLLOW_ID_in_attribute_match334); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     n1_tree = (Object)adaptor.create(n1);
                     adaptor.addChild(root_0, n1_tree);
@@ -1201,8 +1252,8 @@ public class MLSpaceSmallParser extends Parser {
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:289:11: ( EQ att1= ID (vi1= var_interval )? )
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:289:12: EQ att1= ID (vi1= var_interval )?
                             {
-                            EQ22=(Token)match(input,EQ,FOLLOW_EQ_in_attribute_match328); if (state.failed) return retval;
-                            att1=(Token)match(input,ID,FOLLOW_ID_in_attribute_match333); if (state.failed) return retval;
+                            EQ23=(Token)match(input,EQ,FOLLOW_EQ_in_attribute_match338); if (state.failed) return retval;
+                            att1=(Token)match(input,ID,FOLLOW_ID_in_attribute_match343); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
                             att1_tree = (Object)adaptor.create(att1);
                             adaptor.addChild(root_0, att1_tree);
@@ -1218,7 +1269,7 @@ public class MLSpaceSmallParser extends Parser {
                                 case 1 :
                                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:289:25: vi1= var_interval
                                     {
-                                    pushFollow(FOLLOW_var_interval_in_attribute_match338);
+                                    pushFollow(FOLLOW_var_interval_in_attribute_match348);
                                     vi1=var_interval();
 
                                     state._fsp--;
@@ -1249,7 +1300,7 @@ public class MLSpaceSmallParser extends Parser {
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:295:11: (vi2= var_interval )
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:295:12: vi2= var_interval
                             {
-                            pushFollow(FOLLOW_var_interval_in_attribute_match371);
+                            pushFollow(FOLLOW_var_interval_in_attribute_match381);
                             vi2=var_interval();
 
                             state._fsp--;
@@ -1311,49 +1362,49 @@ public class MLSpaceSmallParser extends Parser {
 
         Token l=null;
         Token r=null;
-        Token EQ23=null;
         Token EQ24=null;
-        Token EQ26=null;
+        Token EQ25=null;
         Token EQ27=null;
-        Token STRING28=null;
-        Token GREATERTHAN29=null;
-        Token EQ30=null;
-        Token GREATERTHAN32=null;
-        Token LESSTHAN34=null;
-        Token EQ35=null;
-        Token LESSTHAN37=null;
-        Token IN39=null;
-        Token set40=null;
+        Token EQ28=null;
+        Token STRING29=null;
+        Token GREATERTHAN30=null;
+        Token EQ31=null;
+        Token GREATERTHAN33=null;
+        Token LESSTHAN35=null;
+        Token EQ36=null;
+        Token LESSTHAN38=null;
+        Token IN40=null;
+        Token set41=null;
         MLSpaceSmallParser.varexpr_return low = null;
 
         MLSpaceSmallParser.varexpr_return up = null;
 
-        MLSpaceSmallParser.varexpr_return varexpr25 = null;
+        MLSpaceSmallParser.varexpr_return varexpr26 = null;
 
-        MLSpaceSmallParser.varexpr_return varexpr31 = null;
+        MLSpaceSmallParser.varexpr_return varexpr32 = null;
 
-        MLSpaceSmallParser.varexpr_return varexpr33 = null;
+        MLSpaceSmallParser.varexpr_return varexpr34 = null;
 
-        MLSpaceSmallParser.varexpr_return varexpr36 = null;
+        MLSpaceSmallParser.varexpr_return varexpr37 = null;
 
-        MLSpaceSmallParser.varexpr_return varexpr38 = null;
+        MLSpaceSmallParser.varexpr_return varexpr39 = null;
 
 
         Object l_tree=null;
         Object r_tree=null;
-        Object EQ23_tree=null;
         Object EQ24_tree=null;
-        Object EQ26_tree=null;
+        Object EQ25_tree=null;
         Object EQ27_tree=null;
-        Object STRING28_tree=null;
-        Object GREATERTHAN29_tree=null;
-        Object EQ30_tree=null;
-        Object GREATERTHAN32_tree=null;
-        Object LESSTHAN34_tree=null;
-        Object EQ35_tree=null;
-        Object LESSTHAN37_tree=null;
-        Object IN39_tree=null;
-        Object set40_tree=null;
+        Object EQ28_tree=null;
+        Object STRING29_tree=null;
+        Object GREATERTHAN30_tree=null;
+        Object EQ31_tree=null;
+        Object GREATERTHAN33_tree=null;
+        Object LESSTHAN35_tree=null;
+        Object EQ36_tree=null;
+        Object LESSTHAN38_tree=null;
+        Object IN40_tree=null;
+        Object set41_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:297:38: ( ( EQ EQ varexpr ) | ( EQ EQ STRING ) | ( GREATERTHAN EQ varexpr ) | ( GREATERTHAN varexpr ) | ( LESSTHAN EQ varexpr ) | ( LESSTHAN varexpr ) | ( IN l= ( L_PAREN | L_BRACKET ) low= varexpr ( COMMA | DOTS ) up= varexpr r= ( R_PAREN | R_BRACKET ) ) )
@@ -1368,24 +1419,24 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:298:3: ( EQ EQ varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:298:4: EQ EQ varexpr
                     {
-                    EQ23=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval390); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    EQ23_tree = (Object)adaptor.create(EQ23);
-                    adaptor.addChild(root_0, EQ23_tree);
-                    }
-                    EQ24=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval392); if (state.failed) return retval;
+                    EQ24=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval400); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     EQ24_tree = (Object)adaptor.create(EQ24);
                     adaptor.addChild(root_0, EQ24_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_var_interval394);
-                    varexpr25=varexpr();
+                    EQ25=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval402); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    EQ25_tree = (Object)adaptor.create(EQ25);
+                    adaptor.addChild(root_0, EQ25_tree);
+                    }
+                    pushFollow(FOLLOW_varexpr_in_var_interval404);
+                    varexpr26=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr25.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr26.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = ValueMatches.newEquals((varexpr25!=null?varexpr25.node:null));
+                      retval.val = ValueMatches.newEquals((varexpr26!=null?varexpr26.node:null));
                     }
 
                     }
@@ -1401,23 +1452,23 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:299:3: ( EQ EQ STRING )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:299:4: EQ EQ STRING
                     {
-                    EQ26=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval402); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    EQ26_tree = (Object)adaptor.create(EQ26);
-                    adaptor.addChild(root_0, EQ26_tree);
-                    }
-                    EQ27=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval404); if (state.failed) return retval;
+                    EQ27=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval412); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     EQ27_tree = (Object)adaptor.create(EQ27);
                     adaptor.addChild(root_0, EQ27_tree);
                     }
-                    STRING28=(Token)match(input,STRING,FOLLOW_STRING_in_var_interval406); if (state.failed) return retval;
+                    EQ28=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval414); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    STRING28_tree = (Object)adaptor.create(STRING28);
-                    adaptor.addChild(root_0, STRING28_tree);
+                    EQ28_tree = (Object)adaptor.create(EQ28);
+                    adaptor.addChild(root_0, EQ28_tree);
+                    }
+                    STRING29=(Token)match(input,STRING,FOLLOW_STRING_in_var_interval416); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    STRING29_tree = (Object)adaptor.create(STRING29);
+                    adaptor.addChild(root_0, STRING29_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val = ValueMatches.newEqualsString(STRING28.getText());
+                      retval.val = ValueMatches.newEqualsString(STRING29.getText());
                     }
 
                     }
@@ -1433,24 +1484,24 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:300:3: ( GREATERTHAN EQ varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:300:4: GREATERTHAN EQ varexpr
                     {
-                    GREATERTHAN29=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_var_interval414); if (state.failed) return retval;
+                    GREATERTHAN30=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_var_interval424); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    GREATERTHAN29_tree = (Object)adaptor.create(GREATERTHAN29);
-                    adaptor.addChild(root_0, GREATERTHAN29_tree);
+                    GREATERTHAN30_tree = (Object)adaptor.create(GREATERTHAN30);
+                    adaptor.addChild(root_0, GREATERTHAN30_tree);
                     }
-                    EQ30=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval416); if (state.failed) return retval;
+                    EQ31=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval426); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ30_tree = (Object)adaptor.create(EQ30);
-                    adaptor.addChild(root_0, EQ30_tree);
+                    EQ31_tree = (Object)adaptor.create(EQ31);
+                    adaptor.addChild(root_0, EQ31_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_var_interval418);
-                    varexpr31=varexpr();
+                    pushFollow(FOLLOW_varexpr_in_var_interval428);
+                    varexpr32=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr31.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr32.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = new RangeMatches.GreaterOrEqual((varexpr31!=null?varexpr31.node:null));
+                      retval.val = new RangeMatches.GreaterOrEqual((varexpr32!=null?varexpr32.node:null));
                     }
 
                     }
@@ -1466,19 +1517,19 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:301:3: ( GREATERTHAN varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:301:4: GREATERTHAN varexpr
                     {
-                    GREATERTHAN32=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_var_interval426); if (state.failed) return retval;
+                    GREATERTHAN33=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_var_interval436); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    GREATERTHAN32_tree = (Object)adaptor.create(GREATERTHAN32);
-                    adaptor.addChild(root_0, GREATERTHAN32_tree);
+                    GREATERTHAN33_tree = (Object)adaptor.create(GREATERTHAN33);
+                    adaptor.addChild(root_0, GREATERTHAN33_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_var_interval428);
-                    varexpr33=varexpr();
+                    pushFollow(FOLLOW_varexpr_in_var_interval438);
+                    varexpr34=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr33.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr34.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = new RangeMatches.GreaterThan((varexpr33!=null?varexpr33.node:null));
+                      retval.val = new RangeMatches.GreaterThan((varexpr34!=null?varexpr34.node:null));
                     }
 
                     }
@@ -1494,24 +1545,24 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:302:3: ( LESSTHAN EQ varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:302:4: LESSTHAN EQ varexpr
                     {
-                    LESSTHAN34=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_var_interval436); if (state.failed) return retval;
+                    LESSTHAN35=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_var_interval446); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LESSTHAN34_tree = (Object)adaptor.create(LESSTHAN34);
-                    adaptor.addChild(root_0, LESSTHAN34_tree);
+                    LESSTHAN35_tree = (Object)adaptor.create(LESSTHAN35);
+                    adaptor.addChild(root_0, LESSTHAN35_tree);
                     }
-                    EQ35=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval438); if (state.failed) return retval;
+                    EQ36=(Token)match(input,EQ,FOLLOW_EQ_in_var_interval448); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ35_tree = (Object)adaptor.create(EQ35);
-                    adaptor.addChild(root_0, EQ35_tree);
+                    EQ36_tree = (Object)adaptor.create(EQ36);
+                    adaptor.addChild(root_0, EQ36_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_var_interval440);
-                    varexpr36=varexpr();
+                    pushFollow(FOLLOW_varexpr_in_var_interval450);
+                    varexpr37=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr36.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr37.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = new RangeMatches.LessOrEqual((varexpr36!=null?varexpr36.node:null));
+                      retval.val = new RangeMatches.LessOrEqual((varexpr37!=null?varexpr37.node:null));
                     }
 
                     }
@@ -1527,19 +1578,19 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:303:3: ( LESSTHAN varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:303:4: LESSTHAN varexpr
                     {
-                    LESSTHAN37=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_var_interval448); if (state.failed) return retval;
+                    LESSTHAN38=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_var_interval458); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LESSTHAN37_tree = (Object)adaptor.create(LESSTHAN37);
-                    adaptor.addChild(root_0, LESSTHAN37_tree);
+                    LESSTHAN38_tree = (Object)adaptor.create(LESSTHAN38);
+                    adaptor.addChild(root_0, LESSTHAN38_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_var_interval450);
-                    varexpr38=varexpr();
+                    pushFollow(FOLLOW_varexpr_in_var_interval460);
+                    varexpr39=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr38.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, varexpr39.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = new RangeMatches.LessThan((varexpr38!=null?varexpr38.node:null));
+                      retval.val = new RangeMatches.LessThan((varexpr39!=null?varexpr39.node:null));
                     }
 
                     }
@@ -1555,10 +1606,10 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:304:3: ( IN l= ( L_PAREN | L_BRACKET ) low= varexpr ( COMMA | DOTS ) up= varexpr r= ( R_PAREN | R_BRACKET ) )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:304:4: IN l= ( L_PAREN | L_BRACKET ) low= varexpr ( COMMA | DOTS ) up= varexpr r= ( R_PAREN | R_BRACKET )
                     {
-                    IN39=(Token)match(input,IN,FOLLOW_IN_in_var_interval458); if (state.failed) return retval;
+                    IN40=(Token)match(input,IN,FOLLOW_IN_in_var_interval468); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    IN39_tree = (Object)adaptor.create(IN39);
-                    adaptor.addChild(root_0, IN39_tree);
+                    IN40_tree = (Object)adaptor.create(IN40);
+                    adaptor.addChild(root_0, IN40_tree);
                     }
                     l=(Token)input.LT(1);
                     if ( input.LA(1)==L_BRACKET||input.LA(1)==L_PAREN ) {
@@ -1572,16 +1623,16 @@ public class MLSpaceSmallParser extends Parser {
                         throw mse;
                     }
 
-                    pushFollow(FOLLOW_varexpr_in_var_interval470);
+                    pushFollow(FOLLOW_varexpr_in_var_interval480);
                     low=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, low.getTree());
-                    set40=(Token)input.LT(1);
+                    set41=(Token)input.LT(1);
                     if ( input.LA(1)==COMMA||input.LA(1)==DOTS ) {
                         input.consume();
-                        if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set40));
+                        if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set41));
                         state.errorRecovery=false;state.failed=false;
                     }
                     else {
@@ -1590,7 +1641,7 @@ public class MLSpaceSmallParser extends Parser {
                         throw mse;
                     }
 
-                    pushFollow(FOLLOW_varexpr_in_var_interval480);
+                    pushFollow(FOLLOW_varexpr_in_var_interval490);
                     up=varexpr();
 
                     state._fsp--;
@@ -1653,7 +1704,7 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        MLSpaceSmallParser.expr_return expr41 = null;
+        MLSpaceSmallParser.expr_return expr42 = null;
 
 
 
@@ -1666,14 +1717,14 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               varsAllowed = false;
             }
-            pushFollow(FOLLOW_expr_in_numexpr513);
-            expr41=expr();
+            pushFollow(FOLLOW_expr_in_numexpr523);
+            expr42=expr();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, expr41.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, expr42.getTree());
             if ( state.backtracking==0 ) {
-              try {retval.val =(expr41!=null?expr41.node:null).calculateValue(numVariables);} catch (UndefinedVariableException ex) {throw new IllegalStateException(ex);}
+              try {retval.val =(expr42!=null?expr42.node:null).calculateValue(numVariables);} catch (UndefinedVariableException ex) {throw new IllegalStateException(ex);}
             }
 
             }
@@ -1712,7 +1763,7 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        MLSpaceSmallParser.expr_return expr42 = null;
+        MLSpaceSmallParser.expr_return expr43 = null;
 
 
 
@@ -1725,14 +1776,14 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               varsAllowed = true;
             }
-            pushFollow(FOLLOW_expr_in_varexpr530);
-            expr42=expr();
+            pushFollow(FOLLOW_expr_in_varexpr540);
+            expr43=expr();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, expr42.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, expr43.getTree());
             if ( state.backtracking==0 ) {
-              retval.node = (expr42!=null?expr42.node:null);
+              retval.node = (expr43!=null?expr43.node:null);
             }
 
             }
@@ -1771,11 +1822,11 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token PLUS43=null;
-        Token MINUS44=null;
-        Token IF45=null;
-        Token THEN47=null;
-        Token ELSE48=null;
+        Token PLUS44=null;
+        Token MINUS45=null;
+        Token IF46=null;
+        Token THEN48=null;
+        Token ELSE49=null;
         MLSpaceSmallParser.multNode_return e = null;
 
         MLSpaceSmallParser.multNode_return e2 = null;
@@ -1784,14 +1835,14 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.expr_return ef = null;
 
-        MLSpaceSmallParser.boolNode_return boolNode46 = null;
+        MLSpaceSmallParser.boolNode_return boolNode47 = null;
 
 
-        Object PLUS43_tree=null;
-        Object MINUS44_tree=null;
-        Object IF45_tree=null;
-        Object THEN47_tree=null;
-        Object ELSE48_tree=null;
+        Object PLUS44_tree=null;
+        Object MINUS45_tree=null;
+        Object IF46_tree=null;
+        Object THEN48_tree=null;
+        Object ELSE49_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:314:31: ( (e= multNode ( PLUS e2= multNode | MINUS e2= multNode )* ) | ( IF boolNode THEN et= expr ( ELSE ef= expr )? ) )
@@ -1820,7 +1871,7 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:315:3: (e= multNode ( PLUS e2= multNode | MINUS e2= multNode )* )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:315:4: e= multNode ( PLUS e2= multNode | MINUS e2= multNode )*
                     {
-                    pushFollow(FOLLOW_multNode_in_expr550);
+                    pushFollow(FOLLOW_multNode_in_expr560);
                     e=multNode();
 
                     state._fsp--;
@@ -1847,12 +1898,12 @@ public class MLSpaceSmallParser extends Parser {
                     	case 1 :
                     	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:316:10: PLUS e2= multNode
                     	    {
-                    	    PLUS43=(Token)match(input,PLUS,FOLLOW_PLUS_in_expr564); if (state.failed) return retval;
+                    	    PLUS44=(Token)match(input,PLUS,FOLLOW_PLUS_in_expr574); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    PLUS43_tree = (Object)adaptor.create(PLUS43);
-                    	    adaptor.addChild(root_0, PLUS43_tree);
+                    	    PLUS44_tree = (Object)adaptor.create(PLUS44);
+                    	    adaptor.addChild(root_0, PLUS44_tree);
                     	    }
-                    	    pushFollow(FOLLOW_multNode_in_expr568);
+                    	    pushFollow(FOLLOW_multNode_in_expr578);
                     	    e2=multNode();
 
                     	    state._fsp--;
@@ -1867,12 +1918,12 @@ public class MLSpaceSmallParser extends Parser {
                     	case 2 :
                     	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:317:10: MINUS e2= multNode
                     	    {
-                    	    MINUS44=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr581); if (state.failed) return retval;
+                    	    MINUS45=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr591); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    MINUS44_tree = (Object)adaptor.create(MINUS44);
-                    	    adaptor.addChild(root_0, MINUS44_tree);
+                    	    MINUS45_tree = (Object)adaptor.create(MINUS45);
+                    	    adaptor.addChild(root_0, MINUS45_tree);
                     	    }
-                    	    pushFollow(FOLLOW_multNode_in_expr585);
+                    	    pushFollow(FOLLOW_multNode_in_expr595);
                     	    e2=multNode();
 
                     	    state._fsp--;
@@ -1904,23 +1955,23 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:319:3: ( IF boolNode THEN et= expr ( ELSE ef= expr )? )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:319:4: IF boolNode THEN et= expr ( ELSE ef= expr )?
                     {
-                    IF45=(Token)match(input,IF,FOLLOW_IF_in_expr604); if (state.failed) return retval;
+                    IF46=(Token)match(input,IF,FOLLOW_IF_in_expr614); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    IF45_tree = (Object)adaptor.create(IF45);
-                    adaptor.addChild(root_0, IF45_tree);
+                    IF46_tree = (Object)adaptor.create(IF46);
+                    adaptor.addChild(root_0, IF46_tree);
                     }
-                    pushFollow(FOLLOW_boolNode_in_expr606);
-                    boolNode46=boolNode();
+                    pushFollow(FOLLOW_boolNode_in_expr616);
+                    boolNode47=boolNode();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, boolNode46.getTree());
-                    THEN47=(Token)match(input,THEN,FOLLOW_THEN_in_expr608); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, boolNode47.getTree());
+                    THEN48=(Token)match(input,THEN,FOLLOW_THEN_in_expr618); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    THEN47_tree = (Object)adaptor.create(THEN47);
-                    adaptor.addChild(root_0, THEN47_tree);
+                    THEN48_tree = (Object)adaptor.create(THEN48);
+                    adaptor.addChild(root_0, THEN48_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_expr612);
+                    pushFollow(FOLLOW_expr_in_expr622);
                     et=expr();
 
                     state._fsp--;
@@ -1941,12 +1992,12 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:319:30: ELSE ef= expr
                             {
-                            ELSE48=(Token)match(input,ELSE,FOLLOW_ELSE_in_expr615); if (state.failed) return retval;
+                            ELSE49=(Token)match(input,ELSE,FOLLOW_ELSE_in_expr625); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            ELSE48_tree = (Object)adaptor.create(ELSE48);
-                            adaptor.addChild(root_0, ELSE48_tree);
+                            ELSE49_tree = (Object)adaptor.create(ELSE49);
+                            adaptor.addChild(root_0, ELSE49_tree);
                             }
-                            pushFollow(FOLLOW_expr_in_expr619);
+                            pushFollow(FOLLOW_expr_in_expr629);
                             ef=expr();
 
                             state._fsp--;
@@ -1959,7 +2010,7 @@ public class MLSpaceSmallParser extends Parser {
                     }
 
                     if ( state.backtracking==0 ) {
-                      retval.node = new IfThenElseNode((boolNode46!=null?boolNode46.node:null),(et!=null?et.node:null),(ef!=null?ef.node:null));
+                      retval.node = new IfThenElseNode((boolNode47!=null?boolNode47.node:null),(et!=null?et.node:null),(ef!=null?ef.node:null));
                     }
 
                     }
@@ -2003,15 +2054,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token TIMES49=null;
-        Token DIV50=null;
+        Token TIMES50=null;
+        Token DIV51=null;
         MLSpaceSmallParser.atomNode_return e = null;
 
         MLSpaceSmallParser.atomNode_return e2 = null;
 
 
-        Object TIMES49_tree=null;
-        Object DIV50_tree=null;
+        Object TIMES50_tree=null;
+        Object DIV51_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:322:35: (e= atomNode ( TIMES e2= atomNode | DIV e2= atomNode )* )
@@ -2019,7 +2070,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_atomNode_in_multNode641);
+            pushFollow(FOLLOW_atomNode_in_multNode651);
             e=atomNode();
 
             state._fsp--;
@@ -2046,12 +2097,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:324:9: TIMES e2= atomNode
             	    {
-            	    TIMES49=(Token)match(input,TIMES,FOLLOW_TIMES_in_multNode653); if (state.failed) return retval;
+            	    TIMES50=(Token)match(input,TIMES,FOLLOW_TIMES_in_multNode663); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    TIMES49_tree = (Object)adaptor.create(TIMES49);
-            	    adaptor.addChild(root_0, TIMES49_tree);
+            	    TIMES50_tree = (Object)adaptor.create(TIMES50);
+            	    adaptor.addChild(root_0, TIMES50_tree);
             	    }
-            	    pushFollow(FOLLOW_atomNode_in_multNode657);
+            	    pushFollow(FOLLOW_atomNode_in_multNode667);
             	    e2=atomNode();
 
             	    state._fsp--;
@@ -2066,12 +2117,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 2 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:325:10: DIV e2= atomNode
             	    {
-            	    DIV50=(Token)match(input,DIV,FOLLOW_DIV_in_multNode670); if (state.failed) return retval;
+            	    DIV51=(Token)match(input,DIV,FOLLOW_DIV_in_multNode680); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    DIV50_tree = (Object)adaptor.create(DIV50);
-            	    adaptor.addChild(root_0, DIV50_tree);
+            	    DIV51_tree = (Object)adaptor.create(DIV51);
+            	    adaptor.addChild(root_0, DIV51_tree);
             	    }
-            	    pushFollow(FOLLOW_atomNode_in_multNode674);
+            	    pushFollow(FOLLOW_atomNode_in_multNode684);
             	    e2=atomNode();
 
             	    state._fsp--;
@@ -2126,27 +2177,27 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token MINUS51=null;
-        Token PLUS52=null;
-        Token ID53=null;
-        Token L_PAREN54=null;
-        Token R_PAREN55=null;
-        Token L_PAREN56=null;
-        Token R_PAREN58=null;
-        Token L_BRACKET59=null;
-        Token R_BRACKET60=null;
-        Token MIN61=null;
-        Token L_PAREN62=null;
-        Token COMMA63=null;
-        Token R_PAREN64=null;
-        Token MAX65=null;
-        Token L_PAREN66=null;
-        Token COMMA67=null;
-        Token R_PAREN68=null;
-        Token SQR69=null;
-        Token CUB70=null;
-        Token DEGREES71=null;
-        Token POW72=null;
+        Token MINUS52=null;
+        Token PLUS53=null;
+        Token ID54=null;
+        Token L_PAREN55=null;
+        Token R_PAREN56=null;
+        Token L_PAREN57=null;
+        Token R_PAREN59=null;
+        Token L_BRACKET60=null;
+        Token R_BRACKET61=null;
+        Token MIN62=null;
+        Token L_PAREN63=null;
+        Token COMMA64=null;
+        Token R_PAREN65=null;
+        Token MAX66=null;
+        Token L_PAREN67=null;
+        Token COMMA68=null;
+        Token R_PAREN69=null;
+        Token SQR70=null;
+        Token CUB71=null;
+        Token DEGREES72=null;
+        Token POW73=null;
         MLSpaceSmallParser.numval_return n = null;
 
         MLSpaceSmallParser.expr_return e = null;
@@ -2157,30 +2208,30 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.atomNode_return a = null;
 
-        MLSpaceSmallParser.boolNode_return boolNode57 = null;
+        MLSpaceSmallParser.boolNode_return boolNode58 = null;
 
 
-        Object MINUS51_tree=null;
-        Object PLUS52_tree=null;
-        Object ID53_tree=null;
-        Object L_PAREN54_tree=null;
-        Object R_PAREN55_tree=null;
-        Object L_PAREN56_tree=null;
-        Object R_PAREN58_tree=null;
-        Object L_BRACKET59_tree=null;
-        Object R_BRACKET60_tree=null;
-        Object MIN61_tree=null;
-        Object L_PAREN62_tree=null;
-        Object COMMA63_tree=null;
-        Object R_PAREN64_tree=null;
-        Object MAX65_tree=null;
-        Object L_PAREN66_tree=null;
-        Object COMMA67_tree=null;
-        Object R_PAREN68_tree=null;
-        Object SQR69_tree=null;
-        Object CUB70_tree=null;
-        Object DEGREES71_tree=null;
-        Object POW72_tree=null;
+        Object MINUS52_tree=null;
+        Object PLUS53_tree=null;
+        Object ID54_tree=null;
+        Object L_PAREN55_tree=null;
+        Object R_PAREN56_tree=null;
+        Object L_PAREN57_tree=null;
+        Object R_PAREN59_tree=null;
+        Object L_BRACKET60_tree=null;
+        Object R_BRACKET61_tree=null;
+        Object MIN62_tree=null;
+        Object L_PAREN63_tree=null;
+        Object COMMA64_tree=null;
+        Object R_PAREN65_tree=null;
+        Object MAX66_tree=null;
+        Object L_PAREN67_tree=null;
+        Object COMMA68_tree=null;
+        Object R_PAREN69_tree=null;
+        Object SQR70_tree=null;
+        Object CUB71_tree=null;
+        Object DEGREES72_tree=null;
+        Object POW73_tree=null;
 
         double sign = 1.;
         try {
@@ -2206,10 +2257,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:329:5: MINUS
                     {
-                    MINUS51=(Token)match(input,MINUS,FOLLOW_MINUS_in_atomNode712); if (state.failed) return retval;
+                    MINUS52=(Token)match(input,MINUS,FOLLOW_MINUS_in_atomNode722); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS51_tree = (Object)adaptor.create(MINUS51);
-                    adaptor.addChild(root_0, MINUS51_tree);
+                    MINUS52_tree = (Object)adaptor.create(MINUS52);
+                    adaptor.addChild(root_0, MINUS52_tree);
                     }
                     if ( state.backtracking==0 ) {
                       sign = -1.;
@@ -2220,10 +2271,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:329:27: PLUS
                     {
-                    PLUS52=(Token)match(input,PLUS,FOLLOW_PLUS_in_atomNode718); if (state.failed) return retval;
+                    PLUS53=(Token)match(input,PLUS,FOLLOW_PLUS_in_atomNode728); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PLUS52_tree = (Object)adaptor.create(PLUS52);
-                    adaptor.addChild(root_0, PLUS52_tree);
+                    PLUS53_tree = (Object)adaptor.create(PLUS53);
+                    adaptor.addChild(root_0, PLUS53_tree);
                     }
 
                     }
@@ -2238,7 +2289,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:330:5: n= numval
                     {
-                    pushFollow(FOLLOW_numval_in_atomNode729);
+                    pushFollow(FOLLOW_numval_in_atomNode739);
                     n=numval();
 
                     state._fsp--;
@@ -2257,13 +2308,13 @@ public class MLSpaceSmallParser extends Parser {
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         throw new FailedPredicateException(input, "atomNode", "varsAllowed");
                     }
-                    ID53=(Token)match(input,ID,FOLLOW_ID_in_atomNode739); if (state.failed) return retval;
+                    ID54=(Token)match(input,ID,FOLLOW_ID_in_atomNode749); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID53_tree = (Object)adaptor.create(ID53);
-                    adaptor.addChild(root_0, ID53_tree);
+                    ID54_tree = (Object)adaptor.create(ID54);
+                    adaptor.addChild(root_0, ID54_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      checkLocalRuleVar((ID53!=null?ID53.getText():null)); retval.node = new VariableNode((ID53!=null?ID53.getText():null));
+                      checkLocalRuleVar((ID54!=null?ID54.getText():null)); retval.node = new VariableNode((ID54!=null?ID54.getText():null));
                     }
 
                     }
@@ -2274,21 +2325,21 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:332:5: ( L_PAREN e= expr R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:332:6: L_PAREN e= expr R_PAREN
                     {
-                    L_PAREN54=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode748); if (state.failed) return retval;
+                    L_PAREN55=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode758); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN54_tree = (Object)adaptor.create(L_PAREN54);
-                    adaptor.addChild(root_0, L_PAREN54_tree);
+                    L_PAREN55_tree = (Object)adaptor.create(L_PAREN55);
+                    adaptor.addChild(root_0, L_PAREN55_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_atomNode752);
+                    pushFollow(FOLLOW_expr_in_atomNode762);
                     e=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e.getTree());
-                    R_PAREN55=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode754); if (state.failed) return retval;
+                    R_PAREN56=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode764); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN55_tree = (Object)adaptor.create(R_PAREN55);
-                    adaptor.addChild(root_0, R_PAREN55_tree);
+                    R_PAREN56_tree = (Object)adaptor.create(R_PAREN56);
+                    adaptor.addChild(root_0, R_PAREN56_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node =(e!=null?e.node:null);
@@ -2305,24 +2356,24 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:333:5: ( L_PAREN boolNode R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:333:6: L_PAREN boolNode R_PAREN
                     {
-                    L_PAREN56=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode764); if (state.failed) return retval;
+                    L_PAREN57=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode774); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN56_tree = (Object)adaptor.create(L_PAREN56);
-                    adaptor.addChild(root_0, L_PAREN56_tree);
+                    L_PAREN57_tree = (Object)adaptor.create(L_PAREN57);
+                    adaptor.addChild(root_0, L_PAREN57_tree);
                     }
-                    pushFollow(FOLLOW_boolNode_in_atomNode766);
-                    boolNode57=boolNode();
+                    pushFollow(FOLLOW_boolNode_in_atomNode776);
+                    boolNode58=boolNode();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, boolNode57.getTree());
-                    R_PAREN58=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode768); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, boolNode58.getTree());
+                    R_PAREN59=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode778); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN58_tree = (Object)adaptor.create(R_PAREN58);
-                    adaptor.addChild(root_0, R_PAREN58_tree);
+                    R_PAREN59_tree = (Object)adaptor.create(R_PAREN59);
+                    adaptor.addChild(root_0, R_PAREN59_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.node =new SwitchNode((boolNode57!=null?boolNode57.node:null));
+                      retval.node =new SwitchNode((boolNode58!=null?boolNode58.node:null));
                     }
 
                     }
@@ -2336,14 +2387,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:334:5: ( L_BRACKET e= expr R_BRACKET )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:334:6: L_BRACKET e= expr R_BRACKET
                     {
-                    L_BRACKET59=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_atomNode778); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_atomNode783);
+                    L_BRACKET60=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_atomNode788); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_atomNode793);
                     e=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e.getTree());
-                    R_BRACKET60=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_atomNode785); if (state.failed) return retval;
+                    R_BRACKET61=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_atomNode795); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                       retval.node = new IntNode((e!=null?e.node:null));
                     }
@@ -2359,37 +2410,37 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:335:5: ( MIN L_PAREN e1= expr COMMA e2= expr R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:335:6: MIN L_PAREN e1= expr COMMA e2= expr R_PAREN
                     {
-                    MIN61=(Token)match(input,MIN,FOLLOW_MIN_in_atomNode796); if (state.failed) return retval;
+                    MIN62=(Token)match(input,MIN,FOLLOW_MIN_in_atomNode806); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MIN61_tree = (Object)adaptor.create(MIN61);
-                    adaptor.addChild(root_0, MIN61_tree);
+                    MIN62_tree = (Object)adaptor.create(MIN62);
+                    adaptor.addChild(root_0, MIN62_tree);
                     }
-                    L_PAREN62=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode798); if (state.failed) return retval;
+                    L_PAREN63=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode808); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN62_tree = (Object)adaptor.create(L_PAREN62);
-                    adaptor.addChild(root_0, L_PAREN62_tree);
+                    L_PAREN63_tree = (Object)adaptor.create(L_PAREN63);
+                    adaptor.addChild(root_0, L_PAREN63_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_atomNode802);
+                    pushFollow(FOLLOW_expr_in_atomNode812);
                     e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e1.getTree());
-                    COMMA63=(Token)match(input,COMMA,FOLLOW_COMMA_in_atomNode804); if (state.failed) return retval;
+                    COMMA64=(Token)match(input,COMMA,FOLLOW_COMMA_in_atomNode814); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    COMMA63_tree = (Object)adaptor.create(COMMA63);
-                    adaptor.addChild(root_0, COMMA63_tree);
+                    COMMA64_tree = (Object)adaptor.create(COMMA64);
+                    adaptor.addChild(root_0, COMMA64_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_atomNode808);
+                    pushFollow(FOLLOW_expr_in_atomNode818);
                     e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e2.getTree());
-                    R_PAREN64=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode810); if (state.failed) return retval;
+                    R_PAREN65=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode820); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN64_tree = (Object)adaptor.create(R_PAREN64);
-                    adaptor.addChild(root_0, R_PAREN64_tree);
+                    R_PAREN65_tree = (Object)adaptor.create(R_PAREN65);
+                    adaptor.addChild(root_0, R_PAREN65_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node = new MinNode((e1!=null?e1.node:null),(e2!=null?e2.node:null));
@@ -2406,37 +2457,37 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:336:5: ( MAX L_PAREN e1= expr COMMA e2= expr R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:336:6: MAX L_PAREN e1= expr COMMA e2= expr R_PAREN
                     {
-                    MAX65=(Token)match(input,MAX,FOLLOW_MAX_in_atomNode823); if (state.failed) return retval;
+                    MAX66=(Token)match(input,MAX,FOLLOW_MAX_in_atomNode833); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MAX65_tree = (Object)adaptor.create(MAX65);
-                    adaptor.addChild(root_0, MAX65_tree);
+                    MAX66_tree = (Object)adaptor.create(MAX66);
+                    adaptor.addChild(root_0, MAX66_tree);
                     }
-                    L_PAREN66=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode825); if (state.failed) return retval;
+                    L_PAREN67=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_atomNode835); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN66_tree = (Object)adaptor.create(L_PAREN66);
-                    adaptor.addChild(root_0, L_PAREN66_tree);
+                    L_PAREN67_tree = (Object)adaptor.create(L_PAREN67);
+                    adaptor.addChild(root_0, L_PAREN67_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_atomNode829);
+                    pushFollow(FOLLOW_expr_in_atomNode839);
                     e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e1.getTree());
-                    COMMA67=(Token)match(input,COMMA,FOLLOW_COMMA_in_atomNode831); if (state.failed) return retval;
+                    COMMA68=(Token)match(input,COMMA,FOLLOW_COMMA_in_atomNode841); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    COMMA67_tree = (Object)adaptor.create(COMMA67);
-                    adaptor.addChild(root_0, COMMA67_tree);
+                    COMMA68_tree = (Object)adaptor.create(COMMA68);
+                    adaptor.addChild(root_0, COMMA68_tree);
                     }
-                    pushFollow(FOLLOW_expr_in_atomNode835);
+                    pushFollow(FOLLOW_expr_in_atomNode845);
                     e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e2.getTree());
-                    R_PAREN68=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode837); if (state.failed) return retval;
+                    R_PAREN69=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_atomNode847); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN68_tree = (Object)adaptor.create(R_PAREN68);
-                    adaptor.addChild(root_0, R_PAREN68_tree);
+                    R_PAREN69_tree = (Object)adaptor.create(R_PAREN69);
+                    adaptor.addChild(root_0, R_PAREN69_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node = new MaxNode((e1!=null?e1.node:null),(e2!=null?e2.node:null));
@@ -2485,10 +2536,10 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:339:5: ( SQR )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:339:6: SQR
                     {
-                    SQR69=(Token)match(input,SQR,FOLLOW_SQR_in_atomNode860); if (state.failed) return retval;
+                    SQR70=(Token)match(input,SQR,FOLLOW_SQR_in_atomNode870); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    SQR69_tree = (Object)adaptor.create(SQR69);
-                    adaptor.addChild(root_0, SQR69_tree);
+                    SQR70_tree = (Object)adaptor.create(SQR70);
+                    adaptor.addChild(root_0, SQR70_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node = new SquareNode(retval.node);
@@ -2505,10 +2556,10 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:340:5: ( CUB )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:340:6: CUB
                     {
-                    CUB70=(Token)match(input,CUB,FOLLOW_CUB_in_atomNode871); if (state.failed) return retval;
+                    CUB71=(Token)match(input,CUB,FOLLOW_CUB_in_atomNode881); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    CUB70_tree = (Object)adaptor.create(CUB70);
-                    adaptor.addChild(root_0, CUB70_tree);
+                    CUB71_tree = (Object)adaptor.create(CUB71);
+                    adaptor.addChild(root_0, CUB71_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node = new PowerNode(retval.node, new FixedValueNode(3.));
@@ -2525,10 +2576,10 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:341:5: ( DEGREES )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:341:6: DEGREES
                     {
-                    DEGREES71=(Token)match(input,DEGREES,FOLLOW_DEGREES_in_atomNode881); if (state.failed) return retval;
+                    DEGREES72=(Token)match(input,DEGREES,FOLLOW_DEGREES_in_atomNode891); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    DEGREES71_tree = (Object)adaptor.create(DEGREES71);
-                    adaptor.addChild(root_0, DEGREES71_tree);
+                    DEGREES72_tree = (Object)adaptor.create(DEGREES72);
+                    adaptor.addChild(root_0, DEGREES72_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.node = new MultNode(retval.node, new FixedValueNode(Math.PI / 180.));
@@ -2545,12 +2596,12 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:342:5: ( POW a= atomNode )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:342:6: POW a= atomNode
                     {
-                    POW72=(Token)match(input,POW,FOLLOW_POW_in_atomNode891); if (state.failed) return retval;
+                    POW73=(Token)match(input,POW,FOLLOW_POW_in_atomNode901); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    POW72_tree = (Object)adaptor.create(POW72);
-                    adaptor.addChild(root_0, POW72_tree);
+                    POW73_tree = (Object)adaptor.create(POW73);
+                    adaptor.addChild(root_0, POW73_tree);
                     }
-                    pushFollow(FOLLOW_atomNode_in_atomNode895);
+                    pushFollow(FOLLOW_atomNode_in_atomNode905);
                     a=atomNode();
 
                     state._fsp--;
@@ -2622,19 +2673,19 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_expr_in_boolNode925);
+            pushFollow(FOLLOW_expr_in_boolNode935);
             el=expr();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, el.getTree());
-            pushFollow(FOLLOW_compareOp_in_boolNode929);
+            pushFollow(FOLLOW_compareOp_in_boolNode939);
             c=compareOp();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, c.getTree());
-            pushFollow(FOLLOW_expr_in_boolNode933);
+            pushFollow(FOLLOW_expr_in_boolNode943);
             er=expr();
 
             state._fsp--;
@@ -2679,21 +2730,21 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token LESSTHAN73=null;
-        Token EQ74=null;
-        Token GREATERTHAN75=null;
-        Token EQ76=null;
-        Token NOTEQ77=null;
-        Token EQ78=null;
+        Token LESSTHAN74=null;
+        Token EQ75=null;
+        Token GREATERTHAN76=null;
+        Token EQ77=null;
+        Token NOTEQ78=null;
         Token EQ79=null;
+        Token EQ80=null;
 
-        Object LESSTHAN73_tree=null;
-        Object EQ74_tree=null;
-        Object GREATERTHAN75_tree=null;
-        Object EQ76_tree=null;
-        Object NOTEQ77_tree=null;
-        Object EQ78_tree=null;
+        Object LESSTHAN74_tree=null;
+        Object EQ75_tree=null;
+        Object GREATERTHAN76_tree=null;
+        Object EQ77_tree=null;
+        Object NOTEQ78_tree=null;
         Object EQ79_tree=null;
+        Object EQ80_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:350:10: ( LESSTHAN ( EQ )? | GREATERTHAN ( EQ )? | NOTEQ | EQ EQ )
@@ -2733,10 +2784,10 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    LESSTHAN73=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_compareOp945); if (state.failed) return retval;
+                    LESSTHAN74=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_compareOp955); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LESSTHAN73_tree = (Object)adaptor.create(LESSTHAN73);
-                    adaptor.addChild(root_0, LESSTHAN73_tree);
+                    LESSTHAN74_tree = (Object)adaptor.create(LESSTHAN74);
+                    adaptor.addChild(root_0, LESSTHAN74_tree);
                     }
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:350:21: ( EQ )?
                     int alt19=2;
@@ -2749,10 +2800,10 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: EQ
                             {
-                            EQ74=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp947); if (state.failed) return retval;
+                            EQ75=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp957); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            EQ74_tree = (Object)adaptor.create(EQ74);
-                            adaptor.addChild(root_0, EQ74_tree);
+                            EQ75_tree = (Object)adaptor.create(EQ75);
+                            adaptor.addChild(root_0, EQ75_tree);
                             }
 
                             }
@@ -2768,10 +2819,10 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    GREATERTHAN75=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_compareOp952); if (state.failed) return retval;
+                    GREATERTHAN76=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_compareOp962); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    GREATERTHAN75_tree = (Object)adaptor.create(GREATERTHAN75);
-                    adaptor.addChild(root_0, GREATERTHAN75_tree);
+                    GREATERTHAN76_tree = (Object)adaptor.create(GREATERTHAN76);
+                    adaptor.addChild(root_0, GREATERTHAN76_tree);
                     }
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:350:39: ( EQ )?
                     int alt20=2;
@@ -2784,10 +2835,10 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: EQ
                             {
-                            EQ76=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp954); if (state.failed) return retval;
+                            EQ77=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp964); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            EQ76_tree = (Object)adaptor.create(EQ76);
-                            adaptor.addChild(root_0, EQ76_tree);
+                            EQ77_tree = (Object)adaptor.create(EQ77);
+                            adaptor.addChild(root_0, EQ77_tree);
                             }
 
                             }
@@ -2803,10 +2854,10 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    NOTEQ77=(Token)match(input,NOTEQ,FOLLOW_NOTEQ_in_compareOp959); if (state.failed) return retval;
+                    NOTEQ78=(Token)match(input,NOTEQ,FOLLOW_NOTEQ_in_compareOp969); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NOTEQ77_tree = (Object)adaptor.create(NOTEQ77);
-                    adaptor.addChild(root_0, NOTEQ77_tree);
+                    NOTEQ78_tree = (Object)adaptor.create(NOTEQ78);
+                    adaptor.addChild(root_0, NOTEQ78_tree);
                     }
 
                     }
@@ -2816,15 +2867,15 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    EQ78=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp963); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    EQ78_tree = (Object)adaptor.create(EQ78);
-                    adaptor.addChild(root_0, EQ78_tree);
-                    }
-                    EQ79=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp965); if (state.failed) return retval;
+                    EQ79=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp973); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     EQ79_tree = (Object)adaptor.create(EQ79);
                     adaptor.addChild(root_0, EQ79_tree);
+                    }
+                    EQ80=(Token)match(input,EQ,FOLLOW_EQ_in_compareOp975); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    EQ80_tree = (Object)adaptor.create(EQ80);
+                    adaptor.addChild(root_0, EQ80_tree);
                     }
 
                     }
@@ -2868,15 +2919,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token L_BRACKET80=null;
-        Token DOTS81=null;
-        Token R_BRACKET82=null;
-        Token GREATERTHAN83=null;
-        Token EQ84=null;
-        Token LESSTHAN85=null;
-        Token EQ86=null;
-        Token GREATERTHAN87=null;
-        Token LESSTHAN88=null;
+        Token L_BRACKET81=null;
+        Token DOTS82=null;
+        Token R_BRACKET83=null;
+        Token GREATERTHAN84=null;
+        Token EQ85=null;
+        Token LESSTHAN86=null;
+        Token EQ87=null;
+        Token GREATERTHAN88=null;
+        Token LESSTHAN89=null;
         MLSpaceSmallParser.numexpr_return low = null;
 
         MLSpaceSmallParser.numexpr_return up = null;
@@ -2890,15 +2941,15 @@ public class MLSpaceSmallParser extends Parser {
         MLSpaceSmallParser.numexpr_return nlt = null;
 
 
-        Object L_BRACKET80_tree=null;
-        Object DOTS81_tree=null;
-        Object R_BRACKET82_tree=null;
-        Object GREATERTHAN83_tree=null;
-        Object EQ84_tree=null;
-        Object LESSTHAN85_tree=null;
-        Object EQ86_tree=null;
-        Object GREATERTHAN87_tree=null;
-        Object LESSTHAN88_tree=null;
+        Object L_BRACKET81_tree=null;
+        Object DOTS82_tree=null;
+        Object R_BRACKET83_tree=null;
+        Object GREATERTHAN84_tree=null;
+        Object EQ85_tree=null;
+        Object LESSTHAN86_tree=null;
+        Object EQ87_tree=null;
+        Object GREATERTHAN88_tree=null;
+        Object LESSTHAN89_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:352:81: ( ( L_BRACKET low= numexpr DOTS up= numexpr R_BRACKET ) | ( GREATERTHAN EQ nge= numexpr ) | ( LESSTHAN EQ nle= numexpr ) | ( GREATERTHAN ngt= numexpr ) | ( LESSTHAN nlt= numexpr ) )
@@ -2964,8 +3015,8 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:353:3: ( L_BRACKET low= numexpr DOTS up= numexpr R_BRACKET )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:353:4: L_BRACKET low= numexpr DOTS up= numexpr R_BRACKET
                     {
-                    L_BRACKET80=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_interval981); if (state.failed) return retval;
-                    pushFollow(FOLLOW_numexpr_in_interval986);
+                    L_BRACKET81=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_interval991); if (state.failed) return retval;
+                    pushFollow(FOLLOW_numexpr_in_interval996);
                     low=numexpr();
 
                     state._fsp--;
@@ -2974,8 +3025,8 @@ public class MLSpaceSmallParser extends Parser {
                     if ( state.backtracking==0 ) {
                       retval.lower = ((low!=null?low.val:null));
                     }
-                    DOTS81=(Token)match(input,DOTS,FOLLOW_DOTS_in_interval990); if (state.failed) return retval;
-                    pushFollow(FOLLOW_numexpr_in_interval995);
+                    DOTS82=(Token)match(input,DOTS,FOLLOW_DOTS_in_interval1000); if (state.failed) return retval;
+                    pushFollow(FOLLOW_numexpr_in_interval1005);
                     up=numexpr();
 
                     state._fsp--;
@@ -2984,7 +3035,7 @@ public class MLSpaceSmallParser extends Parser {
                     if ( state.backtracking==0 ) {
                       retval.upper = ((up!=null?up.val:null));retval.incLower = true; retval.incUpper = true;
                     }
-                    R_BRACKET82=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_interval999); if (state.failed) return retval;
+                    R_BRACKET83=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_interval1009); if (state.failed) return retval;
 
                     }
 
@@ -2999,17 +3050,17 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:354:5: ( GREATERTHAN EQ nge= numexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:354:6: GREATERTHAN EQ nge= numexpr
                     {
-                    GREATERTHAN83=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_interval1008); if (state.failed) return retval;
+                    GREATERTHAN84=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_interval1018); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    GREATERTHAN83_tree = (Object)adaptor.create(GREATERTHAN83);
-                    adaptor.addChild(root_0, GREATERTHAN83_tree);
+                    GREATERTHAN84_tree = (Object)adaptor.create(GREATERTHAN84);
+                    adaptor.addChild(root_0, GREATERTHAN84_tree);
                     }
-                    EQ84=(Token)match(input,EQ,FOLLOW_EQ_in_interval1010); if (state.failed) return retval;
+                    EQ85=(Token)match(input,EQ,FOLLOW_EQ_in_interval1020); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ84_tree = (Object)adaptor.create(EQ84);
-                    adaptor.addChild(root_0, EQ84_tree);
+                    EQ85_tree = (Object)adaptor.create(EQ85);
+                    adaptor.addChild(root_0, EQ85_tree);
                     }
-                    pushFollow(FOLLOW_numexpr_in_interval1016);
+                    pushFollow(FOLLOW_numexpr_in_interval1026);
                     nge=numexpr();
 
                     state._fsp--;
@@ -3032,17 +3083,17 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:355:5: ( LESSTHAN EQ nle= numexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:355:6: LESSTHAN EQ nle= numexpr
                     {
-                    LESSTHAN85=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_interval1026); if (state.failed) return retval;
+                    LESSTHAN86=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_interval1036); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LESSTHAN85_tree = (Object)adaptor.create(LESSTHAN85);
-                    adaptor.addChild(root_0, LESSTHAN85_tree);
+                    LESSTHAN86_tree = (Object)adaptor.create(LESSTHAN86);
+                    adaptor.addChild(root_0, LESSTHAN86_tree);
                     }
-                    EQ86=(Token)match(input,EQ,FOLLOW_EQ_in_interval1028); if (state.failed) return retval;
+                    EQ87=(Token)match(input,EQ,FOLLOW_EQ_in_interval1038); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ86_tree = (Object)adaptor.create(EQ86);
-                    adaptor.addChild(root_0, EQ86_tree);
+                    EQ87_tree = (Object)adaptor.create(EQ87);
+                    adaptor.addChild(root_0, EQ87_tree);
                     }
-                    pushFollow(FOLLOW_numexpr_in_interval1034);
+                    pushFollow(FOLLOW_numexpr_in_interval1044);
                     nle=numexpr();
 
                     state._fsp--;
@@ -3065,12 +3116,12 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:356:5: ( GREATERTHAN ngt= numexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:356:6: GREATERTHAN ngt= numexpr
                     {
-                    GREATERTHAN87=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_interval1044); if (state.failed) return retval;
+                    GREATERTHAN88=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_interval1054); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    GREATERTHAN87_tree = (Object)adaptor.create(GREATERTHAN87);
-                    adaptor.addChild(root_0, GREATERTHAN87_tree);
+                    GREATERTHAN88_tree = (Object)adaptor.create(GREATERTHAN88);
+                    adaptor.addChild(root_0, GREATERTHAN88_tree);
                     }
-                    pushFollow(FOLLOW_numexpr_in_interval1050);
+                    pushFollow(FOLLOW_numexpr_in_interval1060);
                     ngt=numexpr();
 
                     state._fsp--;
@@ -3093,12 +3144,12 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:357:5: ( LESSTHAN nlt= numexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:357:6: LESSTHAN nlt= numexpr
                     {
-                    LESSTHAN88=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_interval1060); if (state.failed) return retval;
+                    LESSTHAN89=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_interval1070); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LESSTHAN88_tree = (Object)adaptor.create(LESSTHAN88);
-                    adaptor.addChild(root_0, LESSTHAN88_tree);
+                    LESSTHAN89_tree = (Object)adaptor.create(LESSTHAN89);
+                    adaptor.addChild(root_0, LESSTHAN89_tree);
                     }
-                    pushFollow(FOLLOW_numexpr_in_interval1066);
+                    pushFollow(FOLLOW_numexpr_in_interval1076);
                     nlt=numexpr();
 
                     state._fsp--;
@@ -3151,8 +3202,8 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token COLON89=null;
         Token COLON90=null;
+        Token COLON91=null;
         MLSpaceSmallParser.numexpr_return one = null;
 
         MLSpaceSmallParser.numexpr_return two = null;
@@ -3160,8 +3211,8 @@ public class MLSpaceSmallParser extends Parser {
         MLSpaceSmallParser.numexpr_return three = null;
 
 
-        Object COLON89_tree=null;
         Object COLON90_tree=null;
+        Object COLON91_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:360:56: ( (one= numexpr COLON two= numexpr ( COLON three= numexpr )? ) )
@@ -3172,14 +3223,14 @@ public class MLSpaceSmallParser extends Parser {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:361:3: (one= numexpr COLON two= numexpr ( COLON three= numexpr )? )
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:361:4: one= numexpr COLON two= numexpr ( COLON three= numexpr )?
             {
-            pushFollow(FOLLOW_numexpr_in_range1089);
+            pushFollow(FOLLOW_numexpr_in_range1099);
             one=numexpr();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, one.getTree());
-            COLON89=(Token)match(input,COLON,FOLLOW_COLON_in_range1091); if (state.failed) return retval;
-            pushFollow(FOLLOW_numexpr_in_range1096);
+            COLON90=(Token)match(input,COLON,FOLLOW_COLON_in_range1101); if (state.failed) return retval;
+            pushFollow(FOLLOW_numexpr_in_range1106);
             two=numexpr();
 
             state._fsp--;
@@ -3196,8 +3247,8 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:361:36: COLON three= numexpr
                     {
-                    COLON90=(Token)match(input,COLON,FOLLOW_COLON_in_range1099); if (state.failed) return retval;
-                    pushFollow(FOLLOW_numexpr_in_range1104);
+                    COLON91=(Token)match(input,COLON,FOLLOW_COLON_in_range1109); if (state.failed) return retval;
+                    pushFollow(FOLLOW_numexpr_in_range1114);
                     three=numexpr();
 
                     state._fsp--;
@@ -3257,9 +3308,9 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        MLSpaceSmallParser.numset_return numset91 = null;
+        MLSpaceSmallParser.numset_return numset92 = null;
 
-        MLSpaceSmallParser.idset_return idset92 = null;
+        MLSpaceSmallParser.idset_return idset93 = null;
 
 
 
@@ -3298,14 +3349,14 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_numset_in_set1130);
-                    numset91=numset();
+                    pushFollow(FOLLOW_numset_in_set1140);
+                    numset92=numset();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numset91.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numset92.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.set = (numset91!=null?numset91.set:null);
+                      retval.set = (numset92!=null?numset92.set:null);
                     }
 
                     }
@@ -3315,14 +3366,14 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_idset_in_set1136);
-                    idset92=idset();
+                    pushFollow(FOLLOW_idset_in_set1146);
+                    idset93=idset();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, idset92.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, idset93.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.set = (idset92!=null?idset92.set:null);
+                      retval.set = (idset93!=null?idset93.set:null);
                     }
 
                     }
@@ -3365,15 +3416,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Token i1=null;
         Token i2=null;
-        Token L_BRACE93=null;
-        Token COMMA94=null;
-        Token R_BRACE95=null;
+        Token L_BRACE94=null;
+        Token COMMA95=null;
+        Token R_BRACE96=null;
 
         Object i1_tree=null;
         Object i2_tree=null;
-        Object L_BRACE93_tree=null;
-        Object COMMA94_tree=null;
-        Object R_BRACE95_tree=null;
+        Object L_BRACE94_tree=null;
+        Object COMMA95_tree=null;
+        Object R_BRACE96_tree=null;
 
         retval.set = new NonNullSet<String>();
         try {
@@ -3382,11 +3433,11 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            L_BRACE93=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_idset1155); if (state.failed) return retval;
+            L_BRACE94=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_idset1165); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:376:11: (i1= STRING ( COMMA i2= STRING )* )
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:376:12: i1= STRING ( COMMA i2= STRING )*
             {
-            i1=(Token)match(input,STRING,FOLLOW_STRING_in_idset1161); if (state.failed) return retval;
+            i1=(Token)match(input,STRING,FOLLOW_STRING_in_idset1171); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             i1_tree = (Object)adaptor.create(i1);
             adaptor.addChild(root_0, i1_tree);
@@ -3409,8 +3460,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:376:45: COMMA i2= STRING
             	    {
-            	    COMMA94=(Token)match(input,COMMA,FOLLOW_COMMA_in_idset1166); if (state.failed) return retval;
-            	    i2=(Token)match(input,STRING,FOLLOW_STRING_in_idset1171); if (state.failed) return retval;
+            	    COMMA95=(Token)match(input,COMMA,FOLLOW_COMMA_in_idset1176); if (state.failed) return retval;
+            	    i2=(Token)match(input,STRING,FOLLOW_STRING_in_idset1181); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    i2_tree = (Object)adaptor.create(i2);
             	    adaptor.addChild(root_0, i2_tree);
@@ -3430,7 +3481,7 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            R_BRACE95=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_idset1178); if (state.failed) return retval;
+            R_BRACE96=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_idset1188); if (state.failed) return retval;
 
             }
 
@@ -3468,17 +3519,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token L_BRACE96=null;
-        Token COMMA97=null;
-        Token R_BRACE98=null;
+        Token L_BRACE97=null;
+        Token COMMA98=null;
+        Token R_BRACE99=null;
         MLSpaceSmallParser.numexpr_return i1 = null;
 
         MLSpaceSmallParser.numexpr_return i2 = null;
 
 
-        Object L_BRACE96_tree=null;
-        Object COMMA97_tree=null;
-        Object R_BRACE98_tree=null;
+        Object L_BRACE97_tree=null;
+        Object COMMA98_tree=null;
+        Object R_BRACE99_tree=null;
 
         retval.set = new NonNullSet<Double>();
         try {
@@ -3487,11 +3538,11 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            L_BRACE96=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_numset1196); if (state.failed) return retval;
+            L_BRACE97=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_numset1206); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:380:11: (i1= numexpr ( COMMA i2= numexpr )* )
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:380:12: i1= numexpr ( COMMA i2= numexpr )*
             {
-            pushFollow(FOLLOW_numexpr_in_numset1202);
+            pushFollow(FOLLOW_numexpr_in_numset1212);
             i1=numexpr();
 
             state._fsp--;
@@ -3515,8 +3566,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:380:45: COMMA i2= numexpr
             	    {
-            	    COMMA97=(Token)match(input,COMMA,FOLLOW_COMMA_in_numset1207); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_numexpr_in_numset1212);
+            	    COMMA98=(Token)match(input,COMMA,FOLLOW_COMMA_in_numset1217); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_numexpr_in_numset1222);
             	    i2=numexpr();
 
             	    state._fsp--;
@@ -3537,7 +3588,7 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            R_BRACE98=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_numset1219); if (state.failed) return retval;
+            R_BRACE99=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_numset1229); if (state.failed) return retval;
 
             }
 
@@ -3575,17 +3626,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token L_PAREN99=null;
-        Token COMMA100=null;
-        Token R_PAREN101=null;
+        Token L_PAREN100=null;
+        Token COMMA101=null;
+        Token R_PAREN102=null;
         MLSpaceSmallParser.numexpr_return n1 = null;
 
         MLSpaceSmallParser.numexpr_return n2 = null;
 
 
-        Object L_PAREN99_tree=null;
-        Object COMMA100_tree=null;
-        Object R_PAREN101_tree=null;
+        Object L_PAREN100_tree=null;
+        Object COMMA101_tree=null;
+        Object R_PAREN102_tree=null;
 
         List<Double> tmp = new ArrayList<Double>();
         try {
@@ -3594,8 +3645,8 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            L_PAREN99=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_vector1236); if (state.failed) return retval;
-            pushFollow(FOLLOW_numexpr_in_vector1241);
+            L_PAREN100=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_vector1246); if (state.failed) return retval;
+            pushFollow(FOLLOW_numexpr_in_vector1251);
             n1=numexpr();
 
             state._fsp--;
@@ -3620,8 +3671,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:384:42: COMMA n2= numexpr
             	    {
-            	    COMMA100=(Token)match(input,COMMA,FOLLOW_COMMA_in_vector1246); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_numexpr_in_vector1251);
+            	    COMMA101=(Token)match(input,COMMA,FOLLOW_COMMA_in_vector1256); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_numexpr_in_vector1261);
             	    n2=numexpr();
 
             	    state._fsp--;
@@ -3644,7 +3695,7 @@ public class MLSpaceSmallParser extends Parser {
                 cnt27++;
             } while (true);
 
-            R_PAREN101=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_vector1257); if (state.failed) return retval;
+            R_PAREN102=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_vector1267); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
               retval.vec = new double[tmp.size()];
               for(int i=0;i<retval.vec.length;i++) 
@@ -3688,7 +3739,7 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        MLSpaceSmallParser.numexpr_return numexpr102 = null;
+        MLSpaceSmallParser.numexpr_return numexpr103 = null;
 
 
 
@@ -3698,14 +3749,14 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_numexpr_in_intval_or_var1276);
-            numexpr102=numexpr();
+            pushFollow(FOLLOW_numexpr_in_intval_or_var1286);
+            numexpr103=numexpr();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr102.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr103.getTree());
             if ( state.backtracking==0 ) {
-              Double nval = (numexpr102!=null?numexpr102.val:null);
+              Double nval = (numexpr103!=null?numexpr103.val:null);
               	   retval.val = nval.intValue(); 
               	   if (nval - retval.val != 0.) 
               	     warnWithLine(Level.WARNING, "double value converted to int: " + nval);
@@ -3748,13 +3799,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token INT103=null;
-        Token FLOAT104=null;
-        Token ID105=null;
+        Token INT104=null;
+        Token FLOAT105=null;
+        Token ID106=null;
 
-        Object INT103_tree=null;
-        Object FLOAT104_tree=null;
-        Object ID105_tree=null;
+        Object INT104_tree=null;
+        Object FLOAT105_tree=null;
+        Object ID106_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:398:28: ( INT | FLOAT | {...}? => ID )
@@ -3783,13 +3834,13 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    INT103=(Token)match(input,INT,FOLLOW_INT_in_numval1300); if (state.failed) return retval;
+                    INT104=(Token)match(input,INT,FOLLOW_INT_in_numval1310); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    INT103_tree = (Object)adaptor.create(INT103);
-                    adaptor.addChild(root_0, INT103_tree);
+                    INT104_tree = (Object)adaptor.create(INT104);
+                    adaptor.addChild(root_0, INT104_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val = Double.parseDouble((INT103!=null?INT103.getText():null));
+                      retval.val = Double.parseDouble((INT104!=null?INT104.getText():null));
                     }
 
                     }
@@ -3799,13 +3850,13 @@ public class MLSpaceSmallParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    FLOAT104=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_numval1308); if (state.failed) return retval;
+                    FLOAT105=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_numval1318); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    FLOAT104_tree = (Object)adaptor.create(FLOAT104);
-                    adaptor.addChild(root_0, FLOAT104_tree);
+                    FLOAT105_tree = (Object)adaptor.create(FLOAT105);
+                    adaptor.addChild(root_0, FLOAT105_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val = Double.parseDouble((FLOAT104!=null?FLOAT104.getText():null));
+                      retval.val = Double.parseDouble((FLOAT105!=null?FLOAT105.getText():null));
                     }
 
                     }
@@ -3819,13 +3870,13 @@ public class MLSpaceSmallParser extends Parser {
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         throw new FailedPredicateException(input, "numval", "getSingleNumValFromVar(input.LT(1).getText())!=null");
                     }
-                    ID105=(Token)match(input,ID,FOLLOW_ID_in_numval1319); if (state.failed) return retval;
+                    ID106=(Token)match(input,ID,FOLLOW_ID_in_numval1329); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID105_tree = (Object)adaptor.create(ID105);
-                    adaptor.addChild(root_0, ID105_tree);
+                    ID106_tree = (Object)adaptor.create(ID106);
+                    adaptor.addChild(root_0, ID106_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val = getSingleNumValFromVar((ID105!=null?ID105.getText():null));
+                      retval.val = getSingleNumValFromVar((ID106!=null?ID106.getText():null));
                     }
 
                     }
@@ -3865,11 +3916,11 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token SEMIC107=null;
-        MLSpaceSmallParser.species_def_return species_def106 = null;
+        Token SEMIC108=null;
+        MLSpaceSmallParser.species_def_return species_def107 = null;
 
 
-        Object SEMIC107_tree=null;
+        Object SEMIC108_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:405:14: ( ( species_def ( SEMIC )? )+ )
@@ -3887,12 +3938,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:405:17: species_def ( SEMIC )?
             	    {
-            	    pushFollow(FOLLOW_species_def_in_species_defs1340);
-            	    species_def106=species_def();
+            	    pushFollow(FOLLOW_species_def_in_species_defs1350);
+            	    species_def107=species_def();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, species_def106.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, species_def107.getTree());
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:405:29: ( SEMIC )?
             	    int alt29=2;
             	    int LA29_0 = input.LA(1);
@@ -3904,10 +3955,10 @@ public class MLSpaceSmallParser extends Parser {
             	        case 1 :
             	            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: SEMIC
             	            {
-            	            SEMIC107=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_species_defs1342); if (state.failed) return retval;
+            	            SEMIC108=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_species_defs1352); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
-            	            SEMIC107_tree = (Object)adaptor.create(SEMIC107);
-            	            adaptor.addChild(root_0, SEMIC107_tree);
+            	            SEMIC108_tree = (Object)adaptor.create(SEMIC108);
+            	            adaptor.addChild(root_0, SEMIC108_tree);
             	            }
 
             	            }
@@ -3965,17 +4016,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID108=null;
-        Token L_PAREN109=null;
-        Token R_PAREN110=null;
+        Token ID109=null;
+        Token L_PAREN110=null;
+        Token R_PAREN111=null;
         MLSpaceSmallParser.attributes_def_return spa = null;
 
-        MLSpaceSmallParser.bindingsitesdef_return bindingsitesdef111 = null;
+        MLSpaceSmallParser.bindingsitesdef_return bindingsitesdef112 = null;
 
 
-        Object ID108_tree=null;
-        Object L_PAREN109_tree=null;
-        Object R_PAREN110_tree=null;
+        Object ID109_tree=null;
+        Object L_PAREN110_tree=null;
+        Object R_PAREN111_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:407:13: ( ID L_PAREN (spa= attributes_def )? R_PAREN ( bindingsitesdef )? )
@@ -3983,12 +4034,12 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID108=(Token)match(input,ID,FOLLOW_ID_in_species_def1353); if (state.failed) return retval;
+            ID109=(Token)match(input,ID,FOLLOW_ID_in_species_def1363); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID108_tree = (Object)adaptor.create(ID108);
-            adaptor.addChild(root_0, ID108_tree);
+            ID109_tree = (Object)adaptor.create(ID109);
+            adaptor.addChild(root_0, ID109_tree);
             }
-            L_PAREN109=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_species_def1355); if (state.failed) return retval;
+            L_PAREN110=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_species_def1365); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:407:30: (spa= attributes_def )?
             int alt31=2;
             int LA31_0 = input.LA(1);
@@ -4000,7 +4051,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: spa= attributes_def
                     {
-                    pushFollow(FOLLOW_attributes_def_in_species_def1360);
+                    pushFollow(FOLLOW_attributes_def_in_species_def1370);
                     spa=attributes_def();
 
                     state._fsp--;
@@ -4012,7 +4063,7 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            R_PAREN110=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_species_def1364); if (state.failed) return retval;
+            R_PAREN111=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_species_def1374); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:407:57: ( bindingsitesdef )?
             int alt32=2;
             int LA32_0 = input.LA(1);
@@ -4024,12 +4075,12 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: bindingsitesdef
                     {
-                    pushFollow(FOLLOW_bindingsitesdef_in_species_def1367);
-                    bindingsitesdef111=bindingsitesdef();
+                    pushFollow(FOLLOW_bindingsitesdef_in_species_def1377);
+                    bindingsitesdef112=bindingsitesdef();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, bindingsitesdef111.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, bindingsitesdef112.getTree());
 
                     }
                     break;
@@ -4037,7 +4088,7 @@ public class MLSpaceSmallParser extends Parser {
             }
 
             if ( state.backtracking==0 ) {
-              parseTool.registerSpeciesDef((ID108!=null?ID108.getText():null),(spa!=null?spa.attMap:null),(bindingsitesdef111!=null?bindingsitesdef111.bs:null));
+              parseTool.registerSpeciesDef((ID109!=null?ID109.getText():null),(spa!=null?spa.attMap:null),(bindingsitesdef112!=null?bindingsitesdef112.bs:null));
             }
 
             }
@@ -4076,13 +4127,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token COMMA112=null;
+        Token COMMA113=null;
         MLSpaceSmallParser.attribute_def_return a1 = null;
 
         MLSpaceSmallParser.attribute_def_return a2 = null;
 
 
-        Object COMMA112_tree=null;
+        Object COMMA113_tree=null;
 
         retval.attMap = new NonNullMap<>();
         try {
@@ -4091,7 +4142,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_attribute_def_in_attributes_def1390);
+            pushFollow(FOLLOW_attribute_def_in_attributes_def1400);
             a1=attribute_def();
 
             state._fsp--;
@@ -4115,8 +4166,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:413:2: COMMA a2= attribute_def
             	    {
-            	    COMMA112=(Token)match(input,COMMA,FOLLOW_COMMA_in_attributes_def1395); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_attribute_def_in_attributes_def1400);
+            	    COMMA113=(Token)match(input,COMMA,FOLLOW_COMMA_in_attributes_def1405); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_attribute_def_in_attributes_def1410);
             	    a2=attribute_def();
 
             	    state._fsp--;
@@ -4173,12 +4224,12 @@ public class MLSpaceSmallParser extends Parser {
         Object root_0 = null;
 
         Token att=null;
-        Token COLON113=null;
+        Token COLON114=null;
         MLSpaceSmallParser.valset_or_const_return v = null;
 
 
         Object att_tree=null;
-        Object COLON113_tree=null;
+        Object COLON114_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:416:63: (att= ID COLON v= valset_or_const )
@@ -4186,7 +4237,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            att=(Token)match(input,ID,FOLLOW_ID_in_attribute_def1420); if (state.failed) return retval;
+            att=(Token)match(input,ID,FOLLOW_ID_in_attribute_def1430); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             att_tree = (Object)adaptor.create(att);
             adaptor.addChild(root_0, att_tree);
@@ -4194,12 +4245,12 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.name = (att!=null?att.getText():null);
             }
-            COLON113=(Token)match(input,COLON,FOLLOW_COLON_in_attribute_def1424); if (state.failed) return retval;
+            COLON114=(Token)match(input,COLON,FOLLOW_COLON_in_attribute_def1434); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            COLON113_tree = (Object)adaptor.create(COLON113);
-            adaptor.addChild(root_0, COLON113_tree);
+            COLON114_tree = (Object)adaptor.create(COLON114);
+            adaptor.addChild(root_0, COLON114_tree);
             }
-            pushFollow(FOLLOW_valset_or_const_in_attribute_def1429);
+            pushFollow(FOLLOW_valset_or_const_in_attribute_def1439);
             v=valset_or_const();
 
             state._fsp--;
@@ -4245,17 +4296,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token LESSTHAN114=null;
-        Token COMMA115=null;
-        Token GREATERTHAN116=null;
+        Token LESSTHAN115=null;
+        Token COMMA116=null;
+        Token GREATERTHAN117=null;
         MLSpaceSmallParser.bindingsitedef_return bsd1 = null;
 
         MLSpaceSmallParser.bindingsitedef_return bsd = null;
 
 
-        Object LESSTHAN114_tree=null;
-        Object COMMA115_tree=null;
-        Object GREATERTHAN116_tree=null;
+        Object LESSTHAN115_tree=null;
+        Object COMMA116_tree=null;
+        Object GREATERTHAN117_tree=null;
 
         BindingSites.Builder bsb = new BindingSites.Builder();
         try {
@@ -4264,8 +4315,8 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            LESSTHAN114=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingsitesdef1448); if (state.failed) return retval;
-            pushFollow(FOLLOW_bindingsitedef_in_bindingsitesdef1455);
+            LESSTHAN115=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingsitesdef1458); if (state.failed) return retval;
+            pushFollow(FOLLOW_bindingsitedef_in_bindingsitesdef1465);
             bsd1=bindingsitedef();
 
             state._fsp--;
@@ -4289,8 +4340,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:423:3: COMMA bsd= bindingsitedef
             	    {
-            	    COMMA115=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingsitesdef1461); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_bindingsitedef_in_bindingsitesdef1466);
+            	    COMMA116=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingsitesdef1471); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_bindingsitedef_in_bindingsitesdef1476);
             	    bsd=bindingsitedef();
 
             	    state._fsp--;
@@ -4308,7 +4359,7 @@ public class MLSpaceSmallParser extends Parser {
                 }
             } while (true);
 
-            GREATERTHAN116=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingsitesdef1474); if (state.failed) return retval;
+            GREATERTHAN117=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingsitesdef1484); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
               retval.bs = bsb.build();
             }
@@ -4350,15 +4401,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID117=null;
-        Token COLON118=null;
-        Token ID119=null;
-        MLSpaceSmallParser.numexpr_return numexpr120 = null;
+        Token ID118=null;
+        Token COLON119=null;
+        Token ID120=null;
+        MLSpaceSmallParser.numexpr_return numexpr121 = null;
 
 
-        Object ID117_tree=null;
-        Object COLON118_tree=null;
-        Object ID119_tree=null;
+        Object ID118_tree=null;
+        Object COLON119_tree=null;
+        Object ID120_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:426:54: ( ID COLON ({...}? => ID | numexpr ) )
@@ -4366,14 +4417,14 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID117=(Token)match(input,ID,FOLLOW_ID_in_bindingsitedef1491); if (state.failed) return retval;
+            ID118=(Token)match(input,ID,FOLLOW_ID_in_bindingsitedef1501); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID117_tree = (Object)adaptor.create(ID117);
-            adaptor.addChild(root_0, ID117_tree);
+            ID118_tree = (Object)adaptor.create(ID118);
+            adaptor.addChild(root_0, ID118_tree);
             }
-            COLON118=(Token)match(input,COLON,FOLLOW_COLON_in_bindingsitedef1493); if (state.failed) return retval;
+            COLON119=(Token)match(input,COLON,FOLLOW_COLON_in_bindingsitedef1503); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-              retval.name = (ID117!=null?ID117.getText():null);
+              retval.name = (ID118!=null?ID118.getText():null);
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:428:3: ({...}? => ID | numexpr )
             int alt35=2;
@@ -4414,10 +4465,10 @@ public class MLSpaceSmallParser extends Parser {
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         throw new FailedPredicateException(input, "bindingsitedef", "input.LT(1).getText().toLowerCase().equals(\"any\")");
                     }
-                    ID119=(Token)match(input,ID,FOLLOW_ID_in_bindingsitedef1504); if (state.failed) return retval;
+                    ID120=(Token)match(input,ID,FOLLOW_ID_in_bindingsitedef1514); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID119_tree = (Object)adaptor.create(ID119);
-                    adaptor.addChild(root_0, ID119_tree);
+                    ID120_tree = (Object)adaptor.create(ID120);
+                    adaptor.addChild(root_0, ID120_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.relAngle =null;
@@ -4428,14 +4479,14 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:429:5: numexpr
                     {
-                    pushFollow(FOLLOW_numexpr_in_bindingsitedef1513);
-                    numexpr120=numexpr();
+                    pushFollow(FOLLOW_numexpr_in_bindingsitedef1523);
+                    numexpr121=numexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr120.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, numexpr121.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.relAngle = (numexpr120!=null?numexpr120.val:null);
+                      retval.relAngle = (numexpr121!=null?numexpr121.val:null);
                     }
 
                     }
@@ -4480,9 +4531,9 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID121=null;
+        Token ID122=null;
 
-        Object ID121_tree=null;
+        Object ID122_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:431:34: ({...}? ID )
@@ -4494,13 +4545,13 @@ public class MLSpaceSmallParser extends Parser {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 throw new FailedPredicateException(input, "species", "parseTool.isValidSpecies(input.LT(1).getText())");
             }
-            ID121=(Token)match(input,ID,FOLLOW_ID_in_species1529); if (state.failed) return retval;
+            ID122=(Token)match(input,ID,FOLLOW_ID_in_species1539); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID121_tree = (Object)adaptor.create(ID121);
-            adaptor.addChild(root_0, ID121_tree);
+            ID122_tree = (Object)adaptor.create(ID122);
+            adaptor.addChild(root_0, ID122_tree);
             }
             if ( state.backtracking==0 ) {
-              retval.specName = (ID121!=null?ID121.getText():null);
+              retval.specName = (ID122!=null?ID122.getText():null);
             }
 
             }
@@ -4539,11 +4590,11 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token SEMIC123=null;
-        MLSpaceSmallParser.rule_return rule122 = null;
+        Token SEMIC124=null;
+        MLSpaceSmallParser.rule_return rule123 = null;
 
 
-        Object SEMIC123_tree=null;
+        Object SEMIC124_tree=null;
 
         retval.rules = new RuleCollection();
         try {
@@ -4568,12 +4619,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:437:4: rule ( SEMIC )? {...}?
             	    {
-            	    pushFollow(FOLLOW_rule_in_rules1551);
-            	    rule122=rule();
+            	    pushFollow(FOLLOW_rule_in_rules1561);
+            	    rule123=rule();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, rule122.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, rule123.getTree());
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:437:9: ( SEMIC )?
             	    int alt36=2;
             	    alt36 = dfa36.predict(input);
@@ -4581,10 +4632,10 @@ public class MLSpaceSmallParser extends Parser {
             	        case 1 :
             	            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: SEMIC
             	            {
-            	            SEMIC123=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_rules1553); if (state.failed) return retval;
+            	            SEMIC124=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_rules1563); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
-            	            SEMIC123_tree = (Object)adaptor.create(SEMIC123);
-            	            adaptor.addChild(root_0, SEMIC123_tree);
+            	            SEMIC124_tree = (Object)adaptor.create(SEMIC124);
+            	            adaptor.addChild(root_0, SEMIC124_tree);
             	            }
 
             	            }
@@ -4592,12 +4643,12 @@ public class MLSpaceSmallParser extends Parser {
 
             	    }
 
-            	    if ( !(((rule122!=null?rule122.rv:null) != null)) ) {
+            	    if ( !(((rule123!=null?rule123.rv:null) != null)) ) {
             	        if (state.backtracking>0) {state.failed=true; return retval;}
             	        throw new FailedPredicateException(input, "rules", "$rule.rv != null");
             	    }
             	    if ( state.backtracking==0 ) {
-            	      retval.rules.add((rule122!=null?rule122.rv:null));
+            	      retval.rules.add((rule123!=null?rule123.rv:null));
             	    }
 
             	    }
@@ -4650,23 +4701,23 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID124=null;
-        Token COLON125=null;
-        Token ARROW126=null;
-        Token AT127=null;
+        Token ID125=null;
+        Token COLON126=null;
+        Token ARROW127=null;
+        Token AT128=null;
         MLSpaceSmallParser.rule_left_hand_side_return lhs = null;
 
         MLSpaceSmallParser.rule_right_hand_side_return rhs = null;
 
         MLSpaceSmallParser.varexpr_return n = null;
 
-        MLSpaceSmallParser.rpmark_return rpmark128 = null;
+        MLSpaceSmallParser.rpmark_return rpmark129 = null;
 
 
-        Object ID124_tree=null;
-        Object COLON125_tree=null;
-        Object ARROW126_tree=null;
-        Object AT127_tree=null;
+        Object ID125_tree=null;
+        Object COLON126_tree=null;
+        Object ARROW127_tree=null;
+        Object AT128_tree=null;
 
         localRuleVars.clear();String rateOrProb = ""; String name = null;
         try {
@@ -4690,14 +4741,14 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:440:4: ID COLON
                     {
-                    ID124=(Token)match(input,ID,FOLLOW_ID_in_rule1580); if (state.failed) return retval;
+                    ID125=(Token)match(input,ID,FOLLOW_ID_in_rule1590); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID124_tree = (Object)adaptor.create(ID124);
-                    adaptor.addChild(root_0, ID124_tree);
+                    ID125_tree = (Object)adaptor.create(ID125);
+                    adaptor.addChild(root_0, ID125_tree);
                     }
-                    COLON125=(Token)match(input,COLON,FOLLOW_COLON_in_rule1582); if (state.failed) return retval;
+                    COLON126=(Token)match(input,COLON,FOLLOW_COLON_in_rule1592); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                      name = (ID124!=null?ID124.getText():null);
+                      name = (ID125!=null?ID125.getText():null);
                     }
 
                     }
@@ -4705,16 +4756,16 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_rule_left_hand_side_in_rule1593);
+            pushFollow(FOLLOW_rule_left_hand_side_in_rule1603);
             lhs=rule_left_hand_side();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, lhs.getTree());
-            ARROW126=(Token)match(input,ARROW,FOLLOW_ARROW_in_rule1597); if (state.failed) return retval;
+            ARROW127=(Token)match(input,ARROW,FOLLOW_ARROW_in_rule1607); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ARROW126_tree = (Object)adaptor.create(ARROW126);
-            adaptor.addChild(root_0, ARROW126_tree);
+            ARROW127_tree = (Object)adaptor.create(ARROW127);
+            adaptor.addChild(root_0, ARROW127_tree);
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:443:6: (rhs= rule_right_hand_side )?
             int alt39=2;
@@ -4727,7 +4778,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: rhs= rule_right_hand_side
                     {
-                    pushFollow(FOLLOW_rule_right_hand_side_in_rule1604);
+                    pushFollow(FOLLOW_rule_right_hand_side_in_rule1614);
                     rhs=rule_right_hand_side();
 
                     state._fsp--;
@@ -4739,10 +4790,10 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            AT127=(Token)match(input,AT,FOLLOW_AT_in_rule1611); if (state.failed) return retval;
+            AT128=(Token)match(input,AT,FOLLOW_AT_in_rule1621); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            AT127_tree = (Object)adaptor.create(AT127);
-            adaptor.addChild(root_0, AT127_tree);
+            AT128_tree = (Object)adaptor.create(AT128);
+            adaptor.addChild(root_0, AT128_tree);
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:445:3: ( ( rpmark )=> rpmark )?
             int alt40=2;
@@ -4759,14 +4810,14 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:445:4: ( rpmark )=> rpmark
                     {
-                    pushFollow(FOLLOW_rpmark_in_rule1622);
-                    rpmark128=rpmark();
+                    pushFollow(FOLLOW_rpmark_in_rule1632);
+                    rpmark129=rpmark();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, rpmark128.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, rpmark129.getTree());
                     if ( state.backtracking==0 ) {
-                      rateOrProb = (rpmark128!=null?rpmark128.value:null);
+                      rateOrProb = (rpmark129!=null?rpmark129.value:null);
                     }
 
                     }
@@ -4774,7 +4825,7 @@ public class MLSpaceSmallParser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_varexpr_in_rule1632);
+            pushFollow(FOLLOW_varexpr_in_rule1642);
             n=varexpr();
 
             state._fsp--;
@@ -4820,11 +4871,11 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID129=null;
-        Token EQ130=null;
+        Token ID130=null;
+        Token EQ131=null;
 
-        Object ID129_tree=null;
-        Object EQ130_tree=null;
+        Object ID130_tree=null;
+        Object EQ131_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:449:30: ( ( ID {...}? EQ ) )
@@ -4835,22 +4886,22 @@ public class MLSpaceSmallParser extends Parser {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:450:1: ( ID {...}? EQ )
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:450:2: ID {...}? EQ
             {
-            ID129=(Token)match(input,ID,FOLLOW_ID_in_rpmark1649); if (state.failed) return retval;
+            ID130=(Token)match(input,ID,FOLLOW_ID_in_rpmark1659); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID129_tree = (Object)adaptor.create(ID129);
-            adaptor.addChild(root_0, ID129_tree);
+            ID130_tree = (Object)adaptor.create(ID130);
+            adaptor.addChild(root_0, ID130_tree);
             }
-            if ( !((MLSpaceRuleCreator.MARKERS.contains((ID129!=null?ID129.getText():null)))) ) {
+            if ( !((MLSpaceRuleCreator.MARKERS.contains((ID130!=null?ID130.getText():null)))) ) {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 throw new FailedPredicateException(input, "rpmark", "MLSpaceRuleCreator.MARKERS.contains($ID.text)");
             }
-            EQ130=(Token)match(input,EQ,FOLLOW_EQ_in_rpmark1653); if (state.failed) return retval;
+            EQ131=(Token)match(input,EQ,FOLLOW_EQ_in_rpmark1663); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            EQ130_tree = (Object)adaptor.create(EQ130);
-            adaptor.addChild(root_0, EQ130_tree);
+            EQ131_tree = (Object)adaptor.create(EQ131);
+            adaptor.addChild(root_0, EQ131_tree);
             }
             if ( state.backtracking==0 ) {
-              retval.value = (ID129!=null?ID129.getText():null);
+              retval.value = (ID130!=null?ID130.getText():null);
             }
 
             }
@@ -4885,37 +4936,37 @@ public class MLSpaceSmallParser extends Parser {
     };
 
     // $ANTLR start "rule_left_hand_side"
-    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:452:1: rule_left_hand_side returns [RuleSide lhs] : e1= entity_match ( ( L_BRACKET | entsep ) (e2= entity_match ( entsep en= entity_match )* )? ({...}? R_BRACKET | ) )? ;
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:452:1: rule_left_hand_side returns [RuleSide lhs] : e1= entity_match ( ( L_BRACKET | entsepleft ) (e2= entity_match ( entsepleft en= entity_match )* )? ({...}? R_BRACKET | ) )? ;
     public final MLSpaceSmallParser.rule_left_hand_side_return rule_left_hand_side() throws RecognitionException {
         MLSpaceSmallParser.rule_left_hand_side_return retval = new MLSpaceSmallParser.rule_left_hand_side_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token L_BRACKET131=null;
-        Token R_BRACKET134=null;
+        Token L_BRACKET132=null;
+        Token R_BRACKET135=null;
         MLSpaceSmallParser.entity_match_return e1 = null;
 
         MLSpaceSmallParser.entity_match_return e2 = null;
 
         MLSpaceSmallParser.entity_match_return en = null;
 
-        MLSpaceSmallParser.entsep_return entsep132 = null;
+        MLSpaceSmallParser.entsepleft_return entsepleft133 = null;
 
-        MLSpaceSmallParser.entsep_return entsep133 = null;
+        MLSpaceSmallParser.entsepleft_return entsepleft134 = null;
 
 
-        Object L_BRACKET131_tree=null;
-        Object R_BRACKET134_tree=null;
+        Object L_BRACKET132_tree=null;
+        Object R_BRACKET135_tree=null;
 
         RuleSide.Builder lhsBuilder = new RuleSide.Builder();
         try {
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:454:35: (e1= entity_match ( ( L_BRACKET | entsep ) (e2= entity_match ( entsep en= entity_match )* )? ({...}? R_BRACKET | ) )? )
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:455:3: e1= entity_match ( ( L_BRACKET | entsep ) (e2= entity_match ( entsep en= entity_match )* )? ({...}? R_BRACKET | ) )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:454:35: (e1= entity_match ( ( L_BRACKET | entsepleft ) (e2= entity_match ( entsepleft en= entity_match )* )? ({...}? R_BRACKET | ) )? )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:455:3: e1= entity_match ( ( L_BRACKET | entsepleft ) (e2= entity_match ( entsepleft en= entity_match )* )? ({...}? R_BRACKET | ) )?
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1684);
+            pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1694);
             e1=entity_match();
 
             state._fsp--;
@@ -4924,25 +4975,25 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               lhsBuilder.addEntity((e1!=null?e1.ent:null));
             }
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:3: ( ( L_BRACKET | entsep ) (e2= entity_match ( entsep en= entity_match )* )? ({...}? R_BRACKET | ) )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:3: ( ( L_BRACKET | entsepleft ) (e2= entity_match ( entsepleft en= entity_match )* )? ({...}? R_BRACKET | ) )?
             int alt45=2;
             int LA45_0 = input.LA(1);
 
-            if ( (LA45_0==L_BRACKET||LA45_0==DOT||LA45_0==PLUS) ) {
+            if ( (LA45_0==L_BRACKET||LA45_0==PLUS) ) {
                 alt45=1;
             }
             switch (alt45) {
                 case 1 :
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:4: ( L_BRACKET | entsep ) (e2= entity_match ( entsep en= entity_match )* )? ({...}? R_BRACKET | )
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:4: ( L_BRACKET | entsepleft ) (e2= entity_match ( entsepleft en= entity_match )* )? ({...}? R_BRACKET | )
                     {
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:4: ( L_BRACKET | entsep )
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:4: ( L_BRACKET | entsepleft )
                     int alt41=2;
                     int LA41_0 = input.LA(1);
 
                     if ( (LA41_0==L_BRACKET) ) {
                         alt41=1;
                     }
-                    else if ( (LA41_0==DOT||LA41_0==PLUS) ) {
+                    else if ( (LA41_0==PLUS) ) {
                         alt41=2;
                     }
                     else {
@@ -4956,10 +5007,10 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:456:5: L_BRACKET
                             {
-                            L_BRACKET131=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_rule_left_hand_side1692); if (state.failed) return retval;
+                            L_BRACKET132=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_rule_left_hand_side1702); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            L_BRACKET131_tree = (Object)adaptor.create(L_BRACKET131);
-                            adaptor.addChild(root_0, L_BRACKET131_tree);
+                            L_BRACKET132_tree = (Object)adaptor.create(L_BRACKET132);
+                            adaptor.addChild(root_0, L_BRACKET132_tree);
                             }
                             if ( state.backtracking==0 ) {
                               lhsBuilder.makeLastContext();
@@ -4968,21 +5019,21 @@ public class MLSpaceSmallParser extends Parser {
                             }
                             break;
                         case 2 :
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:457:5: entsep
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:457:5: entsepleft
                             {
-                            pushFollow(FOLLOW_entsep_in_rule_left_hand_side1700);
-                            entsep132=entsep();
+                            pushFollow(FOLLOW_entsepleft_in_rule_left_hand_side1710);
+                            entsepleft133=entsepleft();
 
                             state._fsp--;
                             if (state.failed) return retval;
-                            if ( state.backtracking==0 ) adaptor.addChild(root_0, entsep132.getTree());
+                            if ( state.backtracking==0 ) adaptor.addChild(root_0, entsepleft133.getTree());
 
                             }
                             break;
 
                     }
 
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:458:4: (e2= entity_match ( entsep en= entity_match )* )?
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:458:4: (e2= entity_match ( entsepleft en= entity_match )* )?
                     int alt43=2;
                     int LA43_0 = input.LA(1);
 
@@ -4991,9 +5042,9 @@ public class MLSpaceSmallParser extends Parser {
                     }
                     switch (alt43) {
                         case 1 :
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:458:5: e2= entity_match ( entsep en= entity_match )*
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:458:5: e2= entity_match ( entsepleft en= entity_match )*
                             {
-                            pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1709);
+                            pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1719);
                             e2=entity_match();
 
                             state._fsp--;
@@ -5002,28 +5053,28 @@ public class MLSpaceSmallParser extends Parser {
                             if ( state.backtracking==0 ) {
                               lhsBuilder.addEntity((e2!=null?e2.ent:null));
                             }
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:459:5: ( entsep en= entity_match )*
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:459:5: ( entsepleft en= entity_match )*
                             loop42:
                             do {
                                 int alt42=2;
                                 int LA42_0 = input.LA(1);
 
-                                if ( (LA42_0==DOT||LA42_0==PLUS) ) {
+                                if ( (LA42_0==PLUS) ) {
                                     alt42=1;
                                 }
 
 
                                 switch (alt42) {
                             	case 1 :
-                            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:459:6: entsep en= entity_match
+                            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:459:6: entsepleft en= entity_match
                             	    {
-                            	    pushFollow(FOLLOW_entsep_in_rule_left_hand_side1718);
-                            	    entsep133=entsep();
+                            	    pushFollow(FOLLOW_entsepleft_in_rule_left_hand_side1728);
+                            	    entsepleft134=entsepleft();
 
                             	    state._fsp--;
                             	    if (state.failed) return retval;
-                            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, entsep133.getTree());
-                            	    pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1722);
+                            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, entsepleft134.getTree());
+                            	    pushFollow(FOLLOW_entity_match_in_rule_left_hand_side1732);
                             	    en=entity_match();
 
                             	    state._fsp--;
@@ -5072,10 +5123,10 @@ public class MLSpaceSmallParser extends Parser {
                                 if (state.backtracking>0) {state.failed=true; return retval;}
                                 throw new FailedPredicateException(input, "rule_left_hand_side", "lhsBuilder.isContextSet()");
                             }
-                            R_BRACKET134=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_rule_left_hand_side1736); if (state.failed) return retval;
+                            R_BRACKET135=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_rule_left_hand_side1746); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            R_BRACKET134_tree = (Object)adaptor.create(R_BRACKET134);
-                            adaptor.addChild(root_0, R_BRACKET134_tree);
+                            R_BRACKET135_tree = (Object)adaptor.create(R_BRACKET135);
+                            adaptor.addChild(root_0, R_BRACKET135_tree);
                             }
 
                             }
@@ -5131,37 +5182,37 @@ public class MLSpaceSmallParser extends Parser {
     };
 
     // $ANTLR start "rule_right_hand_side"
-    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:463:1: rule_right_hand_side returns [ModEntity context, List<ModEntity> rhs] : e1= entity_result[false] ( ( L_BRACKET | entsep ) (e2= entity_result[false] ( entsep en= entity_result[false] )* )? ({...}? R_BRACKET | ) )? ;
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:463:1: rule_right_hand_side returns [ModEntity context, List<ModEntity> rhs] : e1= entity_result[false] ( ( L_BRACKET | entsepright ) (e2= entity_result[false] ( entsepright en= entity_result[false] )* )? ({...}? R_BRACKET | ) )? ;
     public final MLSpaceSmallParser.rule_right_hand_side_return rule_right_hand_side() throws RecognitionException {
         MLSpaceSmallParser.rule_right_hand_side_return retval = new MLSpaceSmallParser.rule_right_hand_side_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token L_BRACKET135=null;
-        Token R_BRACKET138=null;
+        Token L_BRACKET136=null;
+        Token R_BRACKET139=null;
         MLSpaceSmallParser.entity_result_return e1 = null;
 
         MLSpaceSmallParser.entity_result_return e2 = null;
 
         MLSpaceSmallParser.entity_result_return en = null;
 
-        MLSpaceSmallParser.entsep_return entsep136 = null;
+        MLSpaceSmallParser.entsepright_return entsepright137 = null;
 
-        MLSpaceSmallParser.entsep_return entsep137 = null;
+        MLSpaceSmallParser.entsepright_return entsepright138 = null;
 
 
-        Object L_BRACKET135_tree=null;
-        Object R_BRACKET138_tree=null;
+        Object L_BRACKET136_tree=null;
+        Object R_BRACKET139_tree=null;
 
          retval.rhs = new ArrayList<>();
         try {
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:464:34: (e1= entity_result[false] ( ( L_BRACKET | entsep ) (e2= entity_result[false] ( entsep en= entity_result[false] )* )? ({...}? R_BRACKET | ) )? )
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:465:3: e1= entity_result[false] ( ( L_BRACKET | entsep ) (e2= entity_result[false] ( entsep en= entity_result[false] )* )? ({...}? R_BRACKET | ) )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:464:34: (e1= entity_result[false] ( ( L_BRACKET | entsepright ) (e2= entity_result[false] ( entsepright en= entity_result[false] )* )? ({...}? R_BRACKET | ) )? )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:465:3: e1= entity_result[false] ( ( L_BRACKET | entsepright ) (e2= entity_result[false] ( entsepright en= entity_result[false] )* )? ({...}? R_BRACKET | ) )?
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1763);
+            pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1773);
             e1=entity_result(false);
 
             state._fsp--;
@@ -5170,7 +5221,7 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.rhs.add((e1!=null?e1.ent:null));
             }
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:3: ( ( L_BRACKET | entsep ) (e2= entity_result[false] ( entsep en= entity_result[false] )* )? ({...}? R_BRACKET | ) )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:3: ( ( L_BRACKET | entsepright ) (e2= entity_result[false] ( entsepright en= entity_result[false] )* )? ({...}? R_BRACKET | ) )?
             int alt50=2;
             int LA50_0 = input.LA(1);
 
@@ -5179,9 +5230,9 @@ public class MLSpaceSmallParser extends Parser {
             }
             switch (alt50) {
                 case 1 :
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:4: ( L_BRACKET | entsep ) (e2= entity_result[false] ( entsep en= entity_result[false] )* )? ({...}? R_BRACKET | )
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:4: ( L_BRACKET | entsepright ) (e2= entity_result[false] ( entsepright en= entity_result[false] )* )? ({...}? R_BRACKET | )
                     {
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:4: ( L_BRACKET | entsep )
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:4: ( L_BRACKET | entsepright )
                     int alt46=2;
                     int LA46_0 = input.LA(1);
 
@@ -5202,10 +5253,10 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:5: L_BRACKET
                             {
-                            L_BRACKET135=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_rule_right_hand_side1772); if (state.failed) return retval;
+                            L_BRACKET136=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_rule_right_hand_side1782); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            L_BRACKET135_tree = (Object)adaptor.create(L_BRACKET135);
-                            adaptor.addChild(root_0, L_BRACKET135_tree);
+                            L_BRACKET136_tree = (Object)adaptor.create(L_BRACKET136);
+                            adaptor.addChild(root_0, L_BRACKET136_tree);
                             }
                             if ( state.backtracking==0 ) {
                               retval.context = retval.rhs.remove(0);
@@ -5214,21 +5265,21 @@ public class MLSpaceSmallParser extends Parser {
                             }
                             break;
                         case 2 :
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:46: entsep
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:466:46: entsepright
                             {
-                            pushFollow(FOLLOW_entsep_in_rule_right_hand_side1778);
-                            entsep136=entsep();
+                            pushFollow(FOLLOW_entsepright_in_rule_right_hand_side1788);
+                            entsepright137=entsepright();
 
                             state._fsp--;
                             if (state.failed) return retval;
-                            if ( state.backtracking==0 ) adaptor.addChild(root_0, entsep136.getTree());
+                            if ( state.backtracking==0 ) adaptor.addChild(root_0, entsepright137.getTree());
 
                             }
                             break;
 
                     }
 
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:467:4: (e2= entity_result[false] ( entsep en= entity_result[false] )* )?
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:467:4: (e2= entity_result[false] ( entsepright en= entity_result[false] )* )?
                     int alt48=2;
                     int LA48_0 = input.LA(1);
 
@@ -5237,9 +5288,9 @@ public class MLSpaceSmallParser extends Parser {
                     }
                     switch (alt48) {
                         case 1 :
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:467:5: e2= entity_result[false] ( entsep en= entity_result[false] )*
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:467:5: e2= entity_result[false] ( entsepright en= entity_result[false] )*
                             {
-                            pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1787);
+                            pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1797);
                             e2=entity_result(false);
 
                             state._fsp--;
@@ -5248,7 +5299,7 @@ public class MLSpaceSmallParser extends Parser {
                             if ( state.backtracking==0 ) {
                               retval.rhs.add((e2!=null?e2.ent:null));
                             }
-                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:468:4: ( entsep en= entity_result[false] )*
+                            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:468:4: ( entsepright en= entity_result[false] )*
                             loop47:
                             do {
                                 int alt47=2;
@@ -5261,15 +5312,15 @@ public class MLSpaceSmallParser extends Parser {
 
                                 switch (alt47) {
                             	case 1 :
-                            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:468:5: entsep en= entity_result[false]
+                            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:468:5: entsepright en= entity_result[false]
                             	    {
-                            	    pushFollow(FOLLOW_entsep_in_rule_right_hand_side1796);
-                            	    entsep137=entsep();
+                            	    pushFollow(FOLLOW_entsepright_in_rule_right_hand_side1806);
+                            	    entsepright138=entsepright();
 
                             	    state._fsp--;
                             	    if (state.failed) return retval;
-                            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, entsep137.getTree());
-                            	    pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1800);
+                            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, entsepright138.getTree());
+                            	    pushFollow(FOLLOW_entity_result_in_rule_right_hand_side1810);
                             	    en=entity_result(false);
 
                             	    state._fsp--;
@@ -5318,10 +5369,10 @@ public class MLSpaceSmallParser extends Parser {
                                 if (state.backtracking>0) {state.failed=true; return retval;}
                                 throw new FailedPredicateException(input, "rule_right_hand_side", "$context != null");
                             }
-                            R_BRACKET138=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_rule_right_hand_side1815); if (state.failed) return retval;
+                            R_BRACKET139=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_rule_right_hand_side1825); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            R_BRACKET138_tree = (Object)adaptor.create(R_BRACKET138);
-                            adaptor.addChild(root_0, R_BRACKET138_tree);
+                            R_BRACKET139_tree = (Object)adaptor.create(R_BRACKET139);
+                            adaptor.addChild(root_0, R_BRACKET139_tree);
                             }
 
                             }
@@ -5380,17 +5431,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token L_PAREN140=null;
-        Token R_PAREN141=null;
+        Token L_PAREN141=null;
+        Token R_PAREN142=null;
         MLSpaceSmallParser.attributes_match_return atts = null;
 
         MLSpaceSmallParser.bindingsites_return bs = null;
 
-        MLSpaceSmallParser.species_return species139 = null;
+        MLSpaceSmallParser.species_return species140 = null;
 
 
-        Object L_PAREN140_tree=null;
-        Object R_PAREN141_tree=null;
+        Object L_PAREN141_tree=null;
+        Object R_PAREN142_tree=null;
 
         Species spec = null;
         try {
@@ -5399,12 +5450,12 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_species_in_entity_match1844);
-            species139=species();
+            pushFollow(FOLLOW_species_in_entity_match1854);
+            species140=species();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, species139.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, species140.getTree());
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:474:22: ( L_PAREN (atts= attributes_match )? R_PAREN )?
             int alt52=2;
             int LA52_0 = input.LA(1);
@@ -5416,7 +5467,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:474:23: L_PAREN (atts= attributes_match )? R_PAREN
                     {
-                    L_PAREN140=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_entity_match1847); if (state.failed) return retval;
+                    L_PAREN141=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_entity_match1857); if (state.failed) return retval;
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:474:36: (atts= attributes_match )?
                     int alt51=2;
                     int LA51_0 = input.LA(1);
@@ -5428,7 +5479,7 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: atts= attributes_match
                             {
-                            pushFollow(FOLLOW_attributes_match_in_entity_match1852);
+                            pushFollow(FOLLOW_attributes_match_in_entity_match1862);
                             atts=attributes_match();
 
                             state._fsp--;
@@ -5440,7 +5491,7 @@ public class MLSpaceSmallParser extends Parser {
 
                     }
 
-                    R_PAREN141=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_entity_match1855); if (state.failed) return retval;
+                    R_PAREN142=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_entity_match1865); if (state.failed) return retval;
 
                     }
                     break;
@@ -5448,8 +5499,8 @@ public class MLSpaceSmallParser extends Parser {
             }
 
             if ( state.backtracking==0 ) {
-              parseTool.checkEntityDefPlausibility((species139!=null?species139.specName:null),(atts!=null?atts.attMap:null));
-                  spec = parseTool.getSpeciesForName((species139!=null?species139.specName:null));
+              parseTool.checkEntityDefPlausibility((species140!=null?species140.specName:null),(atts!=null?atts.attMap:null));
+                  spec = parseTool.getSpeciesForName((species140!=null?species140.specName:null));
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:477:5: (bs= bindingsites )?
             int alt53=2;
@@ -5462,7 +5513,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: bs= bindingsites
                     {
-                    pushFollow(FOLLOW_bindingsites_in_entity_match1869);
+                    pushFollow(FOLLOW_bindingsites_in_entity_match1879);
                     bs=bindingsites();
 
                     state._fsp--;
@@ -5517,17 +5568,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token LESSTHAN142=null;
-        Token COMMA143=null;
-        Token GREATERTHAN144=null;
+        Token LESSTHAN143=null;
+        Token COMMA144=null;
+        Token GREATERTHAN145=null;
         MLSpaceSmallParser.bindingsite_return bsm1 = null;
 
         MLSpaceSmallParser.bindingsite_return bsm = null;
 
 
-        Object LESSTHAN142_tree=null;
-        Object COMMA143_tree=null;
-        Object GREATERTHAN144_tree=null;
+        Object LESSTHAN143_tree=null;
+        Object COMMA144_tree=null;
+        Object GREATERTHAN145_tree=null;
 
         retval.map = new NonNullMap<String,RuleEntityWithBindings>(false,true);
         try {
@@ -5536,8 +5587,8 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            LESSTHAN142=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingsites1893); if (state.failed) return retval;
-            pushFollow(FOLLOW_bindingsite_in_bindingsites1900);
+            LESSTHAN143=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingsites1903); if (state.failed) return retval;
+            pushFollow(FOLLOW_bindingsite_in_bindingsites1910);
             bsm1=bindingsite();
 
             state._fsp--;
@@ -5561,8 +5612,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:487:3: COMMA bsm= bindingsite
             	    {
-            	    COMMA143=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingsites1906); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_bindingsite_in_bindingsites1911);
+            	    COMMA144=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingsites1916); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_bindingsite_in_bindingsites1921);
             	    bsm=bindingsite();
 
             	    state._fsp--;
@@ -5580,7 +5631,7 @@ public class MLSpaceSmallParser extends Parser {
                 }
             } while (true);
 
-            GREATERTHAN144=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingsites1919); if (state.failed) return retval;
+            GREATERTHAN145=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingsites1929); if (state.failed) return retval;
 
             }
 
@@ -5619,17 +5670,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID145=null;
-        Token COLON146=null;
-        Token FREE147=null;
-        Token OCC148=null;
+        Token ID146=null;
+        Token COLON147=null;
+        Token FREE148=null;
+        Token OCC149=null;
         MLSpaceSmallParser.entity_match_return e = null;
 
 
-        Object ID145_tree=null;
-        Object COLON146_tree=null;
-        Object FREE147_tree=null;
-        Object OCC148_tree=null;
+        Object ID146_tree=null;
+        Object COLON147_tree=null;
+        Object FREE148_tree=null;
+        Object OCC149_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:490:62: ( ID COLON (e= entity_match | FREE | OCC ) )
@@ -5637,12 +5688,12 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID145=(Token)match(input,ID,FOLLOW_ID_in_bindingsite1934); if (state.failed) return retval;
+            ID146=(Token)match(input,ID,FOLLOW_ID_in_bindingsite1944); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID145_tree = (Object)adaptor.create(ID145);
-            adaptor.addChild(root_0, ID145_tree);
+            ID146_tree = (Object)adaptor.create(ID146);
+            adaptor.addChild(root_0, ID146_tree);
             }
-            COLON146=(Token)match(input,COLON,FOLLOW_COLON_in_bindingsite1936); if (state.failed) return retval;
+            COLON147=(Token)match(input,COLON,FOLLOW_COLON_in_bindingsite1946); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:492:3: (e= entity_match | FREE | OCC )
             int alt55=3;
             switch ( input.LA(1) ) {
@@ -5673,14 +5724,14 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:492:4: e= entity_match
                     {
-                    pushFollow(FOLLOW_entity_match_in_bindingsite1945);
+                    pushFollow(FOLLOW_entity_match_in_bindingsite1955);
                     e=entity_match();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.name = (ID145!=null?ID145.getText():null); retval.ent = (e!=null?e.ent:null);
+                      retval.name = (ID146!=null?ID146.getText():null); retval.ent = (e!=null?e.ent:null);
                     }
 
                     }
@@ -5688,13 +5739,13 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:493:4: FREE
                     {
-                    FREE147=(Token)match(input,FREE,FOLLOW_FREE_in_bindingsite1953); if (state.failed) return retval;
+                    FREE148=(Token)match(input,FREE,FOLLOW_FREE_in_bindingsite1963); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    FREE147_tree = (Object)adaptor.create(FREE147);
-                    adaptor.addChild(root_0, FREE147_tree);
+                    FREE148_tree = (Object)adaptor.create(FREE148);
+                    adaptor.addChild(root_0, FREE148_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.name = (ID145!=null?ID145.getText():null); retval.ent = null;
+                      retval.name = (ID146!=null?ID146.getText():null); retval.ent = null;
                     }
 
                     }
@@ -5702,13 +5753,13 @@ public class MLSpaceSmallParser extends Parser {
                 case 3 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:494:4: OCC
                     {
-                    OCC148=(Token)match(input,OCC,FOLLOW_OCC_in_bindingsite1960); if (state.failed) return retval;
+                    OCC149=(Token)match(input,OCC,FOLLOW_OCC_in_bindingsite1970); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    OCC148_tree = (Object)adaptor.create(OCC148);
-                    adaptor.addChild(root_0, OCC148_tree);
+                    OCC149_tree = (Object)adaptor.create(OCC149);
+                    adaptor.addChild(root_0, OCC149_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.name = (ID145!=null?ID145.getText():null); retval.ent = new AllMatchingRuleEntity(true);
+                      retval.name = (ID146!=null?ID146.getText():null); retval.ent = new AllMatchingRuleEntity(true);
                     }
 
                     }
@@ -5746,7 +5797,7 @@ public class MLSpaceSmallParser extends Parser {
     };
 
     // $ANTLR start "entities_result"
-    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:497:1: entities_result[boolean ignore] returns [List<ModEntity> list] : (e= entity_result[ignore] ( entsep e2= entity_result[ignore] )* )? ;
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:497:1: entities_result[boolean ignore] returns [List<ModEntity> list] : (e= entity_result[ignore] ( entsepright e2= entity_result[ignore] )* )? ;
     public final MLSpaceSmallParser.entities_result_return entities_result(boolean ignore) throws RecognitionException {
         MLSpaceSmallParser.entities_result_return retval = new MLSpaceSmallParser.entities_result_return();
         retval.start = input.LT(1);
@@ -5757,18 +5808,18 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.entity_result_return e2 = null;
 
-        MLSpaceSmallParser.entsep_return entsep149 = null;
+        MLSpaceSmallParser.entsepright_return entsepright150 = null;
 
 
 
         retval.list = new ArrayList<>();
         try {
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:498:36: ( (e= entity_result[ignore] ( entsep e2= entity_result[ignore] )* )? )
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:2: (e= entity_result[ignore] ( entsep e2= entity_result[ignore] )* )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:498:36: ( (e= entity_result[ignore] ( entsepright e2= entity_result[ignore] )* )? )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:2: (e= entity_result[ignore] ( entsepright e2= entity_result[ignore] )* )?
             {
             root_0 = (Object)adaptor.nil();
 
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:2: (e= entity_result[ignore] ( entsep e2= entity_result[ignore] )* )?
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:2: (e= entity_result[ignore] ( entsepright e2= entity_result[ignore] )* )?
             int alt57=2;
             int LA57_0 = input.LA(1);
 
@@ -5777,9 +5828,9 @@ public class MLSpaceSmallParser extends Parser {
             }
             switch (alt57) {
                 case 1 :
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:3: e= entity_result[ignore] ( entsep e2= entity_result[ignore] )*
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:3: e= entity_result[ignore] ( entsepright e2= entity_result[ignore] )*
                     {
-                    pushFollow(FOLLOW_entity_result_in_entities_result1992);
+                    pushFollow(FOLLOW_entity_result_in_entities_result2002);
                     e=entity_result(ignore);
 
                     state._fsp--;
@@ -5788,7 +5839,7 @@ public class MLSpaceSmallParser extends Parser {
                     if ( state.backtracking==0 ) {
                       retval.list.add((e!=null?e.ent:null));
                     }
-                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:48: ( entsep e2= entity_result[ignore] )*
+                    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:48: ( entsepright e2= entity_result[ignore] )*
                     loop56:
                     do {
                         int alt56=2;
@@ -5801,14 +5852,14 @@ public class MLSpaceSmallParser extends Parser {
 
                         switch (alt56) {
                     	case 1 :
-                    	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:49: entsep e2= entity_result[ignore]
+                    	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:499:49: entsepright e2= entity_result[ignore]
                     	    {
-                    	    pushFollow(FOLLOW_entsep_in_entities_result1998);
-                    	    entsep149=entsep();
+                    	    pushFollow(FOLLOW_entsepright_in_entities_result2008);
+                    	    entsepright150=entsepright();
 
                     	    state._fsp--;
                     	    if (state.failed) return retval;
-                    	    pushFollow(FOLLOW_entity_result_in_entities_result2003);
+                    	    pushFollow(FOLLOW_entity_result_in_entities_result2013);
                     	    e2=entity_result(ignore);
 
                     	    state._fsp--;
@@ -5870,20 +5921,20 @@ public class MLSpaceSmallParser extends Parser {
         Object root_0 = null;
 
         Token name=null;
-        Token L_PAREN151=null;
-        Token COMMA152=null;
-        Token R_PAREN153=null;
+        Token L_PAREN152=null;
+        Token COMMA153=null;
+        Token R_PAREN154=null;
         MLSpaceSmallParser.valmod_return m = null;
 
         MLSpaceSmallParser.bindingactions_return ba = null;
 
-        MLSpaceSmallParser.species_return species150 = null;
+        MLSpaceSmallParser.species_return species151 = null;
 
 
         Object name_tree=null;
-        Object L_PAREN151_tree=null;
-        Object COMMA152_tree=null;
-        Object R_PAREN153_tree=null;
+        Object L_PAREN152_tree=null;
+        Object COMMA153_tree=null;
+        Object R_PAREN154_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:501:54: ( species ( L_PAREN (name= ID m= valmod ( COMMA name= ID m= valmod )* )? R_PAREN )? (ba= bindingactions )? )
@@ -5891,14 +5942,14 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_species_in_entity_result2024);
-            species150=species();
+            pushFollow(FOLLOW_species_in_entity_result2034);
+            species151=species();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, species150.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, species151.getTree());
             if ( state.backtracking==0 ) {
-              retval.ent = new ModEntity((species150!=null?species150.specName:null));
+              retval.ent = new ModEntity((species151!=null?species151.specName:null));
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:503:3: ( L_PAREN (name= ID m= valmod ( COMMA name= ID m= valmod )* )? R_PAREN )?
             int alt60=2;
@@ -5911,7 +5962,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:503:4: L_PAREN (name= ID m= valmod ( COMMA name= ID m= valmod )* )? R_PAREN
                     {
-                    L_PAREN151=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_entity_result2032); if (state.failed) return retval;
+                    L_PAREN152=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_entity_result2042); if (state.failed) return retval;
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:503:13: (name= ID m= valmod ( COMMA name= ID m= valmod )* )?
                     int alt59=2;
                     int LA59_0 = input.LA(1);
@@ -5923,12 +5974,12 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:503:14: name= ID m= valmod ( COMMA name= ID m= valmod )*
                             {
-                            name=(Token)match(input,ID,FOLLOW_ID_in_entity_result2038); if (state.failed) return retval;
+                            name=(Token)match(input,ID,FOLLOW_ID_in_entity_result2048); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
                             name_tree = (Object)adaptor.create(name);
                             adaptor.addChild(root_0, name_tree);
                             }
-                            pushFollow(FOLLOW_valmod_in_entity_result2042);
+                            pushFollow(FOLLOW_valmod_in_entity_result2052);
                             m=valmod();
 
                             state._fsp--;
@@ -5952,17 +6003,17 @@ public class MLSpaceSmallParser extends Parser {
                             	case 1 :
                             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:504:8: COMMA name= ID m= valmod
                             	    {
-                            	    COMMA152=(Token)match(input,COMMA,FOLLOW_COMMA_in_entity_result2054); if (state.failed) return retval;
+                            	    COMMA153=(Token)match(input,COMMA,FOLLOW_COMMA_in_entity_result2064); if (state.failed) return retval;
                             	    if ( state.backtracking==0 ) {
-                            	    COMMA152_tree = (Object)adaptor.create(COMMA152);
-                            	    adaptor.addChild(root_0, COMMA152_tree);
+                            	    COMMA153_tree = (Object)adaptor.create(COMMA153);
+                            	    adaptor.addChild(root_0, COMMA153_tree);
                             	    }
-                            	    name=(Token)match(input,ID,FOLLOW_ID_in_entity_result2058); if (state.failed) return retval;
+                            	    name=(Token)match(input,ID,FOLLOW_ID_in_entity_result2068); if (state.failed) return retval;
                             	    if ( state.backtracking==0 ) {
                             	    name_tree = (Object)adaptor.create(name);
                             	    adaptor.addChild(root_0, name_tree);
                             	    }
-                            	    pushFollow(FOLLOW_valmod_in_entity_result2062);
+                            	    pushFollow(FOLLOW_valmod_in_entity_result2072);
                             	    m=valmod();
 
                             	    state._fsp--;
@@ -5986,7 +6037,7 @@ public class MLSpaceSmallParser extends Parser {
 
                     }
 
-                    R_PAREN153=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_entity_result2074); if (state.failed) return retval;
+                    R_PAREN154=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_entity_result2084); if (state.failed) return retval;
 
                     }
                     break;
@@ -5994,7 +6045,7 @@ public class MLSpaceSmallParser extends Parser {
             }
 
             if ( state.backtracking==0 ) {
-              if (!ignore) parseTool.checkEntityDefPlausibility((species150!=null?species150.specName:null),retval.ent.getAttributes());
+              if (!ignore) parseTool.checkEntityDefPlausibility((species151!=null?species151.specName:null),retval.ent.getAttributes());
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:507:3: (ba= bindingactions )?
             int alt61=2;
@@ -6007,7 +6058,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:507:4: ba= bindingactions
                     {
-                    pushFollow(FOLLOW_bindingactions_in_entity_result2089);
+                    pushFollow(FOLLOW_bindingactions_in_entity_result2099);
                     ba=bindingactions();
 
                     state._fsp--;
@@ -6059,21 +6110,21 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token PLUS154=null;
         Token PLUS155=null;
-        Token MINUS156=null;
+        Token PLUS156=null;
         Token MINUS157=null;
-        Token EQ159=null;
+        Token MINUS158=null;
         Token EQ160=null;
         Token EQ161=null;
-        Token STRING162=null;
-        Token COLON163=null;
-        Token STRING164=null;
-        Token COLON165=null;
-        Token EQ166=null;
-        Token ID167=null;
-        Token L_PAREN168=null;
-        Token R_PAREN169=null;
+        Token EQ162=null;
+        Token STRING163=null;
+        Token COLON164=null;
+        Token STRING165=null;
+        Token COLON166=null;
+        Token EQ167=null;
+        Token ID168=null;
+        Token L_PAREN169=null;
+        Token R_PAREN170=null;
         MLSpaceSmallParser.varexpr_return nn = null;
 
         MLSpaceSmallParser.varexpr_return n = null;
@@ -6082,24 +6133,24 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.varexpr_return l = null;
 
-        MLSpaceSmallParser.op_return op158 = null;
+        MLSpaceSmallParser.op_return op159 = null;
 
 
-        Object PLUS154_tree=null;
         Object PLUS155_tree=null;
-        Object MINUS156_tree=null;
+        Object PLUS156_tree=null;
         Object MINUS157_tree=null;
-        Object EQ159_tree=null;
+        Object MINUS158_tree=null;
         Object EQ160_tree=null;
         Object EQ161_tree=null;
-        Object STRING162_tree=null;
-        Object COLON163_tree=null;
-        Object STRING164_tree=null;
-        Object COLON165_tree=null;
-        Object EQ166_tree=null;
-        Object ID167_tree=null;
-        Object L_PAREN168_tree=null;
-        Object R_PAREN169_tree=null;
+        Object EQ162_tree=null;
+        Object STRING163_tree=null;
+        Object COLON164_tree=null;
+        Object STRING165_tree=null;
+        Object COLON166_tree=null;
+        Object EQ167_tree=null;
+        Object ID168_tree=null;
+        Object L_PAREN169_tree=null;
+        Object R_PAREN170_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:510:35: ( | ( PLUS PLUS ) | ( MINUS MINUS ) | ( op EQ nn= varexpr ) | ( EQ n= varexpr ) | ( EQ STRING ) | ( COLON STRING ) | ( COLON v= valset_or_const ) | ( EQ {...}? => ID L_PAREN l= varexpr R_PAREN ) )
@@ -6121,15 +6172,15 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:511:4: ( PLUS PLUS )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:511:5: PLUS PLUS
                     {
-                    PLUS154=(Token)match(input,PLUS,FOLLOW_PLUS_in_valmod2109); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    PLUS154_tree = (Object)adaptor.create(PLUS154);
-                    adaptor.addChild(root_0, PLUS154_tree);
-                    }
-                    PLUS155=(Token)match(input,PLUS,FOLLOW_PLUS_in_valmod2111); if (state.failed) return retval;
+                    PLUS155=(Token)match(input,PLUS,FOLLOW_PLUS_in_valmod2119); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     PLUS155_tree = (Object)adaptor.create(PLUS155);
                     adaptor.addChild(root_0, PLUS155_tree);
+                    }
+                    PLUS156=(Token)match(input,PLUS,FOLLOW_PLUS_in_valmod2121); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    PLUS156_tree = (Object)adaptor.create(PLUS156);
+                    adaptor.addChild(root_0, PLUS156_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.val = new ValueModifier.SimpleValueModifier("+",1.);
@@ -6148,15 +6199,15 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:512:4: ( MINUS MINUS )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:512:5: MINUS MINUS
                     {
-                    MINUS156=(Token)match(input,MINUS,FOLLOW_MINUS_in_valmod2121); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    MINUS156_tree = (Object)adaptor.create(MINUS156);
-                    adaptor.addChild(root_0, MINUS156_tree);
-                    }
-                    MINUS157=(Token)match(input,MINUS,FOLLOW_MINUS_in_valmod2123); if (state.failed) return retval;
+                    MINUS157=(Token)match(input,MINUS,FOLLOW_MINUS_in_valmod2131); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     MINUS157_tree = (Object)adaptor.create(MINUS157);
                     adaptor.addChild(root_0, MINUS157_tree);
+                    }
+                    MINUS158=(Token)match(input,MINUS,FOLLOW_MINUS_in_valmod2133); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    MINUS158_tree = (Object)adaptor.create(MINUS158);
+                    adaptor.addChild(root_0, MINUS158_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.val = new ValueModifier.SimpleValueModifier("-",1.);
@@ -6175,25 +6226,25 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:513:4: ( op EQ nn= varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:513:5: op EQ nn= varexpr
                     {
-                    pushFollow(FOLLOW_op_in_valmod2133);
-                    op158=op();
+                    pushFollow(FOLLOW_op_in_valmod2143);
+                    op159=op();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, op158.getTree());
-                    EQ159=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2135); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, op159.getTree());
+                    EQ160=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2145); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ159_tree = (Object)adaptor.create(EQ159);
-                    adaptor.addChild(root_0, EQ159_tree);
+                    EQ160_tree = (Object)adaptor.create(EQ160);
+                    adaptor.addChild(root_0, EQ160_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_valmod2139);
+                    pushFollow(FOLLOW_varexpr_in_valmod2149);
                     nn=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, nn.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.val = new ValueModifier.TreeValueModifier((op158!=null?input.toString(op158.start,op158.stop):null),(nn!=null?nn.node:null));
+                      retval.val = new ValueModifier.TreeValueModifier((op159!=null?input.toString(op159.start,op159.stop):null),(nn!=null?nn.node:null));
                     }
 
                     }
@@ -6209,12 +6260,12 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:514:4: ( EQ n= varexpr )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:514:5: EQ n= varexpr
                     {
-                    EQ160=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2148); if (state.failed) return retval;
+                    EQ161=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2158); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ160_tree = (Object)adaptor.create(EQ160);
-                    adaptor.addChild(root_0, EQ160_tree);
+                    EQ161_tree = (Object)adaptor.create(EQ161);
+                    adaptor.addChild(root_0, EQ161_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_valmod2152);
+                    pushFollow(FOLLOW_varexpr_in_valmod2162);
                     n=varexpr();
 
                     state._fsp--;
@@ -6237,18 +6288,18 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:515:4: ( EQ STRING )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:515:5: EQ STRING
                     {
-                    EQ161=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2161); if (state.failed) return retval;
+                    EQ162=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2171); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ161_tree = (Object)adaptor.create(EQ161);
-                    adaptor.addChild(root_0, EQ161_tree);
+                    EQ162_tree = (Object)adaptor.create(EQ162);
+                    adaptor.addChild(root_0, EQ162_tree);
                     }
-                    STRING162=(Token)match(input,STRING,FOLLOW_STRING_in_valmod2163); if (state.failed) return retval;
+                    STRING163=(Token)match(input,STRING,FOLLOW_STRING_in_valmod2173); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    STRING162_tree = (Object)adaptor.create(STRING162);
-                    adaptor.addChild(root_0, STRING162_tree);
+                    STRING163_tree = (Object)adaptor.create(STRING163);
+                    adaptor.addChild(root_0, STRING163_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val =new StringAssignmentModifier(STRING162.getText());
+                      retval.val =new StringAssignmentModifier(STRING163.getText());
                     }
 
                     }
@@ -6264,18 +6315,18 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:516:4: ( COLON STRING )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:516:5: COLON STRING
                     {
-                    COLON163=(Token)match(input,COLON,FOLLOW_COLON_in_valmod2172); if (state.failed) return retval;
+                    COLON164=(Token)match(input,COLON,FOLLOW_COLON_in_valmod2182); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    COLON163_tree = (Object)adaptor.create(COLON163);
-                    adaptor.addChild(root_0, COLON163_tree);
+                    COLON164_tree = (Object)adaptor.create(COLON164);
+                    adaptor.addChild(root_0, COLON164_tree);
                     }
-                    STRING164=(Token)match(input,STRING,FOLLOW_STRING_in_valmod2174); if (state.failed) return retval;
+                    STRING165=(Token)match(input,STRING,FOLLOW_STRING_in_valmod2184); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    STRING164_tree = (Object)adaptor.create(STRING164);
-                    adaptor.addChild(root_0, STRING164_tree);
+                    STRING165_tree = (Object)adaptor.create(STRING165);
+                    adaptor.addChild(root_0, STRING165_tree);
                     }
                     if ( state.backtracking==0 ) {
-                      retval.val =new StringAssignmentModifier(STRING164.getText());
+                      retval.val =new StringAssignmentModifier(STRING165.getText());
                     }
 
                     }
@@ -6291,12 +6342,12 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:517:4: ( COLON v= valset_or_const )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:517:5: COLON v= valset_or_const
                     {
-                    COLON165=(Token)match(input,COLON,FOLLOW_COLON_in_valmod2183); if (state.failed) return retval;
+                    COLON166=(Token)match(input,COLON,FOLLOW_COLON_in_valmod2193); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    COLON165_tree = (Object)adaptor.create(COLON165);
-                    adaptor.addChild(root_0, COLON165_tree);
+                    COLON166_tree = (Object)adaptor.create(COLON166);
+                    adaptor.addChild(root_0, COLON166_tree);
                     }
-                    pushFollow(FOLLOW_valset_or_const_in_valmod2187);
+                    pushFollow(FOLLOW_valset_or_const_in_valmod2197);
                     v=valset_or_const();
 
                     state._fsp--;
@@ -6319,35 +6370,35 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:518:4: ( EQ {...}? => ID L_PAREN l= varexpr R_PAREN )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:518:5: EQ {...}? => ID L_PAREN l= varexpr R_PAREN
                     {
-                    EQ166=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2196); if (state.failed) return retval;
+                    EQ167=(Token)match(input,EQ,FOLLOW_EQ_in_valmod2206); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ166_tree = (Object)adaptor.create(EQ166);
-                    adaptor.addChild(root_0, EQ166_tree);
+                    EQ167_tree = (Object)adaptor.create(EQ167);
+                    adaptor.addChild(root_0, EQ167_tree);
                     }
                     if ( !((RANDOM_VECTOR_KEYWORDS.contains(input.LT(1).getText()))) ) {
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         throw new FailedPredicateException(input, "valmod", "RANDOM_VECTOR_KEYWORDS.contains(input.LT(1).getText())");
                     }
-                    ID167=(Token)match(input,ID,FOLLOW_ID_in_valmod2202); if (state.failed) return retval;
+                    ID168=(Token)match(input,ID,FOLLOW_ID_in_valmod2212); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID167_tree = (Object)adaptor.create(ID167);
-                    adaptor.addChild(root_0, ID167_tree);
+                    ID168_tree = (Object)adaptor.create(ID168);
+                    adaptor.addChild(root_0, ID168_tree);
                     }
-                    L_PAREN168=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_valmod2204); if (state.failed) return retval;
+                    L_PAREN169=(Token)match(input,L_PAREN,FOLLOW_L_PAREN_in_valmod2214); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    L_PAREN168_tree = (Object)adaptor.create(L_PAREN168);
-                    adaptor.addChild(root_0, L_PAREN168_tree);
+                    L_PAREN169_tree = (Object)adaptor.create(L_PAREN169);
+                    adaptor.addChild(root_0, L_PAREN169_tree);
                     }
-                    pushFollow(FOLLOW_varexpr_in_valmod2208);
+                    pushFollow(FOLLOW_varexpr_in_valmod2218);
                     l=varexpr();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, l.getTree());
-                    R_PAREN169=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_valmod2210); if (state.failed) return retval;
+                    R_PAREN170=(Token)match(input,R_PAREN,FOLLOW_R_PAREN_in_valmod2220); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    R_PAREN169_tree = (Object)adaptor.create(R_PAREN169);
-                    adaptor.addChild(root_0, R_PAREN169_tree);
+                    R_PAREN170_tree = (Object)adaptor.create(R_PAREN170);
+                    adaptor.addChild(root_0, R_PAREN170_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.val =new RandomVectorModifier((l!=null?l.node:null));
@@ -6393,9 +6444,9 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token set170=null;
+        Token set171=null;
 
-        Object set170_tree=null;
+        Object set171_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:520:3: ( PLUS | MINUS | TIMES | DIV )
@@ -6403,10 +6454,10 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            set170=(Token)input.LT(1);
+            set171=(Token)input.LT(1);
             if ( (input.LA(1)>=PLUS && input.LA(1)<=DIV) ) {
                 input.consume();
-                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set170));
+                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set171));
                 state.errorRecovery=false;state.failed=false;
             }
             else {
@@ -6452,17 +6503,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token LESSTHAN171=null;
-        Token COMMA172=null;
-        Token GREATERTHAN173=null;
+        Token LESSTHAN172=null;
+        Token COMMA173=null;
+        Token GREATERTHAN174=null;
         MLSpaceSmallParser.bindingaction_return bm = null;
 
         MLSpaceSmallParser.bindingaction_return bm2 = null;
 
 
-        Object LESSTHAN171_tree=null;
-        Object COMMA172_tree=null;
-        Object GREATERTHAN173_tree=null;
+        Object LESSTHAN172_tree=null;
+        Object COMMA173_tree=null;
+        Object GREATERTHAN174_tree=null;
 
         retval.map = new NonNullMap<String,BindingAction>();
         try {
@@ -6471,8 +6522,8 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            LESSTHAN171=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingactions2249); if (state.failed) return retval;
-            pushFollow(FOLLOW_bindingaction_in_bindingactions2256);
+            LESSTHAN172=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_bindingactions2259); if (state.failed) return retval;
+            pushFollow(FOLLOW_bindingaction_in_bindingactions2266);
             bm=bindingaction();
 
             state._fsp--;
@@ -6496,12 +6547,12 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:526:3: COMMA bm2= bindingaction
             	    {
-            	    COMMA172=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingactions2262); if (state.failed) return retval;
+            	    COMMA173=(Token)match(input,COMMA,FOLLOW_COMMA_in_bindingactions2272); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    COMMA172_tree = (Object)adaptor.create(COMMA172);
-            	    adaptor.addChild(root_0, COMMA172_tree);
+            	    COMMA173_tree = (Object)adaptor.create(COMMA173);
+            	    adaptor.addChild(root_0, COMMA173_tree);
             	    }
-            	    pushFollow(FOLLOW_bindingaction_in_bindingactions2266);
+            	    pushFollow(FOLLOW_bindingaction_in_bindingactions2276);
             	    bm2=bindingaction();
 
             	    state._fsp--;
@@ -6519,7 +6570,7 @@ public class MLSpaceSmallParser extends Parser {
                 }
             } while (true);
 
-            GREATERTHAN173=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingactions2273); if (state.failed) return retval;
+            GREATERTHAN174=(Token)match(input,GREATERTHAN,FOLLOW_GREATERTHAN_in_bindingactions2283); if (state.failed) return retval;
 
             }
 
@@ -6558,17 +6609,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID174=null;
-        Token COLON175=null;
-        Token BIND176=null;
-        Token RELEASE177=null;
-        Token REPLACE178=null;
+        Token ID175=null;
+        Token COLON176=null;
+        Token BIND177=null;
+        Token RELEASE178=null;
+        Token REPLACE179=null;
 
-        Object ID174_tree=null;
-        Object COLON175_tree=null;
-        Object BIND176_tree=null;
-        Object RELEASE177_tree=null;
-        Object REPLACE178_tree=null;
+        Object ID175_tree=null;
+        Object COLON176_tree=null;
+        Object BIND177_tree=null;
+        Object RELEASE178_tree=null;
+        Object REPLACE179_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:529:57: ( ID COLON ( BIND | RELEASE | REPLACE ) )
@@ -6576,14 +6627,14 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID174=(Token)match(input,ID,FOLLOW_ID_in_bindingaction2288); if (state.failed) return retval;
+            ID175=(Token)match(input,ID,FOLLOW_ID_in_bindingaction2298); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID174_tree = (Object)adaptor.create(ID174);
-            adaptor.addChild(root_0, ID174_tree);
+            ID175_tree = (Object)adaptor.create(ID175);
+            adaptor.addChild(root_0, ID175_tree);
             }
-            COLON175=(Token)match(input,COLON,FOLLOW_COLON_in_bindingaction2290); if (state.failed) return retval;
+            COLON176=(Token)match(input,COLON,FOLLOW_COLON_in_bindingaction2300); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-              retval.name = (ID174!=null?ID174.getText():null);
+              retval.name = (ID175!=null?ID175.getText():null);
             }
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:531:3: ( BIND | RELEASE | REPLACE )
             int alt64=3;
@@ -6615,10 +6666,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:531:5: BIND
                     {
-                    BIND176=(Token)match(input,BIND,FOLLOW_BIND_in_bindingaction2299); if (state.failed) return retval;
+                    BIND177=(Token)match(input,BIND,FOLLOW_BIND_in_bindingaction2309); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    BIND176_tree = (Object)adaptor.create(BIND176);
-                    adaptor.addChild(root_0, BIND176_tree);
+                    BIND177_tree = (Object)adaptor.create(BIND177);
+                    adaptor.addChild(root_0, BIND177_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.action = BindingAction.BIND;
@@ -6629,10 +6680,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:532:5: RELEASE
                     {
-                    RELEASE177=(Token)match(input,RELEASE,FOLLOW_RELEASE_in_bindingaction2308); if (state.failed) return retval;
+                    RELEASE178=(Token)match(input,RELEASE,FOLLOW_RELEASE_in_bindingaction2318); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RELEASE177_tree = (Object)adaptor.create(RELEASE177);
-                    adaptor.addChild(root_0, RELEASE177_tree);
+                    RELEASE178_tree = (Object)adaptor.create(RELEASE178);
+                    adaptor.addChild(root_0, RELEASE178_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.action = BindingAction.RELEASE;
@@ -6643,10 +6694,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 3 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:533:5: REPLACE
                     {
-                    REPLACE178=(Token)match(input,REPLACE,FOLLOW_REPLACE_in_bindingaction2316); if (state.failed) return retval;
+                    REPLACE179=(Token)match(input,REPLACE,FOLLOW_REPLACE_in_bindingaction2326); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    REPLACE178_tree = (Object)adaptor.create(REPLACE178);
-                    adaptor.addChild(root_0, REPLACE178_tree);
+                    REPLACE179_tree = (Object)adaptor.create(REPLACE179);
+                    adaptor.addChild(root_0, REPLACE179_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.action = BindingAction.REPLACE;
@@ -6687,7 +6738,7 @@ public class MLSpaceSmallParser extends Parser {
     };
 
     // $ANTLR start "init"
-    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:537:1: init[boolean ignore] returns [Map<InitEntity,Integer> map] : i1= init_element[ignore] ( entsep in= init_element[ignore] )* ;
+    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:537:1: init[boolean ignore] returns [Map<InitEntity,Integer> map] : i1= init_element[ignore] ( entsepleft in= init_element[ignore] )* ;
     public final MLSpaceSmallParser.init_return init(boolean ignore) throws RecognitionException {
         MLSpaceSmallParser.init_return retval = new MLSpaceSmallParser.init_return();
         retval.start = input.LT(1);
@@ -6698,17 +6749,17 @@ public class MLSpaceSmallParser extends Parser {
 
         MLSpaceSmallParser.init_element_return in = null;
 
-        MLSpaceSmallParser.entsep_return entsep179 = null;
+        MLSpaceSmallParser.entsepleft_return entsepleft180 = null;
 
 
 
         try {
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:537:59: (i1= init_element[ignore] ( entsep in= init_element[ignore] )* )
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:538:1: i1= init_element[ignore] ( entsep in= init_element[ignore] )*
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:537:59: (i1= init_element[ignore] ( entsepleft in= init_element[ignore] )* )
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:538:1: i1= init_element[ignore] ( entsepleft in= init_element[ignore] )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_init_element_in_init2339);
+            pushFollow(FOLLOW_init_element_in_init2349);
             i1=init_element(ignore);
 
             state._fsp--;
@@ -6717,27 +6768,27 @@ public class MLSpaceSmallParser extends Parser {
             if ( state.backtracking==0 ) {
               retval.map = (i1!=null?i1.map:null);
             }
-            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:539:1: ( entsep in= init_element[ignore] )*
+            // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:539:1: ( entsepleft in= init_element[ignore] )*
             loop65:
             do {
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
-                if ( (LA65_0==DOT||LA65_0==PLUS) ) {
+                if ( (LA65_0==PLUS) ) {
                     alt65=1;
                 }
 
 
                 switch (alt65) {
             	case 1 :
-            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:539:2: entsep in= init_element[ignore]
+            	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:539:2: entsepleft in= init_element[ignore]
             	    {
-            	    pushFollow(FOLLOW_entsep_in_init2345);
-            	    entsep179=entsep();
+            	    pushFollow(FOLLOW_entsepleft_in_init2355);
+            	    entsepleft180=entsepleft();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    pushFollow(FOLLOW_init_element_in_init2350);
+            	    pushFollow(FOLLOW_init_element_in_init2360);
             	    in=init_element(ignore);
 
             	    state._fsp--;
@@ -6792,27 +6843,27 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token L_BRACKET182=null;
-        Token R_BRACKET183=null;
-        Token L_BRACKET184=null;
-        Token R_BRACKET186=null;
-        Token SEMIC187=null;
+        Token L_BRACKET183=null;
+        Token R_BRACKET184=null;
+        Token L_BRACKET185=null;
+        Token R_BRACKET187=null;
+        Token SEMIC188=null;
         MLSpaceSmallParser.entity_result_return e = null;
 
         MLSpaceSmallParser.entities_result_return eba = null;
 
-        MLSpaceSmallParser.for_each_return for_each180 = null;
+        MLSpaceSmallParser.for_each_return for_each181 = null;
 
-        MLSpaceSmallParser.intval_or_var_return intval_or_var181 = null;
+        MLSpaceSmallParser.intval_or_var_return intval_or_var182 = null;
 
-        MLSpaceSmallParser.init_return init185 = null;
+        MLSpaceSmallParser.init_return init186 = null;
 
 
-        Object L_BRACKET182_tree=null;
-        Object R_BRACKET183_tree=null;
-        Object L_BRACKET184_tree=null;
-        Object R_BRACKET186_tree=null;
-        Object SEMIC187_tree=null;
+        Object L_BRACKET183_tree=null;
+        Object R_BRACKET184_tree=null;
+        Object L_BRACKET185_tree=null;
+        Object R_BRACKET187_tree=null;
+        Object SEMIC188_tree=null;
 
 
           retval.map = new NonNullMap<InitEntity,Integer>(); 
@@ -6845,14 +6896,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:546:2: ( for_each[ignore] )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:546:3: for_each[ignore]
                     {
-                    pushFollow(FOLLOW_for_each_in_init_element2374);
-                    for_each180=for_each(ignore);
+                    pushFollow(FOLLOW_for_each_in_init_element2384);
+                    for_each181=for_each(ignore);
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, for_each180.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, for_each181.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.map = (for_each180!=null?for_each180.map:null);
+                      retval.map = (for_each181!=null?for_each181.map:null);
                     }
 
                     }
@@ -6868,14 +6919,14 @@ public class MLSpaceSmallParser extends Parser {
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:547:3: ( intval_or_var ( (e= entity_result[ignore] ) | ( L_BRACKET eba= entities_result[ignore] R_BRACKET ) ) ( L_BRACKET init[ignore] R_BRACKET )? ( SEMIC )? )
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:547:4: intval_or_var ( (e= entity_result[ignore] ) | ( L_BRACKET eba= entities_result[ignore] R_BRACKET ) ) ( L_BRACKET init[ignore] R_BRACKET )? ( SEMIC )?
                     {
-                    pushFollow(FOLLOW_intval_or_var_in_init_element2383);
-                    intval_or_var181=intval_or_var();
+                    pushFollow(FOLLOW_intval_or_var_in_init_element2393);
+                    intval_or_var182=intval_or_var();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, intval_or_var181.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, intval_or_var182.getTree());
                     if ( state.backtracking==0 ) {
-                      ignore = ignore || (intval_or_var181!=null?intval_or_var181.val:0) <= 0;
+                      ignore = ignore || (intval_or_var182!=null?intval_or_var182.val:0) <= 0;
                     }
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:548:5: ( (e= entity_result[ignore] ) | ( L_BRACKET eba= entities_result[ignore] R_BRACKET ) )
                     int alt66=2;
@@ -6901,7 +6952,7 @@ public class MLSpaceSmallParser extends Parser {
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:548:6: (e= entity_result[ignore] )
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:548:7: e= entity_result[ignore]
                             {
-                            pushFollow(FOLLOW_entity_result_in_init_element2397);
+                            pushFollow(FOLLOW_entity_result_in_init_element2407);
                             e=entity_result(ignore);
 
                             state._fsp--;
@@ -6922,14 +6973,14 @@ public class MLSpaceSmallParser extends Parser {
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:550:6: ( L_BRACKET eba= entities_result[ignore] R_BRACKET )
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:550:7: L_BRACKET eba= entities_result[ignore] R_BRACKET
                             {
-                            L_BRACKET182=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_init_element2416); if (state.failed) return retval;
-                            pushFollow(FOLLOW_entities_result_in_init_element2421);
+                            L_BRACKET183=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_init_element2426); if (state.failed) return retval;
+                            pushFollow(FOLLOW_entities_result_in_init_element2431);
                             eba=entities_result(ignore);
 
                             state._fsp--;
                             if (state.failed) return retval;
                             if ( state.backtracking==0 ) adaptor.addChild(root_0, eba.getTree());
-                            R_BRACKET183=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_init_element2424); if (state.failed) return retval;
+                            R_BRACKET184=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_init_element2434); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
                               tmpEnt = new InitEntityWithBindings(MLSpaceParserHelper.modToInitEntities((eba!=null?eba.list:null)));
                             }
@@ -6953,14 +7004,14 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:552:7: L_BRACKET init[ignore] R_BRACKET
                             {
-                            L_BRACKET184=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_init_element2442); if (state.failed) return retval;
-                            pushFollow(FOLLOW_init_in_init_element2445);
-                            init185=init(ignore);
+                            L_BRACKET185=(Token)match(input,L_BRACKET,FOLLOW_L_BRACKET_in_init_element2452); if (state.failed) return retval;
+                            pushFollow(FOLLOW_init_in_init_element2455);
+                            init186=init(ignore);
 
                             state._fsp--;
                             if (state.failed) return retval;
-                            if ( state.backtracking==0 ) adaptor.addChild(root_0, init185.getTree());
-                            R_BRACKET186=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_init_element2448); if (state.failed) return retval;
+                            if ( state.backtracking==0 ) adaptor.addChild(root_0, init186.getTree());
+                            R_BRACKET187=(Token)match(input,R_BRACKET,FOLLOW_R_BRACKET_in_init_element2458); if (state.failed) return retval;
 
                             }
                             break;
@@ -6974,7 +7025,7 @@ public class MLSpaceSmallParser extends Parser {
                     if ( (LA68_0==SEMIC) ) {
                         int LA68_1 = input.LA(2);
 
-                        if ( (LA68_1==EOF||LA68_1==R_BRACKET||LA68_1==R_BRACE||LA68_1==SEMIC||LA68_1==DOT||LA68_1==PLUS) ) {
+                        if ( (LA68_1==EOF||LA68_1==R_BRACKET||LA68_1==R_BRACE||LA68_1==SEMIC||LA68_1==PLUS) ) {
                             alt68=1;
                         }
                     }
@@ -6982,7 +7033,7 @@ public class MLSpaceSmallParser extends Parser {
                         case 1 :
                             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: SEMIC
                             {
-                            SEMIC187=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_init_element2454); if (state.failed) return retval;
+                            SEMIC188=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_init_element2464); if (state.failed) return retval;
 
                             }
                             break;
@@ -6990,10 +7041,10 @@ public class MLSpaceSmallParser extends Parser {
                     }
 
                     if ( state.backtracking==0 ) {
-                      if ((init185!=null?init185.map:null) != null)
-                            tmpEnt.updateSubEntities((init185!=null?init185.map:null));
+                      if ((init186!=null?init186.map:null) != null)
+                            tmpEnt.updateSubEntities((init186!=null?init186.map:null));
                            if (!ignore)
-                             retval.map.put(tmpEnt, (intval_or_var181!=null?intval_or_var181.val:0));
+                             retval.map.put(tmpEnt, (intval_or_var182!=null?intval_or_var182.val:0));
                           
                     }
 
@@ -7038,17 +7089,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token FOR188=null;
-        Token L_BRACE190=null;
-        Token R_BRACE192=null;
-        MLSpaceSmallParser.for_var_return for_var189 = null;
+        Token FOR189=null;
+        Token L_BRACE191=null;
+        Token R_BRACE193=null;
+        MLSpaceSmallParser.for_var_return for_var190 = null;
 
-        MLSpaceSmallParser.init_return init191 = null;
+        MLSpaceSmallParser.init_return init192 = null;
 
 
-        Object FOR188_tree=null;
-        Object L_BRACE190_tree=null;
-        Object R_BRACE192_tree=null;
+        Object FOR189_tree=null;
+        Object L_BRACE191_tree=null;
+        Object R_BRACE193_tree=null;
 
         int mark = -1;
         try {
@@ -7076,32 +7127,32 @@ public class MLSpaceSmallParser extends Parser {
             	    if ( state.backtracking==0 ) {
             	      mark = input.mark();
             	    }
-            	    FOR188=(Token)match(input,FOR,FOLLOW_FOR_in_for_each2484); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_for_var_in_for_each2487);
-            	    for_var189=for_var();
+            	    FOR189=(Token)match(input,FOR,FOLLOW_FOR_in_for_each2494); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_for_var_in_for_each2497);
+            	    for_var190=for_var();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, for_var189.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, for_var190.getTree());
             	    if ( state.backtracking==0 ) {
-            	      ignore = ignore | handleForVar((for_var189!=null?for_var189.name:null),(for_var189!=null?for_var189.range:null));
+            	      ignore = ignore | handleForVar((for_var190!=null?for_var190.name:null),(for_var190!=null?for_var190.range:null));
             	    }
-            	    L_BRACE190=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_for_each2492); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_init_in_for_each2495);
-            	    init191=init(ignore);
+            	    L_BRACE191=(Token)match(input,L_BRACE,FOLLOW_L_BRACE_in_for_each2502); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_init_in_for_each2505);
+            	    init192=init(ignore);
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, init191.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, init192.getTree());
             	    if ( state.backtracking==0 ) {
-            	      if (retval.map == null) retval.map = (init191!=null?init191.map:null); else 
-            	       for (Map.Entry<InitEntity,Integer> e: (init191!=null?init191.map:null).entrySet()) {
+            	      if (retval.map == null) retval.map = (init192!=null?init192.map:null); else 
+            	       for (Map.Entry<InitEntity,Integer> e: (init192!=null?init192.map:null).entrySet()) {
             	         retval.map.put(e.getKey(), e.getValue() + (retval.map.containsKey(e.getKey()) ? retval.map.get(e.getKey()) : 0)); 
             	       }
             	    }
-            	    R_BRACE192=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_for_each2501); if (state.failed) return retval;
+            	    R_BRACE193=(Token)match(input,R_BRACE,FOLLOW_R_BRACE_in_for_each2511); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	      if (ignore) removeLastLoopVar((for_var189!=null?for_var189.name:null)); else if (!wasLastLoop((for_var189!=null?for_var189.name:null),(for_var189!=null?for_var189.range:null))) input.rewind(mark);
+            	      if (ignore) removeLastLoopVar((for_var190!=null?for_var190.name:null)); else if (!wasLastLoop((for_var190!=null?for_var190.name:null),(for_var190!=null?for_var190.range:null))) input.rewind(mark);
             	    }
 
             	    }
@@ -7155,15 +7206,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token ID193=null;
-        Token EQ194=null;
+        Token ID194=null;
+        Token EQ195=null;
         MLSpaceSmallParser.range_return r = null;
 
-        MLSpaceSmallParser.set_return set195 = null;
+        MLSpaceSmallParser.set_return set196 = null;
 
 
-        Object ID193_tree=null;
-        Object EQ194_tree=null;
+        Object ID194_tree=null;
+        Object EQ195_tree=null;
 
         try {
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:572:45: ( ID EQ (r= range | set ) )
@@ -7171,15 +7222,15 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID193=(Token)match(input,ID,FOLLOW_ID_in_for_var2520); if (state.failed) return retval;
+            ID194=(Token)match(input,ID,FOLLOW_ID_in_for_var2530); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID193_tree = (Object)adaptor.create(ID193);
-            adaptor.addChild(root_0, ID193_tree);
+            ID194_tree = (Object)adaptor.create(ID194);
+            adaptor.addChild(root_0, ID194_tree);
             }
             if ( state.backtracking==0 ) {
-              retval.name =(ID193!=null?ID193.getText():null);
+              retval.name =(ID194!=null?ID194.getText():null);
             }
-            EQ194=(Token)match(input,EQ,FOLLOW_EQ_in_for_var2524); if (state.failed) return retval;
+            EQ195=(Token)match(input,EQ,FOLLOW_EQ_in_for_var2534); if (state.failed) return retval;
             // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:574:1: (r= range | set )
             int alt71=2;
             int LA71_0 = input.LA(1);
@@ -7201,7 +7252,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:574:2: r= range
                     {
-                    pushFollow(FOLLOW_range_in_for_var2531);
+                    pushFollow(FOLLOW_range_in_for_var2541);
                     r=range();
 
                     state._fsp--;
@@ -7216,14 +7267,14 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:575:2: set
                     {
-                    pushFollow(FOLLOW_set_in_for_var2538);
-                    set195=set();
+                    pushFollow(FOLLOW_set_in_for_var2548);
+                    set196=set();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, set195.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, set196.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.range = new ArrayList<Object>((set195!=null?set195.set:null));
+                      retval.range = new ArrayList<Object>((set196!=null?set196.set:null));
                     }
 
                     }
@@ -7268,13 +7319,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token SEMIC196=null;
+        Token SEMIC197=null;
         MLSpaceSmallParser.obsTargetEntry_return oTE1 = null;
 
         MLSpaceSmallParser.obsTargetEntry_return oTE2 = null;
 
 
-        Object SEMIC196_tree=null;
+        Object SEMIC197_tree=null;
 
         retval.obs = new ArrayMap<List<? extends RuleEntity>,List<String>>();
         try {
@@ -7283,7 +7334,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_obsTargetEntry_in_observationTargets2567);
+            pushFollow(FOLLOW_obsTargetEntry_in_observationTargets2577);
             oTE1=obsTargetEntry();
 
             state._fsp--;
@@ -7307,8 +7358,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:582:4: SEMIC oTE2= obsTargetEntry
             	    {
-            	    SEMIC196=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_observationTargets2574); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_obsTargetEntry_in_observationTargets2579);
+            	    SEMIC197=(Token)match(input,SEMIC,FOLLOW_SEMIC_in_observationTargets2584); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_obsTargetEntry_in_observationTargets2589);
             	    oTE2=obsTargetEntry();
 
             	    state._fsp--;
@@ -7364,17 +7415,17 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token IN197=null;
-        Token EQ198=null;
+        Token IN198=null;
+        Token EQ199=null;
         MLSpaceSmallParser.obs_matches_return e1 = null;
 
         MLSpaceSmallParser.obs_matches_return e2 = null;
 
-        MLSpaceSmallParser.idlist_return idlist199 = null;
+        MLSpaceSmallParser.idlist_return idlist200 = null;
 
 
-        Object IN197_tree=null;
-        Object EQ198_tree=null;
+        Object IN198_tree=null;
+        Object EQ199_tree=null;
 
         List<List<? extends RuleEntity>> tmp = new ArrayList<List<? extends RuleEntity>>();retval.what = DEFAULT_OBS_ASPECT;
         try {
@@ -7383,7 +7434,7 @@ public class MLSpaceSmallParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_obs_matches_in_obsTargetEntry2611);
+            pushFollow(FOLLOW_obs_matches_in_obsTargetEntry2621);
             e1=obs_matches();
 
             state._fsp--;
@@ -7407,8 +7458,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:589:4: IN e2= obs_matches
             	    {
-            	    IN197=(Token)match(input,IN,FOLLOW_IN_in_obsTargetEntry2619); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_obs_matches_in_obsTargetEntry2624);
+            	    IN198=(Token)match(input,IN,FOLLOW_IN_in_obsTargetEntry2629); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_obs_matches_in_obsTargetEntry2634);
             	    e2=obs_matches();
 
             	    state._fsp--;
@@ -7437,19 +7488,19 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:590:4: EQ idlist
                     {
-                    EQ198=(Token)match(input,EQ,FOLLOW_EQ_in_obsTargetEntry2633); if (state.failed) return retval;
+                    EQ199=(Token)match(input,EQ,FOLLOW_EQ_in_obsTargetEntry2643); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQ198_tree = (Object)adaptor.create(EQ198);
-                    adaptor.addChild(root_0, EQ198_tree);
+                    EQ199_tree = (Object)adaptor.create(EQ199);
+                    adaptor.addChild(root_0, EQ199_tree);
                     }
-                    pushFollow(FOLLOW_idlist_in_obsTargetEntry2635);
-                    idlist199=idlist();
+                    pushFollow(FOLLOW_idlist_in_obsTargetEntry2645);
+                    idlist200=idlist();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, idlist199.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, idlist200.getTree());
                     if ( state.backtracking==0 ) {
-                      retval.what =(idlist199!=null?idlist199.list:null);
+                      retval.what =(idlist200!=null?idlist200.list:null);
                     }
 
                     }
@@ -7497,13 +7548,13 @@ public class MLSpaceSmallParser extends Parser {
 
         Object root_0 = null;
 
-        Token COMMA200=null;
+        Token COMMA201=null;
         MLSpaceSmallParser.entity_match_return e = null;
 
         MLSpaceSmallParser.entity_match_return e2 = null;
 
 
-        Object COMMA200_tree=null;
+        Object COMMA201_tree=null;
 
         retval.list = new ArrayList<RuleEntityWithBindings>();
         try {
@@ -7523,7 +7574,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:595:3: e= entity_match ( COMMA e2= entity_match )*
                     {
-                    pushFollow(FOLLOW_entity_match_in_obs_matches2668);
+                    pushFollow(FOLLOW_entity_match_in_obs_matches2678);
                     e=entity_match();
 
                     state._fsp--;
@@ -7547,12 +7598,12 @@ public class MLSpaceSmallParser extends Parser {
                     	case 1 :
                     	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:596:4: COMMA e2= entity_match
                     	    {
-                    	    COMMA200=(Token)match(input,COMMA,FOLLOW_COMMA_in_obs_matches2676); if (state.failed) return retval;
+                    	    COMMA201=(Token)match(input,COMMA,FOLLOW_COMMA_in_obs_matches2686); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    COMMA200_tree = (Object)adaptor.create(COMMA200);
-                    	    adaptor.addChild(root_0, COMMA200_tree);
+                    	    COMMA201_tree = (Object)adaptor.create(COMMA201);
+                    	    adaptor.addChild(root_0, COMMA201_tree);
                     	    }
-                    	    pushFollow(FOLLOW_entity_match_in_obs_matches2680);
+                    	    pushFollow(FOLLOW_entity_match_in_obs_matches2690);
                     	    e2=entity_match();
 
                     	    state._fsp--;
@@ -7615,15 +7666,15 @@ public class MLSpaceSmallParser extends Parser {
 
         Token i1=null;
         Token i2=null;
-        Token HASH201=null;
-        Token COMMA202=null;
-        Token HASH203=null;
+        Token HASH202=null;
+        Token COMMA203=null;
+        Token HASH204=null;
 
         Object i1_tree=null;
         Object i2_tree=null;
-        Object HASH201_tree=null;
-        Object COMMA202_tree=null;
-        Object HASH203_tree=null;
+        Object HASH202_tree=null;
+        Object COMMA203_tree=null;
+        Object HASH204_tree=null;
 
         retval.list = new ArrayList<String>();
         try {
@@ -7653,7 +7704,7 @@ public class MLSpaceSmallParser extends Parser {
                 case 1 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:601:3: i1= ID
                     {
-                    i1=(Token)match(input,ID,FOLLOW_ID_in_idlist2710); if (state.failed) return retval;
+                    i1=(Token)match(input,ID,FOLLOW_ID_in_idlist2720); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     i1_tree = (Object)adaptor.create(i1);
                     adaptor.addChild(root_0, i1_tree);
@@ -7667,10 +7718,10 @@ public class MLSpaceSmallParser extends Parser {
                 case 2 :
                     // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:601:34: HASH
                     {
-                    HASH201=(Token)match(input,HASH,FOLLOW_HASH_in_idlist2716); if (state.failed) return retval;
+                    HASH202=(Token)match(input,HASH,FOLLOW_HASH_in_idlist2726); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    HASH201_tree = (Object)adaptor.create(HASH201);
-                    adaptor.addChild(root_0, HASH201_tree);
+                    HASH202_tree = (Object)adaptor.create(HASH202);
+                    adaptor.addChild(root_0, HASH202_tree);
                     }
                     if ( state.backtracking==0 ) {
                       retval.list.add("#");
@@ -7699,8 +7750,8 @@ public class MLSpaceSmallParser extends Parser {
             	case 1 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:601:59: COMMA i2= ID
             	    {
-            	    COMMA202=(Token)match(input,COMMA,FOLLOW_COMMA_in_idlist2722); if (state.failed) return retval;
-            	    i2=(Token)match(input,ID,FOLLOW_ID_in_idlist2727); if (state.failed) return retval;
+            	    COMMA203=(Token)match(input,COMMA,FOLLOW_COMMA_in_idlist2732); if (state.failed) return retval;
+            	    i2=(Token)match(input,ID,FOLLOW_ID_in_idlist2737); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    i2_tree = (Object)adaptor.create(i2);
             	    adaptor.addChild(root_0, i2_tree);
@@ -7714,10 +7765,10 @@ public class MLSpaceSmallParser extends Parser {
             	case 2 :
             	    // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:601:97: HASH
             	    {
-            	    HASH203=(Token)match(input,HASH,FOLLOW_HASH_in_idlist2733); if (state.failed) return retval;
+            	    HASH204=(Token)match(input,HASH,FOLLOW_HASH_in_idlist2743); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    HASH203_tree = (Object)adaptor.create(HASH203);
-            	    adaptor.addChild(root_0, HASH203_tree);
+            	    HASH204_tree = (Object)adaptor.create(HASH204);
+            	    adaptor.addChild(root_0, HASH204_tree);
             	    }
             	    if ( state.backtracking==0 ) {
             	      retval.list.add("#");
@@ -7762,7 +7813,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:272:2: ( ( interval )=> interval )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:272:3: ( interval )=> interval
         {
-        pushFollow(FOLLOW_interval_in_synpred8_MLSpaceSmallParser179);
+        pushFollow(FOLLOW_interval_in_synpred8_MLSpaceSmallParser189);
         interval();
 
         state._fsp--;
@@ -7783,7 +7834,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:273:2: ( ( range )=> range )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:273:3: ( range )=> range
         {
-        pushFollow(FOLLOW_range_in_synpred10_MLSpaceSmallParser191);
+        pushFollow(FOLLOW_range_in_synpred10_MLSpaceSmallParser201);
         range();
 
         state._fsp--;
@@ -7804,7 +7855,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:275:2: ( ( vector )=> vector )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:275:3: ( vector )=> vector
         {
-        pushFollow(FOLLOW_vector_in_synpred14_MLSpaceSmallParser215);
+        pushFollow(FOLLOW_vector_in_synpred14_MLSpaceSmallParser225);
         vector();
 
         state._fsp--;
@@ -7825,7 +7876,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:276:2: ( numexpr )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:276:3: numexpr
         {
-        pushFollow(FOLLOW_numexpr_in_synpred15_MLSpaceSmallParser222);
+        pushFollow(FOLLOW_numexpr_in_synpred15_MLSpaceSmallParser232);
         numexpr();
 
         state._fsp--;
@@ -7846,8 +7897,8 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:319:30: ( ELSE ef= expr )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:319:30: ELSE ef= expr
         {
-        match(input,ELSE,FOLLOW_ELSE_in_synpred34_MLSpaceSmallParser615); if (state.failed) return ;
-        pushFollow(FOLLOW_expr_in_synpred34_MLSpaceSmallParser619);
+        match(input,ELSE,FOLLOW_ELSE_in_synpred34_MLSpaceSmallParser625); if (state.failed) return ;
+        pushFollow(FOLLOW_expr_in_synpred34_MLSpaceSmallParser629);
         ef=expr();
 
         state._fsp--;
@@ -7865,7 +7916,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:330:5: (n= numval )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:330:5: n= numval
         {
-        pushFollow(FOLLOW_numval_in_synpred39_MLSpaceSmallParser729);
+        pushFollow(FOLLOW_numval_in_synpred39_MLSpaceSmallParser739);
         n=numval();
 
         state._fsp--;
@@ -7884,7 +7935,7 @@ public class MLSpaceSmallParser extends Parser {
             if (state.backtracking>0) {state.failed=true; return ;}
             throw new FailedPredicateException(input, "synpred40_MLSpaceSmallParser", "varsAllowed");
         }
-        match(input,ID,FOLLOW_ID_in_synpred40_MLSpaceSmallParser739); if (state.failed) return ;
+        match(input,ID,FOLLOW_ID_in_synpred40_MLSpaceSmallParser749); if (state.failed) return ;
 
         }
     }
@@ -7901,13 +7952,13 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:332:5: ( L_PAREN e= expr R_PAREN )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:332:6: L_PAREN e= expr R_PAREN
         {
-        match(input,L_PAREN,FOLLOW_L_PAREN_in_synpred41_MLSpaceSmallParser748); if (state.failed) return ;
-        pushFollow(FOLLOW_expr_in_synpred41_MLSpaceSmallParser752);
+        match(input,L_PAREN,FOLLOW_L_PAREN_in_synpred41_MLSpaceSmallParser758); if (state.failed) return ;
+        pushFollow(FOLLOW_expr_in_synpred41_MLSpaceSmallParser762);
         e=expr();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,R_PAREN,FOLLOW_R_PAREN_in_synpred41_MLSpaceSmallParser754); if (state.failed) return ;
+        match(input,R_PAREN,FOLLOW_R_PAREN_in_synpred41_MLSpaceSmallParser764); if (state.failed) return ;
 
         }
 
@@ -7924,13 +7975,13 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:333:5: ( L_PAREN boolNode R_PAREN )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:333:6: L_PAREN boolNode R_PAREN
         {
-        match(input,L_PAREN,FOLLOW_L_PAREN_in_synpred42_MLSpaceSmallParser764); if (state.failed) return ;
-        pushFollow(FOLLOW_boolNode_in_synpred42_MLSpaceSmallParser766);
+        match(input,L_PAREN,FOLLOW_L_PAREN_in_synpred42_MLSpaceSmallParser774); if (state.failed) return ;
+        pushFollow(FOLLOW_boolNode_in_synpred42_MLSpaceSmallParser776);
         boolNode();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,R_PAREN,FOLLOW_R_PAREN_in_synpred42_MLSpaceSmallParser768); if (state.failed) return ;
+        match(input,R_PAREN,FOLLOW_R_PAREN_in_synpred42_MLSpaceSmallParser778); if (state.failed) return ;
 
         }
 
@@ -7944,7 +7995,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:405:17: ( species_def ( SEMIC )? )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:405:17: species_def ( SEMIC )?
         {
-        pushFollow(FOLLOW_species_def_in_synpred66_MLSpaceSmallParser1340);
+        pushFollow(FOLLOW_species_def_in_synpred66_MLSpaceSmallParser1350);
         species_def();
 
         state._fsp--;
@@ -7960,7 +8011,7 @@ public class MLSpaceSmallParser extends Parser {
             case 1 :
                 // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:0:0: SEMIC
                 {
-                match(input,SEMIC,FOLLOW_SEMIC_in_synpred66_MLSpaceSmallParser1342); if (state.failed) return ;
+                match(input,SEMIC,FOLLOW_SEMIC_in_synpred66_MLSpaceSmallParser1352); if (state.failed) return ;
 
                 }
                 break;
@@ -7981,7 +8032,7 @@ public class MLSpaceSmallParser extends Parser {
             if (state.backtracking>0) {state.failed=true; return ;}
             throw new FailedPredicateException(input, "synpred71_MLSpaceSmallParser", "input.LT(1).getText().toLowerCase().equals(\"any\")");
         }
-        match(input,ID,FOLLOW_ID_in_synpred71_MLSpaceSmallParser1504); if (state.failed) return ;
+        match(input,ID,FOLLOW_ID_in_synpred71_MLSpaceSmallParser1514); if (state.failed) return ;
 
         }
     }
@@ -7992,7 +8043,7 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:445:4: ( rpmark )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:445:5: rpmark
         {
-        pushFollow(FOLLOW_rpmark_in_synpred76_MLSpaceSmallParser1617);
+        pushFollow(FOLLOW_rpmark_in_synpred76_MLSpaceSmallParser1627);
         rpmark();
 
         state._fsp--;
@@ -8010,8 +8061,8 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:516:4: ( COLON STRING )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:516:5: COLON STRING
         {
-        match(input,COLON,FOLLOW_COLON_in_synpred106_MLSpaceSmallParser2172); if (state.failed) return ;
-        match(input,STRING,FOLLOW_STRING_in_synpred106_MLSpaceSmallParser2174); if (state.failed) return ;
+        match(input,COLON,FOLLOW_COLON_in_synpred106_MLSpaceSmallParser2182); if (state.failed) return ;
+        match(input,STRING,FOLLOW_STRING_in_synpred106_MLSpaceSmallParser2184); if (state.failed) return ;
 
         }
 
@@ -8031,8 +8082,8 @@ public class MLSpaceSmallParser extends Parser {
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:517:4: ( COLON v= valset_or_const )
         // model\\mlspace\\reader\\antlr\\MLSpaceSmallParser.g:517:5: COLON v= valset_or_const
         {
-        match(input,COLON,FOLLOW_COLON_in_synpred107_MLSpaceSmallParser2183); if (state.failed) return ;
-        pushFollow(FOLLOW_valset_or_const_in_synpred107_MLSpaceSmallParser2187);
+        match(input,COLON,FOLLOW_COLON_in_synpred107_MLSpaceSmallParser2193); if (state.failed) return ;
+        pushFollow(FOLLOW_valset_or_const_in_synpred107_MLSpaceSmallParser2197);
         v=valset_or_const();
 
         state._fsp--;
@@ -8272,30 +8323,30 @@ public class MLSpaceSmallParser extends Parser {
             "\1\1\16\uffff\1\1\7\uffff\1\1\3\uffff\3\1\5\uffff\3\1\3\uffff"+
             "\1\2\5\uffff\1\1",
             "",
-            "\1\5\3\uffff\1\3\2\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff"+
-            "\1\3\4\uffff\1\4\6\1\5\uffff\2\1",
+            "\1\5\3\uffff\1\3\2\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff"+
+            "\1\4\6\1\5\uffff\2\1",
             "",
             "\1\1\1\3\5\uffff\1\3\17\uffff\1\1\3\uffff\3\1\5\uffff\2\1"+
             "\4\uffff\1\6\5\uffff\1\1",
             "\1\10\5\uffff\1\3\41\uffff\1\7",
-            "\1\1\1\3\5\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff\1\3"+
-            "\4\uffff\1\11\6\1\5\uffff\2\1",
-            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\14\10\uffff\1\12"+
-            "\4\uffff\1\14",
-            "\1\1\4\uffff\1\1\1\uffff\1\3\6\uffff\1\1\15\uffff\1\1",
+            "\1\1\1\3\5\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff\1\11"+
+            "\6\1\5\uffff\2\1",
+            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\1\10\uffff\1\12\4"+
+            "\uffff\1\14",
+            "\1\1\4\uffff\1\1\1\uffff\1\3\24\uffff\1\1",
             "\1\1\26\uffff\1\1\3\uffff\3\1\5\uffff\2\1\4\uffff\1\15\5\uffff"+
             "\1\1",
             "\1\3\1\17\20\uffff\1\16",
             "\1\20",
             "\1\21",
-            "\1\1\1\3\5\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff\1\3"+
-            "\4\uffff\1\11\6\1\5\uffff\2\1",
+            "\1\1\1\3\5\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff\1\11"+
+            "\6\1\5\uffff\2\1",
             "\1\1\1\uffff\1\1\3\uffff\1\22\2\3\10\uffff\1\3\2\uffff\1\1"+
             "\3\uffff\4\1",
-            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\14\15\uffff\1\14",
+            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\1\15\uffff\1\14",
             "\1\23",
-            "\1\10\5\uffff\1\3\3\uffff\1\25\2\uffff\1\14\10\uffff\1\24"+
-            "\4\uffff\1\14",
+            "\1\10\5\uffff\1\3\3\uffff\1\25\2\uffff\1\1\10\uffff\1\24\4"+
+            "\uffff\1\14",
             "\1\1\11\uffff\1\3\14\uffff\1\1\3\uffff\3\1\5\uffff\3\1\3\uffff"+
             "\1\26\2\uffff\1\1\2\uffff\1\1",
             "\2\3\3\1\24\uffff\1\3",
@@ -8305,7 +8356,7 @@ public class MLSpaceSmallParser extends Parser {
             "\1\5\uffff\1\1",
             "\1\1\1\uffff\1\1\3\uffff\1\33\2\3\10\uffff\1\3\2\uffff\1\1"+
             "\3\uffff\4\1",
-            "\1\10\5\uffff\1\3\3\uffff\1\25\2\uffff\1\14\15\uffff\1\14",
+            "\1\10\5\uffff\1\3\3\uffff\1\25\2\uffff\1\1\15\uffff\1\14",
             "\1\34",
             "\1\3\21\uffff\1\35",
             "\1\1\11\uffff\1\3\14\uffff\1\1\3\uffff\3\1\5\uffff\3\1\3\uffff"+
@@ -8852,14 +8903,14 @@ public class MLSpaceSmallParser extends Parser {
     static final String DFA36_eotS =
         "\46\uffff";
     static final String DFA36_eofS =
-        "\1\2\1\3\7\uffff\1\2\34\uffff";
+        "\1\2\1\3\6\uffff\1\2\35\uffff";
     static final String DFA36_minS =
-        "\1\11\1\4\2\uffff\2\4\1\5\1\4\1\5\2\4\1\33\2\55\1\4\1\10\1\5\1"+
-        "\10\1\5\1\4\1\24\1\33\1\55\1\12\1\10\1\5\1\10\1\33\1\4\1\24\1\10"+
+        "\1\11\1\4\2\uffff\1\4\1\5\1\4\1\5\2\4\1\33\2\55\1\4\1\10\1\5\1"+
+        "\10\1\5\2\4\1\24\1\33\1\55\1\12\1\10\1\5\1\10\1\33\1\4\1\24\1\10"+
         "\1\12\1\4\1\33\1\12\1\10\1\4\1\12";
     static final String DFA36_maxS =
-        "\1\55\1\63\2\uffff\1\55\1\63\2\55\2\40\1\63\4\55\1\43\1\40\1\10"+
-        "\1\40\1\63\3\55\1\54\1\43\1\40\1\10\1\55\1\63\1\55\1\43\1\54\1\63"+
+        "\1\55\1\63\2\uffff\2\55\1\63\2\40\4\55\1\63\1\43\1\40\1\10\1\40"+
+        "\1\55\1\63\3\55\1\54\1\43\1\40\1\10\1\55\1\63\1\55\1\43\1\54\1\63"+
         "\1\55\1\54\1\43\1\63\1\54";
     static final String DFA36_acceptS =
         "\2\uffff\1\2\1\1\42\uffff";
@@ -8871,39 +8922,39 @@ public class MLSpaceSmallParser extends Parser {
             "\3\2\3\uffff\1\4\5\uffff\1\2",
             "",
             "",
-            "\1\6\3\uffff\1\3\2\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff"+
-            "\1\3\4\uffff\1\5\6\2\5\uffff\2\2",
+            "\1\5\3\uffff\1\3\2\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff"+
+            "\1\6\6\2\5\uffff\2\2",
+            "\1\10\5\uffff\1\3\41\uffff\1\7",
             "\1\2\1\3\5\uffff\1\3\17\uffff\1\2\3\uffff\3\2\5\uffff\2\2"+
-            "\4\uffff\1\7\5\uffff\1\2",
-            "\1\11\5\uffff\1\3\41\uffff\1\10",
-            "\1\2\1\3\5\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff\1\3"+
-            "\4\uffff\1\12\6\2\5\uffff\2\2",
-            "\1\11\5\uffff\1\3\3\uffff\1\14\2\uffff\1\15\10\uffff\1\13"+
-            "\4\uffff\1\15",
-            "\1\2\4\uffff\1\2\1\uffff\1\3\6\uffff\1\2\15\uffff\1\2",
-            "\1\2\26\uffff\1\2\3\uffff\3\2\5\uffff\2\2\4\uffff\1\16\5\uffff"+
-            "\1\2",
-            "\1\3\1\20\20\uffff\1\17",
+            "\4\uffff\1\11\5\uffff\1\2",
+            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\2\10\uffff\1\12\4"+
+            "\uffff\1\14",
+            "\1\2\4\uffff\1\2\1\uffff\1\3\24\uffff\1\2",
+            "\1\2\1\3\5\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff\1\15"+
+            "\6\2\5\uffff\2\2",
+            "\1\3\1\17\20\uffff\1\16",
+            "\1\20",
             "\1\21",
-            "\1\22",
-            "\1\2\1\3\5\uffff\1\3\3\uffff\1\3\2\uffff\1\3\10\uffff\1\3"+
-            "\4\uffff\1\12\6\2\5\uffff\2\2",
+            "\1\2\26\uffff\1\2\3\uffff\3\2\5\uffff\2\2\4\uffff\1\22\5\uffff"+
+            "\1\2",
             "\1\2\1\uffff\1\2\3\uffff\1\23\2\3\10\uffff\1\3\2\uffff\1\2"+
             "\3\uffff\4\2",
-            "\1\11\5\uffff\1\3\3\uffff\1\14\2\uffff\1\15\15\uffff\1\15",
+            "\1\10\5\uffff\1\3\3\uffff\1\13\2\uffff\1\2\15\uffff\1\14",
             "\1\24",
-            "\1\11\5\uffff\1\3\3\uffff\1\26\2\uffff\1\15\10\uffff\1\25"+
-            "\4\uffff\1\15",
+            "\1\10\5\uffff\1\3\3\uffff\1\26\2\uffff\1\2\10\uffff\1\25\4"+
+            "\uffff\1\14",
+            "\1\2\1\3\5\uffff\1\3\3\uffff\1\3\13\uffff\1\3\4\uffff\1\15"+
+            "\6\2\5\uffff\2\2",
             "\1\2\11\uffff\1\3\14\uffff\1\2\3\uffff\3\2\5\uffff\3\2\3\uffff"+
             "\1\27\2\uffff\1\2\2\uffff\1\2",
             "\2\3\3\2\24\uffff\1\3",
             "\1\3\1\31\20\uffff\1\30",
             "\1\32",
-            "\1\33\3\uffff\3\3\10\uffff\1\3\1\uffff\1\2\1\20\3\uffff\7"+
+            "\1\33\3\uffff\3\3\10\uffff\1\3\1\uffff\1\2\1\17\3\uffff\7"+
             "\2\5\uffff\1\2",
             "\1\2\1\uffff\1\2\3\uffff\1\34\2\3\10\uffff\1\3\2\uffff\1\2"+
             "\3\uffff\4\2",
-            "\1\11\5\uffff\1\3\3\uffff\1\26\2\uffff\1\15\15\uffff\1\15",
+            "\1\10\5\uffff\1\3\3\uffff\1\26\2\uffff\1\2\15\uffff\1\14",
             "\1\35",
             "\1\3\21\uffff\1\36",
             "\1\2\11\uffff\1\3\14\uffff\1\2\3\uffff\3\2\5\uffff\3\2\3\uffff"+
@@ -8916,7 +8967,7 @@ public class MLSpaceSmallParser extends Parser {
             "\1\2\11\uffff\1\3\14\uffff\1\2\3\uffff\3\2\5\uffff\3\2\3\uffff"+
             "\1\42\2\uffff\1\2\2\uffff\1\2",
             "\1\3\21\uffff\1\43",
-            "\1\33\3\uffff\3\3\10\uffff\1\3\1\uffff\1\2\1\20\3\uffff\7"+
+            "\1\33\3\uffff\3\3\10\uffff\1\3\1\uffff\1\2\1\17\3\uffff\7"+
             "\2\5\uffff\1\2",
             "\1\2\1\uffff\1\2\3\uffff\1\44\2\3\10\uffff\1\3\2\uffff\1\2"+
             "\3\uffff\4\2",
@@ -9055,329 +9106,330 @@ public class MLSpaceSmallParser extends Parser {
     }
  
 
-    public static final BitSet FOLLOW_set_in_entsep0 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_defs_in_fullmodel76 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_species_defs_in_fullmodel80 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_init_in_fullmodel92 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SEMIC_in_fullmodel96 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_rules_in_fullmodel100 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_rules_in_fullmodel113 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SEMIC_in_fullmodel115 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_init_in_fullmodel119 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_fullmodel128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_def_in_variable_defs137 = new BitSet(new long[]{0x0000200000000202L});
-    public static final BitSet FOLLOW_SEMIC_in_variable_defs139 = new BitSet(new long[]{0x0000200000000202L});
-    public static final BitSet FOLLOW_ID_in_variable_def151 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_variable_def153 = new BitSet(new long[]{0x0009238388098050L});
-    public static final BitSet FOLLOW_valset_or_const_in_variable_def158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_interval_in_valset_or_const179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_range_in_valset_or_const191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_valset_or_const203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_vector_in_valset_or_const215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numexpr_in_valset_or_const222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_valset_or_const229 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_valset_or_const236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_attribute_match_in_attributes_match261 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_COMMA_in_attributes_match266 = new BitSet(new long[]{0x0000200008000000L});
+    public static final BitSet FOLLOW_PLUS_in_entsepleft55 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_entsepright0 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_defs_in_fullmodel86 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_species_defs_in_fullmodel90 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_init_in_fullmodel102 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SEMIC_in_fullmodel106 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_rules_in_fullmodel110 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_rules_in_fullmodel123 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SEMIC_in_fullmodel125 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_init_in_fullmodel129 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_fullmodel138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_def_in_variable_defs147 = new BitSet(new long[]{0x0000200000000202L});
+    public static final BitSet FOLLOW_SEMIC_in_variable_defs149 = new BitSet(new long[]{0x0000200000000202L});
+    public static final BitSet FOLLOW_ID_in_variable_def161 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_variable_def163 = new BitSet(new long[]{0x0009238388098050L});
+    public static final BitSet FOLLOW_valset_or_const_in_variable_def168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_interval_in_valset_or_const189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_range_in_valset_or_const201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_valset_or_const213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_vector_in_valset_or_const225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numexpr_in_valset_or_const232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_valset_or_const239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_valset_or_const246 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_attribute_match_in_attributes_match271 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_L_PAREN_in_attribute_match290 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_attribute_match294 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_attribute_match296 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_attribute_match301 = new BitSet(new long[]{0x000000001201C000L});
-    public static final BitSet FOLLOW_var_interval_in_attribute_match306 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_attribute_match310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_attribute_match324 = new BitSet(new long[]{0x000000000201C000L});
-    public static final BitSet FOLLOW_EQ_in_attribute_match328 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_attribute_match333 = new BitSet(new long[]{0x000000000201C002L});
-    public static final BitSet FOLLOW_var_interval_in_attribute_match338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_interval_in_attribute_match371 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_var_interval390 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_var_interval392 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_var_interval394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_var_interval402 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_var_interval404 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_STRING_in_var_interval406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_var_interval414 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_var_interval416 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_var_interval418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_var_interval426 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_COMMA_in_attributes_match276 = new BitSet(new long[]{0x0000200008000000L});
+    public static final BitSet FOLLOW_attribute_match_in_attributes_match281 = new BitSet(new long[]{0x0000000000000402L});
+    public static final BitSet FOLLOW_L_PAREN_in_attribute_match300 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_attribute_match304 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_attribute_match306 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_attribute_match311 = new BitSet(new long[]{0x000000001201C000L});
+    public static final BitSet FOLLOW_var_interval_in_attribute_match316 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_attribute_match320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_attribute_match334 = new BitSet(new long[]{0x000000000201C000L});
+    public static final BitSet FOLLOW_EQ_in_attribute_match338 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_attribute_match343 = new BitSet(new long[]{0x000000000201C002L});
+    public static final BitSet FOLLOW_var_interval_in_attribute_match348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_interval_in_attribute_match381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_var_interval400 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_var_interval402 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_var_interval404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_var_interval412 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_var_interval414 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_STRING_in_var_interval416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_var_interval424 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_var_interval426 = new BitSet(new long[]{0x0008238388080010L});
     public static final BitSet FOLLOW_varexpr_in_var_interval428 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_var_interval436 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_var_interval438 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_var_interval440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_var_interval448 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_var_interval436 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_var_interval438 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_var_interval446 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_var_interval448 = new BitSet(new long[]{0x0008238388080010L});
     public static final BitSet FOLLOW_varexpr_in_var_interval450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IN_in_var_interval458 = new BitSet(new long[]{0x0000000008000010L});
-    public static final BitSet FOLLOW_set_in_var_interval462 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_var_interval470 = new BitSet(new long[]{0x0000000000020400L});
+    public static final BitSet FOLLOW_LESSTHAN_in_var_interval458 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_var_interval460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IN_in_var_interval468 = new BitSet(new long[]{0x0000000008000010L});
     public static final BitSet FOLLOW_set_in_var_interval472 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_var_interval480 = new BitSet(new long[]{0x0000000010000020L});
-    public static final BitSet FOLLOW_set_in_var_interval484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_numexpr513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_varexpr530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_multNode_in_expr550 = new BitSet(new long[]{0x0000000300000002L});
-    public static final BitSet FOLLOW_PLUS_in_expr564 = new BitSet(new long[]{0x0008218388000010L});
-    public static final BitSet FOLLOW_multNode_in_expr568 = new BitSet(new long[]{0x0000000300000002L});
-    public static final BitSet FOLLOW_MINUS_in_expr581 = new BitSet(new long[]{0x0008218388000010L});
-    public static final BitSet FOLLOW_multNode_in_expr585 = new BitSet(new long[]{0x0000000300000002L});
-    public static final BitSet FOLLOW_IF_in_expr604 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_boolNode_in_expr606 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_THEN_in_expr608 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_expr612 = new BitSet(new long[]{0x0000080000000002L});
-    public static final BitSet FOLLOW_ELSE_in_expr615 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_expr619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_atomNode_in_multNode641 = new BitSet(new long[]{0x0000000C00000002L});
-    public static final BitSet FOLLOW_TIMES_in_multNode653 = new BitSet(new long[]{0x0008218388000010L});
-    public static final BitSet FOLLOW_atomNode_in_multNode657 = new BitSet(new long[]{0x0000000C00000002L});
-    public static final BitSet FOLLOW_DIV_in_multNode670 = new BitSet(new long[]{0x0008218388000010L});
-    public static final BitSet FOLLOW_atomNode_in_multNode674 = new BitSet(new long[]{0x0000000C00000002L});
-    public static final BitSet FOLLOW_MINUS_in_atomNode712 = new BitSet(new long[]{0x0008218088000010L});
-    public static final BitSet FOLLOW_PLUS_in_atomNode718 = new BitSet(new long[]{0x0008218088000010L});
-    public static final BitSet FOLLOW_numval_in_atomNode729 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_ID_in_atomNode739 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_L_PAREN_in_atomNode748 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode752 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_atomNode754 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_L_PAREN_in_atomNode764 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_boolNode_in_atomNode766 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_atomNode768 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_L_BRACKET_in_atomNode778 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode783 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_R_BRACKET_in_atomNode785 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_MIN_in_atomNode796 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_L_PAREN_in_atomNode798 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode802 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_COMMA_in_atomNode804 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode808 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_atomNode810 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_MAX_in_atomNode823 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_L_PAREN_in_atomNode825 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode829 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_COMMA_in_atomNode831 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_atomNode835 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_atomNode837 = new BitSet(new long[]{0x0000107000000002L});
-    public static final BitSet FOLLOW_SQR_in_atomNode860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CUB_in_atomNode871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEGREES_in_atomNode881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_POW_in_atomNode891 = new BitSet(new long[]{0x0008218388000010L});
-    public static final BitSet FOLLOW_atomNode_in_atomNode895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_boolNode925 = new BitSet(new long[]{0x000400000001C000L});
-    public static final BitSet FOLLOW_compareOp_in_boolNode929 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_boolNode933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_compareOp945 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_EQ_in_compareOp947 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_compareOp952 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_EQ_in_compareOp954 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOTEQ_in_compareOp959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_compareOp963 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_compareOp965 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_BRACKET_in_interval981 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval986 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_DOTS_in_interval990 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval995 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_R_BRACKET_in_interval999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_interval1008 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_interval1010 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval1016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_interval1026 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_interval1028 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval1034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_interval1044 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval1050 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_interval1060 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_interval1066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numexpr_in_range1089 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_range1091 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_range1096 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_COLON_in_range1099 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_range1104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numset_in_set1130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_idset_in_set1136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_BRACE_in_idset1155 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_STRING_in_idset1161 = new BitSet(new long[]{0x0000000000000480L});
-    public static final BitSet FOLLOW_COMMA_in_idset1166 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_varexpr_in_var_interval480 = new BitSet(new long[]{0x0000000000020400L});
+    public static final BitSet FOLLOW_set_in_var_interval482 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_var_interval490 = new BitSet(new long[]{0x0000000010000020L});
+    public static final BitSet FOLLOW_set_in_var_interval494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_numexpr523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_varexpr540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_multNode_in_expr560 = new BitSet(new long[]{0x0000000300000002L});
+    public static final BitSet FOLLOW_PLUS_in_expr574 = new BitSet(new long[]{0x0008218388000010L});
+    public static final BitSet FOLLOW_multNode_in_expr578 = new BitSet(new long[]{0x0000000300000002L});
+    public static final BitSet FOLLOW_MINUS_in_expr591 = new BitSet(new long[]{0x0008218388000010L});
+    public static final BitSet FOLLOW_multNode_in_expr595 = new BitSet(new long[]{0x0000000300000002L});
+    public static final BitSet FOLLOW_IF_in_expr614 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_boolNode_in_expr616 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_THEN_in_expr618 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_expr622 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_ELSE_in_expr625 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_expr629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_atomNode_in_multNode651 = new BitSet(new long[]{0x0000000C00000002L});
+    public static final BitSet FOLLOW_TIMES_in_multNode663 = new BitSet(new long[]{0x0008218388000010L});
+    public static final BitSet FOLLOW_atomNode_in_multNode667 = new BitSet(new long[]{0x0000000C00000002L});
+    public static final BitSet FOLLOW_DIV_in_multNode680 = new BitSet(new long[]{0x0008218388000010L});
+    public static final BitSet FOLLOW_atomNode_in_multNode684 = new BitSet(new long[]{0x0000000C00000002L});
+    public static final BitSet FOLLOW_MINUS_in_atomNode722 = new BitSet(new long[]{0x0008218088000010L});
+    public static final BitSet FOLLOW_PLUS_in_atomNode728 = new BitSet(new long[]{0x0008218088000010L});
+    public static final BitSet FOLLOW_numval_in_atomNode739 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_ID_in_atomNode749 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_L_PAREN_in_atomNode758 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode762 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_atomNode764 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_L_PAREN_in_atomNode774 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_boolNode_in_atomNode776 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_atomNode778 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_L_BRACKET_in_atomNode788 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode793 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_R_BRACKET_in_atomNode795 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_MIN_in_atomNode806 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_L_PAREN_in_atomNode808 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode812 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_COMMA_in_atomNode814 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode818 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_atomNode820 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_MAX_in_atomNode833 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_L_PAREN_in_atomNode835 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode839 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_COMMA_in_atomNode841 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_atomNode845 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_atomNode847 = new BitSet(new long[]{0x0000107000000002L});
+    public static final BitSet FOLLOW_SQR_in_atomNode870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CUB_in_atomNode881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEGREES_in_atomNode891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_POW_in_atomNode901 = new BitSet(new long[]{0x0008218388000010L});
+    public static final BitSet FOLLOW_atomNode_in_atomNode905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_boolNode935 = new BitSet(new long[]{0x000400000001C000L});
+    public static final BitSet FOLLOW_compareOp_in_boolNode939 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_boolNode943 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_compareOp955 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_EQ_in_compareOp957 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_compareOp962 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_EQ_in_compareOp964 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOTEQ_in_compareOp969 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_compareOp973 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_compareOp975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_BRACKET_in_interval991 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval996 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_DOTS_in_interval1000 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval1005 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_R_BRACKET_in_interval1009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_interval1018 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_interval1020 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval1026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_interval1036 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_interval1038 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval1044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_interval1054 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval1060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_interval1070 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_interval1076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numexpr_in_range1099 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_range1101 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_range1106 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_COLON_in_range1109 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_range1114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numset_in_set1140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_idset_in_set1146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_BRACE_in_idset1165 = new BitSet(new long[]{0x0001000000000000L});
     public static final BitSet FOLLOW_STRING_in_idset1171 = new BitSet(new long[]{0x0000000000000480L});
-    public static final BitSet FOLLOW_R_BRACE_in_idset1178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_BRACE_in_numset1196 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_numset1202 = new BitSet(new long[]{0x0000000000000480L});
-    public static final BitSet FOLLOW_COMMA_in_numset1207 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_COMMA_in_idset1176 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_STRING_in_idset1181 = new BitSet(new long[]{0x0000000000000480L});
+    public static final BitSet FOLLOW_R_BRACE_in_idset1188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_BRACE_in_numset1206 = new BitSet(new long[]{0x0008238388080010L});
     public static final BitSet FOLLOW_numexpr_in_numset1212 = new BitSet(new long[]{0x0000000000000480L});
-    public static final BitSet FOLLOW_R_BRACE_in_numset1219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_PAREN_in_vector1236 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_vector1241 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_COMMA_in_vector1246 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_numexpr_in_vector1251 = new BitSet(new long[]{0x0000000010000400L});
-    public static final BitSet FOLLOW_R_PAREN_in_vector1257 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numexpr_in_intval_or_var1276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_numval1300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_numval1308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_numval1319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_species_def_in_species_defs1340 = new BitSet(new long[]{0x0000200000000202L});
-    public static final BitSet FOLLOW_SEMIC_in_species_defs1342 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_ID_in_species_def1353 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_L_PAREN_in_species_def1355 = new BitSet(new long[]{0x0000200010000000L});
-    public static final BitSet FOLLOW_attributes_def_in_species_def1360 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_species_def1364 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_bindingsitesdef_in_species_def1367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_attribute_def_in_attributes_def1390 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_COMMA_in_attributes_def1395 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_COMMA_in_numset1217 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_numset1222 = new BitSet(new long[]{0x0000000000000480L});
+    public static final BitSet FOLLOW_R_BRACE_in_numset1229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_PAREN_in_vector1246 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_vector1251 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_COMMA_in_vector1256 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_numexpr_in_vector1261 = new BitSet(new long[]{0x0000000010000400L});
+    public static final BitSet FOLLOW_R_PAREN_in_vector1267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numexpr_in_intval_or_var1286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_numval1310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOAT_in_numval1318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_numval1329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_species_def_in_species_defs1350 = new BitSet(new long[]{0x0000200000000202L});
+    public static final BitSet FOLLOW_SEMIC_in_species_defs1352 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_ID_in_species_def1363 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_L_PAREN_in_species_def1365 = new BitSet(new long[]{0x0000200010000000L});
+    public static final BitSet FOLLOW_attributes_def_in_species_def1370 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_species_def1374 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_bindingsitesdef_in_species_def1377 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_attribute_def_in_attributes_def1400 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_ID_in_attribute_def1420 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_attribute_def1424 = new BitSet(new long[]{0x0009238388098050L});
-    public static final BitSet FOLLOW_valset_or_const_in_attribute_def1429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_bindingsitesdef1448 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_bindingsitedef_in_bindingsitesdef1455 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_COMMA_in_bindingsitesdef1461 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_bindingsitedef_in_bindingsitesdef1466 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_bindingsitesdef1474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_bindingsitedef1491 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_bindingsitedef1493 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_ID_in_bindingsitedef1504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numexpr_in_bindingsitedef1513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_species1529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule_in_rules1551 = new BitSet(new long[]{0x0008238388080212L});
-    public static final BitSet FOLLOW_SEMIC_in_rules1553 = new BitSet(new long[]{0x0008238388080012L});
-    public static final BitSet FOLLOW_ID_in_rule1580 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_rule1582 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_rule_left_hand_side_in_rule1593 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_ARROW_in_rule1597 = new BitSet(new long[]{0x0008238388081010L});
-    public static final BitSet FOLLOW_rule_right_hand_side_in_rule1604 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_AT_in_rule1611 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_rpmark_in_rule1622 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_rule1632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_rpmark1649 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_rpmark1653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1684 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_L_BRACKET_in_rule_left_hand_side1692 = new BitSet(new long[]{0x0008238388080032L});
-    public static final BitSet FOLLOW_entsep_in_rule_left_hand_side1700 = new BitSet(new long[]{0x0008238388080032L});
-    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1709 = new BitSet(new long[]{0x0000000100040032L});
-    public static final BitSet FOLLOW_entsep_in_rule_left_hand_side1718 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1722 = new BitSet(new long[]{0x0000000100040032L});
-    public static final BitSet FOLLOW_R_BRACKET_in_rule_left_hand_side1736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1763 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_L_BRACKET_in_rule_right_hand_side1772 = new BitSet(new long[]{0x0008238388080032L});
-    public static final BitSet FOLLOW_entsep_in_rule_right_hand_side1778 = new BitSet(new long[]{0x0008238388080032L});
-    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1787 = new BitSet(new long[]{0x0000000100040032L});
-    public static final BitSet FOLLOW_entsep_in_rule_right_hand_side1796 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1800 = new BitSet(new long[]{0x0000000100040032L});
-    public static final BitSet FOLLOW_R_BRACKET_in_rule_right_hand_side1815 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_species_in_entity_match1844 = new BitSet(new long[]{0x0000000008008002L});
-    public static final BitSet FOLLOW_L_PAREN_in_entity_match1847 = new BitSet(new long[]{0x0000200018000000L});
-    public static final BitSet FOLLOW_attributes_match_in_entity_match1852 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_entity_match1855 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_bindingsites_in_entity_match1869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_bindingsites1893 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_bindingsite_in_bindingsites1900 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_COMMA_in_bindingsites1906 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_bindingsite_in_bindingsites1911 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_bindingsites1919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_bindingsite1934 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_bindingsite1936 = new BitSet(new long[]{0x0008238388380010L});
-    public static final BitSet FOLLOW_entity_match_in_bindingsite1945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FREE_in_bindingsite1953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OCC_in_bindingsite1960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_entity_result_in_entities_result1992 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_entsep_in_entities_result1998 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_entity_result_in_entities_result2003 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_species_in_entity_result2024 = new BitSet(new long[]{0x0000000008008002L});
-    public static final BitSet FOLLOW_L_PAREN_in_entity_result2032 = new BitSet(new long[]{0x0000200010000000L});
-    public static final BitSet FOLLOW_ID_in_entity_result2038 = new BitSet(new long[]{0x0000000F10004500L});
-    public static final BitSet FOLLOW_valmod_in_entity_result2042 = new BitSet(new long[]{0x0000000010000400L});
-    public static final BitSet FOLLOW_COMMA_in_entity_result2054 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_entity_result2058 = new BitSet(new long[]{0x0000000F10004500L});
-    public static final BitSet FOLLOW_valmod_in_entity_result2062 = new BitSet(new long[]{0x0000000010000400L});
-    public static final BitSet FOLLOW_R_PAREN_in_entity_result2074 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_bindingactions_in_entity_result2089 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_valmod2109 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_PLUS_in_valmod2111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_valmod2121 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_MINUS_in_valmod2123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_op_in_valmod2133 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_valmod2135 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_valmod2139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_valmod2148 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_valmod2152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_valmod2161 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_STRING_in_valmod2163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_valmod2172 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_STRING_in_valmod2174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_valmod2183 = new BitSet(new long[]{0x0009238388098050L});
-    public static final BitSet FOLLOW_valset_or_const_in_valmod2187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQ_in_valmod2196 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_valmod2202 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_L_PAREN_in_valmod2204 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_varexpr_in_valmod2208 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_valmod2210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMMA_in_attributes_def1405 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_attribute_def_in_attributes_def1410 = new BitSet(new long[]{0x0000000000000402L});
+    public static final BitSet FOLLOW_ID_in_attribute_def1430 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_attribute_def1434 = new BitSet(new long[]{0x0009238388098050L});
+    public static final BitSet FOLLOW_valset_or_const_in_attribute_def1439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_bindingsitesdef1458 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_bindingsitedef_in_bindingsitesdef1465 = new BitSet(new long[]{0x0000000000010400L});
+    public static final BitSet FOLLOW_COMMA_in_bindingsitesdef1471 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_bindingsitedef_in_bindingsitesdef1476 = new BitSet(new long[]{0x0000000000010400L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_bindingsitesdef1484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_bindingsitedef1501 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_bindingsitedef1503 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_ID_in_bindingsitedef1514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numexpr_in_bindingsitedef1523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_species1539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule_in_rules1561 = new BitSet(new long[]{0x0008238388080212L});
+    public static final BitSet FOLLOW_SEMIC_in_rules1563 = new BitSet(new long[]{0x0008238388080012L});
+    public static final BitSet FOLLOW_ID_in_rule1590 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_rule1592 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_rule_left_hand_side_in_rule1603 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_ARROW_in_rule1607 = new BitSet(new long[]{0x0008238388081010L});
+    public static final BitSet FOLLOW_rule_right_hand_side_in_rule1614 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_AT_in_rule1621 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_rpmark_in_rule1632 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_rule1642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_rpmark1659 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_rpmark1663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1694 = new BitSet(new long[]{0x0000000100000012L});
+    public static final BitSet FOLLOW_L_BRACKET_in_rule_left_hand_side1702 = new BitSet(new long[]{0x0008238388080032L});
+    public static final BitSet FOLLOW_entsepleft_in_rule_left_hand_side1710 = new BitSet(new long[]{0x0008238388080032L});
+    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1719 = new BitSet(new long[]{0x0000000100000032L});
+    public static final BitSet FOLLOW_entsepleft_in_rule_left_hand_side1728 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_entity_match_in_rule_left_hand_side1732 = new BitSet(new long[]{0x0000000100000032L});
+    public static final BitSet FOLLOW_R_BRACKET_in_rule_left_hand_side1746 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1773 = new BitSet(new long[]{0x0000000100040012L});
+    public static final BitSet FOLLOW_L_BRACKET_in_rule_right_hand_side1782 = new BitSet(new long[]{0x0008238388080032L});
+    public static final BitSet FOLLOW_entsepright_in_rule_right_hand_side1788 = new BitSet(new long[]{0x0008238388080032L});
+    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1797 = new BitSet(new long[]{0x0000000100040032L});
+    public static final BitSet FOLLOW_entsepright_in_rule_right_hand_side1806 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_entity_result_in_rule_right_hand_side1810 = new BitSet(new long[]{0x0000000100040032L});
+    public static final BitSet FOLLOW_R_BRACKET_in_rule_right_hand_side1825 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_species_in_entity_match1854 = new BitSet(new long[]{0x0000000008008002L});
+    public static final BitSet FOLLOW_L_PAREN_in_entity_match1857 = new BitSet(new long[]{0x0000200018000000L});
+    public static final BitSet FOLLOW_attributes_match_in_entity_match1862 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_entity_match1865 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_bindingsites_in_entity_match1879 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_bindingsites1903 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_bindingsite_in_bindingsites1910 = new BitSet(new long[]{0x0000000000010400L});
+    public static final BitSet FOLLOW_COMMA_in_bindingsites1916 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_bindingsite_in_bindingsites1921 = new BitSet(new long[]{0x0000000000010400L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_bindingsites1929 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_bindingsite1944 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_bindingsite1946 = new BitSet(new long[]{0x0008238388380010L});
+    public static final BitSet FOLLOW_entity_match_in_bindingsite1955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FREE_in_bindingsite1963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OCC_in_bindingsite1970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_entity_result_in_entities_result2002 = new BitSet(new long[]{0x0000000100040012L});
+    public static final BitSet FOLLOW_entsepright_in_entities_result2008 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_entity_result_in_entities_result2013 = new BitSet(new long[]{0x0000000100040012L});
+    public static final BitSet FOLLOW_species_in_entity_result2034 = new BitSet(new long[]{0x0000000008008002L});
+    public static final BitSet FOLLOW_L_PAREN_in_entity_result2042 = new BitSet(new long[]{0x0000200010000000L});
+    public static final BitSet FOLLOW_ID_in_entity_result2048 = new BitSet(new long[]{0x0000000F10004500L});
+    public static final BitSet FOLLOW_valmod_in_entity_result2052 = new BitSet(new long[]{0x0000000010000400L});
+    public static final BitSet FOLLOW_COMMA_in_entity_result2064 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_entity_result2068 = new BitSet(new long[]{0x0000000F10004500L});
+    public static final BitSet FOLLOW_valmod_in_entity_result2072 = new BitSet(new long[]{0x0000000010000400L});
+    public static final BitSet FOLLOW_R_PAREN_in_entity_result2084 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_bindingactions_in_entity_result2099 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_valmod2119 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_PLUS_in_valmod2121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_valmod2131 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_MINUS_in_valmod2133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_op_in_valmod2143 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_valmod2145 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_valmod2149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_valmod2158 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_valmod2162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_valmod2171 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_STRING_in_valmod2173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_valmod2182 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_STRING_in_valmod2184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_valmod2193 = new BitSet(new long[]{0x0009238388098050L});
+    public static final BitSet FOLLOW_valset_or_const_in_valmod2197 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQ_in_valmod2206 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_valmod2212 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_L_PAREN_in_valmod2214 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_varexpr_in_valmod2218 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_valmod2220 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_op0 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESSTHAN_in_bindingactions2249 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_bindingaction_in_bindingactions2256 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_COMMA_in_bindingactions2262 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_LESSTHAN_in_bindingactions2259 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_bindingaction_in_bindingactions2266 = new BitSet(new long[]{0x0000000000010400L});
-    public static final BitSet FOLLOW_GREATERTHAN_in_bindingactions2273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_bindingaction2288 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_COLON_in_bindingaction2290 = new BitSet(new long[]{0x0000000001C00000L});
-    public static final BitSet FOLLOW_BIND_in_bindingaction2299 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RELEASE_in_bindingaction2308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REPLACE_in_bindingaction2316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_init_element_in_init2339 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_entsep_in_init2345 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_init_element_in_init2350 = new BitSet(new long[]{0x0000000100040012L});
-    public static final BitSet FOLLOW_for_each_in_init_element2374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_intval_or_var_in_init_element2383 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_entity_result_in_init_element2397 = new BitSet(new long[]{0x0000000000000212L});
-    public static final BitSet FOLLOW_L_BRACKET_in_init_element2416 = new BitSet(new long[]{0x0008238388080030L});
-    public static final BitSet FOLLOW_entities_result_in_init_element2421 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_R_BRACKET_in_init_element2424 = new BitSet(new long[]{0x0000000000000212L});
-    public static final BitSet FOLLOW_L_BRACKET_in_init_element2442 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_init_in_init_element2445 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_R_BRACKET_in_init_element2448 = new BitSet(new long[]{0x0000000000000202L});
-    public static final BitSet FOLLOW_SEMIC_in_init_element2454 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_for_each2484 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_for_var_in_for_each2487 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_L_BRACE_in_for_each2492 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_init_in_for_each2495 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_R_BRACE_in_for_each2501 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ID_in_for_var2520 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_EQ_in_for_var2524 = new BitSet(new long[]{0x0008238388080050L});
-    public static final BitSet FOLLOW_range_in_for_var2531 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_for_var2538 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_obsTargetEntry_in_observationTargets2567 = new BitSet(new long[]{0x0000000000000202L});
-    public static final BitSet FOLLOW_SEMIC_in_observationTargets2574 = new BitSet(new long[]{0x000823838A084010L});
-    public static final BitSet FOLLOW_obsTargetEntry_in_observationTargets2579 = new BitSet(new long[]{0x0000000000000202L});
-    public static final BitSet FOLLOW_obs_matches_in_obsTargetEntry2611 = new BitSet(new long[]{0x0000000002004002L});
-    public static final BitSet FOLLOW_IN_in_obsTargetEntry2619 = new BitSet(new long[]{0x000823838A084010L});
-    public static final BitSet FOLLOW_obs_matches_in_obsTargetEntry2624 = new BitSet(new long[]{0x0000000002004002L});
-    public static final BitSet FOLLOW_EQ_in_obsTargetEntry2633 = new BitSet(new long[]{0x0000200000002000L});
-    public static final BitSet FOLLOW_idlist_in_obsTargetEntry2635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_entity_match_in_obs_matches2668 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_COMMA_in_obs_matches2676 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_entity_match_in_obs_matches2680 = new BitSet(new long[]{0x0000000000000402L});
-    public static final BitSet FOLLOW_ID_in_idlist2710 = new BitSet(new long[]{0x0000000000002402L});
-    public static final BitSet FOLLOW_HASH_in_idlist2716 = new BitSet(new long[]{0x0000000000002402L});
-    public static final BitSet FOLLOW_COMMA_in_idlist2722 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_ID_in_idlist2727 = new BitSet(new long[]{0x0000000000002402L});
-    public static final BitSet FOLLOW_HASH_in_idlist2733 = new BitSet(new long[]{0x0000000000002402L});
-    public static final BitSet FOLLOW_interval_in_synpred8_MLSpaceSmallParser179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_range_in_synpred10_MLSpaceSmallParser191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_vector_in_synpred14_MLSpaceSmallParser215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numexpr_in_synpred15_MLSpaceSmallParser222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_synpred34_MLSpaceSmallParser615 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_synpred34_MLSpaceSmallParser619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numval_in_synpred39_MLSpaceSmallParser729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_synpred40_MLSpaceSmallParser739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_PAREN_in_synpred41_MLSpaceSmallParser748 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_expr_in_synpred41_MLSpaceSmallParser752 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_synpred41_MLSpaceSmallParser754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_L_PAREN_in_synpred42_MLSpaceSmallParser764 = new BitSet(new long[]{0x0008238388080010L});
-    public static final BitSet FOLLOW_boolNode_in_synpred42_MLSpaceSmallParser766 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_R_PAREN_in_synpred42_MLSpaceSmallParser768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_species_def_in_synpred66_MLSpaceSmallParser1340 = new BitSet(new long[]{0x0000000000000202L});
-    public static final BitSet FOLLOW_SEMIC_in_synpred66_MLSpaceSmallParser1342 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_synpred71_MLSpaceSmallParser1504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rpmark_in_synpred76_MLSpaceSmallParser1617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_synpred106_MLSpaceSmallParser2172 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_STRING_in_synpred106_MLSpaceSmallParser2174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_synpred107_MLSpaceSmallParser2183 = new BitSet(new long[]{0x0009238388098050L});
-    public static final BitSet FOLLOW_valset_or_const_in_synpred107_MLSpaceSmallParser2187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMMA_in_bindingactions2272 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_bindingaction_in_bindingactions2276 = new BitSet(new long[]{0x0000000000010400L});
+    public static final BitSet FOLLOW_GREATERTHAN_in_bindingactions2283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_bindingaction2298 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_COLON_in_bindingaction2300 = new BitSet(new long[]{0x0000000001C00000L});
+    public static final BitSet FOLLOW_BIND_in_bindingaction2309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RELEASE_in_bindingaction2318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REPLACE_in_bindingaction2326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_init_element_in_init2349 = new BitSet(new long[]{0x0000000100000012L});
+    public static final BitSet FOLLOW_entsepleft_in_init2355 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_init_element_in_init2360 = new BitSet(new long[]{0x0000000100000012L});
+    public static final BitSet FOLLOW_for_each_in_init_element2384 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_intval_or_var_in_init_element2393 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_entity_result_in_init_element2407 = new BitSet(new long[]{0x0000000000000212L});
+    public static final BitSet FOLLOW_L_BRACKET_in_init_element2426 = new BitSet(new long[]{0x0008238388080030L});
+    public static final BitSet FOLLOW_entities_result_in_init_element2431 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_R_BRACKET_in_init_element2434 = new BitSet(new long[]{0x0000000000000212L});
+    public static final BitSet FOLLOW_L_BRACKET_in_init_element2452 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_init_in_init_element2455 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_R_BRACKET_in_init_element2458 = new BitSet(new long[]{0x0000000000000202L});
+    public static final BitSet FOLLOW_SEMIC_in_init_element2464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_for_each2494 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_for_var_in_for_each2497 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_L_BRACE_in_for_each2502 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_init_in_for_each2505 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_R_BRACE_in_for_each2511 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_ID_in_for_var2530 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_EQ_in_for_var2534 = new BitSet(new long[]{0x0008238388080050L});
+    public static final BitSet FOLLOW_range_in_for_var2541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_for_var2548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_obsTargetEntry_in_observationTargets2577 = new BitSet(new long[]{0x0000000000000202L});
+    public static final BitSet FOLLOW_SEMIC_in_observationTargets2584 = new BitSet(new long[]{0x000823838A084010L});
+    public static final BitSet FOLLOW_obsTargetEntry_in_observationTargets2589 = new BitSet(new long[]{0x0000000000000202L});
+    public static final BitSet FOLLOW_obs_matches_in_obsTargetEntry2621 = new BitSet(new long[]{0x0000000002004002L});
+    public static final BitSet FOLLOW_IN_in_obsTargetEntry2629 = new BitSet(new long[]{0x000823838A084010L});
+    public static final BitSet FOLLOW_obs_matches_in_obsTargetEntry2634 = new BitSet(new long[]{0x0000000002004002L});
+    public static final BitSet FOLLOW_EQ_in_obsTargetEntry2643 = new BitSet(new long[]{0x0000200000002000L});
+    public static final BitSet FOLLOW_idlist_in_obsTargetEntry2645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_entity_match_in_obs_matches2678 = new BitSet(new long[]{0x0000000000000402L});
+    public static final BitSet FOLLOW_COMMA_in_obs_matches2686 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_entity_match_in_obs_matches2690 = new BitSet(new long[]{0x0000000000000402L});
+    public static final BitSet FOLLOW_ID_in_idlist2720 = new BitSet(new long[]{0x0000000000002402L});
+    public static final BitSet FOLLOW_HASH_in_idlist2726 = new BitSet(new long[]{0x0000000000002402L});
+    public static final BitSet FOLLOW_COMMA_in_idlist2732 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_ID_in_idlist2737 = new BitSet(new long[]{0x0000000000002402L});
+    public static final BitSet FOLLOW_HASH_in_idlist2743 = new BitSet(new long[]{0x0000000000002402L});
+    public static final BitSet FOLLOW_interval_in_synpred8_MLSpaceSmallParser189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_range_in_synpred10_MLSpaceSmallParser201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_vector_in_synpred14_MLSpaceSmallParser225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numexpr_in_synpred15_MLSpaceSmallParser232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_synpred34_MLSpaceSmallParser625 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_synpred34_MLSpaceSmallParser629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numval_in_synpred39_MLSpaceSmallParser739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_synpred40_MLSpaceSmallParser749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_PAREN_in_synpred41_MLSpaceSmallParser758 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_expr_in_synpred41_MLSpaceSmallParser762 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_synpred41_MLSpaceSmallParser764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_L_PAREN_in_synpred42_MLSpaceSmallParser774 = new BitSet(new long[]{0x0008238388080010L});
+    public static final BitSet FOLLOW_boolNode_in_synpred42_MLSpaceSmallParser776 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_R_PAREN_in_synpred42_MLSpaceSmallParser778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_species_def_in_synpred66_MLSpaceSmallParser1350 = new BitSet(new long[]{0x0000000000000202L});
+    public static final BitSet FOLLOW_SEMIC_in_synpred66_MLSpaceSmallParser1352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_synpred71_MLSpaceSmallParser1514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rpmark_in_synpred76_MLSpaceSmallParser1627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_synpred106_MLSpaceSmallParser2182 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_STRING_in_synpred106_MLSpaceSmallParser2184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_synpred107_MLSpaceSmallParser2193 = new BitSet(new long[]{0x0009238388098050L});
+    public static final BitSet FOLLOW_valset_or_const_in_synpred107_MLSpaceSmallParser2197 = new BitSet(new long[]{0x0000000000000002L});
 
 }
