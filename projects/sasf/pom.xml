@@ -33,10 +33,6 @@
 		</dependency>
 
 		<!-- External -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate</artifactId>
-		</dependency>
 
 		<!-- HyperSQL (file/mem-based Java DB) -->
 		<dependency>
