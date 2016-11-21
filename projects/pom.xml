@@ -12,6 +12,11 @@
     <dependencies>
 
       <!-- Internal (please keep in alphabetical order by groupId.artifactId) -->
+	  <dependency>
+		<groupId>org.jamesii</groupId>
+		<artifactId>annotation-processing</artifactId>
+		<version>0.9.8-SNAPSHOT</version>
+	  </dependency>
       <dependency>
 		<groupId>org.jamesii</groupId>
 		<artifactId>ca</artifactId>
@@ -133,6 +138,7 @@
 
   <!-- Add new modules here (please keep in alphabetical order) -->
   <modules>
+	<module>annotation-processing</module>
     <module>ca</module>
     <module>core</module>
     <module>devs</module>
