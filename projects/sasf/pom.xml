@@ -49,17 +49,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>joone</groupId>
-			<artifactId>joone-engine</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>mlj</groupId>
-			<artifactId>mlj</artifactId>
-		</dependency>
-		
+	
 	</dependencies>
 
 </project>
